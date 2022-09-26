@@ -27,10 +27,10 @@ bool CGame::IsOver()
 
 void CGame::Over()
 {
-	CameraSet();
+//	CameraSet();
 	//ゲームの描画
 	CApplication::CharacterManager()->Render();
-	CCamera::End();
+	//CCamera::End();
 	//UI処理
 	mpUi->Hp(CPlayer2::Hp());
 	mpUi->Enemy(CEnemy2::Num());
@@ -57,10 +57,10 @@ bool CGame::IsClear()
 
 void CGame::Clear()
 {
-	CameraSet();
+	//CameraSet();
 	//ゲームの描画
 	CApplication::CharacterManager()->Render();
-	CCamera::End();
+	//CCamera::End();
 	//UI処理
 	mpUi->Hp(CPlayer2::Hp());
 	mpUi->Enemy(CEnemy2::Num());
@@ -71,8 +71,8 @@ void CGame::Clear()
 CGame::CGame()
 	: mpUi(nullptr)
 	, mTime(0)
-	, mCdx(0)
-	, mCdy(0)
+//	, mCdx(0)
+	//, mCdy(0)
 {
 	CEnemy2::Num(0);
 	mpUi = new CUi();
@@ -121,14 +121,13 @@ CGame::CGame()
 			//2の時、プレイヤー生成
 			if (map[row][col] == 2)
 			{
-				//カメラ用差分
-				mCdx = WINDOW_WIDTH / 2 - (TIPSIZE + TIPSIZE * 2 * col);
-				mCdy = WINDOW_HEIGHT / 2 - (TIPSIZE + TIPSIZE * 2 * row);
 				//プレイヤーを生成して、キャラクタマネージャに追加
 				CApplication::CharacterManager()->Add(
-					mpPlayer = new CPlayer2(TIPSIZE + TIPSIZE * 2 * col,
+					new CPlayer2(
+						TIPSIZE + TIPSIZE * 2 * col,
 						TIPSIZE + TIPSIZE * 2 * row,
-						TIPSIZE, TIPSIZE, CApplication::Texture()));
+						TIPSIZE, TIPSIZE,
+						CApplication::Texture()));
 			}
 			//3の時、敵生成
 			if (map[row][col] == 3)
@@ -158,9 +157,9 @@ void CGame::Update()
 	CApplication::CharacterManager()->Update();
 	CApplication::CharacterManager()->Collision();
 	CApplication::CharacterManager()->Delete();
-	CameraSet();
+	//CameraSet();
 	CApplication::CharacterManager()->Render();
-	CCamera::End();
+//	CCamera::End();
 	//UI
 	mpUi->Time(mTime++);
 	mpUi->Hp(CPlayer2::Hp());
