@@ -38,7 +38,7 @@ private:
 	CFont mFont;
 	CMiss* mpMiss;
 	//CCharacterのポインタの可変長配列
-	std::vector<CCharacter*> mCharacters;
+//	std::vector<CCharacter*> mCharacters;
 public:
 	static CCharacterManager* CharacterManager();
 	static CTexture* Texture();

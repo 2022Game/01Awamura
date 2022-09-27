@@ -30,6 +30,7 @@
     <ClCompile Include="src\CInput.cpp" />
     <ClCompile Include="src\CUi.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\CYazirusi.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\CApplication.h" />
@@ -52,6 +53,7 @@
     <ClInclude Include="src\CInput.h" />
     <ClInclude Include="src\CUi.h" />
     <ClInclude Include="src\main.h" />
+    <ClInclude Include="src\CYazirusi.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8802AF2F-2920-4700-89F2-CA6778727283}</ProjectGuid>

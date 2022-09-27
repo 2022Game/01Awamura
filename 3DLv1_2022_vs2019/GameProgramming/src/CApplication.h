@@ -13,6 +13,7 @@
 
 #include "CGame.h"
 #include "CSound.h"
+#include "CVector.h"
 
 class CApplication
 {
@@ -37,6 +38,7 @@ private:
 	CInput mInput;
 	CFont mFont;
 	CMiss* mpMiss;
+	CVector mEye;
 	//CCharacterのポインタの可変長配列
 //	std::vector<CCharacter*> mCharacters;
 public:

@@ -34,3 +34,17 @@ CVector::CVector(float v0, float v1, float v2)
 	, mY(v1)
 	, mZ(v2)
 {}
+
+//+演算子のオーバーロード
+//CVector + CVector の演算結果を返す
+CVector CVector::operator+(const CVector& v)const
+{
+	return CVector(mX + v.mX, mY + v.mY, mZ + v.mZ);
+}
+
+//-演算子のオーバーロード
+//CVector - CVector の演算結果を返す
+CVector CVector::operator-(const CVector& v)const
+{
+	return CVector(mX - v.mX, mY - v.mY, mZ - v.mZ);
+}

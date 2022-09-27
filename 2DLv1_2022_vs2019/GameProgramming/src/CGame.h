@@ -4,7 +4,9 @@
 
 //定数の定義
 #define TEXTURE "image.png" //テクスチャのファイル名
-#define TIPSIZE 40.0f //マップ要素のサイズ
+#define YAZIRUSI "0193_2.pig" //矢印透明
+#define YYAZURUSI "0193_6.png"
+#define TIPSIZE 20.0f //マップ要素のサイズ
 /*
 * CGameクラス
 * ゲームクラス
@@ -29,9 +31,9 @@ public:
 	CGame(); //デフォルトコンストラクタ（初期処理）
 	void Update(); //更新処理
 private:
-	//int mCdx, mCdy; //カメラとプレイヤーの座標の差分
-	//void CameraSet(); //カメラ設定
-	//CPlayer2 *mpPlayer; //プレイヤーのポインタ
+	int mCdx, mCdy; //カメラとプレイヤーの座標の差分
+	void CameraSet(); //カメラ設定
+	CPlayer2 *mpPlayer; //プレイヤーのポインタ
 	int mTime; //経過時間
 	CUi *mpUi; //UIクラスのポインタ
 };

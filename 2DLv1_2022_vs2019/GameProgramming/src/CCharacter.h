@@ -16,6 +16,7 @@ public:
 		EPLAYER,	//プレイヤー
 		ETURN,		//折り返し
 		EBLOCK,		//ブロック
+		EYAZI, //矢印
 	};
 	enum class EState	//状態
 	{

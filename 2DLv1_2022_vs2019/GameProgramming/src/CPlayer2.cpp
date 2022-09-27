@@ -3,8 +3,8 @@
 
 #define TEXCOORD 168, 188, 158, 128	//テクスチャマッピング
 #define TEXCRY 196, 216, 158, 128	//テクスチャマッピング
-#define GRAVITY (TIPSIZE / 20.0f)	//重力加速度
-#define JUMPV0 (TIPSIZE / 1.4f)		//ジャンプの初速
+//#define GRAVITY (TIPSIZE / 20.0f)	//重力加速度
+//#define JUMPV0 (TIPSIZE / 1.4f)		//ジャンプの初速
 
 #define TEXCOORD2 136,156,158,128	//右向き2
 #define TEXLEFT1 188,168,158,128	//左向き1
@@ -109,16 +109,16 @@ void CPlayer2::Update()
 	{
 		mInvincible--;
 	}
-	if (mState != EState::EJUMP)
-	{
-		if (mInput.Key('J'))
-		{
+	//if (mState != EState::EJUMP)
+	//{
+		//if (mInput.Key('J'))
+		//{
 			//ジャンプ音
-			mSoundJump.Play(0.1f);
-			mVy = JUMPV0;
-			mState = EState::EJUMP;
-		}
-	}
+			//mSoundJump.Play(0.1f);
+			//mVy = JUMPV0;
+			//mState = EState::EJUMP;
+		//}
+	//}
 	if (mInput.Key('A'))
 	{
 		mVx = -VELOCITY;
@@ -131,10 +131,20 @@ void CPlayer2::Update()
 		//		float x = X() - 4.0f;
 		X(X() + mVx);
 	}
+	if (mInput.Key('W'))
+	{
+		mVy = VELOCITY;
+		Y(Y() + mVy);
+	}
+	if (mInput.Key('S'))
+	{
+		mVy = -VELOCITY;
+		Y(Y() + mVy);
+	}
 	//Y座標にY軸速度を加える
-	Y(Y() + mVy);
+	//Y(Y() + mVy);
 	//Y軸速度に重力を減算する
-	mVy -= GRAVITY;
+	//mVy -= GRAVITY;
 
 	if (mInvincible > 0)
 	{
