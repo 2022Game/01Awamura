@@ -22,3 +22,15 @@ float CVector::Z()const
 {
 	return mZ;
 }
+
+CVector::CVector()
+:mX(0.0f)
+,mY(0.0f)
+,mZ(0.0f)
+{}
+
+CVector::CVector(float v0, float v1, float v2)
+	: mX(v0)
+	, mY(v1)
+	, mZ(v2)
+{}

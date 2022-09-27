@@ -17,6 +17,11 @@ public:
 	float Y()const;
 	//Zの値を得る
 	float Z()const;
+	//デフォルトコントラクタ
+	CVector();
+	//コントラクタ
+	//CVector(X座標,Y座標,Z座標）
+	CVector(float x, float y, float z);
 private:
 	//３D各軸での値を設定
 	float mX, mY, mZ;
