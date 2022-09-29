@@ -27,7 +27,16 @@ CCharacter::CCharacter()
 
 }
 
-void CCharacter::Texture(CTexture *pTexture, int left, int right, int bottom, int top)
+void CCharacter::Texture2(CTexture* pTexture, int left, int right, int bottom, int top)
+{
+	mpTexture = pTexture;
+	mLeft = left;
+	mRight = right;
+	mBottom = bottom;
+	mTop = top;
+}
+
+void CCharacter::Texture(CTexture* pTexture, int left, int right, int bottom, int top)
 {
 	mpTexture = pTexture;
 	mLeft = left;
@@ -53,6 +62,11 @@ void CCharacter::Move()
 }
 
 CTexture* CCharacter::Texture()
+{
+	return mpTexture;
+}
+
+CTexture* CCharacter::Texture2()
 {
 	return mpTexture;
 }

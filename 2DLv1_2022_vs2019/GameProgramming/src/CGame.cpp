@@ -6,6 +6,9 @@
 #include "CPoint.h"
 #include "CCamera.h"
 #include "main.h"
+#include "CYazirusi.h"
+#include "CShita.h"
+#include "CMigi.h"
 
 void CGame::Start()
 {
@@ -15,7 +18,7 @@ void CGame::Start()
 	//CCamera::End();
 	//UI処理
 	mpUi->Hp(CPlayer2::Hp());
-//	mpUi->Enemy(CEnemy2::Num());
+	//	mpUi->Enemy(CEnemy2::Num());
 	mpUi->Render();
 	mpUi->Start();
 
@@ -34,7 +37,7 @@ void CGame::Over()
 	CCamera::End();
 	//UI処理
 	mpUi->Hp(CPlayer2::Hp());
-//	mpUi->Enemy(CEnemy2::Num());
+	//	mpUi->Enemy(CEnemy2::Num());
 	mpUi->Render();
 	mpUi->Over();
 }
@@ -64,7 +67,7 @@ void CGame::Clear()
 	CCamera::End();
 	//UI処理
 	mpUi->Hp(CPlayer2::Hp());
-//	mpUi->Enemy(CEnemy2::Num());
+	//	mpUi->Enemy(CEnemy2::Num());
 	mpUi->Render();
 	mpUi->Clear();
 }
@@ -79,28 +82,35 @@ CGame::CGame()
 	mpUi = new CUi();
 	//テクスチャの入力
 	CApplication::Texture()->Load(TEXTURE);
+	CApplication::Texture2()->Load(YAZIRUSI);
+	CApplication::Texture3()->Load(SHITA);
+	CApplication::Texture4()->Load(MIGI);
 
 	//定数の定義
-	const int ROWS = 15; //行数
-	const int COLS = 20; //列数
+	const int ROWS = 20; //行数
+	const int COLS = 25; //列数
 	//2次元配列のマップ
 	int map[ROWS][COLS] =
 	{
-		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+		{1,0,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,0,1},
+		{1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,0,1},
+		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 	};
 
 	//マップの作成
@@ -150,6 +160,30 @@ CGame::CGame()
 						TIPSIZE, TIPSIZE, CCharacter::ETag::ETURN));
 			}
 			//5の時、下矢印追加
+			if (map[row][col] == 5)
+			{
+				//ブロックを生成して、キャラクタマネージャに追加
+				CApplication::CharacterManager()->Add(
+					new CYazirusi(TIPSIZE + TIPSIZE * 2 * col,
+						TIPSIZE + TIPSIZE * 2 * row,
+						TIPSIZE, TIPSIZE, CApplication::Texture2()));
+			}
+			if (map[row][col] == 6)
+			{
+				//ブロックを生成して、キャラクタマネージャに追加
+				CApplication::CharacterManager()->Add(
+					new CShita(TIPSIZE + TIPSIZE * 2 * col,
+						TIPSIZE + TIPSIZE * 2 * row,
+						TIPSIZE, TIPSIZE, CApplication::Texture3()));
+			}
+			if (map[row][col] == 7)
+			{
+				//ブロックを生成して、キャラクタマネージャに追加
+				CApplication::CharacterManager()->Add(
+					new CMigi(TIPSIZE + TIPSIZE * 2 * col,
+						TIPSIZE + TIPSIZE * 2 * row,
+						TIPSIZE, TIPSIZE, CApplication::Texture4()));
+			}
 		}
 	}
 }
@@ -164,9 +198,9 @@ void CGame::Update()
 	CApplication::CharacterManager()->Render();
 	//CCamera::End();
 	//UI
-	mpUi->Time(mTime++);
+	mpUi->Time(0);
 	mpUi->Hp(CPlayer2::Hp());
-//	mpUi->Enemy(CEnemy2::Num());
+	//	mpUi->Enemy(CEnemy2::Num());
 	mpUi->Render();
 }
 
@@ -180,4 +214,3 @@ void CGame::CameraSet()
 		, y + WINDOW_HEIGHT / 2
 	);
 }
-

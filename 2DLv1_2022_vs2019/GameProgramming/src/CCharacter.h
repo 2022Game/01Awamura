@@ -17,6 +17,8 @@ public:
 		ETURN,		//Ü‚è•Ô‚µ
 		EBLOCK,		//ƒuƒƒbƒN
 		EYAZI, //–îˆó
+		ESHITA, //
+		EMIGI,//
 	};
 	enum class EState	//ó‘Ô
 	{
@@ -32,7 +34,8 @@ protected:
 	ETag mTag;
 	EState mState;
 private:
-	CTexture *mpTexture;
+	CTexture* mpTexture;
+	CTexture* mpTexture2;
 	int mLeft, mRight, mBottom, mTop;
 public:
 	EState State();	//ó‘Ô‚ğæ“¾‚·‚é
@@ -46,7 +49,9 @@ public:
 	virtual void Update() = 0;
 	CCharacter();
 	CTexture* Texture();
-	void Texture(CTexture *pTexture, int left, int right, int bottom, int top);
+	CTexture* Texture2();
+	void Texture(CTexture* pTexture, int left, int right, int bottom, int top);
+	void Texture2(CTexture* pTexture, int left, int right, int bottom, int top);
 	virtual void Render();
 	void Move();
 };
