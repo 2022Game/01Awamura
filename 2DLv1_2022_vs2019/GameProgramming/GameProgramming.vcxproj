@@ -21,6 +21,7 @@
     <ClCompile Include="src\CEnemy2.cpp" />
     <ClCompile Include="src\CFont.cpp" />
     <ClCompile Include="src\CGame.cpp" />
+    <ClCompile Include="src\CHidari.cpp" />
     <ClCompile Include="src\CMigi.cpp" />
     <ClCompile Include="src\CPlayer.cpp" />
     <ClCompile Include="src\CPlayer2.cpp" />
@@ -31,7 +32,7 @@
     <ClCompile Include="src\CTexture.cpp" />
     <ClCompile Include="src\CInput.cpp" />
     <ClCompile Include="src\CUi.cpp" />
-    <ClCompile Include="src\CYazirusi.cpp" />
+    <ClCompile Include="src\CUe.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -45,6 +46,7 @@
     <ClInclude Include="src\CEnemy2.h" />
     <ClInclude Include="src\CFont.h" />
     <ClInclude Include="src\CGame.h" />
+    <ClInclude Include="src\CHidari.h" />
     <ClInclude Include="src\CMigi.h" />
     <ClInclude Include="src\CMiss.h" />
     <ClInclude Include="src\CPlayer.h" />
@@ -56,7 +58,7 @@
     <ClInclude Include="src\CTexture.h" />
     <ClInclude Include="src\CInput.h" />
     <ClInclude Include="src\CUi.h" />
-    <ClInclude Include="src\CYazirusi.h" />
+    <ClInclude Include="src\CUe.h" />
     <ClInclude Include="src\main.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

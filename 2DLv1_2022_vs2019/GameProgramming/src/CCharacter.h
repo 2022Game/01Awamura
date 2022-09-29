@@ -16,9 +16,10 @@ public:
 		EPLAYER,	//プレイヤー
 		ETURN,		//折り返し
 		EBLOCK,		//ブロック
-		EYAZI, //矢印
+		EUE, //矢印
 		ESHITA, //
 		EMIGI,//
+		EHIDARI
 	};
 	enum class EState	//状態
 	{

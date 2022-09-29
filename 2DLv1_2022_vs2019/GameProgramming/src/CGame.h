@@ -5,9 +5,10 @@
 //定数の定義
 #define TEXTURE "image.png" //テクスチャのファイル名
 #define YYAZIRUSI "0193_2.pig" //矢印透明
-#define YAZIRUSI "0193_6.png" //矢印
+#define UE "0193_6.png" //上
 #define SHITA "0193_7.png" //下
 #define MIGI "0193_9.png" //右
+#define HIDARI "0193_8.png" //左
 #define TIPSIZE 16.0f //マップ要素のサイズ
 /*
 * CGameクラス
