@@ -90,7 +90,7 @@ CGame::CGame()
 
 	//定数の定義
 	const int ROWS = 20; //行数
-	const int COLS = 47; //列数
+	const int COLS = 25; //列数
 	//2次元配列のマップ
 	int map[ROWS][COLS] =
 	{
