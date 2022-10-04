@@ -1,2 +1,11 @@
-﻿  CModel.cpp
+﻿  CApplication.cpp
+  CModel.cpp
+C:\Users\surok\Desktop\Git\01Awamura\3DLv1_2022_vs2019\GameProgramming\src\CModel.cpp(61,61): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\surok\Desktop\Git\01Awamura\3DLv1_2022_vs2019\GameProgramming\src\CModel.cpp(61,47): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\surok\Desktop\Git\01Awamura\3DLv1_2022_vs2019\GameProgramming\src\CModel.cpp(61,33): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\surok\Desktop\Git\01Awamura\3DLv1_2022_vs2019\GameProgramming\src\CModel.cpp(108,61): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\surok\Desktop\Git\01Awamura\3DLv1_2022_vs2019\GameProgramming\src\CModel.cpp(108,47): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\surok\Desktop\Git\01Awamura\3DLv1_2022_vs2019\GameProgramming\src\CModel.cpp(108,33): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\surok\Desktop\Git\01Awamura\3DLv1_2022_vs2019\GameProgramming\src\CModel.cpp(132,20): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+  コードを生成中...
   GameProgramming.vcxproj -> C:\Users\surok\Desktop\Git\01Awamura\3DLv1_2022_vs2019\Debug\GameProgramming.exe
