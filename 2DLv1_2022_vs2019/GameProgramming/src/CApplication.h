@@ -13,6 +13,8 @@
 #include "CTexture.h"
 #include "CGame.h"
 #include "CSound.h"
+#include "CUe.h"
+#include "CKa.h"
 
 class CApplication
 {
@@ -20,6 +22,7 @@ private:
 	CSound mSoundBgm;	//BGM
 	CSound mSoundOver;	//ゲームオーバー
 	CGame* mpGame;
+	CUe* mpUe;
 	static CCharacterManager mCharacterManager;
 	enum class EState
 	{
@@ -43,6 +46,7 @@ private:
 	CMiss* mpMiss;
 	//CCharacterのポインタの可変長配列
 //	std::vector<CCharacter*> mCharacters;
+	CKa mKa;
 public:
 	static CCharacterManager* CharacterManager();
 	static CTexture* Texture();

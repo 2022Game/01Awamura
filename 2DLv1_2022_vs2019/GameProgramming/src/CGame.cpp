@@ -83,11 +83,10 @@ CGame::CGame()
 	mpUi = new CUi();
 	//テクスチャの入力
 	CApplication::Texture()->Load(TEXTURE);
-	CApplication::Texture2()->Load(UE);
-	CApplication::Texture3()->Load(SHITA);
-	CApplication::Texture4()->Load(MIGI);
-	CApplication::Texture5()->Load(HIDARI);
-
+		CApplication::Texture2()->Load(UE);
+		CApplication::Texture3()->Load(SHITA);
+		CApplication::Texture4()->Load(MIGI);
+		CApplication::Texture5()->Load(HIDARI);
 	//定数の定義
 	const int ROWS = 20; //行数
 	const int COLS = 25; //列数
@@ -103,7 +102,7 @@ CGame::CGame()
 		{1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,1},
 		{1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,1},
 		{1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,1},
-		{1,7,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,8,1},
+		{1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,1},
 		{1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,1},
 		{1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,1},
 		{1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,1},
@@ -198,6 +197,18 @@ CGame::CGame()
 	}
 }
 
+
+void CGame::CameraSet()
+{
+	float x = mpPlayer->X() + mCdx;
+	float y = mpPlayer->Y() + mCdy;
+	CCamera::Start(x - WINDOW_WIDTH / 2
+		, x + WINDOW_WIDTH / 2
+		, y - WINDOW_HEIGHT / 2
+		, y + WINDOW_HEIGHT / 2
+	);
+}
+
 void CGame::Update()
 {
 	//更新、衝突、削除、描画
@@ -212,15 +223,5 @@ void CGame::Update()
 	mpUi->Hp(CPlayer2::Hp());
 	//	mpUi->Enemy(CEnemy2::Num());
 	mpUi->Render();
-}
 
-void CGame::CameraSet()
-{
-	float x = mpPlayer->X() + mCdx;
-	float y = mpPlayer->Y() + mCdy;
-	CCamera::Start(x - WINDOW_WIDTH / 2
-		, x + WINDOW_WIDTH / 2
-		, y - WINDOW_HEIGHT / 2
-		, y + WINDOW_HEIGHT / 2
-	);
 }

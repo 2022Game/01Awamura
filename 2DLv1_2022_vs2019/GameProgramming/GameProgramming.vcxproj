@@ -22,6 +22,7 @@
     <ClCompile Include="src\CFont.cpp" />
     <ClCompile Include="src\CGame.cpp" />
     <ClCompile Include="src\CHidari.cpp" />
+    <ClCompile Include="src\CK.cpp" />
     <ClCompile Include="src\CMigi.cpp" />
     <ClCompile Include="src\CPlayer.cpp" />
     <ClCompile Include="src\CPlayer2.cpp" />
@@ -34,6 +35,7 @@
     <ClCompile Include="src\CUi.cpp" />
     <ClCompile Include="src\CUe.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\ソース.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\CApplication.h" />
@@ -47,6 +49,7 @@
     <ClInclude Include="src\CFont.h" />
     <ClInclude Include="src\CGame.h" />
     <ClInclude Include="src\CHidari.h" />
+    <ClInclude Include="src\CKa.h" />
     <ClInclude Include="src\CMigi.h" />
     <ClInclude Include="src\CMiss.h" />
     <ClInclude Include="src\CPlayer.h" />

@@ -1,6 +1,7 @@
 #pragma once
 #include "CUi.h"
 #include "CPlayer2.h"
+#include "CCharacter.h"
 
 //定数の定義
 #define TEXTURE "image.png" //テクスチャのファイル名
@@ -16,7 +17,7 @@
 * ゲームのマップを作成し、
 * キャラクタを配置する
 */
-class CGame
+class CGame 
 {
 public:
 	//デストラクタ

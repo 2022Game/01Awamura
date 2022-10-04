@@ -51,6 +51,7 @@ void CApplication::Start()
 	mFont.Load("FontWhite.png", 1, 64);
 	mState = EState::ESTART;
 	mpGame = new CGame();
+	mKa.Set(800.0f, 10.0f, 10.0f, 10.0f);
 }
 
 void CApplication::Update()

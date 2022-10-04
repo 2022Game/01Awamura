@@ -149,6 +149,7 @@ void CPlayer2::Update()
 	if (mInvincible > 0)
 	{
 		mState = EState::ECRY;
+		
 	}
 	if (mState == EState::ECRY)
 	{
