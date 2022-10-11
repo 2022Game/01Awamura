@@ -108,16 +108,6 @@ void CModel::Load(char* obj, char* mtl) {
 		if (strcmp(str[0], "vn") == 0) {
 			normal.push_back(CVector(atof(str[1]), atof(str[2]), atof(str[3])));
 		}
-		//先頭がusemtlの時、マテリアルインデックスを取得する
-		else if (strcmp(str[0], "usemtl") == 0) {
-			//可変長配列を後から比較
-			for (idx = mpMaterials.size() - 1; idx > 0; idx--) {
-				//同じ名前のマテリアルがあればループ終了
-				if (strcmp(mpMaterials[idx]->Name(), str[1]) == 0) {
-					break; //ループから出る
-				}
-			}
-		}
 		//先頭がｆの時、三角形を作成して追加する
 		else if (strcmp(str[0], "f") == 0) {
 			//頂点と法線の番号作成
@@ -135,7 +125,16 @@ void CModel::Load(char* obj, char* mtl) {
 			t.MaterialIdx(idx);
 			//可変長配列mTrianglesに三角形を追加
 			mTriangles.push_back(t);
-			//先頭がusemtlの時、マテリアルインデックスを取得する
+		}
+		//先頭がusemtlの時、マテリアルインデックスを取得する
+		else if (strcmp(str[0], "usemtl") == 0) {
+			//可変長配列を後から比較
+			for (idx = mpMaterials.size() - 1; idx > 0; idx--) {
+				//同じ名前のマテリアルがあればループ終了
+				if (strcmp(mpMaterials[idx]->Name(), str[1]) == 0) {
+					break; //ループから出る
+				}
+			}
 		}
 	}
 	//ファイルのクローズ
