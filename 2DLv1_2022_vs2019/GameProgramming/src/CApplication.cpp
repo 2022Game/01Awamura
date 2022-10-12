@@ -1,5 +1,6 @@
 #include "CApplication.h"
 #include "CRectangle.h"
+#include "CCharacterManager.h"
 
 //ƒNƒ‰ƒX‚Ìstatic•Ï”
 CTexture CApplication::mTexture;
@@ -44,14 +45,17 @@ CTexture* CApplication::Texture5()
 
 void CApplication::Start()
 {
+
 	//Sound
 	mSoundBgm.Load(SOUND_BGM);
 	mSoundOver.Load(SOUND_OVER);
-
 	mFont.Load("FontWhite.png", 1, 64);
 	mState = EState::ESTART;
 	mpGame = new CGame();
-	mKa.Set(800.0f, 10.0f, 10.0f, 10.0f);
+	mpZka = new CZka();
+	mpZka->Texture(&mTexture, 0.0f, 45.0f, 68.0f, 100.0f);
+	mpZka->Set(82.5f, 1000.0f, 18.0f, 300.0f);
+	mCharacterManager.Add(mpZka);
 }
 
 void CApplication::Update()

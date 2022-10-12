@@ -75,22 +75,22 @@
     <ClCompile Include="src\CCamera.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="src\CMigi.cpp">
+    <ClCompile Include="src\CYmigi.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="src\CShita.cpp">
+    <ClCompile Include="src\CYshita.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="src\CUe.cpp">
+    <ClCompile Include="src\CYue.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="src\CHidari.cpp">
+    <ClCompile Include="src\CYhidari.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="src\ソース.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="src\CK.cpp">
+    <ClCompile Include="src\CZka.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -155,19 +155,19 @@
     <ClInclude Include="src\CCamera.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\CMigi.h">
+    <ClInclude Include="src\CYmigi.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\CShita.h">
+    <ClInclude Include="src\CYshita.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\CUe.h">
+    <ClInclude Include="src\CYue.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\CHidari.h">
+    <ClInclude Include="src\CYhidari.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\CKa.h">
+    <ClInclude Include="src\CZka.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
   </ItemGroup>

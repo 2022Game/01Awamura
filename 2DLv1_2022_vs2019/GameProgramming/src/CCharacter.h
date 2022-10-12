@@ -19,7 +19,8 @@ public:
 		EUE, //–îˆó
 		ESHITA, //
 		EMIGI,//
-		EHIDARI
+		EHIDARI,
+		EKABE,
 	};
 	enum class EState	//ó‘Ô
 	{
@@ -36,7 +37,8 @@ protected:
 	EState mState;
 private:
 	CTexture* mpTexture;
-	CTexture* mpTexture2;
+	CTexture* mpTexture6;
+
 	int mLeft, mRight, mBottom, mTop;
 public:
 	EState State();	//ó‘Ô‚ğæ“¾‚·‚é
@@ -51,8 +53,10 @@ public:
 	CCharacter();
 	CTexture* Texture();
 	CTexture* Texture2();
+
 	void Texture(CTexture* pTexture, int left, int right, int bottom, int top);
 	void Texture2(CTexture* pTexture, int left, int right, int bottom, int top);
+
 	virtual void Render();
 	void Move();
 };

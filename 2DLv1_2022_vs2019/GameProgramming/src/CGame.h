@@ -11,6 +11,7 @@
 #define MIGI "0193_9.png" //右
 #define HIDARI "0193_8.png" //左
 #define TIPSIZE 16.0f //マップ要素のサイズ
+#define KABE "111.png"//壁
 /*
 * CGameクラス
 * ゲームクラス

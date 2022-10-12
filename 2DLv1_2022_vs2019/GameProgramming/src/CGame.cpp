@@ -6,10 +6,11 @@
 #include "CPoint.h"
 #include "CCamera.h"
 #include "main.h"
-#include "CUe.h"
-#include "CShita.h"
-#include "CMigi.h"
-#include "CHidari.h"
+#include "CYue.h"
+#include "CYshita.h"
+#include "CYmigi.h"
+#include "CYhidari.h"
+#include "CZka.h"
 
 void CGame::Start()
 {
@@ -102,7 +103,7 @@ CGame::CGame()
 		{1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,1},
 		{1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,1},
 		{1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,1},
-		{1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,1},
+		{1,7,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,8,1},
 		{1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,1},
 		{1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,1},
 		{1,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,1},
@@ -165,7 +166,7 @@ CGame::CGame()
 			{
 				//ブロックを生成して、キャラクタマネージャに追加
 				CApplication::CharacterManager()->Add(
-					new CUe(TIPSIZE + TIPSIZE * 2 * col,
+					new CYue(TIPSIZE + TIPSIZE * 2 * col,
 						TIPSIZE + TIPSIZE * 2 * row,
 						TIPSIZE, TIPSIZE, CApplication::Texture2()));
 			}
@@ -173,7 +174,7 @@ CGame::CGame()
 			{
 				//ブロックを生成して、キャラクタマネージャに追加
 				CApplication::CharacterManager()->Add(
-					new CShita(TIPSIZE + TIPSIZE * 2 * col,
+					new CYshita(TIPSIZE + TIPSIZE * 2 * col,
 						TIPSIZE + TIPSIZE * 2 * row,
 						TIPSIZE, TIPSIZE, CApplication::Texture3()));
 			}
@@ -181,7 +182,7 @@ CGame::CGame()
 			{
 				//ブロックを生成して、キャラクタマネージャに追加
 				CApplication::CharacterManager()->Add(
-					new CMigi(TIPSIZE + TIPSIZE * 2 * col,
+					new CYmigi(TIPSIZE + TIPSIZE * 2 * col,
 						TIPSIZE + TIPSIZE * 2 * row,
 						TIPSIZE, TIPSIZE, CApplication::Texture4()));
 			}
@@ -189,7 +190,7 @@ CGame::CGame()
 			{
 				//ブロックを生成して、キャラクタマネージャに追加
 				CApplication::CharacterManager()->Add(
-					new CHidari(TIPSIZE + TIPSIZE * 2 * col,
+					new CYhidari(TIPSIZE + TIPSIZE * 2 * col,
 						TIPSIZE + TIPSIZE * 2 * row,
 						TIPSIZE, TIPSIZE, CApplication::Texture5()));
 			}
