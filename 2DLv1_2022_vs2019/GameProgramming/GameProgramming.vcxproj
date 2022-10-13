@@ -22,7 +22,8 @@
     <ClCompile Include="src\CFont.cpp" />
     <ClCompile Include="src\CGame.cpp" />
     <ClCompile Include="src\CYhidari.cpp" />
-    <ClCompile Include="src\CZka.cpp" />
+    <ClCompile Include="src\CZkas.cpp" />
+    <ClCompile Include="src\CZkau.cpp" />
     <ClCompile Include="src\CYmigi.cpp" />
     <ClCompile Include="src\CPlayer.cpp" />
     <ClCompile Include="src\CPlayer2.cpp" />
@@ -49,7 +50,8 @@
     <ClInclude Include="src\CFont.h" />
     <ClInclude Include="src\CGame.h" />
     <ClInclude Include="src\CYhidari.h" />
-    <ClInclude Include="src\CZka.h" />
+    <ClInclude Include="src\CZkas.h" />
+    <ClInclude Include="src\CZkau.h" />
     <ClInclude Include="src\CYmigi.h" />
     <ClInclude Include="src\CMiss.h" />
     <ClInclude Include="src\CPlayer.h" />

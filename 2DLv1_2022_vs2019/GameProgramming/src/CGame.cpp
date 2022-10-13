@@ -10,7 +10,8 @@
 #include "CYshita.h"
 #include "CYmigi.h"
 #include "CYhidari.h"
-#include "CZka.h"
+#include "CZkau.h"
+#include "CZkas.h"
 
 void CGame::Start()
 {

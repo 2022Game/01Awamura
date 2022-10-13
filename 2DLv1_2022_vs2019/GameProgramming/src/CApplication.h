@@ -14,7 +14,8 @@
 #include "CGame.h"
 #include "CSound.h"
 #include "CYue.h"
-#include "CZka.h"
+#include "CZkau.h"
+#include "CZkas.h"
 
 class CApplication
 {
@@ -23,7 +24,8 @@ private:
 	CSound mSoundOver;	//ゲームオーバー
 	CGame* mpGame;
 	CYue* mpUe;
-	CZka* mpZka;
+	CZkau* mpZkau;
+	CZkas* mpZkas;
 	static CCharacterManager mCharacterManager;
 	enum class EState
 	{
