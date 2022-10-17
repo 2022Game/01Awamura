@@ -1,3 +1,4 @@
+#include "CTexture.h"
 #ifndef CMATERIAL_H
 #define CMATERIAL_H
 #define MATERIAL_NAME_LEN 64//名前の長さ
@@ -12,6 +13,8 @@ public:
 	CMaterial();
 	//マテリアルを有効にする
 	void Enabled();
+	//マテリアルを無効にする
+	void Disabled();
 	//マテリアルの名前の取得
 	char* Name();
 	//マテリアルの名前を設定する
@@ -19,7 +22,11 @@ public:
 	void Name(char* name);
 	//mDiffuse配列の取得
 	float* Diffuse();
+	//テクスチャの取得
+	CTexture* Texture();
 private:
+	//テクスチャ
+	CTexture mTexture;
 	//マテリアル名
 	char mName[MATERIAL_NAME_LEN + 1];
 	//拡散光の色RGBA

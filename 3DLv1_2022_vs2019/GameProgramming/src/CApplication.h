@@ -44,6 +44,7 @@ private:
 	CModel mModel;
 	//CCharacterのポインタの可変長配列
 //	std::vector<CCharacter*> mCharacters;
+	CModel mBackGround; //背景モデル
 public:
 	static CCharacterManager* CharacterManager();
 	static CTexture* Texture();
