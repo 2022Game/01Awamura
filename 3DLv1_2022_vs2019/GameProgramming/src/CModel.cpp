@@ -187,7 +187,7 @@ void CModel::Render() {
 
 CModel::~CModel()
 {
-	for (int i = 0; 1 < mpMaterials.size(); i++)
+	for (int i = 0; i < mpMaterials.size(); i++)
 	{
 		delete mpMaterials[i];
 	}
