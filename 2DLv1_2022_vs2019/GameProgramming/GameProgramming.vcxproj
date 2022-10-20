@@ -23,8 +23,11 @@
     <ClCompile Include="src\CGame.cpp" />
     <ClCompile Include="src\CYhidari.cpp" />
     <ClCompile Include="src\CZkah.cpp" />
+    <ClCompile Include="src\CZkah1.cpp" />
     <ClCompile Include="src\CZkam.cpp" />
+    <ClCompile Include="src\CZkam1.cpp" />
     <ClCompile Include="src\CZkas.cpp" />
+    <ClCompile Include="src\CZkas1.cpp" />
     <ClCompile Include="src\CZkau.cpp" />
     <ClCompile Include="src\CYmigi.cpp" />
     <ClCompile Include="src\CPlayer.cpp" />
@@ -37,6 +40,7 @@
     <ClCompile Include="src\CInput.cpp" />
     <ClCompile Include="src\CUi.cpp" />
     <ClCompile Include="src\CYue.cpp" />
+    <ClCompile Include="src\CZkau1.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ソース.cpp" />
   </ItemGroup>
@@ -54,8 +58,11 @@
     <ClInclude Include="src\CGame.h" />
     <ClInclude Include="src\CYhidari.h" />
     <ClInclude Include="src\CZkah.h" />
+    <ClInclude Include="src\CZkah1.h" />
     <ClInclude Include="src\CZkam.h" />
+    <ClInclude Include="src\CZkam1.h" />
     <ClInclude Include="src\CZkas.h" />
+    <ClInclude Include="src\CZkas1.h" />
     <ClInclude Include="src\CZkau.h" />
     <ClInclude Include="src\CYmigi.h" />
     <ClInclude Include="src\CMiss.h" />
@@ -69,6 +76,7 @@
     <ClInclude Include="src\CInput.h" />
     <ClInclude Include="src\CUi.h" />
     <ClInclude Include="src\CYue.h" />
+    <ClInclude Include="src\CZkau1.h" />
     <ClInclude Include="src\main.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

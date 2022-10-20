@@ -21,6 +21,10 @@ public:
 		EMIGI,//
 		EHIDARI,
 		EKABE,
+		EKABEU,
+		EKABES,
+		EKABEM,
+		EKABEH,
 	};
 	enum class EState	//èÛë‘
 	{

@@ -18,6 +18,10 @@
 #include "CZkas.h"
 #include "CZkam.h"
 #include "CZkah.h"
+#include "CZkau1.h"
+#include "CZkas1.h"
+#include "CZkam1.h"
+#include "CZkah1.h"
 
 class CApplication
 {
@@ -30,6 +34,10 @@ private:
 	CZkas* mpZkas;
 	CZkam* mpZkam;
 	CZkah* mpZkah;
+	CZkau1* mpZkau1;
+	CZkas1* mpZkas1;
+	CZkam1* mpZkam1;
+	CZkah1* mpZkah1;
 	static CCharacterManager mCharacterManager;
 	enum class EState
 	{
