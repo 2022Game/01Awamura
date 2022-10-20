@@ -15,6 +15,7 @@
 #include "CSound.h"
 #include "CVector.h"
 #include "CModel.h"
+#include "CMatrix.h"
 
 class CApplication
 {
@@ -40,6 +41,7 @@ private:
 	CFont mFont;
 	CMiss* mpMiss;
 	CVector mEye;
+	CMatrix mMatrix;
 	//モデルインスタクラスの作成
 	CModel mModel;
 	//CCharacterのポインタの可変長配列
