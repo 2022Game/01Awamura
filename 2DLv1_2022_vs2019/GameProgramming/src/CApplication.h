@@ -16,6 +16,8 @@
 #include "CYue.h"
 #include "CZkau.h"
 #include "CZkas.h"
+#include "CZkam.h"
+#include "CZkah.h"
 
 class CApplication
 {
@@ -26,6 +28,8 @@ private:
 	CYue* mpUe;
 	CZkau* mpZkau;
 	CZkas* mpZkas;
+	CZkam* mpZkam;
+	CZkah* mpZkah;
 	static CCharacterManager mCharacterManager;
 	enum class EState
 	{
