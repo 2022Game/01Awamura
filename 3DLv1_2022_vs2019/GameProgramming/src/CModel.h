@@ -17,6 +17,9 @@ public:
 	//•`‰æ
 	void Render();
 	~CModel();
+	//•`‰æ
+	//Renderys—ñj
+	void Render(const CMatrix &m);
 private:
 	//OŠpŒ`‚Ì‰Â•Ï’·”z—ñ
 	std::vector<CTriangle> mTriangles;

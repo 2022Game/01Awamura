@@ -26,3 +26,15 @@ CMatrix CMatrix::Identity() {
 	//‚±‚Ìs—ñ‚ğ•Ô‚·
 	return *this;
 }
+
+//Šg‘åk¬s—ñ‚Ìì¬
+//Scale(”{—¦X,”{—¦Y,”{—¦Zj
+CMatrix CMatrix::Scale(float sx, float sy, float sz) {
+	//‚±‚Ìs—ñ‚ğ•Ô‚·
+	return *this;
+}
+
+float CMatrix::M(int r, int c)const
+{
+	return ;
+}

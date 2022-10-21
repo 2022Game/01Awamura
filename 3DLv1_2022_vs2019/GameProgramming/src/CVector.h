@@ -24,10 +24,12 @@ public:
 	CVector(float x, float y, float z);
 	//+演算子のオーバーロード
 	//CVector + CVector の演算結果を返す
-	CVector operator+(const CVector& v)const;
+	CVector operator+(const CVector &v)const;
 	//-演算子のオーバーロード
 	//CVector - CVector の演算結果を返す
-	CVector operator-(const CVector& v)const;
+	CVector operator-(const CVector &v)const;
+	//CVector * CMatrixの結果をCVectorで返す
+	CVector operator*(const CMatrix &m);
 private:
 	//３D各軸での値を設定
 	float mX, mY, mZ;
