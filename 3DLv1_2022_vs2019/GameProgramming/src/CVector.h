@@ -1,7 +1,7 @@
 #pragma once
 #ifndef CVECTOR_H
 #define CVECTOR_H
-
+#include "CMatrix.h" //class CMatrix;でも可
 /*
 ベクトルクラス
 ベクトルデータを扱います
