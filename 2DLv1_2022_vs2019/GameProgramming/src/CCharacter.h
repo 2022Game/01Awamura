@@ -16,6 +16,7 @@ public:
 		EPLAYER,	//プレイヤー
 		ETURN,		//折り返し
 		EBLOCK,		//ブロック
+		EBLOCK1,
 		EUE, //矢印
 		ESHITA, //
 		EMIGI,//

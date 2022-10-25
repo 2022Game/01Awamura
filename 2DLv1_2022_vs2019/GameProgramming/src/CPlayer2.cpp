@@ -76,12 +76,25 @@ void CPlayer2::Collision(CCharacter* m, CCharacter* o)
 		{
 			X(X() + x);
 			Y(Y() + y);
-			//’…’n‚µ‚½Žž
-			if (y != 0.0f)
+		}
+		break;
+	case ETag::EBLOCK1:
+		if (CRectangle::Collision(o, &x, &y))
+		{
+			X(X() + x);
+			Y(Y() + y);
+		}
+		break;
+	case ETag::EKABE:
+		if (CRectangle::Collision(o, &x, &y))
+		{
+			X(X() + x);
+			Y(Y() + y);
+			if (mInvincible == 0)
 			{
-				//YŽ²‘¬“x‚ð0‚É‚·‚é
-				mVy = 0.0f;
-				if (y > 0.0f)
+				mInvincible = 60;
+				sHp--;
+				if (mInvincible < 60)
 				{
 					mState = EState::EMOVE;
 				}
@@ -149,7 +162,10 @@ void CPlayer2::Update()
 	if (mInvincible > 0)
 	{
 		mState = EState::ECRY;
-		
+	}
+	if (mInvincible == 0)
+	{
+		mState = EState::EMOVE;
 	}
 	if (mState == EState::ECRY)
 	{
