@@ -13,6 +13,7 @@
 #include "CZkau.h"
 #include "CZkas.h"
 #include "CBlock1.h"
+#include "CBlock2.h"
 
 void CGame::Start()
 {
@@ -78,7 +79,7 @@ void CGame::Clear()
 
 CGame::CGame()
 	: mpUi(nullptr)
-	, mTime(0)
+	, mNow(0)
 	, mCdx(0)
 	, mCdy(0)
 {
@@ -96,8 +97,8 @@ CGame::CGame()
 	//2次元配列のマップ
 	int map[ROWS][COLS] =
 	{
-		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-		{9,1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,1},
+		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,9},
+		{9,10,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,10,9},
 		{9,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,1},
 		{9,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,1},
 		{9,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,1},
@@ -113,7 +114,7 @@ CGame::CGame()
 		{9,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,1},
 		{9,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,1},
 		{9,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,1},
-		{9,1,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,1,1},
+		{9,10,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,10,1},
 		{1,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,1},
 	};
 
@@ -204,6 +205,14 @@ CGame::CGame()
 						TIPSIZE + TIPSIZE * 2 * row,
 						TIPSIZE, TIPSIZE, CApplication::Texture()));
 			}
+			if (map[row][col] == 10)
+			{
+				//ブロックを生成して、キャラクタマネージャに追加
+				CApplication::CharacterManager()->Add(
+					new CBlock2(TIPSIZE + TIPSIZE * 2 * col,
+						TIPSIZE + TIPSIZE * 2 * row,
+						TIPSIZE, TIPSIZE, CApplication::Texture()));
+			}
 		}
 	}
 }
@@ -225,7 +234,7 @@ void CGame::Update()
 	CApplication::CharacterManager()->Render();
 	//CCamera::End();
 	//UI
-	mpUi->Time(0);
+	mpUi->Now(0);
 	mpUi->Hp(CPlayer2::Hp());
 	//	mpUi->Enemy(CEnemy2::Num());
 	mpUi->Render();

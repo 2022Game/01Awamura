@@ -18,11 +18,11 @@ public:
 	CUi();
 	void Hp(int hp);
 	//Time(ŠÔ)
-	void Time(int time);
+	void Now(int now);
 	void Render();
 private:
 	int mEnemy;	//“G‚Ì”
 	int mHp;
-	int mTime;	//Œo‰ßŠÔ
+	int mNow;	//Œo‰ßŠÔ
 	CFont mFont;
 };

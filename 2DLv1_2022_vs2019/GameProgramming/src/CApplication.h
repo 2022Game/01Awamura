@@ -14,6 +14,10 @@
 #include "CGame.h"
 #include "CSound.h"
 #include "CYue.h"
+#include "CYhidari.h"
+#include "CYmigi.h"
+#include "CYshita.h"
+#include "CZkabe.h"
 #include "CZkau.h"
 #include "CZkas.h"
 #include "CZkam.h"
@@ -22,6 +26,7 @@
 #include "CZkas1.h"
 #include "CZkam1.h"
 #include "CZkah1.h"
+#include "CUi.h"
 
 class CApplication
 {
@@ -30,6 +35,10 @@ private:
 	CSound mSoundOver;	//ゲームオーバー
 	CGame* mpGame;
 	CYue* mpUe;
+	CYshita* mpYshita;
+	CYhidari* mpYhidari;
+	CYmigi* mpYmigi;
+	CZkabe* mpZkabe;
 	CZkau* mpZkau;
 	CZkas* mpZkas;
 	CZkam* mpZkam;
@@ -61,6 +70,7 @@ private:
 	CMiss* mpMiss;
 	//CCharacterのポインタの可変長配列
 //	std::vector<CCharacter*> mCharacters;
+	int mNow;
 public:
 	static CCharacterManager* CharacterManager();
 	static CTexture* Texture();

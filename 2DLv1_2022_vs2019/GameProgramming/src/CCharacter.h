@@ -17,6 +17,7 @@ public:
 		ETURN,		//折り返し
 		EBLOCK,		//ブロック
 		EBLOCK1,
+		EBLOCK2,
 		EUE, //矢印
 		ESHITA, //
 		EMIGI,//
@@ -33,6 +34,7 @@ public:
 		ESTOP,	//停止
 		EJUMP,	//ジャンプ
 		ECRY,	//泣く
+		EBACK,
 	};
 protected:
 	float mVx;	//X軸速度

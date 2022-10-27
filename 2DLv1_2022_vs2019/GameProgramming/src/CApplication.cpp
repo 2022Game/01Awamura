@@ -96,6 +96,9 @@ void CApplication::Start()
 	mCharacterManager.Add(mpZkah1);
 	mpZkah1 = new CZkah1(-1300.0f, 528.0f, 600.0f, 16.0f, 0, 45, 68, 100, &mTexture);
 	mCharacterManager.Add(mpZkah1);
+
+	mpZkabe = new CZkabe(-1300.0f, 16.0f, 600.0f, 16.0f, 0, 0, 0, 0, &mTexture);
+	mCharacterManager.Add(mpZkabe);
 }
 
 void CApplication::Update()

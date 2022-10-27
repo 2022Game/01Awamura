@@ -14,6 +14,7 @@
     <ClCompile Include="src\CApplication.cpp" />
     <ClCompile Include="src\CBlock.cpp" />
     <ClCompile Include="src\CBlock1.cpp" />
+    <ClCompile Include="src\CBlock2.cpp" />
     <ClCompile Include="src\CBullet.cpp" />
     <ClCompile Include="src\CCamera.cpp" />
     <ClCompile Include="src\CCharacter.cpp" />
@@ -23,6 +24,7 @@
     <ClCompile Include="src\CFont.cpp" />
     <ClCompile Include="src\CGame.cpp" />
     <ClCompile Include="src\CYhidari.cpp" />
+    <ClCompile Include="src\CZkabe.cpp" />
     <ClCompile Include="src\CZkah.cpp" />
     <ClCompile Include="src\CZkah1.cpp" />
     <ClCompile Include="src\CZkam.cpp" />
@@ -50,6 +52,7 @@
     <ClInclude Include="src\CApplication.h" />
     <ClInclude Include="src\CBlock.h" />
     <ClInclude Include="src\CBlock1.h" />
+    <ClInclude Include="src\CBlock2.h" />
     <ClInclude Include="src\CBullet.h" />
     <ClInclude Include="src\CCamera.h" />
     <ClInclude Include="src\CCharacter.h" />
@@ -59,6 +62,7 @@
     <ClInclude Include="src\CFont.h" />
     <ClInclude Include="src\CGame.h" />
     <ClInclude Include="src\CYhidari.h" />
+    <ClInclude Include="src\CZkabe.h" />
     <ClInclude Include="src\CZkah.h" />
     <ClInclude Include="src\CZkah1.h" />
     <ClInclude Include="src\CZkam.h" />

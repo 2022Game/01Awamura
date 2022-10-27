@@ -71,6 +71,34 @@ void CPlayer2::Collision(CCharacter* m, CCharacter* o)
 		break;
 	case ETag::EPLAYER:
 		break;
+	case ETag::EHIDARI:
+		if (CRectangle::Collision(o, &x, &y))
+		{
+			X(X() + x);
+			Y(Y() + y);
+		}
+		break;
+	case ETag::EMIGI:
+		if (CRectangle::Collision(o, &x, &y))
+		{
+			X(X() + x);
+			Y(Y() + y);
+		}
+		break;
+	case ETag::EUE:
+		if (CRectangle::Collision(o, &x, &y))
+		{
+			X(X() + x);
+			Y(Y() + y);
+		}
+		break;
+	case ETag::ESHITA:
+		if (CRectangle::Collision(o, &x, &y))
+		{
+			X(X() + x);
+			Y(Y() + y);
+		}
+		break;
 	case ETag::EBLOCK:
 		if (CRectangle::Collision(o, &x, &y))
 		{
