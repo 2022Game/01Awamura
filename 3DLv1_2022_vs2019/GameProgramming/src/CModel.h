@@ -8,6 +8,7 @@
 /*
 モデルクラス
 モデルデータの入力や表示
+
 */
 class CModel {
 public:
