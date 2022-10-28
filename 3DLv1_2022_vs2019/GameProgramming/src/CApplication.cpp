@@ -4,6 +4,7 @@
 #include "glut.h"
 #include "CVector.h"
 #include "CTriangle.h"
+#include "CTransform.h"
 
 //クラスのstatic変数
 CTexture CApplication::mTexture;
@@ -34,6 +35,12 @@ void CApplication::Start()
 	mBackGround.Load(MODEL_BACKGROUND);
 	CMatrix matrix;
 	matrix.Print();
+	mCharacter.Model(&mModel);
+	mCharacter.Scale(CVector(0.1f, 0.1f, 0.1f));
+	mPlayer.Model(&mModel);
+	mPlayer.Position(CVector(0.0f, 0.0f, -3.0f));
+	mPlayer.Scale(CVector(0.1f, 0.1f, 0.1f));
+	mPlayer.Rotation(CVector(-0.0f, -180.0f, -0.0f));
 }
 
 void CApplication::Update()
@@ -78,11 +85,15 @@ void CApplication::Update()
 	//gluLookAt(視点Ｘ,視点Ｙ,視点Ｚ,中心X,中心Y,中心Z,上向X,上向Y,上向Z）
 	gluLookAt(mEye.X(),mEye.Y(),mEye.Z(), 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 
-	CMatrix matrix, position, rotation, scale;
-	position.Translate(0.5f, 1.8f, 0.5f); //移動行列設定
-	rotation.RotateY(180.0f); //回転行列設定
-	scale.Scale(0.1f, 0.1f, 0.1f); //拡大縮小行列設定
-	matrix = scale * rotation * position; //合成行列設定
-	mModel.Render(matrix);//モデルの描画
+	mCharacter.Update();
+	mCharacter.Render();
+	mPlayer.Update();
+	mPlayer.Render();
+	//CTransform trans; //変換行列インスタンスの作成
+	//trans.Position(CVector(0.5f, 1.8f, 0.5f)); //位置の作成
+	//trans.Rotation(CVector(-10.0f, -20.0f, -30.0f)); //回転の設定
+	//trans.Scale(CVector(0.1f, 0.1f, 0.1f)); //拡大縮小の設定
+	//trans.Update(); //行列の更新
+	//mModel.Render(trans.Matrix());//モデルの描画
 	mBackGround.Render();
 }

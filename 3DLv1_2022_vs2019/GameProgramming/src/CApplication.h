@@ -16,6 +16,7 @@
 #include "CVector.h"
 #include "CModel.h"
 #include "CMatrix.h"
+#include "CCharacter3.h"
 
 class CApplication
 {
@@ -42,6 +43,8 @@ private:
 	CMiss* mpMiss;
 	CVector mEye;
 	CMatrix mMatrix;
+	CCharacter3 mCharacter;
+	CCharacter3 mPlayer;
 	//モデルインスタクラスの作成
 	CModel mModel;
 	//CCharacterのポインタの可変長配列
