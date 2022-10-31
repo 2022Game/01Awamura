@@ -44,7 +44,7 @@ private:
 	CVector mEye;
 	CMatrix mMatrix;
 	CCharacter3 mCharacter;
-	CCharacter3 mPlayer;
+	CPlayer mPlayer;
 	//モデルインスタクラスの作成
 	CModel mModel;
 	//CCharacterのポインタの可変長配列
