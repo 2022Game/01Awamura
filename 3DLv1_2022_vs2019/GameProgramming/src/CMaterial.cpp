@@ -1,4 +1,5 @@
 #include "CMaterial.h"
+#include "CVertex.h"
 //memset,strncpyのインクルード
 #include <string.h>
 #include "glut.h"
@@ -22,7 +23,9 @@ char* strncpy(char* str1, const char* str2, int len)
 }
 
 //デフォルトコントラクタ
-CMaterial::CMaterial() {
+CMaterial::CMaterial()
+:mVertexNum(0)
+{
 	//名前を０で埋め
 	memset(mName, 0, sizeof(mName));
 	//0で埋める
@@ -82,3 +85,16 @@ CTexture* CMaterial::Texture()
 {
 	return &mTexture;
 }
+
+void CMaterial::VertexNum(int num)
+{
+	mVertexNum = num;
+}
+
+int CMaterial::VertexNum()
+{
+	return mVertexNum;
+}
+
+//頂点数の設定
+//VertexNum（頂点数）
