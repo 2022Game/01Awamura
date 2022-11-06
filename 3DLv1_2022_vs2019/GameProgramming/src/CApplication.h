@@ -43,10 +43,12 @@ private:
 	CMiss* mpMiss;
 	CVector mEye;
 	CMatrix mMatrix;
-	CCharacter3 mCharacter;
+	//CCharacter3 mCharacter;
 	CPlayer mPlayer;
 	//モデルインスタクラスの作成
 	CModel mModel;
+	//カメラのパラメータを作成する
+	CVector e, c, u;//視点、注視点、上方向
 	//CCharacterのポインタの可変長配列
 //	std::vector<CCharacter*> mCharacters;
 	CModel mBackGround; //背景モデル
