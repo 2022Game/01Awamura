@@ -40,5 +40,8 @@ private:
 	void CameraSet(); //カメラ設定
 	CPlayer2* mpPlayer; //プレイヤーのポインタ
 	int mNow; //経過時間
+	int mNow1;
+	int mNow2;
+	int mNow3;
 	CUi* mpUi; //UIクラスのポインタ
 };

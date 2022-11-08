@@ -26,6 +26,9 @@ void CUi::Enemy(int enemy)
 CUi::CUi()
 	: mHp(0)
 	, mNow(0)
+	,mNow1(0)
+	,mNow2(0)
+	,mNow3(0)
 	, mEnemy(0)
 {
 	mFont.Load("FontWhite.png", 1, 64);
@@ -39,6 +42,21 @@ void CUi::Hp(int hp)
 void CUi::Now(int time)
 {
 	mNow = time;
+}
+
+void CUi::Now1(int time)
+{
+	mNow1 = time;
+}
+
+void CUi::Now2(int time)
+{
+	mNow2 = time;
+}
+
+void CUi::Now3(int time)
+{
+	mNow3 = time;
 }
 
 void CUi::Render()

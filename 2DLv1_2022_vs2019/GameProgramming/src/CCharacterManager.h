@@ -32,5 +32,4 @@ public:
 	void Update();
 	//可変長配列にあるポインタのRender()を実行していく
 	void Render();
-
 };

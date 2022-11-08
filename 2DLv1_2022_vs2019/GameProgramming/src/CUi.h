@@ -19,10 +19,16 @@ public:
 	void Hp(int hp);
 	//Time(ŠÔ)
 	void Now(int now);
+	void Now1(int now1);
+	void Now2(int now2);
+	void Now3(int now3);
 	void Render();
 private:
 	int mEnemy;	//“G‚Ì”
 	int mHp;
 	int mNow;	//Œo‰ßŠÔ
+	int mNow1;
+	int mNow2;
+	int mNow3;
 	CFont mFont;
 };
