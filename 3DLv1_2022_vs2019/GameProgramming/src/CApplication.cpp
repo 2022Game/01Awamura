@@ -106,4 +106,6 @@ void CApplication::Update()
 	//trans.Update(); //行列の更新
 	//mModel.Render(trans.Matrix());//モデルの描画
 	mBackGround.Render();
+	mPlayer.bullet.Update();
+	mPlayer.bullet.Render();
 }

@@ -3,6 +3,7 @@
 //キャラクタクラスのインクルード
 #include "CCharacter3.h"
 #include "CInput.h"
+#include "CBullet.h"
 
 /*
 プレイヤークラス
@@ -18,6 +19,7 @@ public:
 	//CPlayer(位置、回転、スケール）
 	CPlayer(const CVector& pos, const CVector& rot, const CVector& scale);
 	void Update();
+	CBullet bullet;
 };
 
 #endif
