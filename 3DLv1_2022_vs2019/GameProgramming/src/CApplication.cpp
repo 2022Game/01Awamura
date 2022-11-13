@@ -17,6 +17,12 @@ CCharacterManager CApplication::mCharacterManager;
 //背景モデルデータの指定
 #define MODEL_BACKGROUND "res\\sky.obj","res\\sky.mtl"
 
+CTaskManager CApplication::mTaskManager;
+CTaskManager* CApplication::TaskManager()
+{
+	return &mTaskManager;
+}
+
 CCharacterManager* CApplication::CharacterManager()
 {
 	return &mCharacterManager;
@@ -106,6 +112,8 @@ void CApplication::Update()
 	//trans.Update(); //行列の更新
 	//mModel.Render(trans.Matrix());//モデルの描画
 	mBackGround.Render();
-	mPlayer.bullet.Update();
-	mPlayer.bullet.Render();
+	//タスクマネージャの更新
+	mTaskManager.Update();
+	//タスクマネージャの描画
+	mTaskManager.Render();
 }
