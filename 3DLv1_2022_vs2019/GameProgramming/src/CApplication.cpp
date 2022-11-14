@@ -51,6 +51,8 @@ void CApplication::Start()
 
 void CApplication::Update()
 {
+	//タスクマネージャの更新
+	mTaskManager.Update();
 	//頂点１,頂点2,頂点3,法線のデータの作成
 	CVector v0, v1, v2, n;
 	//法線を上向きで設定する
@@ -93,7 +95,7 @@ void CApplication::Update()
 
 	//mCharacter.Update();
 	//mCharacter.Render();
-	mPlayer.Update();
+	//mPlayer.Update();
 	//カメラのパラメータを作成する
 	CVector e,c,u;//視点、注視点、上方向
 	//視点を求める
@@ -104,7 +106,7 @@ void CApplication::Update()
 	u = (CVector(0.0f, 1.0f, 0.0f)) * mPlayer.MatrixRotate();
 	//カメラの設定
 	gluLookAt(e.X(), e.Y(), e.Z(), c.X(), c.Y(), c.Z(), u.X(), u.Y(), u.Z());
-	mPlayer.Render();
+	//mPlayer.Render();
 	//CTransform trans; //変換行列インスタンスの作成
 	//trans.Position(CVector(0.5f, 1.8f, 0.5f)); //位置の作成
 	//trans.Rotation(CVector(-10.0f, -20.0f, -30.0f)); //回転の設定
@@ -112,8 +114,8 @@ void CApplication::Update()
 	//trans.Update(); //行列の更新
 	//mModel.Render(trans.Matrix());//モデルの描画
 	mBackGround.Render();
-	//タスクマネージャの更新
-	mTaskManager.Update();
+	//タスクリストの削除
+	mTaskManager.Delete();
 	//タスクマネージャの描画
 	mTaskManager.Render();
 }
