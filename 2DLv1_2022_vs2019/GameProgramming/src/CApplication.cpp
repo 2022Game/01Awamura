@@ -143,8 +143,12 @@ void CApplication::Update()
 		if (mInput.Key(VK_RETURN))
 		{	//ゲームのインスタンス削除
 			delete mpGame;
+			delete mpYZ;
 			//ゲームのインスタンス生成
 			mpGame = new CGame();
+			mpYZ = new CYZ();
+			mpZkabe = new CZkabe(200.0f, 16.0f, 600.0f, 16.0f, 0, 0, 0, 0, &mTexture);
+			mCharacterManager.Add(mpZkabe);
 			//状態をスタートにする
 			mState = EState::ESTART;
 		}
@@ -155,7 +159,11 @@ void CApplication::Update()
 		if (mInput.Key(VK_RETURN))
 		{
 			delete mpGame;
+			delete mpYZ;
+			mpYZ = new CYZ();
 			mpGame = new CGame();
+			mpZkabe = new CZkabe(200.0f, 16.0f, 600.0f, 16.0f, 0, 0, 0, 0, &mTexture);
+			mCharacterManager.Add(mpZkabe);
 			mState = EState::ESTART;
 		}
 		break;

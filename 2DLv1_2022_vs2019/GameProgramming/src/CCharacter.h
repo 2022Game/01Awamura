@@ -18,11 +18,15 @@ public:
 		EBLOCK,		//ÉuÉçÉbÉN
 		EBLOCK1,
 		EBLOCK2,
+		EBLOCK3,
+		EBLOCK4,
 		EUE, //ñÓàÛ
 		ESHITA, //
 		EMIGI,//
 		EHIDARI,
 		EKABE,
+		EKABEX,
+		EKABEY,
 		EKABEU,
 		EKABES,
 		EKABEM,

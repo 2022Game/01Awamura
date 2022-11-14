@@ -9,6 +9,7 @@ class CZkabe : public CCharacter
 private:
 	
 public:
+	static void Now(int now);
 	static int sNow;
 	static int Now();
 	//Õ“Ëˆ—2

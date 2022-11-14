@@ -12,6 +12,11 @@ int CZkabe::Now()
 	return sNow;
 }
 
+void CZkabe::Now(int now)
+{
+	sNow = now;
+}
+
 CZkabe::CZkabe(float x, float y, float w, float h, float l, float r, float b, float t, CTexture* pt)
 {
 	Set(x, y, w, h);
@@ -23,8 +28,40 @@ void CZkabe::Update()
 {
 	if (mState == EState::EBACK)
 		{
-			float x = X() - 4;
-			X(x);
+		float x = X() - 0;
+		X(x);
+		if (CYZ::sNow1 >= 0)
+		{ 
+			if (CYZ::sNow1 <= 4)
+			{
+				float x = X() - 4;
+				X(x);
+			}
+		}
+		if (CYZ::sNow1 >= 5)
+		{
+			if (CYZ::sNow1 <= 9)
+			{
+				float x = X() - 6;
+					X(x);
+			}
+		}
+		if (CYZ::sNow1 >= 10)
+		{
+			if (CYZ::sNow1 <= 19)
+			{
+				float x = X() - 8;
+				X(x);
+			}
+		}
+		if (CYZ::sNow1 >= 20)
+		{
+			if (CYZ::sNow1 <= 29)
+			{
+				float x = X() - 10;
+				X(x);
+			}
+		}
 	if (x < -600.0f)
 			{
 				x = 200.0f;

@@ -8,7 +8,7 @@ CZkam1::CZkam1(float x, float y, float w, float h, CTexture* pt)
 	Set(x, y, w, h);
 	Texture(pt, KABE);
 	mState = EState::EMOVE;
-	mTag = ETag::EKABE;
+	mTag = ETag::EKABEX;
 }
 
 void CZkam1::Update()
@@ -44,7 +44,7 @@ void CZkam1::Collision(CCharacter* m, CCharacter* o)
 		if (CRectangle::Collision(o, &x, &y))
 		{
 			X(X() + x);
-			Y(Y() + y);
+			//Y(Y() + y);
 			mState = EState::EBACK;
 		}
 	}

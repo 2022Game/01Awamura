@@ -99,11 +99,19 @@ void CPlayer2::Collision(CCharacter* m, CCharacter* o)
 			Y(Y() + y);
 		}
 		break;
+	case ETag::EBLOCK2:
+		if (CRectangle::Collision(o, &x, &y))
+		{
+			X(X() + x);
+			Y(Y() + y);
+		}
+		break;
 	case ETag::EBLOCK:
 		if (CRectangle::Collision(o, &x, &y))
 		{
 			X(X() + x);
 			Y(Y() + y);
+			//sHp = 0;
 		}
 		break;
 	case ETag::EBLOCK1:
@@ -111,9 +119,56 @@ void CPlayer2::Collision(CCharacter* m, CCharacter* o)
 		{
 			X(X() + x);
 			Y(Y() + y);
+			//sHp = 0;
+		}
+		break;
+	case ETag::EBLOCK3:
+		if (CRectangle::Collision(o, &x, &y))
+		{
+			X(X() + x);
+			Y(Y() + y);
+		}
+		break;
+	case ETag::EBLOCK4:
+		if (CRectangle::Collision(o, &x, &y))
+		{
+			X(X() + x);
+			Y(Y() + y);
 		}
 		break;
 	case ETag::EKABE:
+		if (CRectangle::Collision(o, &x, &y))
+		{
+			X(X() + x);
+			Y(Y() + y);
+			if (mInvincible == 0)
+			{
+				mInvincible = 60;
+				sHp--;
+				if (mInvincible < 60)
+				{
+					mState = EState::EMOVE;
+				}
+			}
+		}
+		break;
+	case ETag::EKABEX:
+		if (CRectangle::Collision(o, &x, &y))
+		{
+			X(X() + x);
+			Y(Y() + y);
+			if (mInvincible == 0)
+			{
+				mInvincible = 60;
+				sHp--;
+				if (mInvincible < 60)
+				{
+					mState = EState::EMOVE;
+				}
+			}
+		}
+		break;
+	case ETag::EKABEY:
 		if (CRectangle::Collision(o, &x, &y))
 		{
 			X(X() + x);
