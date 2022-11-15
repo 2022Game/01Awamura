@@ -38,5 +38,5 @@ void CBullet::Render() {
 
 CBullet::CBullet()
 	:mLife(50)
-	,mCollider(this,&mMatrix,CVector(0.0f,0.0f,0.0f),0.8f)
+	,mCollider(this,&mMatrix,CVector(0.0f,0.0f,0.0f),0.1f)
 {}
