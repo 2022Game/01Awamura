@@ -16,6 +16,8 @@ CCharacterManager CApplication::mCharacterManager;
 #define MODEL_OBJ "res\\f14.obj","res\\f14.mtl"
 //背景モデルデータの指定
 #define MODEL_BACKGROUND "res\\sky.obj","res\\sky.mtl"
+//敵輸送機モデル
+#define MODEL_C5 "res\\c5.obj","res\\c5.mtl"
 
 CTaskManager CApplication::mTaskManager;
 CTaskManager* CApplication::TaskManager()
@@ -35,6 +37,13 @@ CTexture* CApplication::Texture()
 
 void CApplication::Start()
 {
+	//C5モデルの読み込み
+	mModelC5.Load(MODEL_C5);
+	//敵機のインスタンス作成
+	new CEnemy(&mModelC5, CVector(0.0f, 10.0f, -100.0f),
+		CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy(&mModelC5, CVector(30.0f, 10.0f, -130.0f),
+		CVector(), CVector(0.1f, 0.1f, 0.1f));
 	mEye = CVector(1.0f, 2.0f, 3.0f);
 	//モデルファイルの入力
 	mModel.Load(MODEL_OBJ);

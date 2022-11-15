@@ -54,6 +54,8 @@ private:
 	//CCharacterのポインタの可変長配列
 //	std::vector<CCharacter*> mCharacters;
 	CModel mBackGround; //背景モデル
+	//C5モデル
+	CModel mModelC5;
 public:
 	static CTaskManager* TaskManager();
 	static CCharacterManager* CharacterManager();
