@@ -56,6 +56,7 @@ private:
 		EPLAY,	//ゲーム中
 		ECLEAR,	//ゲームクリア
 		EOVER,	//ゲームオーバー
+		EUP,
 	};
 	EState mState;
 	//	CCharacter mRectangle;

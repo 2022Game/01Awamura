@@ -40,7 +40,7 @@ void CZkau::Collision(CCharacter* m, CCharacter* o)
 	float x, y;
 	switch (o->Tag())
 	{
-	case ETag::EBLOCK:
+	case ETag::EBLOCKKK:
 		if (CRectangle::Collision(o, &x, &y))
 		{
 		//	X(X() + x);

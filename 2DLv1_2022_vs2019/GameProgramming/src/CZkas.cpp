@@ -40,7 +40,7 @@ void CZkas::Collision(CCharacter* m, CCharacter* o)
 	float x, y;
 	switch (o->Tag())
 	{
-	case ETag::EBLOCK1:
+	case ETag::EBLOCKK:
 		if (CRectangle::Collision(o, &x, &y))
 		{
 			//X(X() + x);

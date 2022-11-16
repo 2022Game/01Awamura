@@ -111,7 +111,7 @@ void CPlayer2::Collision(CCharacter* m, CCharacter* o)
 		{
 			X(X() + x);
 			Y(Y() + y);
-			//sHp = 0;
+			sHp = 0;
 		}
 		break;
 	case ETag::EBLOCK1:
@@ -119,7 +119,23 @@ void CPlayer2::Collision(CCharacter* m, CCharacter* o)
 		{
 			X(X() + x);
 			Y(Y() + y);
-			//sHp = 0;
+			sHp = 0;
+		}
+		break;
+	case ETag::EBLOCKK:
+		if (CRectangle::Collision(o, &x, &y))
+		{
+			X(X() + x);
+			Y(Y() + y);
+			sHp = 0;
+		}
+		break;
+	case ETag::EBLOCKKK:
+		if (CRectangle::Collision(o, &x, &y))
+		{
+			X(X() + x);
+			Y(Y() + y);
+			sHp = 0;
 		}
 		break;
 	case ETag::EBLOCK3:

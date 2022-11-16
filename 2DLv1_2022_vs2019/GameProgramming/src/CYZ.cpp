@@ -18,6 +18,7 @@
 #include "CYZ.h"
 #include "stdlib.h"
 #include "stdio.h"
+#include "CUi.h"
 
 
 #define NOW1 0
@@ -67,6 +68,7 @@ CYZ::CYZ()
 	CApplication::Texture3()->Load(SHITA);
 	CApplication::Texture5()->Load(HIDARI);
 	CApplication::Texture()->Load(TEXTURE1);
+	mFont.Load("FontWhite.png", 1, 64);
 }
 
 //ã‰º‚Ì·‚Í‚R‚Q
@@ -88,6 +90,7 @@ void CYZ::Update()
 
 	if (sNow1 == 0)
 	{
+		mFont.Draw(275, 300, 18, 36, "GO!");
 		if (sNow3 == sNow2)
 		{
 			CApplication::CharacterManager()->Add(
@@ -225,6 +228,7 @@ void CYZ::Update()
 	}
 	if (sNow1 == 5)
 	{
+		mFont.Draw(275, 300, 18, 36, "SPEED UP");
 		if (sNow3 != sNow2)
 		{
 			CApplication::CharacterManager()->Add(
@@ -252,7 +256,555 @@ void CYZ::Update()
 	{
 		if (sNow3 != sNow2)
 		{
-
+			CApplication::CharacterManager()->Add(
+			new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+				CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 7)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 8)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 9)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 10)
+	{
+		mFont.Draw(275, 300, 18, 36, "SPEED UP");
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 11)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 12)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 13)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 14)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 15)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 16)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 17)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 18)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 19)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 20)
+	{
+		mFont.Draw(275, 300, 18, 36, "SPEED UP");
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 21)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 22)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 23)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 24)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 25)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 26)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 27)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 28)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 29)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 30)
+	{
+		mFont.Draw(275, 300, 18, 36, "SPEED UP");
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 31)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 32)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 33)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 34)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 35)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 36)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 37)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 38)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 39)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 40)
+	{
+		mFont.Draw(275, 300, 18, 36, "SPEED UP");
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 41)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+			new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+				CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 42)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 43)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 44)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 45)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 46)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 47)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 48)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 49)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 50)
+	{
+		mFont.Draw(250, 300, 18, 36, "SPEED MAX");
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 51)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 52)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 53)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 54)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 55)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 56)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 57)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 58)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 59)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
+		}
+	}
+	if (sNow1 == 60)
+	{
+		if (sNow3 != sNow2)
+		{
+			CApplication::CharacterManager()->Add(
+				new CZkah(-600.0f, 304.0f, 600.0f, 32.0f,
+					CApplication::Texture()));
+			sNow3 = sNow2;
 		}
 	}
 }

@@ -16,6 +16,8 @@ public:
 		EPLAYER,	//プレイヤー
 		ETURN,		//折り返し
 		EBLOCK,		//ブロック
+		EBLOCKK,
+		EBLOCKKK,
 		EBLOCK1,
 		EBLOCK2,
 		EBLOCK3,

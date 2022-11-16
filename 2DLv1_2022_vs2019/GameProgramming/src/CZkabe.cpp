@@ -42,7 +42,7 @@ void CZkabe::Update()
 		{
 			if (CYZ::sNow1 <= 9)
 			{
-				float x = X() - 6;
+				float x = X() - 5;
 					X(x);
 			}
 		}
@@ -50,13 +50,37 @@ void CZkabe::Update()
 		{
 			if (CYZ::sNow1 <= 19)
 			{
-				float x = X() - 8;
+				float x = X() - 6;
 				X(x);
 			}
 		}
 		if (CYZ::sNow1 >= 20)
 		{
 			if (CYZ::sNow1 <= 29)
+			{
+				float x = X() - 7;
+				X(x);
+			}
+		}
+		if (CYZ::sNow1 >= 30)
+		{
+			if (CYZ::sNow1 <= 39)
+			{
+				float x = X() - 8;
+				X(x);
+			}
+		}
+		if (CYZ::sNow1 >= 40)
+		{
+			if (CYZ::sNow1 <= 49)
+			{
+				float x = X() - 9;
+				X(x);
+			}
+		}
+		if (CYZ::sNow1 >= 50)
+		{
+			if (CYZ::sNow1 <= 99)
 			{
 				float x = X() - 10;
 				X(x);

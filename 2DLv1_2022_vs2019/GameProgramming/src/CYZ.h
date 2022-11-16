@@ -26,4 +26,5 @@ public:
 	static void Now2(int now1);
 	static void Now3(int now1);
 private:	
+	CFont mFont;
 };

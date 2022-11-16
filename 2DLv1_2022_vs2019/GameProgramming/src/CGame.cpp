@@ -1,6 +1,8 @@
 #include "CGame.h"
 #include "CApplication.h"
 #include "CBlock.h"
+#include "CBlockk.h"
+#include "CBlockkk.h"
 #include "CPlayer2.h"
 #include "CEnemy2.h"
 #include "CPoint.h"
@@ -66,7 +68,7 @@ CGame::~CGame()
 
 bool CGame::IsClear()
 {
-	return CZkabe::Now() >= 30;
+	return CZkabe::Now() >= 60;
 }
 
 void CGame::Clear()
@@ -110,8 +112,8 @@ CGame::CGame()
 	//2次元配列のマップ
 	int map[ROWS][COLS] =
 	{
-		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,9},
-		{9,10,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,10,9},
+		{10,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,10},
+		{9,10,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,10,1},
 		{9,11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,1},
 		{9,11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,1},
 		{9,11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,1},
@@ -128,7 +130,7 @@ CGame::CGame()
 		{9,11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,1},
 		{9,11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,1},
 		{9,10,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,10,1},
-		{1,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,1},
+		{10,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,10},
 	};
 
 	//マップの作成
@@ -239,6 +241,22 @@ CGame::CGame()
 				//ブロックを生成して、キャラクタマネージャに追加
 				CApplication::CharacterManager()->Add(
 					new CBlock4(TIPSIZE + TIPSIZE * 2 * col,
+						TIPSIZE + TIPSIZE * 2 * row,
+						TIPSIZE, TIPSIZE, CApplication::Texture()));
+			}
+			if (map[row][col] == 13)
+			{
+				//ブロックを生成して、キャラクタマネージャに追加
+				CApplication::CharacterManager()->Add(
+					new CBlockk(TIPSIZE + TIPSIZE * 2 * col,
+						TIPSIZE + TIPSIZE * 2 * row,
+						TIPSIZE, TIPSIZE, CApplication::Texture()));
+			}
+			if (map[row][col] == 14)
+			{
+				//ブロックを生成して、キャラクタマネージャに追加
+				CApplication::CharacterManager()->Add(
+					new CBlockkk(TIPSIZE + TIPSIZE * 2 * col,
 						TIPSIZE + TIPSIZE * 2 * row,
 						TIPSIZE, TIPSIZE, CApplication::Texture()));
 			}

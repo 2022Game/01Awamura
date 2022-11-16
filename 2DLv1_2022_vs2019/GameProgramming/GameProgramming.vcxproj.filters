@@ -132,6 +132,12 @@
     <ClCompile Include="src\CBlock4.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="src\CBlockk.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CBlockkk.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\CSound.h">
@@ -249,6 +255,12 @@
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="src\CBlock4.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CBlockk.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CBlockkk.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
   </ItemGroup>
