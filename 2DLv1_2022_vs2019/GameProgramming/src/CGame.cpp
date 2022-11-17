@@ -68,7 +68,7 @@ CGame::~CGame()
 
 bool CGame::IsClear()
 {
-	return CZkabe::Now() >= 60;
+	return CZkabe::Now() >= 100;
 }
 
 void CGame::Clear()

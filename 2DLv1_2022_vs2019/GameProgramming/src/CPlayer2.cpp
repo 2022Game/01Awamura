@@ -159,9 +159,9 @@ void CPlayer2::Collision(CCharacter* m, CCharacter* o)
 			Y(Y() + y);
 			if (mInvincible == 0)
 			{
-				mInvincible = 60;
+				mInvincible = 75;
 				sHp--;
-				if (mInvincible < 60)
+				if (mInvincible < 75)
 				{
 					mState = EState::EMOVE;
 				}
@@ -175,9 +175,9 @@ void CPlayer2::Collision(CCharacter* m, CCharacter* o)
 			Y(Y() + y);
 			if (mInvincible == 0)
 			{
-				mInvincible = 60;
+				mInvincible = 75;
 				sHp--;
-				if (mInvincible < 60)
+				if (mInvincible < 75)
 				{
 					mState = EState::EMOVE;
 				}
