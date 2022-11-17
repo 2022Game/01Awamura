@@ -33,7 +33,7 @@ void CBullet::Render() {
 	glMaterialfv(GL_FRONT, GL_DIFFUSE, c);
 	//ŽOŠpŒ`•`‰æ
 	mT.Render(mMatrix);
-	mCollider.Render();
+	//mCollider.Render();
 }
 
 CBullet::CBullet()

@@ -22,7 +22,7 @@
 class CApplication
 {
 private:
-	static CTaskManager mTaskManager;
+	//static CTaskManager mTaskManager;
 	CSound mSoundBgm;	//BGM
 	CSound mSoundOver;	//ゲームオーバー
 	CGame* mpGame;
@@ -57,7 +57,7 @@ private:
 	//C5モデル
 	CModel mModelC5;
 public:
-	static CTaskManager* TaskManager();
+	//static CTaskManager* TaskManager();
 	static CCharacterManager* CharacterManager();
 	static CTexture* Texture();
 	//最初に一度だけ実行するプログラム

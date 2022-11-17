@@ -5,6 +5,7 @@
 #include "CVector.h"
 #include "CTriangle.h"
 #include "CTransform.h"
+#include "CCollisionManager.h"
 
 //クラスのstatic変数
 CTexture CApplication::mTexture;
@@ -19,11 +20,11 @@ CCharacterManager CApplication::mCharacterManager;
 //敵輸送機モデル
 #define MODEL_C5 "res\\c5.obj","res\\c5.mtl"
 
-CTaskManager CApplication::mTaskManager;
-CTaskManager* CApplication::TaskManager()
-{
-	return &mTaskManager;
-}
+//CTaskManager CApplication::mTaskManager;
+//CTaskManager* CApplication::TaskManager()
+//{
+//	return &mTaskManager;
+//}
 
 CCharacterManager* CApplication::CharacterManager()
 {
@@ -61,7 +62,7 @@ void CApplication::Start()
 void CApplication::Update()
 {
 	//タスクマネージャの更新
-	mTaskManager.Update();
+	CTaskManager::Instance()->Update();
 	//頂点１,頂点2,頂点3,法線のデータの作成
 	CVector v0, v1, v2, n;
 	//法線を上向きで設定する
@@ -124,7 +125,9 @@ void CApplication::Update()
 	//mModel.Render(trans.Matrix());//モデルの描画
 	mBackGround.Render();
 	//タスクリストの削除
-	mTaskManager.Delete();
+	CTaskManager::Instance()->Delete();
 	//タスクマネージャの描画
-	mTaskManager.Render();
+	CTaskManager::Instance()->Render();
+	//コリコリマネマネ描画
+	CCollisionManager::Instance()->Render();
 }

@@ -7,7 +7,7 @@
 コライダクラス
 衝突判定データ
 */
-class CCollider : public CTransform {
+class CCollider : public CTransform ,public CTask{
 public:
 	//コンストラクタ
 	//CCollider(親、親行列、位置、半径）
@@ -17,6 +17,7 @@ public:
 	CCharacter3* parent();
 	//描画
 	void Render();
+	~CCollider();
 protected:
 	CCharacter3* mpParent;//親
 	CMatrix* mpMatrix;//親行列
