@@ -7,8 +7,14 @@
 コライダクラス
 衝突判定データ
 */
+class CCollisionManager;
 class CCollider : public CTransform ,public CTask{
+	friend CCollisionManager;
 public:
+	//衝突判定
+	//Collision(コライダ１、コライダ２）
+	//retrun:true（衝突している）false(衝突していない）
+	static bool Collision(CCollider* m, CCollider* o);
 	//コンストラクタ
 	//CCollider(親、親行列、位置、半径）
 	CCollider(CCharacter3* parent, CMatrix* matrix,

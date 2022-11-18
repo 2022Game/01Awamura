@@ -40,3 +40,13 @@ CBullet::CBullet()
 	:mLife(50)
 	,mCollider(this,&mMatrix,CVector(0.0f,0.0f,0.0f),0.1f)
 {}
+
+//衝突処理
+//CCollision(コライダ１、コライダ２）
+void CBullet::Collision(CCollider* m, CCollider* o) {
+	//コライダのmとoが衝突しているか判定
+	if (CCollider::Collision(m, o)) {
+		//衝突しているときは無効にする
+		mEnabled = false;
+	}
+}

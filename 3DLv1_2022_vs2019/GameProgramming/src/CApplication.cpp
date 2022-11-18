@@ -128,6 +128,8 @@ void CApplication::Update()
 	CTaskManager::Instance()->Delete();
 	//タスクマネージャの描画
 	CTaskManager::Instance()->Render();
+	//子リジョンマネージャの衝突処理
+	CCollisionManager::Instance()->Collision();
 	//コリコリマネマネ描画
 	CCollisionManager::Instance()->Render();
 }
