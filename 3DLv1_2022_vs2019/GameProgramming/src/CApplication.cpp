@@ -36,6 +36,13 @@ CTexture* CApplication::Texture()
 	return &mTexture;
 }
 
+CMatrix CApplication::mModelViewInverse;
+
+const CMatrix& CApplication::ModelViewInverse()
+{
+	return mModelViewInverse;
+}
+
 void CApplication::Start()
 {
 	//C5モデルの読み込み
@@ -57,6 +64,8 @@ void CApplication::Start()
 	mPlayer.Position(CVector(0.0f, 0.0f, -3.0f));
 	mPlayer.Scale(CVector(0.1f, 0.1f, 0.1f));
 	mPlayer.Rotation(CVector(-0.0f, -180.0f, -0.0f));
+	//ビルボードの生成
+	new CBillBoard(CVector(-6.0f, 3.0f, -10.0f), 1.0f, 1.0f);
 }
 
 void CApplication::Update()
@@ -116,7 +125,14 @@ void CApplication::Update()
 	u = (CVector(0.0f, 1.0f, 0.0f)) * mPlayer.MatrixRotate();
 	//カメラの設定
 	gluLookAt(e.X(), e.Y(), e.Z(), c.X(), c.Y(), c.Z(), u.X(), u.Y(), u.Z());
-	//mPlayer.Render();
+	//モデルビューの行列の取得
+	glGetFloatv(GL_MODELVIEW_MATRIX, mModelViewInverse.M());
+	//逆行列の取得ｄｄ
+	mModelViewInverse = mModelViewInverse.Transpose();
+	mModelViewInverse.M(0, 3, 0);
+	mModelViewInverse.M(1, 3, 0);
+	mModelViewInverse.M(2, 3, 0);
+	//mPlayer.Render(); 
 	//CTransform trans; //変換行列インスタンスの作成
 	//trans.Position(CVector(0.5f, 1.8f, 0.5f)); //位置の作成
 	//trans.Rotation(CVector(-10.0f, -20.0f, -30.0f)); //回転の設定

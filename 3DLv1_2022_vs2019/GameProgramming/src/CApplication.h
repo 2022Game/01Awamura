@@ -18,10 +18,13 @@
 #include "CMatrix.h"
 #include "CCharacter3.h"
 #include "CTaskManager.h"
+#include "CBillBoard.h"
 
 class CApplication
 {
 private:
+	//モデルビューの逆行列
+	static CMatrix mModelViewInverse;
 	//static CTaskManager mTaskManager;
 	CSound mSoundBgm;	//BGM
 	CSound mSoundOver;	//ゲームオーバー
@@ -39,6 +42,7 @@ private:
 	CPlayer* mpPlayer;
 	static CTexture mTexture;
 	CEnemy* mpEnemy;
+	CBillBoard* mpBillBoard;
 //	CBullet* mpBullet;
 	CInput mInput;
 	CFont mFont;
@@ -57,6 +61,8 @@ private:
 	//C5モデル
 	CModel mModelC5;
 public:
+	//モデルビュー行列の取得
+	static const CMatrix& ModelViewInverse();
 	//static CTaskManager* TaskManager();
 	static CCharacterManager* CharacterManager();
 	static CTexture* Texture();
