@@ -25,6 +25,11 @@ public:
 	static void Now1(int now1);
 	static void Now2(int now1);
 	static void Now3(int now1);
+	static int ue;
+	static int si;
+	static int hi;
+	static int mi;
+	static int RRR;
 private:	
 	CFont mFont;
 };

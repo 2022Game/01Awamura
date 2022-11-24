@@ -28,6 +28,7 @@
 #include "CZkah1.h"
 #include "CUi.h"
 #include "CYZ.h"
+#include "CRRR.h"
 
 class CApplication
 {
@@ -49,6 +50,7 @@ private:
 	CZkam1* mpZkam1;
 	CZkah1* mpZkah1;
 	CYZ* mpYZ;
+	CRRR* mpRRR;
 	static CCharacterManager mCharacterManager;
 	enum class EState
 	{
@@ -66,6 +68,7 @@ private:
 	static CTexture mTexture3;
 	static CTexture mTexture4;
 	static CTexture mTexture5;
+	static CTexture mTexture6;
 	CEnemy* mpEnemy;
 	//	CBullet* mpBullet;
 	CInput mInput;
@@ -81,6 +84,7 @@ public:
 	static CTexture* Texture3();
 	static CTexture* Texture4();
 	static CTexture* Texture5();
+	static CTexture* Texture6();
 	//最初に一度だけ実行するプログラム
 	void Start();
 	//繰り返し実行するプログラム

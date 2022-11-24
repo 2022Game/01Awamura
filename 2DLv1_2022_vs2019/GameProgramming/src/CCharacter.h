@@ -23,6 +23,7 @@ public:
 		EBLOCK3,
 		EBLOCK4,
 		EUE, //–îˆó
+		ERRR,
 		ESHITA, //
 		EMIGI,//
 		EHIDARI,

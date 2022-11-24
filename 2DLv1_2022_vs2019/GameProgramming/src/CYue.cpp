@@ -1,5 +1,9 @@
 #include "CYue.h"
 #include "CApplication.h"
+#include "stdlib.h"
+#include "stdio.h"
+#include "CUi.h"
+#include "time.h"
 
 #define UE 0.0f,175.0f, 190.0f, 0.0f //テクスチャ座標
 #define MU 0.0,0.0,0.0,0.0
@@ -10,12 +14,14 @@ CYue::CYue(float x, float y, float w, float h, CTexture* pt)
 	Texture(pt, UE);
 	mState = EState::ESTOP;
 	mTag = ETag::EUE;
+	srand((unsigned int)time(NULL));
 }
 
 CYue::CYue()
 {
 	mState = EState::EMOVE;
 	mTag = ETag::ESHITA;
+	srand((unsigned int)time(NULL));
 }
 
 void CYue::Update()

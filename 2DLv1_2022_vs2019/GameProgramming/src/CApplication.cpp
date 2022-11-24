@@ -8,6 +8,7 @@ CTexture CApplication::mTexture2;
 CTexture CApplication::mTexture3;
 CTexture CApplication::mTexture4;
 CTexture CApplication::mTexture5;
+CTexture CApplication::mTexture6;
 CCharacterManager CApplication::mCharacterManager;
 
 #define SOUND_BGM "res\\mario.wav" //BGMâπê∫ÉtÉ@ÉCÉã
@@ -41,6 +42,11 @@ CTexture* CApplication::Texture4()
 CTexture* CApplication::Texture5()
 {
 	return &mTexture5;
+}
+
+CTexture* CApplication::Texture6()
+{
+	return &mTexture6;
 }
 
 void CApplication::Start()
