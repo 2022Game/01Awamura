@@ -142,17 +142,22 @@ float* CMatrix::M()const
 
 CMatrix CMatrix::Transpose()
 {
-		mM[1][0] = mM[0][1];
-	mM[2][0] = mM[0][2];
-	mM[3][0] = mM[0][3];
-	mM[0][1] = mM[1][0];
-	mM[2][1] = mM[1][2];
-	mM[3][1] = mM[1][3];
-	mM[0][2] = mM[2][0];
-	mM[1][2] = mM[2][1];
-	mM[3][2] = mM[2][3];
-	mM[0][3] = mM[3][0];
-	mM[1][3] = mM[3][1];
-	mM[2][3] = mM[3][2];
-		return *this;
+	CMatrix RRR;
+	RRR.mM[0][0] = mM[0][0]  ;
+	RRR.mM[0][1] = mM[1][0]  ;
+	RRR.mM[0][2] = mM[2][0] ;
+	RRR.mM[0][3] = mM[3][0] ;
+	RRR.mM[1][0] = mM[0][1] ;
+	RRR.mM[1][1] = mM[1][1]  ;
+	RRR.mM[1][2] = mM[2][1]  ;
+	RRR.mM[1][3] = mM[3][1] ;
+	RRR.mM[2][0] = mM[0][2] ;
+	RRR.mM[2][1] = mM[1][2] ;
+	RRR.mM[2][2] = mM[2][2]  ;
+	RRR.mM[2][3] = mM[3][2] ;
+	RRR.mM[3][0] = mM[0][3] ;
+	RRR.mM[3][1] = mM[1][3] ;
+	RRR.mM[3][2] = mM[2][3]  ;
+	RRR.mM[3][3] = mM[3][3] ;
+		return RRR;
 }
