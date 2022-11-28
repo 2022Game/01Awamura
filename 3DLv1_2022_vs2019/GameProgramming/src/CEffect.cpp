@@ -28,9 +28,12 @@ void CEffect::Update() {
 	float top = 1.0f - 1.0f / mRows * (frame / mCols);
 	//UV下
 	float bot = top - 1.0f / mRows;
-	if (mFrame > 32)
+	if (mFrame > 2)
 	{
-		mEnabled = false;
+		if (frame <= 0)
+		{
+			mEnabled = false;
+		}
 	}
 	//テクスチャマッピング
 	mT[0].UV(CVector(right, top, 0.0f), CVector(left, bot, 0.0f),
