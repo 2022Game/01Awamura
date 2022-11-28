@@ -28,7 +28,7 @@ void CEffect::Update() {
 	float top = 1.0f - 1.0f / mRows * (frame / mCols);
 	//UV‰º
 	float bot = top - 1.0f / mRows;
-	if (mFrame == 32)
+	if (mFrame > 32)
 	{
 		mEnabled = false;
 	}
