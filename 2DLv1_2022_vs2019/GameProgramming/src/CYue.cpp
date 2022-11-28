@@ -14,14 +14,12 @@ CYue::CYue(float x, float y, float w, float h, CTexture* pt)
 	Texture(pt, UE);
 	mState = EState::ESTOP;
 	mTag = ETag::EUE;
-	srand((unsigned int)time(NULL));
 }
 
 CYue::CYue()
 {
 	mState = EState::EMOVE;
 	mTag = ETag::ESHITA;
-	srand((unsigned int)time(NULL));
 }
 
 void CYue::Update()

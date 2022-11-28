@@ -29,6 +29,10 @@ public:
 	static int si;
 	static int hi;
 	static int mi;
+	static int ue1;
+	static int si1;
+	static int hi1;
+	static int mi1;
 	static int RRR;
 private:	
 	CFont mFont;

@@ -17,12 +17,112 @@ void CZkau1::Update()
 	switch (mState)
 	{
 	case EState::EMOVE:
-		y = Y() - 20;
-		Y(y);
+		if (CYZ::sNow1 >= 0)
+		{
+			if (CYZ::sNow1 <= 9)
+			{
+				y = Y() - 10;
+				Y(y);
+			}
+		}
+		if (CYZ::sNow1 >= 10)
+		{
+			if (CYZ::sNow1 <= 19)
+			{
+				y = Y() - 12;
+				Y(y);
+			}
+		}
+		if (CYZ::sNow1 >= 20)
+		{
+			if (CYZ::sNow1 <= 29)
+			{
+				y = Y() - 14;
+				Y(y);
+			}
+		}
+		if (CYZ::sNow1 >= 30)
+		{
+			if (CYZ::sNow1 <= 39)
+			{
+				y = Y() - 16;
+				Y(y);
+			}
+		}
+		if (CYZ::sNow1 >= 40)
+		{
+			if (CYZ::sNow1 <= 49)
+			{
+				y = Y() - 18;
+				Y(y);
+			}
+		}
+		if (CYZ::sNow1 >= 50)
+		{
+			if (CYZ::sNow1 <= 99)
+			{
+				y = Y() - 20;
+				Y(y);
+			}
+		}
 		break;
 	case EState::EBACK:
-		y = Y() + 8;
-		Y(y);
+		if (CYZ::sNow1 >= 0)
+		{
+			if (CYZ::sNow1 <= 4)
+			{
+				y = Y() + 8;
+				Y(y);
+			}
+		}
+		if (CYZ::sNow1 >= 5)
+		{
+			if (CYZ::sNow1 <= 9)
+			{
+				y = Y() + 10;
+				Y(y);
+			}
+		}
+		if (CYZ::sNow1 >= 10)
+		{
+			if (CYZ::sNow1 <= 19)
+			{
+				y = Y() + 12;
+				Y(y);
+			}
+		}
+		if (CYZ::sNow1 >= 20)
+		{
+			if (CYZ::sNow1 <= 29)
+			{
+				y = Y() + 14;
+				Y(y);
+			}
+		}
+		if (CYZ::sNow1 >= 30)
+		{
+			if (CYZ::sNow1 <= 39)
+			{
+				y = Y() + 16;
+				Y(y);
+			}
+		}
+		if (CYZ::sNow1 >= 40)
+		{
+			if (CYZ::sNow1 <= 49)
+			{
+				y = Y() + 18;
+				Y(y);
+			}
+		}
+		if (CYZ::sNow1 >= 50)
+		{
+			if (CYZ::sNow1 <= 99)
+			{
+				y = Y() + 20;
+				Y(y);
+			}
+		}
 		if (y > 900.0f)
 		{
 			mEnabled = false;
@@ -40,10 +140,10 @@ void CZkau1::Collision(CCharacter* m, CCharacter* o)
 	float x, y;
 	switch (o->Tag())
 	{
-	case ETag::EBLOCK:
+	case ETag::EBLOCKKK:
 		if (CRectangle::Collision(o, &x, &y))
 		{
-		//	X(X() + x);
+			//	X(X() + x);
 			Y(Y() + y);
 			mState = EState::EBACK;
 		}
