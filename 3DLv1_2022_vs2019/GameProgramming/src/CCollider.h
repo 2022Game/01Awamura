@@ -20,7 +20,7 @@ public:
 	CCollider(CCharacter3* parent, CMatrix* matrix,
 		const CVector& position, float radius);
 	//親ポインタの取得
-	CCharacter3* parent();
+	CCharacter3* Parent();
 	//描画
 	void Render();
 	~CCollider();
