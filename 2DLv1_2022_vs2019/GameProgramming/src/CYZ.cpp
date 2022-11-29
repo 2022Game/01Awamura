@@ -179,7 +179,6 @@ void CYZ::Update(void)
 				new CYmigi(753.0f, mi, 16.0f, 16.0f,
 					CApplication::Texture5()));
 			sNow3 = sNow2;
-			//sNow1 = 59;
 		}
 	}
 	if (sNow1 == 2)

@@ -106,6 +106,7 @@ CGame::CGame()
 		CApplication::Texture3()->Load(SHITA);
 		CApplication::Texture4()->Load(MIGI);
 		CApplication::Texture5()->Load(HIDARI);
+		CApplication::Texture6()->Load(KABE);
 		CApplication::Texture7()->Load(MARU);
 		CApplication::Texture8()->Load(MARU1);
 	//’è”‚Ì’è‹`
