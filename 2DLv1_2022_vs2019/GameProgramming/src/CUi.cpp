@@ -11,6 +11,9 @@ void CUi::Over()
 {
 	mFont.Draw(36, 300, 18, 36, "GAME OVER!!");
 	mFont.Draw(36, 200, 18, 36, "PUSH ENTER KEY!");
+	char str[16];
+	sprintf(str, "NOW:%03d", mNow);
+	mFont.Draw(36, 100, 18, 36, str);
 }
 
 void CUi::Start()

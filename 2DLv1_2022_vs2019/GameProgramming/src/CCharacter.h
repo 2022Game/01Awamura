@@ -67,9 +67,11 @@ public:
 	CCharacter();
 	CTexture* Texture();
 	CTexture* Texture2();
+	//CTexture* Texture3();
 
 	void Texture(CTexture* pTexture, int left, int right, int bottom, int top);
 	void Texture2(CTexture* pTexture, int left, int right, int bottom, int top);
+	void Texture3(CTexture* pTexture, int left, int right, int bottom, int top);
 
 	virtual void Render();
 	void Move();

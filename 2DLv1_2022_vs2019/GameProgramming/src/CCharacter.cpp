@@ -45,6 +45,15 @@ void CCharacter::Texture(CTexture* pTexture, int left, int right, int bottom, in
 	mTop = top;
 }
 
+void CCharacter::Texture3(CTexture* pTexture, int left, int right, int bottom, int top)
+{
+	mpTexture = pTexture;
+	mLeft = left;
+	mRight = right;
+	mBottom = bottom;
+	mTop = top;
+}
+
 void CCharacter::Render()
 {
 	mpTexture->DrawImage(

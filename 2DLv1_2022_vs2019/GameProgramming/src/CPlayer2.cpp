@@ -1,6 +1,8 @@
 #include "CPlayer2.h"
 #include "CApplication.h"
 
+#define MARU 0,525,1000,465 //紫
+#define MARU1 470,1000,530,0 //赤
 #define TEXCOORD 168, 188, 158, 128	//テクスチャマッピング
 #define TEXCRY 196, 216, 158, 128	//テクスチャマッピング
 //#define GRAVITY (TIPSIZE / 20.0f)	//重力加速度
@@ -53,7 +55,7 @@ void CPlayer2::Collision(CCharacter* m, CCharacter* o)
 					mState = EState::ECRY;
 					if (mInvincible == 0)
 					{
-						mInvincible = 60;
+						mInvincible = 80;
 						sHp--;
 					}
 				}
@@ -63,7 +65,7 @@ void CPlayer2::Collision(CCharacter* m, CCharacter* o)
 				mState = EState::ECRY;
 				if (mInvincible == 0)
 				{
-					mInvincible = 60;
+					mInvincible = 80;
 					sHp--;
 				}
 			}
@@ -159,9 +161,9 @@ void CPlayer2::Collision(CCharacter* m, CCharacter* o)
 			Y(Y() + y);
 			if (mInvincible == 0)
 			{
-				mInvincible = 75;
+				mInvincible = 80;
 				sHp--;
-				if (mInvincible < 75)
+				if (mInvincible < 80)
 				{
 					mState = EState::EMOVE;
 				}
@@ -175,9 +177,9 @@ void CPlayer2::Collision(CCharacter* m, CCharacter* o)
 			Y(Y() + y);
 			if (mInvincible == 0)
 			{
-				mInvincible = 75;
+				mInvincible = 80;
 				sHp--;
-				if (mInvincible < 75)
+				if (mInvincible < 80)
 				{
 					mState = EState::EMOVE;
 				}
@@ -191,9 +193,9 @@ void CPlayer2::Collision(CCharacter* m, CCharacter* o)
 			Y(Y() + y);
 			if (mInvincible == 0)
 			{
-				mInvincible = 60;
+				mInvincible = 80;
 				sHp--;
-				if (mInvincible < 60)
+				if (mInvincible < 80)
 				{
 					mState = EState::EMOVE;
 				}
@@ -207,7 +209,8 @@ CPlayer2::CPlayer2(float x, float y, float w, float h, CTexture* pt)
 	: mInvincible(0)
 {
 	Set(x, y, w, h);
-	Texture(pt, TEXCOORD);
+	Texture(pt, MARU);
+	//Texture3(pt, MARU1);
 	mTag = ETag::EPLAYER;
 	sHp = HP;
 	//ジャンプ音ロード
@@ -269,7 +272,7 @@ void CPlayer2::Update()
 	if (mState == EState::ECRY)
 	{
 		//泣く画像を設定
-		Texture(Texture(), TEXCRY);
+		Texture3(Texture(), MARU1);
 	}
 	else
 	{
@@ -279,12 +282,12 @@ void CPlayer2::Update()
 			if (mVx < 0.0f) //左へ移動
 			{
 				//左向き１を設定
-				Texture(Texture(), TEXLEFT1);
+				Texture(Texture(), MARU);
 			}
 			else
 			{
 				//通常の画像を設定
-				Texture(Texture(), TEXCOORD);
+				Texture(Texture(), MARU);
 			}
 		}
 		else
@@ -292,12 +295,12 @@ void CPlayer2::Update()
 			if (mVx < 0.0f) //左へ移動
 			{
 				//左向き2を設定
-				Texture(Texture(), TEXLEFT2);
+				Texture(Texture(), MARU);
 			}
 			else
 			{
 				//2番目の画像を設定
-				Texture(Texture(), TEXCOORD2);
+				Texture(Texture(), MARU);
 			}
 		}
 	}

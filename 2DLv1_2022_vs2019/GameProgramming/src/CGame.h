@@ -10,6 +10,9 @@
 #define SHITA "0193_7.png" //下
 #define MIGI "0193_9.png" //右
 #define HIDARI "0193_8.png" //左
+#define MARU1 "maru1.png"
+#define MARU2 "maru2.png"
+#define MARU "maru.png"
 #define TIPSIZE 16.0f //マップ要素のサイズ
 #define KABE "111.png"//壁
 /*

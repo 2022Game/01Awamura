@@ -106,6 +106,8 @@ CGame::CGame()
 		CApplication::Texture3()->Load(SHITA);
 		CApplication::Texture4()->Load(MIGI);
 		CApplication::Texture5()->Load(HIDARI);
+		CApplication::Texture7()->Load(MARU);
+		CApplication::Texture8()->Load(MARU1);
 	//íËêîÇÃíËã`
 	const int ROWS = 26; //çsêî
 	const int COLS = 26; //óÒêî
@@ -159,7 +161,7 @@ CGame::CGame()
 				CApplication::CharacterManager()->Add(
 					mpPlayer = new CPlayer2(TIPSIZE + TIPSIZE * 2 * col,
 						TIPSIZE + TIPSIZE * 2 * row,
-						TIPSIZE, TIPSIZE, CApplication::Texture()));
+						TIPSIZE, TIPSIZE, CApplication::Texture7()));
 			}
 			//3ÇÃéûÅAìGê∂ê¨
 			if (map[row][col] == 3)
