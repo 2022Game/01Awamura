@@ -51,6 +51,7 @@
     <ClCompile Include="src\CYue.cpp" />
     <ClCompile Include="src\CZkau1.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\SUP.cpp" />
     <ClCompile Include="src\ソース.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -96,6 +97,7 @@
     <ClInclude Include="src\CYue.h" />
     <ClInclude Include="src\CZkau1.h" />
     <ClInclude Include="src\main.h" />
+    <ClInclude Include="src\SUP.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8802AF2F-2920-4700-89F2-CA6778727283}</ProjectGuid>

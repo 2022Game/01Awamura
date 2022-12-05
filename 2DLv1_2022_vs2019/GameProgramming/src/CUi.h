@@ -22,6 +22,7 @@ public:
 	void Now1(int now1);
 	void Now2(int now2);
 	void Now3(int now3);
+	void Speed(int SPEED);
 	void Render();
 private:
 	int mEnemy;	//ìGÇÃêî
@@ -30,5 +31,6 @@ private:
 	int mNow1;
 	int mNow2;
 	int mNow3;
+	int mSpeed;
 	CFont mFont;
 };

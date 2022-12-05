@@ -162,6 +162,7 @@ void CApplication::Update()
 		{	//ゲームのインスタンス削除
 			delete mpGame;
 			delete mpYZ;
+			//delete mpSUP;
 			//ゲームのインスタンス生成
 			mpGame = new CGame();
 			mpYZ = new CYZ();

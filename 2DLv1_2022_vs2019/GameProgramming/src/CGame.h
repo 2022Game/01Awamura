@@ -15,6 +15,7 @@
 #define MARU "maru.png"
 #define TIPSIZE 16.0f //マップ要素のサイズ
 #define KABE "111.png"//壁
+#define SSUP "UP.png"
 /*
 * CGameクラス
 * ゲームクラス
@@ -46,5 +47,6 @@ private:
 	int mNow1;
 	int mNow2;
 	int mNow3;
+	int mSpeed;
 	CUi* mpUi; //UIクラスのポインタ
 };

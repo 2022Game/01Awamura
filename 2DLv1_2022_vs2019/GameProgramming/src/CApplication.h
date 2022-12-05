@@ -29,6 +29,7 @@
 #include "CUi.h"
 #include "CYZ.h"
 #include "CRRR.h"
+#include "SUP.h"
 
 class CApplication
 {
@@ -50,6 +51,7 @@ private:
 	CZkam1* mpZkam1;
 	CZkah1* mpZkah1;
 	CYZ* mpYZ;
+	SUP* mpSUP;
 	CRRR* mpRRR;
 	static CCharacterManager mCharacterManager;
 	enum class EState

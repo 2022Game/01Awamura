@@ -19,12 +19,15 @@ public:
 	static int Now1();
 	static int Now2();
 	static int Now3();
+	static int SSPEED();
 	static int sNow1;
 	static int sNow2;
 	static int sNow3;
+	static int SPEED;
 	static void Now1(int now1);
 	static void Now2(int now1);
 	static void Now3(int now1);
+	static void SSPEED(int SPEED);
 	static int ue;
 	static int si;
 	static int hi;
@@ -37,6 +40,8 @@ public:
 	static int si2;
 	static int hi2;
 	static int mi2;
+	static int UP;
+	static int UP1;
 	static int RRR;
 private:	
 	CFont mFont;

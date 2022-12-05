@@ -236,26 +236,186 @@ void CPlayer2::Update()
 	//}
 	if (mInput.Key('A'))
 	{
-		mVx = -VELOCITY;
-		//		float x = X() - 4.0f;
-		X(X() + mVx);
+		if (CYZ::SPEED == 0)
+		{
+			//mVx = -VELOCITY;
+			float x = X() - 3.0f;
+			//X(X() + mVx);
+			X(x);
+		}
+		if (CYZ::SPEED == 1)
+		{
+			float x = X() - 4.0f;
+			X(x);
+		}
+		if (CYZ::SPEED == 2)
+		{
+			float x = X() - 5.0f;
+			X(x);
+		}
+		if (CYZ::SPEED == 3)
+		{
+			float x = X() - 6.0f;
+			X(x);
+		}
+		if (CYZ::SPEED == 4)
+		{
+			float x = X() - 7.0f;
+			X(x);
+		}
+		if (CYZ::SPEED == 5)
+		{
+			float x = X() - 8.0f;
+			X(x);
+		}
+		if (CYZ::SPEED == 6)
+		{
+			float x = X() - 9.0f;
+			X(x);
+		}
 	}
 	if (mInput.Key('D'))
 	{
-		mVx = VELOCITY;
-		//		float x = X() - 4.0f;
-		X(X() + mVx);
+		if (CYZ::SPEED == 0)
+		{
+			//mVx = VELOCITY;
+			float x = X() + 3.0f;
+			//X(X() + mVx);
+			X(x);
+		}
+		if (CYZ::SPEED == 1)
+		{
+			float x = X() + 4.0f;
+			X(x);
+		}
+		if (CYZ::SPEED == 2)
+		{
+			float x = X() + 5.0f;
+			X(x);
+		}
+		if (CYZ::SPEED == 3)
+		{
+			float x = X() + 6.0f;
+			X(x);
+		}
+		if (CYZ::SPEED == 4)
+		{
+			float x = X() + 7.0f;
+			X(x);
+		}
+		if (CYZ::SPEED == 5)
+		{
+			float x = X() + 8.0f;
+			X(x);
+		}
+		if (CYZ::SPEED == 10)
+		{
+			float x = X() + 9.0f;
+			X(x);
+		}
 	}
 	if (mInput.Key('W'))
 	{
-		mVy = VELOCITY;
-		Y(Y() + mVy);
+		if (CYZ::SPEED == 0)
+		{
+			//mVy = VELOCITY;
+			float y = Y() + 3.0f;
+			//Y(Y() + mVy);
+			Y(y);
+		}
+		if (CYZ::SPEED == 1)
+		{
+			float y = Y() + 4.0f;
+			Y(y);
+		}
+		if (CYZ::SPEED == 2)
+		{
+			float y = Y() + 5.0f;
+			Y(y);
+		}
+		if (CYZ::SPEED == 3)
+		{
+			float y = Y() + 6.0f;
+			Y(y);
+		}
+		if (CYZ::SPEED == 4)
+		{
+			float y = Y() + 7.0f;
+			Y(y);
+		}
+		if (CYZ::SPEED == 5)
+		{
+			float y = Y() + 8.0f;
+			Y(y);
+		}
+		if (CYZ::SPEED == 6)
+		{
+			float y = Y() + 9.0f;
+			Y(y);
+		}
 	}
 	if (mInput.Key('S'))
 	{
-		mVy = -VELOCITY;
-		Y(Y() + mVy);
+		if (CYZ::SPEED == 0)
+		{
+			//mVy = -VELOCITY;
+			float y = Y() - 3.0f;
+			//Y(Y() + mVy);
+			Y(y);
+		}
+		if (CYZ::SPEED == 1)
+		{
+			float y = Y() - 4.0f;
+			Y(y);
+		}
+		if (CYZ::SPEED == 2)
+		{
+			float y = Y() - 5.0f;
+			Y(y);
+		}
+		if (CYZ::SPEED == 3)
+		{
+			float y = Y() - 6.0f;
+			Y(y);
+		}
+		if (CYZ::SPEED == 4)
+		{
+			float y = Y() - 7.0f;
+			Y(y);
+		}
+		if (CYZ::SPEED == 5)
+		{
+			float y = Y() - 8.0f;
+			Y(y);
+		}
+		if (CYZ::SPEED == 6)
+		{
+			float y = Y() - 9.0f;
+			Y(y);
+		}
 	}
+	//if (mInput.Key(VK_LEFT))
+	//{
+	//	mVx = -VELOCITY;
+	//	//		float x = X() - 4.0f;
+	//	X(X() + mVx);
+	//}
+	//if (mInput.Key(VK_RIGHT))
+	//{
+	//	mVx = VELOCITY;
+	//	//		float x = X() - 4.0f;
+	//	X(X() + mVx);
+	//}
+	//if (mInput.Key(VK_UP))
+	//{
+	//	mVy = VELOCITY;
+	//	Y(Y() + mVy);
+	//}
+	//if (mInput.Key(VK_DOWN))
+	//{
+	//	mVy = -VELOCITY;
+	//	Y(Y() + mVy);
+	//}
 	//Y座標にY軸速度を加える
 	//Y(Y() + mVy);
 	//Y軸速度に重力を減算する

@@ -29,6 +29,7 @@ void CGame::Start()
 	//UI処理
 	mpUi->Hp(CPlayer2::Hp());
 	mpUi->Now1(CYZ::Now1());
+	mpUi->Speed(CYZ::SSPEED());
 	//	mpUi->Enemy(CEnemy2::Num());
 	mpUi->Render();
 	mpUi->Start();
@@ -49,6 +50,7 @@ void CGame::Over()
 	//UI処理
 	mpUi->Hp(CPlayer2::Hp());
 	mpUi->Now1(CYZ::Now1());
+	mpUi->Speed(CYZ::SSPEED());
 	//	mpUi->Enemy(CEnemy2::Num());
 	mpUi->Render();
 	mpUi->Over();
@@ -80,6 +82,7 @@ void CGame::Clear()
 	//UI処理
 	mpUi->Hp(CPlayer2::Hp());
 	mpUi->Now1(CYZ::Now1());
+	mpUi->Speed(CYZ::SSPEED());
 	//	mpUi->Enemy(CEnemy2::Num());
 	mpUi->Render();
 	mpUi->Clear();
@@ -91,6 +94,7 @@ CGame::CGame()
 	, mNow1(0)
 	, mNow2(0)
 	, mNow3(0)
+	, mSpeed(0)
 	, mCdx(0)
 	, mCdy(0)
 {
@@ -98,6 +102,7 @@ CGame::CGame()
 	CYZ::Now1(0);
 	CYZ::Now2(0);
 	CYZ::Now3(0);
+	CYZ::SSPEED(0);
 	CEnemy2::Num(0);
 	mpUi = new CUi();
 	//テクスチャの入力
@@ -106,7 +111,7 @@ CGame::CGame()
 		CApplication::Texture3()->Load(SHITA);
 		CApplication::Texture4()->Load(MIGI);
 		CApplication::Texture5()->Load(HIDARI);
-		CApplication::Texture6()->Load(KABE);
+		CApplication::Texture6()->Load(SSUP);
 		CApplication::Texture7()->Load(MARU);
 		CApplication::Texture8()->Load(MARU1);
 	//定数の定義
@@ -284,6 +289,7 @@ void CGame::Update()
 	CApplication::CharacterManager()->Render();
 	//CCamera::End();
 	//UI
+	mpUi->Speed(CYZ::SSPEED());
 	mpUi->Now1(CYZ::Now1());
 	mpUi->Now2(CYZ::Now2());
 	mpUi->Now3(CYZ::Now3());

@@ -33,6 +33,7 @@ CUi::CUi()
 	,mNow2(0)
 	,mNow3(0)
 	, mEnemy(0)
+	,mSpeed(0)
 {
 	mFont.Load("FontWhite.png", 1, 64);
 }
@@ -61,14 +62,22 @@ void CUi::Now3(int time)
 {
 	mNow3 = time;
 }
+void CUi::Speed(int SPEED)
+{
+	mSpeed = SPEED;
+}
 
 void CUi::Render()
 {
 	char str[16];
-	sprintf(str, "NOW:%03d", mNow);
-	mFont.Draw(620, 580, 10, 20, str);
+	sprintf(str,"NOW");
+	mFont.Draw(745, 585, 10, 15, str);
+	sprintf(str, "%03d", mNow);
+	mFont.Draw(745, 560, 10, 15, str);
 	sprintf(str, "HP:%d", mHp);
-	mFont.Draw(20, 580, 10, 20, str);
+	mFont.Draw(9, 585, 8, 15, str);
+	sprintf(str, "UP:%d", mSpeed);
+	mFont.Draw(9, 560, 8, 15, str);
 	//sprintf(str, "ENEMY:%d", mEnemy);
 	//mFont.Draw(20, 580, 10, 20, str);
 }
