@@ -19,6 +19,7 @@
 #include "CCharacter3.h"
 #include "CTaskManager.h"
 #include "CBillBoard.h"
+#include "CColliderTriangle.h"
 
 class CApplication
 {
@@ -60,6 +61,10 @@ private:
 	CModel mBackGround; //背景モデル
 	//C5モデル
 	CModel mModelC5;
+	//三角コライダの作成
+	CColliderTriangle mColliderTriangle;
+	//三角コライダ２
+	CColliderTriangle mColliderTriangle2;
 public:
 	//モデルビュー行列の取得
 	static const CMatrix& ModelViewInverse();

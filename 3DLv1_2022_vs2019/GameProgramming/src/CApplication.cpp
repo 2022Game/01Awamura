@@ -66,6 +66,16 @@ void CApplication::Start()
 	mPlayer.Rotation(CVector(-0.0f, -180.0f, -0.0f));
 	//ビルボードの生成
 	new CBillBoard(CVector(-6.0f, 3.0f, -10.0f), 1.0f, 1.0f);
+	//三角コライダの確認
+	mColliderTriangle.Set(nullptr, nullptr
+		, CVector(-50.0f, 0.0f, -50.0f)
+		, CVector(-50.0f, 0.0f, 50.0f)
+		, CVector(50.0f, 0.0f, -50.0f));
+	//三角コライダ２
+	mColliderTriangle2.Set(nullptr, nullptr
+		, CVector(50.0f, 0.0f, 50.0f)
+		, CVector(50.0f, 0.0f, -50.0f)
+		, CVector(-50.0f, 0.0f, 50.0f));
 }
 
 void CApplication::Update()
