@@ -72,6 +72,7 @@ void CUi::Render()
 	char str[16];
 	sprintf(str,"NOW");
 	mFont.Draw(745, 585, 10, 15, str);
+	//mFont.Draw(745, 585, 5, 15, str);
 	sprintf(str, "%03d", mNow);
 	mFont.Draw(745, 560, 10, 15, str);
 	sprintf(str, "HP:%d", mHp);

@@ -30,6 +30,10 @@
 #include "CYZ.h"
 #include "CRRR.h"
 #include "SUP.h"
+#include "CFpenA.h"
+#include "CFpenB.h"
+#include "CFpenC.h"
+#include "CFpenD.h"
 
 class CApplication
 {
@@ -53,6 +57,10 @@ private:
 	CYZ* mpYZ;
 	SUP* mpSUP;
 	CRRR* mpRRR;
+	CFpenA* mpFA;
+	CFpenB* mpFB;
+	CFpenC* mpFC;
+	CFpenD* mpFD;
 	static CCharacterManager mCharacterManager;
 	enum class EState
 	{
@@ -73,6 +81,9 @@ private:
 	static CTexture mTexture6;
 	static CTexture mTexture7;
 	static CTexture mTexture8;
+	static CTexture mTexture9;
+	static CTexture mTexture10;
+	static CTexture mTexture11;
 	CEnemy* mpEnemy;
 	//	CBullet* mpBullet;
 	CInput mInput;
@@ -91,6 +102,9 @@ public:
 	static CTexture* Texture6();
 	static CTexture* Texture7();
 	static CTexture* Texture8();
+	static CTexture* Texture9();
+	static CTexture* Texture10();
+	static CTexture* Texture11();
 	//最初に一度だけ実行するプログラム
 	void Start();
 	//繰り返し実行するプログラム

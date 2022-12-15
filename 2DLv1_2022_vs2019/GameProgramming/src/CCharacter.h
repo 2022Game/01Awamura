@@ -35,6 +35,7 @@ public:
 		EKABEM,
 		EKABEH,
 		EUP,
+		EPENA,
 	};
 	enum class EState	//ó‘Ô
 	{

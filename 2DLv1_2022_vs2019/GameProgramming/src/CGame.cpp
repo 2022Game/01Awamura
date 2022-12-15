@@ -19,6 +19,7 @@
 #include "CBlock3.h"
 #include "CBlock4.h"
 #include "CYZ.h"
+#include "CFpenA.h"
 
 void CGame::Start()
 {
@@ -107,13 +108,13 @@ CGame::CGame()
 	mpUi = new CUi();
 	//テクスチャの入力
 	CApplication::Texture()->Load(TEXTURE);
-		CApplication::Texture2()->Load(UE);
-		CApplication::Texture3()->Load(SHITA);
-		CApplication::Texture4()->Load(MIGI);
-		CApplication::Texture5()->Load(HIDARI);
-		CApplication::Texture6()->Load(SSUP);
+		//CApplication::Texture2()->Load(UE);
+		//CApplication::Texture3()->Load(SHITA);
+		//CApplication::Texture4()->Load(MIGI);
+		//CApplication::Texture5()->Load(HIDARI);
+		//CApplication::Texture6()->Load(SSUP);
 		CApplication::Texture7()->Load(MARU);
-		CApplication::Texture8()->Load(MARU1);
+		//CApplication::Texture8()->Load(pengin);
 	//定数の定義
 	const int ROWS = 26; //行数
 	const int COLS = 26; //列数
@@ -174,9 +175,9 @@ CGame::CGame()
 			{
 				//敵を生成して、キャラクタマネージャに追加
 				CApplication::CharacterManager()->Add(
-					new CEnemy2(TIPSIZE + TIPSIZE * 2 * col,
+					new CFpenA(TIPSIZE + TIPSIZE * 2 * col,
 						TIPSIZE + TIPSIZE * 2 * row,
-						TIPSIZE, TIPSIZE, CApplication::Texture()));
+						TIPSIZE, TIPSIZE, CApplication::Texture8()));
 			}
 			//4の時、折り返しポイント作成
 			if (map[row][col] == 4)

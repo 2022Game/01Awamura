@@ -16,6 +16,10 @@
 #define TIPSIZE 16.0f //マップ要素のサイズ
 #define KABE "111.png"//壁
 #define SSUP "UP.png"
+#define pengin  "1.phoeniikun_ichika.png"
+#define pengin1 "2.phoeniikun_saki.png"
+#define pengin2 "4.phoeniikun_honami.png"
+#define pengin3 "3.phoeniikun_shiho.png"
 /*
 * CGameクラス
 * ゲームクラス

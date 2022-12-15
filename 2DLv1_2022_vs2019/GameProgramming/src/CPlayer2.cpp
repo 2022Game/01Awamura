@@ -3,6 +3,7 @@
 
 #define MARU 0,525,1000,465 //紫
 #define MARU1 470,1000,530,0 //赤
+#define pengin 37,60,30,2
 #define TEXCOORD 168, 188, 158, 128	//テクスチャマッピング
 #define TEXCRY 196, 216, 158, 128	//テクスチャマッピング
 //#define GRAVITY (TIPSIZE / 20.0f)	//重力加速度

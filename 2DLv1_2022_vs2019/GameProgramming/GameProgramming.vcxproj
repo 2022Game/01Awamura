@@ -26,6 +26,10 @@
     <ClCompile Include="src\CEnemy.cpp" />
     <ClCompile Include="src\CEnemy2.cpp" />
     <ClCompile Include="src\CFont.cpp" />
+    <ClCompile Include="src\CFpenA.cpp" />
+    <ClCompile Include="src\CFpenB.cpp" />
+    <ClCompile Include="src\CFpenC.cpp" />
+    <ClCompile Include="src\CFpenD.cpp" />
     <ClCompile Include="src\CGame.cpp" />
     <ClCompile Include="src\CRRR.cpp" />
     <ClCompile Include="src\CYhidari.cpp" />
@@ -71,6 +75,10 @@
     <ClInclude Include="src\CEnemy.h" />
     <ClInclude Include="src\CEnemy2.h" />
     <ClInclude Include="src\CFont.h" />
+    <ClInclude Include="src\CFpenA.h" />
+    <ClInclude Include="src\CFpenB.h" />
+    <ClInclude Include="src\CFpenC.h" />
+    <ClInclude Include="src\CFpenD.h" />
     <ClInclude Include="src\CGame.h" />
     <ClInclude Include="src\CRRR.h" />
     <ClInclude Include="src\CYhidari.h" />
