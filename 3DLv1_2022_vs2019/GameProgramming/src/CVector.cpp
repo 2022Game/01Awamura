@@ -83,7 +83,7 @@ CVector CVector::Cross(const CVector& v)const {
 	return CVector(mY * v.mZ - mZ * v.mY, mZ * v.mX - mX * v.mZ, mZ * v.mY - mY * v.mX);
 }
 
-//演算子のオバロ
+//*演算子のオバロ
 CVector CVector::operator*(const float& f)const {
 	return CVector(mX*f,mY*f,mZ*f);
 }
