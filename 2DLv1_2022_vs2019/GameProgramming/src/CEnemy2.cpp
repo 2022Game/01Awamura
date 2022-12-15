@@ -47,15 +47,15 @@ void CEnemy2::Collision(CCharacter* m, CCharacter* o)
 	case ETag::EPLAYER:
 		if (CRectangle::Collision(o))
 		{
-			if (o->State() == EState::EJUMP)
-			{
-				//“G”1Œ¸Z
-				if (mState != EState::ECRY)
-				{
-					sNum--;
-				}
-				mState = EState::ECRY;
-			}
+			//if (o->State() == EState::EJUMP)
+			//{
+			//	//“G”1Œ¸Z
+			//	if (mState != EState::ECRY)
+			//	{
+			//		sNum--;
+			//	}
+			//	mState = EState::ECRY;
+			//}
 		}
 		break;
 	}

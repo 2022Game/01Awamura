@@ -152,8 +152,8 @@ void CYZ::Update(void)
 			si1 = 80 + rand() % 642;
 			hi1 = 80 + rand() % 448;
 			mi1 = 80 + rand() % 448;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 2000;
 			CApplication::CharacterManager()->Add(
 				new CYshita(si, 48.0f, 16.0f, 16.0f,
 					CApplication::Texture2()));
@@ -193,8 +193,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -237,8 +237,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -281,8 +281,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -325,8 +325,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -370,8 +370,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -414,8 +414,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -464,8 +464,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -520,8 +520,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -582,8 +582,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -651,8 +651,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -707,8 +707,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -751,8 +751,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -801,8 +801,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -851,8 +851,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -907,8 +907,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -963,8 +963,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -1025,8 +1025,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -1087,8 +1087,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -1155,8 +1155,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -1224,8 +1224,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -1280,8 +1280,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -1324,8 +1324,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -1374,8 +1374,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -1424,8 +1424,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -1480,8 +1480,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -1536,8 +1536,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -1598,8 +1598,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -1660,8 +1660,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -1728,8 +1728,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -1797,8 +1797,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -1853,8 +1853,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -1897,8 +1897,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -1947,8 +1947,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -1997,8 +1997,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -2053,8 +2053,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -2109,8 +2109,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -2171,8 +2171,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -2233,8 +2233,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -2301,8 +2301,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -2370,8 +2370,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -2426,8 +2426,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -2470,8 +2470,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -2520,8 +2520,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -2570,8 +2570,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -2626,8 +2626,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -2682,8 +2682,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -2744,8 +2744,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -2806,8 +2806,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -2874,8 +2874,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -2943,8 +2943,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -2999,8 +2999,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -3043,8 +3043,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -3093,8 +3093,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -3143,8 +3143,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -3199,8 +3199,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -3255,8 +3255,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -3317,8 +3317,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -3379,8 +3379,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -3447,8 +3447,8 @@ void CYZ::Update(void)
 			si1 = 96 + rand() % 608;
 			hi1 = 96 + rand() % 416;
 			mi1 = 96 + rand() % 416;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -3520,8 +3520,8 @@ void CYZ::Update(void)
 			si2 = 80 + rand() % 642;
 			hi2 = 80 + rand() % 448;
 			mi2 = 80 + rand() % 448;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -3604,8 +3604,8 @@ void CYZ::Update(void)
 			si2 = 80 + rand() % 642;
 			hi2 = 80 + rand() % 448;
 			mi2 = 80 + rand() % 448;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -3676,8 +3676,8 @@ void CYZ::Update(void)
 			si2 = 80 + rand() % 642;
 			hi2 = 80 + rand() % 448;
 			mi2 = 80 + rand() % 448;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -3748,8 +3748,8 @@ void CYZ::Update(void)
 			si2 = 80 + rand() % 642;
 			hi2 = 80 + rand() % 448;
 			mi2 = 80 + rand() % 448;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -3820,8 +3820,8 @@ void CYZ::Update(void)
 			si2 = 80 + rand() % 642;
 			hi2 = 80 + rand() % 448;
 			mi2 = 80 + rand() % 448;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -3892,8 +3892,8 @@ void CYZ::Update(void)
 			si2 = 80 + rand() % 642;
 			hi2 = 80 + rand() % 448;
 			mi2 = 80 + rand() % 448;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -3988,8 +3988,8 @@ void CYZ::Update(void)
 			si2 = 80 + rand() % 642;
 			hi2 = 80 + rand() % 448;
 			mi2 = 80 + rand() % 448;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -4084,8 +4084,8 @@ void CYZ::Update(void)
 			si2 = 80 + rand() % 642;
 			hi2 = 80 + rand() % 448;
 			mi2 = 80 + rand() % 448;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -4180,8 +4180,8 @@ void CYZ::Update(void)
 			si2 = 80 + rand() % 642;
 			hi2 = 80 + rand() % 448;
 			mi2 = 80 + rand() % 448;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -4276,8 +4276,8 @@ void CYZ::Update(void)
 			si2 = 80 + rand() % 642;
 			hi2 = 80 + rand() % 448;
 			mi2 = 80 + rand() % 448;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -4372,8 +4372,8 @@ void CYZ::Update(void)
 			si2 = 80 + rand() % 642;
 			hi2 = 80 + rand() % 448;
 			mi2 = 80 + rand() % 448;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -4480,8 +4480,8 @@ void CYZ::Update(void)
 			si2 = 80 + rand() % 642;
 			hi2 = 80 + rand() % 448;
 			mi2 = 80 + rand() % 448;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 1500;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -4576,8 +4576,8 @@ void CYZ::Update(void)
 			si2 = 80 + rand() % 642;
 			hi2 = 80 + rand() % 448;
 			mi2 = 80 + rand() % 448;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 2000;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -4672,8 +4672,8 @@ void CYZ::Update(void)
 			si2 = 80 + rand() % 642;
 			hi2 = 80 + rand() % 448;
 			mi2 = 80 + rand() % 448;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 2000;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -4768,8 +4768,8 @@ void CYZ::Update(void)
 			si2 = 80 + rand() % 642;
 			hi2 = 80 + rand() % 448;
 			mi2 = 80 + rand() % 448;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 2000;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -4864,8 +4864,8 @@ void CYZ::Update(void)
 			si2 = 80 + rand() % 642;
 			hi2 = 80 + rand() % 448;
 			mi2 = 80 + rand() % 448;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 2000;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -4960,8 +4960,8 @@ void CYZ::Update(void)
 			si2 = 80 + rand() % 642;
 			hi2 = 80 + rand() % 448;
 			mi2 = 80 + rand() % 448;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 2000;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -5056,8 +5056,8 @@ void CYZ::Update(void)
 			si2 = 80 + rand() % 642;
 			hi2 = 80 + rand() % 448;
 			mi2 = 80 + rand() % 448;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 2000;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -5152,8 +5152,8 @@ void CYZ::Update(void)
 			si2 = 80 + rand() % 642;
 			hi2 = 80 + rand() % 448;
 			mi2 = 80 + rand() % 448;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 2000;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));
@@ -5248,8 +5248,8 @@ void CYZ::Update(void)
 			si2 = 80 + rand() % 642;
 			hi2 = 80 + rand() % 448;
 			mi2 = 80 + rand() % 448;
-			UP = 0 + rand() % 1444;
-			UP1 = 0 + rand() % 2000;
+			UP = 0 + rand() % 2000;
+			UP1 = 0 + rand() % 1800;
 			CApplication::CharacterManager()->Add(
 				new CYue(ue, 560.0f, 16.0f, 16.0f,
 					CApplication::Texture3()));

@@ -12,7 +12,6 @@ SUP::SUP(float x, float y, float w, float h, CTexture* pt)
 
 void SUP::Update()
 {
-	//float x, y;
 	if (CYZ::RRR > 0)
 	{
 		CYZ::RRR--;

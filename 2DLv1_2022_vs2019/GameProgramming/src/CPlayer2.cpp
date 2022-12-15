@@ -43,34 +43,34 @@ void CPlayer2::Collision(CCharacter* m, CCharacter* o)
 			X(X() + x);
 			Y(Y() + y);
 			//着地した時
-			if (y != 0.0f)
-			{
-				//Y軸速度を0にする
-				mVy = 0.0f;
-				if (y > 0.0f)
-				{
-					mState = EState::EMOVE;
-				}
-				else
-				{	//ジャンプでなければ泣く
-					mState = EState::ECRY;
-					if (mInvincible == 0)
-					{
-						mInvincible = 80;
-						sHp--;
-					}
-				}
-			}
-			else
-			{	//ジャンプでなければ泣く
-				mState = EState::ECRY;
+			//if (y != 0.0f)
+			//{
+			//	//Y軸速度を0にする
+			//	mVy = 0.0f;
+			//	if (y > 0.0f)
+			//	{
+			//		mState = EState::EMOVE;
+			//	}
+				
+				//{	//ジャンプでなければ泣く
+				//	mState = EState::ECRY;
+				//	if (mInvincible == 0)
+				//	{
+				//		mInvincible = 80;
+				//		sHp--;
+				//	}
+				//}
+			//}
+		//	else
+			//{	//ジャンプでなければ泣く
+			//	mState = EState::ECRY;
 				if (mInvincible == 0)
 				{
 					mInvincible = 80;
 					sHp--;
 				}
 			}
-		}
+		//}
 		break;
 	case ETag::EPLAYER:
 		break;

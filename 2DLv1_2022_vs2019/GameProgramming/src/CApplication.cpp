@@ -201,9 +201,21 @@ void CApplication::Update()
 		{
 			delete mpGame;
 			delete mpYZ;
-			mpYZ = new CYZ();
 			mpGame = new CGame();
+			mpYZ = new CYZ();
 			mpZkabe = new CZkabe(200.0f, 16.0f, 600.0f, 16.0f, 0, 0, 0, 0, &mTexture);
+			/*CApplication::CharacterManager()->Add(
+				new CFpenA(716.0f, 48.0f, 15.0f, 15.0f,
+					CApplication::Texture8()));
+			CApplication::CharacterManager()->Add(
+				new CFpenB(80.0f, 560.0f, 15.0f, 15.0f,
+					CApplication::Texture9()));
+			CApplication::CharacterManager()->Add(
+				new CFpenC(752.0f, 528.0f, 15.0f, 15.0f,
+					CApplication::Texture10()));
+			CApplication::CharacterManager()->Add(
+				new CFpenD(48.0f, 80.0f, 15.0f, 15.0f,
+					CApplication::Texture11()));*/
 			mCharacterManager.Add(mpZkabe);
 			mState = EState::ESTART;
 		}
