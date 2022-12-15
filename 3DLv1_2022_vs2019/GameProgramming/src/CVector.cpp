@@ -66,3 +66,24 @@ float CVector::Length() const {
 	//sqrt関数で平方根を返す
 	return sqrtf(mX * mX + mY * mY + mZ * mZ);
 }
+
+//内積
+float CVector::Dot(const CVector& v)const {
+	return mX * v.mX + mY * v.mY + mZ * v.mZ;
+}
+
+//正規
+CVector CVector::Normalize() const {
+	//ベクトルの大きさで割ったベクトルを返す（長さ１のベクトル）
+	return *this * (1.0f / Length());
+}
+
+//外積
+CVector CVector::Cross(const CVector& v)const {
+	return CVector(mY * v.mZ - mZ * v.mY, mZ * v.mX - mX * v.mZ, mZ * v.mY - mY * v.mX);
+}
+
+//演算子のオバロ
+CVector CVector::operator*(const float& f)const {
+	return CVector(mX*f,mY*f,mZ*f);
+}

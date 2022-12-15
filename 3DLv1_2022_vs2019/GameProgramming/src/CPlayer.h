@@ -19,6 +19,8 @@ private:
 	CColliderLine mLine2;
 	CColliderLine mLine3;
 public:
+	//衝突処理
+	void Collision(CCollider* m, CCollider* o);
 	CPlayer();
 	//CPlayer(位置、回転、スケール）
 	CPlayer(const CVector& pos, const CVector& rot, const CVector& scale);
