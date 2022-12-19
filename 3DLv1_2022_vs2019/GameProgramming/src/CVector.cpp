@@ -80,7 +80,7 @@ CVector CVector::Normalize() const {
 
 //外積
 CVector CVector::Cross(const CVector& v)const {
-	return CVector(mY * v.mZ - mZ * v.mY, mZ * v.mX - mX * v.mZ, mZ * v.mY - mY * v.mX);
+	return CVector(mY * v.mZ - mZ * v.mY, mZ * v.mX - mX * v.mZ, mX * v.mY - mY * v.mX);
 }
 
 //*演算子のオバロ
