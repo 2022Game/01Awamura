@@ -22,6 +22,7 @@ public:
 	//描画
 	//Render【行列）
 	void Render(const CMatrix &m);
+	std::vector<CTriangle>Triangles()const;
 private:
 	//頂点の配列
 	CVertex* mpVertexes;
