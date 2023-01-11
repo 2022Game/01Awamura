@@ -19,6 +19,8 @@ public:
 	~CCharacter3();
 	//コンストラクタ
 	CCharacter3();
+	//コンストラクタ
+	CCharacter3(int priority);
 	//モデルの設定
 	//Model（モデルクラスのポインタ）
 	void Model(CModel* m);

@@ -11,8 +11,17 @@ CTaskManager::~CTaskManager() {
 //Add(タスクのポインタ）
 void CTaskManager::Add(CTask* addTask)
 {
-	//mTailの前に追加
-	CTask* task = &mTail;
+	//mHeadの次から検索
+	CTask* task = mHead.mpNext;
+
+	//優先度の大きい順に挿入する
+	//挿入位置の検索(優先度が同じか大きくなった前）
+	//mPriority>=0のこと
+	while (addTask->mPriority < task->mPriority)
+	{
+		task = task->mpNext;//次へ
+	}
+
 	//addTaskの次をtask
 	addTask->mpNext = task;
 	//addTaskの前をtaskの前に
@@ -36,17 +45,24 @@ void CTaskManager::Update() {
 //描画
 void CTaskManager::Render() {
 	//先頭から最後まで繰り返し
-	CTask* task = mHead.mpNext;
-	while (task->mpNext) {
+	/*CTask* task = mHead.mpNext;*/
+	CTask* task = mTail.mpPrev;
+	while (task->mpPrev != nullptr) {
 		//描画処理を呼ぶ
 		task->Render();
-		//次へ
-		task = task->mpNext;
+		task = task->mpPrev;
+		////次へ
+		//task = task->mpNext;
+		/*while (task->mpPrev != nullptr)
+		{
+			task->Render();
+			task = task->mpPrev;
+		}*/
 	}
 }
 
 void CTaskManager::Remove(CTask* task) {
-	//タスクの前の次を,タスクの次に数
+	//タスクの前の次を,タスクの次にする
 	task->mpPrev->mpNext = task->mpNext;
 	//タスクの次の前を、タスクの前にする
 	task->mpNext->mpPrev = task->mpPrev;
