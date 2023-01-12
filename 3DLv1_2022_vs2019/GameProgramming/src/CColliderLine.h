@@ -7,6 +7,7 @@
 class CColliderLine : public CCollider
 {
 public:
+	void ChangePriority();
 	CColliderLine(){}
 	//コンストラクタ（線分コライダ）
 	//CColliderLine(親、親行列、頂点１、頂点２）

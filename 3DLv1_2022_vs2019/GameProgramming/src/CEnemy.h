@@ -18,6 +18,7 @@ public:
 	//衝突処理
 	//Collision(コライダ１、コライダ２）
 	void Collision(CCollider* m, CCollider* o);
+	void Collision();
 	//コンストラクタ
 	//CEnemy(モデル,位置,回転,拡縮）
 	CEnemy(CModel* model, const CVector& position,

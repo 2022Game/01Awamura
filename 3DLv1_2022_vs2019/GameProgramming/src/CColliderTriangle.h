@@ -7,6 +7,7 @@
 class CColliderTriangle : public CCollider
 {
 public:
+	void ChangePriority();
 	CColliderTriangle(){}
 	//コンストラクタ(三角コライダ）
 	//CColliderTriangle(親、親行列、頂点1、頂点２、頂点３）

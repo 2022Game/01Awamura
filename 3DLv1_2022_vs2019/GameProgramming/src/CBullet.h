@@ -16,6 +16,7 @@ public:
 	//衝突処理
 	//Collision(コライダ１、コライダ２）
 	void Collision(CCollider* m, CCollider* o);
+	void Collision();
 	CBullet();
 	//幅と奥行きの設定
 	//Set（幅、奥行）

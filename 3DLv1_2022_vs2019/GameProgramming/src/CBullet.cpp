@@ -1,5 +1,6 @@
 #include "CBullet.h"
 #include "CTriangle.h"
+#include "CCollisionManager.h"
 
 //幅と奥行きの設定
 //Set(幅、奥行）
@@ -49,4 +50,12 @@ void CBullet::Collision(CCollider* m, CCollider* o) {
 		//衝突しているときは無効にする
 		mEnabled = false;
 	}
+}
+
+void CBullet::Collision()
+{
+	//コライダの優先度変更
+	mCollider.ChangePriority();
+	//衝突処理を実行
+	CCollisionManager::Instance()->Collision(&mCollider, COLLISIONRANGE);
 }
