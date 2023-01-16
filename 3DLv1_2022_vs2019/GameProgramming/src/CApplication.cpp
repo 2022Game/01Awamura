@@ -45,6 +45,7 @@ const CMatrix& CApplication::ModelViewInverse()
 
 void CApplication::Start()
 {
+	spUi = new CUi(); //UIクラスの生成
 	//C5モデルの読み込み
 	mModelC5.Load(MODEL_C5);
 	//敵機のインスタンス作成
@@ -162,4 +163,17 @@ void CApplication::Update()
 	CTaskManager::Instance()->Collision();
 	//コリコリマネマネ描画
 	CCollisionManager::Instance()->Render();
+	spUi->Render(); //UIの描画
+}
+
+CUi* CApplication::spUi = nullptr;
+
+CUi* CApplication::Ui()
+{
+	return spUi; //インスタンスのポインタを返す
+}
+
+CApplication::~CApplication()
+{
+	delete spUi; //インスタンスUiの削除
 }

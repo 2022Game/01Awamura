@@ -25,6 +25,7 @@
 class CApplication
 {
 private:
+	static CUi* spUi; //UIクラスのポインタ
 	//モデルビューの逆行列
 	static CMatrix mModelViewInverse;
 	//static CTaskManager mTaskManager;
@@ -69,6 +70,8 @@ private:
 	//モデルからコライダを生成
 	CColliderMesh mColliderMesh;
 public:
+	~CApplication();
+	static CUi* Ui();
 	//モデルビュー行列の取得
 	static const CMatrix& ModelViewInverse();
 	//static CTaskManager* TaskManager();
