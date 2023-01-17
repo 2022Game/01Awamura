@@ -19,6 +19,8 @@
     <ClCompile Include="src\CBlock4.cpp" />
     <ClCompile Include="src\CBlockk.cpp" />
     <ClCompile Include="src\CBlockkk.cpp" />
+    <ClCompile Include="src\CBlocks.cpp" />
+    <ClCompile Include="src\CBlockss.cpp" />
     <ClCompile Include="src\CBullet.cpp" />
     <ClCompile Include="src\CCamera.cpp" />
     <ClCompile Include="src\CCharacter.cpp" />
@@ -68,6 +70,8 @@
     <ClInclude Include="src\CBlock4.h" />
     <ClInclude Include="src\CBlockk.h" />
     <ClInclude Include="src\CBlockkk.h" />
+    <ClInclude Include="src\CBlocks.h" />
+    <ClInclude Include="src\CBlockss.h" />
     <ClInclude Include="src\CBullet.h" />
     <ClInclude Include="src\CCamera.h" />
     <ClInclude Include="src\CCharacter.h" />
@@ -106,6 +110,7 @@
     <ClInclude Include="src\CZkau1.h" />
     <ClInclude Include="src\main.h" />
     <ClInclude Include="src\SUP.h" />
+    <ClInclude Include="ヘッダー.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8802AF2F-2920-4700-89F2-CA6778727283}</ProjectGuid>

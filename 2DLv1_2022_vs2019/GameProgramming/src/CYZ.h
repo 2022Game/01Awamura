@@ -43,6 +43,7 @@ public:
 	static int UP;
 	static int UP1;
 	static int RRR;
+	static int RRRR;
 private:	
 	CFont mFont;
 };

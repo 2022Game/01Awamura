@@ -141,6 +141,13 @@ void CPlayer2::Collision(CCharacter* m, CCharacter* o)
 			sHp = 0;
 		}
 		break;
+	case ETag::EBLOCKS:
+		if (CRectangle::Collision(o, &x, &y))
+		{
+			X(X() + x);
+			Y(Y() + y);
+		}
+		break;
 	case ETag::EBLOCK3:
 		if (CRectangle::Collision(o, &x, &y))
 		{
@@ -188,20 +195,20 @@ void CPlayer2::Collision(CCharacter* m, CCharacter* o)
 		}
 		break;
 	case ETag::EKABEY:
-		if (CRectangle::Collision(o, &x, &y))
-		{
-			X(X() + x);
-			Y(Y() + y);
-			if (mInvincible == 0)
+			if (CRectangle::Collision(o, &x, &y))
 			{
-				mInvincible = 80;
-				sHp--;
-				if (mInvincible < 80)
-				{
-					mState = EState::EMOVE;
-				}
+				X(X() + x);
+				Y(Y() + y);
+					if (mInvincible == 0)
+					{
+						mInvincible = 80;
+						sHp--;
+						if (mInvincible < 80)
+						{
+							mState = EState::EMOVE;
+						}
+					}
 			}
-		}
 		break;
 	}
 }
@@ -235,18 +242,18 @@ void CPlayer2::Update()
 			//mState = EState::EJUMP;
 		//}
 	//}
-	if (mInput.Key('A'))
+	if (mInput.Key('A')|| mInput.Key(VK_NUMPAD4))
 	{
 		if (CYZ::SPEED == 0)
 		{
 			//mVx = -VELOCITY;
-			float x = X() - 3.0f;
+			float x = X() - 4.0f;
 			//X(X() + mVx);
 			X(x);
 		}
 		if (CYZ::SPEED == 1)
 		{
-			float x = X() - 4.0f;
+			float x = X() - 4.5f;
 			X(x);
 		}
 		if (CYZ::SPEED == 2)
@@ -256,37 +263,37 @@ void CPlayer2::Update()
 		}
 		if (CYZ::SPEED == 3)
 		{
-			float x = X() - 6.0f;
+			float x = X() - 5.5f;
 			X(x);
 		}
 		if (CYZ::SPEED == 4)
 		{
-			float x = X() - 7.0f;
+			float x = X() - 6.0f;
 			X(x);
 		}
 		if (CYZ::SPEED == 5)
 		{
-			float x = X() - 8.0f;
+			float x = X() - 6.5f;
 			X(x);
 		}
 		if (CYZ::SPEED == 6)
 		{
-			float x = X() - 9.0f;
+			float x = X() - 7.0f;
 			X(x);
 		}
 	}
-	if (mInput.Key('D'))
+	if (mInput.Key('D')|| mInput.Key(VK_NUMPAD6))
 	{
 		if (CYZ::SPEED == 0)
 		{
 			//mVx = VELOCITY;
-			float x = X() + 3.0f;
+			float x = X() + 4.0f;
 			//X(X() + mVx);
 			X(x);
 		}
 		if (CYZ::SPEED == 1)
 		{
-			float x = X() + 4.0f;
+			float x = X() + 4.5f;
 			X(x);
 		}
 		if (CYZ::SPEED == 2)
@@ -296,37 +303,37 @@ void CPlayer2::Update()
 		}
 		if (CYZ::SPEED == 3)
 		{
-			float x = X() + 6.0f;
+			float x = X() + 5.5f;
 			X(x);
 		}
 		if (CYZ::SPEED == 4)
 		{
-			float x = X() + 7.0f;
+			float x = X() + 6.0f;
 			X(x);
 		}
 		if (CYZ::SPEED == 5)
 		{
-			float x = X() + 8.0f;
+			float x = X() + 6.5f;
 			X(x);
 		}
 		if (CYZ::SPEED == 10)
 		{
-			float x = X() + 9.0f;
+			float x = X() + 7.0f;
 			X(x);
 		}
 	}
-	if (mInput.Key('W'))
+	if (mInput.Key('W')|| (mInput.Key(VK_NUMPAD8)))
 	{
 		if (CYZ::SPEED == 0)
 		{
 			//mVy = VELOCITY;
-			float y = Y() + 3.0f;
+			float y = Y() + 4.0f;
 			//Y(Y() + mVy);
 			Y(y);
 		}
 		if (CYZ::SPEED == 1)
 		{
-			float y = Y() + 4.0f;
+			float y = Y() + 4.5f;
 			Y(y);
 		}
 		if (CYZ::SPEED == 2)
@@ -336,37 +343,37 @@ void CPlayer2::Update()
 		}
 		if (CYZ::SPEED == 3)
 		{
-			float y = Y() + 6.0f;
+			float y = Y() + 5.5f;
 			Y(y);
 		}
 		if (CYZ::SPEED == 4)
 		{
-			float y = Y() + 7.0f;
+			float y = Y() + 6.0f;
 			Y(y);
 		}
 		if (CYZ::SPEED == 5)
 		{
-			float y = Y() + 8.0f;
+			float y = Y() + 6.5f;
 			Y(y);
 		}
 		if (CYZ::SPEED == 6)
 		{
-			float y = Y() + 9.0f;
+			float y = Y() + 7.0f;
 			Y(y);
 		}
 	}
-	if (mInput.Key('S'))
+	if (mInput.Key('S') || (mInput.Key(VK_NUMPAD5)))
 	{
 		if (CYZ::SPEED == 0)
 		{
 			//mVy = -VELOCITY;
-			float y = Y() - 3.0f;
+			float y = Y() - 4.0f;
 			//Y(Y() + mVy);
 			Y(y);
 		}
 		if (CYZ::SPEED == 1)
 		{
-			float y = Y() - 4.0f;
+			float y = Y() - 4.5f;
 			Y(y);
 		}
 		if (CYZ::SPEED == 2)
@@ -376,22 +383,22 @@ void CPlayer2::Update()
 		}
 		if (CYZ::SPEED == 3)
 		{
-			float y = Y() - 6.0f;
+			float y = Y() - 5.5f;
 			Y(y);
 		}
 		if (CYZ::SPEED == 4)
 		{
-			float y = Y() - 7.0f;
+			float y = Y() - 6.0f;
 			Y(y);
 		}
 		if (CYZ::SPEED == 5)
 		{
-			float y = Y() - 8.0f;
+			float y = Y() - 6.5f;
 			Y(y);
 		}
 		if (CYZ::SPEED == 6)
 		{
-			float y = Y() - 9.0f;
+			float y = Y() - 7.0f;
 			Y(y);
 		}
 	}

@@ -4,6 +4,7 @@
 #include "CCharacter.h"
 #include "CBullet.h"
 #include "CEnemy.h"
+#include "CEnemy3.h"
 #include "CPlayer.h"
 #include "CInput.h"
 #include "CFont.h"
@@ -71,6 +72,7 @@ private:
 	CColliderMesh mColliderMesh;
 public:
 	~CApplication();
+	int Init();
 	static CUi* Ui();
 	//モデルビュー行列の取得
 	static const CMatrix& ModelViewInverse();

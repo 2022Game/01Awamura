@@ -44,6 +44,7 @@ private:
 	CYue* mpUe;
 	CYshita* mpYshita;
 	CYhidari* mpYhidari;
+	CPlayer2* mpPlayer2;
 	CYmigi* mpYmigi;
 	CZkabe* mpZkabe;
 	CZkau* mpZkau;

@@ -18,6 +18,7 @@ public:
 		EBLOCK,		//ブロック
 		EBLOCKK,
 		EBLOCKKK,
+		EBLOCKS,
 		EBLOCK1,
 		EBLOCK2,
 		EBLOCK3,
@@ -44,6 +45,10 @@ public:
 		EJUMP,	//ジャンプ
 		ECRY,	//泣く
 		EBACK,
+		ER,
+		EL,
+		EU,
+		ED,
 	};
 protected:
 	float mVx;	//X軸速度

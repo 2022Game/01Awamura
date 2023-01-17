@@ -28,63 +28,41 @@ void CZkabe::Update()
 {
 	if (mState == EState::EBACK)
 		{
-		float x = X() - 0;
-		X(x);
-		if (CYZ::sNow1 >= 0)
+		float x;
+		if (CYZ::sNow1 >= 0 && CYZ::sNow1 <= 4)
 		{ 
-			if (CYZ::sNow1 <= 4)
-			{
-				float x = X() - 4;
-				X(x);
-			}
+			x = X() - 4;
+			X(x);
 		}
-		if (CYZ::sNow1 >= 5)
+		if (CYZ::sNow1 >= 5 && CYZ::sNow1 <= 9)
 		{
-			if (CYZ::sNow1 <= 9)
-			{
-				float x = X() - 5;
-					X(x);
-			}
+			x = X() - 5;
+			X(x);
 		}
-		if (CYZ::sNow1 >= 10)
+		if (CYZ::sNow1 >= 10 && CYZ::sNow1 <= 19)
 		{
-			if (CYZ::sNow1 <= 19)
-			{
-				float x = X() - 6;
-				X(x);
-			}
+			x = X() - 6;
+			X(x);
 		}
-		if (CYZ::sNow1 >= 20)
+		if (CYZ::sNow1 >= 20 && CYZ::sNow1 <= 29)
 		{
-			if (CYZ::sNow1 <= 29)
-			{
-				float x = X() - 7;
-				X(x);
-			}
+			x = X() - 7;
+			X(x);
 		}
-		if (CYZ::sNow1 >= 30)
+		if (CYZ::sNow1 >= 30 && CYZ::sNow1 <= 39)
 		{
-			if (CYZ::sNow1 <= 39)
-			{
-				float x = X() - 8;
-				X(x);
-			}
+			x = X() - 8;
+			X(x);
 		}
-		if (CYZ::sNow1 >= 40)
+		if (CYZ::sNow1 >= 40 && CYZ::sNow1 <= 49)
 		{
-			if (CYZ::sNow1 <= 49)
-			{
-				float x = X() - 9;
-				X(x);
-			}
+		    x = X() - 9;
+			X(x);
 		}
-		if (CYZ::sNow1 >= 50)
+		if (CYZ::sNow1 >= 50 && CYZ::sNow1 <= 99)
 		{
-			if (CYZ::sNow1 <= 99)
-			{
-				float x = X() - 10;
-				X(x);
-			}
+			x = X() - 10;
+			X(x);
 		}
 	if (x < -600.0f)
 			{

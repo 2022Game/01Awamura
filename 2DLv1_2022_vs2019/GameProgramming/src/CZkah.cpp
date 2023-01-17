@@ -17,111 +17,72 @@ void CZkah::Update()
 		switch (mState)
 		{
 		case EState::EMOVE:
-			if (CYZ::sNow1 >= 0)
+			if (CYZ::sNow1 >= 0 && CYZ::sNow1 <= 9)
 			{
-				if (CYZ::sNow1 <= 9)
-				{
-					x = X() + 20;
-					X(x);
-				}
+				x = X() + 20;
+				X(x);
 			}
-			if (CYZ::sNow1 >= 10)
+			if (CYZ::sNow1 >= 10 && CYZ::sNow1 <= 19)
 			{
-				if (CYZ::sNow1 <= 19)
-				{
-					x = X() + 22;
-					X(x);
-				}
+				x = X() + 22;
+				X(x);
 			}
-			if (CYZ::sNow1 >= 20)
+			if (CYZ::sNow1 >= 20 && CYZ::sNow1 <= 29)
 			{
-				if (CYZ::sNow1 <= 29)
-				{
-					x = X() + 24;
-					X(x);
-				}
+				x = X() + 24;
+				X(x);
 			}
-			if (CYZ::sNow1 >= 30)
+			if (CYZ::sNow1 >= 30 && CYZ::sNow1 <= 39)
 			{
-				if (CYZ::sNow1 <= 39)
-				{
-					x = X() + 26;
-					X(x);
-				}
+				x = X() + 26;
+				X(x);
 			}
-			if (CYZ::sNow1 >= 40)
+			if (CYZ::sNow1 >= 40 && CYZ::sNow1 <= 49)
 			{
-				if (CYZ::sNow1 <= 49)
-				{
-					x = X() + 28;
-					X(x);
-				}
+				x = X() + 28;
+				X(x);
 			}
-			if (CYZ::sNow1 >= 50)
+			if (CYZ::sNow1 >= 50 && CYZ::sNow1 <= 99)
 			{
-				if (CYZ::sNow1 <= 99)
-				{
-					x = X() + 30;
-					X(x);
-				}
+				x = X() + 30;
+				X(x);
 			}
 			break;
 		case EState::EBACK:
-			if (CYZ::sNow1 >= 0)
+			if (CYZ::sNow1 >= 0 && CYZ::sNow1 <= 4)
 			{
-				if (CYZ::sNow1 <= 4)
-				{
-					x = X() - 8;
-					X(x);
-				}
+				x = X() - 8;
+				X(x);
 			}
-			if (CYZ::sNow1 >= 5)
+			if (CYZ::sNow1 >= 5 && CYZ::sNow1 <= 9)
 			{
-				if (CYZ::sNow1 <= 9)
-				{
-					x = X() - 10;
-					X(x);
-				}
+				x = X() - 10;
+				X(x);
 			}
-			if (CYZ::sNow1 >= 10)
+			if (CYZ::sNow1 >= 10 && CYZ::sNow1 <= 19)
 			{
-				if (CYZ::sNow1 <= 19)
-				{
-					x = X() - 12;
-					X(x);
-				}
+				x = X() - 12;
+				X(x);
 			}
-			if (CYZ::sNow1 >= 20)
+			if (CYZ::sNow1 >= 20 && CYZ::sNow1 <= 29)
 			{
-				if (CYZ::sNow1 <= 29)
-				{
-					x = X() - 14;
-					X(x);
-				}
+				x = X() - 14;
+				X(x);
 			}
-			if (CYZ::sNow1 >= 30)
+			if (CYZ::sNow1 >= 30 && CYZ::sNow1 <= 39)
 			{
-				if (CYZ::sNow1 <= 39)
-				{
-					x = X() - 16;
-					X(x);
-				}
+				x = X() - 16;
+				X(x);
 			}
-			if (CYZ::sNow1 >= 40)
+			if (CYZ::sNow1 >= 40 && CYZ::sNow1 <= 49)
 			{
-				if (CYZ::sNow1 <= 49)
-				{
-					x = X() - 18;
-					X(x);
-				}
+				x = X() - 18;
+				X(x);
 			}
-			if (CYZ::sNow1 >= 50)
+			if (CYZ::sNow1 >= 50 && CYZ::sNow1 <= 99)
 			{
-				if (CYZ::sNow1 <= 99)
-				{
-					x = X() - 20;
-					X(x);
-				}
+				x = X() - 20;
+				X(x);
 			}
 			if (x < -600.0f)
 			{
