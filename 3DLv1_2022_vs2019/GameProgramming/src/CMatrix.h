@@ -1,11 +1,15 @@
 #ifndef CMATRIX_H
 #define CMATRIX_H
+#include "CVector.h"
 /*
 マトリクスクラス
 4桁4列の行列データを扱います
 */
 class CMatrix {
 public:
+	CVector VectorZ() const; //Z軸ベクトルの取得
+	CVector VectorX() const; //X軸ベクトルの取得
+	CVector VectorY() const; //Y軸ベクトルの取得
 	//表示確認用
 	//４×４の行列を画面出力
 	void Print();
