@@ -86,6 +86,7 @@ int CYZ::RRR = 0;
 int CYZ::RRRR = 2;
 int CYZ::UP = 0;
 int CYZ::UP1 = 0;
+int CYZ::SIZE = 16;
 
 
 //int CYZ::rand(void)
@@ -128,9 +129,6 @@ CYZ::CYZ()
 //上下の差は３２
 void CYZ::Update(void)
 {
-	//sNowとsNow2が別の値ならsNowとsNow2を同じにする
-	//sNowとsNow2が別の値の時にsNow2とsNow3が別の値ならsNow１を1上げる
-	//sNow1が1上がるときにsNow2とsNow3が別の値ならsNow2とsNow3を同じにする
 	if(CZkabe::sNow != sNow2)
 	{
 		sNow2 = CZkabe::sNow;

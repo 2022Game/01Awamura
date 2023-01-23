@@ -276,7 +276,7 @@ void CPlayer2::Update()
 			float x = X() - 6.5f;
 			X(x);
 		}
-		if (CYZ::SPEED == 6)
+		if (CYZ::SPEED >= 6)
 		{
 			float x = X() - 7.0f;
 			X(x);
@@ -316,7 +316,7 @@ void CPlayer2::Update()
 			float x = X() + 6.5f;
 			X(x);
 		}
-		if (CYZ::SPEED == 10)
+		if (CYZ::SPEED >= 6)
 		{
 			float x = X() + 7.0f;
 			X(x);
@@ -356,7 +356,7 @@ void CPlayer2::Update()
 			float y = Y() + 6.5f;
 			Y(y);
 		}
-		if (CYZ::SPEED == 6)
+		if (CYZ::SPEED >= 6)
 		{
 			float y = Y() + 7.0f;
 			Y(y);
@@ -396,7 +396,7 @@ void CPlayer2::Update()
 			float y = Y() - 6.5f;
 			Y(y);
 		}
-		if (CYZ::SPEED == 6)
+		if (CYZ::SPEED >= 6)
 		{
 			float y = Y() - 7.0f;
 			Y(y);

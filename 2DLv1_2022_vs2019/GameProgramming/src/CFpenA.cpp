@@ -102,7 +102,7 @@ CFpenA::CFpenA(float x, float y, float w, float h, CTexture* pt)
 
 void CFpenA::Update()
 {
-	float x;
+	//float x;
 	switch (mState)
 	{
 	case EState::EMOVE:

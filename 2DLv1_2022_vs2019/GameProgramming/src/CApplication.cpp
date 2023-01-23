@@ -88,57 +88,9 @@ void CApplication::Start()
 	mState = EState::ESTART;
 	mpGame = new CGame();
 	mpYZ = new CYZ();
-	//
-	//mpZkau = new CZkau(97.0f, 2300.0f, 33.8f, 300.0f,0,45,68,100,&mTexture);
-	//mCharacterManager.Add(mpZkau);
-	//mpZkau = new CZkau(705.0f, 2300.0f, 33.8f, 300.0f, 0, 45, 68, 100, &mTexture);
-	//mCharacterManager.Add(mpZkau);
-	//mpZkau1 = new CZkau1(81.0f, 1900.0f, 16.9f, 300.0f,0,45,68,100,&mTexture);
-	//mCharacterManager.Add(mpZkau1);
-	//mpZkau1 = new CZkau1(401.0f, 1900.0f, 16.9f, 300.0f, 0, 45, 68, 100, &mTexture);
-	//mCharacterManager.Add(mpZkau1);
-	//mpZkau1 = new CZkau1(721.0f, 1900.0f, 16.9f, 300.0f, 0, 45, 68, 100, &mTexture);
-	//mCharacterManager.Add(mpZkau1);
-	//¶‰E‘å¬‚Ì·‚Í16.0f,
-	//mpZkas = new CZkas(97.0f, -1700.0f, 33.8f, 300.0f,0,45,68,100,&mTexture);
-	//mCharacterManager.Add(mpZkas);
-	//mpZkas = new CZkas(705.0f, -1700.0f, 33.8f, 300.0f, 0, 45, 68, 100, &mTexture);
-	//mCharacterManager.Add(mpZkas);
-	//mpZkas1 = new CZkas1(81.0f, -1300.0f, 16.9f, 300.0f,0,45,68,100,&mTexture);
-	//mCharacterManager.Add(mpZkas1);
-	//mpZkas1 = new CZkas1(401.0f, -1300.0f, 16.9f, 300.0f, 0, 45, 68, 100, &mTexture);
-	//mCharacterManager.Add(mpZkas1);
-	//mpZkas1 = new CZkas1(721.0f, -1300.0f, 16.9f, 300.0f, 0, 45, 68, 100, &mTexture);
-	//mCharacterManager.Add(mpZkas1);
-	//
-	//mpZkam = new CZkam(2500.0f, 96.0f, 600.0f, 32.0f,0,45,68,100,&mTexture);
-	//mCharacterManager.Add(mpZkam);
-	//mpZkam = new CZkam(2500.0f, 512.0f,600.0f, 32.0f, 0, 45, 68, 100, &mTexture);
-	//mCharacterManager.Add(mpZkam);
-	//mpZkam1 = new CZkam1(2100.0f, 80.0f, 600.0f, 16.0f,0,45,68,100,&mTexture);
-	//mCharacterManager.Add(mpZkam1);
-	//mpZkam1 = new CZkam1(2100.0f, 304.0f, 600.0f, 16.0f, 0, 45, 68, 100, &mTexture);
-	//mCharacterManager.Add(mpZkam1);
-	//mpZkam1 = new CZkam1(2100.0f, 528.0f, 600.0f, 16.0f, 0, 45, 68, 100, &mTexture);
-	//mCharacterManager.Add(mpZkam1);
-	//ã‰º‘å¬‚Ì·‚Í16.0‚†
-	//mpZkah = new CZkah(-1700.0f, 96.0f, 600.0f, 32.0f,0,45,68,100,&mTexture);
-	//mCharacterManager.Add(mpZkah);
-	//mpZkah = new CZkah(-1700.0f, 512.0f, 600.0f, 32.0f, 0, 45, 68, 100, &mTexture);
-	//mCharacterManager.Add(mpZkah);
-	//mpZkah1 = new CZkah1(-1300.0f, 80.0f, 600.0f, 16.0f,0,45,68,100,&mTexture);
-	//mCharacterManager.Add(mpZkah1);
-	//mpZkah1 = new CZkah1(-1300.0f, 304.0f, 600.0f, 16.0f, 0, 45, 68, 100, &mTexture);
-	//mCharacterManager.Add(mpZkah1);
-	//mpZkah1 = new CZkah1(-1300.0f, 528.0f, 600.0f, 16.0f, 0, 45, 68, 100, &mTexture);
-	//mCharacterManager.Add(mpZkah1);
 
 	mpZkabe = new CZkabe(200.0f, 16.0f, 600.0f, 16.0f, 0, 0, 0, 0, &mTexture);
 	mCharacterManager.Add(mpZkabe);
-	/*mpFA = new CFpenA(716.0f, 48.0f, 15.0f, 15.0f, &mTexture8);
-	mCharacterManager.Add(mpFA);
-	mpFA = new CFpenA(716.0f, 48.0f, 15.0f, 15.0f, &mTexture8);
-	mCharacterManager.Add(mpFA);*/
 }
 
 void CApplication::Update()
@@ -203,18 +155,6 @@ void CApplication::Update()
 			mpGame = new CGame();
 			mpYZ = new CYZ();
 			mpZkabe = new CZkabe(200.0f, 16.0f, 600.0f, 16.0f, 0, 0, 0, 0, &mTexture);
-			/*CApplication::CharacterManager()->Add(
-				new CFpenA(716.0f, 48.0f, 15.0f, 15.0f,
-					CApplication::Texture8()));
-			CApplication::CharacterManager()->Add(
-				new CFpenB(80.0f, 560.0f, 15.0f, 15.0f,
-					CApplication::Texture9()));
-			CApplication::CharacterManager()->Add(
-				new CFpenC(752.0f, 528.0f, 15.0f, 15.0f,
-					CApplication::Texture10()));
-			CApplication::CharacterManager()->Add(
-				new CFpenD(48.0f, 80.0f, 15.0f, 15.0f,
-					CApplication::Texture11()));*/
 			mCharacterManager.Add(mpZkabe);
 			mState = EState::ESTART;
 		}

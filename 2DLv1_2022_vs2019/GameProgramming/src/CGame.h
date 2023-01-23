@@ -14,6 +14,7 @@
 #define MARU2 "maru2.png"
 #define MARU "maru.png"
 #define TIPSIZE 16.0f //マップ要素のサイズ
+#define TIPSIZEE 16.0f
 #define KABE "111.png"//壁
 #define SSUP "UP.png"
 #define pengin  "1.phoeniikun_ichika.png"
@@ -29,6 +30,7 @@
 class CGame 
 {
 public:
+	CPlayer2* mpPlayer2;
 	//デストラクタ
 	~CGame();
 	//ゲームクリア判定

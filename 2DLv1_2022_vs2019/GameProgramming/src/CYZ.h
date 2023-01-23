@@ -44,6 +44,8 @@ public:
 	static int UP1;
 	static int RRR;
 	static int RRRR;
+	static int SIZE;
 private:	
 	CFont mFont;
+	CPlayer2* mpPlayer;
 };
