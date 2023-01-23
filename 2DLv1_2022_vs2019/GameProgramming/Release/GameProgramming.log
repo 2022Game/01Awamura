@@ -1,0 +1,83 @@
+﻿  CApplication.cpp
+  CBlocks.cpp
+  CBlockss.cpp
+  CBullet.cpp
+  CEnemy.cpp
+  CEnemy2.cpp
+  CFpenA.cpp
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CFpenA.cpp(105,8): warning C4101: 'x': ローカル変数は 1 度も使われていません。
+  CFpenB.cpp
+  CFpenC.cpp
+  CFpenD.cpp
+  CGame.cpp
+  CPlayer.cpp
+  CPlayer2.cpp
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CPlayer2.cpp(4,1): warning C4005: 'MARU': マクロが再定義されました。
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CGame.h(15): message : 'MARU' の以前の定義を確認してください
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CPlayer2.cpp(5,1): warning C4005: 'MARU1': マクロが再定義されました。
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CGame.h(13): message : 'MARU1' の以前の定義を確認してください
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CPlayer2.cpp(6,1): warning C4005: 'pengin': マクロが再定義されました。
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CGame.h(19): message : 'pengin' の以前の定義を確認してください
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CPlayer2.cpp(15,1): warning C4005: 'VELOCITY': マクロが再定義されました。
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CCharacter.h(6): message : 'VELOCITY' の以前の定義を確認してください
+  CRRR.cpp
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CRRR.cpp(4,1): warning C4005: 'MU': マクロが再定義されました。
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CZkabe.h(5): message : 'MU' の以前の定義を確認してください
+  CRectangle.cpp
+  CYZ.cpp
+  CYhidari.cpp
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CYhidari.cpp(4,1): warning C4005: 'HIDARI': マクロが再定義されました。
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CGame.h(12): message : 'HIDARI' の以前の定義を確認してください
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CYhidari.cpp(5,1): warning C4005: 'MU': マクロが再定義されました。
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CZkabe.h(5): message : 'MU' の以前の定義を確認してください
+  CYmigi.cpp
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CYmigi.cpp(4,1): warning C4005: 'MIGI': マクロが再定義されました。
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CGame.h(11): message : 'MIGI' の以前の定義を確認してください
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CYmigi.cpp(5,1): warning C4005: 'MU': マクロが再定義されました。
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CZkabe.h(5): message : 'MU' の以前の定義を確認してください
+  CYshita.cpp
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CYshita.cpp(5,1): warning C4005: 'SHITA': マクロが再定義されました。
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CGame.h(10): message : 'SHITA' の以前の定義を確認してください
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CYshita.cpp(6,1): warning C4005: 'MU': マクロが再定義されました。
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CZkabe.h(5): message : 'MU' の以前の定義を確認してください
+  CYue.cpp
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CYue.cpp(8,1): warning C4005: 'UE': マクロが再定義されました。
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CGame.h(9): message : 'UE' の以前の定義を確認してください
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CYue.cpp(9,1): warning C4005: 'MU': マクロが再定義されました。
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CZkabe.h(5): message : 'MU' の以前の定義を確認してください
+  コンパイル中...
+  CZkabe.cpp
+  CZkah.cpp
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CZkah.cpp(4,1): warning C4005: 'KABE': マクロが再定義されました。
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CZkah.h(4): message : 'KABE' の以前の定義を確認してください
+  CZkah1.cpp
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CZkah1.cpp(4,1): warning C4005: 'KABE': マクロが再定義されました。
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CZkah1.h(4): message : 'KABE' の以前の定義を確認してください
+  CZkam.cpp
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CZkam.cpp(4,1): warning C4005: 'KABE': マクロが再定義されました。
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CZkam.h(4): message : 'KABE' の以前の定義を確認してください
+  CZkam1.cpp
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CZkam1.cpp(4,1): warning C4005: 'KABE': マクロが再定義されました。
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CZkam1.h(4): message : 'KABE' の以前の定義を確認してください
+  CZkas.cpp
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CZkas.cpp(4,1): warning C4005: 'KABE': マクロが再定義されました。
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CZkas.h(4): message : 'KABE' の以前の定義を確認してください
+  CZkas1.cpp
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CZkas1.cpp(4,1): warning C4005: 'KABE': マクロが再定義されました。
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CZkas1.h(4): message : 'KABE' の以前の定義を確認してください
+  CZkau.cpp
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CZkau.cpp(4,1): warning C4005: 'KABE': マクロが再定義されました。
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CZkau.h(4): message : 'KABE' の以前の定義を確認してください
+  CZkau1.cpp
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CZkau1.cpp(4,1): warning C4005: 'KABE': マクロが再定義されました。
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CZkau1.h(4): message : 'KABE' の以前の定義を確認してください
+  SUP.cpp
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\SUP.cpp(4,1): warning C4005: 'SSUP': マクロが再定義されました。
+C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\GameProgramming\src\CGame.h(18): message : 'SSUP' の以前の定義を確認してください
+  main.cpp
+  コード生成しています。
+  10 of 367 functions ( 2.7%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    29 functions had inline decision re-evaluated but remain unchanged
+  コード生成が終了しました。
+  GameProgramming.vcxproj -> C:\Users\surok\Desktop\Git\01Awamura\2DLv1_2022_vs2019\Release\GameProgramming.exe
