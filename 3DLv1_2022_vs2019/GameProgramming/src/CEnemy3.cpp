@@ -5,6 +5,7 @@
 
 #define OBJ "res\\f16.obj" //モデルのファイル
 #define MTL "res\\f16.mtl" //モデルのマテリアルファイル
+#define HP 3 //耐久値
 
 CModel CEnemy3::sModel; //モデルデータ作成
 
@@ -12,6 +13,7 @@ CModel CEnemy3::sModel; //モデルデータ作成
 CEnemy3::CEnemy3()
 	:CCharacter3(1)
 	,mCollider(this,&mMatrix,CVector(0.0f,0.0f,0.0f),0.4f)
+	, mHp(HP)
 {
 	//モデルがないときは読みこむ
 	if (sModel.Triangles().size() == 0)
@@ -25,7 +27,7 @@ CEnemy3::CEnemy3()
 //コンストラクタ
 //CEnemy(位置、回転、拡縮）
 CEnemy3::CEnemy3(const CVector& position, const CVector& rotation,
-	const CVector& scale) 
+	const CVector& scale)
 	:CEnemy3() //デフォルトコンストラクタを実行する
 {
 	//位置、回転、拡散を設定する
@@ -33,6 +35,8 @@ CEnemy3::CEnemy3(const CVector& position, const CVector& rotation,
 	mRotation = rotation; //回転の設定
 	mScale = scale; //拡縮の設定
 	CTransform::Update(); //行列の更新
+	////目標地点の設定
+	//mPoint = mPosition + CVector(0.0f, 0.0f, 100.0f) * mMatrixRotate;
 }
 
 //更新処理
@@ -41,6 +45,21 @@ void CEnemy3::Update()
 	CTransform::Update();
 	//プレイヤーのポインタが０以外の時
 	CPlayer* player = CPlayer::Instance();
+	//HPが０以下の時　撃破
+	if (mHp <= 0)
+	{
+		mHp--;
+		//１５フレーム毎にエフェクト
+		if (mHp % 15 == 0)
+		{
+			//エフェクト生成
+			new CEffect(mPosition, 1.0f, 1.0f, "exp.tga", 4, 4, 2);
+		}
+		//下降させる
+		mPosition = mPosition - CVector(0.0f, 0.03f, 0.0f);
+		CTransform::Update();
+		return;
+	}
 	if (player != nullptr)
 	{
 		//プレイヤーまでのベクトルを求める
@@ -84,6 +103,14 @@ void CEnemy3::Collision(CCollider* m, CCollider* o)
 			new CEffect(o->Parent()->Position(), 1.0f, 1.0f, "exp.tga", 4, 4, 2);
 			//衝突している時は無効にする
 			//mEnabled = false;
+			mHp--;
+		}
+		break;
+	case CCollider::ETRIANGLE:
+		CVector adjust;
+		if (CCollider::CollisionTriangleSphere(o, m, &adjust) && mHp <= 0)
+		{
+			mEnabled = false;
 		}
 		break;
 	}
