@@ -55,7 +55,7 @@ void CEnemy3::Update()
 			//エフェクト生成
 			new CEffect(mPosition, 1.0f, 1.0f, "exp.tga", 4, 4, 2);
 		}
-		//下降させる
+		//下降させる.
 		mPosition = mPosition - CVector(0.0f, 0.03f, 0.0f);
 		CTransform::Update();
 		return;
