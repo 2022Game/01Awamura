@@ -2,6 +2,12 @@
 #include "CApplication.h"
 
 #define KABE  0.0f, 45.0f, 68.0f, 100.0f
+#define SE_PA "res\\da1.wav"
+#define SE_PA1 "res\\‘ÅŒ‚3.wav"
+#define SE_PA2 "res\\‘åƒpƒ“ƒ`.wav"
+#define SE_PA3 "res\\’†ƒpƒ“ƒ`.wav"
+#define SE_PA4 "res\\‘å–C1.mp3"
+#define SE_PA5 "res\\‘å–C2.mp3"
 
 CZkam::CZkam(float x, float y, float w, float h, CTexture* pt)
 {
@@ -9,6 +15,7 @@ CZkam::CZkam(float x, float y, float w, float h, CTexture* pt)
 	Texture(pt,KABE);
 	mState = EState::EMOVE;
 	mTag = ETag::EKABEX;
+	mSound.Load(SE_PA1);
 }
 
 void CZkam::Update()
@@ -107,6 +114,10 @@ void CZkam::Collision(CCharacter* m, CCharacter* o)
 			X(X() + x);
 			//Y(Y() + y);
 			mState = EState::EBACK;
+			if (CYZ::sNow1 >= 11 && CYZ::sNow1 <= 30)
+			{
+				mSound.Play();
+			}
 		}
 	}
 }

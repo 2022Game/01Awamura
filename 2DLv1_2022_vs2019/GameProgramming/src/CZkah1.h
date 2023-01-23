@@ -1,12 +1,13 @@
 #pragma once
 #include "CCharacter.h"
-
+#include "CSound.h"
 #define KABE "111.png"//•Ç
 
 class CZkah1 : public CCharacter
 {
 private:
 public:
+	CSound mSound;
 	//Õ“Ëˆ—2
 	void Collision();
 	//Õ“Ëˆ—4
