@@ -15,7 +15,7 @@ CZkah::CZkah(float x, float y, float w, float h, CTexture* pt)
 	Texture(pt, KABE);
 	mState = EState::EMOVE;
 	mTag = ETag::EKABEX;
-	mSound.Load(SE_PA);
+	mSound.Load(SE_PA1);
 }
 
 void CZkah::Update()

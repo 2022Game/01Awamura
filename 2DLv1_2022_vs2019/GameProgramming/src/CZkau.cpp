@@ -15,7 +15,7 @@ CZkau::CZkau(float x, float y, float w, float h,  CTexture* pt)
 	Texture(pt,KABE);
 	mState = EState::EMOVE;
 	mTag = ETag::EKABEY;
-	mSound.Load(SE_PA2);
+	mSound.Load(SE_PA1);
 }
 
 void CZkau::Update()
