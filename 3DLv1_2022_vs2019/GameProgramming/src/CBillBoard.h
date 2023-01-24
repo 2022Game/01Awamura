@@ -3,7 +3,7 @@
 #include "CCharacter3.h"
 /*
 ビルボードクラス
-常にカメラのほうを向く四角形
+常にカメラのほうを向く四角形a
 */
 class CBillBoard : public CCharacter3 {
 public:
