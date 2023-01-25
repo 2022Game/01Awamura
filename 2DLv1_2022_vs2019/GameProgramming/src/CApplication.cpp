@@ -16,8 +16,8 @@ CTexture CApplication::mTexture10;
 CTexture CApplication::mTexture11;
 CCharacterManager CApplication::mCharacterManager;
 
-#define SOUND_BGM "res\\BGM(1).wav" //BGM音声ファイル
-#define SOUND_OVER "res\\mdai.wav" //ゲームオーバー音声ファイル
+#define SOUND_BGM "res\\mp33.wav" //BGM音声ファイル
+#define SOUND_OVER "res\\AAA.wav" //ゲームオーバー音声ファイル
 
 CCharacterManager* CApplication::CharacterManager()
 {
@@ -101,6 +101,7 @@ void CApplication::Update()
 	{
 	case EState::ESTART:	//状態がスタート
 		mpGame->Start();	//スタート画面表示
+		mSoundOver.Stop();
 		//Enterキーが押されたら
 		if (mInput.Key(VK_RETURN))
 		{	//状態をプレイ中にする
