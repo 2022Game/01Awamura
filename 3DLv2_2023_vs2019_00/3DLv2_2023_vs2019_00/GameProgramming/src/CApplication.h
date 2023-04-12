@@ -20,6 +20,8 @@
 
 #include "CUi.h"
 
+#include "CModelX.h"
+
 class CApplication
 {
 private:
@@ -63,6 +65,7 @@ private:
 	CFont mFont;
 	//CCharacterのポインタの可変長配列
 //	std::vector<CCharacter*> mCharacters;
+	CModelX mModelX;
 public:
 	~CApplication();
 	static CUi* Ui();	//UIクラスのインスタンスを取得
