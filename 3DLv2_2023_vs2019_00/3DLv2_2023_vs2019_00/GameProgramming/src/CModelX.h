@@ -20,7 +20,7 @@ private:
 	//’PŒê‚Ìæ‚èo‚µ
 	char* GetToken();
 	//c‚ª‹æØ‚è•¶š‚È‚çtrue‚ğ•Ô‚·
-	bool IsDellmiter(char c);
+	bool IsDelimiter(char c);
 };
 
 #endif
