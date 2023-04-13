@@ -31,15 +31,14 @@ void CModelX::Load(char* file) {
 	//
 	//ファイルの先頭へ移動
 	fseek(fp, 0L, SEEK_SET);
-	while (fgets(buf, sizeof(buf), fp) != NULL)
-	{
-		printf("%s", buf);
-	}
 	//確保した領域にファイルサイズ分データを読み込む
 	fread(buf, size, 1, fp);
 	//最後に\0を設定する（文字列の終端）
 	buf[size] = '\0';
 	fclose(fp); //ファイルをクローズする
-
+	if (fseek(fp, 0L, SEEK_END) != NULL)
+	{
+		printf("%s", buf);
+	}
 	SAFE_DELETE_ARRAY(buf); //確保した領域を開放する
 }

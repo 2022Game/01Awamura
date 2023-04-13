@@ -17,6 +17,10 @@ public:
 private:
 	char* mpPointer; //読み込み位置
 	char mToken[1024]; //取り出した単語の領域
+	//単語の取り出し
+	char* GetToken();
+	//cが区切り文字ならtrueを返す
+	bool IsDellmiter(char c);
 };
 
 #endif
