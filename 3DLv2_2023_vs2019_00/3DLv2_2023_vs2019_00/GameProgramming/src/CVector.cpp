@@ -35,6 +35,21 @@ void CVector::Set(float x, float y, float z)
 	mZ = z;
 }
 
+void CVector::X(float f)
+{
+	mX = f;
+}
+
+void CVector::Y(float f)
+{
+	mY = f;
+}
+
+void CVector::Z(float f)
+{
+	mZ = f;
+}
+
 float CVector::X() const
 {
 	return mX;
@@ -79,4 +94,3 @@ CVector CVector::operator*(const CMatrix& m)
 		mX * m.M(0, 2) + mY * m.M(1, 2) + mZ * m.M(2, 2) + m.M(3, 2)
 	);
 }
-

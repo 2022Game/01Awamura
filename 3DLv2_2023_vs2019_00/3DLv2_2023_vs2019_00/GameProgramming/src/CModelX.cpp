@@ -4,6 +4,7 @@
 #include "glut.h"
 #include <ctype.h>
 #include "CMatrix.h"
+#include "CVertex.h"
 /*
 *IsDelimiter(c)
 * cが\t\r\nスペースなどの空白文字
@@ -86,6 +87,51 @@ CModelXFrame::~CModelXFrame()
 {
 }
 
+//コンストラクタ
+CMesh::CMesh()
+	:mVertexNum(0)
+	,mpVertex(nullptr)
+{}
+//デストラクタ
+CMesh::~CMesh() {
+	SAFE_DELETE_ARRAY(mpVertex);
+}
+
+/*
+Init
+Meshのデータを取り込む
+*/
+void CMesh::Init(CModelX* model) {
+	int n;
+	n = 0;
+	model->GetToken(); //{or名前
+	if (!strchr(model->Token(), '{')) {
+		//名前の場合,次が｛
+		model->GetToken();//｛
+	}
+
+	//頂点数の取得
+	mVertexNum = atoi(model->GetToken());
+	//頂点数分エリア確保
+	mpVertex = new CVector[mVertexNum];
+	//頂点数分データを取り込む
+	for (int i = 0; i < mVertexNum; i++) {
+		mpVertex[i].X(atof(model->GetToken()));
+		mpVertex[i].Y(atof(model->GetToken()));
+		mpVertex[i].Z(atof(model->GetToken()));
+	}
+#ifdef _DEBUG
+	printf("VertexNum:%i\n", mVertexNum);
+	while (n != mVertexNum)
+	{
+		printf("%f\t", mpVertex[n].X());
+		printf("%f\t", mpVertex[n].Y());
+		printf("%f\n", mpVertex[n].Z());
+		n = n + 1;
+	}
+#endif
+}
+
 void CModelX::Load(char* file) {
 	//
 	//ファイルサイズを取得する
@@ -147,6 +193,11 @@ void CModelX::SkipNode() {
 	}
 }
 
+char* CModelX::Token()
+{
+	return mToken;
+}
+
 /*
 CModelXFrame
 model:CModelXインスタンスへのポインタ
@@ -156,6 +207,7 @@ model:CModelXインスタンスへのポインタ
 */
 CModelXFrame::CModelXFrame(CModelX* model)
 	:mpName(nullptr)
+	,mpMesh(nullptr)
 	, mIndex(0)
 {
 	//現在のフレーム配列の要素数を取得し設定する
@@ -190,6 +242,10 @@ CModelXFrame::CModelXFrame(CModelX* model)
 				}
 				model->GetToken();//}
 		}
+		else if (strcmp(model->mToken, "Mesh") == 0) {
+			mpMesh = new CMesh();
+			mpMesh->Init(model);
+		}
 		else {
 			//上記以外の要素は読み飛ばす
 			model->SkipNode();
@@ -197,23 +253,23 @@ CModelXFrame::CModelXFrame(CModelX* model)
 	}
 	//デバッグバージョンのみ有効
 #ifdef _DEBUG
-	printf("%s\n", mpName);
-	printf("%f\t", mTransformMatrix.M()[0]);
-	printf("%f\t", mTransformMatrix.M()[1]);
-	printf("%f\t", mTransformMatrix.M()[2]);
-	printf("%f\n", mTransformMatrix.M()[3]);
-	printf("%f\t", mTransformMatrix.M()[4]);
-	printf("%f\t", mTransformMatrix.M()[5]);
-	printf("%f\t", mTransformMatrix.M()[6]);
-	printf("%f\n", mTransformMatrix.M()[7]);
-	printf("%f\t", mTransformMatrix.M()[8]);
-	printf("%f\t", mTransformMatrix.M()[9]);
-	printf("%f\t", mTransformMatrix.M()[10]);
-	printf("%f\n", mTransformMatrix.M()[11]);
-	printf("%f\t", mTransformMatrix.M()[12]);
-	printf("%f\t", mTransformMatrix.M()[13]);
-	printf("%f\t", mTransformMatrix.M()[14]);
-	printf("%f\n", mTransformMatrix.M()[15]);
+	//printf("%s\n", mpName);
+	//printf("%f\t", mTransformMatrix.M()[0]);
+	//printf("%f\t", mTransformMatrix.M()[1]);
+	//printf("%f\t", mTransformMatrix.M()[2]);
+	//printf("%f\n", mTransformMatrix.M()[3]);
+	//printf("%f\t", mTransformMatrix.M()[4]);
+	//printf("%f\t", mTransformMatrix.M()[5]);
+	//printf("%f\t", mTransformMatrix.M()[6]);
+	//printf("%f\n", mTransformMatrix.M()[7]);
+	//printf("%f\t", mTransformMatrix.M()[8]);
+	//printf("%f\t", mTransformMatrix.M()[9]);
+	//printf("%f\t", mTransformMatrix.M()[10]);
+	//printf("%f\n", mTransformMatrix.M()[11]);
+	//printf("%f\t", mTransformMatrix.M()[12]);
+	//printf("%f\t", mTransformMatrix.M()[13]);
+	//printf("%f\t", mTransformMatrix.M()[14]);
+	//printf("%f\n", mTransformMatrix.M()[15]);
 #endif
 }
 
