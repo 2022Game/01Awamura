@@ -91,10 +91,13 @@ CModelXFrame::~CModelXFrame()
 CMesh::CMesh()
 	:mVertexNum(0)
 	,mpVertex(nullptr)
+	,mFaceNum(0)
+	,mpVertexIndex(nullptr)
 {}
 //デストラクタ
 CMesh::~CMesh() {
 	SAFE_DELETE_ARRAY(mpVertex);
+	SAFE_DELETE_ARRAY(mpVertexIndex);
 }
 
 /*
@@ -120,15 +123,33 @@ void CMesh::Init(CModelX* model) {
 		mpVertex[i].Y(atof(model->GetToken()));
 		mpVertex[i].Z(atof(model->GetToken()));
 	}
+	//面数読み込み
+	mFaceNum = atoi(model->GetToken());
+	//頂点数は1面に３頂点
+	mpVertexIndex = new int[mFaceNum * 3];
+	for (int i = 0; i < mFaceNum * 3; i += 3) {
+		model->GetToken(); //;頂点数読み飛ばし
+		mpVertexIndex[i] = atoi(model->GetToken());
+		mpVertexIndex[i + 1] = atoi(model->GetToken());
+		mpVertexIndex[i + 2] = atoi(model->GetToken());
+	}
 #ifdef _DEBUG
-	printf("VertexNum:%i\n", mVertexNum);
+	printf("FaceNum:%i\n", mFaceNum);
+	while (n != mFaceNum * 3)
+	{
+		printf("%i\t", mpVertexIndex[n + 0]);
+		printf("%i\t", mpVertexIndex[n + 1]);
+		printf("%i\n", mpVertexIndex[n + 2]);
+		n = n + 3;
+	}
+	/*printf("VertexNum:%i\n", mVertexNum);
 	while (n != mVertexNum)
 	{
 		printf("%f\t", mpVertex[n].X());
 		printf("%f\t", mpVertex[n].Y());
 		printf("%f\n", mpVertex[n].Z());
 		n = n + 1;
-	}
+	}*/
 #endif
 }
 
