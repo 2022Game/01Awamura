@@ -93,11 +93,14 @@ CMesh::CMesh()
 	,mpVertex(nullptr)
 	,mFaceNum(0)
 	,mpVertexIndex(nullptr)
+	,mNormalNum(0)
+	,mpNormal(nullptr)
 {}
 //デストラクタ
 CMesh::~CMesh() {
 	SAFE_DELETE_ARRAY(mpVertex);
 	SAFE_DELETE_ARRAY(mpVertexIndex);
+	SAFE_DELETE_ARRAY(mpNormal);
 }
 
 /*
@@ -133,14 +136,50 @@ void CMesh::Init(CModelX* model) {
 		mpVertexIndex[i + 1] = atoi(model->GetToken());
 		mpVertexIndex[i + 2] = atoi(model->GetToken());
 	}
+	model->GetToken(); //MeshNormals
+	if (strcmp(model->Token(), "MeshNormals") == 0) {
+		model->GetToken(); //{
+		//法線データ数を取得
+		mNormalNum = atoi(model->GetToken());
+		//法線データを配列に取り込む
+		CVector* pNormal = new CVector[mNormalNum];
+		for (int i = 0; i < mNormalNum; i++) {
+			pNormal[i].X(atof(model->GetToken()));
+			pNormal[i].Y(atof(model->GetToken()));
+			pNormal[i].Z(atof(model->GetToken()));
+		}
+		//法線数＝画数×３
+		mNormalNum = atoi(model->GetToken()) * 3; //FaceNum
+		int ni;
+		//頂点毎に法線データを設定する
+		mpNormal = new CVector[mNormalNum];
+		for (int i = 0; i < mNormalNum; i += 3) {
+			model->GetToken(); //3
+				ni = atoi(model->GetToken());
+				mpNormal[i] = pNormal[ni];
+				ni = atoi(model->GetToken());
+				mpNormal[i + 1] = pNormal[ni];
+				ni = atoi(model->GetToken());
+				mpNormal[i + 2] = pNormal[ni];
+		}
+		delete[] pNormal;
+		model->GetToken(); //}
+	}//End ofMeshNormals
 #ifdef _DEBUG
-	printf("FaceNum:%i\n", mFaceNum);
-	while (n != mFaceNum * 3)
+	printf("NormalNum:%i\n", mNormalNum);
+	while (n != mNormalNum)
 	{
-		printf("%i\t", mpVertexIndex[n + 0]);
-		printf("%i\t", mpVertexIndex[n + 1]);
-		printf("%i\n", mpVertexIndex[n + 2]);
+		printf("%f\t", mpNormal[n].X());
+		printf("%f\t", mpNormal[n + 1].Y());
+		printf("%f\n", mpNormal[n + 2].Z());
+		printf("%f\t", mpNormal[n].X());
+		printf("%f\t", mpNormal[n + 1].Y());
+		printf("%f\n", mpNormal[n + 2].Z());
+		printf("%f\t", mpNormal[n].X());
+		printf("%f\t", mpNormal[n + 1].Y());
+		printf("%f\n", mpNormal[n + 2].Z());
 		n = n + 3;
+
 	}
 	/*printf("VertexNum:%i\n", mVertexNum);
 	while (n != mVertexNum)
