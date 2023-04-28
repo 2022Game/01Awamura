@@ -10,6 +10,8 @@
 class CModelX; //CModelXクラスの宣言
 class CModelXFrame; //CModelXFrameクラスの宣言
 
+class CMaterial; //マテリアルの宣言
+
 class CMesh; //CMeshクラスの宣言
 
 //CMeshクラスの定義
@@ -23,6 +25,10 @@ public:
 	//読み込み処理
 	void Init(CModelX* model);
 private:
+	int mMaterialNum; //マテリアル数
+	int mMaterialIndexNum; //マテリアル番号数（面数）
+	int* mpMaterialIndex; //マテリアル番号
+	std::vector<CMaterial*>mMaterial; //ﾏﾃﾘｱﾙﾃﾞｰﾀ
 	int mNormalNum; //法線数
 	CVector* mpNormal; //法線ベクトル
 	int mFaceNum; //面数
@@ -54,6 +60,7 @@ Xファイル形式の３Dモデルデータをプログラムで認識する
 class CModelX {
 	friend CModelXFrame;
 public:
+	bool EOT();//トークンが無くなったらtrue
 	void Render();
 	~CModelX();
 	//ノードの読み飛ばし
