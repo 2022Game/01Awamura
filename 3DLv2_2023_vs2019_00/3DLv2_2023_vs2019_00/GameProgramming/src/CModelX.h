@@ -16,6 +16,21 @@ class CMesh; //CMeshクラスの宣言
 
 class CSkinWeights; //スキンウェイトクラス
 
+class CAnimationSet; //アニメーションセットクラス
+
+/*
+CAnimationSet
+アニメーションセット
+*/
+class CAnimationSet {
+public:
+	CAnimationSet(CModelX* model);
+	~CAnimationSet();
+private:
+	//アニメーションセット名
+	char* mpName;
+};
+
 /*
 CSkinWeights
 スキンウェイトクラス
@@ -83,6 +98,7 @@ CModelX
 Xファイル形式の３Dモデルデータをプログラムで認識する
 */
 class CModelX {
+	friend CAnimationSet;
 	friend CModelXFrame;
 public:
 	bool EOT();//トークンが無くなったらtrue
@@ -97,6 +113,8 @@ public:
 	char* GetToken();
 	char* Token();
 private:
+	//アニメーションセットの配列
+	std::vector<CAnimationSet*>mAnimationSet;
 	std::vector<CModelXFrame*>mFrame; //フレーム配列
 	//cが区切り文字ならtrueを返す
 	bool IsDelimiter(char c);
