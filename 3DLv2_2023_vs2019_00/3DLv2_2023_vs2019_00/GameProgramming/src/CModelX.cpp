@@ -486,7 +486,7 @@ void CMesh::Init(CModelX* model) {
 	}
 #ifdef _DEBUG
 	//printf("SkinWeights:%f\n", mFrameIndex);
-	/*while (n != mNormalNum)
+	while (n != mNormalNum)
 	{
 		printf("%f\t", mpNormal[n].X());
 		printf("%f\t", mpNormal[n + 1].Y());
@@ -499,7 +499,7 @@ void CMesh::Init(CModelX* model) {
 		printf("%f\n", mpNormal[n + 2].Z());
 		n = n + 3;
 
-	}*/
+	}
 	/*printf("VertexNum:%i\n", mVertexNum);
 	while (n != mVertexNum)
 	{
