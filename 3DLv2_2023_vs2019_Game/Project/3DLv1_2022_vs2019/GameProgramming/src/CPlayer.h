@@ -2,6 +2,7 @@
 #define CPLAYER_H
 //キャラクタクラスのインクルード
 #include "CCharacter3.h"
+#include "CCharacter.h"
 #include "CInput.h"
 #include "CBullet.h"
 #include "CColliderLine.h"
@@ -10,7 +11,7 @@
 プレイヤークラス
 キャラクタクラスを継承
 */
-class CPlayer : public CCharacter3
+class CPlayer : public CCharacter3 ,CCharacter
 {
 private:
 	//float mVy;	//Y軸速度
@@ -21,6 +22,8 @@ private:
 	//プレイヤーのインスタンス
 	static CPlayer* spInstance;
 public:
+	int n;
+	int jc;//ジャンプカウント
 	//インスタンスのポインタの取得
 	static CPlayer* Instance();
 	//衝突処理

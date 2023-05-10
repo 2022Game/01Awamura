@@ -23,6 +23,7 @@ public:
 		ESTOP,	//停止
 		EJUMP,	//ジャンプ
 		ECRY,	//泣く
+		EJO,    //ジャンプOK
 	};
 protected:
 	float mVx;	//X軸速度

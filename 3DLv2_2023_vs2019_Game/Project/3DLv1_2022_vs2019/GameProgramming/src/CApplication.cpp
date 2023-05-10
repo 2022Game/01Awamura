@@ -14,11 +14,11 @@ CCharacterManager CApplication::mCharacterManager;
 #define SOUND_BGM "res\\mario.wav" //BGM音声ファイル
 #define SOUND_OVER "res\\mdai.wav" //ゲームオーバー音声ファイル
 //モデルデータの指定
-#define MODEL_OBJ "res\\Beard_man.obj","res\\Beard_man.mtl"
+#define MODEL_OBJ "res\\coin.obj","res\\coin.mtl"
 //背景モデルデータの指定
 #define MODEL_BACKGROUND "res\\sky.obj","res\\sky.mtl"
 //敵輸送機モデル
-#define MODEL_C5 "res\\Beard_man.obj","res\\Beard_man.mtl"
+#define MODEL_C5 "res\\f14.obj","res\\f14.mtl"
 
 //CTaskManager CApplication::mTaskManager;
 //CTaskManager* CApplication::TaskManager()
@@ -45,16 +45,16 @@ const CMatrix& CApplication::ModelViewInverse()
 
 void CApplication::Start()
 {
-	new CEnemy3(CVector(-5.0f, 1.0f, -10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-	new CEnemy3(CVector(5.0f, 1.0f, -10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+	/*new CEnemy3(CVector(-5.0f, 1.0f, -10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
+	new CEnemy3(CVector(5.0f, 1.0f, -10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));*/
 	spUi = new CUi(); //UIクラスの生成
 	//C5モデルの読み込み
 	mModelC5.Load(MODEL_C5);
 	//敵機のインスタンス作成
-	new CEnemy(&mModelC5, CVector(0.0f, 10.0f, -100.0f),
+	/*new CEnemy(&mModelC5, CVector(0.0f, 10.0f, -100.0f),
 		CVector(), CVector(0.1f, 0.1f, 0.1f));
 	new CEnemy(&mModelC5, CVector(30.0f, 10.0f, -130.0f),
-		CVector(), CVector(0.1f, 0.1f, 0.1f));
+		CVector(), CVector(0.1f, 0.1f, 0.1f));*/
 	mEye = CVector(1.0f, 2.0f, 3.0f);
 	//モデルファイルの入力
 	mModel.Load(MODEL_OBJ);
@@ -64,11 +64,11 @@ void CApplication::Start()
 //	mCharacter.Model(&mModel);
 	//mCharacter.Scale(CVector(0.1f, 0.1f, 0.1f));
 	mPlayer.Model(&mModel);
-	mPlayer.Position(CVector(0.0f, 0.0f, 0.0f));
-	mPlayer.Scale(CVector(0.1f, 0.1f, 0.1f));
+	mPlayer.Position(CVector(10.0f, 10.0f, 0.0f));
+	mPlayer.Scale(CVector(0.5f, 0.5f, 0.5f));
 	mPlayer.Rotation(CVector(-0.0f, -180.0f, -0.0f));
 	//ビルボードの生成
-	new CBillBoard(CVector(-6.0f, 3.0f, -10.0f), 1.0f, 1.0f);
+	/*new CBillBoard(CVector(-6.0f, 3.0f, -10.0f), 1.0f, 1.0f);*/
 	//三角コライダの確認
 	//mColliderTriangle.Set(nullptr, nullptr
 	//	, CVector(-50.0f, 0.0f, -50.0f)
