@@ -18,6 +18,22 @@ class CSkinWeights; //スキンウェイトクラス
 
 class CAnimationSet; //アニメーションセットクラス
 
+class CAnimation; //アニメーションクラス
+
+/*
+CAnimation
+アニメーションクラス
+*/
+class CAnimation {
+	friend CAnimationSet;
+public:
+	CAnimation(CModelX* model);
+	~CAnimation();
+private:
+	char* mpFrameName; //フレーム名
+	int mFrameIndex; //フレーム番号
+};
+
 /*
 CAnimationSet
 アニメーションセット
@@ -29,6 +45,8 @@ public:
 private:
 	//アニメーションセット名
 	char* mpName;
+	//アニメーション
+	std::vector<CAnimation*>mAnimation;
 };
 
 /*
@@ -79,7 +97,9 @@ private:
 //CModelXFrameクラスの定義
 class CModelXFrame {
 	friend CModelX;
+	friend CAnimation;
 public:
+	bool Index();
 	void Render();
 	//コンストラクタ
 	CModelXFrame(CModelX* model);
@@ -100,7 +120,10 @@ Xファイル形式の３Dモデルデータをプログラムで認識する
 class CModelX {
 	friend CAnimationSet;
 	friend CModelXFrame;
+	friend CAnimation;
 public:
+	//フレーム名に該当するフレームのアドレスを返す
+	CModelXFrame* FindFrame(char* name);
 	bool EOT();//トークンが無くなったらtrue
 	void Render();
 	~CModelX();

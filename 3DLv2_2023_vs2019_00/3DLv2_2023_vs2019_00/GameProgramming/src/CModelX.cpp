@@ -125,16 +125,65 @@ CMesh::~CMesh() {
 	}
 }
 
-CAnimationSet::~CAnimationSet()
-{
-	SAFE_DELETE_ARRAY(mpName);
-}
-
 CSkinWeights::~CSkinWeights()
 {
 	SAFE_DELETE_ARRAY(mpFrameName);
 	SAFE_DELETE_ARRAY(mpIndex);
 	SAFE_DELETE_ARRAY(mpWeight);
+}
+
+bool CModelXFrame::Index()
+{
+	return mIndex;
+}
+
+/*
+FinedFrame(フレーム名）
+フレーム名に該当するフレームのアドレスを返す
+*/
+CModelXFrame* CModelX::FindFrame(char* name) {
+	//イテレータの作成
+	std::vector<CModelXFrame*>::iterator itr;
+	//先頭から最後まで繰り返す
+	for (itr = mFrame.begin(); itr != mFrame.end(); itr++) {
+		//名前が一致したか？
+		if (strcmp(name, (*itr)->mpName) == 0) {
+			//一致したらそのアドレスを返す
+			return *itr;
+		}
+	}
+	//一致するフレームが無い場合はnullptrを返す
+	return nullptr;
+}
+CAnimation::CAnimation(CModelX* model)
+	:mpFrameName(nullptr)
+	, mFrameIndex(0)
+{
+	model->GetToken();//{orAnimation Name
+	if (strchr(model->Token(), '{')) {
+		model->GetToken();//{
+	}
+	else {
+		model->GetToken();//{
+		model->GetToken();//{
+	}
+
+	model->GetToken();//FrameName
+	mpFrameName = new char[strlen(model->Token()) + 1];
+	strcpy(mpFrameName, model->Token());
+	mFrameIndex = 
+		model->FindFrame(model->Token())->Index();
+	model->GetToken();//}
+	while (!model->EOT()) {
+		model->GetToken();//}orAnimationKey
+		if (strchr(model->Token(), '}'))break;
+		if (strcmp(model->Token(), "AnimationKey") == 0) {
+			model->SkipNode();
+		}
+	}
+#ifdef _DEBUG
+	printf("Animation:%s\n", mpFrameName);
+#endif
 }
 
 /*
@@ -153,13 +202,13 @@ CAnimationSet::CAnimationSet(CModelX* model)
 		model->GetToken();//}or Animation
 		if (strchr(model->Token(), '}'))break;
 		if (strcmp(model->Token(), "Animation") == 0) {
-			//とりあえず読み飛ばし
-			model->SkipNode();
+			//Animation要素読み込み
+			mAnimation.push_back(new CAnimation(model));
 		}
 	}
-#ifdef _DEBUG
-	printf("AnimationSet:%s\n", mpName);
-#endif
+//#ifdef _DEBUG
+//	printf("AnimationSet:%s\n", mpName);
+//#endif
 }
 
 /*
@@ -297,6 +346,7 @@ char* CModelX::Token()
 {
 	return mToken;
 }
+
 
 bool CModelX::EOT()
 {
@@ -486,7 +536,7 @@ void CMesh::Init(CModelX* model) {
 	}
 #ifdef _DEBUG
 	//printf("SkinWeights:%f\n", mFrameIndex);
-	while (n != mNormalNum)
+	/*while (n != mNormalNum)
 	{
 		printf("%f\t", mpNormal[n].X());
 		printf("%f\t", mpNormal[n + 1].Y());
@@ -499,7 +549,7 @@ void CMesh::Init(CModelX* model) {
 		printf("%f\n", mpNormal[n + 2].Z());
 		n = n + 3;
 
-	}
+	}*/
 	/*printf("VertexNum:%i\n", mVertexNum);
 	while (n != mVertexNum)
 	{
@@ -509,6 +559,19 @@ void CMesh::Init(CModelX* model) {
 		n = n + 1;
 	}*/
 #endif
+}
+
+CAnimation::~CAnimation() {
+	SAFE_DELETE_ARRAY(mpFrameName);
+}
+
+CAnimationSet::~CAnimationSet()
+{
+	SAFE_DELETE_ARRAY(mpName);
+	//アニメーション要素の削除
+	for (size_t i = 0; i < mAnimation.size(); i++) {
+		delete mAnimation[i];
+	}
 }
 
 /*
