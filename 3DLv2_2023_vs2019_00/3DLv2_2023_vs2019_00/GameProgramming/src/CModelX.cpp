@@ -274,7 +274,7 @@ CAnimation::CAnimation(CModelX* model)
 		{
 			printf("\n");
 		}
-		if (i == 15 || strchr(model->Token(), ';'))
+		if (i == 15 || strchr(model->Token(), ';;'))
 		{
 			printf("\n");
 			break;
