@@ -22,14 +22,19 @@ char* strncpy(char* str1, const char* str2, int len)
 	return str1;//コピー先の先頭アドレスを返却
 }
 
-//デフォルトコントラクタ
+//デフォルトコンストラクタ
 CMaterial::CMaterial()
-:mVertexNum(0)
+	:mVertexNum(0)
 {
-	//名前を０で埋め
+	//名前を0で埋め
 	memset(mName, 0, sizeof(mName));
-	//0で埋める
-	memset(mDiffuse, 0, sizeof(mDiffuse));
+
+	//拡散光の初期値は(1, 1, 1, 1)
+	int count = sizeof(mDiffuse) / sizeof(mDiffuse[0]);
+	for (int i = 0; i < count; i++)
+	{
+		mDiffuse[i] = 1.0f;
+	}
 }
 
 //マテリアルを有効にする

@@ -122,21 +122,21 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 		if (o->Type() == CCollider::ETRIANGLE) {
 			CVector adjust;//調整用ベクトル
 			//三角形と線分の衝突判定
-			if (CCollider::CollisionTriangleLine(o, m, &adjust))
-			{
-				if (mState == EState::EJUMP || mState == EState::EMOVE)
+				if (CCollider::CollisionTriangleLine(o, m, &adjust))
 				{
-					mState = EState::EJO;
+					if (mState == EState::EJUMP || mState == EState::EMOVE)
+					{
+						mState = EState::EJO;
+					}
+					/*else
+					{
+						mPosition = mPosition - VELOCITY3 * mMatrixRotate;
+					}*/
+					//位置の更新(mPosition + adjust)
+					mPosition = mPosition + adjust;
+					//行列の更新
+					CTransform::Update();
 				}
-				if (jc < 0)
-				{
-					mPosition = mPosition + VELOCITY1 * mMatrixRotate;
-				}
-				//位置の更新(mPosition + adjust)
-				mPosition = mPosition + adjust;
-				//行列の更新
-				CTransform::Update();
-			}
 		}
 		break;
 	}

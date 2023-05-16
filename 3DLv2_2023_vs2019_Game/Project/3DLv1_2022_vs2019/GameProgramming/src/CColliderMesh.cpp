@@ -17,7 +17,7 @@ CColliderMesh::~CColliderMesh()
 
 //Set（親、親行列、モデル）
 //モデルから三角コライダの生成
-void CColliderMesh::Set(CCharacter3* parent, CMatrix* matrix, CModel* model)
+void CColliderMesh::Set(CCharacter3* parent, CMatrix* matrix, CModel* model, CModel* position)
 {
 	//モデルの三角ポリゴンで三角コライダの配列作成
 	mpColliderTriangles = new

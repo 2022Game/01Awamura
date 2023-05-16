@@ -6,6 +6,7 @@
 #include "CEnemy.h"
 #include "CEnemy3.h"
 #include "CPlayer.h"
+#include "CACoin.h"
 #include "CInput.h"
 #include "CFont.h"
 #include "CMiss.h"
@@ -55,6 +56,7 @@ private:
 	CMatrix mMatrix;
 	//CCharacter3 mCharacter;
 	CPlayer mPlayer;
+	CACoin* mpCoin;
 	//モデルインスタクラスの作成
 	CModel mModel;
 	//カメラのパラメータを作成する
@@ -64,6 +66,8 @@ private:
 	CModel mBackGround; //背景モデル
 	//C5モデル
 	CModel mModelC5;
+	//Coinモデル
+	CModel mModelCoin;
 	//三角コライダの作成
 	//CColliderTriangle mColliderTriangle;
 	////三角コライダ２

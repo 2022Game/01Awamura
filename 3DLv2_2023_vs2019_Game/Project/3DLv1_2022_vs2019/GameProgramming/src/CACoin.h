@@ -1,19 +1,22 @@
-#ifndef CENEMY_H
-#define CENEMY_H
+#ifndef CACOIN_H
+#define CACOIN_H
 //キャラクタクラスのインクルード
 #include "CCharacter3.h"
 //コリコリのインクルード
 #include "CCollider.h"
+#include "CColliderMesh.h"
+#include "CColliderTriangle.h"
 /*
 エネミークラス
 キャラクタクラスを継承
 */
-class CEnemy : public CCharacter3 {
+class CACoin : public CCharacter3 {
 private:
 	//コライダ
 	CCollider mCollider1;
 	CCollider mCollider2;
 	CCollider mCollider3;
+	CColliderMesh mColliderMesh;
 public:
 	//衝突処理
 	//Collision(コライダ１、コライダ２）
@@ -21,7 +24,7 @@ public:
 	void Collision();
 	//コンストラクタ
 	//CEnemy(モデル,位置,回転,拡縮）
-	CEnemy(CModel* model, const CVector& position,
+	CACoin(CModel* model, const CVector& position,
 		const CVector& rotation, const CVector& scale);
 	//更新処理
 	void Update();

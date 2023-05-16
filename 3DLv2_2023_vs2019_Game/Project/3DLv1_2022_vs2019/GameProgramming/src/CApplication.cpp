@@ -14,11 +14,13 @@ CCharacterManager CApplication::mCharacterManager;
 #define SOUND_BGM "res\\mario.wav" //BGM音声ファイル
 #define SOUND_OVER "res\\mdai.wav" //ゲームオーバー音声ファイル
 //モデルデータの指定
-#define MODEL_OBJ "res\\coin.obj","res\\coin.mtl"
+#define MODEL_OBJ "res\\Beard_man.obj","res\\Beard_man.mtl"
 //背景モデルデータの指定
 #define MODEL_BACKGROUND "res\\sky.obj","res\\sky.mtl"
 //敵輸送機モデル
 #define MODEL_C5 "res\\f14.obj","res\\f14.mtl"
+//土台Coin
+#define MODEL_FCOIN "res\\Coin.obj","res\\Coin.mtl"
 
 //CTaskManager CApplication::mTaskManager;
 //CTaskManager* CApplication::TaskManager()
@@ -59,8 +61,17 @@ void CApplication::Start()
 	//モデルファイルの入力
 	mModel.Load(MODEL_OBJ);
 	mBackGround.Load(MODEL_BACKGROUND);
+	mModelCoin.Load(MODEL_FCOIN);
 	CMatrix matrix;
 	matrix.Print();
+	new CACoin(&mModelCoin, CVector(0.0f, 0.1f, -5.0f),
+		CVector(), CVector(0.3f, 0.3f, 0.3f));
+	new CACoin(&mModelCoin, CVector(0.0f, 0.1f, -2.0f),
+		CVector(), CVector(0.3f, 0.3f, 0.3f));
+	/*mCoin.Position(CVector(0.2f, 0.2f, 0.0f));
+	mCoin.Position(CVector(0.1f, 0.1f, 0.0f));
+	mCoin.Scale(CVector(1.0f, 0.5f, 1.0f));
+	mCoin.Rotation(CVector(-0.0f, -180.0f, -0.0f));*/
 //	mCharacter.Model(&mModel);
 	//mCharacter.Scale(CVector(0.1f, 0.1f, 0.1f));
 	mPlayer.Model(&mModel);
@@ -81,7 +92,7 @@ void CApplication::Start()
 	//	, CVector(-50.0f, 0.0f, 50.0f));
 	//背景モデルから三角コライダを生成
 	//親インスタンスと親行列はなし
-	mColliderMesh.Set(nullptr, nullptr, &mBackGround);
+	mColliderMesh.Set(nullptr, nullptr, &mBackGround,nullptr);
 }
 
 void CApplication::Update()
