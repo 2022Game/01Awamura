@@ -270,12 +270,13 @@ CAnimation::CAnimation(CModelX* model)
 	for (int i = 0; i <= mKeyNum; i++)
 	{
 		printf("%f\t", mpKey[0].mMatrix.M()[i]);
-		if (i == 3 || i == 7 || i == 11 || i == 15)
+		if (i == 3 || i == 7 || i == 11)
 		{
 			printf("\n");
 		}
-		if (i >= 15)
+		if (i == 15 || strchr(model->Token(), ';'))
 		{
+			printf("\n");
 			break;
 		}
 		/*printf("%f\t", mpKey[10].mMatrix.M()[0]);
