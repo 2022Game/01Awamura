@@ -1,4 +1,5 @@
 #include "CColliderMesh.h"
+#include "CCollisionManager.h"
 
 CColliderMesh::CColliderMesh()
 	:mpColliderTriangles(nullptr)

@@ -32,11 +32,19 @@ CPlayer::CPlayer()
 
 //更新処理
 void CPlayer::Update() {
+	if (mState != EState::EJUMP)
+	{
+		if (mInput.Key('Q'))
+		{
+			mState = EState::EJUMP;
+			jc = 60;
+		}
+	}
 	if (jc > 0)
 	{
 		jc--;
 	}
-	if (mState != EState::EJO)
+	//if (mState != EState::EJO)
 	{
 		if (jc < 45)
 		{
@@ -80,14 +88,6 @@ void CPlayer::Update() {
 	//	//Z軸方向の値を回転させ移動させる
 	//	mPosition = mPosition + VELOCITY5;
 	//}
-	if (mState != EState::EJUMP)
-	{
-		if (mInput.Key('Q')) 
-		{
-			mState = EState::EJUMP;
-			jc = 60;
-		}
-	}
 	//Sキー入力で下向き
 	//if (mInput.Key('S')) {
 	//	//X軸の回転値を減算
@@ -125,7 +125,7 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 			//三角形と線分の衝突判定
 				if (CCollider::CollisionTriangleLine(o, m, &adjust))
 				{
-					if (mState == EState::EJUMP || mState == EState::EMOVE)
+					if (mState == EState::EJUMP || mState == EState::EMOVE || mState == EState::EMOVE)
 					{
 						mState = EState::EJO;
 					}
@@ -137,6 +137,10 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 					mPosition = mPosition + adjust;
 					//行列の更新
 					CTransform::Update();
+					if (CACoin::a == 0)
+					{
+						CACoin::a = 1;
+					}
 				}
 		}
 		break;

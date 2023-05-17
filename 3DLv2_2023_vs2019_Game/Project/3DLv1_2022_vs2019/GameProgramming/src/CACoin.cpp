@@ -85,7 +85,10 @@
 #include "CColliderMesh.h"
 
 //移動速度
-#define VELOCITY CVector(0.0f,0.0f,0.0f)
+#define VELOCITY CVector(0.0f,0.2f,0.0f)
+#define VELOCITY10 CVector(0.02f,0.0f,0.0f)
+
+int CACoin::a,b,c,d;
 
 //コンストラクタ
 //CACoin(モデル、位置、回転、拡縮）
@@ -97,7 +100,11 @@ CACoin::CACoin(CModel* model, const CVector& position,
 	mPosition = position; //位置の設定
 	mRotation = rotation; //回転の設定
 	mScale = scale; //拡縮の設定
-	//mColliderMesh1.Set(nullptr, nullptr, mpModel);
+	mColliderMesh1.Set(this, &mMatrix, mpModel);
+	a = 0;
+	b = 180;
+	c = 0;
+	d = 180;
 }
 
 //更新処理
@@ -105,7 +112,34 @@ void CACoin::Update(){
 	//行列を更新
 	CTransform::Update();
 	//位置を移動
-	mPosition = mPosition + VELOCITY * mMatrixRotate;
+	if (d <= 0)
+	{
+		c++;
+		d = 180;
+	}
+	if (b < 0)
+	{
+//		mPosition = mPosition + VELOCITY10 * mMatrixRotate;
+		b = 0;
+		a = 2;
+	}
+	if (a == 1)
+	{
+		b--;
+		mPosition = mPosition + VELOCITY * mMatrixRotate;
+	}
+	if (a == 2)
+	{
+		d--;
+		if (c % 2 == 0)
+		{
+			mPosition = mPosition + VELOCITY10 * mMatrixRotate;
+		}
+		else
+		{
+			mPosition = mPosition - VELOCITY10 * mMatrixRotate;
+		}
+	}
 }
 
 //衝突処理
@@ -114,31 +148,20 @@ void CACoin::Collision(CCollider* m, CCollider* o) {
 	//相手のコライダタイプの判定
 	switch (o->Type())
 	{
-	case CCollider::ESPHERE://球コライダの時
-		//コライダのmとyが衝突しているか判定
-		if (CCollider::Collision(m, o)) {
-			//エフェクト生成
-			//new CEffect(o->Parent()->Position(), 1.0f, 1.0f, "exp.tga", 4, 4, 2);
-			//衝突している時は無効にする
-			//mEnabled = false;
-		}
-		break;
-	case CCollider::ELINE://三角コライダの時
-		CVector adjust;//調整値
-		if (CCollider::CollisionTriangleSphere(o, m, &adjust))
-		{
-			//衝突しない位置まで戻す
-			mPosition = mPosition + adjust;
+	case CCollider::ETRIANGLE://三角コライダの時
+		if (o->Type() == CCollider::ELINE) {
+			//	CVector adjust;//調整値
+			//if (CCollider::CollisionTriangleLine(o, m, &adjust)) {
+				//	CVector adjust;//調整値
+					//if (CCollider::CollisionTriangleSphere(o, m, &adjust))
+					//{
+					//	//衝突しない位置まで戻す
+					//	mPosition = mPosition + adjust;
+				a = 1;
+				//}
 		}
 		break;
 	}
-	////コライダのmとoが衝突しているか判定
-	//if (CCollider::Collision(m, o)) {
-	//	//エフェクト生成
-	//	new CEffect(o->Parent()->Position(), 1.0f, 1.0f, "exp.tga", 4, 4, 2);
-	//	//衝突しているときは無効にする
-	////	mEnabled = false;
-	//}
 }
 
 void CACoin::Collision()

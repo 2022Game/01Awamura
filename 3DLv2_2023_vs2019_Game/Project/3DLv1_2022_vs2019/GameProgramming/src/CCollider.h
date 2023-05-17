@@ -20,6 +20,7 @@ public:
 		ESPHERE,//球コライダ
 		ETRIANGLE,//三角コライダ
 		ELINE, //線分コライダ
+		EMESH,//Mesh
 	};
 	//CollisionTriangleLine(三角コライダ、線分コライダ、調整値）
 	//return:true(衝突している）false(衝突していない）

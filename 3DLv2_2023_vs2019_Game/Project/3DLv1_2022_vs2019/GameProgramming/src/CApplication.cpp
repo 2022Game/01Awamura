@@ -64,11 +64,15 @@ void CApplication::Start()
 	mModelCoin.Load(MODEL_FCOIN);
 	CMatrix matrix;
 	matrix.Print();
-	new CACoin(&mModelCoin, CVector(0.0f, 0.05f, -4.0f),
+	new CACoin(&mModelCoin, CVector(10.0f, 0.1f, 11.0f),
 		CVector(), CVector(0.3f, 0.3f, 0.3f));
-	new CACoin(&mModelCoin, CVector(0.0f, 0.05f, -7.0f),
+	new CACoin(&mModelCoin, CVector(11.0f, 0.1f, 8.5f),
 		CVector(), CVector(0.3f, 0.3f, 0.3f));
-	new CACoin(&mModelCoin, CVector(0.0f, 0.05f, 1.0f),
+	new CACoin(&mModelCoin, CVector(12.0f, 0.1f, 6.0f),
+		CVector(), CVector(0.3f, 0.3f, 0.3f));
+	new CACoin(&mModelCoin, CVector(11.0f, 0.1f, 3.5f),
+		CVector(), CVector(0.3f, 0.3f, 0.3f));
+	new CACoin(&mModelCoin, CVector(10.0f, 0.1f, 1.0f),
 		CVector(), CVector(0.3f, 0.3f, 0.3f));
 	/*mCoin.Position(CVector(0.2f, 0.2f, 0.0f));
 	mCoin.Position(CVector(0.1f, 0.1f, 0.0f));
@@ -77,7 +81,7 @@ void CApplication::Start()
 //	mCharacter.Model(&mModel);
 	//mCharacter.Scale(CVector(0.1f, 0.1f, 0.1f));
 	mPlayer.Model(&mModel);
-	mPlayer.Position(CVector(10.0f, 50.0f, 0.0f));
+	mPlayer.Position(CVector(10.0f, 5.0f, 0.0f));
 	mPlayer.Scale(CVector(0.5f, 0.5f, 0.5f));
 	mPlayer.Rotation(CVector(-0.0f, -180.0f, -0.0f));
 	//ビルボードの生成
@@ -95,13 +99,14 @@ void CApplication::Start()
 	//背景モデルから三角コライダを生成
 	//親インスタンスと親行列はなし
 	mColliderMesh.Set(nullptr, nullptr, &mBackGround);
-	mColliderMesh.Set(nullptr, nullptr, &mModelCoin);
+	//mColliderMesh.Set(nullptr, nullptr, &mModelCoin);
 }
 
 void CApplication::Update()
 {
 	//タスクマネージャの更新
 	CTaskManager::Instance()->Update();
+	CTaskManager::Instance()->Collision();
 	//頂点１,頂点2,頂点3,法線のデータの作成
 	CVector v0, v1, v2, n;
 	//法線を上向きで設定する
@@ -176,7 +181,7 @@ void CApplication::Update()
 	CTaskManager::Instance()->Render();
 	//子リジョンマネージャの衝突処理
 	// 削除　CCollisionManager::Instance()->Collision();
-	CTaskManager::Instance()->Collision();
+	
 	//コリコリマネマネ描画
 	CCollisionManager::Instance()->Render();
 	spUi->Render(); //UIの描画

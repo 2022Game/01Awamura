@@ -19,6 +19,7 @@ private:
 	CCollider mCollider3;
 	CColliderMesh mColliderMesh1;
 public:
+	static int a;
 	//衝突処理
 	//Collision(コライダ１、コライダ２）
 	void Collision(CCollider* m, CCollider* o);
