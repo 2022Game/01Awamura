@@ -6,6 +6,7 @@
 #include "CCollider.h"
 #include "CColliderMesh.h"
 #include "CColliderTriangle.h"
+#include "CColliderLine.h"
 /*
 エネミークラス
 キャラクタクラスを継承
@@ -16,7 +17,7 @@ private:
 	CCollider mCollider1;
 	CCollider mCollider2;
 	CCollider mCollider3;
-	CColliderMesh mColliderMesh;
+	CColliderMesh mColliderMesh1;
 public:
 	//衝突処理
 	//Collision(コライダ１、コライダ２）

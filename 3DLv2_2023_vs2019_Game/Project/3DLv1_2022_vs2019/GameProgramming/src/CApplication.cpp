@@ -64,9 +64,11 @@ void CApplication::Start()
 	mModelCoin.Load(MODEL_FCOIN);
 	CMatrix matrix;
 	matrix.Print();
-	new CACoin(&mModelCoin, CVector(0.0f, 0.1f, -5.0f),
+	new CACoin(&mModelCoin, CVector(0.0f, 0.05f, -4.0f),
 		CVector(), CVector(0.3f, 0.3f, 0.3f));
-	new CACoin(&mModelCoin, CVector(0.0f, 0.1f, -2.0f),
+	new CACoin(&mModelCoin, CVector(0.0f, 0.05f, -7.0f),
+		CVector(), CVector(0.3f, 0.3f, 0.3f));
+	new CACoin(&mModelCoin, CVector(0.0f, 0.05f, 1.0f),
 		CVector(), CVector(0.3f, 0.3f, 0.3f));
 	/*mCoin.Position(CVector(0.2f, 0.2f, 0.0f));
 	mCoin.Position(CVector(0.1f, 0.1f, 0.0f));
@@ -75,7 +77,7 @@ void CApplication::Start()
 //	mCharacter.Model(&mModel);
 	//mCharacter.Scale(CVector(0.1f, 0.1f, 0.1f));
 	mPlayer.Model(&mModel);
-	mPlayer.Position(CVector(10.0f, 10.0f, 0.0f));
+	mPlayer.Position(CVector(10.0f, 50.0f, 0.0f));
 	mPlayer.Scale(CVector(0.5f, 0.5f, 0.5f));
 	mPlayer.Rotation(CVector(-0.0f, -180.0f, -0.0f));
 	//ビルボードの生成
@@ -92,7 +94,8 @@ void CApplication::Start()
 	//	, CVector(-50.0f, 0.0f, 50.0f));
 	//背景モデルから三角コライダを生成
 	//親インスタンスと親行列はなし
-	mColliderMesh.Set(nullptr, nullptr, &mBackGround,nullptr);
+	mColliderMesh.Set(nullptr, nullptr, &mBackGround);
+	mColliderMesh.Set(nullptr, nullptr, &mModelCoin);
 }
 
 void CApplication::Update()

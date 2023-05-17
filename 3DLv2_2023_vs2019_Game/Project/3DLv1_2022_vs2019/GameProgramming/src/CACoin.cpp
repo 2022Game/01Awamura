@@ -82,12 +82,13 @@
 #include "CACoin.h"
 #include "CCollisionManager.h"
 #include "CEffect.h"
+#include "CColliderMesh.h"
 
 //移動速度
 #define VELOCITY CVector(0.0f,0.0f,0.0f)
 
 //コンストラクタ
-//CEnemy(モデル、位置、回転、拡縮）
+//CACoin(モデル、位置、回転、拡縮）
 CACoin::CACoin(CModel* model, const CVector& position,
 	const CVector& rotation, const CVector& scale)
 {
@@ -96,11 +97,11 @@ CACoin::CACoin(CModel* model, const CVector& position,
 	mPosition = position; //位置の設定
 	mRotation = rotation; //回転の設定
 	mScale = scale; //拡縮の設定
-	mColliderMesh.Set(nullptr, nullptr, mpModel,mPosition);
+	//mColliderMesh1.Set(nullptr, nullptr, mpModel);
 }
 
 //更新処理
-void CACoin::Update() {
+void CACoin::Update(){
 	//行列を更新
 	CTransform::Update();
 	//位置を移動
