@@ -85,8 +85,8 @@
 #include "CColliderMesh.h"
 
 //à⁄ìÆë¨ìx
-#define VELOCITY CVector(0.0f,0.2f,0.0f)
-#define VELOCITY10 CVector(0.02f,0.0f,0.0f)
+#define VELOCITY CVector(0.0f,0.75f,0.0f)
+#define VELOCITY10 CVector(0.01f,0.0f,0.0f)
 
 int CACoin::a,b,c,d;
 
@@ -104,7 +104,7 @@ CACoin::CACoin(CModel* model, const CVector& position,
 	a = 0;
 	b = 180;
 	c = 0;
-	d = 180;
+	d = 480;
 }
 
 //çXêVèàóù
@@ -115,7 +115,7 @@ void CACoin::Update(){
 	if (d <= 0)
 	{
 		c++;
-		d = 180;
+		d = 480;
 	}
 	if (b < 0)
 	{
@@ -128,7 +128,7 @@ void CACoin::Update(){
 		b--;
 		mPosition = mPosition + VELOCITY * mMatrixRotate;
 	}
-	if (a == 2)
+	if (a >= 2)
 	{
 		d--;
 		if (c % 2 == 0)

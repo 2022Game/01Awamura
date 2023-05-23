@@ -64,16 +64,22 @@ void CApplication::Start()
 	mModelCoin.Load(MODEL_FCOIN);
 	CMatrix matrix;
 	matrix.Print();
-	new CACoin(&mModelCoin, CVector(10.0f, 0.1f, 11.0f),
-		CVector(), CVector(0.3f, 0.3f, 0.3f));
-	new CACoin(&mModelCoin, CVector(11.0f, 0.1f, 8.5f),
-		CVector(), CVector(0.3f, 0.3f, 0.3f));
-	new CACoin(&mModelCoin, CVector(12.0f, 0.1f, 6.0f),
-		CVector(), CVector(0.3f, 0.3f, 0.3f));
-	new CACoin(&mModelCoin, CVector(11.0f, 0.1f, 3.5f),
-		CVector(), CVector(0.3f, 0.3f, 0.3f));
+	new CACoin(&mModelCoin, CVector(10.0f, 0.1f, 29.0f),
+		CVector(), CVector(0.8f, 0.8f, 0.8f));
+	new CACoin(&mModelCoin, CVector(11.5f, 0.1f, 22.5f),
+		CVector(), CVector(0.8f, 0.8f, 0.8f));
+	new CACoin(&mModelCoin, CVector(13.0f, 0.1f, 15.0f),
+		CVector(), CVector(0.8f, 0.8f, 0.8f));
+	new CACoin(&mModelCoin, CVector(11.5f, 0.1f, 8.5f),
+		CVector(), CVector(0.8f, 0.8f, 0.8f));
 	new CACoin(&mModelCoin, CVector(10.0f, 0.1f, 1.0f),
-		CVector(), CVector(0.3f, 0.3f, 0.3f));
+		CVector(), CVector(0.8f, 0.8f, 0.8f));
+	new CACoin(&mModelCoin, CVector(8.5f, 0.1f, 36.5f),
+		CVector(), CVector(0.8f, 0.8f, 0.8f));
+	new CACoin(&mModelCoin, CVector(7.0f, 0.1f, 43.0f),
+		CVector(), CVector(0.8f, 0.8f, 0.8f));
+	new CACoin(&mModelCoin, CVector(8.5f, 0.1f, 50.5f),
+		CVector(), CVector(0.8f, 0.8f, 0.8f));
 	/*mCoin.Position(CVector(0.2f, 0.2f, 0.0f));
 	mCoin.Position(CVector(0.1f, 0.1f, 0.0f));
 	mCoin.Scale(CVector(1.0f, 0.5f, 1.0f));
@@ -83,7 +89,7 @@ void CApplication::Start()
 	mPlayer.Model(&mModel);
 	mPlayer.Position(CVector(10.0f, 5.0f, 0.0f));
 	mPlayer.Scale(CVector(0.5f, 0.5f, 0.5f));
-	mPlayer.Rotation(CVector(-0.0f, -180.0f, -0.0f));
+	mPlayer.Rotation(CVector(0.0f, 0.0f, 0.0f));
 	//ビルボードの生成
 	/*new CBillBoard(CVector(-6.0f, 3.0f, -10.0f), 1.0f, 1.0f);*/
 	//三角コライダの確認
