@@ -16,9 +16,11 @@ public:
 		EPLAYER,	//プレイヤー
 		ETURN,		//折り返し
 		EBLOCK,		//ブロック
+		ECOIN,
 	};
 	enum class EState	//状態
 	{
+		ECOIN,
 		EMOVE,	//移動
 		ESTOP,	//停止
 		EJUMP,	//ジャンプ

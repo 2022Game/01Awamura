@@ -15,10 +15,14 @@ public:
 	void ChangePriority(int priority);
 	//優先度の変更
 	virtual void ChangePriority();
+	enum ETag {
+		ECOIN,
+	};
 	//コライダタイプ
 	enum EType {
 		ESPHERE,//球コライダ
 		ETRIANGLE,//三角コライダ
+		ETRIANGLE2,
 		ELINE, //線分コライダ
 		EMESH,//Mesh
 	};
@@ -42,6 +46,7 @@ public:
 	void Render();
 	~CCollider();
 	int Type();
+	int Tag();
 	//CollisionTriangleSphere(三角コライダ、球コライダ、調整値）
 	//return:true(衝突している）false(衝突していない）
 	//調整値:衝突しない位置まで戻す値

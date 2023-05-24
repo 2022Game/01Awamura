@@ -1,25 +1,25 @@
-#ifndef CCOLLIDERMESH_H
-#define CCOLLIDERMESH_H
+#ifndef CCOLLIDERMESH1_H
+#define CCOLLIDERMESH1_H
 #include "CModel.h"
-#include "CColliderTriangle.h"
+#include "CColliderTriangle1.h"
 #include "CCollider.h"
 
 /*
 モデルデータから三角コライダの生成
 */
-class CColliderMesh
+class CColliderMesh1
 {
 public:
 	void ChangePriority();
-	CColliderMesh();
-	~CColliderMesh();
+	CColliderMesh1();
+	~CColliderMesh1();
 	//Set（親、親行列、モデル）
 	//モデルから三角コライダの生成
 	void Set(CCharacter3* parent, CMatrix* matrix, CModel* model);
 private:
 	//三角コライダの配列生成
-	CColliderTriangle* mpColliderTriangles;
+	CColliderTriangle1* mpColliderTriangles1;
 	//三角コライダの配列の要素数
-	int mTrianglesCount;
+	int mTrianglesCount1;
 };
 #endif

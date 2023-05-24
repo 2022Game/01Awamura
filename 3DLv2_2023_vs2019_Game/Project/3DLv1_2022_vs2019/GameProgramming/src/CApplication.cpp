@@ -21,6 +21,8 @@ CCharacterManager CApplication::mCharacterManager;
 #define MODEL_C5 "res\\f14.obj","res\\f14.mtl"
 //土台Coin
 #define MODEL_FCOIN "res\\Coin.obj","res\\Coin.mtl"
+//ハンマーリンゴ
+#define MODEL_FHAMAH "res\\apple2.obj","res\\apple2.mtl"
 
 //CTaskManager CApplication::mTaskManager;
 //CTaskManager* CApplication::TaskManager()
@@ -62,6 +64,7 @@ void CApplication::Start()
 	mModel.Load(MODEL_OBJ);
 	mBackGround.Load(MODEL_BACKGROUND);
 	mModelCoin.Load(MODEL_FCOIN);
+	mModelHamah.Load(MODEL_FHAMAH);
 	CMatrix matrix;
 	matrix.Print();
 	new CACoin(&mModelCoin, CVector(10.0f, 0.1f, 29.0f),
@@ -76,9 +79,15 @@ void CApplication::Start()
 		CVector(), CVector(0.8f, 0.8f, 0.8f));
 	new CACoin(&mModelCoin, CVector(8.5f, 0.1f, 36.5f),
 		CVector(), CVector(0.8f, 0.8f, 0.8f));
-	new CACoin(&mModelCoin, CVector(7.0f, 0.1f, 43.0f),
+	new CAHamah(&mModelHamah, CVector(10.0f, 24.6f, 8.5f),
 		CVector(), CVector(0.8f, 0.8f, 0.8f));
-	new CACoin(&mModelCoin, CVector(8.5f, 0.1f, 50.5f),
+	new CAHamah(&mModelHamah, CVector(11.5f, 24.6f, 15.5f),
+		CVector(), CVector(0.8f, 0.8f, 0.8f));
+	new CAHamah(&mModelHamah, CVector(13.0f, 24.6f, 22.5f),
+		CVector(), CVector(0.8f, 0.8f, 0.8f));
+	new CAHamah(&mModelHamah, CVector(11.5f, 24.6f, 29.5f),
+		CVector(), CVector(0.8f, 0.8f, 0.8f));
+	new CAHamah(&mModelHamah, CVector(10.0f, 24.6f, 36.5f),
 		CVector(), CVector(0.8f, 0.8f, 0.8f));
 	/*mCoin.Position(CVector(0.2f, 0.2f, 0.0f));
 	mCoin.Position(CVector(0.1f, 0.1f, 0.0f));
@@ -87,7 +96,7 @@ void CApplication::Start()
 //	mCharacter.Model(&mModel);
 	//mCharacter.Scale(CVector(0.1f, 0.1f, 0.1f));
 	mPlayer.Model(&mModel);
-	mPlayer.Position(CVector(10.0f, 5.0f, 0.0f));
+	mPlayer.Position(CVector(10.0f, 1.0f, 0.0f));
 	mPlayer.Scale(CVector(0.5f, 0.5f, 0.5f));
 	mPlayer.Rotation(CVector(0.0f, 0.0f, 0.0f));
 	//ビルボードの生成

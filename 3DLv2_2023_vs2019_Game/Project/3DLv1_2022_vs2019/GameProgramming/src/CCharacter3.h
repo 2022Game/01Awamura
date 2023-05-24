@@ -20,6 +20,7 @@ public:
 		EENEMY, //敵
 		EBULLETPLAYER, //プレイヤー弾
 		EBULLETENEMY, //敵弾
+		ECOIN,
 	};
 	//タグの取得
 	ETag Tag();

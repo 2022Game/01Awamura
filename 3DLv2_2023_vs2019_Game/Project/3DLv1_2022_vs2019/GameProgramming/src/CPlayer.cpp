@@ -35,7 +35,7 @@ CPlayer::CPlayer()
 void CPlayer::Update() {
 	if (mState != EState::EJUMP)
 	{
-		if (mInput.Key('Q'))
+		if (mInput.Key(VK_SPACE))
 		{
 			mState = EState::EJUMP;
 			jc = 60;
@@ -142,7 +142,17 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 					{
 						CACoin::a = 1;
 					}
+					CACoin::mD++;
 				}
+		}
+		if (o->Type() == CCollider::ETRIANGLE2) {
+			CVector adjust;//調整用ベクトル
+			if (CCollider::CollisionTriangleLine(o, m, &adjust))
+			{
+				mPosition = mPosition + adjust;
+				//行列の更新
+				CTransform::Update();
+			}
 		}
 		break;
 	}

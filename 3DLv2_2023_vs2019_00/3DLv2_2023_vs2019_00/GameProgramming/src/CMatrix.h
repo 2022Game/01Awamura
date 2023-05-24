@@ -50,7 +50,16 @@ public:
 	//*演算子のオーバーロード
 	//CMatrix * CMatrix の演算結果を返す
 	const CMatrix operator*(const CMatrix& m) const;
-	//
+	//*演算子のオーバーロード
+	//CMatrix*floatの演算結果を返す
+	CMatrix operator*(const float& x);
+	//+演算子のオーバーロード
+	//CMatrix1 + CMatrix2の演算結果を返す
+	CMatrix operator+(const CMatrix& m);
+	/*+=演算子のオーバーロード
+	CMatrix1 += CMatrix2の演算結果を行う*/
+	void operator+=(const CMatrix& m);
+	
 	float* M() const;
 private:
 	//4×4の行列データを設定

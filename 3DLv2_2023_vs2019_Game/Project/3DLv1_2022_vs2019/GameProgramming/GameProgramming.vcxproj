@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="src\CACoin.cpp" />
     <ClCompile Include="src\CAGround.cpp" />
+    <ClCompile Include="src\CAHamah.cpp" />
     <ClCompile Include="src\CApplication.cpp" />
     <ClCompile Include="src\CBillBoard.cpp" />
     <ClCompile Include="src\CBlock.cpp" />
@@ -24,7 +25,9 @@
     <ClCompile Include="src\CCollider.cpp" />
     <ClCompile Include="src\CColliderLine.cpp" />
     <ClCompile Include="src\CColliderMesh.cpp" />
+    <ClCompile Include="src\CColliderMesh1.cpp" />
     <ClCompile Include="src\CColliderTriangle.cpp" />
+    <ClCompile Include="src\CColliderTriangle1.cpp" />
     <ClCompile Include="src\CCollisionManager.cpp" />
     <ClCompile Include="src\CEffect.cpp" />
     <ClCompile Include="src\CEnemy.cpp" />
@@ -53,6 +56,7 @@
   <ItemGroup>
     <ClInclude Include="src\CACoin.h" />
     <ClInclude Include="src\CAGround.h" />
+    <ClInclude Include="src\CAHamah.h" />
     <ClInclude Include="src\CApplication.h" />
     <ClInclude Include="src\CBillBoard.h" />
     <ClInclude Include="src\CBlock.h" />
@@ -64,7 +68,9 @@
     <ClInclude Include="src\CCollider.h" />
     <ClInclude Include="src\CColliderLine.h" />
     <ClInclude Include="src\CColliderMesh.h" />
+    <ClInclude Include="src\CColliderMesh1.h" />
     <ClInclude Include="src\CColliderTriangle.h" />
+    <ClInclude Include="src\CColliderTriangle1.h" />
     <ClInclude Include="src\CCollisionManager.h" />
     <ClInclude Include="src\CEffect.h" />
     <ClInclude Include="src\CEnemy.h" />
@@ -91,6 +97,7 @@
     <ClInclude Include="src\CVector.h" />
     <ClInclude Include="src\CVertex.h" />
     <ClInclude Include="src\main.h" />
+    <ClInclude Include="src\ヘッダー1.h" />
     <ClInclude Include="ヘッダー.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
