@@ -129,7 +129,7 @@ class CModelXFrame {
 	friend CAnimation;
 	friend CAnimationSet;
 public:
-	bool Index();
+	int Index();
 	void Render();
 	//コンストラクタ
 	CModelXFrame(CModelX* model);

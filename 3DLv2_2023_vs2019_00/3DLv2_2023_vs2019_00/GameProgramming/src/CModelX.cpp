@@ -181,13 +181,32 @@ void CModelX::AnimateFrame() {
 		if (animSet->mWeight == 0)continue;
 		animSet->AnimateMatrix(this);
 	}
-//#ifdef _DEBUG
-//	for (int j =1; j < 5; j++)
-//	{
-//		printf("%s\t", mFrame[j]->mpName);
-//		printf("%f\t", mFrame[0]->mTransformMatrix.M()[0]);
-//	}
-//#endif
+#ifdef _DEBUG
+	for (int j =1; j < 5; j++)
+	{
+		printf("Frame:""%s\n", mFrame[j]->mpName);
+		printf("%f\t", mFrame[j]->mTransformMatrix.M()[0]);
+		printf("%f\t", mFrame[j]->mTransformMatrix.M()[1]);
+		printf("%f\t", mFrame[j]->mTransformMatrix.M()[2]);
+		printf("%f\n", mFrame[j]->mTransformMatrix.M()[3]);
+		printf("%f\t", mFrame[j]->mTransformMatrix.M()[4]);
+		printf("%f\t", mFrame[j]->mTransformMatrix.M()[5]);
+		printf("%f\t", mFrame[j]->mTransformMatrix.M()[6]);
+		printf("%f\n", mFrame[j]->mTransformMatrix.M()[7]);
+		printf("%f\t", mFrame[j]->mTransformMatrix.M()[8]);
+		printf("%f\t", mFrame[j]->mTransformMatrix.M()[9]);
+		printf("%f\t", mFrame[j]->mTransformMatrix.M()[10]);
+		printf("%f\n", mFrame[j]->mTransformMatrix.M()[11]);
+		printf("%f\t", mFrame[j]->mTransformMatrix.M()[12]);
+		printf("%f\t", mFrame[j]->mTransformMatrix.M()[13]);
+		printf("%f\t", mFrame[j]->mTransformMatrix.M()[14]);
+		printf("%f\n", mFrame[j]->mTransformMatrix.M()[15]);
+		if (j == 4)
+		{
+			printf("");
+		}
+	}
+#endif
 }
 
 std::vector<CAnimation*>& CAnimationSet::Animation()
@@ -227,10 +246,10 @@ CSkinWeights::~CSkinWeights()
 	SAFE_DELETE_ARRAY(mpWeight);
 }
 
-bool CModelXFrame::Index()
-{
-	return mIndex;
-}
+//bool CModelXFrame::Index()
+//{
+//	return CModelXFrame::mIndex;
+//}
 
 /*
 FinedFrame(フレーム名）
@@ -250,6 +269,12 @@ CModelXFrame* CModelX::FindFrame(char* name) {
 	//一致するフレームが無い場合はnullptrを返す
 	return nullptr;
 }
+
+int CModelXFrame::Index()
+{
+	return mIndex;
+}
+
 CAnimation::CAnimation(CModelX* model)
 	:mpFrameName(0)
 	,mFrameIndex(0)

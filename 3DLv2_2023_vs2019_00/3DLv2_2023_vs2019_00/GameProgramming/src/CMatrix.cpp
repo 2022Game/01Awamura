@@ -196,39 +196,39 @@ CMatrix CMatrix::Quaternion(float x, float y, float z, float w) {
 //*演算子のオーバーロード
 //CMatrix * floatの演算結果を返す
 CMatrix CMatrix::operator*(const float& x) {
-	CMatrix f;
+	CMatrix w;
 	for (int i = 0; i < 4; i++)
 	{
-		f.mM[i][0] = mM[i][0] * x;
-		f.mM[i][1] = mM[i][1] * x;
-		f.mM[i][2] = mM[i][2] * x;
-		f.mM[i][3] = mM[i][3] * x;
+		w.mM[i][0] = mM[i][0] * x;
+		w.mM[i][1] = mM[i][1] * x;
+		w.mM[i][2] = mM[i][2] * x;
+		w.mM[i][3] = mM[i][3] * x;
 	}
-	return f;
+	return w;
 }
 
 //+演算子のオーバーロード
 //CMatrix1 + CMatrix2 の演算結果を返す
 CMatrix CMatrix::operator+(const CMatrix& m){
-	CMatrix t;
+	CMatrix q;
 	for (int i = 0; i < 4; i++)
 	{
-		t.mM[i][0] = mM[i][0] + mM[i][0];
-		t.mM[i][1] = mM[i][0] + mM[i][0];
-		t.mM[i][2] = mM[i][0] + mM[i][0];
-		t.mM[i][3] = mM[i][0] + mM[i][0];
+		q.mM[i][0] = mM[i][0] + m.mM[i][0];
+		q.mM[i][1] = mM[i][1] + m.mM[i][1];
+		q.mM[i][2] = mM[i][2] + m.mM[i][2];
+		q.mM[i][3] = mM[i][3] + m.mM[i][3];
 	}
-	return t;
+	return q;
 }
 //+=演算子のオーバーロード
 //CMatrix1 += CMatrix2 の演算
 void CMatrix::operator += (const CMatrix& m){
-	CMatrix t;
+	CMatrix t,f;
 	for (int i = 0; i < 4; i++)
 	{
-		t.mM[i][0] = mM[i][0];
-		t.mM[i][1] = mM[i][0];
-		t.mM[i][2] = mM[i][0];
-		t.mM[i][3] = mM[i][0];
+		mM[i][0] = mM[i][0] + m.mM[i][0];
+		mM[i][1] = mM[i][1] + m.mM[i][1];
+		mM[i][2] = mM[i][2] + m.mM[i][2];
+		mM[i][3] = mM[i][3] + m.mM[i][3];
 	}
 }
