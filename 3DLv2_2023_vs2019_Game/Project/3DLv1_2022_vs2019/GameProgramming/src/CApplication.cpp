@@ -63,38 +63,21 @@ void CApplication::Start()
 	//モデルファイルの入力
 	mModel.Load(MODEL_OBJ);
 	mBackGround.Load(MODEL_BACKGROUND);
-	mModelCoin.Load(MODEL_FCOIN);
+	//mModelCoin.Load(MODEL_FCOIN);
 	mModelHamah.Load(MODEL_FHAMAH);
 	CMatrix matrix;
 	matrix.Print();
-	new CACoin(&mModelCoin, CVector(10.0f, 0.1f, 29.0f),
-		CVector(), CVector(0.8f, 0.8f, 0.8f));
-	new CACoin(&mModelCoin, CVector(11.5f, 0.1f, 22.5f),
-		CVector(), CVector(0.8f, 0.8f, 0.8f));
-	new CACoin(&mModelCoin, CVector(13.0f, 0.1f, 15.0f),
-		CVector(), CVector(0.8f, 0.8f, 0.8f));
-	new CACoin(&mModelCoin, CVector(11.5f, 0.1f, 8.5f),
-		CVector(), CVector(0.8f, 0.8f, 0.8f));
-	new CACoin(&mModelCoin, CVector(10.0f, 0.1f, 1.0f),
-		CVector(), CVector(0.8f, 0.8f, 0.8f));
-	new CACoin(&mModelCoin, CVector(8.5f, 0.1f, 36.5f),
-		CVector(), CVector(0.8f, 0.8f, 0.8f));
-	new CAHamah(&mModelHamah, CVector(10.0f, 24.6f, 8.5f),
-		CVector(), CVector(0.8f, 0.8f, 0.8f));
-	new CAHamah(&mModelHamah, CVector(11.5f, 24.6f, 15.5f),
-		CVector(), CVector(0.8f, 0.8f, 0.8f));
-	new CAHamah(&mModelHamah, CVector(13.0f, 24.6f, 22.5f),
-		CVector(), CVector(0.8f, 0.8f, 0.8f));
-	new CAHamah(&mModelHamah, CVector(11.5f, 24.6f, 29.5f),
-		CVector(), CVector(0.8f, 0.8f, 0.8f));
-	new CAHamah(&mModelHamah, CVector(10.0f, 24.6f, 36.5f),
-		CVector(), CVector(0.8f, 0.8f, 0.8f));
-	/*mCoin.Position(CVector(0.2f, 0.2f, 0.0f));
-	mCoin.Position(CVector(0.1f, 0.1f, 0.0f));
-	mCoin.Scale(CVector(1.0f, 0.5f, 1.0f));
-	mCoin.Rotation(CVector(-0.0f, -180.0f, -0.0f));*/
-//	mCharacter.Model(&mModel);
-	//mCharacter.Scale(CVector(0.1f, 0.1f, 0.1f));
+
+	// コインギミックはCACoinGimmick内にまとめる
+	mpCoinGimmick = new CACoinGimmick();
+
+	//ランダムでAならハマーを出す（予定）
+	mpHamahGimmick = new CAHamahGimmick();
+
+	//ランダムでBなら移動床を出す。
+	
+	//	mCharacter.Model(&mModel);
+		//mCharacter.Scale(CVector(0.1f, 0.1f, 0.1f));
 	mPlayer.Model(&mModel);
 	mPlayer.Position(CVector(10.0f, 1.0f, 0.0f));
 	mPlayer.Scale(CVector(0.5f, 0.5f, 0.5f));
@@ -119,6 +102,15 @@ void CApplication::Start()
 
 void CApplication::Update()
 {
+	if (mInput.Key(VK_RETURN))
+	{
+		if (mpCoinGimmick != nullptr)
+		{
+			delete mpCoinGimmick;
+			mpCoinGimmick = nullptr;
+		}
+	}
+
 	//タスクマネージャの更新
 	CTaskManager::Instance()->Update();
 	CTaskManager::Instance()->Collision();
@@ -166,7 +158,7 @@ void CApplication::Update()
 	//mCharacter.Render();
 	//mPlayer.Update();
 	//カメラのパラメータを作成する
-	CVector e,c,u;//視点、注視点、上方向
+	CVector e, c, u;//視点、注視点、上方向
 	//視点を求める
 	e = mPlayer.Position() + (CVector(-0.2f, 1.0f, -3.0f)) * mPlayer.MatrixRotate();
 	//注視点を求める
@@ -196,7 +188,7 @@ void CApplication::Update()
 	CTaskManager::Instance()->Render();
 	//子リジョンマネージャの衝突処理
 	// 削除　CCollisionManager::Instance()->Collision();
-	
+
 	//コリコリマネマネ描画
 	CCollisionManager::Instance()->Render();
 	spUi->Render(); //UIの描画

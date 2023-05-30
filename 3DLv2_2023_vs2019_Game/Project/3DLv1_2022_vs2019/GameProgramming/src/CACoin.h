@@ -11,7 +11,7 @@
 エネミークラス
 キャラクタクラスを継承
 */
-class CACoin : public CCharacter3{
+class CACoin : public CCharacter3 {
 private:
 	//コライダ
 	CCollider mCollider1;
@@ -19,8 +19,11 @@ private:
 	CCollider mCollider3;
 	CColliderMesh mColliderMesh1;
 public:
-	static int a;
-	static int mD;
+	int SCount;
+	int UpCount;
+	int SideChengeCount;
+	int SideCount;
+	//static int mD;
 	//衝突処理
 	//Collision(コライダ１、コライダ２）
 	void Collision(CCollider* m, CCollider* o);

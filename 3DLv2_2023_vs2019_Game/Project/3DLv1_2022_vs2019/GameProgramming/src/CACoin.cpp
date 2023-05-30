@@ -1,83 +1,4 @@
-//#include "CACoin.h"
-//
-//#include "CTaskManager.h"
-//#include "CApplication.h"
-//#include "CCollisionManager.h"
-//
-//#define ROTATION_YV CVector(0.0f,1.0f,0.0f) //回転速度
-//#define VELOCITY CVector(0.0f,0.0f,0.05f) //移動速度
-//#define VELOCITY1 CVector(0.0f,0.2f,0.0f) //移動速度
-//#define VELOCITY2 CVector(0.0f,0.05f,0.0f) //移動速度
-//#define VELOCITY3 CVector(0.0f,0.2f,0.0f) //移動速
-//#define ROTATION_XV CVector(1.0f,0.0f,0.0f) //回転速度
-//
-////CPlayer(位置、回転、スケール）
-//CACoin::CACoin(const CVector& pos, const CVector& rot, const CVector& scale)
-//	: jc(0)
-//	, n(0)
-//{
-//	CTransform::Update(pos, rot, scale);//行列の更新
-//}
-//
-//CACoin::CACoin()
-//	/*: mLine(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), CVector(0.0f, 2.0f, 0.0f))
-//	, mLine2(this, &mMatrix, CVector(-0.5f, 1.2f, 0.0f), CVector(0.5f, 1.2f, 0.0f))
-//	, mLine3(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), CVector(0.0f, 0.0f, 0.0f))*/
-//{
-//	//インスタンスの設定
-//	spInstance = this;
-//}
-//
-////更新処理
-//void CACoin::Update() {
-//	//変換行列の更新
-//	CTransform::Update();
-//	//Ui設定
-//	CApplication::Ui()->PosY(mPosition.Y());
-//	CApplication::Ui()->RotX(mRotation.X());
-//	CApplication::Ui()->RotY(mRotation.Y());
-//	mPosition = mPosition + VELOCITY;
-//}
-//
-//void CACoin::Collision(CCollider* m, CCollider* o) {
-//	//自身のコライダタイプの判定
-//	switch (m->Type()) {
-//	case CCollider::ETRIANGLE://線分コライダ
-//		//相手のコライダが三角コライダの時
-//		if (o->Type() == CCollider::ELINE) {
-//			CVector adjust;//調整用ベクトル
-//			//三角形と線分の衝突判定
-//			if (CCollider::CollisionTriangleLine(o, m, &adjust))
-//			{
-//				//位置の更新(mPosition + adjust)
-//				mPosition = mPosition + adjust;
-//				//行列の更新
-//				CTransform::Update();
-//			}
-//		}
-//		break;
-//	}
-//}
-//
-////衝突処理
-//void CACoin::Collision()
-//{
-//	//コライダの優先度変更
-//	mLine.ChangePriority();
-//	mLine2.ChangePriority();
-//	mLine3.ChangePriority();
-//	//衝突処理を実行
-//	CCollisionManager::Instance()->Collision(&mLine, COLLISIONRANGE);
-//	CCollisionManager::Instance()->Collision(&mLine2, COLLISIONRANGE);
-//	CCollisionManager::Instance()->Collision(&mLine3, COLLISIONRANGE);
-//}
-//
-//CACoin* CACoin::spInstance = nullptr;
-//
-//CACoin* CACoin::Instance()
-//{
-//	return spInstance;
-//}
+
 
 #include "CACoin.h"
 #include "CCollisionManager.h"
@@ -88,8 +9,7 @@
 #define VELOCITY CVector(0.0f,0.75f,0.0f)
 #define VELOCITY10 CVector(0.05f,0.0f,0.0f)
 
-int CACoin::a,b,c,d;
-int CACoin::mD;
+//int CACoin::mD;
 
 //コンストラクタ
 //CACoin(モデル、位置、回転、拡縮）
@@ -102,14 +22,14 @@ CACoin::CACoin(CModel* model, const CVector& position,
 	mRotation = rotation; //回転の設定
 	mScale = scale; //拡縮の設定
 	mColliderMesh1.Set(this, &mMatrix, mpModel);
-	a = 0;
-	b = 180;
-	c = 0;
-	d = 300;
+	SCount = 0;
+	UpCount = 180 / 6;
+	SideChengeCount = 0;
+	SideCount = 300 / 6;
 }
 
 //更新処理
-void CACoin::Update(){
+void CACoin::Update() {
 	/*if (mD == 150)
 	{
 		mEnabled = false;
@@ -117,26 +37,26 @@ void CACoin::Update(){
 	//行列を更新
 	CTransform::Update();
 	//位置を移動
-	if (d <= 0)
+	if (SideCount <= 0)
 	{
-		c++;
-		d = 480;
+		SideChengeCount++;
+		SideCount = 480 / 6;
 	}
-	if (b < 0)
+	if (UpCount < 0)
 	{
-//		mPosition = mPosition + VELOCITY10 * mMatrixRotate;
-		b = 0;
-		a = 2;
+		//		mPosition = mPosition + VELOCITY10 * mMatrixRotate;
+		UpCount = 0;
+		SCount = 2;
 	}
-	if (a == 1)
+	if (SCount == 1)
 	{
-		b--;
+		UpCount--;
 		mPosition = mPosition + VELOCITY * mMatrixRotate;
 	}
-	if (a >= 2)
+	if (SCount >= 2)
 	{
-		d--;
-		if (c % 2 == 0)
+		SideCount--;
+		if (SideChengeCount % 2 == 0)
 		{
 			mPosition = mPosition + VELOCITY10 * mMatrixRotate;
 		}

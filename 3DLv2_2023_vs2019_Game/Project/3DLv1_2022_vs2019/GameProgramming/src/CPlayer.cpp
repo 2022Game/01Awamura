@@ -138,11 +138,11 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 					mPosition = mPosition + adjust;
 					//s—ñ‚ÌXV
 					CTransform::Update();
-					if (CACoin::a == 0)
+					/*if (CACoin::a == 0)
 					{
 						CACoin::a = 1;
 					}
-					CACoin::mD++;
+					CACoin::mD++;*/
 				}
 		}
 		if (o->Type() == CCollider::ETRIANGLE2) {

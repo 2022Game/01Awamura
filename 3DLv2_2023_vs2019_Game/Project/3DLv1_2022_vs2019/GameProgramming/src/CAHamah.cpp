@@ -6,8 +6,6 @@
 #define VELOCITY CVector(0.0f,0.0f,0.0f)
 #define VELOCITY10 CVector(0.20f,0.0f,0.0f)
 
-int ha, hb, hc, hd;
-
 //コンストラクタ
 //CAHamah(モデル、位置、回転、拡縮）
 CAHamah::CAHamah(CModel* model, const CVector& position,
@@ -20,39 +18,25 @@ CAHamah::CAHamah(CModel* model, const CVector& position,
 	mScale = scale; //拡縮の設定
 	mColliderMesh2.Set(this, &mMatrix, mpModel);
 	ha = 0;
-	hb = 180;
-	hc = 0;
-	hd = 280;
+	hb = 40;
 }
 
 void CAHamah::Update() {
 	//行列を更新
 	CTransform::Update();
-	hd--;
-	if (hb > 0)
+	hb--;
+	if (hb == 0)
 	{
-		hb--;
-
+		ha++;
+		hb = 60;
+	}
+	if (ha % 2 == 0)
+	{
+		mPosition = mPosition + VELOCITY10 * mMatrixRotate;
 	}
 	else
 	{
-		hb = 0;
-	}
-	if (hb == 0)
-	{
-		if (hd <= 0)
-		{
-			hc++;
-			hd = 240;
-		}
-		if (hc % 2 == 0)
-		{
-			mPosition = mPosition - VELOCITY10 * mMatrixRotate;
-		}
-		else
-		{
-			mPosition = mPosition + VELOCITY10 * mMatrixRotate;
-		}
+		mPosition = mPosition - VELOCITY10 * mMatrixRotate;
 	}
 }
 

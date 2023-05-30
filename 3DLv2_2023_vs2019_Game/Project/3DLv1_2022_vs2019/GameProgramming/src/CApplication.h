@@ -7,7 +7,9 @@
 #include "CEnemy3.h"
 #include "CPlayer.h"
 #include "CACoin.h"
+#include "CACoinGimmick.h"
 #include "CAHamah.h"
+#include "CAHamahGimmick.h"
 #include "CInput.h"
 #include "CFont.h"
 #include "CMiss.h"
@@ -44,12 +46,12 @@ private:
 		EOVER,	//ゲームオーバー
 	};
 	EState mState;
-//	CCharacter mRectangle;
+	//	CCharacter mRectangle;
 	CPlayer* mpPlayer;
 	static CTexture mTexture;
 	CEnemy* mpEnemy;
 	CBillBoard* mpBillBoard;
-//	CBullet* mpBullet;
+	//	CBullet* mpBullet;
 	CInput mInput;
 	CFont mFont;
 	CMiss* mpMiss;
@@ -78,6 +80,9 @@ private:
 	//CColliderTriangle mColliderTriangle2;
 	//モデルからコライダを生成
 	CColliderMesh mColliderMesh;
+
+	CACoinGimmick* mpCoinGimmick;
+	CAHamahGimmick* mpHamahGimmick;
 public:
 	~CApplication();
 	int Init();

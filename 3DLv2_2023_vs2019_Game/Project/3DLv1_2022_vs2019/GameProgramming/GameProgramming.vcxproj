@@ -12,8 +12,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CACoin.cpp" />
-    <ClCompile Include="src\CAGround.cpp" />
+    <ClCompile Include="src\CACoinGimmick.cpp" />
     <ClCompile Include="src\CAHamah.cpp" />
+    <ClCompile Include="src\CAHamahGimmick.cpp" />
     <ClCompile Include="src\CApplication.cpp" />
     <ClCompile Include="src\CBillBoard.cpp" />
     <ClCompile Include="src\CBlock.cpp" />
@@ -55,8 +56,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\CACoin.h" />
-    <ClInclude Include="src\CAGround.h" />
+    <ClInclude Include="src\CACoinGimmick.h" />
     <ClInclude Include="src\CAHamah.h" />
+    <ClInclude Include="src\CAHamahGimmick.h" />
     <ClInclude Include="src\CApplication.h" />
     <ClInclude Include="src\CBillBoard.h" />
     <ClInclude Include="src\CBlock.h" />
