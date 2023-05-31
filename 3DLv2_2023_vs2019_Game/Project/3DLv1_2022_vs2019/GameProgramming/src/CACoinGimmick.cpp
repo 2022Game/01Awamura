@@ -11,6 +11,7 @@ CACoinGimmick::CACoinGimmick()
 
 	// タスクマネージャーに自身を追加
 	CTaskManager::Instance()->Add(this);
+	
 }
 
 CACoinGimmick::~CACoinGimmick()
@@ -41,35 +42,26 @@ void CACoinGimmick::Init()
 
 	// コインを生成
 	//ステージ１
-	CreateCoinEnd(CVector(8.5f, 0.1f, 38.5f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 	CreateCoin(CVector(10.0f, 0.1f, 31.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 	CreateCoin(CVector(11.5f, 0.1f, 23.5f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 	CreateCoin(CVector(13.0f, 0.1f, 16.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 	CreateCoin(CVector(11.5f, 0.1f, 8.5f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	CreateCoin(CVector(10.0f, 0.1f, 1.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	//ステージ２
-	CreateCoin(CVector(10.0f, 0.1f, 76.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	CreateCoin(CVector(11.5f, 0.1f, 68.5f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	CreateCoin(CVector(13.0f, 0.1f, 61.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	CreateCoin(CVector(11.5f, 0.1f, 53.5f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	CreateCoin(CVector(10.0f, 0.1f, 46.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	//ステージ３
-	CreateCoin(CVector(10.0f, 0.1f, 76.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	CreateCoin(CVector(11.5f, 0.1f, 68.5f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	CreateCoin(CVector(13.0f, 0.1f, 61.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	CreateCoin(CVector(11.5f, 0.1f, 53.5f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	CreateCoin(CVector(10.0f, 0.1f, 46.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	CreateCoin(CVector(10.0f, 0.1f, 3.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	////ステージ２
+	//CreateCoin(CVector(10.0f, 0.1f, 76.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	//CreateCoin(CVector(11.5f, 0.1f, 68.5f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	//CreateCoin(CVector(13.0f, 0.1f, 61.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	//CreateCoin(CVector(11.5f, 0.1f, 53.5f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	//CreateCoin(CVector(10.0f, 0.1f, 46.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	////ステージ３
+	//CreateCoin(CVector(10.0f, 0.1f, 76.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	//CreateCoin(CVector(11.5f, 0.1f, 68.5f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	//CreateCoin(CVector(13.0f, 0.1f, 61.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	//CreateCoin(CVector(11.5f, 0.1f, 53.5f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	//CreateCoin(CVector(10.0f, 0.1f, 46.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 }
 
 void CACoinGimmick::CreateCoin(CVector& pos, CVector& rot, CVector& scale)
-{
-	if (mpCoinModel == nullptr) return;
-
-	// コインを生成してリストに追加
-	CACoin* coin = new CACoin(mpCoinModel, pos, rot, scale);
-	mCoins.push_back(coin);
-}
-void CACoinGimmick::CreateCoinEnd(CVector& pos, CVector& rot, CVector& scale)
 {
 	if (mpCoinModel == nullptr) return;
 

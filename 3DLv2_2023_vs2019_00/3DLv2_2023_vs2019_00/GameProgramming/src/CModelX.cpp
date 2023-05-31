@@ -182,7 +182,7 @@ void CModelX::AnimateFrame() {
 		animSet->AnimateMatrix(this);
 	}
 #ifdef _DEBUG
-	for (int j =1; j < 5; j++)
+	/*for (int j =1; j < 5; j++)
 	{
 		printf("Frame:""%s\n", mFrame[j]->mpName);
 		printf("%f\t", mFrame[j]->mTransformMatrix.M()[0]);
@@ -205,7 +205,7 @@ void CModelX::AnimateFrame() {
 		{
 			printf("");
 		}
-	}
+	}*/
 #endif
 }
 
@@ -249,7 +249,23 @@ CSkinWeights::~CSkinWeights()
 //bool CModelXFrame::Index()
 //{
 //	return CModelXFrame::mIndex;
-//}
+// printf("%f\t", mChild[j]->mTransformMatrix.M()[0]);
+//printf("%f\t", mChild[j]->mTransformMatrix.M()[1]);
+//printf("%f\t", mChild[j]->mTransformMatrix.M()[2]);
+//printf("%f\n", mChild[j]->mTransformMatrix.M()[3]);
+//printf("%f\t", mChild[j]->mTransformMatrix.M()[4]);
+//printf("%f\t", mChild[j]->mTransformMatrix.M()[5]);
+//printf("%f\t", mChild[j]->mTransformMatrix.M()[6]);
+//printf("%f\n", mChild[j]->mTransformMatrix.M()[7]);
+//printf("%f\t", mChild[j]->mTransformMatrix.M()[8]);
+//printf("%f\t", mChild[j]->mTransformMatrix.M()[9]);
+//printf("%f\t", mChild[j]->mTransformMatrix.M()[10]);
+//printf("%f\n", mChild[j]->mTransformMatrix.M()[11]);
+//printf("%f\t", mChild[j]->mTransformMatrix.M()[12]);
+//printf("%f\t", mChild[j]->mTransformMatrix.M()[13]);
+//printf("%f\t", mChild[j]->mTransformMatrix.M()[14]);
+//printf("%f\n", mChild[j]->mTransformMatrix.M()[15]);
+////}
 
 /*
 FinedFrame(フレーム名）
@@ -858,4 +874,42 @@ void CModelX::Render() {
 std::vector<CAnimationSet*>& CModelX::AnimationSet()
 {
 	return CModelX::mAnimationSet;
+}
+
+
+std::vector<CModelXFrame*>& CModelX::Frames()
+{
+	return CModelX::mFrame;
+}
+
+/*
+AnimationCombined
+合成行列の作成
+*/
+void CModelXFrame::AnimateCombined(CMatrix* parent) {
+	//自分の変換行列に、親からの変換行列を掛ける
+	mCombinedMatrix = mTransformMatrix * (*parent);
+	//子フレームの合成行列を作成する
+	for (size_t i = 0; i < mChild.size(); i++) {
+		mChild[i]->AnimateCombined(&mCombinedMatrix);
+	}
+#ifdef _DEBUG
+		printf("Frame:""%s\n", mpName);
+		printf("%f\t", mCombinedMatrix.M()[0]);
+		printf("%f\t", mCombinedMatrix.M()[1]);
+		printf("%f\t", mCombinedMatrix.M()[2]);
+		printf("%f\n", mCombinedMatrix.M()[3]);
+		printf("%f\t", mCombinedMatrix.M()[4]);
+		printf("%f\t", mCombinedMatrix.M()[5]);
+		printf("%f\t", mCombinedMatrix.M()[6]);
+		printf("%f\n", mCombinedMatrix.M()[7]);
+		printf("%f\t", mCombinedMatrix.M()[8]);
+		printf("%f\t", mCombinedMatrix.M()[9]);
+		printf("%f\t", mCombinedMatrix.M()[10]);
+		printf("%f\n", mCombinedMatrix.M()[11]);
+		printf("%f\t", mCombinedMatrix.M()[12]);
+		printf("%f\t", mCombinedMatrix.M()[13]);
+		printf("%f\t", mCombinedMatrix.M()[14]);
+		printf("%f\n", mCombinedMatrix.M()[15]);
+#endif
 }

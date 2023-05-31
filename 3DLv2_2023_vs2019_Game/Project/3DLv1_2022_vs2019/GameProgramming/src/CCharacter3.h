@@ -13,7 +13,7 @@
 class CCollider;
 class CCharacter3 : public CTransform,public CTask{
 public:
-	enum ETag
+	enum class ETag
 	{
 		EZERO, //初期値
 		EPLAYER, //プレイヤー
@@ -21,7 +21,17 @@ public:
 		EBULLETPLAYER, //プレイヤー弾
 		EBULLETENEMY, //敵弾
 		ECOIN,
+		ECOINEND,
 	};
+	//enum class EState	//状態
+	//{
+	//	ECOIN,
+	//	EMOVE,	//移動
+	//	ESTOP,	//停止
+	//	EJUMP,	//ジャンプ
+	//	ECRY,	//泣く
+	//	EJO,    //ジャンプOK
+	//};
 	//タグの取得
 	ETag Tag();
 	//衝突処理

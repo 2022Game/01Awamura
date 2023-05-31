@@ -1,19 +1,14 @@
-
-
-#include "CACoin.h"
+#include "CACoinClearStage.h"
 #include "CCollisionManager.h"
 #include "CEffect.h"
-#include "CColliderMesh.h"
+#include "CColliderMesh2.h"
 
-//移動速度
 #define VELOCITY CVector(0.0f,0.75f,0.0f)
 #define VELOCITY10 CVector(0.05f,0.0f,0.0f)
 
-//int CACoin::mD;
-
 //コンストラクタ
 //CACoin(モデル、位置、回転、拡縮）
-CACoin::CACoin(CModel* model, const CVector& position,
+CACoinClearStage::CACoinClearStage(CModel* model, const CVector& position,
 	const CVector& rotation, const CVector& scale)
 {
 	//モデル、位置、回転、拡縮を設定する
@@ -21,7 +16,7 @@ CACoin::CACoin(CModel* model, const CVector& position,
 	mPosition = position; //位置の設定
 	mRotation = rotation; //回転の設定
 	mScale = scale; //拡縮の設定
-	mColliderMesh1.Set(this, &mMatrix, mpModel);
+	mColliderMesh3.Set(this, &mMatrix, mpModel);
 	SCount = 0;
 	UpCount = 180 / 6;
 	SideChengeCount = 0;
@@ -30,7 +25,7 @@ CACoin::CACoin(CModel* model, const CVector& position,
 }
 
 //更新処理
-void CACoin::Update() {
+void CACoinClearStage::Update() {
 	/*if (mD == 150)
 	{
 		mEnabled = false;
@@ -70,23 +65,23 @@ void CACoin::Update() {
 
 //衝突処理
 //CCollision(コライダ１、コライダ２）
-void CACoin::Collision(CCollider* m, CCollider* o) {
+void CACoinClearStage::Collision(CCollider* m, CCollider* o) {
 	//相手のコライダタイプの判定
 	switch (o->Type())
 	{
 	case CCollider::ELINE://三角コライダの時
 		CVector adjust;//調整用ベクトル
 		if (CCollider::CollisionTriangleLine(o, m, &adjust))
-			{
-				mEnabled = false;
-			}
+		{
+			mEnabled = false;
+		}
 		break;
 	}
 }
 
-void CACoin::Collision()
+void CACoinClearStage::Collision()
 {
-	mColliderMesh1.ChangePriority();
+	mColliderMesh3.ChangePriority();
 	//コライダの優先度変更
 	mCollider1.ChangePriority();
 	mCollider2.ChangePriority();

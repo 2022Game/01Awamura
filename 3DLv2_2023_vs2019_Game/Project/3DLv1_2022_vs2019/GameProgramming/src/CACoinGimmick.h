@@ -3,8 +3,9 @@
 #include "CTask.h"
 #include "CACoin.h"
 #include "CAHamah.h"
+#include "CCharacter.h"
 
-class CACoinGimmick : public CTask
+class CACoinGimmick : public CTask ,public CCharacter
 {
 private:
 	std::vector<CACoin*> mCoins;	// コインのリスト
@@ -14,7 +15,6 @@ private:
 	void Init();
 	// コインを生成してリストに追加
 	void CreateCoin(CVector& pos, CVector& rot, CVector& scale);
-	void CreateCoinEnd(CVector& pos, CVector& rot, CVector& scale);
 
 public:
 	CACoinGimmick();

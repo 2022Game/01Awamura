@@ -18,7 +18,7 @@ CCharacter3::~CCharacter3() {
 }
 
 CCharacter3::CCharacter3()
-	:mpModel(nullptr),mTag(EZERO)
+	:mpModel(nullptr),mTag(ETag::EZERO)
 {
 	//タスクリストに追加
 	CTaskManager::Instance()->Add(this);

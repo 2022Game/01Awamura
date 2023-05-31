@@ -47,8 +47,13 @@ const CMatrix& CApplication::ModelViewInverse()
 	return mModelViewInverse;
 }
 
+int CApplication::SelectStage = 0;
+
+int CApplication::StageSwitch = 0;
+
 void CApplication::Start()
 {
+	//SelectStage = 0;
 	/*new CEnemy3(CVector(-5.0f, 1.0f, -10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
 	new CEnemy3(CVector(5.0f, 1.0f, -10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));*/
 	spUi = new CUi(); //UIクラスの生成
@@ -68,11 +73,11 @@ void CApplication::Start()
 	CMatrix matrix;
 	matrix.Print();
 
-	// コインギミックはCACoinGimmick内にまとめる
-	mpCoinGimmick = new CACoinGimmick();
+	//// コインギミックはCACoinGimmick内にまとめる
+	//mpCoinGimmick = new CACoinGimmick();
 
-	//ランダムでAならハマーを出す（予定）
-	mpHamahGimmick = new CAHamahGimmick();
+	////ランダムでAならハマーを出す（予定）
+	//mpHamahGimmick = new CAHamahGimmick();
 
 	//ランダムでBなら移動床を出す。
 	
@@ -98,17 +103,43 @@ void CApplication::Start()
 	//親インスタンスと親行列はなし
 	mColliderMesh.Set(nullptr, nullptr, &mBackGround);
 	//mColliderMesh.Set(nullptr, nullptr, &mModelCoin);
+	//mpCoinGimmick = new CACoinGimmick();
+	mpClearStage = new CAClearStage();
+	//mpHamahGimmick = new CAHamahGimmick();
+	//mpClearStage = new CAClearStage();
 }
 
 void CApplication::Update()
 {
+	if (SelectStage == 1)
+	{
+		//ランダムで１ならハマーステージ
+		mpCoinGimmick = new CACoinGimmick();
+		mpHamahGimmick = new CAHamahGimmick();
+		SelectStage = 0;
+	}
+	if (SelectStage != 1 && SelectStage != 0)
+	{
+		delete mpCoinGimmick;
+		mpCoinGimmick = nullptr;
+		delete mpHamahGimmick;
+		mpHamahGimmick = nullptr;
+	}
+	if (SelectStage == 2)
+	{
+		delete mpCoinGimmick;
+		mpCoinGimmick = nullptr;
+		delete mpHamahGimmick;
+		mpHamahGimmick = nullptr;
+	}
 	if (mInput.Key(VK_RETURN))
 	{
-		if (mpCoinGimmick != nullptr)
+		SelectStage = 2;
+		/*if (mpCoinGimmick != nullptr)
 		{
 			delete mpCoinGimmick;
 			mpCoinGimmick = nullptr;
-		}
+		}*/
 	}
 
 	//タスクマネージャの更新

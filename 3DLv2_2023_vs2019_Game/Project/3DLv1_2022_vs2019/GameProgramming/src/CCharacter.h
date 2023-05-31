@@ -17,6 +17,7 @@ public:
 		ETURN,		//Ü‚è•Ô‚µ
 		EBLOCK,		//ƒuƒƒbƒN
 		ECOIN,
+		ECOINEND,
 	};
 	enum class EState	//ó‘Ô
 	{

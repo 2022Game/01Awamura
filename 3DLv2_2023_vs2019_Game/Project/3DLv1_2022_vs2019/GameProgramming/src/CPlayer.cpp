@@ -81,33 +81,6 @@ void CPlayer::Update() {
 		//Z軸方向の値を回転させ移動させるmasi
 		mPosition = mPosition - VELOCITY * mMatrixRotate;;
 	}
-	//if (mInput.Key(VK_RIGHT)) {
-	//	//Z軸方向の値を回転させ移動させる
-	//	mPosition = mPosition + VELOCITY4;
-	//}
-	//if (mInput.Key(VK_LEFT)) {
-	//	//Z軸方向の値を回転させ移動させる
-	//	mPosition = mPosition + VELOCITY5;
-	//}
-	//Sキー入力で下向き
-	//if (mInput.Key('S')) {
-	//	//X軸の回転値を減算
-	//	mRotation = mRotation - ROTATION_XV;
-	//}
-	//Wキー入力で上向き
-	//if (mInput.Key('W')) {
-	//	//X軸の回転値を加算
-	//	mRotation = mRotation + ROTATION_XV;
-	//}
-	//スペースキー入力で玉発射
-	//if (mInput.Key(VK_SPACE)) {
-	//	CBullet* bullet = new CBullet();
- //		bullet->Set(0.1f, 1.5f);
-	//	bullet->Position(CVector(0.0f, 0.0f, 10.0f) * mMatrix);
-	//	bullet->Rotation(mRotation);
-	//	bullet->Update();
-	//	//CApplication::TaskManager()->Add(bullet);
-	//}
 	//変換行列の更新
 	CTransform::Update();
 	//Ui設定
@@ -117,6 +90,12 @@ void CPlayer::Update() {
 }
 
 void CPlayer::Collision(CCollider* m, CCollider* o) {
+	/*CVector adjust;
+	if (CCollider::Collision(m,o,adjust))
+	{
+		mPosition = mPosition + adjust;
+		CTransform::Update();
+	}*/
 	//自身のコライダタイプの判定
 	switch (m->Type()) {
 	case CCollider::ELINE://線分コライダ
@@ -130,19 +109,14 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 					{
 						mState = EState::EJO;
 					}
-					/*else
-					{
-						mPosition = mPosition - VELOCITY2 * mMatrixRotate;
-					}*/
 					//位置の更新(mPosition + adjust)
 					mPosition = mPosition + adjust;
 					//行列の更新
 					CTransform::Update();
-					/*if (CACoin::a == 0)
+					if (CApplication::StageSwitch == 1)
 					{
-						CACoin::a = 1;
+						CApplication::StageSwitch = 0;
 					}
-					CACoin::mD++;*/
 				}
 		}
 		if (o->Type() == CCollider::ETRIANGLE2) {
@@ -152,6 +126,20 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 				mPosition = mPosition + adjust;
 				//行列の更新
 				CTransform::Update();
+			}
+		}
+		if (o->Type() == CCollider::ETRIANGLE3) {
+			CVector adjust;//調整用ベクトル
+			if (CCollider::CollisionTriangleLine(o, m, &adjust))
+			{
+				mPosition = mPosition + adjust;
+				//行列の更新
+				CTransform::Update();
+				if (CApplication::StageSwitch == 0)
+				{
+					CApplication::SelectStage = 1; //後にランダム設定に変える
+					CApplication::StageSwitch = 1;
+				}
 			}
 		}
 		break;

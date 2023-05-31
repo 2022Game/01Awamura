@@ -6,6 +6,8 @@
 #include "CEnemy.h"
 #include "CEnemy3.h"
 #include "CPlayer.h"
+#include "CAClearStage.h"
+#include "CACoinClearStage.h"
 #include "CACoin.h"
 #include "CACoinGimmick.h"
 #include "CAHamah.h"
@@ -81,11 +83,15 @@ private:
 	//モデルからコライダを生成
 	CColliderMesh mColliderMesh;
 
+	CAClearStage* mpClearStage;
 	CACoinGimmick* mpCoinGimmick;
 	CAHamahGimmick* mpHamahGimmick;
+//	CACClearStage* mpCoinClearStage;
 public:
 	~CApplication();
 	int Init();
+	static int SelectStage;
+	static int StageSwitch;
 	static CUi* Ui();
 	//モデルビュー行列の取得
 	static const CMatrix& ModelViewInverse();
