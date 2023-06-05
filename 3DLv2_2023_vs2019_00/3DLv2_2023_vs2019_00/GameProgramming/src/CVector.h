@@ -49,7 +49,9 @@ public:
 	CVector operator-(const CVector& v) const;
 	//CVector * CMatrixの結果をCVectorで返す
 	CVector operator*(const CMatrix& m);
-
+	//+=演算子のオーバーロード
+	//CVector1 += CVector2の演算を行う
+	void operator += (const CVector& v);
 private:
 	//3D各軸での値を設定
 	float mX, mY, mZ;

@@ -66,6 +66,8 @@ public:
 	std::vector<CAnimation*>& Animation();
 	void Time(float time); //時間の設定
 	void Weight(float weight); //重みの設定
+	int MaxTime();
+	int Time();
 	CAnimationSet(CModelX* model);
 	~CAnimationSet();
 private:
@@ -109,7 +111,13 @@ public:
 	~CMesh();
 	//読み込み処理
 	void Init(CModelX* model);
+	//スキンウェイトにフレーム番号を設定する
+	void SetSkinWeightFrameIndex(CModelX* model);
+	//頂点にアニメーション適用
+	void AnimateVertex(CModelX* model);
 private:
+	CVector* mpAnimateVertex; //アニメーション用頂点
+	CVector* mpAnimateNormal; //アニメーション用法線
 	//スキンウェイト
 	std::vector<CSkinWeights*>mSkinWeights;
 	int mMaterialNum; //マテリアル数
@@ -129,6 +137,7 @@ class CModelXFrame {
 	friend CAnimation;
 	friend CAnimationSet;
 public:
+	const CMatrix& CombinedMatrix();
 	//合成行列の作成
 	void AnimateCombined(CMatrix* parent);
 	int Index();
@@ -138,6 +147,7 @@ public:
 	//デストラクタ
 	~CModelXFrame();
 private:
+	int mCombineMatrix; //ｄｓｊぁｆｌ
 	CMatrix mCombinedMatrix; //合成行列
 	CMesh* mpMesh; //Meshデータ
 	std::vector<CModelXFrame*>mChild; //子フレームの配列
@@ -155,6 +165,8 @@ class CModelX {
 	friend CModelXFrame;
 	friend CAnimation;
 public:
+	//頂点にアニメーションを適用
+	void AnimateVertex();
 	std::vector<CModelXFrame*>& Frames();
 	void AnimateFrame();
 	std::vector<CAnimationSet*>& AnimationSet();
@@ -171,6 +183,8 @@ public:
 	//単語の取り出し
 	char* GetToken();
 	char* Token();
+	//スキンウェイトのフレーム番号設定
+	void SetSkinWeightFrameIndex();
 private:
 	//アニメーションセットの配列
 	std::vector<CAnimationSet*>mAnimationSet;
