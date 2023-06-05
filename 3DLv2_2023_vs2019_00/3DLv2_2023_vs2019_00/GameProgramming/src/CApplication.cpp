@@ -75,14 +75,14 @@ void CApplication::Update()
 	mModelX.AnimationSet()[0]->Time(
 		(int)mModelX.AnimationSet()[0]->Time() %
 		(int)(mModelX.AnimationSet()[0]->MaxTime() + 1));
-	////最初のアニメーションの現在時間を４５にする
-	//mModelX.AnimationSet()[0]->Time(0);
-	////最初のアニメーションの重みを1.0(100%)にする
-	//mModelX.AnimationSet()[0]->Weight(1.0f);
-	////フレームの変換行列をアニメーションで更新する
-	//mModelX.AnimateFrame();
-	////フレームの合成行列を計算する
-	//mModelX.Frames()[0]->AnimateCombined(&mMatrix);
+	//最初のアニメーションの現在時間を４５にする
+	//mModelX.AnimationSet()[0]->Time(); //課題１６で削除
+	//最初のアニメーションの重みを1.0(100%)にする
+	mModelX.AnimationSet()[0]->Weight(1.0f);
+	//フレームの変換行列をアニメーションで更新する
+	mModelX.AnimateFrame();
+	//フレームの合成行列を計算する
+	mModelX.Frames()[0]->AnimateCombined(&mMatrix);
 	//カメラのパラメータを作成する
 	CVector e, c, u;//視点、注視点、上方向
 	//視点を求める
