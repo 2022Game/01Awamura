@@ -1,8 +1,7 @@
 #ifndef CMODELX_H //インクルードガード
 #define CMODELX_H
 
-#define MODEL_FILE "res\\sample.blend.x" 
-
+#define MODEL_FILE "res\\ラグナ.x" //入力ファイル名
 //領域解放をマクロ化
 #define SAFE_DELETE_ARRAY(a){if(a)delete[]a;a = nullptr;}
 //配列のサイズ取得をマクロ化
@@ -185,10 +184,15 @@ public:
 	char* Token();
 	//スキンウェイトのフレーム番号設定
 	void SetSkinWeightFrameIndex();
+	//マテリアルの検索
+	CMaterial* FindMaterial(char* name);
+	//マテリアル配列の取得
+	std::vector<CMaterial*>& Material();
 private:
 	//アニメーションセットの配列
 	std::vector<CAnimationSet*>mAnimationSet;
 	std::vector<CModelXFrame*>mFrame; //フレーム配列
+	std::vector<CMaterial*>mMaterial; //マテリアル配列
 	//cが区切り文字ならtrueを返す
 	bool IsDelimiter(char c);
 	char* mpPointer; //読み込み位置
