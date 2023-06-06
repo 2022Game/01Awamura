@@ -29,6 +29,8 @@ CPlayer::CPlayer()
 {
 	//インスタンスの設定
 	spInstance = this;
+	randdd = 0;
+	randddco = 180;
 }
 
 //更新処理
@@ -115,7 +117,8 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 					CTransform::Update();
 					if (CApplication::StageSwitch == 1)
 					{
-						CApplication::StageSwitch = 0;
+						CApplication::StageGuard++;
+						CApplication::StageSwitch = 0; //テスト用
 					}
 				}
 		}
@@ -132,13 +135,33 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 			CVector adjust;//調整用ベクトル
 			if (CCollider::CollisionTriangleLine(o, m, &adjust))
 			{
+				if (mState == EState::EJUMP || mState == EState::EMOVE || mState == EState::EMOVE)
+				{
+					mState = EState::EJO;
+				}
 				mPosition = mPosition + adjust;
 				//行列の更新
 				CTransform::Update();
 				if (CApplication::StageSwitch == 0)
 				{
-					CApplication::SelectStage = 1; //後にランダム設定に変える
-					CApplication::StageSwitch = 1;
+					//randddco--; //テスト用
+					if (CApplication::StageGuard == 0)
+					{
+						CApplication::SelectStage = 1; //後にランダム設定に変える
+						CApplication::StageSwitch = 1;
+						//randddco = 380; //テスト用
+					}
+					if (CApplication::StageGuard == 1)
+					{
+						CApplication::SelectStage = 2; //後にランダム設定に変える
+						CApplication::StageSwitch = 1;
+						//randddco = 580; //テスト用
+					}
+					if (CApplication::StageGuard == 2)
+					{
+						CApplication::SelectStage = 3; //後にランダム設定に変える
+						CApplication::StageSwitch = 1;
+					}
 				}
 			}
 		}

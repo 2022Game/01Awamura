@@ -1,6 +1,9 @@
 #ifndef CCOLLIDERTRIANGLE2_H
 #define CCOLLIDERTRIANGLE2_H
 #include "CCollider.h"
+
+//クリア用
+
 /*
 三角形コライダの定義
 */

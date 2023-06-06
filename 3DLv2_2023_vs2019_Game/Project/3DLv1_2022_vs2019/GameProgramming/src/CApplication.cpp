@@ -51,6 +51,8 @@ int CApplication::SelectStage = 0;
 
 int CApplication::StageSwitch = 0;
 
+int CApplication::StageGuard = 0;
+
 void CApplication::Start()
 {
 	//SelectStage = 0;
@@ -90,15 +92,15 @@ void CApplication::Start()
 	//ビルボードの生成
 	/*new CBillBoard(CVector(-6.0f, 3.0f, -10.0f), 1.0f, 1.0f);*/
 	//三角コライダの確認
-	//mColliderTriangle.Set(nullptr, nullptr
-	//	, CVector(-50.0f, 0.0f, -50.0f)
-	//	, CVector(-50.0f, 0.0f, 50.0f)
-	//	, CVector(50.0f, 0.0f, -50.0f));
+	mColliderTriangle.Set(nullptr, nullptr
+		, CVector(-20.0f, 100.0f, 0.0f)
+		, CVector(20.0f,100.0f, 0.0f)
+		, CVector(-20.0f, 0.0f, 0.0f));
 	////三角コライダ２
-	//mColliderTriangle2.Set(nullptr, nullptr
-	//	, CVector(50.0f, 0.0f, 50.0f)
-	//	, CVector(50.0f, 0.0f, -50.0f)
-	//	, CVector(-50.0f, 0.0f, 50.0f));
+	mColliderTriangle2.Set(nullptr, nullptr
+		, CVector(20.0f, 0.0f, 0.0f)
+		, CVector(-20.0f, 0.0f, 0.0f)
+		, CVector(20.0f, 100.0f, 0.0f));
 	//背景モデルから三角コライダを生成
 	//親インスタンスと親行列はなし
 	mColliderMesh.Set(nullptr, nullptr, &mBackGround);
@@ -113,10 +115,10 @@ void CApplication::Update()
 {
 	if (SelectStage == 1)
 	{
-		//ランダムで１ならハマーステージ
+		//ランダムで１ならハマーステージ予定
 		mpCoinGimmick = new CACoinGimmick();
 		mpHamahGimmick = new CAHamahGimmick();
-		SelectStage = 0;
+		SelectStage = 0; //テスト用
 	}
 	if (SelectStage != 1 && SelectStage != 0)
 	{
@@ -127,10 +129,31 @@ void CApplication::Update()
 	}
 	if (SelectStage == 2)
 	{
+		//ランダムで１ならハマーステージ予定
+		mpCoinGimmick = new CACoinGimmick();
+		//mpHamahGimmick = new CAHamahGimmick();
+		SelectStage = 0; //テスト用
+	}
+	if (SelectStage != 2 && SelectStage != 0)
+	{
 		delete mpCoinGimmick;
 		mpCoinGimmick = nullptr;
-		delete mpHamahGimmick;
-		mpHamahGimmick = nullptr;
+		/*delete mpHamahGimmick;
+		mpHamahGimmick = nullptr;*/
+	}
+	if (SelectStage == 3)
+	{
+		//ランダムで１ならハマーステージ予定
+		mpCoinGimmick = new CACoinGimmick();
+		//mpHamahGimmick = new CAHamahGimmick();
+		SelectStage = 0; //テスト用
+	}
+	if (SelectStage != 3 && SelectStage != 0)
+	{
+		delete mpCoinGimmick;
+		mpCoinGimmick = nullptr;
+		/*delete mpHamahGimmick;
+		mpHamahGimmick = nullptr;*/
 	}
 	if (mInput.Key(VK_RETURN))
 	{

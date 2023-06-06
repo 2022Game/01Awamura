@@ -47,12 +47,14 @@ void CAClearStage::Init()
 	mpCoinModel->Load(MODEL_FCOIN);
 
 	// コインを生成
-	//ステージ１
-	ClearStage(CVector(8.5f, 0.1f, -1.5f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	////ステージ２
-	ClearStage(CVector(10.0f, 0.1f, 76.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	////ステージ３
-	ClearStage(CVector(10.0f, 0.1f, 76.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	//ステージ１スタート生成
+	ClearStage(CVector(10.0f, 0.1f, -2.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	////ステージ２スタート生成
+	ClearStage(CVector(10.0f, 0.1f, 46.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	////ステージ３スタート生成
+	ClearStage(CVector(10.0f, 0.1f, 94.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	////ゲームクリア生成
+	ClearStage(CVector(10.0f, 0.1f, 142.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 }
 
 void CAClearStage::ClearStage(CVector& pos, CVector& rot, CVector& scale)

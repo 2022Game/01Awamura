@@ -18,6 +18,7 @@
     <ClCompile Include="src\CAHamah.cpp" />
     <ClCompile Include="src\CAHamahGimmick.cpp" />
     <ClCompile Include="src\CApplication.cpp" />
+    <ClCompile Include="src\CAStageShutter.cpp" />
     <ClCompile Include="src\CBillBoard.cpp" />
     <ClCompile Include="src\CBlock.cpp" />
     <ClCompile Include="src\CBullet.cpp" />
@@ -66,6 +67,7 @@
     <ClInclude Include="src\CAHamah.h" />
     <ClInclude Include="src\CAHamahGimmick.h" />
     <ClInclude Include="src\CApplication.h" />
+    <ClInclude Include="src\CAStageShutter.h" />
     <ClInclude Include="src\CBillBoard.h" />
     <ClInclude Include="src\CBlock.h" />
     <ClInclude Include="src\CBullet.h" />

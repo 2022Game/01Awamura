@@ -27,6 +27,7 @@
 #include "CTaskManager.h"
 #include "CBillBoard.h"
 #include "CColliderTriangle.h"
+#include "CColliderTriangle1.h"
 #include "CColliderMesh.h"
 
 class CApplication
@@ -77,9 +78,9 @@ private:
 	//Hamahモデル
 	CModel mModelHamah;
 	//三角コライダの作成
-	//CColliderTriangle mColliderTriangle;
+	CColliderTriangle1 mColliderTriangle;
 	////三角コライダ２
-	//CColliderTriangle mColliderTriangle2;
+	CColliderTriangle1 mColliderTriangle2;
 	//モデルからコライダを生成
 	CColliderMesh mColliderMesh;
 
@@ -92,6 +93,7 @@ public:
 	int Init();
 	static int SelectStage;
 	static int StageSwitch;
+	static int StageGuard;
 	static CUi* Ui();
 	//モデルビュー行列の取得
 	static const CMatrix& ModelViewInverse();

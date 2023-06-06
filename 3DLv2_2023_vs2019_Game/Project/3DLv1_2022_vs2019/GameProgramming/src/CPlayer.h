@@ -22,6 +22,8 @@ private:
 	//プレイヤーのインスタンス
 	static CPlayer* spInstance;
 public:
+	int randddco;
+	int randdd;
 	int n;
 	int jc;//ジャンプカウント
 	//インスタンスのポインタの取得

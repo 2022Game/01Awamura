@@ -4,6 +4,8 @@
 #include "CColliderTriangle2.h"
 #include "CCollider.h"
 
+//クリア用当たり判定
+
 /*
 モデルデータから三角コライダの生成
 */
