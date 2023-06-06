@@ -115,6 +115,8 @@ public:
 	//頂点にアニメーション適用
 	void AnimateVertex(CModelX* model);
 private:
+	//テクスチャ座標データ
+	float* mpTextureCoords;
 	CVector* mpAnimateVertex; //アニメーション用頂点
 	CVector* mpAnimateNormal; //アニメーション用法線
 	//スキンウェイト
