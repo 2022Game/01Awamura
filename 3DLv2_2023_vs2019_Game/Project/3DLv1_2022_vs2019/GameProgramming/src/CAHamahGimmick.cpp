@@ -42,9 +42,9 @@ void CAHamahGimmick::Init()
 	// ÉnÉ}Å[Çê∂ê¨
 	CreateHamah(CVector(10.0f, 24.9f, 7.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 	CreateHamah(CVector(11.5f, 24.9f, 15.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	CreateHamah(CVector(13.0f, 24.9f, 25.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	CreateHamah(CVector(11.5f, 24.9f, 33.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	CreateHamah(CVector(10.0f, 24.9f, 41.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	//CreateHamah(CVector(13.0f, 24.9f, 25.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	//CreateHamah(CVector(11.5f, 24.9f, 33.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	//CreateHamah(CVector(10.0f, 24.9f, 41.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 }
 
 void CAHamahGimmick::CreateHamah(CVector& pos, CVector& rot, CVector& scale)

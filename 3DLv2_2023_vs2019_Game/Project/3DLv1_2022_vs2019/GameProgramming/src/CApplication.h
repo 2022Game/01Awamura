@@ -12,6 +12,8 @@
 #include "CACoinGimmick.h"
 #include "CAHamah.h"
 #include "CAHamahGimmick.h"
+#include "CAWall.h"
+#include "CAWallGimmick.h"
 #include "CInput.h"
 #include "CFont.h"
 #include "CMiss.h"
@@ -77,6 +79,7 @@ private:
 	CModel mModelCoin;
 	//Hamahモデル
 	CModel mModelHamah;
+	CModel mModelWall;
 	//三角コライダの作成
 	CColliderTriangle1 mColliderTriangle;
 	////三角コライダ２
@@ -87,6 +90,7 @@ private:
 	CAClearStage* mpClearStage;
 	CACoinGimmick* mpCoinGimmick;
 	CAHamahGimmick* mpHamahGimmick;
+	CAWallGimmick* mpWallGimmick;
 //	CACClearStage* mpCoinClearStage;
 public:
 	~CApplication();
@@ -94,6 +98,7 @@ public:
 	static int SelectStage;
 	static int StageSwitch;
 	static int StageGuard;
+	static int StageCount;
 	static CUi* Ui();
 	//モデルビュー行列の取得
 	static const CMatrix& ModelViewInverse();

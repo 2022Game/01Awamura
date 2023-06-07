@@ -117,6 +117,7 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 					CTransform::Update();
 					if (CApplication::StageSwitch == 1)
 					{
+						CApplication::StageCount++;
 						CApplication::StageGuard++;
 						CApplication::StageSwitch = 0; //テスト用
 					}
@@ -145,19 +146,20 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 				if (CApplication::StageSwitch == 0)
 				{
 					//randddco--; //テスト用
-					if (CApplication::StageGuard == 0)
+					//CApplication::StageGuard = 0;
+					if (CApplication::StageCount == 0)
 					{
 						CApplication::SelectStage = 1; //後にランダム設定に変える
 						CApplication::StageSwitch = 1;
 						//randddco = 380; //テスト用
 					}
-					if (CApplication::StageGuard == 1)
+					if (CApplication::StageCount == 1)
 					{
 						CApplication::SelectStage = 2; //後にランダム設定に変える
 						CApplication::StageSwitch = 1;
 						//randddco = 580; //テスト用
 					}
-					if (CApplication::StageGuard == 2)
+					if (CApplication::StageCount == 2)
 					{
 						CApplication::SelectStage = 3; //後にランダム設定に変える
 						CApplication::StageSwitch = 1;

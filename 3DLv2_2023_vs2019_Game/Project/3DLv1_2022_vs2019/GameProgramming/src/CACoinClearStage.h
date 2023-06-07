@@ -19,6 +19,7 @@ private:
 	CCollider mCollider3;
 	CColliderMesh2 mColliderMesh3;
 public:
+	int BackCount;
 	int SCount;
 	int UpCount;
 	int SideChengeCount;

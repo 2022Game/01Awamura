@@ -53,6 +53,8 @@ int CApplication::StageSwitch = 0;
 
 int CApplication::StageGuard = 0;
 
+int CApplication::StageCount = 0;
+
 void CApplication::Start()
 {
 	//SelectStage = 0;
@@ -91,16 +93,16 @@ void CApplication::Start()
 	mPlayer.Rotation(CVector(0.0f, 0.0f, 0.0f));
 	//ビルボードの生成
 	/*new CBillBoard(CVector(-6.0f, 3.0f, -10.0f), 1.0f, 1.0f);*/
-	//三角コライダの確認
-	mColliderTriangle.Set(nullptr, nullptr
-		, CVector(-20.0f, 100.0f, 0.0f)
-		, CVector(20.0f,100.0f, 0.0f)
-		, CVector(-20.0f, 0.0f, 0.0f));
-	////三角コライダ２
-	mColliderTriangle2.Set(nullptr, nullptr
-		, CVector(20.0f, 0.0f, 0.0f)
-		, CVector(-20.0f, 0.0f, 0.0f)
-		, CVector(20.0f, 100.0f, 0.0f));
+	////三角コライダの確認
+	//mColliderTriangle.Set(nullptr, nullptr
+	//	, CVector(-20.0f, 100.0f, 0.0f)
+	//	, CVector(20.0f,100.0f, 0.0f)
+	//	, CVector(-20.0f, 0.0f, 0.0f));
+	//////三角コライダ２
+	//mColliderTriangle2.Set(nullptr, nullptr
+	//	, CVector(20.0f, 0.0f, 0.0f)
+	//	, CVector(-20.0f, 0.0f, 0.0f)
+	//	, CVector(20.0f, 100.0f, 0.0f));
 	//背景モデルから三角コライダを生成
 	//親インスタンスと親行列はなし
 	mColliderMesh.Set(nullptr, nullptr, &mBackGround);
@@ -113,19 +115,28 @@ void CApplication::Start()
 
 void CApplication::Update()
 {
+	if (StageGuard == 1)
+	{
+		mpWallGimmick = new CAWallGimmick();
+		StageGuard = 0;
+	}
 	if (SelectStage == 1)
 	{
 		//ランダムで１ならハマーステージ予定
 		mpCoinGimmick = new CACoinGimmick();
 		mpHamahGimmick = new CAHamahGimmick();
+		//mpWallGimmick = new CAWallGimmick();
 		SelectStage = 0; //テスト用
 	}
-	if (SelectStage != 1 && SelectStage != 0)
+	if (SelectStage != 0)
 	{
 		delete mpCoinGimmick;
 		mpCoinGimmick = nullptr;
-		delete mpHamahGimmick;
-		mpHamahGimmick = nullptr;
+		if (SelectStage != 1)
+		{
+			delete mpHamahGimmick;
+			mpHamahGimmick = nullptr;
+		}
 	}
 	if (SelectStage == 2)
 	{
@@ -134,13 +145,13 @@ void CApplication::Update()
 		//mpHamahGimmick = new CAHamahGimmick();
 		SelectStage = 0; //テスト用
 	}
-	if (SelectStage != 2 && SelectStage != 0)
-	{
-		delete mpCoinGimmick;
-		mpCoinGimmick = nullptr;
-		/*delete mpHamahGimmick;
-		mpHamahGimmick = nullptr;*/
-	}
+	//if (SelectStage != 2 && SelectStage != 0)
+	//{
+	//	delete mpCoinGimmick;
+	//	mpCoinGimmick = nullptr;
+	//	/*delete mpHamahGimmick;
+	//	mpHamahGimmick = nullptr;*/
+	//}
 	if (SelectStage == 3)
 	{
 		//ランダムで１ならハマーステージ予定
@@ -148,22 +159,13 @@ void CApplication::Update()
 		//mpHamahGimmick = new CAHamahGimmick();
 		SelectStage = 0; //テスト用
 	}
-	if (SelectStage != 3 && SelectStage != 0)
-	{
-		delete mpCoinGimmick;
-		mpCoinGimmick = nullptr;
-		/*delete mpHamahGimmick;
-		mpHamahGimmick = nullptr;*/
-	}
-	if (mInput.Key(VK_RETURN))
-	{
-		SelectStage = 2;
-		/*if (mpCoinGimmick != nullptr)
-		{
-			delete mpCoinGimmick;
-			mpCoinGimmick = nullptr;
-		}*/
-	}
+	//if (SelectStage != 3 && SelectStage != 0)
+	//{
+	//	delete mpCoinGimmick;
+	//	mpCoinGimmick = nullptr;
+	//	/*delete mpHamahGimmick;
+	//	mpHamahGimmick = nullptr;*/
+	//}
 
 	//タスクマネージャの更新
 	CTaskManager::Instance()->Update();
@@ -223,7 +225,7 @@ void CApplication::Update()
 	gluLookAt(e.X(), e.Y(), e.Z(), c.X(), c.Y(), c.Z(), u.X(), u.Y(), u.Z());
 	//モデルビューの行列の取得
 	glGetFloatv(GL_MODELVIEW_MATRIX, mModelViewInverse.M());
-	//逆行列の取得ｄｄ
+	//逆行列の取得
 	mModelViewInverse = mModelViewInverse.Transpose();
 	mModelViewInverse.M(0, 3, 0);
 	mModelViewInverse.M(1, 3, 0);
@@ -243,7 +245,7 @@ void CApplication::Update()
 	//子リジョンマネージャの衝突処理
 	// 削除　CCollisionManager::Instance()->Collision();
 
-	//コリコリマネマネ描画
+	//コリジョンマネジャー描画
 	CCollisionManager::Instance()->Render();
 	spUi->Render(); //UIの描画
 }
