@@ -4,7 +4,7 @@
 #include "CCharacter3.h"
 //コリコリのインクルード
 #include "CCollider.h"
-#include "CColliderMesh2.h"
+#include "CColliderMesh.h"
 #include "CColliderTriangle.h"
 #include "CColliderLine.h"
 /*
@@ -14,10 +14,7 @@
 class CACoinClearStage : public CCharacter3 {
 private:
 	//コライダ
-	CCollider mCollider1;
-	CCollider mCollider2;
-	CCollider mCollider3;
-	CColliderMesh2 mColliderMesh3;
+	CColliderMesh mColliderMesh;
 public:
 	int BackCount;
 	int SCount;

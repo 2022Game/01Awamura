@@ -16,7 +16,7 @@ CAWall::CAWall(CModel* model, const CVector& position,
 	mPosition = position; //ˆÊ’u‚ÌÝ’è
 	mRotation = rotation; //‰ñ“]‚ÌÝ’è
 	mScale = scale; //Šgk‚ÌÝ’è
-	mColliderMesh2.Set(this, &mMatrix, mpModel);
+	mColliderMesh.Set(this, &mMatrix, mpModel);
 }
 
 void CAWall::Update() {
@@ -43,13 +43,6 @@ void CAWall::Collision(CCollider* m, CCollider* o) {
 
 void CAWall::Collision()
 {
-	mColliderMesh2.ChangePriority();
 	//ƒRƒ‰ƒCƒ_‚Ì—Dæ“x•ÏX
-	mCollider1.ChangePriority();
-	mCollider2.ChangePriority();
-	mCollider3.ChangePriority();
-	//Õ“Ëˆ—‚ðŽÀs
-	CCollisionManager::Instance()->Collision(&mCollider1, COLLISIONRANGE);
-	CCollisionManager::Instance()->Collision(&mCollider2, COLLISIONRANGE);
-	CCollisionManager::Instance()->Collision(&mCollider3, COLLISIONRANGE);
+	mColliderMesh.ChangePriority();
 }

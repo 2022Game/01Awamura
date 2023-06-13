@@ -5,9 +5,9 @@
 #include "CCharacter.h"
 //コリコリのインクルード
 #include "CCollider.h"
-#include "CColliderMesh1.h"
 #include "CColliderTriangle.h"
 #include "CColliderLine.h"
+#include "CColliderMesh.h"
 /*
 エネミークラス
 キャラクタクラスを継承
@@ -15,10 +15,7 @@
 class CAWall : public CCharacter3 {
 private:
 	//コライダ
-	CCollider mCollider1;
-	CCollider mCollider2;
-	CCollider mCollider3;
-	CColliderMesh1 mColliderMesh2;
+	CColliderMesh mColliderMesh;
 public:
 	//static int hn;
 	//衝突処理

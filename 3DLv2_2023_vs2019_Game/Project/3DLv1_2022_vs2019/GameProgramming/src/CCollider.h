@@ -18,8 +18,6 @@ public:
 	enum EType {
 		ESPHERE,//球コライダ
 		ETRIANGLE,//三角コライダ
-		ETRIANGLE2,
-		ETRIANGLE3,
 		ELINE, //線分コライダ
 	};
 

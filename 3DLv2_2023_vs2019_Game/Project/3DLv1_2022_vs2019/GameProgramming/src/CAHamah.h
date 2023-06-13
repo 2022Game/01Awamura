@@ -5,7 +5,7 @@
 #include "CCharacter.h"
 //コリコリのインクルード
 #include "CCollider.h"
-#include "CColliderMesh1.h"
+#include "CColliderMesh.h"
 #include "CColliderTriangle.h"
 #include "CColliderLine.h"
 /*
@@ -15,10 +15,7 @@
 class CAHamah : public CCharacter3{
 private:
 	//コライダ
-	CCollider mCollider1;
-	CCollider mCollider2;
-	CCollider mCollider3;
-	CColliderMesh1 mColliderMesh2;
+	CColliderMesh mColliderMesh;
 public:
 	int ha;
 	int hb;

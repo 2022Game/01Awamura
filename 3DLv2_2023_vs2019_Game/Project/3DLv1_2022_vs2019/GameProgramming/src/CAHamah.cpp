@@ -11,12 +11,15 @@
 CAHamah::CAHamah(CModel* model, const CVector& position,
 	const CVector& rotation, const CVector& scale)
 {
+	//áŠQ•¨—p‚Ìƒ^ƒOÝ’è
+	mTag = ETag::EOBSTACLE;
+
 	//ƒ‚ƒfƒ‹AˆÊ’uA‰ñ“]AŠgk‚ðÝ’è‚·‚é
 	mpModel = model; //ƒ‚ƒfƒ‹‚ÌÝ’è
 	mPosition = position; //ˆÊ’u‚ÌÝ’è
 	mRotation = rotation; //‰ñ“]‚ÌÝ’è
 	mScale = scale; //Šgk‚ÌÝ’è
-	mColliderMesh2.Set(this, &mMatrix, mpModel);
+	mColliderMesh.Set(this, &mMatrix, mpModel);
 	ha = 0;
 	hb = 40;
 }
@@ -58,13 +61,7 @@ void CAHamah::Collision(CCollider* m, CCollider* o) {
 
 void CAHamah::Collision()
 {
-	mColliderMesh2.ChangePriority();
 	//ƒRƒ‰ƒCƒ_‚Ì—Dæ“x•ÏX
-	mCollider1.ChangePriority();
-	mCollider2.ChangePriority();
-	mCollider3.ChangePriority();
+	mColliderMesh.ChangePriority();
 	//Õ“Ëˆ—‚ðŽÀs
-	CCollisionManager::Instance()->Collision(&mCollider1, COLLISIONRANGE);
-	CCollisionManager::Instance()->Collision(&mCollider2, COLLISIONRANGE);
-	CCollisionManager::Instance()->Collision(&mCollider3, COLLISIONRANGE);
 }

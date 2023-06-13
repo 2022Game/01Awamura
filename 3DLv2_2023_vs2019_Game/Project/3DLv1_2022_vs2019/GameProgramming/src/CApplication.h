@@ -29,7 +29,6 @@
 #include "CTaskManager.h"
 #include "CBillBoard.h"
 #include "CColliderTriangle.h"
-#include "CColliderTriangle1.h"
 #include "CColliderMesh.h"
 
 class CApplication
@@ -80,10 +79,6 @@ private:
 	//Hamahモデル
 	CModel mModelHamah;
 	CModel mModelWall;
-	//三角コライダの作成
-	CColliderTriangle1 mColliderTriangle;
-	////三角コライダ２
-	CColliderTriangle1 mColliderTriangle2;
 	//モデルからコライダを生成
 	CColliderMesh mColliderMesh;
 

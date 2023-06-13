@@ -16,12 +16,15 @@
 CACoin::CACoin(CModel* model, const CVector& position,
 	const CVector& rotation, const CVector& scale)
 {
+	//ステージの壁生成用タグを設定
+	mTag = ETag::ESTAGEGUARD;
+
 	//モデル、位置、回転、拡縮を設定する
 	mpModel = model; //モデルの設定
 	mPosition = position; //位置の設定
 	mRotation = rotation; //回転の設定
 	mScale = scale; //拡縮の設定
-	mColliderMesh1.Set(this, &mMatrix, mpModel);
+	mColliderMesh.Set(this, &mMatrix, mpModel);
 	SCount = 0;
 	UpCount = 180 / 6;
 	SideChengeCount = 0;
@@ -86,13 +89,6 @@ void CACoin::Collision(CCollider* m, CCollider* o) {
 
 void CACoin::Collision()
 {
-	mColliderMesh1.ChangePriority();
 	//コライダの優先度変更
-	mCollider1.ChangePriority();
-	mCollider2.ChangePriority();
-	mCollider3.ChangePriority();
-	//衝突処理を実行
-	CCollisionManager::Instance()->Collision(&mCollider1, COLLISIONRANGE);
-	CCollisionManager::Instance()->Collision(&mCollider2, COLLISIONRANGE);
-	CCollisionManager::Instance()->Collision(&mCollider3, COLLISIONRANGE);
+	mColliderMesh.ChangePriority();
 }

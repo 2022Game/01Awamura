@@ -25,7 +25,7 @@ CPlayer::CPlayer(const CVector& pos, const CVector& rot, const CVector& scale)
 CPlayer::CPlayer()
 : mLine(this,&mMatrix,CVector(0.0f,0.0f,0.0f),CVector(0.0f,2.0f,0.0f))
 , mLine2(this, &mMatrix, CVector(-0.5f, 1.2f, 0.0f), CVector(0.5f, 1.2f, 0.0f))
-, mLine3(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), CVector(0.0f, 0.0f, 0.0f))
+, mLine3(this, &mMatrix, CVector(0.0f, 1.0f, -0.5f), CVector(0.0f, 1.0f, 0.5f))
 {
 	//インスタンスの設定
 	spInstance = this;
@@ -107,65 +107,61 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 			//三角形と線分の衝突判定
 				if (CCollider::CollisionTriangleLine(o, m, &adjust))
 				{
-					if (mState == EState::EJUMP || mState == EState::EMOVE || mState == EState::EMOVE)
-					{
-						mState = EState::EJO;
-					}
-					//位置の更新(mPosition + adjust)
+					//位置の更新
 					mPosition = mPosition + adjust;
 					//行列の更新
 					CTransform::Update();
-					if (CApplication::StageSwitch == 1)
+					//ステージの壁生成用のコライダにヒットした場合
+					if (o->Tag() == CCharacter3::ETag::ESTAGEGUARD)
 					{
-						CApplication::StageCount++;
-						CApplication::StageGuard++;
-						CApplication::StageSwitch = 0; //テスト用
+						if (mState == EState::EJUMP || mState == EState::EMOVE || mState == EState::EMOVE)
+						{
+							mState = EState::EJO;
+						}
+
+						if (CApplication::StageSwitch == 1)
+						{
+							CApplication::StageCount++;
+							CApplication::StageGuard++;
+							CApplication::StageSwitch = 0; //テスト用
+						}
 					}
+					//ステージクリア用のコライダにヒットした場合
+					else if (o->Tag() == CCharacter3::ETag::ESTAGECLEAR)
+					{
+						if (mState == EState::EJUMP || mState == EState::EMOVE || mState == EState::EMOVE)
+						{
+							mState = EState::EJO;
+						}
+						if (CApplication::StageSwitch == 0)
+						{
+							//randddco--; //テスト用
+							//CApplication::StageGuard = 0;
+							if (CApplication::StageCount == 0)
+							{
+								CApplication::SelectStage = 1; //後にランダム設定に変える
+								CApplication::StageSwitch = 1;
+								//randddco = 380; //テスト用
+							}
+							if (CApplication::StageCount == 1)
+							{
+								CApplication::SelectStage = 2; //後にランダム設定に変える
+								CApplication::StageSwitch = 1;
+								//randddco = 580; //テスト用
+							}
+							if (CApplication::StageCount == 2)
+							{
+								CApplication::SelectStage = 3; //後にランダム設定に変える
+								CApplication::StageSwitch = 1;
+							}
+						}
+					}
+					else if (o->Tag() == CCharacter3::ETag::EOBSTACLE)
+					{
+
+					}
+					//CCharacter3* parent = o->Parent();
 				}
-		}
-		if (o->Type() == CCollider::ETRIANGLE2) {
-			CVector adjust;//調整用ベクトル
-			if (CCollider::CollisionTriangleLine(o, m, &adjust))
-			{
-				mPosition = mPosition + adjust;
-				//行列の更新
-				CTransform::Update();
-			}
-		}
-		if (o->Type() == CCollider::ETRIANGLE3) {
-			CVector adjust;//調整用ベクトル
-			if (CCollider::CollisionTriangleLine(o, m, &adjust))
-			{
-				if (mState == EState::EJUMP || mState == EState::EMOVE || mState == EState::EMOVE)
-				{
-					mState = EState::EJO;
-				}
-				mPosition = mPosition + adjust;
-				//行列の更新
-				CTransform::Update();
-				if (CApplication::StageSwitch == 0)
-				{
-					//randddco--; //テスト用
-					//CApplication::StageGuard = 0;
-					if (CApplication::StageCount == 0)
-					{
-						CApplication::SelectStage = 1; //後にランダム設定に変える
-						CApplication::StageSwitch = 1;
-						//randddco = 380; //テスト用
-					}
-					if (CApplication::StageCount == 1)
-					{
-						CApplication::SelectStage = 2; //後にランダム設定に変える
-						CApplication::StageSwitch = 1;
-						//randddco = 580; //テスト用
-					}
-					if (CApplication::StageCount == 2)
-					{
-						CApplication::SelectStage = 3; //後にランダム設定に変える
-						CApplication::StageSwitch = 1;
-					}
-				}
-			}
 		}
 		break;
 	}

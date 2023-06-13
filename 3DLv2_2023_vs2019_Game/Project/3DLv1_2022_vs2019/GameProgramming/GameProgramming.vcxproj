@@ -30,11 +30,7 @@
     <ClCompile Include="src\CCollider.cpp" />
     <ClCompile Include="src\CColliderLine.cpp" />
     <ClCompile Include="src\CColliderMesh.cpp" />
-    <ClCompile Include="src\CColliderMesh1.cpp" />
-    <ClCompile Include="src\CColliderMesh2.cpp" />
     <ClCompile Include="src\CColliderTriangle.cpp" />
-    <ClCompile Include="src\CColliderTriangle1.cpp" />
-    <ClCompile Include="src\CColliderTriangle2.cpp" />
     <ClCompile Include="src\CCollisionManager.cpp" />
     <ClCompile Include="src\CEffect.cpp" />
     <ClCompile Include="src\CEnemy.cpp" />
@@ -80,11 +76,7 @@
     <ClInclude Include="src\CCollider.h" />
     <ClInclude Include="src\CColliderLine.h" />
     <ClInclude Include="src\CColliderMesh.h" />
-    <ClInclude Include="src\CColliderMesh1.h" />
-    <ClInclude Include="src\CColliderMesh2.h" />
     <ClInclude Include="src\CColliderTriangle.h" />
-    <ClInclude Include="src\CColliderTriangle1.h" />
-    <ClInclude Include="src\CColliderTriangle2.h" />
     <ClInclude Include="src\CCollisionManager.h" />
     <ClInclude Include="src\CEffect.h" />
     <ClInclude Include="src\CEnemy.h" />

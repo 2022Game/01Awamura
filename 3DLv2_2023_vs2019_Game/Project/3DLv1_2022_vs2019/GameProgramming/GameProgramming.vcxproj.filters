@@ -132,12 +132,6 @@
     <ClCompile Include="src\CAHamah.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="src\CColliderTriangle1.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="src\CColliderMesh1.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="src\CACoinGimmick.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -147,13 +141,7 @@
     <ClCompile Include="src\CAClearStage.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="src\CColliderMesh2.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="src\CACoinClearStage.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="src\CColliderTriangle2.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="src\CAWall.cpp">
@@ -290,12 +278,6 @@
     <ClInclude Include="src\ヘッダー1.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\CColliderTriangle1.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="src\CColliderMesh1.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="src\CACoinGimmick.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
@@ -305,13 +287,7 @@
     <ClInclude Include="src\CAClearStage.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\CColliderMesh2.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="src\CACoinClearStage.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="src\CColliderTriangle2.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="src\CAWall.h">

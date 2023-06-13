@@ -22,6 +22,10 @@ public:
 		EBULLETENEMY, //敵弾
 		ECOIN,
 		ECOINEND,
+
+		EOBSTACLE,//障害物
+		ESTAGEGUARD,//ステージ管理
+		ESTAGECLEAR,//ステージ管理２
 	};
 	//enum class EState	//状態
 	//{

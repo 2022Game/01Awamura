@@ -86,15 +86,6 @@ void CAClearStage::Update()
 void CAClearStage::Collision(CCollider* m, CCollider* o) {
 	switch (m->Type())
 	{
-	case CCollider::ETRIANGLE3://球コライダの時
-		//コライダのmとyが衝突しているか判定
-		if (o->Type() == CCollider::ELINE)
-		{
-			if (CCollider::Collision(m, o)) {
-				mEnabled = false;
-			}
-		}
-		break;
 	case CCollider::ETRIANGLE:
 		if (o->Type() == CCollider::ELINE)
 		{

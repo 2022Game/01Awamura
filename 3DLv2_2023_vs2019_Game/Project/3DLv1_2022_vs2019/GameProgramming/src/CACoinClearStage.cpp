@@ -1,7 +1,6 @@
 #include "CACoinClearStage.h"
 #include "CCollisionManager.h"
 #include "CEffect.h"
-#include "CColliderMesh2.h"
 
 #define VELOCITY CVector(0.0f,0.75f,0.0f)
 #define VELOCITY10 CVector(0.05f,0.0f,0.0f)
@@ -11,12 +10,14 @@
 CACoinClearStage::CACoinClearStage(CModel* model, const CVector& position,
 	const CVector& rotation, const CVector& scale)
 {
+	mTag = ETag::ESTAGECLEAR;
+
 	//ƒ‚ƒfƒ‹AˆÊ’uA‰ñ“]AŠgk‚ðÝ’è‚·‚é
 	mpModel = model; //ƒ‚ƒfƒ‹‚ÌÝ’è
 	mPosition = position; //ˆÊ’u‚ÌÝ’è
 	mRotation = rotation; //‰ñ“]‚ÌÝ’è
 	mScale = scale; //Šgk‚ÌÝ’è
-	mColliderMesh3.Set(this, &mMatrix, mpModel);
+	mColliderMesh.Set(this, &mMatrix, mpModel);
 	SCount = 0;
 	UpCount = 180 / 6;
 	SideChengeCount = 0;
@@ -81,13 +82,6 @@ void CACoinClearStage::Collision(CCollider* m, CCollider* o) {
 
 void CACoinClearStage::Collision()
 {
-	mColliderMesh3.ChangePriority();
 	//ƒRƒ‰ƒCƒ_‚Ì—Dæ“x•ÏX
-	mCollider1.ChangePriority();
-	mCollider2.ChangePriority();
-	mCollider3.ChangePriority();
-	//Õ“Ëˆ—‚ðŽÀs
-	CCollisionManager::Instance()->Collision(&mCollider1, COLLISIONRANGE);
-	CCollisionManager::Instance()->Collision(&mCollider2, COLLISIONRANGE);
-	CCollisionManager::Instance()->Collision(&mCollider3, COLLISIONRANGE);
+	mColliderMesh.ChangePriority();
 }
