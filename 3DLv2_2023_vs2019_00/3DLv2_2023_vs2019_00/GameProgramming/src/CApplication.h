@@ -22,6 +22,8 @@
 
 #include "CModelX.h"
 
+#include "CXCharacter.h"
+
 class CApplication
 {
 private:
@@ -67,6 +69,10 @@ private:
 //	std::vector<CCharacter*> mCharacters;
 	CModelX mModelX;
 	CMatrix mMatrix;
+	//キャラクタのインスタンス
+	CXCharacter mCharacter;
+	int AnimaScene;
+	int AnimaFrame;
 public:
 	~CApplication();
 	static CUi* Ui();	//UIクラスのインスタンスを取得
