@@ -35,6 +35,7 @@ CPlayer::CPlayer()
 
 //XVˆ—
 void CPlayer::Update() {
+	CTransform::Update();
 	if (mState != EState::EJUMP)
 	{
 		if (mInput.Key(VK_SPACE))
@@ -51,7 +52,12 @@ void CPlayer::Update() {
 	{
 		if (jc < 45)
 		{
-			Position(Position() - VELOCITY3 * MatrixRotate());
+			CVector pos = Position();
+			CVector P = pos - VELOCITY3;
+			CVector P2 = VELOCITY3 * MatrixRotate();
+			CVector P3 = pos - P2;
+			CVector P4 = pos - VELOCITY3 * MatrixRotate();
+			Position(pos - VELOCITY3 * MatrixRotate());
 		}
 	}
 	if (mState != EState::EJO)
