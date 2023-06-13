@@ -15,9 +15,13 @@ public:
 	//位置の設定
 	//Position(位置)
 	void Position(const CVector& v);
+	//回転値の取得
+	const CVector& Rotation() const;
 	//回転値の設定
 	//Rotation(回転値)
 	void Rotation(const CVector& v);
+	//スケール値の取得
+	const CVector& Scale() const;
 	//拡大縮小の設定
 	//Scale(拡大縮小)
 	void Scale(const CVector& v);
@@ -35,7 +39,7 @@ public:
 	void Update();
 	//Update(位置, 回転, スケール)
 	void Update(const CVector& pos, const CVector& rot, const CVector& scale);
-protected: //子クラスはアクセス可能
+private:
 	CVector mPosition;	//位置
 	CVector mRotation;	//回転
 	CVector mScale;	//拡大縮小

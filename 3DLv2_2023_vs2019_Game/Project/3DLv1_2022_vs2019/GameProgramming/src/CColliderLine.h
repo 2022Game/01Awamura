@@ -12,10 +12,10 @@ public:
 	CColliderLine(float radius = 0.1f);
 	//コンストラクタ（線分コライダ）
 	//CColliderLine(親, 親行列, 頂点1, 頂点2)
-	CColliderLine(CCharacter3* parent, CMatrix* matrix, const CVector& v0, const CVector& v1, float radius = 0.1f);
+	CColliderLine(CCharacter3* parent, const CMatrix* matrix, const CVector& v0, const CVector& v1, float radius = 0.1f);
 	//線分コライダの設定
 	//Set(親, 親行列, 頂点1, 頂点2)
-	void Set(CCharacter3* parent, CMatrix* matrix, const CVector& v0, const CVector& v1);
+	void Set(CCharacter3* parent, const CMatrix* matrix, const CVector& v0, const CVector& v1);
 	//描画
 	void Render();
 };

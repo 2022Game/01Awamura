@@ -13,10 +13,10 @@ CAWall::CAWall(CModel* model, const CVector& position,
 {
 	//モデル、位置、回転、拡縮を設定する
 	mpModel = model; //モデルの設定
-	mPosition = position; //位置の設定
-	mRotation = rotation; //回転の設定
-	mScale = scale; //拡縮の設定
-	mColliderMesh.Set(this, &mMatrix, mpModel);
+	Position(position); //位置の設定
+	Rotation(rotation); //回転の設定
+	Scale(scale); //拡縮の設定
+	mColliderMesh.Set(this, &Matrix(), mpModel);
 }
 
 void CAWall::Update() {

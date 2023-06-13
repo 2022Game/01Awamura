@@ -13,7 +13,7 @@ CModel CEnemy3::sModel; //モデルデータ作成
 //デフォルトコンストラクタ
 CEnemy3::CEnemy3()
 	:CCharacter3(1)
-	,mCollider(this,&mMatrix,CVector(0.0f,0.0f,0.0f),0.4f)
+	,mCollider(this,&Matrix(),CVector(0.0f,0.0f,0.0f),0.4f)
 	, mHp(HP)
 {
 	//モデルがないときは読みこむ
@@ -32,12 +32,12 @@ CEnemy3::CEnemy3(const CVector& position, const CVector& rotation,
 	:CEnemy3() //デフォルトコンストラクタを実行する
 {
 	//位置、回転、拡散を設定する
-	mPosition = position; //位置の設定
-	mRotation = rotation; //回転の設定
-	mScale = scale; //拡縮の設定
+	Position(position); //位置の設定
+	Rotation(rotation); //回転の設定
+	Scale(scale); //拡縮の設定
 	CTransform::Update(); //行列の更新
 	//目標地点の設定
-	mPoint = mPosition + CVector(0.0f, 0.0f, 100.0f) * mMatrixRotate;
+	mPoint = Position() + CVector(0.0f, 0.0f, 100.0f) * MatrixRotate();
 	////目標地点の設定
 	//mPoint = mPosition + CVector(0.0f, 0.0f, 100.0f) * mMatrixRotate;
 }
@@ -56,22 +56,22 @@ void CEnemy3::Update()
 		if (mHp % 15 == 0)
 		{
 			//エフェクト生成
-			new CEffect(mPosition, 1.0f, 1.0f, "exp.tga", 4, 4, 2);
+			new CEffect(Position(), 1.0f, 1.0f, "exp.tga", 4, 4, 2);
 		}
 		//下降させる.
-		mPosition = mPosition - CVector(0.0f, 0.03f, 0.0f);
+		Position(Position() - CVector(0.0f, 0.03f, 0.0f));
 		CTransform::Update();
 		return;
 	}
 	if (player != nullptr)
 	{
 		//プレイヤーまでのベクトルを求める
-		CVector vp = player->Position() - mPosition;
+		CVector vp = player->Position() - Position();
 		//左ベクトルとの内積を求める
-		float dx = vp.Dot(mMatrixRotate.VectorX());
+		float dx = vp.Dot(MatrixRotate().VectorX());
 		//上ベクトルとの内積を求める
-		float dy = vp.Dot(mMatrixRotate.VectorY());
-		float dz = vp.Dot(mMatrixRotate.VectorZ());
+		float dy = vp.Dot(MatrixRotate().VectorY());
+		float dz = vp.Dot(MatrixRotate().VectorZ());
 
 		//X軸のズレが2.0以下
 		if (-2.0f < dx && dx < 2.0f)
@@ -92,35 +92,35 @@ void CEnemy3::Update()
 		}
 	}
 	//目標地点までのベクトルを求める
-	CVector vp = mPoint - mPosition;
+	CVector vp = mPoint - Position();
 	//課題
 	//左ベクトルとの内積を求める
-	float dx = vp.Dot(mMatrixRotate.VectorX());
+	float dx = vp.Dot(MatrixRotate().VectorX());
 	//上ベクトルとの内積を求める
-	float dy = vp.Dot(mMatrixRotate.VectorY());
+	float dy = vp.Dot(MatrixRotate().VectorY());
 	const float margin = 0.1f;
 	//左右方向へ回転
 	if (dx > margin)
 	{
-		mRotation = mRotation + CVector(0.0f, 1.0f, 0.0f);//左へ回転
+		Rotation(Rotation() + CVector(0.0f, 1.0f, 0.0f));//左へ回転
 	}
 	else if (dx < -margin)
 	{
 		//課題
-		mRotation = mRotation - CVector(0.0f, 1.0f, 0.0f);//右へ回転
+		Rotation(Rotation() - CVector(0.0f, 1.0f, 0.0f));//右へ回転
 	}
 	//上下方向へ回転
 	if (dy > margin)
 	{
-		mRotation = mRotation + CVector(-1.0f, 0.0f, 0.0f);//上へ回転
+		Rotation(Rotation() + CVector(-1.0f, 0.0f, 0.0f));//上へ回転
 	}
 	else if (dy < -margin)
 	{
 		//課題
-		mRotation = mRotation - CVector(-1.0f, 0.0f, 0.0f);//下へ回転
+		Rotation(Rotation() - CVector(-1.0f, 0.0f, 0.0f));//下へ回転
 	}
 	//機体前方へ移動する
-	mPosition = mPosition + mMatrixRotate.VectorZ() * VELOCITY;
+	Position(Position() + MatrixRotate().VectorZ() * VELOCITY);
 	CTransform::Update(); //行列更新
 	///およそ3秒後に目標地点を更新
 	int r = rand() % 180; //rand()は整数の乱数を返す

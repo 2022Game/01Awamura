@@ -9,7 +9,7 @@ void CCharacter3::Model(CModel* m)
 //•`‰æˆ—
 void CCharacter3::Render()
 {
-	mpModel->Render(mMatrix);
+	mpModel->Render(Matrix());
 }
 
 CCharacter3::~CCharacter3() {

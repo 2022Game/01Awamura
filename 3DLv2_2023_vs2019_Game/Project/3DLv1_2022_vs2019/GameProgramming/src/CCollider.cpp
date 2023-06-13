@@ -7,7 +7,7 @@
 void CCollider::ChangePriority()
 {
 	//自分の座標×親の変換行列を掛けてワールド座標を求める
-	CVector pos = mPosition * *mpMatrix;
+	CVector pos = Position() * *mpMatrix;
 	//ベクトルの長さが優先度
 	ChangePriority(pos.Length());
 	//mPriority = pos.Length();
@@ -24,7 +24,7 @@ void CCollider::ChangePriority(int priority)
 
 CCollider::CCollider()
 	: mpParent(nullptr)
-	, mpMatrix(&mMatrix)
+	, mpMatrix(&Matrix())
 	, mType(ESPHERE)
 	, mRadius(0)
 {
@@ -37,7 +37,7 @@ CCollider::~CCollider() {
 	CCollisionManager::Instance()->Remove(this);
 }
 
-CCollider::CCollider(CCharacter3* parent, CMatrix* matrix,
+CCollider::CCollider(CCharacter3* parent, const CMatrix* matrix,
 	const CVector& position, float radius)
 	: CCollider()
 {
@@ -46,7 +46,7 @@ CCollider::CCollider(CCharacter3* parent, CMatrix* matrix,
 	//親行列設定
 	mpMatrix = matrix;
 	//CTransform設定
-	mPosition = position; //位置
+	Position(position); //位置
 	//半径設定
 	mRadius = radius;
 	//コリジョンマネージャyに追加
@@ -62,7 +62,7 @@ void CCollider::Render() {
 	glPushMatrix();
 	//コライダの中心座標を計算
 	//自分の座標×親の変換行列を掛ける
-	CVector pos = mPosition * *mpMatrix;
+	CVector pos = Position() * *mpMatrix;
 	//中心座標へ移動
 	glMultMatrixf(CMatrix().Translate(pos.X(), pos.Y(), pos.Z()).M());
 	//DIFFUSE赤色設定
@@ -160,8 +160,8 @@ bool CCollider::CollisionTriangleSphere(CCollider* t, CCollider* s, CVector* a)
 	//面の法線を、外積を正規化して求める
 	CVector normal = (v[1] - v[0]).Cross(v[2] - v[0]).Normalize();
 	//線コライダをワールド座標で作成
-	sv = s->mPosition * *s->mpMatrix + normal * s->mRadius;
-	ev = s->mPosition * *s->mpMatrix - normal * s->mRadius;
+	sv = s->Position() * *s->mpMatrix + normal * s->mRadius;
+	ev = s->Position() * *s->mpMatrix - normal * s->mRadius;
 	CColliderLine line(nullptr, nullptr, sv, ev);
 	//三角コライダと線コライダの衝突処理
 	return CollisionTriangleLine(t, &line, a);
@@ -171,8 +171,8 @@ bool CCollider::CollisionSphere(CCollider* sphere1, CCollider* sphere2, CVector*
 {
 	//各コライダの中心座標を求める
 	//原点×コライダの変換行列×親の変換行列
-	CVector pos1 = sphere1->mPosition * *sphere1->mpMatrix;
-	CVector pos2 = sphere2->mPosition * *sphere2->mpMatrix;
+	CVector pos1 = sphere1->Position() * *sphere1->mpMatrix;
+	CVector pos2 = sphere2->Position() * *sphere2->mpMatrix;
 	//中心から中心へのベクトルを求める
 	CVector vec = pos1 - pos2;
 	float length = vec.Length();
@@ -191,7 +191,7 @@ bool CCollider::CollisionSphere(CCollider* sphere1, CCollider* sphere2, CVector*
 
 bool CCollider::CollisionSphereLine(CCollider* sphere, CCollider* line, CVector* adjust)
 {
-	CVector spherePos = sphere->mPosition * *sphere->mpMatrix;
+	CVector spherePos = sphere->Position() * *sphere->mpMatrix;
 	CVector lineStartPos = line->mV[0] * *line->mpMatrix;
 	CVector lineEndPos = line->mV[1] * *line->mpMatrix;
 

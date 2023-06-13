@@ -11,9 +11,9 @@ CBillBoard::CBillBoard(CVector pos, float w, float h)
 void CBillBoard::Set(CVector pos, float w, float h)
 {
 	//位置
-	mPosition = pos;
+	Position(pos);
 	//大きさの設定
-	mScale = CVector(w, h, 1.0f);
+	Scale(CVector(w, h, 1.0f));
 	//三角形の頂点座標設定
 	mT[0].Vertex(CVector(1.0f, 1.0f, 0.0f),
 		CVector(-1.0f, -1.0f, 0.0f), CVector(1.0f, -1.0f, 0.0f));
@@ -44,7 +44,7 @@ void CBillBoard::Render(CMaterial* mpMaterial)
 	//行列の保存
 	glPushMatrix();
 	//拡縮、回転、移動させる
-	glMultMatrixf((CApplication::ModelViewInverse()* mMatrix).M());
+	glMultMatrixf((CApplication::ModelViewInverse()* Matrix()).M());
 	//ライトオフ
 	glDisable(GL_LIGHTING);
 	//描画色の設定

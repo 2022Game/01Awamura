@@ -13,14 +13,14 @@ CColliderLine::CColliderLine(float radius)
 	mRadius = radius;
 }
 
-CColliderLine::CColliderLine(CCharacter3* parent, CMatrix* matrix
+CColliderLine::CColliderLine(CCharacter3* parent, const CMatrix* matrix
 	, const CVector& v0, const CVector& v1, float radius)
 	: CColliderLine(radius)
 {
 	Set(parent, matrix, v0, v1);
 }
 
-void CColliderLine::Set(CCharacter3* parent, CMatrix* matrix
+void CColliderLine::Set(CCharacter3* parent, const CMatrix* matrix
 	, const CVector& v0, const CVector& v1)
 {
 	mType = ELINE;//ü•ªƒRƒ‰ƒCƒ_

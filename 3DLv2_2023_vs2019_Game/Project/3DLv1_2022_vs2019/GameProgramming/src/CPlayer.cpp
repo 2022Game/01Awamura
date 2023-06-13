@@ -23,9 +23,9 @@ CPlayer::CPlayer(const CVector& pos, const CVector& rot, const CVector& scale)
 }
 
 CPlayer::CPlayer()
-: mLine(this,&mMatrix,CVector(0.0f,0.0f,0.0f),CVector(0.0f,2.0f,0.0f))
-, mLine2(this, &mMatrix, CVector(-0.5f, 1.2f, 0.0f), CVector(0.5f, 1.2f, 0.0f))
-, mLine3(this, &mMatrix, CVector(0.0f, 1.0f, -0.5f), CVector(0.0f, 1.0f, 0.5f))
+: mLine(this,&Matrix(),CVector(0.0f,0.0f,0.0f),CVector(0.0f,2.0f,0.0f))
+, mLine2(this, &Matrix(), CVector(-0.5f, 1.2f, 0.0f), CVector(0.5f, 1.2f, 0.0f))
+, mLine3(this, &Matrix(), CVector(0.0f, 1.0f, -0.5f), CVector(0.0f, 1.0f, 0.5f))
 {
 	//インスタンスの設定
 	spInstance = this;
@@ -51,44 +51,44 @@ void CPlayer::Update() {
 	{
 		if (jc < 45)
 		{
-			mPosition = mPosition - VELOCITY3 * mMatrixRotate;
+			Position(Position() - VELOCITY3 * MatrixRotate());
 		}
 	}
 	if (mState != EState::EJO)
 	{
 		if (jc > 50 && jc <= 60)
 		{
-			mPosition = mPosition + VELOCITY1 * mMatrixRotate;
+			Position(Position() + VELOCITY1 * MatrixRotate());
 		}
 		if (jc > 0 && jc <= 50)
 		{
-			mPosition = mPosition + VELOCITY2 * mMatrixRotate;
+			Position(Position() + VELOCITY2 * MatrixRotate());
 		}
 	}
 	//Dキー入力で回転
 	if (mInput.Key(VK_RIGHT) || mInput.Key('D')) {
 		//Y軸の回転値を減少
-		mRotation = mRotation - ROTATION_YV;
+		Rotation(Rotation() - ROTATION_YV);
 	}
 	if (mInput.Key(VK_LEFT) || mInput.Key('A') ){
 		//Y軸の回転値を増し増し
-		mRotation = mRotation + ROTATION_YV;
+		Rotation(Rotation() + ROTATION_YV);
 	}
 	//上キー入力で前進
 	if (mInput.Key(VK_UP) || mInput.Key('W')) {
 		//Z軸方向の値を回転させ移動させるnais
-		mPosition = mPosition + VELOCITY * mMatrixRotate;
+		Position(Position() + VELOCITY * MatrixRotate());
 	}
 	if (mInput.Key(VK_DOWN) || mInput.Key('S')) {
 		//Z軸方向の値を回転させ移動させるmasi
-		mPosition = mPosition - VELOCITY * mMatrixRotate;;
+		Position(Position() - VELOCITY * MatrixRotate());
 	}
 	//変換行列の更新
 	CTransform::Update();
 	//Ui設定
-	CApplication::Ui()->PosY(mPosition.Y());
-	CApplication::Ui()->RotX(mRotation.X());
-	CApplication::Ui()->RotY(mRotation.Y());
+	CApplication::Ui()->PosY(Position().Y());
+	CApplication::Ui()->RotX(Rotation().X());
+	CApplication::Ui()->RotY(Rotation().Y());
 }
 
 void CPlayer::Collision(CCollider* m, CCollider* o) {
@@ -108,7 +108,7 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 				if (CCollider::CollisionTriangleLine(o, m, &adjust))
 				{
 					//位置の更新
-					mPosition = mPosition + adjust;
+					Position(Position() + adjust);
 					//行列の更新
 					CTransform::Update();
 					//ステージの壁生成用のコライダにヒットした場合

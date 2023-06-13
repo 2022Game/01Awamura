@@ -42,10 +42,14 @@ public:
 	//＊演算子のオーバーロード
 	//CMatrix * CMatrix の演算結果を返す
 	const CMatrix operator*(const CMatrix& m)const;
+	//CMatrix * float の演算結果を返す
+	const CMatrix operator*(const float f)const;
 	//行列の取得
 	float* M()const;
-	//逆行列取得
+	//転置行列取得
 	CMatrix Transpose();
+	//逆行列取得
+	CMatrix Inverse() const;
 private:
 	//４×４の行列データを設定
 	float mM[4][4];

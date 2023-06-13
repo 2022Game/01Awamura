@@ -16,10 +16,10 @@ CAHamah::CAHamah(CModel* model, const CVector& position,
 
 	//ƒ‚ƒfƒ‹AˆÊ’uA‰ñ“]AŠgk‚ğİ’è‚·‚é
 	mpModel = model; //ƒ‚ƒfƒ‹‚Ìİ’è
-	mPosition = position; //ˆÊ’u‚Ìİ’è
-	mRotation = rotation; //‰ñ“]‚Ìİ’è
-	mScale = scale; //Šgk‚Ìİ’è
-	mColliderMesh.Set(this, &mMatrix, mpModel);
+	Position(position); //ˆÊ’u‚Ìİ’è
+	Rotation(rotation); //‰ñ“]‚Ìİ’è
+	Scale(scale); //Šgk‚Ìİ’è
+	mColliderMesh.Set(this, &Matrix(), mpModel);
 	ha = 0;
 	hb = 40;
 }
@@ -35,11 +35,11 @@ void CAHamah::Update() {
 	}
 	if (ha % 2 == 0)
 	{
-		mPosition = mPosition + VELOCITY10 * mMatrixRotate;
+		Position(Position() + VELOCITY10 * MatrixRotate());
 	}
 	else
 	{
-		mPosition = mPosition - VELOCITY10 * mMatrixRotate;
+		Position(Position() - VELOCITY10 * MatrixRotate());
 	}
 }
 

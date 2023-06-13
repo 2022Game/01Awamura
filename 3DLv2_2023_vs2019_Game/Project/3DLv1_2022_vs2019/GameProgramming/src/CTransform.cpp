@@ -7,17 +7,36 @@ CTransform::CTransform()
 
 const CVector& CTransform::Position() const
 {
-	return mPosition;
+	CVector pos = mPosition;
+	if (mpParent != nullptr)
+	{
+		pos = pos * mpParent->Matrix();
+	}
+	return pos;
 }
 
 void CTransform::Position(const CVector& v)
 {
 	mPosition = v;
+	if (mpParent != nullptr)
+	{
+		mPosition = mPosition * mpParent->Matrix().Inverse();
+	}
+}
+
+const CVector& CTransform::Rotation() const
+{
+	return mRotation;
 }
 
 void CTransform::Rotation(const CVector& v)
 {
 	mRotation = v;
+}
+
+const CVector& CTransform::Scale() const
+{
+	return mScale;
 }
 
 void CTransform::Scale(const CVector& v)
@@ -48,6 +67,16 @@ const CMatrix& CTransform::MatrixScale() const
 //親のTransformを設定
 void CTransform::SetParent(CTransform* parent)
 {
+	if (mpParent == parent) return;
+
+	if (mpParent != nullptr)
+	{
+		mPosition = mPosition * mpParent->Matrix();
+	}
+	if (parent != nullptr)
+	{
+		mPosition = mPosition * parent->Matrix().Inverse();
+	}
 	mpParent = parent;
 }
 
@@ -71,8 +100,8 @@ void CTransform::Update() {
 		//ワールド行列 = 親のワールド行列 × ローカル行列
 		const CMatrix& parentMtx = mpParent->Matrix();
 		mMatrixTranslate = mLocalMatrixTranslate * parentMtx;
-		mMatrixRotate = mLocalMatrixRotate * parentMtx;
-		mMatrixScale = mLocalMatrixScale * parentMtx;
+		mMatrixRotate = mLocalMatrixRotate * mpParent->MatrixRotate();
+		mMatrixScale = mLocalMatrixScale * mpParent->MatrixScale();
 		mMatrix = mLocalMatrix * parentMtx;
 	}
 	//親がいない場合
@@ -88,8 +117,8 @@ void CTransform::Update() {
 
 void CTransform::Update(const CVector& pos, const CVector& rot, const CVector& scale)
 {
-	mPosition = pos;
-	mRotation = rot;
-	mScale = scale;
+	Position(pos);
+	Rotation(rot);
+	Scale(scale);
 	Update();
 }

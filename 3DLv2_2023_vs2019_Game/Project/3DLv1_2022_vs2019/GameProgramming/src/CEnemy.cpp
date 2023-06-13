@@ -12,9 +12,9 @@ CEnemy::CEnemy(CModel* model, const CVector& position,
 {
 	//モデル、位置、回転、拡縮を設定する
 	mpModel = model; //モデルの設定
-	mPosition = position; //位置の設定
-	mRotation = rotation; //回転の設定
-	mScale = scale; //拡縮の設定
+	Position(position); //位置の設定
+	Rotation(rotation); //回転の設定
+	Scale(scale); //拡縮の設定
 }
 
 //更新処理
@@ -22,7 +22,7 @@ void CEnemy::Update() {
 	//行列を更新
 	CTransform::Update();
 	//位置を移動
-	mPosition = mPosition + VELOCITY * mMatrixRotate;
+	Position(Position() + VELOCITY * MatrixRotate());
 }
 
 //衝突処理
@@ -46,7 +46,7 @@ void CEnemy::Collision(CCollider* m, CCollider* o) {
 		if (CCollider::CollisionTriangleSphere(o, m, &adjust))
 		{
 			//衝突しない位置まで戻す
-			mPosition = mPosition + adjust;
+			Position(Position() + adjust);
 		}
 		break;
 	}

@@ -14,10 +14,10 @@ CACoinClearStage::CACoinClearStage(CModel* model, const CVector& position,
 
 	//ƒ‚ƒfƒ‹AˆÊ’uA‰ñ“]AŠgk‚ðÝ’è‚·‚é
 	mpModel = model; //ƒ‚ƒfƒ‹‚ÌÝ’è
-	mPosition = position; //ˆÊ’u‚ÌÝ’è
-	mRotation = rotation; //‰ñ“]‚ÌÝ’è
-	mScale = scale; //Šgk‚ÌÝ’è
-	mColliderMesh.Set(this, &mMatrix, mpModel);
+	Position(position); //ˆÊ’u‚ÌÝ’è
+	Rotation(rotation); //‰ñ“]‚ÌÝ’è
+	Scale(scale); //Šgk‚ÌÝ’è
+	mColliderMesh.Set(this, &Matrix(), mpModel);
 	SCount = 0;
 	UpCount = 180 / 6;
 	SideChengeCount = 0;
@@ -48,18 +48,18 @@ void CACoinClearStage::Update() {
 	if (SCount == 1)
 	{
 		UpCount--;
-		mPosition = mPosition + VELOCITY * mMatrixRotate;
+		Position(Position() + VELOCITY * MatrixRotate());
 	}
 	if (SCount >= 2)
 	{
 		SideCount--;
 		if (SideChengeCount % 2 == 0)
 		{
-			mPosition = mPosition + VELOCITY10 * mMatrixRotate;
+			Position(Position() + VELOCITY10 * MatrixRotate());
 		}
 		else
 		{
-			mPosition = mPosition - VELOCITY10 * mMatrixRotate;
+			Position(Position() - VELOCITY10 * MatrixRotate());
 		}
 	}
 }
