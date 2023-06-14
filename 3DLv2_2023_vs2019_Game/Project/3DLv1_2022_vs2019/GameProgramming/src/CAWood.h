@@ -21,6 +21,7 @@ public:
 	int hb;
 	int hc;
 	int hd;
+	int coo;
 	//static int hn;
 	//衝突処理
 	//Collision(コライダ１、コライダ２）

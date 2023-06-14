@@ -1,10 +1,9 @@
 #include "CEffect.h"
-#define PRIORITY 100 //優先度
-CMaterial CEffect::sMaterial; //マテリアルテクスチャ
+CMaterial CEffect::sMaterial; //マテリアル.テクスチャ
 
 CEffect::CEffect(const CVector& pos, float w, float h, char* texture
 	, int row, int col, int fps)
-	:CBillBoard(pos, w, h,PRIORITY), mRows(row), mCols(col), mFps(fps), mFrame(0)
+	: CBillBoard(pos, w, h, (int)TaskPriority::eEffect), mRows(row), mCols(col), mFps(fps), mFrame(0)
 {
 	//テクスチャを読んでない場合は読む
 	if (sMaterial.Texture()->Id() == 0)
@@ -29,10 +28,6 @@ void CEffect::Update() {
 	float top = 1.0f - 1.0f / mRows * (frame / mCols);
 	//UV下
 	float bot = top - 1.0f / mRows;
-		if ((mRows*mCols)*mFps < mFrame)
-		{
-			mEnabled = false;
-		}
 	//テクスチャマッピング
 	mT[0].UV(CVector(right, top, 0.0f), CVector(left, bot, 0.0f),
 		CVector(right, bot, 0.0f));
@@ -40,11 +35,16 @@ void CEffect::Update() {
 		CVector(right, top, 0.0f));
 	//ビルボード更新
 	CBillBoard::Update();
+
+	if (mFrame >= mRows * mCols * mFps)
+	{
+		mEnabled = false;
+	}
 }
 
 void CEffect::Render()
 {
-	glDisable(GL_DEPTH_TEST);//深度テスト無効
+	glDisable(GL_DEPTH_TEST); //深度テスト無効
 	CBillBoard::Render(&sMaterial);
-	glEnable(GL_DEPTH_TEST);//深度テスト無効
+	glEnable(GL_DEPTH_TEST); //深度テスト有効
 }

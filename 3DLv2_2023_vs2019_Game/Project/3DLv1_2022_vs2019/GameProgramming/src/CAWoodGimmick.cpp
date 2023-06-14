@@ -40,21 +40,21 @@ void CAWoodGimmick::Init()
 	mpWoodModel->Load(MODEL_FWOOD);
 
 	// ñÿÇê∂ê¨
-	/*CreateWood(CVector(10.0f, 24.9f, 57.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	CreateWood(CVector(11.5f, 24.9f, 65.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	CreateWood(CVector(13.0f, 24.9f, 73.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	CreateWood(CVector(11.5f, 24.9f, 81.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	CreateWood(CVector(10.0f, 24.9f, 89.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	CreateWood(CVector(13.0f, 24.9f, 57.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	CreateWood(CVector(14.5f, 24.9f, 65.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	CreateWood(CVector(17.0f, 24.9f, 73.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	CreateWood(CVector(14.5f, 24.9f, 81.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	CreateWood(CVector(13.0f, 24.9f, 89.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	CreateWood(CVector(16.0f, 24.9f, 57.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	CreateWood(CVector(17.5f, 24.9f, 65.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	CreateWood(CVector(19.0f, 24.9f, 73.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	CreateWood(CVector(17.5f, 24.9f, 81.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-	CreateWood(CVector(16.0f, 24.9f, 89.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));*/
+	CreateWood(CVector(10.0f, 22.9f, 57.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	CreateWood(CVector(11.5f, 22.9f, 65.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	CreateWood(CVector(13.0f, 22.9f, 73.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	CreateWood(CVector(11.5f, 22.9f, 81.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	CreateWood(CVector(10.0f, 22.9f, 89.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	CreateWood(CVector(13.0f, 22.9f, 57.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	CreateWood(CVector(14.5f, 22.9f, 65.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	CreateWood(CVector(17.0f, 22.9f, 73.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	CreateWood(CVector(14.5f, 22.9f, 81.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	CreateWood(CVector(13.0f, 22.9f, 89.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	CreateWood(CVector(16.0f, 22.9f, 57.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	CreateWood(CVector(17.5f, 22.9f, 65.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	CreateWood(CVector(19.0f, 22.9f, 73.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	CreateWood(CVector(17.5f, 22.9f, 81.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	CreateWood(CVector(16.0f, 22.9f, 89.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 }
 
 void CAWoodGimmick::CreateWood(CVector& pos, CVector& rot, CVector& scale)

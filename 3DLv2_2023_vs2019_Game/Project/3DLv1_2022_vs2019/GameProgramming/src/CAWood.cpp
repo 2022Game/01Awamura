@@ -22,11 +22,13 @@ CAWood::CAWood(CModel* model, const CVector& position,
 	mColliderMesh.Set(this, &Matrix(), mpModel);
 	ha = 0;
 	hb = 40;
+	coo = 100;
 }
 
 void CAWood::Update() {
 	//çsóÒÇçXêV
 	CTransform::Update();
+	coo--;
 	hb--;
 	if (hb == 0)
 	{
@@ -40,6 +42,10 @@ void CAWood::Update() {
 	else
 	{
 		Position(Position() - VELOCITY10 * MatrixRotate());
+	}
+	if (coo <= 0)
+	{
+		mEnabled = false;
 	}
 }
 

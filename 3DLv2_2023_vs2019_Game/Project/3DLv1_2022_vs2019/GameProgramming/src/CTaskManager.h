@@ -15,27 +15,34 @@ public:
 	//タスクの削除
 	void Delete();
 	//リストから削除
-	//Remove(タスクのポインタ）
+	//Remove(タスクのポインタ)
 	void Remove(CTask* task);
 	//デストラクタ
 	virtual ~CTaskManager();
 	//リストに追加
-	//Add（タスクのポインタ）
-	void Add(CTask *addTask);
+	//Add(タスクのポインタ)
+	void Add(CTask* addTask);
 	//更新
 	void Update();
 	//描画
 	void Render();
-	//デフォルトコントラクタ
-	//CTaskManager();
+
+	//ポーズする
+	void Pause(int pauseBit);
+	//ポーズを解除する
+	void UnPause(int pauseBit);
+	//ポーズ中かどうか
+	bool IsPaused(int pauseBit = 0) const;
 protected:
-	CTask mHead;//先頭タスク
-	CTask mTail;//最終タスク
 	//デフォルトコンストラクタ
 	CTaskManager();
+	CTask mHead;//先頭タスク
+	CTask mTail;//最終タスク
 private:
 	//タスクマネージャのインスタンス
 	static CTaskManager* mpInstance;
+	//ポーズのビットフラグ
+	int mPauseBit;
 };
 
 #endif
