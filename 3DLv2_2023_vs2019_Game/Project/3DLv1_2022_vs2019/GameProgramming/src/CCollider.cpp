@@ -199,7 +199,8 @@ bool CCollider::CollisionSphereLine(CCollider* sphere, CCollider* line, CVector*
 	float length = CalcDistancePointToLine(spherePos, lineStartPos, lineEndPos, &nearest);
 	if (length < sphere->mRadius)
 	{
-		*adjust = nearest + (spherePos - nearest).Normalize() * sphere->mRadius;
+		/**adjust = nearest + (spherePos - nearest).Normalize() * sphere->mRadius;*/
+		*adjust = (spherePos + (nearest - spherePos).Normalize() * sphere->mRadius) - nearest;
 		return true;
 	}
 

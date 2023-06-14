@@ -11,7 +11,7 @@
 CAHamah::CAHamah(CModel* model, const CVector& position,
 	const CVector& rotation, const CVector& scale)
 	:CCharacter3((int)TaskPriority::eObstacie)
-	,mCollider(this,&Matrix(),CVector(),3.0f)
+	,mCollider(this,&Matrix(),CVector(),2.25f)
 {
 	//è·äQï®ópÇÃÉ^ÉOê›íË
 	mTag = ETag::EOBSTACLE;

@@ -15,7 +15,8 @@
 class CAWood : public CCharacter3 {
 private:
 	//ƒRƒ‰ƒCƒ_
-	CColliderMesh mColliderMesh;
+	//CColliderMesh mColliderMesh;
+	CCollider mCollider;
 public:
 	int ha;
 	int hb;
