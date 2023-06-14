@@ -89,13 +89,13 @@ void CTaskManager::Update() {
 
 //•`‰æ
 void CTaskManager::Render() {
-	//ÅŒã‚©‚çæ“ª‚Ü‚ÅŒJ‚è•Ô‚µ
-	CTask* task = mTail.mpPrev;
-	while (task->mpPrev) {
+	//æ“ª‚©‚çÅŒã‚Ü‚ÅŒJ‚è•Ô‚µ
+	CTask* task = mHead.mpNext;
+	while (task->mpNext) {
 		//•`‰æˆ—‚ðŒÄ‚Ô
 		task->Render();
 		//ŽŸ‚Ö
-		task = task->mpPrev;
+		task = task->mpNext;
 	}
 }
 

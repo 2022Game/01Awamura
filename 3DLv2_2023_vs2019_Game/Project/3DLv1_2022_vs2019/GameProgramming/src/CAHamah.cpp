@@ -10,6 +10,8 @@
 //CAHamah(モデル、位置、回転、拡縮）
 CAHamah::CAHamah(CModel* model, const CVector& position,
 	const CVector& rotation, const CVector& scale)
+	:CCharacter3((int)TaskPriority::eObstacie)
+	,mCollider(this,&Matrix(),CVector(),3.0f)
 {
 	//障害物用のタグ設定
 	mTag = ETag::EOBSTACLE;
@@ -19,7 +21,6 @@ CAHamah::CAHamah(CModel* model, const CVector& position,
 	Position(position); //位置の設定
 	Rotation(rotation); //回転の設定
 	Scale(scale); //拡縮の設定
-	mColliderMesh.Set(this, &Matrix(), mpModel);
 	ha = 0;
 	hb = 40;
 }
@@ -62,6 +63,6 @@ void CAHamah::Collision(CCollider* m, CCollider* o) {
 void CAHamah::Collision()
 {
 	//コライダの優先度変更
-	mColliderMesh.ChangePriority();
+	mCollider.ChangePriority();
 	//衝突処理を実行
 }

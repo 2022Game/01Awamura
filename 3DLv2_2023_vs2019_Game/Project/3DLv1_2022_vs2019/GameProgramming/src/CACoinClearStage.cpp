@@ -9,6 +9,7 @@
 //CACoin(モデル、位置、回転、拡縮）
 CACoinClearStage::CACoinClearStage(CModel* model, const CVector& position,
 	const CVector& rotation, const CVector& scale)
+	:CCharacter3((int)TaskPriority::eMoveObject)
 {
 	mTag = ETag::ESTAGECLEAR;
 

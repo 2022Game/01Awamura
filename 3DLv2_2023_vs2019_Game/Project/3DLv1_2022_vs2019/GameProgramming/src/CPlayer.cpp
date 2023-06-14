@@ -22,10 +22,12 @@ CPlayer::CPlayer(const CVector& pos, const CVector& rot, const CVector& scale)
 }
 
 CPlayer::CPlayer()
-: mLine(this,&Matrix(),CVector(0.0f,0.0f,0.0f),CVector(0.0f,2.0f,0.0f))
+:CCharacter3((int)TaskPriority::ePlayer)
+, mLine(this,&Matrix(),CVector(0.0f,0.0f,0.0f),CVector(0.0f,2.0f,0.0f))
 , mLine2(this, &Matrix(), CVector(-0.5f, 1.2f, 0.0f), CVector(0.5f, 1.2f, 0.0f))
 , mLine3(this, &Matrix(), CVector(0.0f, 1.0f, -0.5f), CVector(0.0f, 1.0f, 0.5f))
 ,mGroundedMoveObjTf(nullptr)
+,mIsGrounded(false)
 , jc(0)
 , n(0)
 ,jswitch(0)
@@ -43,7 +45,7 @@ void CPlayer::Update() {
 	
 	CTransform::Update();
 	//接地している時にジャンプ可能
-	if (mGroundedMoveObjTf != nullptr)
+	if (mIsGrounded)
 	{
 		//頭上無限ジャンプ回避用
 		if (jswitch == 0)
@@ -107,6 +109,45 @@ void CPlayer::Update() {
 	CApplication::Ui()->RotY(Rotation().Y());
 }
 
+//ステージクリア用のオブジェクトに接地時の処理
+void CPlayer::GroundedClearObj()
+{
+	if (CApplication::StageSwitch == 0)
+	{
+		//randddco--; //テスト用
+		//CApplication::StageGuard = 0;
+		if (CApplication::StageCount == 0)
+		{
+			CApplication::SelectStage = 1; //後にランダム設定に変える
+			CApplication::StageSwitch = 1;
+			//randddco = 380; //テスト用
+		}
+		if (CApplication::StageCount == 1)
+		{
+			CApplication::SelectStage = 2; //後にランダム設定に変える
+			CApplication::StageSwitch = 1;
+			//randddco = 580; //テスト用
+		}
+		if (CApplication::StageCount == 2)
+		{
+			CApplication::SelectStage = 3; //後にランダム設定に変える
+			CApplication::StageSwitch = 1;
+		}
+	}
+}
+
+//ステージの壁生成用のオブジェクトに接地の処理
+void CPlayer::GroundedGuardObj()
+{
+	if (CApplication::StageSwitch == 1)
+	{
+		CApplication::StageCount++;
+		CApplication::StageGuard++;
+		CApplication::StageSwitch = 0; //テスト用
+	}
+}
+
+
 void CPlayer::Collision(CCollider* m, CCollider* o) {
 	/*CVector adjust;
 	if (CCollider::Collision(m,o,adjust))
@@ -135,50 +176,30 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 
 					//行列の更新
 					CTransform::Update();
+
+					//接地フラグをON
+					mIsGrounded = true;
+
+					//ジャンプや移動中に接地したらジャンプOKにする
+					if (mState == EState::EJUMP || mState == EState::EMOVE)
+					{
+						mState = EState::EJO;
+					}
+
 					//ステージの壁生成用のコライダにヒットした場合
 					if (o->Tag() == CCharacter3::ETag::ESTAGEGUARD)
 					{
-						if (mState == EState::EJUMP || mState == EState::EMOVE || mState == EState::EMOVE)
+						/*if (mState == EState::EJUMP || mState == EState::EMOVE)
 						{
 							mState = EState::EJO;
-						}
-
-						if (CApplication::StageSwitch == 1)
-						{
-							CApplication::StageCount++;
-							CApplication::StageGuard++;
-							CApplication::StageSwitch = 0; //テスト用
-						}
+						}*/
+						GroundedGuardObj();
 					}
+
 					//ステージクリア用のコライダにヒットした場合
 					else if (o->Tag() == CCharacter3::ETag::ESTAGECLEAR)
 					{
-						if (mState == EState::EJUMP || mState == EState::EMOVE || mState == EState::EMOVE)
-						{
-							mState = EState::EJO;
-						}
-						if (CApplication::StageSwitch == 0)
-						{
-							//randddco--; //テスト用
-							//CApplication::StageGuard = 0;
-							if (CApplication::StageCount == 0)
-							{
-								CApplication::SelectStage = 1; //後にランダム設定に変える
-								CApplication::StageSwitch = 1;
-								//randddco = 380; //テスト用
-							}
-							if (CApplication::StageCount == 1)
-							{
-								CApplication::SelectStage = 2; //後にランダム設定に変える
-								CApplication::StageSwitch = 1;
-								//randddco = 580; //テスト用
-							}
-							if (CApplication::StageCount == 2)
-							{
-								CApplication::SelectStage = 3; //後にランダム設定に変える
-								CApplication::StageSwitch = 1;
-							}
-						}
+						GroundedClearObj();
 					}
 					else if (o->Tag() == CCharacter3::ETag::EOBSTACLE)
 					{
@@ -186,6 +207,17 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 					}
 					//CCharacter3* parent = o->Parent();
 				}
+		}
+		//相手のコライダが球コライダの時
+		else if (o->Type() == CCollider::ESPHERE) {
+			CVector adjust;
+			if (CCollider::CollisionSphereLine(o, m, &adjust))
+			{
+				//位置の更新
+				Position(Position() + adjust);
+				//行列の更新
+				CTransform::Update();
+			}
 		}
 		break;
 	}
@@ -196,6 +228,7 @@ void CPlayer::Collision()
 {
 	//接地しているオブジェクトのポインタを初期化
 	mGroundedMoveObjTf = nullptr;
+	mIsGrounded = false;
 
 	//コライダの優先度変更
 	mLine.ChangePriority();

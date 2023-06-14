@@ -24,6 +24,13 @@ private:
 
 	//接地している移動オブジェクトのTransform
 	CTransform* mGroundedMoveObjTf;
+	//接地しているかどうか
+	bool mIsGrounded;
+
+	//ステージクリア用のオブジェクトに接地時の処理
+	void GroundedClearObj();
+	//ステージの壁生成用のオブジェクトに接地時の処理
+	void GroundedGuardObj();
 public:
 	int randddco;
 	int randdd;
