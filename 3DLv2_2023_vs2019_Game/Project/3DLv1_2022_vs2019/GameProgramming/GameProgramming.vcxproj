@@ -20,6 +20,8 @@
     <ClCompile Include="src\CApplication.cpp" />
     <ClCompile Include="src\CAWall.cpp" />
     <ClCompile Include="src\CAWallGimmick.cpp" />
+    <ClCompile Include="src\CAWood.cpp" />
+    <ClCompile Include="src\CAWoodGimmick.cpp" />
     <ClCompile Include="src\CBillBoard.cpp" />
     <ClCompile Include="src\CBlock.cpp" />
     <ClCompile Include="src\CBullet.cpp" />
@@ -65,6 +67,8 @@
     <ClInclude Include="src\CApplication.h" />
     <ClInclude Include="src\CAWall.h" />
     <ClInclude Include="src\CAWallGimmick.h" />
+    <ClInclude Include="src\CAWood.h" />
+    <ClInclude Include="src\CAWoodGimmick.h" />
     <ClInclude Include="src\CBillBoard.h" />
     <ClInclude Include="src\CBlock.h" />
     <ClInclude Include="src\CBullet.h" />

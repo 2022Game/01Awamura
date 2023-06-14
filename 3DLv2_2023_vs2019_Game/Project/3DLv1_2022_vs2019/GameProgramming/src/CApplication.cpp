@@ -87,10 +87,6 @@ void CApplication::Start()
 	
 	//	mCharacter.Model(&mModel);
 		//mCharacter.Scale(CVector(0.1f, 0.1f, 0.1f));
-	mPlayer.Model(&mModel);
-	mPlayer.Position(CVector(10.0f, 1.0f, 0.0f));
-	mPlayer.Scale(CVector(0.5f, 0.5f, 0.5f));
-	mPlayer.Rotation(CVector(0.0f, 0.0f, 0.0f));
 	//ビルボードの生成
 	/*new CBillBoard(CVector(-6.0f, 3.0f, -10.0f), 1.0f, 1.0f);*/
 	////三角コライダの確認
@@ -111,6 +107,11 @@ void CApplication::Start()
 	mpClearStage = new CAClearStage();
 	//mpHamahGimmick = new CAHamahGimmick();
 	//mpClearStage = new CAClearStage();
+	mpPlayer = new CPlayer();
+	mpPlayer->Model(&mModel);
+	mpPlayer->Position(CVector(10.0f, 1.0f, 0.0f));
+	mpPlayer->Scale(CVector(0.5f, 0.5f, 0.5f));
+	mpPlayer->Rotation(CVector(0.0f, 0.0f, 0.0f));
 }
 
 void CApplication::Update()
@@ -137,11 +138,17 @@ void CApplication::Update()
 			delete mpHamahGimmick;
 			mpHamahGimmick = nullptr;
 		}
+		if (SelectStage != 2)
+		{
+			delete mpWoodGimmick;
+			mpWoodGimmick = nullptr;
+		}
 	}
 	if (SelectStage == 2)
 	{
 		//ランダムで１ならハマーステージ予定
 		mpCoinGimmick = new CACoinGimmick();
+		mpWoodGimmick = new CAWoodGimmick();
 		//mpHamahGimmick = new CAHamahGimmick();
 		SelectStage = 0; //テスト用
 	}
@@ -216,11 +223,11 @@ void CApplication::Update()
 	//カメラのパラメータを作成する
 	CVector e, c, u;//視点、注視点、上方向
 	//視点を求める
-	e = mPlayer.Position() + (CVector(-0.2f, 1.0f, -3.0f)) * mPlayer.MatrixRotate();
+	e = mpPlayer->Position() + (CVector(-0.2f, 1.0f, -3.0f)) * mpPlayer->MatrixRotate();
 	//注視点を求める
-	c = mPlayer.Position();
+	c = mpPlayer->Position();
 	//上方向を求める
-	u = (CVector(0.0f, 1.0f, 0.0f)) * mPlayer.MatrixRotate();
+	u = (CVector(0.0f, 1.0f, 0.0f)) * mpPlayer->MatrixRotate();
 	//カメラの設定
 	gluLookAt(e.X(), e.Y(), e.Z(), c.X(), c.Y(), c.Z(), u.X(), u.Y(), u.Z());
 	//モデルビューの行列の取得

@@ -16,8 +16,7 @@
 
 //CPlayer(位置、回転、スケール）
 CPlayer::CPlayer(const CVector& pos, const CVector& rot, const CVector& scale)
-	: jc(0)
-	, n(0)
+	:CPlayer()
 {
 	CTransform::Update(pos, rot, scale);//行列の更新
 }
@@ -26,6 +25,12 @@ CPlayer::CPlayer()
 : mLine(this,&Matrix(),CVector(0.0f,0.0f,0.0f),CVector(0.0f,2.0f,0.0f))
 , mLine2(this, &Matrix(), CVector(-0.5f, 1.2f, 0.0f), CVector(0.5f, 1.2f, 0.0f))
 , mLine3(this, &Matrix(), CVector(0.0f, 1.0f, -0.5f), CVector(0.0f, 1.0f, 0.5f))
+,mGroundedMoveObjTf(nullptr)
+, jc(0)
+, n(0)
+,jswitch(0)
+,randdd(0)
+,randddco(0)
 {
 	//インスタンスの設定
 	spInstance = this;
@@ -35,42 +40,47 @@ CPlayer::CPlayer()
 
 //更新処理
 void CPlayer::Update() {
+	
 	CTransform::Update();
-	if (mState != EState::EJUMP)
+	//接地している時にジャンプ可能
+	if (mGroundedMoveObjTf != nullptr)
 	{
-		if (mInput.Key(VK_SPACE))
+		//頭上無限ジャンプ回避用
+		if (jswitch == 0)
 		{
-			mState = EState::EJUMP;
-			jc = 60;
+			if (mInput.Key(VK_SPACE))
+			{
+				mState = EState::EJUMP;
+				jc = 60;
+				jswitch = 30;
+			}
 		}
 	}
+	//ジャンプ中は下降するためにカウントを下げる
 	if (jc > 0)
 	{
 		jc--;
+		//頭上無限ジャンプ回避用
+		if (jswitch != 0)
+		{
+			jswitch--;
+		}
 	}
-	//if (mState != EState::EJO)
+	//ジャンプ中下降し始める時間
+	if (jc < 45)
 	{
-		if (jc < 45)
-		{
-			CVector pos = Position();
-			CVector P = pos - VELOCITY3;
-			CVector P2 = VELOCITY3 * MatrixRotate();
-			CVector P3 = pos - P2;
-			CVector P4 = pos - VELOCITY3 * MatrixRotate();
-			Position(pos - VELOCITY3 * MatrixRotate());
-		}
+		Position(Position() - VELOCITY3 * MatrixRotate());
 	}
-	if (mState != EState::EJO)
+	//ジャンプ開始時上昇する
+	if (jc > 50 && jc <= 60)
 	{
-		if (jc > 50 && jc <= 60)
-		{
-			Position(Position() + VELOCITY1 * MatrixRotate());
-		}
-		if (jc > 0 && jc <= 50)
-		{
-			Position(Position() + VELOCITY2 * MatrixRotate());
-		}
+		Position(Position() + VELOCITY1 * MatrixRotate());
 	}
+	if (jc > 45 && jc <= 50)
+	{
+		Position(Position() + VELOCITY2 * MatrixRotate());
+	}
+
 	//Dキー入力で回転
 	if (mInput.Key(VK_RIGHT) || mInput.Key('D')) {
 		//Y軸の回転値を減少
@@ -115,6 +125,14 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 				{
 					//位置の更新
 					Position(Position() + adjust);
+					//衝突したのが、移動オブジェクトであれば
+					if (o->Tag() == CCharacter3::ETag::ESTAGECLEAR ||
+						o->Tag() == CCharacter3::ETag::ESTAGEGUARD)
+					{
+						//衝突した移動オブジェクトを保持しておく
+						mGroundedMoveObjTf = o->Parent();
+					}
+
 					//行列の更新
 					CTransform::Update();
 					//ステージの壁生成用のコライダにヒットした場合
@@ -176,6 +194,9 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 //衝突処理
 void CPlayer::Collision()
 {
+	//接地しているオブジェクトのポインタを初期化
+	mGroundedMoveObjTf = nullptr;
+
 	//コライダの優先度変更
 	mLine.ChangePriority();
 	mLine2.ChangePriority();
@@ -184,6 +205,9 @@ void CPlayer::Collision()
 	CCollisionManager::Instance()->Collision(&mLine, COLLISIONRANGE);
 	CCollisionManager::Instance()->Collision(&mLine2, COLLISIONRANGE);
 	CCollisionManager::Instance()->Collision(&mLine3, COLLISIONRANGE);
+
+	//接地している移動オブジェクトを親に設定
+	SetParent(mGroundedMoveObjTf);
 }
 
 CPlayer* CPlayer::spInstance = nullptr;

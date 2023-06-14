@@ -6,7 +6,7 @@
 #include "CColliderMesh.h"
 
 //à⁄ìÆë¨ìx
-#define VELOCITY CVector(0.0f,0.75f,0.0f)
+#define VELOCITY CVector(0.0f,0.075f,0.0f)
 #define VELOCITY10 CVector(0.05f,0.0f,0.0f)
 
 //int CACoin::mD;
@@ -26,7 +26,7 @@ CACoin::CACoin(CModel* model, const CVector& position,
 	Scale(scale); //ägèkÇÃê›íË
 	mColliderMesh.Set(this, &Matrix(), mpModel);
 	SCount = 0;
-	UpCount = 180 / 6;
+	UpCount = 180 / 6 * 10;
 	SideChengeCount = 0;
 	SideCount = 300 / 6;
 	//mTag = CCharacter3::ETag::ECOIN;

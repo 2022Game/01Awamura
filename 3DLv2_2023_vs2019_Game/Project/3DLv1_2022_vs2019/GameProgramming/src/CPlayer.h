@@ -21,11 +21,15 @@ private:
 	CColliderLine mLine3;
 	//プレイヤーのインスタンス
 	static CPlayer* spInstance;
+
+	//接地している移動オブジェクトのTransform
+	CTransform* mGroundedMoveObjTf;
 public:
 	int randddco;
 	int randdd;
 	int n;
 	int jc;//ジャンプカウント
+	int jswitch;
 	//インスタンスのポインタの取得
 	static CPlayer* Instance();
 	//衝突処理

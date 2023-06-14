@@ -46,7 +46,7 @@ public:
 	const CMatrix operator*(const float f)const;
 	//行列の取得
 	float* M()const;
-	//転置行列取得
+	//逆行列取得
 	CMatrix Transpose();
 	//逆行列取得
 	CMatrix Inverse() const;

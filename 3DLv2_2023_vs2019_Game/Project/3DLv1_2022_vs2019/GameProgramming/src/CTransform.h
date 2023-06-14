@@ -11,7 +11,7 @@ public:
 	//コンストラクタ
 	CTransform();
 	//位置の取得
-	const CVector& Position() const;
+	CVector Position() const;
 	//位置の設定
 	//Position(位置)
 	void Position(const CVector& v);
@@ -21,7 +21,7 @@ public:
 	//Rotation(回転値)
 	void Rotation(const CVector& v);
 	//スケール値の取得
-	const CVector& Scale() const;
+	CVector Scale() const;
 	//拡大縮小の設定
 	//Scale(拡大縮小)
 	void Scale(const CVector& v);

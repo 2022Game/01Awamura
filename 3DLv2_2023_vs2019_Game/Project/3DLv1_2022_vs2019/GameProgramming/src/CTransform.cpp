@@ -5,7 +5,7 @@ CTransform::CTransform()
 {
 }
 
-const CVector& CTransform::Position() const
+CVector CTransform::Position() const
 {
 	CVector pos = mPosition;
 	if (mpParent != nullptr)
@@ -34,14 +34,28 @@ void CTransform::Rotation(const CVector& v)
 	mRotation = v;
 }
 
-const CVector& CTransform::Scale() const
+CVector CTransform::Scale() const
 {
+	CVector scale = mScale;
+	//親が存在するならば
+	if (mpParent != nullptr)
+	{
+		//親のスケール行列の逆行列を掛けて、
+		//ワールド空間でのスケール値を返す
+		scale = scale * mpParent->MatrixScale();
+	}
 	return mScale;
 }
 
 void CTransform::Scale(const CVector& v)
 {
 	mScale = v;
+	if (mpParent != nullptr)
+	{
+		//親のスケール行列の逆行列を掛けて
+		//親から見た相対的（ローカル）なスケール値に変換
+		mScale = mScale * mpParent->MatrixScale().Inverse();
+	}
 }
 
 const CMatrix& CTransform::Matrix() const
@@ -71,11 +85,18 @@ void CTransform::SetParent(CTransform* parent)
 
 	if (mpParent != nullptr)
 	{
+		//座標、スケール値、それぞれを
+		//ワールド空間での値に戻す
 		mPosition = mPosition * mpParent->Matrix();
+		mScale = mScale * mpParent->MatrixScale();
 	}
+	//新しく設定する親が存在するならば
 	if (parent != nullptr)
 	{
+		//座標、スケール値を
+		//設定する親から見た相対的な値に変換する
 		mPosition = mPosition * parent->Matrix().Inverse();
+		mScale = mScale * parent->MatrixScale().Inverse();
 	}
 	mpParent = parent;
 }

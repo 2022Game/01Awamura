@@ -12,6 +12,8 @@
 #include "CACoinGimmick.h"
 #include "CAHamah.h"
 #include "CAHamahGimmick.h"
+#include "CAWood.h"
+#include "CAWoodGimmick.h"
 #include "CAWall.h"
 #include "CAWallGimmick.h"
 #include "CInput.h"
@@ -61,8 +63,6 @@ private:
 	CMiss* mpMiss;
 	CVector mEye;
 	CMatrix mMatrix;
-	//CCharacter3 mCharacter;
-	CPlayer mPlayer;
 	CACoin* mpCoin;
 	//CAHamah* mpHamah;
 	//モデルインスタクラスの作成
@@ -78,7 +78,10 @@ private:
 	CModel mModelCoin;
 	//Hamahモデル
 	CModel mModelHamah;
+	//Wallモデル
 	CModel mModelWall;
+	//Woodモデル
+	CModel mModelWood;
 	//モデルからコライダを生成
 	CColliderMesh mColliderMesh;
 
@@ -86,6 +89,7 @@ private:
 	CACoinGimmick* mpCoinGimmick;
 	CAHamahGimmick* mpHamahGimmick;
 	CAWallGimmick* mpWallGimmick;
+	CAWoodGimmick* mpWoodGimmick;
 //	CACClearStage* mpCoinClearStage;
 public:
 	~CApplication();

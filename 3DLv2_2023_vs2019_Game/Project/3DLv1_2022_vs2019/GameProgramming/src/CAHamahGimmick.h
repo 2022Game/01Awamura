@@ -7,8 +7,8 @@
 class CAHamahGimmick : public CTask
 {
 private:
-	std::vector<CAHamah*> mHamahs;	// コインのリスト
-	CModel* mpHamahModel;			// コインのモデルデータ
+	std::vector<CAHamah*> mHamahs;	// ハマーのリスト
+	CModel* mpHamahModel;			// ハマーのモデルデータ
 
 	// 初期化処理
 	void Init();
