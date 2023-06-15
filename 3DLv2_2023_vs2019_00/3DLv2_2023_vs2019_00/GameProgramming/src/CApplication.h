@@ -24,6 +24,8 @@
 
 #include "CXCharacter.h"
 
+#include "CXPlayer.h"
+
 class CApplication
 {
 private:
@@ -70,7 +72,7 @@ private:
 	CModelX mModelX;
 	CMatrix mMatrix;
 	//キャラクタのインスタンス
-	CXCharacter mCharacter;
+	CXPlayer mXPlayer;
 	int AnimaScene;
 	int AnimaFrame;
 public:

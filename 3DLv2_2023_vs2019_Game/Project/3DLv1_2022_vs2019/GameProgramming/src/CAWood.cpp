@@ -10,7 +10,7 @@
 //CAHamah(モデル、位置、回転、拡縮）
 CAWood::CAWood(CModel* model, const CVector& position,
 	const CVector& rotation, const CVector& scale)
-	:mCollider(this, &Matrix(), CVector(), 3.0f)
+	:mCollider(this, &Matrix(), CVector(), 1.0f)
 {
 	//障害物用のタグ設定
 	mTag = ETag::EOBSTACLE;
@@ -45,7 +45,7 @@ void CAWood::Update() {
 	}
 	if (coo <= 0)
 	{
-		mEnabled = false;
+		//mEnabled = false;
 	}
 }
 

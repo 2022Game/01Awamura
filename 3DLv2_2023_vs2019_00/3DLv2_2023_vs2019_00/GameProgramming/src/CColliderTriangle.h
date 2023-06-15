@@ -22,3 +22,14 @@ public:
 	void Render();
 };
 #endif
+
+
+//if (mInput.Key('W'))
+//{
+//	ChangeAnimation(1, true, 60);
+//	mPosition = mPosition + VELOCITY * mMatrixRotate;
+//}
+//else
+//{
+//	ChangeAnimation(0, true, 60);
+//}

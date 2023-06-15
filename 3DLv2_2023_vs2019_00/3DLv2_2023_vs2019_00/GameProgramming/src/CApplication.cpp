@@ -66,7 +66,7 @@ void CApplication::Start()
 	//3Dモデルファイルの読み込み
 	mModelX.Load(MODEL_FILE);
 	//キャラクタークラスの更新
-	mCharacter.Init(&mModelX);
+	mXPlayer.Init(&mModelX);
 	mFont.Load("FontG.png", 1, 4096 / 64);
 	AnimaScene = 0;
 	AnimaFrame = 60;
@@ -75,7 +75,7 @@ void CApplication::Start()
 void CApplication::Update()
 {
 	//色んなアニメーションを出す
-	while (AnimaScene < mModelX.AnimationSet().size())
+	/*while (AnimaScene < mModelX.AnimationSet().size())
 	{
 		mCharacter.ChangeAnimation(AnimaScene, true, AnimaFrame);
 		AnimaFrame--;
@@ -89,10 +89,11 @@ void CApplication::Update()
 			AnimaScene = 0;
 		}
 		break;
-	}
+	}*/
 	//mModelX.AnimationSet().size();
 	//キャラクタークラスの更新
-	mCharacter.Update(CMatrix());
+	mXPlayer.Update();
+	mInput.Update();
 	/*mModelX.AnimationSet()[0]->Time(
 		mModelX.AnimationSet()[0]->Time() + 1.0f);
 	mModelX.AnimationSet()[0]->Time(
@@ -145,7 +146,7 @@ void CApplication::Update()
 	//mModelX.AnimateVertex();
 	//モデル描画
 	//mModelX.Render();
-	mCharacter.Render();
+	mXPlayer.Render();
 
 	//2D描画開始
 	CCamera::Start(0, 800, 0, 600);
