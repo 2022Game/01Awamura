@@ -49,8 +49,11 @@ void CXPlayer::Update()
 	}
 	if (mInput.Key('W'))
 	{
-		ChangeAnimation(AnimaScene = 1, true, AnimaFrame = 60);
-		mPosition = mPosition + VELOCITY2 * mMatrixRotate;
+		if(AnimaScene != 4 && AnimaScene != 3)
+		{
+			ChangeAnimation(AnimaScene = 1, true, AnimaFrame = 60);
+			mPosition = mPosition + VELOCITY2 * mMatrixRotate;
+		}
 	}
 	else if(AnimaScene == 1)
 	{
