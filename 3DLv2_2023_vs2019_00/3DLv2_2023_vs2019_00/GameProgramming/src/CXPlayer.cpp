@@ -6,7 +6,6 @@
 CXPlayer::CXPlayer()
 	:AttackFrame(0)
 	, AnimaScene(0)
-	,AnimaFrame(0)
 {
 
 }
@@ -16,10 +15,6 @@ void CXPlayer::Update()
 	if (AttackFrame != 0)
 	{
 		AttackFrame--;
-	}
-	if (AnimaFrame != 0)
-	{
-		AnimaFrame--;
 	}
 	if (mInput.Key(VK_SPACE))
 	{
@@ -51,7 +46,7 @@ void CXPlayer::Update()
 	{
 		if(AnimaScene != 4 && AnimaScene != 3)
 		{
-			ChangeAnimation(AnimaScene = 1, true, AnimaFrame = 60);
+			ChangeAnimation(AnimaScene = 1, true, 60);
 			mPosition = mPosition + VELOCITY2 * mMatrixRotate;
 		}
 	}

@@ -9,9 +9,8 @@ public:
 	void Update();
 	CXPlayer();
 private:
-	int AnimaScene;
-	int AttackFrame;
-	int AnimaFrame;
+	int AnimaScene; //アニメーション番号
+	int AttackFrame; //攻撃時のアニメーションフレーム数
 	CInput mInput;
 };
 
