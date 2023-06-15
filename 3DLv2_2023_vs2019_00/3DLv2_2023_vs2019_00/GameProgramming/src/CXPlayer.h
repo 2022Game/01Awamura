@@ -7,9 +7,12 @@ class CXPlayer :public CXCharacter
 {
 public:
 	void Update();
-	CInput mInput;
+	CXPlayer();
 private:
-	//CInput mInput;
+	int AnimaScene;
+	int AttackFrame;
+	int AnimaFrame;
+	CInput mInput;
 };
 
 #endif
