@@ -74,15 +74,16 @@ void CACoin::Update() {
 //衝突処理
 //CCollision(コライダ１、コライダ２）
 void CACoin::Collision(CCollider* m, CCollider* o) {
-	//相手のコライダタイプの判定
 	switch (o->Type())
 	{
-	case CCollider::ELINE://三角コライダの時
-		CVector adjust;//調整用ベクトル
-		if (CCollider::CollisionTriangleLine(o, m, &adjust))
-			{
-				mEnabled = false;
-			}
+	case CCollider::ESPHERE://球コライダの時
+		//コライダのmとyが衝突しているか判定
+		if (CCollider::Collision(m, o)) {
+			//エフェクト生成
+			new CEffect(o->Parent()->Position(), 1.0f, 1.0f, "exp.tga", 4, 4, 2);
+			//衝突している時は無効にする
+			//mEnabled = false;
+		}
 		break;
 	}
 }

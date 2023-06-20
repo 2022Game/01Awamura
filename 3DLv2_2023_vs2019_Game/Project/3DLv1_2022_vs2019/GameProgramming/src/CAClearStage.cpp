@@ -48,13 +48,25 @@ void CAClearStage::Init()
 
 	// コインを生成
 	//ステージ１スタート生成
-	ClearStage(CVector(10.0f, 0.1f, -2.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	if (CApplication::StageCount == 0)
+	{
+		ClearStage(CVector(10.0f, 0.1f, -2.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	}
 	////ステージ２スタート生成
-	ClearStage(CVector(10.0f, 0.1f, 46.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	if (CApplication::StageCount == 0)
+	{
+		ClearStage(CVector(10.0f, 0.1f, 46.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	}
 	////ステージ３スタート生成
-	ClearStage(CVector(10.0f, 0.1f, 94.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	if (CApplication::StageCount == 1)
+	{
+		ClearStage(CVector(10.0f, 0.1f, 94.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	}
 	////ゲームクリア生成
-	ClearStage(CVector(10.0f, 0.1f, 142.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	if (CApplication::StageCount == 2)
+	{
+		ClearStage(CVector(10.0f, 0.1f, 142.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+	}
 }
 
 void CAClearStage::ClearStage(CVector& pos, CVector& rot, CVector& scale)

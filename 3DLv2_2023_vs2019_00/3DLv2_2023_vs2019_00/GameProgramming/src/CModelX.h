@@ -103,6 +103,7 @@ private:
 //CMeshクラスの定義
 class CMesh {
 public:
+	void AnimateVertex(CMatrix*);
 	void Render();
 	//コンストラクタ
 	CMesh();
@@ -190,6 +191,7 @@ public:
 	CMaterial* FindMaterial(char* name);
 	//マテリアル配列の取得
 	std::vector<CMaterial*>& Material();
+	void AnimateVertex(CMatrix*);
 private:
 	//アニメーションセットの配列
 	std::vector<CAnimationSet*>mAnimationSet;

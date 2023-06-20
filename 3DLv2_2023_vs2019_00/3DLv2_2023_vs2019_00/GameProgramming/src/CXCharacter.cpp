@@ -2,6 +2,7 @@
 #include "CTransform.h"
 
 CXCharacter::CXCharacter()
+	:mpCombinedMatrix(nullptr)
 {
 	mScale = CVector(1.0f, 1.0f, 1.0f);
 }
@@ -25,6 +26,8 @@ void CXCharacter::Init(CModelX* model) {
 		Time(mAnimationFrame);
 	//アニメーションの重みを1.0(100%)にする
 	mpModel->AnimationSet()[mAnimationIndex]->Weight(1.0f);
+	//合成行列退避エリアの確保
+	mpCombinedMatrix = new CMatrix[model->Frames().size()];
 }
 
 /*
@@ -80,14 +83,21 @@ void CXCharacter::Update(CMatrix& matrix) {
 	mpModel->AnimateFrame();
 	//フレームの合成行列を計算する
 	mpModel->Frames()[0]->AnimateCombined(&matrix);
+	//合成行列の退避
+	for (size_t i = 0; i < mpModel->Frames().size(); i++) {
+		mpCombinedMatrix[i] =
+			mpModel->Frames()[i]->CombinedMatrix();
+	}
 	//頂点にアニメーションを適用する
-	mpModel->AnimateVertex();
+	//削除　mpModel->AnimateVertex();
 }
 
 /*
 描画する
 */
 void CXCharacter::Render() {
+	//頂点にアニメーションを適用する
+	mpModel->AnimateVertex(mpCombinedMatrix);
 	mpModel->Render();
 }
 

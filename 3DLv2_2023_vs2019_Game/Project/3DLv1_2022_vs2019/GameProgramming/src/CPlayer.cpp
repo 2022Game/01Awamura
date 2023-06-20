@@ -5,6 +5,10 @@
 #include "CApplication.h"
 #include "CCollisionManager.h"
 
+#include <stdlib.h>
+
+#include "time.h"
+
 #define ROTATION_YV CVector(0.0f,1.0f,0.0f) //回転速度
 #define VELOCITY CVector(0.0f,0.0f,0.1f) //移動速度
 #define VELOCITY1 CVector(0.0f,0.2f,0.0f) //移動速度
@@ -13,6 +17,9 @@
 #define ROTATION_XV CVector(1.0f,0.0f,0.0f) //回転速度
 #define VELOCITY4 CVector(0.0f,0.01f,0.0f) //移動速
 #define VELOCITY10 CVector(0.01f,0.0f,0.0f)
+
+int rand(void);
+void srand(unsigned int seed);
 
 //CPlayer(位置、回転、スケール）
 CPlayer::CPlayer(const CVector& pos, const CVector& rot, const CVector& scale)
@@ -34,6 +41,7 @@ CPlayer::CPlayer()
 ,randdd(0)
 ,randddco(0)
 {
+	srand((unsigned int)time(NULL));
 	//インスタンスの設定
 	spInstance = this;
 	randdd = 0;
@@ -82,6 +90,12 @@ void CPlayer::Update() {
 	{
 		Position(Position() + VELOCITY2 * MatrixRotate());
 	}
+	
+	if (mInput.Key('O')) {
+		//Y軸の回転値を減少
+		jc = 60;
+	}
+
 
 	//Dキー入力で回転
 	if (mInput.Key(VK_RIGHT) || mInput.Key('D')) {
@@ -118,20 +132,24 @@ void CPlayer::GroundedClearObj()
 		//CApplication::StageGuard = 0;
 		if (CApplication::StageCount == 0)
 		{
-			CApplication::SelectStage = 1; //後にランダム設定に変える
+			CApplication::SelectStage = 1 + rand() % 2; //後にランダム設定に変える
 			CApplication::StageSwitch = 1;
 			//randddco = 380; //テスト用
 		}
 		if (CApplication::StageCount == 1)
 		{
-			CApplication::SelectStage = 2; //後にランダム設定に変える
+			CApplication::SelectStage = 1 + rand() % 2; //後にランダム設定に変える
 			CApplication::StageSwitch = 1;
 			//randddco = 580; //テスト用
 		}
 		if (CApplication::StageCount == 2)
 		{
-			CApplication::SelectStage = 3; //後にランダム設定に変える
+			CApplication::SelectStage = 1 + rand() % 2; //後にランダム設定に変える
 			CApplication::StageSwitch = 1;
+		}
+		if (CApplication::StageCount == 3)
+		{
+			mState = EState::ECLEAR;
 		}
 	}
 }

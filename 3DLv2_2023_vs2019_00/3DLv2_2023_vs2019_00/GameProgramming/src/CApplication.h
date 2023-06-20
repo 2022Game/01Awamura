@@ -26,6 +26,8 @@
 
 #include "CXPlayer.h"
 
+#include "CXEnemy.h"
+
 class CApplication
 {
 private:
@@ -73,6 +75,8 @@ private:
 	CMatrix mMatrix;
 	//キャラクタのインスタンス
 	CXPlayer mXPlayer;
+	//敵のインスタンス
+	CXEnemy mXEnemy;
 	int AnimaScene;
 	int AnimaFrame;
 public:

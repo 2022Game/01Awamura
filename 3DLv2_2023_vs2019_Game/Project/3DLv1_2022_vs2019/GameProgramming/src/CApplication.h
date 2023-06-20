@@ -32,6 +32,8 @@
 #include "CBillBoard.h"
 #include "CColliderTriangle.h"
 #include "CColliderMesh.h"
+#include "GamePause.h"
+#include "CUi.h"
 
 class CApplication
 {
@@ -91,7 +93,16 @@ private:
 	CAWallGimmick* mpWallGimmick;
 	CAWoodGimmick* mpWoodGimmick;
 //	CACClearStage* mpCoinClearStage;
+	CUi* mpUi;
 public:
+	//ゲームクリア処理
+	void Clear();
+	//ゲームクリア判定
+	bool IsClear();
+	//ゲームオーバー判定
+	bool IsOver();
+	//ゲームオーバー処理
+	void Over();
 	~CApplication();
 	int Init();
 	static int SelectStage;

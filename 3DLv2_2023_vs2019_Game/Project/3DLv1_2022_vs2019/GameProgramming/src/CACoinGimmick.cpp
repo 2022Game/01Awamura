@@ -43,7 +43,7 @@ void CACoinGimmick::Init()
 
 	// コインを生成
 	//ステージ１
-	if (CApplication::SelectStage == 1)
+	if (CApplication::StageCount == 0)
 	{
 		CreateCoin(CVector(10.0f, 0.1f, 6.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 		CreateCoin(CVector(11.5f, 0.1f, 14.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
@@ -52,7 +52,7 @@ void CACoinGimmick::Init()
 		CreateCoin(CVector(10.0f, 0.1f, 38.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 	}
 	////ステージ２
-	if (CApplication::SelectStage == 2)
+	if (CApplication::StageCount == 1)
 	{
 		CreateCoin(CVector(10.0f, 0.1f, 54.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 			CreateCoin(CVector(11.5f, 0.1f, 62.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
@@ -61,7 +61,7 @@ void CACoinGimmick::Init()
 			CreateCoin(CVector(10.0f, 0.1f, 86.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 	}
 	////ステージ３
-	if (CApplication::SelectStage == 3)
+	if (CApplication::StageCount == 2)
 	{
 		CreateCoin(CVector(10.0f, 0.1f, 102.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 		CreateCoin(CVector(11.5f, 0.1f, 110.5f), CVector(), CVector(0.8f, 0.8f, 0.8f));

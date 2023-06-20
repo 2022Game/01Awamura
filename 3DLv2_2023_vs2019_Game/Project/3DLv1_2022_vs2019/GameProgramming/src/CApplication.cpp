@@ -6,6 +6,7 @@
 #include "CTriangle.h"
 #include "CTransform.h"
 #include "CCollisionManager.h"
+#include "CCharacter.h"
 
 //クラスのstatic変数
 CTexture CApplication::mTexture;
@@ -114,8 +115,55 @@ void CApplication::Start()
 	mpPlayer->Rotation(CVector(0.0f, 0.0f, 0.0f));
 }
 
+bool CApplication::IsOver()
+{	
+	//作業予定
+}
+
+void CApplication::Over()
+{
+	//CameraSet();
+	////ゲームの描画
+	//CApplication::CharacterManager()->Render();
+	//mpUi->Render();
+	//mpUi->Over();
+}
+
+bool CApplication::IsClear()
+{
+	return StageCount == 3;
+}
+void CApplication::Clear()
+{
+	//CameraSet();
+	////ゲームの描画
+	//CApplication::CharacterManager()->Render();
+	//mpUi->Render();
+	//mpUi->Clear();
+}
+
 void CApplication::Update()
 {
+	switch (mState)
+	{
+	case EState::ECLEAR:
+	{
+		mpUi->Clear();
+	}
+	break;
+	}
+
+	if (SelectStage != 0)
+	{
+		delete mpCoinGimmick;
+		mpCoinGimmick = nullptr;
+		delete mpHamahGimmick;
+		delete mpWoodGimmick;
+		delete mpWallGimmick;
+		mpWallGimmick = nullptr;
+		mpHamahGimmick = nullptr;
+		mpWoodGimmick = nullptr;
+	}
 	if (StageGuard == 1)
 	{
 		mpWallGimmick = new CAWallGimmick();
@@ -124,46 +172,24 @@ void CApplication::Update()
 	if (SelectStage == 1)
 	{
 		//ランダムで１ならハマーステージ予定
+		mpClearStage = new CAClearStage();
 		mpCoinGimmick = new CACoinGimmick();
 		mpHamahGimmick = new CAHamahGimmick();
-		//mpWallGimmick = new CAWallGimmick();
 		SelectStage = 0; //テスト用
-	}
-	if (SelectStage != 0)
-	{
-		delete mpCoinGimmick;
-		mpCoinGimmick = nullptr;
-		if (SelectStage != 1)
-		{
-			delete mpHamahGimmick;
-			mpHamahGimmick = nullptr;
-		}
-		if (SelectStage != 2)
-		{
-			delete mpWoodGimmick;
-			mpWoodGimmick = nullptr;
-		}
 	}
 	if (SelectStage == 2)
 	{
-		//ランダムで１ならハマーステージ予定
+		//ランダムで2ならウッドステージ予定
+		mpClearStage = new CAClearStage();
 		mpCoinGimmick = new CACoinGimmick();
 		mpWoodGimmick = new CAWoodGimmick();
-		//mpHamahGimmick = new CAHamahGimmick();
 		SelectStage = 0; //テスト用
 	}
-	//if (SelectStage != 2 && SelectStage != 0)
-	//{
-	//	delete mpCoinGimmick;
-	//	mpCoinGimmick = nullptr;
-	//	/*delete mpHamahGimmick;
-	//	mpHamahGimmick = nullptr;*/
-	//}
 	if (SelectStage == 3)
 	{
 		//ランダムで１ならハマーステージ予定
+		mpClearStage = new CAClearStage();
 		mpCoinGimmick = new CACoinGimmick();
-		//mpHamahGimmick = new CAHamahGimmick();
 		SelectStage = 0; //テスト用
 	}
 	//if (SelectStage != 3 && SelectStage != 0)
@@ -173,7 +199,6 @@ void CApplication::Update()
 	//	/*delete mpHamahGimmick;
 	//	mpHamahGimmick = nullptr;*/
 	//}
-
 	//タスクマネージャの更新
 	CTaskManager::Instance()->Update();
 	CTaskManager::Instance()->Collision();

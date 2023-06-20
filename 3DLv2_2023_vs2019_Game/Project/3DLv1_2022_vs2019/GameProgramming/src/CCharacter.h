@@ -21,7 +21,7 @@ public:
 	};
 	enum class EState	//ó‘Ô
 	{
-		ECOIN,
+		ECLEAR, //CLEAR
 		EMOVE,	//ˆÚ“®
 		ESTOP,	//’â~
 		EJUMP,	//ƒWƒƒƒ“ƒv
