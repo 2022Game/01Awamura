@@ -52,16 +52,12 @@ void CAWood::Update() {
 //衝突処理
 //CCollision(コライダ１、コライダ２）
 void CAWood::Collision(CCollider* m, CCollider* o) {
-	//相手のコライダタイプの判定
-	//switch (o->Type())
-	//{
-	//case CCollider::ETRIANGLE2://三角コライダの時
-	//	if (m->Type() == CCollider::ELINE) {
-	//	}
-	//	break;
-	//}
-	if (CCollider::Collision(m, o)) {
-		mEnabled = false;
+	switch (o->Type()) {
+	case CCollider::ELINE:
+		if (CCollider::Collision(m, o)) {
+			//衝突しているときは無効にする
+			mEnabled = false;
+		}
 	}
 }
 
@@ -70,4 +66,5 @@ void CAWood::Collision()
 	//コライダの優先度変更
 	mCollider.ChangePriority();
 	//衝突処理を実行
+	CCollisionManager::Instance()->Collision(&mCollider, COLLISIONRANGE);
 }

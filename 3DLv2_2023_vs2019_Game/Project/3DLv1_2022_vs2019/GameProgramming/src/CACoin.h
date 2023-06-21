@@ -15,6 +15,7 @@ class CACoin : public CCharacter3 {
 private:
 	//ƒRƒ‰ƒCƒ_
 	CColliderMesh mColliderMesh;
+	CCollider mCollider;
 public:
 	int SCount;
 	int UpCount;

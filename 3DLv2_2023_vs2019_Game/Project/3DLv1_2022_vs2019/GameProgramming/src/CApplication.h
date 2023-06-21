@@ -34,10 +34,16 @@
 #include "CColliderMesh.h"
 #include "GamePause.h"
 #include "CUi.h"
+#include "CColliderLine.h"
 
 class CApplication
 {
 private:
+	CColliderLine mColliderLine;
+	CColliderTriangle mColliderTriangle;
+	CColliderTriangle mColliderTriangle2;
+	CColliderTriangle mColliderTriangle3;
+	CColliderTriangle mColliderTriangle4;
 	static CUi* spUi; //UIクラスのポインタ
 	//モデルビューの逆行列
 	static CMatrix mModelViewInverse;
@@ -95,14 +101,6 @@ private:
 //	CACClearStage* mpCoinClearStage;
 	CUi* mpUi;
 public:
-	//ゲームクリア処理
-	void Clear();
-	//ゲームクリア判定
-	bool IsClear();
-	//ゲームオーバー判定
-	bool IsOver();
-	//ゲームオーバー処理
-	void Over();
 	~CApplication();
 	int Init();
 	static int SelectStage;

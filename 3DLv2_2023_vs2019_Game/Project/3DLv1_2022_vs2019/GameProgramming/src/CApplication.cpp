@@ -7,6 +7,7 @@
 #include "CTransform.h"
 #include "CCollisionManager.h"
 #include "CCharacter.h"
+#include "GamePause.h"
 
 //クラスのstatic変数
 CTexture CApplication::mTexture;
@@ -91,15 +92,21 @@ void CApplication::Start()
 	//ビルボードの生成
 	/*new CBillBoard(CVector(-6.0f, 3.0f, -10.0f), 1.0f, 1.0f);*/
 	////三角コライダの確認
-	//mColliderTriangle.Set(nullptr, nullptr
-	//	, CVector(-20.0f, 100.0f, 0.0f)
-	//	, CVector(20.0f,100.0f, 0.0f)
-	//	, CVector(-20.0f, 0.0f, 0.0f));
-	//////三角コライダ２
+	mColliderLine.Set(nullptr, nullptr
+		, CVector(18.0f, 24.0f, 0.0f)
+		, CVector(18.0f, 24.0f, 100.0f));
 	//mColliderTriangle2.Set(nullptr, nullptr
-	//	, CVector(20.0f, 0.0f, 0.0f)
-	//	, CVector(-20.0f, 0.0f, 0.0f)
-	//	, CVector(20.0f, 100.0f, 0.0f));
+	//	, CVector(18.0f, 10.0f, 100.0f)
+	//	, CVector(18.0f, 40.0f, 100.0f)
+	//	, CVector(18.0f, 10.0f, 0.0f));
+	//mColliderTriangle3.Set(nullptr, nullptr
+	//	, CVector(3.0f, 40.0f, 0.0f)
+	//	, CVector(3.0f, 10.0f, 0.0f)
+	//	, CVector(3.0f, 40.0f, 100.0f));
+	//mColliderTriangle4.Set(nullptr, nullptr
+	//	, CVector(3.0f, 10.0f, 100.0f)
+	//	, CVector(3.0f, 40.0f, 100.0f)
+	//	, CVector(3.0f, 10.0f, 0.0f));
 	//背景モデルから三角コライダを生成
 	//親インスタンスと親行列はなし
 	mColliderMesh.Set(nullptr, nullptr, &mBackGround);
@@ -115,44 +122,17 @@ void CApplication::Start()
 	mpPlayer->Rotation(CVector(0.0f, 0.0f, 0.0f));
 }
 
-bool CApplication::IsOver()
-{	
-	//作業予定
-}
-
-void CApplication::Over()
-{
-	//CameraSet();
-	////ゲームの描画
-	//CApplication::CharacterManager()->Render();
-	//mpUi->Render();
-	//mpUi->Over();
-}
-
-bool CApplication::IsClear()
-{
-	return StageCount == 3;
-}
-void CApplication::Clear()
-{
-	//CameraSet();
-	////ゲームの描画
-	//CApplication::CharacterManager()->Render();
-	//mpUi->Render();
-	//mpUi->Clear();
-}
-
 void CApplication::Update()
 {
-	switch (mState)
+	/*switch (mState)
 	{
 	case EState::ECLEAR:
 	{
 		mpUi->Clear();
 	}
 	break;
-	}
-
+	}*/
+	
 	if (SelectStage != 0)
 	{
 		delete mpCoinGimmick;

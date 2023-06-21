@@ -6,6 +6,7 @@
 
 #include "CTaskManager.h"
 #include "CCollider.h"
+#include "CColliderMesh.h"
 
 class CCollisionManager : public CTaskManager
 {
@@ -13,6 +14,7 @@ public:
 	//衝突処理
 	void Collision();
 	void Collision(CCollider* c,int range);
+	void Collision(CColliderMesh* c, int range);
 	//インスタンスの取得
 	static CCollisionManager* Instance();
 private:

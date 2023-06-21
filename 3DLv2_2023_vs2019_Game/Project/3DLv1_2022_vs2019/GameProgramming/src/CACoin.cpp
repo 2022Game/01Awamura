@@ -77,14 +77,9 @@ void CACoin::Collision(CCollider* m, CCollider* o) {
 	switch (o->Type())
 	{
 	case CCollider::ESPHERE://球コライダの時
-		//コライダのmとyが衝突しているか判定
-		if (CCollider::Collision(m, o)) {
-			//エフェクト生成
-			new CEffect(o->Parent()->Position(), 1.0f, 1.0f, "exp.tga", 4, 4, 2);
-			//衝突している時は無効にする
-			//mEnabled = false;
+		if (o->Type() == CCollider::ELINE) {
+			CVector adjust;//調整用ベクトル
 		}
-		break;
 	}
 }
 
