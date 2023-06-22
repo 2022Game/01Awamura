@@ -26,6 +26,7 @@ public:
 	int AnimationIndex(); //アニメーション番号の取得
 protected:
 	CModelX* mpModel; //モデルデータ
+	int mAnimationSet;
 	int mAnimationIndex; //アニメーション番号
 	bool mAnimationLoopFlg; //true:アニメーションを繰り返す
 	float mAnimationFrame; //アニメーションの再生フレーム
