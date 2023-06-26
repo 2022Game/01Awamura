@@ -153,6 +153,8 @@ void CApplication::Update()
 	//ƒ‚ƒfƒ‹•`‰æ
 	//mModelX.Render();
 	mXPlayer.Render();
+	//ƒRƒ‰ƒCƒ_‚Ì•`‰æ
+	CCollisionManager::Instance()->Render();
 	//“G‚Ì•`‰æ
 	mXEnemy.Render();
 

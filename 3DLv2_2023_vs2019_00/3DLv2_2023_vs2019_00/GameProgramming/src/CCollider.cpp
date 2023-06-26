@@ -1,6 +1,7 @@
 #include "CCollider.h"
 #include "CCollisionManager.h"
 #include "CColliderLine.h"
+#include "CMatrix.h"
 
 void CCollider::ChangePriority(int priority)
 {
@@ -176,4 +177,9 @@ void CCollider::ChangePriority()
 	//mPriority = pos.Length();
 	//CCollisionManager::Instance()->Remove(this); //ˆê’Uíœ
 	//CCollisionManager::Instance()->Add(this); //’Ç‰Á
+}
+
+void CCollider::Matrix(CMatrix* m)
+{
+	mpMatrix = m;
 }
