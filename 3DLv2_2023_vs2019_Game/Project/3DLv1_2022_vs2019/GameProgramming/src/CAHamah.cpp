@@ -22,18 +22,13 @@ CAHamah::CAHamah(CModel* model, const CVector& position,
 	Rotation(rotation); //‰ñ“]‚Ìİ’è
 	Scale(scale); //Šgk‚Ìİ’è
 	ha = 0;
-	hb = 40;
+	hb = 0;
 }
 
 void CAHamah::Update() {
 	//s—ñ‚ğXV
 	CTransform::Update();
 	hb--;
-	if (hb == 0)
-	{
-		ha++;
-		hb = 60;
-	}
 	if (ha % 2 == 0)
 	{
 		Position(Position() + VELOCITY10 * MatrixRotate());
@@ -51,7 +46,12 @@ void CAHamah::Collision(CCollider* m, CCollider* o) {
 	case CCollider::ELINE:
 		if (CCollider::Collision(m, o)) {
 			//Õ“Ë‚µ‚Ä‚¢‚é‚Æ‚«‚Í–³Œø‚É‚·‚é
-			mEnabled = false;
+			//mEnabled = false;
+			if (hb <= 0)
+			{
+				ha++;
+				hb = 60;
+			}
 		}
 	}
 }

@@ -30,6 +30,8 @@ CACoin::CACoin(CModel* model, const CVector& position,
 	SideChengeCount = 0;
 	SideCount = 300 / 6;
 	//mTag = CCharacter3::ETag::ECOIN;
+	ha = 0;
+	hb = 0;
 }
 
 //更新処理
@@ -79,6 +81,17 @@ void CACoin::Collision(CCollider* m, CCollider* o) {
 	case CCollider::ESPHERE://球コライダの時
 		if (o->Type() == CCollider::ELINE) {
 			CVector adjust;//調整用ベクトル
+		}
+		break;
+	case CCollider::ELINE:
+		if (CCollider::Collision(m, o)) {
+			//衝突しているときは無効にする
+			//mEnabled = false;
+			if (hb <= 0)
+			{
+				ha++;
+				hb = 60;
+			}
 		}
 	}
 }

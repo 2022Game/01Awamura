@@ -132,19 +132,19 @@ void CPlayer::GroundedClearObj()
 		//CApplication::StageGuard = 0;
 		if (CApplication::StageCount == 0)
 		{
-			CApplication::SelectStage = 1 + rand() % 2; //後にランダム設定に変える
+			CApplication::SelectStage = 1 + rand() % 3; //後にランダム設定に変える
 			CApplication::StageSwitch = 1;
 			//randddco = 380; //テスト用
 		}
 		if (CApplication::StageCount == 1)
 		{
-			CApplication::SelectStage = 1 + rand() % 2; //後にランダム設定に変える
+			CApplication::SelectStage = 1 + rand() % 3; //後にランダム設定に変える
 			CApplication::StageSwitch = 1;
 			//randddco = 580; //テスト用
 		}
 		if (CApplication::StageCount == 2)
 		{
-			CApplication::SelectStage = 1 + rand() % 2; //後にランダム設定に変える
+			CApplication::SelectStage = 1 + rand() % 3; //後にランダム設定に変える
 			CApplication::StageSwitch = 1;
 		}
 		if (CApplication::StageCount == 3)

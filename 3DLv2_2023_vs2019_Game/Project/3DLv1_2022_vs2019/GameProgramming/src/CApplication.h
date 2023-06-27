@@ -40,6 +40,9 @@ class CApplication
 {
 private:
 	CColliderLine mColliderLine;
+	CColliderLine mColliderLine2;
+	CColliderLine mColliderLine3;
+	CColliderLine mColliderLine4;
 	CColliderTriangle mColliderTriangle;
 	CColliderTriangle mColliderTriangle2;
 	CColliderTriangle mColliderTriangle3;
@@ -107,6 +110,7 @@ public:
 	static int StageSwitch;
 	static int StageGuard;
 	static int StageCount;
+	static int hcount;
 	static CUi* Ui();
 	//モデルビュー行列の取得
 	static const CMatrix& ModelViewInverse();

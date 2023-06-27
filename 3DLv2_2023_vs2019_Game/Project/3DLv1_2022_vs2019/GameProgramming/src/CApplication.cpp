@@ -57,6 +57,8 @@ int CApplication::StageGuard = 0;
 
 int CApplication::StageCount = 0;
 
+int CApplication::hcount = 0;
+
 void CApplication::Start()
 {
 	//SelectStage = 0;
@@ -95,6 +97,15 @@ void CApplication::Start()
 	mColliderLine.Set(nullptr, nullptr
 		, CVector(18.0f, 24.0f, 0.0f)
 		, CVector(18.0f, 24.0f, 100.0f));
+	mColliderLine2.Set(nullptr, nullptr
+		, CVector(6.0f, 24.0f, 0.0f)
+		, CVector(6.0f, 24.0f, 100.0f));
+	mColliderLine3.Set(nullptr, nullptr
+		, CVector(18.0f, 22.5f, 0.0f)
+		, CVector(18.0f, 22.5f, 100.0f));
+	mColliderLine4.Set(nullptr, nullptr
+		, CVector(6.0f, 22.5f, 0.0f)
+		, CVector(6.0f, 22.5f, 100.0f));
 	//mColliderTriangle2.Set(nullptr, nullptr
 	//	, CVector(18.0f, 10.0f, 100.0f)
 	//	, CVector(18.0f, 40.0f, 100.0f)
@@ -163,6 +174,7 @@ void CApplication::Update()
 		mpClearStage = new CAClearStage();
 		mpCoinGimmick = new CACoinGimmick();
 		mpWoodGimmick = new CAWoodGimmick();
+		hcount = 1;
 		SelectStage = 0; //テスト用
 	}
 	if (SelectStage == 3)
@@ -170,6 +182,8 @@ void CApplication::Update()
 		//ランダムで１ならハマーステージ予定
 		mpClearStage = new CAClearStage();
 		mpCoinGimmick = new CACoinGimmick();
+		mpWoodGimmick = new CAWoodGimmick();
+		hcount = 1;
 		SelectStage = 0; //テスト用
 	}
 	//if (SelectStage != 3 && SelectStage != 0)

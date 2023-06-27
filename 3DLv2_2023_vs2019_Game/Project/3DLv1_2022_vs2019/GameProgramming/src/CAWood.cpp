@@ -2,9 +2,11 @@
 #include "CCollisionManager.h"
 #include "CEffect.h"
 #include "CColliderMesh.h"
+#include "CApplication.h"
 
 #define VELOCITY CVector(0.0f,0.0f,0.0f)
 #define VELOCITY10 CVector(0.20f,0.0f,0.0f)
+#define VELOCITY11 CVector(-0.20f,0.0f,0.10f)
 
 //コンストラクタ
 //CAHamah(モデル、位置、回転、拡縮）
@@ -28,24 +30,28 @@ CAWood::CAWood(CModel* model, const CVector& position,
 void CAWood::Update() {
 	//行列を更新
 	CTransform::Update();
-	coo--;
 	hb--;
-	if (hb == 0)
+	if (CApplication::hcount == 1)
 	{
-		ha++;
-		hb = 60;
+		if (ha % 2 == 0)
+		{
+			Position(Position() + VELOCITY10 * MatrixRotate());
+		}
+		else
+		{
+			Position(Position() - VELOCITY10 * MatrixRotate());
+		}
 	}
-	if (ha % 2 == 0)
+	if (CApplication::hcount == 0)
 	{
-		Position(Position() + VELOCITY10 * MatrixRotate());
-	}
-	else
-	{
-		Position(Position() - VELOCITY10 * MatrixRotate());
-	}
-	if (coo <= 0)
-	{
-		//mEnabled = false;
+		if (ha % 2 == 0)
+		{
+			Position(Position() + VELOCITY11 * MatrixRotate());
+		}
+		else
+		{
+			Position(Position() - VELOCITY11 * MatrixRotate());
+		}
 	}
 }
 
@@ -56,7 +62,11 @@ void CAWood::Collision(CCollider* m, CCollider* o) {
 	case CCollider::ELINE:
 		if (CCollider::Collision(m, o)) {
 			//衝突しているときは無効にする
-			mEnabled = false;
+			if (hb <= 0)
+			{
+				ha++;
+				hb = 60;
+			}
 		}
 	}
 }
