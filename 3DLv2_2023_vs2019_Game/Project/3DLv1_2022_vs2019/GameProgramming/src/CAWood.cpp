@@ -5,8 +5,8 @@
 #include "CApplication.h"
 
 #define VELOCITY CVector(0.0f,0.0f,0.0f)
-#define VELOCITY10 CVector(0.20f,0.0f,0.0f)
-#define VELOCITY11 CVector(-0.20f,0.0f,0.10f)
+#define VELOCITY10 CVector(0.005f,0.0f,0.0f)
+#define VELOCITY11 CVector(-0.05f,0.0f,0.10f)
 
 //コンストラクタ
 //CAHamah(モデル、位置、回転、拡縮）
@@ -65,7 +65,7 @@ void CAWood::Collision(CCollider* m, CCollider* o) {
 			if (hb <= 0)
 			{
 				ha++;
-				hb = 60;
+				hb = 30;
 			}
 		}
 	}

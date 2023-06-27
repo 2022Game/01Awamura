@@ -21,6 +21,11 @@ public:
 		ETRIANGLE,//三角コライダ
 		ELINE, //線分コライダ
 	};
+	enum class ETag {
+		EBODY, //体
+		ESWORD, //剣
+	};
+	ETag Tag(); //タグの取得
 
 	EType Type();
 	//CollisionTriangleLine(三角コライダ, 線分コライダ, 調整値)
@@ -44,12 +49,13 @@ public:
 	//コンストラクタ
 	//CCollider(親, 親行列, 位置, 半径)
 	CCollider(CCharacter3* parent, CMatrix* matrix,
-		const CVector& position, float radius);
+		const CVector& position, float radius, ETag tag = ETag::EBODY);
 	//親ポインタの取得
 	CCharacter3* Parent();
 	//描画
 	void Render();
 protected:
+	ETag mTag;//タグ
 	EType mType;//コライダタイプ
 	//頂点
 	CVector mV[3];

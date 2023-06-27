@@ -5,13 +5,14 @@
 
 //コライダの初期化
 CXPlayer::CXPlayer()
-	:mColSphereBody(this, nullptr, CVector(), 0.5f)
+	:mColSphereBody(this, nullptr, CVector(), 0.5f, CCollider::ETag::EBODY)
 	,mColSphereHead(this,nullptr,CVector(0.0f,5.0f,-3.0f),0.5f)
-	,mColSphereSword(this,nullptr,CVector(-10.0f,10.0f,50.0f),0.3f)
+	,mColSphereSword(this,nullptr,CVector(-10.0f,10.0f,50.0f),0.3f, CCollider::ETag::ESWORD)
 	, AttackFrame(0)
 	, AnimaScene(0)
 {
-
+	//タグにプレイヤーを設定します
+	mTag = EPLAYER;
 }
 
 void CXPlayer::Init(CModelX* model)
@@ -70,4 +71,19 @@ void CXPlayer::Update()
 		ChangeAnimation(0, true, 60);
 	}
 	CXCharacter::Update();
+}
+
+void CXPlayer::Collision(CCollider* m, CCollider* o) {
+	//自身のコライダタイプの判定
+	switch (m->Type()) {
+	//case CCollider::ESPHERE:
+	//	if (o->Tag() == CCollider::ETag::ESWORD)
+	//	{
+	//		//相手のコライダが三角コライダの時
+	//		if (o->Type() == CCollider::ESPHERE) {
+	//			ChangeAnimation(11, false, 30);
+	//		}
+	//	}
+	//	break;
+	}
 }
