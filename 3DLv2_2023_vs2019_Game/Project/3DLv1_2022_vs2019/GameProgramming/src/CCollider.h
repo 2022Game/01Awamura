@@ -15,13 +15,28 @@ public:
 	//優先度の変更
 	void ChangePriority(int priority);
 	//コライダタイプ
-	enum EType {
+	enum class EType {
 		ESPHERE,//球コライダ
 		ETRIANGLE,//三角コライダ
 		ELINE, //線分コライダ
 	};
 
-	EType Type();
+	//コライダのレイヤー
+	enum class ELayer
+	{
+		EDEFAULT,
+		EWOOD, //木のオブジェクトのコライダ
+		EDEATH, //死亡
+		ECOIN, //コインのコライダ
+		ELINEWALL, //線分の壁コライダ
+	};
+
+	EType Type() const;
+	//コライダのレイヤーを取得
+	ELayer Layer() const;
+	//コライダのレイヤーを設定
+	void Layer(ELayer layer);
+
 	CCharacter3::ETag Tag() const;
 
 	//CollisionTriangleLine(三角コライダ, 線分コライダ, 調整値)
@@ -73,6 +88,7 @@ public:
 	void Render();
 protected:
 	EType mType;//コライダタイプ
+	ELayer mLayer; //コライダのレイヤー
 	//頂点
 	CVector mV[3];
 

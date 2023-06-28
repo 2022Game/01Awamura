@@ -11,7 +11,7 @@
 
 #define ROTATION_YV CVector(0.0f,1.0f,0.0f) //回転速度
 #define VELOCITY CVector(0.0f,0.0f,0.1f) //移動速度
-#define VELOCITY1 CVector(0.0f,0.2f,0.0f) //移動速度
+#define VELOCITY1 CVector(0.0f,0.1f,0.0f) //移動速度
 #define VELOCITY2 CVector(0.0f,0.05f,0.0f) //移動速度
 #define VELOCITY3 CVector(0.0f,0.2f,0.0f) //移動速
 #define ROTATION_XV CVector(1.0f,0.0f,0.0f) //回転速度
@@ -77,16 +77,16 @@ void CPlayer::Update() {
 		}
 	}
 	//ジャンプ中下降し始める時間
-	if (jc < 45)
+	if (jc < 35)
 	{
 		Position(Position() - VELOCITY3 * MatrixRotate());
 	}
 	//ジャンプ開始時上昇する
-	if (jc > 50 && jc <= 60)
+	if (jc > 40 && jc <= 60)
 	{
 		Position(Position() + VELOCITY1 * MatrixRotate());
 	}
-	if (jc > 45 && jc <= 50)
+	if (jc > 35 && jc <= 40)
 	{
 		Position(Position() + VELOCITY2 * MatrixRotate());
 	}
@@ -175,9 +175,9 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 	}*/
 	//自身のコライダタイプの判定
 	switch (m->Type()) {
-	case CCollider::ELINE://線分コライダ
+	case CCollider::EType::ELINE://線分コライダ
 		//相手のコライダが三角コライダの時
-		if (o->Type() == CCollider::ETRIANGLE) {
+		if (o->Type() == CCollider::EType::ETRIANGLE) {
 			CVector adjust;//調整用ベクトル
 			//三角形と線分の衝突判定
 				if (CCollider::CollisionTriangleLine(o, m, &adjust))
@@ -223,11 +223,22 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 					{
 
 					}
+
+					if (o->Layer()== CCollider::ELayer::EDEATH)
+					{
+						mState = EState::EOVER;
+					}
+					if (mState == EState::EOVER)
+					{
+
+					}
+
 					//CCharacter3* parent = o->Parent();
 				}
 		}
 		//相手のコライダが球コライダの時
-		else if (o->Type() == CCollider::ESPHERE) {
+		else if (o->Type() == CCollider::EType::ESPHERE && o->Layer() 
+			!= CCollider::ELayer::ECOIN) {
 			CVector adjust;
 			if (CCollider::CollisionSphereLine(o, m, &adjust))
 			{

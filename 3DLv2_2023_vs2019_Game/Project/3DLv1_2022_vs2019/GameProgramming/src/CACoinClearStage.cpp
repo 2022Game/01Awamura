@@ -71,7 +71,7 @@ void CACoinClearStage::Collision(CCollider* m, CCollider* o) {
 	//相手のコライダタイプの判定
 	switch (o->Type())
 	{
-	case CCollider::ELINE://三角コライダの時
+	case CCollider::EType::ELINE://三角コライダの時
 		CVector adjust;//調整用ベクトル
 		if (CCollider::CollisionTriangleLine(o, m, &adjust))
 		{

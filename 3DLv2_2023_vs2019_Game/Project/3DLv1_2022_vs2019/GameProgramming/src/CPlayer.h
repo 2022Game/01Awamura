@@ -31,6 +31,7 @@ private:
 	void GroundedClearObj();
 	//ステージの壁生成用のオブジェクトに接地時の処理
 	void GroundedGuardObj();
+	CVector mLastPos;
 public:
 	int randddco;
 	int randdd;

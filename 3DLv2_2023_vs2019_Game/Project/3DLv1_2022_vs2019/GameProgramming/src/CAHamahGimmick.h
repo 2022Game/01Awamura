@@ -9,6 +9,11 @@ class CAHamahGimmick : public CTask
 private:
 	std::vector<CAHamah*> mHamahs;	// ハマーのリスト
 	CModel* mpHamahModel;			// ハマーのモデルデータ
+	int randnow;
+	int randnow2;
+	int randnow3;
+	int randnow4;
+	int randnow5;
 
 	// 初期化処理
 	void Init();

@@ -95,29 +95,36 @@ void CApplication::Start()
 	/*new CBillBoard(CVector(-6.0f, 3.0f, -10.0f), 1.0f, 1.0f);*/
 	////三角コライダの確認
 	mColliderLine.Set(nullptr, nullptr
-		, CVector(18.0f, 24.0f, 0.0f)
-		, CVector(18.0f, 24.0f, 100.0f));
+		, CVector(24.0f, 24.0f, -50.0f)
+		, CVector(24.0f, 24.0f, 300.0f));
+	mColliderLine.Layer(CCollider::ELayer::ELINEWALL);
+
 	mColliderLine2.Set(nullptr, nullptr
-		, CVector(6.0f, 24.0f, 0.0f)
-		, CVector(6.0f, 24.0f, 100.0f));
+		, CVector(0.0f, 24.0f, -50.0f)
+		, CVector(0.0f, 24.0f, 300.0f));
+	mColliderLine2.Layer(CCollider::ELayer::ELINEWALL);
+
 	mColliderLine3.Set(nullptr, nullptr
-		, CVector(18.0f, 22.5f, 0.0f)
-		, CVector(18.0f, 22.5f, 100.0f));
+		, CVector(24.0f, 22.5f, -50.0f)
+		, CVector(24.0f, 22.5f, 300.0f));
+	mColliderLine3.Layer(CCollider::ELayer::ELINEWALL);
+
 	mColliderLine4.Set(nullptr, nullptr
-		, CVector(6.0f, 22.5f, 0.0f)
-		, CVector(6.0f, 22.5f, 100.0f));
-	//mColliderTriangle2.Set(nullptr, nullptr
-	//	, CVector(18.0f, 10.0f, 100.0f)
-	//	, CVector(18.0f, 40.0f, 100.0f)
-	//	, CVector(18.0f, 10.0f, 0.0f));
-	//mColliderTriangle3.Set(nullptr, nullptr
-	//	, CVector(3.0f, 40.0f, 0.0f)
-	//	, CVector(3.0f, 10.0f, 0.0f)
-	//	, CVector(3.0f, 40.0f, 100.0f));
-	//mColliderTriangle4.Set(nullptr, nullptr
-	//	, CVector(3.0f, 10.0f, 100.0f)
-	//	, CVector(3.0f, 40.0f, 100.0f)
-	//	, CVector(3.0f, 10.0f, 0.0f));
+		, CVector(0.0f, 22.5f, -50.0f)
+		, CVector(0.0f, 22.5f, 300.0f));
+	mColliderLine4.Layer(CCollider::ELayer::ELINEWALL);
+
+	mColliderTriangle2.Set(nullptr, nullptr
+		, CVector(-300.0f, 0.0f, -300.0f)
+		, CVector(-300.0f, 0.0f, 300.0f)
+		, CVector(300.0f, 0.0f, -300.0f));
+	mColliderTriangle2.Layer(CCollider::ELayer::EDEATH); 
+
+	mColliderTriangle3.Set(nullptr, nullptr
+		, CVector(300.0f, 0.0f, 300.0f)
+		, CVector(300.0f, 0.0f, -300.0f)
+		, CVector(-300.0f, 0.0f, 300.0f));
+	mColliderTriangle3.Layer(CCollider::ELayer::EDEATH);
 	//背景モデルから三角コライダを生成
 	//親インスタンスと親行列はなし
 	mColliderMesh.Set(nullptr, nullptr, &mBackGround);
@@ -183,7 +190,7 @@ void CApplication::Update()
 		mpClearStage = new CAClearStage();
 		mpCoinGimmick = new CACoinGimmick();
 		mpWoodGimmick = new CAWoodGimmick();
-		hcount = 1;
+		hcount = 2;
 		SelectStage = 0; //テスト用
 	}
 	//if (SelectStage != 3 && SelectStage != 0)

@@ -22,6 +22,7 @@ public:
 	enum class EState	//ó‘Ô
 	{
 		ECLEAR, //CLEAR
+		EOVER,
 		EMOVE,	//ˆÚ“®
 		ESTOP,	//’â~
 		EJUMP,	//ƒWƒƒƒ“ƒv

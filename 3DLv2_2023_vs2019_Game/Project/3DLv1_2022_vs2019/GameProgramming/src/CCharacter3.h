@@ -29,7 +29,9 @@ public:
 	};
 	//enum class EState	//ó‘Ô
 	//{
-	//	ECOIN,
+	//	ENULL,
+	//	EOVER,
+	//	ECLERE,
 	//	EMOVE,	//ˆÚ“®
 	//	ESTOP,	//’â~
 	//	EJUMP,	//ƒWƒƒƒ“ƒv

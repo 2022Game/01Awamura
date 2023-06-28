@@ -5,8 +5,8 @@
 #include "CApplication.h"
 
 #define VELOCITY CVector(0.0f,0.0f,0.0f)
-#define VELOCITY10 CVector(0.005f,0.0f,0.0f)
-#define VELOCITY11 CVector(-0.05f,0.0f,0.10f)
+#define VELOCITY10 CVector(0.5f,0.0f,0.0f)
+#define VELOCITY11 CVector(-0.5f,0.0f,0.30f)
 
 //コンストラクタ
 //CAHamah(モデル、位置、回転、拡縮）
@@ -16,6 +16,8 @@ CAWood::CAWood(CModel* model, const CVector& position,
 {
 	//障害物用のタグ設定
 	mTag = ETag::EOBSTACLE;
+	//木のオブジェクト用のレイヤーを設定
+	mCollider.Layer(CCollider::ELayer::EWOOD);
 
 	//モデル、位置、回転、拡縮を設定する
 	mpModel = model; //モデルの設定
@@ -25,11 +27,12 @@ CAWood::CAWood(CModel* model, const CVector& position,
 	ha = 0;
 	hb = 40;
 	coo = 100;
+	mLastPos = position; //前回のポジションに設定する
 }
 
 void CAWood::Update() {
-	//行列を更新
-	CTransform::Update();
+	//移動前の座標を記憶しておく
+	mLastPos = Position();
 	hb--;
 	if (CApplication::hcount == 1)
 	{
@@ -42,7 +45,7 @@ void CAWood::Update() {
 			Position(Position() - VELOCITY10 * MatrixRotate());
 		}
 	}
-	if (CApplication::hcount == 0)
+	if (CApplication::hcount == 2)
 	{
 		if (ha % 2 == 0)
 		{
@@ -53,21 +56,25 @@ void CAWood::Update() {
 			Position(Position() - VELOCITY11 * MatrixRotate());
 		}
 	}
+	//行列を更新
+	CTransform::Update();
 }
 
 //衝突処理
 //CCollision(コライダ１、コライダ２）
 void CAWood::Collision(CCollider* m, CCollider* o) {
+	//相手が線分の壁コライダでなければ、衝突判定を行わない
+	if (o->Layer() != CCollider::ELayer::ELINEWALL)return;
+
 	switch (o->Type()) {
-	case CCollider::ELINE:
+	case CCollider::EType::ELINE:
 		if (CCollider::Collision(m, o)) {
 			//衝突しているときは無効にする
-			if (hb <= 0)
-			{
+				Position(mLastPos);
 				ha++;
-				hb = 30;
-			}
+				//hb = 30;
 		}
+		break;
 	}
 }
 
@@ -76,5 +83,5 @@ void CAWood::Collision()
 	//コライダの優先度変更
 	mCollider.ChangePriority();
 	//衝突処理を実行
-	CCollisionManager::Instance()->Collision(&mCollider, COLLISIONRANGE);
+	CCollisionManager::Instance()->Collision(&mCollider, COLLISIONRANGE * 200);
 }

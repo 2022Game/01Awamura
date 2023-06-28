@@ -16,6 +16,7 @@ class CAHamah : public CCharacter3{
 private:
 	//ƒRƒ‰ƒCƒ_
 	CCollider mCollider;
+	CVector mLastPos;
 public:
 	int ha;
 	int hb;

@@ -55,17 +55,17 @@ void CAClearStage::Init()
 	////ステージ２スタート生成
 	if (CApplication::StageCount == 0)
 	{
-		ClearStage(CVector(10.0f, 0.1f, 46.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+		ClearStage(CVector(10.0f, 0.1f, 47.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 	}
 	////ステージ３スタート生成
 	if (CApplication::StageCount == 1)
 	{
-		ClearStage(CVector(10.0f, 0.1f, 94.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+		ClearStage(CVector(10.0f, 0.1f, 89.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 	}
 	////ゲームクリア生成
 	if (CApplication::StageCount == 2)
 	{
-		ClearStage(CVector(10.0f, 0.1f, 142.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+		ClearStage(CVector(10.0f, 0.1f, 131.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 	}
 }
 
@@ -98,8 +98,8 @@ void CAClearStage::Update()
 void CAClearStage::Collision(CCollider* m, CCollider* o) {
 	switch (m->Type())
 	{
-	case CCollider::ETRIANGLE:
-		if (o->Type() == CCollider::ELINE)
+	case CCollider::EType::ETRIANGLE:
+		if (o->Type() == CCollider::EType::ELINE)
 		{
 			if (CCollider::Collision(m, o)) {
 				mEnabled = false;

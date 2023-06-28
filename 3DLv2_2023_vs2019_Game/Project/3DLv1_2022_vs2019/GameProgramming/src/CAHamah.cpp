@@ -4,7 +4,7 @@
 #include "CColliderMesh.h"
 
 #define VELOCITY CVector(0.0f,0.0f,0.0f)
-#define VELOCITY10 CVector(0.15f,0.0f,0.0f)
+#define VELOCITY10 CVector(0.35f,0.0f,0.0f)
 
 //コンストラクタ
 //CAHamah(モデル、位置、回転、拡縮）
@@ -23,12 +23,12 @@ CAHamah::CAHamah(CModel* model, const CVector& position,
 	Scale(scale); //拡縮の設定
 	ha = 0;
 	hb = 0;
+	mLastPos = position; //前回のポジションに設定する
 }
 
 void CAHamah::Update() {
-	//行列を更新
-	CTransform::Update();
-	hb--;
+	//移動前の座標を記憶しておく
+	mLastPos = Position();
 	if (ha % 2 == 0)
 	{
 		Position(Position() + VELOCITY10 * MatrixRotate());
@@ -37,22 +37,22 @@ void CAHamah::Update() {
 	{
 		Position(Position() - VELOCITY10 * MatrixRotate());
 	}
+	//行列を更新
+	CTransform::Update();
 }
 
 //衝突処理
 //CCollision(コライダ１、コライダ２）
 void CAHamah::Collision(CCollider* m, CCollider* o) {
+	//相手が線分の壁コライダでなければ、衝突判定を行わない
+	if (o->Layer() != CCollider::ELayer::ELINEWALL)return;
+
 	switch (o->Type()) {
-	case CCollider::ELINE:
+	case CCollider::EType::ELINE:
 		if (CCollider::Collision(m, o)) {
-			//衝突しているときは無効にする
-			//mEnabled = false;
-			if (hb <= 0)
-			{
 				ha++;
-				hb = 60;
-			}
 		}
+		break;
 	}
 }
 
@@ -61,5 +61,5 @@ void CAHamah::Collision(CCollider* m, CCollider* o) {
 		//コライダの優先度変更
 		mCollider.ChangePriority();
 		//衝突処理を実行
-		CCollisionManager::Instance()->Collision(&mCollider, COLLISIONRANGE);
+		CCollisionManager::Instance()->Collision(&mCollider, COLLISIONRANGE * 100);
 	}

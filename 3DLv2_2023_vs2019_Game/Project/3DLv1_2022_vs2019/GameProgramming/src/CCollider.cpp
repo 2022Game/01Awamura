@@ -25,7 +25,8 @@ void CCollider::ChangePriority(int priority)
 CCollider::CCollider()
 	: mpParent(nullptr)
 	, mpMatrix(&Matrix())
-	, mType(ESPHERE)
+	, mType(EType::ESPHERE)
+	, mLayer(ELayer::EDEFAULT)
 	, mRadius(0)
 {
 	//コリジョンマネージャに追加
@@ -73,9 +74,20 @@ void CCollider::Render() {
 	glPopMatrix();
 }
 
-CCollider::EType CCollider::Type()
+CCollider::EType CCollider::Type() const
 {
 	return mType;
+}
+
+//コライダのレイヤーを取得
+CCollider::ELayer CCollider::Layer()const
+{
+	return mLayer;
+}
+
+void CCollider::Layer(ELayer layer)
+{
+	mLayer = layer;
 }
 
 CCharacter3::ETag CCollider::Tag() const
@@ -285,34 +297,34 @@ bool CCollider::Collision(CCollider* m, CCollider* o, CVector* adjust)
 	//コライダの種類で衝突判定の関数を切り替える
 
 	//球コライダ
-	if (m->Type() == ESPHERE)
+	if (m->Type() == EType::ESPHERE)
 	{
 		//球コライダと球コライダ
-		if (o->Type() == ESPHERE)			ret = CollisionSphere(m, o, adjust);
+		if (o->Type() == EType::ESPHERE)			ret = CollisionSphere(m, o, adjust);
 		//球コライダと三角コライダ
-		else if (o->Type() == ETRIANGLE)	ret = CollisionTriangleSphere(o, m, adjust);
+		else if (o->Type() == EType::ETRIANGLE)	ret = CollisionTriangleSphere(o, m, adjust);
 		//球コライダと線分コライダ
-		else if (o->Type() == ELINE)		ret = CollisionSphereLine(m, o, adjust);
+		else if (o->Type() == EType::ELINE)		ret = CollisionSphereLine(m, o, adjust);
 	}
 	//三角コライダ
-	else if (m->Type() == ETRIANGLE)
+	else if (m->Type() == EType::ETRIANGLE)
 	{
 		//三角コライダと球コライダ
-		if (o->Type() == ESPHERE)			ret = CollisionTriangleSphere(m, o, adjust);
+		if (o->Type() == EType::ESPHERE)			ret = CollisionTriangleSphere(m, o, adjust);
 		//TODO:三角コライダと三角コライダの衝突判定の実装
-		else if (o->Type() == ETRIANGLE);
+		else if (o->Type() == EType::ETRIANGLE);
 		//三角コライダと線分コライダ
-		else if (o->Type() == ELINE)		ret = CollisionTriangleLine(m, o, adjust);
+		else if (o->Type() == EType::ELINE)		ret = CollisionTriangleLine(m, o, adjust);
 	}
 	//線分コライダ
-	else if (m->Type() == ELINE)
+	else if (m->Type() == EType::ELINE)
 	{
 		//線分コライダと球コライダ
-		if (o->Type() == ESPHERE)			ret = CollisionSphereLine(o, m, adjust);
+		if (o->Type() == EType::ESPHERE)			ret = CollisionSphereLine(o, m, adjust);
 		//線分コライダと三角コライダ
-		else if (o->Type() == ETRIANGLE)	ret = CollisionTriangleLine(o, m, adjust);
+		else if (o->Type() == EType::ETRIANGLE)	ret = CollisionTriangleLine(o, m, adjust);
 		//線分コライダと線分コライダ
-		else if (o->Type() == ELINE)		ret = CollisionLine(m, o, adjust);
+		else if (o->Type() == EType::ELINE)		ret = CollisionLine(m, o, adjust);
 	}
 
 	return ret;

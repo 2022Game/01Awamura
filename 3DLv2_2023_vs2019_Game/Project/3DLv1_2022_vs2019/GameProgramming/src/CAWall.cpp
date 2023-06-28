@@ -31,8 +31,8 @@ void CAWall::Collision(CCollider* m, CCollider* o) {
 	//相手のコライダタイプの判定
 	//switch (o->Type())
 	//{
-	//case CCollider::ETRIANGLE2://三角コライダの時
-	//	if (m->Type() == CCollider::ELINE) {
+	//case CCollider::EType::ETRIANGLE2://三角コライダの時
+	//	if (m->Type() == CCollider::EType::ELINE) {
 	//	}
 	//	break;
 	//}
