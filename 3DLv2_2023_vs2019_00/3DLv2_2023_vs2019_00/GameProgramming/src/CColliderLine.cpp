@@ -12,6 +12,8 @@ CColliderLine::CColliderLine(CCharacter3* parent, CMatrix* matrix
 	, const CVector& v0, const CVector& v1)
 {
 	Set(parent, matrix, v0, v1);
+	mType = ELINE;//ü•ªƒRƒ‰ƒCƒ_
+
 }
 
 void CColliderLine::Set(CCharacter3* parent, CMatrix* matrix

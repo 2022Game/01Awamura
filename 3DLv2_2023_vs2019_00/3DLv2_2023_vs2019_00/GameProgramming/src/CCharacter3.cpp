@@ -12,7 +12,7 @@ CCharacter3::CCharacter3()
 
 CCharacter3::CCharacter3(int priority)
 	:mpModel(nullptr)
-	, mTag(EZERO)
+	//, mTag(EZERO)
 {
 	mPriority = priority;
 	CTaskManager::Instance()->Add(this);

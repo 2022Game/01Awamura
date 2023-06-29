@@ -1,4 +1,5 @@
 #include "CXPlayer.h"
+#include "CCharacter3.h"
 
 #define ROTATION2_YV CVector(0.0f, 2.0f, 0.0f) //‰ñ“]‘¬“x
 #define VELOCITY2 CVector(0.0f, 0.0f, 0.1f) //ˆÚ“®‘¬“x

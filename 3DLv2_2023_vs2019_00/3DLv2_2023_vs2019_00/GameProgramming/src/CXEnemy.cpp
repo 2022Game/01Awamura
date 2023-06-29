@@ -20,18 +20,20 @@ void CXEnemy::Init(CModelX* model)
 }
 
 void CXEnemy::Collision(CCollider* m, CCollider* o) {
-	//自身のコライダタイプの判定
 	switch (o->Type()) {
 	case CCollider::ESPHERE:
-		if (m->Parent()->EPLAYER == ETag::EPLAYER)
+		if (o->Parent()->Tag() == ETag::EPLAYER)
 		{
 			if (m->Type() == CCollider::ESPHERE)
 			{
-				if (m->Tag() == CCollider::ETag::ESWORD)
+				if (o->Tag() == CCollider::ETag::ESWORD)
 				{
-					if (CCollider::Collision(m, o))
+					if (m->Tag() == CCollider::ETag::EBODY)
 					{
-						ChangeAnimation(11, false, 30);
+						if (CCollider::Collision(m, o))
+						{
+							ChangeAnimation(11, false, 30);
+						}
 					}
 				}
 			}
