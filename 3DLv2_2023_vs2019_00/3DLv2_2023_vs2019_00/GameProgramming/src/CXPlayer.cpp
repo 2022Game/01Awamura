@@ -74,16 +74,5 @@ void CXPlayer::Update()
 }
 
 void CXPlayer::Collision(CCollider* m, CCollider* o) {
-	//自身のコライダタイプの判定
-	switch (m->Type()) {
-	//case CCollider::ESPHERE:
-	//	if (o->Tag() == CCollider::ETag::ESWORD)
-	//	{
-	//		//相手のコライダが三角コライダの時
-	//		if (o->Type() == CCollider::ESPHERE) {
-	//			ChangeAnimation(11, false, 30);
-	//		}
-	//	}
-	//	break;
-	}
+	
 }

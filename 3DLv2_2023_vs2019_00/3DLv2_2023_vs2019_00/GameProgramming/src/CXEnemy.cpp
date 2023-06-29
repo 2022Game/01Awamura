@@ -23,7 +23,7 @@ void CXEnemy::Collision(CCollider* m, CCollider* o) {
 	//自身のコライダタイプの判定
 	switch (o->Type()) {
 	case CCollider::ESPHERE:
-		if (o->Parent()->EPLAYER == ETag::EPLAYER)
+		if (m->Parent()->EPLAYER == ETag::EPLAYER)
 		{
 			if (m->Type() == CCollider::ESPHERE)
 			{
