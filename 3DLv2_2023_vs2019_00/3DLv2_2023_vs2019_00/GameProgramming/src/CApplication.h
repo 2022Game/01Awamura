@@ -44,6 +44,7 @@ private:
 
 	//C5ƒ‚ƒfƒ‹
 	CModel mModelC5;
+	CModelX mKnight;
 
 	//static CTaskManager mTaskManager;
 	//CPlayer mPlayer;

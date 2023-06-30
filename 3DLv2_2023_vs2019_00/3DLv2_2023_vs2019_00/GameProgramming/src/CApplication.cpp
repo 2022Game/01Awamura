@@ -26,6 +26,8 @@ CUi* CApplication::Ui()
 	return spUi;
 }
 
+#define MODEL_FILE2 "res\\knight\\knight_low.X" //敵
+
 #define SOUND_BGM "res\\mario.wav" //BGM音声ファイル
 #define SOUND_OVER "res\\mdai.wav" //ゲームオーバー音声ファイル
 //モデルデータの指定
@@ -65,10 +67,11 @@ void CApplication::Start()
 {
 	//3Dモデルファイルの読み込み
 	mModelX.Load(MODEL_FILE);
+	mKnight.Load(MODEL_FILE2);
 	//キャラクタークラスの更新
 	mXPlayer.Init(&mModelX);
 	//敵の初期設定
-	mXEnemy.Init(&mModelX);
+	mXEnemy.Init(&mKnight);
 	//敵の配置
 	mXEnemy.Position(CVector(7.0f, 0.0f, 0.0f));
 	mFont.Load("FontG.png", 1, 4096 / 64);

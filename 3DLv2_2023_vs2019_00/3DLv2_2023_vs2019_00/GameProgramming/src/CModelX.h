@@ -139,6 +139,7 @@ class CModelXFrame {
 	friend CAnimation;
 	friend CAnimationSet;
 public:
+	CModelXFrame();
 	const CMatrix& CombinedMatrix();
 	//‡¬s—ñ‚Ìì¬
 	void AnimateCombined(CMatrix* parent);
