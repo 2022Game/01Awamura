@@ -15,6 +15,7 @@ private:
 	int randnow3;
 	int randnow4;
 	int randnow5;
+	int randnow6;
 
 	// ‰Šú‰»ˆ—
 	void Init();

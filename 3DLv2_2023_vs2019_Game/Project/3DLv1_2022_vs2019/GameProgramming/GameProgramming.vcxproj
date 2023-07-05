@@ -18,6 +18,8 @@
     <ClCompile Include="src\CAHamah.cpp" />
     <ClCompile Include="src\CAHamahGimmick.cpp" />
     <ClCompile Include="src\CApplication.cpp" />
+    <ClCompile Include="src\CASoccer.cpp" />
+    <ClCompile Include="src\CASoccerGimmick.cpp" />
     <ClCompile Include="src\CAWall.cpp" />
     <ClCompile Include="src\CAWallGimmick.cpp" />
     <ClCompile Include="src\CAWood.cpp" />
@@ -68,6 +70,8 @@
     <ClInclude Include="src\CAHamah.h" />
     <ClInclude Include="src\CAHamahGimmick.h" />
     <ClInclude Include="src\CApplication.h" />
+    <ClInclude Include="src\CASoccer.h" />
+    <ClInclude Include="src\CASoccerGimmick.h" />
     <ClInclude Include="src\CAWall.h" />
     <ClInclude Include="src\CAWallGimmick.h" />
     <ClInclude Include="src\CAWood.h" />

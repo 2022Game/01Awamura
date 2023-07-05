@@ -25,6 +25,7 @@ void srand(unsigned int seed);
 CPlayer::CPlayer(const CVector& pos, const CVector& rot, const CVector& scale)
 	:CPlayer()
 {
+	mLastPos = pos;
 	CTransform::Update(pos, rot, scale);//行列の更新
 }
 
@@ -132,19 +133,32 @@ void CPlayer::GroundedClearObj()
 		//CApplication::StageGuard = 0;
 		if (CApplication::StageCount == 0)
 		{
-			CApplication::SelectStage = 1 + rand() % 3; //後にランダム設定に変える
+			mLastPos = Position();
+			CApplication::SelectStage = 5; /*+ rand() % 4;*/ //後にランダム設定に変える
+			ddStage = CApplication::SelectStage;
 			CApplication::StageSwitch = 1;
 			//randddco = 380; //テスト用
 		}
 		if (CApplication::StageCount == 1)
 		{
-			CApplication::SelectStage = 1 + rand() % 3; //後にランダム設定に変える
+			mLastPos = Position();
+			CApplication::SelectStage = 1 + rand() % 5;
+			while (ddStage == CApplication::SelectStage)
+			{
+				CApplication::SelectStage = 1 + rand() % 5;
+			}
+			ddStage = CApplication::SelectStage;
 			CApplication::StageSwitch = 1;
 			//randddco = 580; //テスト用
 		}
 		if (CApplication::StageCount == 2)
 		{
-			CApplication::SelectStage = 1 + rand() % 3; //後にランダム設定に変える
+			mLastPos = Position();
+			CApplication::SelectStage = 1 + rand() % 5;
+			while (ddStage == CApplication::SelectStage)
+			{
+				CApplication::SelectStage = 1 + rand() % 5;
+			}
 			CApplication::StageSwitch = 1;
 		}
 		if (CApplication::StageCount == 3)
@@ -226,6 +240,7 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 
 					if (o->Layer()== CCollider::ELayer::EDEATH)
 					{
+						Position(mLastPos);
 						mState = EState::EOVER;
 					}
 					if (mState == EState::EOVER)

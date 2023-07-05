@@ -21,6 +21,7 @@
 #include "CMiss.h"
 #include <vector>
 #include "CCharacterManager.h"
+#include "CASoccerGimmick.h"
 
 #include "CGame.h"
 #include "CSound.h"
@@ -43,6 +44,12 @@ private:
 	CColliderLine mColliderLine2;
 	CColliderLine mColliderLine3;
 	CColliderLine mColliderLine4;
+	CColliderLine mColliderLine5;
+	CColliderLine mColliderLine6;
+	CColliderLine mColliderLine7;
+	CColliderLine mColliderLine8;
+	CColliderLine mColliderLine9;
+	CColliderLine mColliderLine10;
 	CColliderTriangle mColliderTriangle;
 	CColliderTriangle mColliderTriangle2;
 	CColliderTriangle mColliderTriangle3;
@@ -101,6 +108,7 @@ private:
 	CAHamahGimmick* mpHamahGimmick;
 	CAWallGimmick* mpWallGimmick;
 	CAWoodGimmick* mpWoodGimmick;
+	CASoccerGimmick* mpSoccerGimmick;
 //	CACClearStage* mpCoinClearStage;
 	CUi* mpUi;
 public:

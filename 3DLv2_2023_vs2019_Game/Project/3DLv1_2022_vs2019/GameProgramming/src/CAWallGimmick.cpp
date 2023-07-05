@@ -36,25 +36,25 @@ CAWallGimmick::~CAWallGimmick()
 
 void CAWallGimmick::Init()
 {
-	// ハマーのモデル読み込み
+	// Wallのモデル読み込み
 	mpWallModel = new CModel();
 	mpWallModel->Load(MODEL_FWALL);
 
-	// ハマーを生成
+	// Wallを生成
 	//ステージ１スタート生成
 	if (CApplication::StageCount == 1)
 	{
-		CreateWall(CVector(10.0f, 22.9f, 1.5f), CVector(), CVector(1.8f, 5.8f, 2.8f));
+		CreateWall(CVector(10.0f, 22.9f, 2.5f), CVector(), CVector(1.8f, 5.8f, 2.8f));
 	}
 	////ステージ２スタート生成
 	if (CApplication::StageCount == 2)
 	{
-		CreateWall(CVector(10.0f, 22.9f, 49.5f), CVector(), CVector(1.8f, 5.8f, 2.8f));
+		CreateWall(CVector(10.0f, 22.9f, 51.5f), CVector(), CVector(1.8f, 5.8f, 2.8f));
 	}
 	////ステージ３スタート生成
 	if (CApplication::StageCount == 3)
 	{
-		CreateWall(CVector(10.0f, 22.9f, 97.5f), CVector(), CVector(1.8f, 5.8f, 2.8f));
+		CreateWall(CVector(10.0f, 22.9f, 100.5f), CVector(), CVector(1.8f, 5.8f, 2.8f));
 	}
 }
 

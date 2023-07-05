@@ -5,8 +5,8 @@
 #include "CApplication.h"
 
 #define VELOCITY CVector(0.0f,0.0f,0.0f)
-#define VELOCITY10 CVector(0.5f,0.0f,0.0f)
-#define VELOCITY11 CVector(-0.5f,0.0f,0.30f)
+#define VELOCITY10 CVector(0.2f,0.0f,0.0f)
+#define VELOCITY11 CVector(-0.2f,0.0f,0.30f)
 
 //コンストラクタ
 //CAHamah(モデル、位置、回転、拡縮）

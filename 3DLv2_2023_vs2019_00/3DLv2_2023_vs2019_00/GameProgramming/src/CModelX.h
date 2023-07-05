@@ -193,6 +193,15 @@ public:
 	//マテリアル配列の取得
 	std::vector<CMaterial*>& Material();
 	void AnimateVertex(CMatrix*);
+	/*
+アニメーションを抜き出す
+idx:分割したいアニメーションセット番号
+start:分割したいアニメーションの開始時間
+end:分割したいアニメーションの終了時間
+name:追加するアニメーションセットの名前
+*/
+	void CModelX::SeparateAnimationSet(
+		int idx, int start, int end, char* name);
 private:
 	//アニメーションセットの配列
 	std::vector<CAnimationSet*>mAnimationSet;

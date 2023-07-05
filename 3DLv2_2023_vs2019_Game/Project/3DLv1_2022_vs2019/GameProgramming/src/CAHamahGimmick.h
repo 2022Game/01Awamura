@@ -4,6 +4,8 @@
 #include "CACoin.h"
 #include "CAHamah.h"
 
+#define MODEL_FHAMAH "res\\apple2.obj","res\\apple2.mtl"
+
 class CAHamahGimmick : public CTask
 {
 private:
@@ -14,6 +16,11 @@ private:
 	int randnow3;
 	int randnow4;
 	int randnow5;
+	int randnow6;
+	int randnow7;
+	int randnow8;
+	int randnow9;
+	int randnow10;
 
 	// ‰Šú‰»ˆ—
 	void Init();

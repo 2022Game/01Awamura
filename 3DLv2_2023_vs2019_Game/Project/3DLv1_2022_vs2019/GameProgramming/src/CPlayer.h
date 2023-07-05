@@ -19,6 +19,7 @@ private:
 	CColliderLine mLine; //線分コライダ
 	CColliderLine mLine2;
 	CColliderLine mLine3;
+	int ddStage;
 	//プレイヤーのインスタンス
 	static CPlayer* spInstance;
 

@@ -26,6 +26,8 @@ public:
 	{
 		EDEFAULT,
 		EWOOD, //木のオブジェクトのコライダ
+		ESOCCER, //Soccerのオブジェクトのコライダ
+		EWALL,
 		EDEATH, //死亡
 		ECOIN, //コインのコライダ
 		ELINEWALL, //線分の壁コライダ

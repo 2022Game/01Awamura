@@ -114,6 +114,35 @@ void CApplication::Start()
 		, CVector(0.0f, 22.5f, 300.0f));
 	mColliderLine4.Layer(CCollider::ELayer::ELINEWALL);
 
+	mColliderLine5.Set(nullptr, nullptr
+		, CVector(24.0f, 25.5f, -50.0f)
+		, CVector(24.0f, 25.5f, 300.0f));
+	mColliderLine5.Layer(CCollider::ELayer::ELINEWALL);
+
+	mColliderLine6.Set(nullptr, nullptr
+		, CVector(0.0f, 25.5f, -50.0f)
+		, CVector(0.0f, 25.5f, 300.0f));
+	mColliderLine6.Layer(CCollider::ELayer::ELINEWALL);
+
+	mColliderLine7.Set(nullptr, nullptr
+		, CVector(0.0f, 24.0f, -10.0f)
+		, CVector(24.0f, 24.0f,-10.0f));
+	mColliderLine7.Layer(CCollider::ELayer::ELINEWALL);
+
+	/*mColliderLine8.Set(nullptr, nullptr
+		, CVector(0.0f, 28.5f, -10.0f)
+		, CVector(0.0f, 28.5f, 10.0f));
+	mColliderLine8.Layer(CCollider::ELayer::ELINEWALL);*/
+	//mColliderLine9.Set(nullptr, nullptr
+	//	, CVector(24.0f, 23.5f, -50.0f)
+	//	, CVector(24.0f, 23.5f, 300.0f));
+	//mColliderLine9.Layer(CCollider::ELayer::ELINEWALL);
+
+	//mColliderLine10.Set(nullptr, nullptr
+	//	, CVector(0.0f, 23.5f, -50.0f)
+	//	, CVector(0.0f, 23.5f, 300.0f));
+	//mColliderLine10.Layer(CCollider::ELayer::ELINEWALL);*/
+
 	mColliderTriangle2.Set(nullptr, nullptr
 		, CVector(-300.0f, 0.0f, -300.0f)
 		, CVector(-300.0f, 0.0f, 300.0f)
@@ -142,6 +171,10 @@ void CApplication::Start()
 
 void CApplication::Update()
 {
+	if (CASoccer::hdhd == 2)
+	{
+		mpSoccerGimmick = new CASoccerGimmick();
+	}
 	/*switch (mState)
 	{
 	case EState::ECLEAR:
@@ -158,6 +191,8 @@ void CApplication::Update()
 		delete mpHamahGimmick;
 		delete mpWoodGimmick;
 		delete mpWallGimmick;
+		delete mpSoccerGimmick;
+		mpSoccerGimmick = nullptr;
 		mpWallGimmick = nullptr;
 		mpHamahGimmick = nullptr;
 		mpWoodGimmick = nullptr;
@@ -191,6 +226,22 @@ void CApplication::Update()
 		mpCoinGimmick = new CACoinGimmick();
 		mpWoodGimmick = new CAWoodGimmick();
 		hcount = 2;
+		SelectStage = 0; //テスト用
+	}
+	if (SelectStage == 4)
+	{
+		//ランダムで１ならハマーステージ予定
+		mpClearStage = new CAClearStage();
+		mpCoinGimmick = new CACoinGimmick();
+		mpHamahGimmick = new CAHamahGimmick();
+		SelectStage = 0; //テスト用
+	}
+	if (SelectStage == 5)
+	{
+		//ランダムで１ならハマーステージ予定
+		mpClearStage = new CAClearStage();
+		mpCoinGimmick = new CACoinGimmick();
+		mpSoccerGimmick = new CASoccerGimmick();
 		SelectStage = 0; //テスト用
 	}
 	//if (SelectStage != 3 && SelectStage != 0)
