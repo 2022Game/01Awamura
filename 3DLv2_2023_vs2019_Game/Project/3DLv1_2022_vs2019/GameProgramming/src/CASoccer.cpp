@@ -50,8 +50,9 @@ void CASoccer::Collision(CCollider* m, CCollider* o) {
 	switch (o->Type()) {
 	case CCollider::EType::ELINE:
 		if (CCollider::Collision(m, o)) {
-			mEnabled = false;
-			hdhd = 2;
+			/*mEnabled = false;
+			hdhd = 2;*/
+			Position(mLastPos);
 		}
 		break;
 	}

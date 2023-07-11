@@ -30,11 +30,12 @@ CAnimationKey
 class CAnimationKey {
 	friend CAnimation;
 	friend CAnimationSet;
+	friend CModelX;
 private:
-	//時間
-	float mTime;
 	//行列
 	CMatrix mMatrix;
+	//時間
+	float mTime;
 };
 
 /*
@@ -45,6 +46,7 @@ class CAnimation {
 	friend CAnimationSet;
 	friend CModelX;
 public:
+	CAnimation();
 	CAnimation(CModelX* model);
 	~CAnimation();
 private:
@@ -61,6 +63,7 @@ CAnimationSet
 class CAnimationSet {
 	friend CModelX;
 public:
+	CAnimationSet();
 	void AnimateMatrix(CModelX* model);
 	std::vector<CAnimation*>& Animation();
 	void Time(float time); //時間の設定
@@ -200,8 +203,8 @@ start:分割したいアニメーションの開始時間
 end:分割したいアニメーションの終了時間
 name:追加するアニメーションセットの名前
 */
-	void CModelX::SeparateAnimationSet(
-		int idx, int start, int end, char* name);
+void CModelX::SeparateAnimationSet(
+ int idx, int start, int end, char* name);
 private:
 	//アニメーションセットの配列
 	std::vector<CAnimationSet*>mAnimationSet;

@@ -67,7 +67,7 @@ void CApplication::Start()
 {
 	//3Dモデルファイルの読み込み
 	mModelX.Load(MODEL_FILE);
-	mKnight.Load(MODEL_FILE2);
+	mKnight.Load("res\\knight\\knight_low.x");
 	mKnight.SeparateAnimationSet(0, 10, 80, "walk");//1:移動
 	mKnight.SeparateAnimationSet(0, 1530, 1830, "idle1");//2:待機
 	mKnight.SeparateAnimationSet(0, 10, 80, "walk");//3ダミー

@@ -123,6 +123,15 @@ void CAnimationSet::Weight(float weight)
 	mWeight = weight;
 }
 
+CAnimation::CAnimation()
+{
+}
+
+CAnimationSet::CAnimationSet()
+{
+
+}
+
 void CAnimationSet::AnimateMatrix(CModelX* model)
 {
 	//重みが０は飛ばす
@@ -1153,8 +1162,8 @@ void CModelX::SeparateAnimationSet(int idx, int start, int end, char* name)
 	for(size_t i = 0; i < anim->mAnimation.size();i++){//既存のアニメーション分繰り返し
 		CAnimation* animation = new CAnimation();//アニメーションの生成
 		animation->mpFrameName = new char[strlen(anim->mAnimation[i]->mpFrameName) + 1];
-		strcpy(animation->mpFrameName, anim->mAnimation[i]->mFrameIndex);
-		animation->mFrameIndex = anim->mAnimation[i]->mFrameindex;
+		strcpy(animation->mpFrameName, anim->mAnimation[i]->mpFrameName);
+		animation->mFrameIndex = anim->mAnimation[i]->mFrameIndex;
 		animation->mKeyNum = end - start + 1;
 		animation->mpKey = new CAnimationKey[animation->mKeyNum];//アニメーションキーの生成
 		animation->mKeyNum = 0;
