@@ -26,7 +26,7 @@ CUi* CApplication::Ui()
 	return spUi;
 }
 
-#define MODEL_FILE2 "res\\knight\\knight_low.X" //敵
+//#define MODEL_FILE2 "res\\knight\\knight_low.X" //敵
 
 #define SOUND_BGM "res\\mario.wav" //BGM音声ファイル
 #define SOUND_OVER "res\\mdai.wav" //ゲームオーバー音声ファイル
@@ -67,18 +67,18 @@ void CApplication::Start()
 {
 	//3Dモデルファイルの読み込み
 	mModelX.Load(MODEL_FILE);
-	mKnight.Load("res\\knight\\knight_low.x");
-	mKnight.SeparateAnimationSet(0, 10, 80, "walk");//1:移動
-	mKnight.SeparateAnimationSet(0, 1530, 1830, "idle1");//2:待機
-	mKnight.SeparateAnimationSet(0, 10, 80, "walk");//3ダミー
-	mKnight.SeparateAnimationSet(0, 10, 80, "walk");//4ダミー
-	mKnight.SeparateAnimationSet(0, 10, 80, "walk");//5だ三ー
-	mKnight.SeparateAnimationSet(0, 10, 80, "walk");//6だ、いー
-	mKnight.SeparateAnimationSet(0, 440, 520, "attack1");//7:attack1
-	mKnight.SeparateAnimationSet(0, 520, 615, "attack2");//8:attack2
-	mKnight.SeparateAnimationSet(0, 10, 80, "walk");//9:ダミー
-	mKnight.SeparateAnimationSet(0, 10, 80, "walk");//10ダミー
-	mKnight.SeparateAnimationSet(0, 1160, 1260, "death1");//11:DOWN
+	mKnight.Load("res\\knight\\knight_low.X");
+	//mKnight.SeparateAnimationSet(0, 10, 80, "walk");//1:移動
+	//mKnight.SeparateAnimationSet(0, 1530, 1830, "idle1");//2:待機
+	//mKnight.SeparateAnimationSet(0, 10, 80, "walk");//3ダミー
+	//mKnight.SeparateAnimationSet(0, 10, 80, "walk");//4ダミー
+	//mKnight.SeparateAnimationSet(0, 10, 80, "walk");//5だ三ー
+	//mKnight.SeparateAnimationSet(0, 10, 80, "walk");//6だ、いー
+	//mKnight.SeparateAnimationSet(0, 440, 520, "attack1");//7:attack1
+	//mKnight.SeparateAnimationSet(0, 520, 615, "attack2");//8:attack2
+	//mKnight.SeparateAnimationSet(0, 10, 80, "walk");//9:ダミー
+	//mKnight.SeparateAnimationSet(0, 10, 80, "walk");//10ダミー
+	//mKnight.SeparateAnimationSet(0, 1160, 1260, "death1");//11:DOWN
 	//キャラクタークラスの更新
 	mXPlayer.Init(&mModelX);
 	//敵の初期設定
@@ -88,7 +88,7 @@ void CApplication::Start()
 	mFont.Load("FontG.png", 1, 4096 / 64);
 	AnimaScene = 0;
 	AnimaFrame = 60;
-	mXEnemy.ChangeAnimation(2, true, 200);
+	//mXEnemy.ChangeAnimation(2, true, 200);
 }
 
 void CApplication::Update()

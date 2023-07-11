@@ -29,6 +29,10 @@ CPlayer::CPlayer(const CVector& pos, const CVector& rot, const CVector& scale)
 	CTransform::Update(pos, rot, scale);//行列の更新
 }
 
+int CPlayer::CountLine = 0;
+
+int CPlayer::CountCraft = 0;
+
 CPlayer::CPlayer()
 :CCharacter3((int)TaskPriority::ePlayer)
 , mLine(this,&Matrix(),CVector(0.0f,0.0f,0.0f),CVector(0.0f,2.0f,0.0f))
@@ -41,6 +45,7 @@ CPlayer::CPlayer()
 ,jswitch(0)
 ,randdd(0)
 ,randddco(0)
+,mTime(0)
 {
 	srand((unsigned int)time(NULL));
 	//インスタンスの設定
@@ -52,6 +57,11 @@ CPlayer::CPlayer()
 //更新処理
 void CPlayer::Update() {
 	
+	if (mTime >= 1000)
+	{
+		mState = EState::EOVER;
+	}
+
 	CTransform::Update();
 	//接地している時にジャンプ可能
 	if (mIsGrounded)
@@ -119,6 +129,7 @@ void CPlayer::Update() {
 	//変換行列の更新
 	CTransform::Update();
 	//Ui設定
+	CApplication::Ui()->Time(mTime++);
 	CApplication::Ui()->PosY(Position().Y());
 	CApplication::Ui()->RotX(Rotation().X());
 	CApplication::Ui()->RotY(Rotation().Y());
@@ -134,28 +145,34 @@ void CPlayer::GroundedClearObj()
 		if (CApplication::StageCount == 0)
 		{
 			mLastPos = Position();
-			CApplication::SelectStage = 5; /*+ rand() % 4;*/ //後にランダム設定に変える
-			ddStage = CApplication::SelectStage;
+			CApplication::SelectStage = 5;//1 + rand() % 5;
+			ddStage = CApplication::SelectStage; //一度ddStageに入れておく
 			CApplication::StageSwitch = 1;
 			//randddco = 380; //テスト用
 		}
 		if (CApplication::StageCount == 1)
 		{
+			CountLine = 1;
+			CountCraft = 1;
 			mLastPos = Position();
 			CApplication::SelectStage = 1 + rand() % 5;
-			while (ddStage == CApplication::SelectStage)
+			while (CApplication::SelectStage == ddStage)
 			{
 				CApplication::SelectStage = 1 + rand() % 5;
 			}
-			ddStage = CApplication::SelectStage;
+			ccStage = CApplication::SelectStage; //一度ccStageに入れておく
 			CApplication::StageSwitch = 1;
 			//randddco = 580; //テスト用
 		}
 		if (CApplication::StageCount == 2)
 		{
+			CountLine = 2;
+			CountCraft = 2;
 			mLastPos = Position();
-			CApplication::SelectStage = 1 + rand() % 5;
-			while (ddStage == CApplication::SelectStage)
+			CApplication::SelectStage = 5;//1 + rand() % 5;
+			while (CApplication::SelectStage == 5 || 
+				ddStage == CApplication::SelectStage || 
+				ccStage == CApplication::SelectStage)
 			{
 				CApplication::SelectStage = 1 + rand() % 5;
 			}

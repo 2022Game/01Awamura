@@ -6,8 +6,8 @@
 class CASoccerGimmick : public CTask
 {
 private:
-	std::vector<CASoccer*> mSoccers;	// ハマーのリスト
-	CModel* mpSoccerModel;			// ハマーのモデルデータ
+	std::vector<CASoccer*> mSoccers;	// Soccerのリスト
+	CModel* mpSoccerModel;			// Soccerのモデルデータ
 	int randnow;
 	int randnow2;
 	int randnow3;
@@ -21,7 +21,7 @@ private:
 
 	// 初期化処理
 	void Init();
-	// ハマーを生成してリストに追加
+	// Soccerを生成してリストに追加
 	void CreateSoccer(CVector& pos, CVector& rot, CVector& scale);
 
 public:

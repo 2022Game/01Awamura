@@ -5,7 +5,7 @@
 #include "CApplication.h"
 
 #define VELOCITY CVector(0.0f,0.0f,0.0f)
-#define VELOCITY20 CVector(0.0f,0.0f,-0.25f)
+#define VELOCITY20 CVector(0.0f,0.0f,-0.5f)
 #define VELOCITY21 CVector(-0.2f,0.0f,0.30f)
 
 int CASoccer::hdhd = 0;
@@ -13,7 +13,7 @@ int CASoccer::hdhd = 0;
 //CAHamah(モデル、位置、回転、拡縮）
 CASoccer::CASoccer(CModel* model, const CVector& position,
 	const CVector& rotation, const CVector& scale)
-	:mCollider(this, &Matrix(), CVector(0.0f, 1.0f, 0.0f), 1.75f)
+	:mCollider(this, &Matrix(), CVector(0.0f, 2.0f, 0.0f), 1.50f)
 {
 	hdhd = 0;
 	//障害物用のタグ設定
@@ -35,10 +35,10 @@ void CASoccer::Update() {
 	Position(Position() + VELOCITY20 * MatrixRotate());
 	//行列を更新
 	CTransform::Update();
-	if (hdhd == 2)
+	/*if (hdhd == 2)
 	{
 		hdhd = 0;
-	}
+	}*/
 }
 
 //衝突処理
@@ -50,9 +50,9 @@ void CASoccer::Collision(CCollider* m, CCollider* o) {
 	switch (o->Type()) {
 	case CCollider::EType::ELINE:
 		if (CCollider::Collision(m, o)) {
-			/*mEnabled = false;
-			hdhd = 2;*/
-			Position(mLastPos);
+			mEnabled = false;
+			hdhd = 2;
+			//Position(mLastPos);
 		}
 		break;
 	}

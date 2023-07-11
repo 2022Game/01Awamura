@@ -1,6 +1,8 @@
 #include "CXCharacter.h"
 #include "CCollider.h"
 
+#define MODEL_FILE2 "res\\knight\\knight_low.X" //“G
+
 class CXEnemy :public CXCharacter {
 public:
 	CXEnemy();

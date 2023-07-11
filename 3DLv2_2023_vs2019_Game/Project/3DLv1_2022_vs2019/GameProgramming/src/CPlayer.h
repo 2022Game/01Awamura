@@ -20,6 +20,7 @@ private:
 	CColliderLine mLine2;
 	CColliderLine mLine3;
 	int ddStage;
+	int ccStage;
 	//プレイヤーのインスタンス
 	static CPlayer* spInstance;
 
@@ -34,6 +35,9 @@ private:
 	void GroundedGuardObj();
 	CVector mLastPos;
 public:
+	static int CountLine;
+	static int CountCraft;
+	int mTime;
 	int randddco;
 	int randdd;
 	int n;

@@ -49,34 +49,39 @@ void CUi::Render()
 {
 	/*char str[16];
 	sprintf(str, "TIME:%03d", mTime);
-	mFont.Draw(620, 580, 10, 20, str);
-	sprintf(str, "HP:%d", mHp);
+	mFont.Draw(500, 360, 8, 16, str);*/
+	/*sprintf(str, "HP:%d", mHp);
 	mFont.Draw(20, 20, 10, 20, str);
 	sprintf(str, "ENEMY:%d", mEnemy);
 	mFont.Draw(20, 580, 10, 20, str);*/
 	CCamera::Start(0, 800, 0, 600); //2D描画開始
 	//描画職の設定(緑色の半透明)
-	glColor4f(0.0f, 1.0f, 0.0f, 0.5f);
+	glColor4f(0.0f, 0.0f, 0.0f, 0.5f);
 	//文字列編集エリアの作成
 	char buf[64];
 
+
+	
+	sprintf(buf, "TIME:%03d", mTime);
+	mFont.Draw(20, 580, 8, 16, buf);
+
 	//Y座標の表示
 	//文字列の設定
-	sprintf(buf, "PY:%7.2f", mPosY);
-	//文字列の描画
-	mFont.Draw(500, 330, 8, 16, buf);
+	//sprintf(buf, "PY:%7.2f", mPosY);
+	////文字列の描画
+	//mFont.Draw(500, 330, 8, 16, buf);
 
-	//X軸回転値の表示
-	//文字列の設定
-	sprintf(buf, "RX:%7.2f", mRotX);
-	//文字列の描画
-	mFont.Draw(500, 300, 8, 16, buf);
+	////X軸回転値の表示
+	////文字列の設定
+	//sprintf(buf, "RX:%7.2f", mRotX);
+	////文字列の描画
+	//mFont.Draw(500, 300, 8, 16, buf);
 
-	//Y軸回転値の表示
-	//文字列の設定
-	sprintf(buf, "RY:%7.2f", mRotY);
-	//文字列の描画
-	mFont.Draw(500, 200, 8, 16, buf);
+	////Y軸回転値の表示
+	////文字列の設定
+	//sprintf(buf, "RY:%7.2f", mRotY);
+	////文字列の描画
+	//mFont.Draw(500, 200, 8, 16, buf);
 	CCamera::End(); //2D描画終了
 }
 

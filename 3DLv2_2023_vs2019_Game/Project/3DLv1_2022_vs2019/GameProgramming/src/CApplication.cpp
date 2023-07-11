@@ -171,6 +171,15 @@ void CApplication::Start()
 
 void CApplication::Update()
 {
+	if (CPlayer::CountLine == 1)
+	{
+		mColliderLine8.Set(nullptr, nullptr
+			, CVector(0.0f, 24.0f, 30.0f)
+			, CVector(24.0f, 24.0f, 30.0f));
+		mColliderLine8.Layer(CCollider::ELayer::ELINEWALL);
+		CPlayer::CountLine = 0;
+	}
+
 	if (CASoccer::hdhd == 2)
 	{
 		mpSoccerGimmick = new CASoccerGimmick();
@@ -180,6 +189,11 @@ void CApplication::Update()
 	case EState::ECLEAR:
 	{
 		mpUi->Clear();
+	}
+	break;
+	case EState::EOVER:
+	{
+		mpUi->Over();
 	}
 	break;
 	}*/
@@ -238,7 +252,7 @@ void CApplication::Update()
 	}
 	if (SelectStage == 5)
 	{
-		//ランダムで１ならハマーステージ予定
+		//ランダムで5ならステージ予定
 		mpClearStage = new CAClearStage();
 		mpCoinGimmick = new CACoinGimmick();
 		mpSoccerGimmick = new CASoccerGimmick();

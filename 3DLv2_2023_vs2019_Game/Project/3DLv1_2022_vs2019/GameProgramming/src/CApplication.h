@@ -112,6 +112,7 @@ private:
 //	CACClearStage* mpCoinClearStage;
 	CUi* mpUi;
 public:
+	int mTime;
 	~CApplication();
 	int Init();
 	static int SelectStage;

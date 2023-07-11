@@ -123,15 +123,6 @@ void CAnimationSet::Weight(float weight)
 	mWeight = weight;
 }
 
-CAnimation::CAnimation()
-{
-}
-
-CAnimationSet::CAnimationSet()
-{
-
-}
-
 void CAnimationSet::AnimateMatrix(CModelX* model)
 {
 	//èdÇ›Ç™ÇOÇÕîÚÇŒÇ∑
@@ -1150,6 +1141,15 @@ void CMesh::AnimateVertex(CMatrix* mat) {
 	for (int i = 0; i < mNormalNum; i++) {
 		mpAnimateNormal[i] = mpAnimateNormal[i].Normalize();
 	}
+}
+
+CAnimation::CAnimation()
+{
+}
+
+CAnimationSet::CAnimationSet()
+{
+
 }
 
 void CModelX::SeparateAnimationSet(int idx, int start, int end, char* name)

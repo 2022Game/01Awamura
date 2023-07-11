@@ -100,27 +100,42 @@ void CAHamahGimmick::Init()
 	{
 		if (CApplication::StageCount == 0)
 		{
-			CreateHamah(CVector(randnow, 26.5f, 7.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateHamah(CVector(randnow2, 26.5f, 15.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateHamah(CVector(randnow3, 26.5f, 25.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateHamah(CVector(randnow4, 26.5f, 33.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateHamah(CVector(randnow5, 26.5f, 41.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow, 25.9f, 7.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow2, 25.9f, 15.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow3, 25.9f, 25.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow4, 25.9f, 33.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow5, 25.9f, 41.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow6, 25.9f, 11.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow7, 25.9f, 19.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow8, 25.9f, 29.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow9, 25.9f, 37.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow10, 25.9f, 45.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 		}
 		if (CApplication::StageCount == 1)
 		{
-			CreateHamah(CVector(randnow, 26.5f, 57.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateHamah(CVector(randnow2, 26.5f, 65.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateHamah(CVector(randnow3, 26.5f, 73.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateHamah(CVector(randnow4, 26.5f, 81.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateHamah(CVector(randnow5, 26.5f, 89.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow, 25.9f, 57.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow2, 25.9f, 65.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow3, 25.9f, 73.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow4, 25.9f, 81.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow5, 25.9f, 89.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow6, 25.9f, 57.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow7, 25.9f, 65.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow8, 25.9f, 73.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow9, 25.9f, 81.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow10, 25.9f, 89.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 		}
 		if (CApplication::StageCount == 2)
 		{
-			CreateHamah(CVector(randnow, 26.5f, 105.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateHamah(CVector(randnow2, 26.5f, 113.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateHamah(CVector(randnow3, 26.5f, 121.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateHamah(CVector(randnow4, 26.5f, 129.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateHamah(CVector(randnow5, 26.5f, 137.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow, 25.9f, 105.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow2, 25.9f, 113.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow3, 25.9f, 121.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow4, 25.9f, 129.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow5, 25.9f, 137.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow6, 25.9f, 105.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow7, 25.9f, 113.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow8, 25.9f, 121.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow9, 25.9f, 129.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow10, 25.9f, 137.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 		}
 	}
 	if (CApplication::SelectStage == 4)
@@ -128,10 +143,13 @@ void CAHamahGimmick::Init()
 		if (CApplication::StageCount == 0)
 		{
 			CreateHamah(CVector(randnow, 22.0f, 7.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateHamah(CVector(randnow2, 22.0f, 15.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateHamah(CVector(randnow3, 22.0f, 25.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateHamah(CVector(randnow4, 22.0f, 33.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateHamah(CVector(randnow5, 22.0f, 41.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow2, 22.0f, 12.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow3, 22.0f, 17.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow4, 22.0f, 22.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow5, 22.0f, 27.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow6, 22.0f, 32.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow7, 22.0f, 37.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateHamah(CVector(randnow8, 22.0f, 42.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 		}
 		if (CApplication::StageCount == 1)
 		{

@@ -4,7 +4,7 @@
 #include "CColliderMesh.h"
 
 #define VELOCITY CVector(0.0f,0.0f,0.0f)
-#define VELOCITY10 CVector(0.20f,0.0f,0.0f)
+#define VELOCITY10 CVector(0.30f,0.0f,0.0f)
 
 //コンストラクタ
 //CAHamah(モデル、位置、回転、拡縮）
