@@ -19,7 +19,9 @@ float CVector::Length() const
 
 CVector CVector::Normalize() const {
 	//ベクトルの大きさで割ったベクトルを返す（長さ1のベクトル）
-	return *this * (1.0f / Length());
+	float length = Length();
+	if (length == 0.0f)return CVector(0.0f, 0.0f, 0.0f);
+	return *this * (1.0f / length);
 }
 
 CVector CVector::Cross(const CVector& v) const

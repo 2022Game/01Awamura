@@ -5,6 +5,8 @@ enum class TaskPriority
 {
 	eNone = -1,
 
+	eBackground, //拝啓
+
 	//2D関連
 	eSystem,	//システム関連
 	eUI,		//UI関連

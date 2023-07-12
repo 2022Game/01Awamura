@@ -2,6 +2,7 @@
 #define CTASK_H
 #include "TaskPriority.h"
 #include "TaskPauseType.h"
+#include "SceneType.h"
 class CTaskManager;
 class CCollisionManager;
 
@@ -17,7 +18,7 @@ public:
 	virtual void Collision() {}
 
 	//デフォルトコンストラクタ
-	CTask();
+	CTask(EScene scene = EScene::eNone);
 	//デストラクタ virtualにしないと子クラスのデストラクタが呼ばれない
 	virtual ~CTask();
 	//更新
@@ -29,6 +30,10 @@ public:
 	void SetPauseType(TaskPauseType type);
 	//ポーズの種類を取得
 	TaskPauseType GetPauseType() const;
+	//所属するシーンを設定
+	void SetSceneType(EScene scene);
+	//所属するシーンを取得
+	EScene GetSceneType() const;
 protected:
 	int mPriority;	//優先度
 	bool mEnabled;	//有効フラグ
@@ -36,6 +41,7 @@ private:
 	CTask* mpNext;//次のポインタ
 	CTask* mpPrev;//前のポインタ
 	TaskPauseType mPauseType;//ポーズの種類
+	EScene mSceneType; //所属するシーンの種類
 };
 
 #endif

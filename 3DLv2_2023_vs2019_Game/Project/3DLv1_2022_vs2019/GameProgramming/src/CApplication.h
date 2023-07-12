@@ -1,10 +1,6 @@
 #pragma once
-#include "CRectangle.h"
 #include "CTexture.h"
 #include "CCharacter.h"
-#include "CBullet.h"
-#include "CEnemy.h"
-#include "CEnemy3.h"
 #include "CPlayer.h"
 #include "CAClearStage.h"
 #include "CACoinClearStage.h"
@@ -16,31 +12,23 @@
 #include "CAWoodGimmick.h"
 #include "CAWall.h"
 #include "CAWallGimmick.h"
-#include "CInput.h"
-#include "CFont.h"
-#include "CMiss.h"
-#include <vector>
 #include "CCharacterManager.h"
 #include "CASoccerGimmick.h"
 
-#include "CGame.h"
 #include "CSound.h"
 #include "CVector.h"
 #include "CModel.h"
 #include "CMatrix.h"
-#include "CCharacter3.h"
 #include "CTaskManager.h"
-#include "CBillBoard.h"
 #include "CColliderTriangle.h"
 #include "CColliderMesh.h"
-#include "GamePause.h"
 #include "CUi.h"
 #include "CColliderLine.h"
 
 class CApplication
 {
 private:
-	CColliderLine mColliderLine;
+	/*CColliderLine mColliderLine;
 	CColliderLine mColliderLine2;
 	CColliderLine mColliderLine3;
 	CColliderLine mColliderLine4;
@@ -53,14 +41,14 @@ private:
 	CColliderTriangle mColliderTriangle;
 	CColliderTriangle mColliderTriangle2;
 	CColliderTriangle mColliderTriangle3;
-	CColliderTriangle mColliderTriangle4;
+	CColliderTriangle mColliderTriangle4;*/
+	CColliderLine mColliderLine8;
 	static CUi* spUi; //UIクラスのポインタ
 	//モデルビューの逆行列
 	static CMatrix mModelViewInverse;
 	//static CTaskManager mTaskManager;
 	CSound mSoundBgm;	//BGM
 	CSound mSoundOver;	//ゲームオーバー
-	CGame* mpGame;
 	static CCharacterManager mCharacterManager;
 	enum class EState
 	{
@@ -73,13 +61,10 @@ private:
 	//	CCharacter mRectangle;
 	CPlayer* mpPlayer;
 	static CTexture mTexture;
-	CEnemy* mpEnemy;
-	CBillBoard* mpBillBoard;
 	//	CBullet* mpBullet;
 	CInput mInput;
 	CFont mFont;
-	CMiss* mpMiss;
-	CVector mEye;
+	/*CVector mEye;*/
 	CMatrix mMatrix;
 	CACoin* mpCoin;
 	//CAHamah* mpHamah;
@@ -90,8 +75,8 @@ private:
 	//CCharacterのポインタの可変長配列
 //	std::vector<CCharacter*> mCharacters;
 	CModel mBackGround; //背景モデル
-	//C5モデル
-	CModel mModelC5;
+	////C5モデル
+	//CModel mModelC5;
 	//Coinモデル
 	CModel mModelCoin;
 	//Hamahモデル

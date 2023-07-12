@@ -52,6 +52,8 @@ CPlayer::CPlayer()
 	spInstance = this;
 	randdd = 0;
 	randddco = 180;
+	mpModel = new CModel();
+	mpModel->Load("res\\Beard_man.obj", "res\\Beard_man.mtl");
 }
 
 //XVˆ—

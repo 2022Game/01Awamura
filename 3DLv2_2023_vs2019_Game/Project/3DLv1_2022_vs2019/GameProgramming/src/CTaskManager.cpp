@@ -36,6 +36,23 @@ void CTaskManager::Delete() {
 	}
 }
 
+//シーン内のタスクを全て削除
+void CTaskManager::DeleteInScene(EScene scene)
+{
+	//先頭から最後まで繰り返し
+	CTask* task = mHead.mpNext;
+	while (task->mpNext) {
+		CTask* del = task;
+		//次へ
+		task = task->mpNext;
+		//所属するシーンが一致したら削除
+		//削除フラグを立てる（有効フラグをオフにする）
+		if (del->GetSceneType() == scene) {
+			del->mEnabled = false;
+		}
+	}
+}
+
 void CTaskManager::Remove(CTask* task)
 {
 	//タスクの前の次を、タスクの次にする

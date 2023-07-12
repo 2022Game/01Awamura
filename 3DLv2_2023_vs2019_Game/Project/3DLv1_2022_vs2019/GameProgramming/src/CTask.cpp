@@ -1,12 +1,13 @@
 #include "CTask.h"
 
 //コンストラクタ
-CTask::CTask()
+CTask::CTask(EScene scene)
 	: mpNext(nullptr)
 	, mpPrev(nullptr)
 	, mPriority((int)TaskPriority::eDefault)
 	, mEnabled(true)
 	, mPauseType(TaskPauseType::eDefault)
+	, mSceneType(scene)
 {
 }
 
@@ -35,4 +36,16 @@ void CTask::SetPauseType(TaskPauseType type)
 TaskPauseType CTask::GetPauseType() const
 {
 	return mPauseType;
+}
+
+//所属するシーンを設定
+void CTask::SetSceneType(EScene scene)
+{
+	mSceneType = scene;
+}
+
+//所属するシーンを取得
+EScene CTask::GetSceneType() const
+{
+	return mSceneType;
 }

@@ -14,6 +14,8 @@ public:
 	static CTaskManager* Instance();
 	//タスクの削除
 	void Delete();
+	//シーン内のタスクを全て削除
+	void DeleteInScene(EScene scene);
 	//リストから削除
 	//Remove(タスクのポインタ)
 	void Remove(CTask* task);
