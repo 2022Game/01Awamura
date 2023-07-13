@@ -100,6 +100,7 @@ CModelXFrame::CModelXFrame()
 	:mpMesh(nullptr)
 	,mpName(nullptr)
 	,mIndex(0)
+	,mCombineMatrix(0)
 {}
 
 CModelXFrame::~CModelXFrame()
@@ -685,6 +686,7 @@ CModelXFrame::CModelXFrame(CModelX* model)
 	:mpName(nullptr)
 	,mpMesh(nullptr)
 	, mIndex(0)
+	,mCombineMatrix(0)
 {
 	//現在のフレーム配列の要素数を取得し設定する
 	mIndex = model->mFrame.size();
@@ -1144,10 +1146,18 @@ void CMesh::AnimateVertex(CMatrix* mat) {
 }
 
 CAnimation::CAnimation()
+	:mpKey(0)
+	,mpFrameName(0)
+	,mKeyNum(0)
+	,mFrameIndex(0)
 {
 }
 
 CAnimationSet::CAnimationSet()
+	:mpName(0)
+	,mMaxTime(0)
+	,mWeight(0)
+	,mTime(0)
 {
 
 }
