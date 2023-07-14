@@ -1,7 +1,5 @@
 #include "CAHamah.h"
 #include "CCollisionManager.h"
-#include "CEffect.h"
-#include "CColliderMesh.h"
 
 #define VELOCITY CVector(0.0f,0.0f,0.0f)
 #define VELOCITY10 CVector(0.30f,0.0f,0.0f)
@@ -22,7 +20,6 @@ CAHamah::CAHamah(CModel* model, const CVector& position,
 	Rotation(rotation); //回転の設定
 	Scale(scale); //拡縮の設定
 	ha = 0;
-	hb = 0;
 	mLastPos = position; //前回のポジションに設定する
 }
 

@@ -2,7 +2,6 @@
 #define CACOINGIMMICK_H
 #include "CTask.h"
 #include "CACoin.h"
-#include "CAHamah.h"
 #include "CCharacter.h"
 
 class CACoinGimmick : public CTask ,public CCharacter

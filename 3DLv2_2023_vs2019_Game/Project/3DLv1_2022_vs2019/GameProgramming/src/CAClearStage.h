@@ -2,7 +2,6 @@
 #define CACLEARSTAGE_H
 #include "CTask.h"
 #include "CACoinClearStage.h"
-#include "CAHamah.h"
 #include "CCollider.h"
 #include "CColliderMesh.h"
 #include "CColliderTriangle.h"

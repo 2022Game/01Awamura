@@ -1,7 +1,5 @@
 #include "CAWall.h"
 #include "CCollisionManager.h"
-#include "CEffect.h"
-#include "CColliderMesh.h"
 
 #define VELOCITY CVector(0.0f,0.0f,0.0f)
 #define VELOCITY10 CVector(0.20f,0.0f,0.0f)
@@ -37,7 +35,7 @@ void CAWall::Collision(CCollider* m, CCollider* o) {
 	//	break;
 	//}
 	if (CCollider::Collision(m, o)) {
-		mEnabled = false;
+	
 	}
 }
 

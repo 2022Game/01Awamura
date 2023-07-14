@@ -1,9 +1,6 @@
-
-
 #include "CAClearStage.h"
 #include "CTaskManager.h"
 #include "CCollisionManager.h"
-#include "CEffect.h"
 #include "CColliderMesh.h"
 #include "CApplication.h"
 

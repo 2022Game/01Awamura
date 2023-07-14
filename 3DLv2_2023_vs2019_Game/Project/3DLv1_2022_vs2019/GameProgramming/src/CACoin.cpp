@@ -1,8 +1,5 @@
-
-
 #include "CACoin.h"
 #include "CCollisionManager.h"
-#include "CEffect.h"
 #include "CColliderMesh.h"
 
 #include <stdlib.h>
@@ -15,8 +12,6 @@
 
 int rand(void);
 void srand(unsigned int seed);
-
-//int CACoin::mD;
 
 //コンストラクタ
 //CACoin(モデル、位置、回転、拡縮）
@@ -49,21 +44,11 @@ CACoin::CACoin(CModel* model, const CVector& position,
 
 //更新処理
 void CACoin::Update() {
-	/*if (mD == 150)
-	{
-		mEnabled = false;
-	}*/
 	//移動前の座標を記憶しておく
 	mLastPos = Position();
 	//位置を移動
-	//if (SideCount <= 0)
-	//{
-	//	SideChengeCount++;
-	//	//SideCount = 480 / 6;
-	//}
 	if (UpCount < 0)
 	{
-		//		mPosition = mPosition + VELOCITY10 * mMatrixRotate;
 		UpCount = 0;
 		SCount = 2;
 	}
@@ -108,6 +93,5 @@ void CACoin::Collision()
 {
 	//コライダの優先度変更
 	mColliderMesh.ChangePriority();
-	//CCollisionManager::Instance()->Collision(&mColliderMesh, COLLISIONRANGE);
 	CCollisionManager::Instance()->Collision(&mCollider, COLLISIONRANGE * 10);
 }

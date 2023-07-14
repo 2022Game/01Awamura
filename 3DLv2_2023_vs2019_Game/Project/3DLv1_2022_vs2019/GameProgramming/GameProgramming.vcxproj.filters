@@ -19,6 +19,9 @@
     <Filter Include="ソース ファイル\NewFilter1">
       <UniqueIdentifier>{30212206-b4fc-425f-9d7e-819327962206}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\使わないやつ">
+      <UniqueIdentifier>{42519aa0-6d1c-4a0c-9976-bdf6628c92dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -60,16 +63,7 @@
     <ClCompile Include="src\CGame.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="src\CBlock.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="src\CPlayer2.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="src\CEnemy2.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="src\CPoint.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="src\CUi.cpp">
@@ -186,6 +180,15 @@
     <ClCompile Include="src\CField.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="src\CBlock.cpp">
+      <Filter>ソース ファイル\使わないやつ</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CPlayer2.cpp">
+      <Filter>ソース ファイル\使わないやつ</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CPoint.cpp">
+      <Filter>ソース ファイル\使わないやつ</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\CSound.h">
@@ -224,22 +227,10 @@
     <ClInclude Include="src\CCharacterManager.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\CMiss.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="src\CGame.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\CBlock.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="src\CPlayer2.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="src\CEnemy2.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="src\CPoint.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="src\CUi.h">
@@ -367,6 +358,18 @@
     </ClInclude>
     <ClInclude Include="src\CField.h">
       <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CBlock.h">
+      <Filter>ソース ファイル\使わないやつ</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CMiss.h">
+      <Filter>ソース ファイル\使わないやつ</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CPlayer2.h">
+      <Filter>ソース ファイル\使わないやつ</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CPoint.h">
+      <Filter>ソース ファイル\使わないやつ</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

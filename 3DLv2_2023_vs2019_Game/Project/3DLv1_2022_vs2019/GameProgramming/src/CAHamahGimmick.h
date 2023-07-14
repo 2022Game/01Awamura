@@ -1,7 +1,6 @@
 #ifndef CAHAMAHGIMMICK_H
 #define CAHAMAHGIMMICK_H
 #include "CTask.h"
-#include "CACoin.h"
 #include "CAHamah.h"
 
 #define MODEL_FHAMAH "res\\apple2.obj","res\\apple2.mtl"

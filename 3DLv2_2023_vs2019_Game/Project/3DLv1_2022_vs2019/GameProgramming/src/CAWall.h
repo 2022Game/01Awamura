@@ -5,8 +5,6 @@
 #include "CCharacter.h"
 //コリコリのインクルード
 #include "CCollider.h"
-#include "CColliderTriangle.h"
-#include "CColliderLine.h"
 #include "CColliderMesh.h"
 /*
 エネミークラス

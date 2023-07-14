@@ -1,7 +1,6 @@
 #ifndef CAWOODGIMMICK_H
 #define CAWOODGIMMICK_H
 #include "CTask.h"
-#include "CACoin.h"
 #include "CAWood.h"
 
 class CAWoodGimmick : public CTask

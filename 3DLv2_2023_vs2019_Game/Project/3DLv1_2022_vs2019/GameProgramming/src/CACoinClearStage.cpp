@@ -1,6 +1,5 @@
 #include "CACoinClearStage.h"
 #include "CCollisionManager.h"
-#include "CEffect.h"
 
 #define VELOCITY CVector(0.0f,0.075f,0.0f)
 #define VELOCITY10 CVector(0.05f,0.0f,0.0f)

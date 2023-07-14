@@ -1,16 +1,13 @@
 #include "CASoccer.h"
 #include "CCollisionManager.h"
-#include "CEffect.h"
 #include "CColliderMesh.h"
 #include "CApplication.h"
 
-#define VELOCITY CVector(0.0f,0.0f,0.0f)
 #define VELOCITY20 CVector(0.0f,0.0f,-0.5f)
 #define VELOCITY21 CVector(-0.2f,0.0f,0.30f)
 
 int CASoccer::hdhd = 0;
 //コンストラクタ
-//CAHamah(モデル、位置、回転、拡縮）
 CASoccer::CASoccer(CModel* model, const CVector& position,
 	const CVector& rotation, const CVector& scale)
 	:mCollider(this, &Matrix(), CVector(0.0f, 2.0f, 0.0f), 1.50f)

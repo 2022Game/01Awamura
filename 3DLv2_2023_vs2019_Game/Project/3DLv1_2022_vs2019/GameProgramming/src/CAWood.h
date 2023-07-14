@@ -5,9 +5,6 @@
 #include "CCharacter.h"
 //コリコリのインクルード
 #include "CCollider.h"
-#include "CColliderMesh.h"
-#include "CColliderTriangle.h"
-#include "CColliderLine.h"
 /*
 エネミークラス
 キャラクタクラスを継承
@@ -15,16 +12,10 @@
 class CAWood : public CCharacter3 {
 private:
 	//コライダ
-	//CColliderMesh mColliderMesh;
 	CCollider mCollider;
 	CVector mLastPos;
 public:
 	int ha;
-	int hb;
-	int hc;
-	int hd;
-	int coo;
-	//static int hn;
 	//衝突処理
 	//Collision(コライダ１、コライダ２）
 	void Collision(CCollider* m, CCollider* o);

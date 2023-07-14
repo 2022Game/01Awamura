@@ -2,20 +2,29 @@
 #include "CField.h"
 #include "CPlayer.h"
 
-#define SOUND_BGM "res\\mario.wav" //BGM音声ファイル
-#define SOUND_OVER "res\\mdai.wav" //ゲームオーバー音声ファイル
 //背景モデルデータの指定
 #define MODEL_BACKGROUND "res\\sky.obj","res\\sky.mtl"
-//敵輸送機モデル
-#define MODEL_C5 "res\\f14.obj","res\\f14.mtl"
+
 //土台Coin
 #define MODEL_FCOIN "res\\Coin.obj","res\\Coin.mtl"
+
 //ハンマーリンゴ
 #define MODEL_FHAMAH "res\\apple2.obj","res\\apple2.mtl"
+
+//伝説のボール
+#define MODEL_FSOCCER "res\\soccer1.obj","res\\soccer1.mtl"
+
+//神聖なる木
+#define MODEL_FWALL "res\\Wall2.obj","res\\Wall2.mtl"
 
 //コンストラクタ
 CGameScene::CGameScene()
 	:CSceneBase(EScene::eTitle)
+	,mpWallGimmick(0)
+	,mpSoccerGimmick(0)
+	,mpCoinGimmick(0)
+	,mpClearStage(0)
+	,mpWoodGimmick(0)
 {
 
 }
@@ -41,25 +50,12 @@ void CGameScene::Load()
 	player->Scale(CVector(0.5f, 0.5f, 0.5f));
 	player->Rotation(CVector(0.0f, 0.0f, 0.0f));
 
-	//mModel.Load(MODEL_OBJ);
-	//mBackGround.Load(MODEL_BACKGROUND);
-	//mModelCoin.Load(MODEL_FCOIN);
-	mModelHamah.Load(MODEL_FHAMAH);
-	/*CMatrix matrix;
-	matrix.Print();*/
-
 	//// コインギミックはCACoinGimmick内にまとめる
 	//mpCoinGimmick = new CACoinGimmick();
 
 	////ランダムでAならハマーを出す（予定）
 	//mpHamahGimmick = new CAHamahGimmick();
 
-	//ランダムでBなら移動床を出す。
-
-	//	mCharacter.Model(&mModel);
-		//mCharacter.Scale(CVector(0.1f, 0.1f, 0.1f));
-	//ビルボードの生成
-	/*new CBillBoard(CVector(-6.0f, 3.0f, -10.0f), 1.0f, 1.0f);*/
 	////三角コライダの確認
 	mColliderLine.Set(nullptr, nullptr
 		, CVector(24.0f, 24.0f, -50.0f)

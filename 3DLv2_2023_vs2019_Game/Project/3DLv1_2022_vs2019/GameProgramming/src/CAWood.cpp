@@ -1,7 +1,5 @@
 #include "CAWood.h"
 #include "CCollisionManager.h"
-#include "CEffect.h"
-#include "CColliderMesh.h"
 #include "CApplication.h"
 
 #define VELOCITY CVector(0.0f,0.0f,0.0f)
@@ -25,15 +23,12 @@ CAWood::CAWood(CModel* model, const CVector& position,
 	Rotation(rotation); //回転の設定
 	Scale(scale); //拡縮の設定
 	ha = 0;
-	hb = 40;
-	coo = 100;
 	mLastPos = position; //前回のポジションに設定する
 }
 
 void CAWood::Update() {
 	//移動前の座標を記憶しておく
 	mLastPos = Position();
-	hb--;
 	if (CApplication::hcount == 1)
 	{
 		if (ha % 2 == 0)
@@ -72,7 +67,6 @@ void CAWood::Collision(CCollider* m, CCollider* o) {
 			//衝突しているときは無効にする
 				Position(mLastPos);
 				ha++;
-				//hb = 30;
 		}
 		break;
 	}

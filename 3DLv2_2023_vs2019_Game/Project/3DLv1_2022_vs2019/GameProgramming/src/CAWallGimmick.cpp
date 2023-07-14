@@ -2,7 +2,7 @@
 #include "CTaskManager.h"
 #include "CApplication.h"
 
-//ハンマーリンゴ
+//神聖なる木
 #define MODEL_FWALL "res\\Wall2.obj","res\\Wall2.mtl"
 
 CAWallGimmick::CAWallGimmick()
