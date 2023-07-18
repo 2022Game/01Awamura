@@ -53,7 +53,12 @@ public:
 	void Model(CModel* m);
 	//描画処理
 	void Render();
+	//キャラクターが死んでるかどうか
+	bool IsDeath() const;
+	//キャラクターがクリアしたかどうか
+	bool IsClear() const;
 protected:
+	int mHp;
 	CModel* mpModel; //モデルのポインタ
 	ETag mTag; //タグ
 };

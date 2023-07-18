@@ -15,11 +15,3 @@ CPaladin::CPaladin()
 	}
 	Init(&sModel);
 }
-
-//void CPaladin::Update()
-//{
-//	/*if (mInput.Key('K'))
-//	{
-//		ChangeAnimation(1, true, 60);
-//	}*/
-//}

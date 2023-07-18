@@ -1,22 +1,22 @@
-#include "CTitleScene.h"
+#include "CClearScene.h"
 #include "main.h"
 #include "CSceneManager.h"
 
 //コンストラクタ
-CTitleScene::CTitleScene()
+CClearScene::CClearScene()
 	:CSceneBase(EScene::eTitle)
-	,mBgImage(nullptr)
+	, mBgImage(nullptr)
 {
 }
 
 //デストラクタ
-CTitleScene::~CTitleScene()
+CClearScene::~CClearScene()
 {
 
 }
 
 //シーン読み込み
-void CTitleScene::Load()
+void CClearScene::Load()
 {
 	//ここでタイトル画面に必要な
 	//リソースの読み込みやクラスの生成を行u
@@ -28,7 +28,7 @@ void CTitleScene::Load()
 }
 
 //シーンの更新処理
-void CTitleScene::Update()
+void CClearScene::Update()
 {
 	if (mInput.PushKey(VK_RETURN))
 	{

@@ -132,7 +132,10 @@ void CPlayer::Update() {
 	//変換行列の更新
 	CTransform::Update();
 	//Ui設定
-	CApplication::Ui()->Time(mTime++);
+	if (CApplication::StageCount != 4) //テスト用
+	{
+		CApplication::Ui()->Time(mTime++);
+	}
 	CApplication::Ui()->PosY(Position().Y());
 	CApplication::Ui()->RotX(Rotation().X());
 	CApplication::Ui()->RotY(Rotation().Y());
@@ -141,6 +144,7 @@ void CPlayer::Update() {
 //ステージクリア用のオブジェクトに接地時の処理
 void CPlayer::GroundedClearObj()
 {
+	//mLastPos = Position() + (CVector(0.0f, 20.0f, 0.0f));
 	if (CApplication::StageSwitch == 0)
 	{
 		//randddco--; //テスト用
@@ -183,7 +187,7 @@ void CPlayer::GroundedClearObj()
 		}
 		if (CApplication::StageCount == 3)
 		{
-			mState = EState::ECLEAR;
+			CApplication::StageCount = 4;
 		}
 	}
 }
@@ -213,6 +217,7 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 		//相手のコライダが三角コライダの時
 		if (o->Type() == CCollider::EType::ETRIANGLE) {
 			CVector adjust;//調整用ベクトル
+			mLastPos = Position() + (CVector(0.0f, 20.0f, 0.0f));
 			//三角形と線分の衝突判定
 				if (CCollider::CollisionTriangleLine(o, m, &adjust))
 				{
@@ -261,8 +266,9 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 					if (o->Layer()== CCollider::ELayer::EDEATH)
 					{
 						Position(mLastPos);
-						mState = EState::EOVER;
-						CApplication::Ui()->Restart(mRestart++);
+						if (CApplication::StageCount != 4) { //テスト用
+							CApplication::Ui()->Restart(mRestart++);
+						}
 					}
 					if (mState == EState::EOVER)
 					{

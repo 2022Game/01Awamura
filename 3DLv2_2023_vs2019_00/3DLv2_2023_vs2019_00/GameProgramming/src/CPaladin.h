@@ -8,7 +8,6 @@ class CPaladin : public CXCharacter
 {
 public:
 	CPaladin();
-	//void Update();
 private:
 	static CModelX sModel;
 	CInput mInput;

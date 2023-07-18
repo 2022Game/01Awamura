@@ -31,6 +31,7 @@
     <ClCompile Include="src\CCharacter.cpp" />
     <ClCompile Include="src\CCharacter3.cpp" />
     <ClCompile Include="src\CCharacterManager.cpp" />
+    <ClCompile Include="src\CClearScene.cpp" />
     <ClCompile Include="src\CCollider.cpp" />
     <ClCompile Include="src\CColliderLine.cpp" />
     <ClCompile Include="src\CColliderMesh.cpp" />
@@ -88,6 +89,7 @@
     <ClInclude Include="src\CCharacter.h" />
     <ClInclude Include="src\CCharacter3.h" />
     <ClInclude Include="src\CCharacterManager.h" />
+    <ClInclude Include="src\CClearScene.h" />
     <ClInclude Include="src\CCollider.h" />
     <ClInclude Include="src\CColliderLine.h" />
     <ClInclude Include="src\CColliderMesh.h" />

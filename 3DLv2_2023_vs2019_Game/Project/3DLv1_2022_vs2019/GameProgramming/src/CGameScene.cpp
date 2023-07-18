@@ -1,6 +1,8 @@
 #include "CGameScene.h"
 #include "CField.h"
 #include "CPlayer.h"
+#include "CSceneManager.h"
+#include "CApplication.h"
 
 //背景モデルデータの指定
 #define MODEL_BACKGROUND "res\\sky.obj","res\\sky.mtl"
@@ -32,7 +34,6 @@ CGameScene::CGameScene()
 //デストラクタ
 CGameScene::~CGameScene()
 {
-
 }
 
 //シーン読み込み
@@ -144,4 +145,15 @@ void CGameScene::Update()
 	u = (CVector(0.0f, 1.0f, 0.0f)) * player->MatrixRotate();
 	//カメラの設定
 	gluLookAt(e.X(), e.Y(), e.Z(), c.X(), c.Y(), c.Z(), u.X(), u.Y(), u.Z());
+
+	////ゲームオーバーシーン
+	//if (player->IsDeath())
+	//{
+	//	CSceneManager::Instance()->LoadScene(EScene::eTitle);
+	//}
+
+	if (player->IsClear())
+	{
+		CSceneManager::Instance()->LoadScene(EScene::eClear);
+	}
 }

@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "CUi.h"
 #include "CCamera.h"
+#include "SceneType.h"
+#include "CApplication.h"
 
 void CUi::Clear()
 {
@@ -65,9 +67,22 @@ void CUi::Render()
 	mFont.Draw(20, 580, 8, 16, buf);
 
 	//ï`âÊêEÇÃê›íË(óŒêFÇÃîºìßñæ)
-	glColor4f(0.0f, 1.0f, 0.0f, 0.5f);
+	glColor4f(1.0f, 1.0f, 1.0f, 10.5f);
 	sprintf(buf, "RESTART:%03d", mRestart);
 	mFont.Draw(20, 20, 8, 16, buf);
+
+	if (CApplication::StageCount == 4)
+	{
+		glColor4f(1.0f, 1.0f, 1.0f, 10.5f);
+		sprintf(buf, "SCORE:%03d", 100000 - (mRestart + 1) * mTime);
+		mFont.Draw(200, 300, 18, 36, buf);
+		sprintf(buf, "TIME:%03d", mTime);
+		mFont.Draw(150, 200, 12, 24, buf);
+		sprintf(buf, "RESTART:%03d", mRestart);
+		mFont.Draw(400, 200, 12, 24, buf);
+		mFont.Draw(200, 400, 18, 36, "GAME CLEAR!!");
+		
+	}
 
 	//Yç¿ïWÇÃï\é¶
 	//ï∂éöóÒÇÃê›íË

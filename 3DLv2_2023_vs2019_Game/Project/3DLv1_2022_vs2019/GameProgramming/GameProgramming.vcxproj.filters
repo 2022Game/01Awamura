@@ -189,6 +189,9 @@
     <ClCompile Include="src\CPoint.cpp">
       <Filter>ソース ファイル\使わないやつ</Filter>
     </ClCompile>
+    <ClCompile Include="src\CClearScene.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\CSound.h">
@@ -370,6 +373,9 @@
     </ClInclude>
     <ClInclude Include="src\CPoint.h">
       <Filter>ソース ファイル\使わないやつ</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CClearScene.h">
+      <Filter>ソース ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

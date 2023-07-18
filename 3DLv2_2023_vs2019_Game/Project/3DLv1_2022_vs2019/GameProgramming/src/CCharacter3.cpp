@@ -44,3 +44,17 @@ void CCharacter3::Render()
 {
 	mpModel->Render(Matrix());
 }
+
+//キャラクターが死んでいるかどうか
+bool CCharacter3::IsDeath() const
+{
+	//HPが０以下なら死んでいる
+	return mHp <= 0;
+}
+
+//CLEARしたかどうか
+bool CCharacter3::IsClear() const
+{
+	//ステージカウントが4ならCLEAR
+	return CApplication::StageCount == 5;
+}

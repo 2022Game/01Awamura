@@ -5,13 +5,13 @@
 #include "CFont.h"
 
 //タイトルシーン
-class CTitleScene : public CSceneBase
+class CClearScene : public CSceneBase
 {
 public:
 	//コンストラクタ
-	CTitleScene();
+	CClearScene();
 	//デストラクタ
-	~CTitleScene();
+	~CClearScene();
 
 	//シーン読み込み
 	void Load();
