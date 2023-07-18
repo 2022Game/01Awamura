@@ -91,6 +91,7 @@ void CApplication::Start()
 	AnimaScene = 0;
 	AnimaFrame = 60;
 	mXEnemy.ChangeAnimation(2, true, 200);
+	mpPaladin->ChangeAnimation(1, true, 10);
 }
 
 void CApplication::Update()
