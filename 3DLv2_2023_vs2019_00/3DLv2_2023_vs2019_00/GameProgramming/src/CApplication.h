@@ -27,6 +27,7 @@
 #include "CXPlayer.h"
 
 #include "CXEnemy.h"
+#include "CPaladin.h"
 
 class CApplication
 {
@@ -80,6 +81,7 @@ private:
 	CXEnemy mXEnemy;
 	int AnimaScene;
 	int AnimaFrame;
+	CPaladin* mpPaladin;
 public:
 	~CApplication();
 	static CUi* Ui();	//UIクラスのインスタンスを取得

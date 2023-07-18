@@ -23,6 +23,7 @@ public:
 	//Time(時間)
 	void Time(int time);
 	void Render();
+	void Restart(int resutart);
 private:
 	float mPosY; //高度　Y座標
 	float mRotX; //ピッチ　X回転値
@@ -30,5 +31,6 @@ private:
 	int mEnemy;	//敵の数
 	int mHp;
 	int mTime;	//経過時間
+	int mRestart;
 	CFont mFont;
 };

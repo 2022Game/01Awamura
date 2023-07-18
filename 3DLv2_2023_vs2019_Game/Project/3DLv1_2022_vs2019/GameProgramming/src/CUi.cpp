@@ -27,6 +27,7 @@ void CUi::Enemy(int enemy)
 CUi::CUi()
 	: mHp(0)
 	, mTime(0)
+	,mRestart(0)
 	, mEnemy(0)
 	, mPosY(0.0f)
 	, mRotX(0.0f)
@@ -45,15 +46,13 @@ void CUi::Time(int time)
 	mTime = time;
 }
 
+void CUi::Restart(int restart)
+{
+	mRestart = restart;
+}
+
 void CUi::Render()
 {
-	/*char str[16];
-	sprintf(str, "TIME:%03d", mTime);
-	mFont.Draw(500, 360, 8, 16, str);*/
-	/*sprintf(str, "HP:%d", mHp);
-	mFont.Draw(20, 20, 10, 20, str);
-	sprintf(str, "ENEMY:%d", mEnemy);
-	mFont.Draw(20, 580, 10, 20, str);*/
 	CCamera::Start(0, 800, 0, 600); //2D•`‰æŠJn
 	//•`‰æE‚Ìİ’è(—ÎF‚Ì”¼“§–¾)
 	glColor4f(0.0f, 0.0f, 0.0f, 0.5f);
@@ -64,6 +63,11 @@ void CUi::Render()
 	
 	sprintf(buf, "TIME:%03d", mTime);
 	mFont.Draw(20, 580, 8, 16, buf);
+
+	//•`‰æE‚Ìİ’è(—ÎF‚Ì”¼“§–¾)
+	glColor4f(0.0f, 1.0f, 0.0f, 0.5f);
+	sprintf(buf, "RESTART:%03d", mRestart);
+	mFont.Draw(20, 20, 8, 16, buf);
 
 	//YÀ•W‚Ì•\¦
 	//•¶š—ñ‚Ìİ’è

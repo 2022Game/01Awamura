@@ -85,10 +85,12 @@ void CApplication::Start()
 	mXEnemy.Init(&mKnight);
 	//敵の配置
 	mXEnemy.Position(CVector(7.0f, 0.0f, 0.0f));
+	mpPaladin = new CPaladin();
+	mpPaladin->Position(CVector(-1.0f, 0.0f, 5.0f));
 	mFont.Load("FontG.png", 1, 4096 / 64);
 	AnimaScene = 0;
 	AnimaFrame = 60;
-	//mXEnemy.ChangeAnimation(2, true, 200);
+	mXEnemy.ChangeAnimation(2, true, 200);
 }
 
 void CApplication::Update()
@@ -111,6 +113,7 @@ void CApplication::Update()
 	}*/
 	//mModelX.AnimationSet().size();
 	//キャラクタークラスの更新
+	mpPaladin->Update();
 	mXPlayer.Update();
 	//敵の更新
 	mXEnemy.Update();
@@ -175,6 +178,7 @@ void CApplication::Update()
 	//敵の描画
 	mXEnemy.Render();
 
+	mpPaladin->Render();
 	//2D描画開始
 	CCamera::Start(0, 800, 0, 600);
 

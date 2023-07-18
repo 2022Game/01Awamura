@@ -46,6 +46,7 @@ CPlayer::CPlayer()
 ,randdd(0)
 ,randddco(0)
 ,mTime(0)
+,mRestart(0)
 {
 	srand((unsigned int)time(NULL));
 	//インスタンスの設定
@@ -261,6 +262,7 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 					{
 						Position(mLastPos);
 						mState = EState::EOVER;
+						CApplication::Ui()->Restart(mRestart++);
 					}
 					if (mState == EState::EOVER)
 					{

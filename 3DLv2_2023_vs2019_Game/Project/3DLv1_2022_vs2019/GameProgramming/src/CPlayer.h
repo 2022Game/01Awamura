@@ -38,6 +38,7 @@ public:
 	static int CountLine;
 	static int CountCraft;
 	int mTime;
+	int mRestart;
 	int randddco;
 	int randdd;
 	int n;

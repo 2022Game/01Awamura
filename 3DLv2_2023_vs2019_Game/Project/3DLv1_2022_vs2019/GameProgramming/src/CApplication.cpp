@@ -14,17 +14,6 @@
 CTexture CApplication::mTexture;
 CCharacterManager CApplication::mCharacterManager;
 
-//#define SOUND_BGM "res\\mario.wav" //BGM音声ファイル
-//#define SOUND_OVER "res\\mdai.wav" //ゲームオーバー音声ファイル
-////背景モデルデータの指定
-//#define MODEL_BACKGROUND "res\\sky.obj","res\\sky.mtl"
-////敵輸送機モデル
-//#define MODEL_C5 "res\\f14.obj","res\\f14.mtl"
-////土台Coin
-//#define MODEL_FCOIN "res\\Coin.obj","res\\Coin.mtl"
-////ハンマーリンゴ
-//#define MODEL_FHAMAH "res\\apple2.obj","res\\apple2.mtl"
-
 //CTaskManager CApplication::mTaskManager;
 //CTaskManager* CApplication::TaskManager()
 //{

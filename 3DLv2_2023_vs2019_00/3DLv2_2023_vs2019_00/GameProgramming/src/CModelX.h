@@ -171,6 +171,9 @@ class CModelX {
 	friend CModelXFrame;
 	friend CAnimation;
 public:
+	//アニメーションセットの追加
+	void AddAnimationSet(const char* file);
+	bool IsLoaded();
 	//頂点にアニメーションを適用
 	void AnimateVertex();
 	std::vector<CModelXFrame*>& Frames();
@@ -206,6 +209,7 @@ name:追加するアニメーションセットの名前
 void CModelX::SeparateAnimationSet(
  int idx, int start, int end, char* name);
 private:
+	bool mLoaded;
 	//アニメーションセットの配列
 	std::vector<CAnimationSet*>mAnimationSet;
 	std::vector<CModelXFrame*>mFrame; //フレーム配列

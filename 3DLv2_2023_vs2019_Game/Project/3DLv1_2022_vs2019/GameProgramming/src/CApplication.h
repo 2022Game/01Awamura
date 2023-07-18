@@ -28,20 +28,6 @@
 class CApplication
 {
 private:
-	/*CColliderLine mColliderLine;
-	CColliderLine mColliderLine2;
-	CColliderLine mColliderLine3;
-	CColliderLine mColliderLine4;
-	CColliderLine mColliderLine5;
-	CColliderLine mColliderLine6;
-	CColliderLine mColliderLine7;
-	CColliderLine mColliderLine8;
-	CColliderLine mColliderLine9;
-	CColliderLine mColliderLine10;
-	CColliderTriangle mColliderTriangle;
-	CColliderTriangle mColliderTriangle2;
-	CColliderTriangle mColliderTriangle3;
-	CColliderTriangle mColliderTriangle4;*/
 	CColliderLine mColliderLine8;
 	static CUi* spUi; //UIクラスのポインタ
 	//モデルビューの逆行列
@@ -98,6 +84,7 @@ private:
 	CUi* mpUi;
 public:
 	int mTime;
+	int mRestart;
 	~CApplication();
 	int Init();
 	static int SelectStage;
