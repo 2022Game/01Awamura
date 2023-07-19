@@ -12,6 +12,7 @@
 #include "CAWallGimmick.h"
 #include "CCharacterManager.h"
 #include "CASoccerGimmick.h"
+#include "CPlayer.h"
 
 //タイトルシーン
 class CGameScene : public CSceneBase
@@ -39,6 +40,7 @@ private:
 	CAWallGimmick* mpWallGimmick;
 	CAWoodGimmick* mpWoodGimmick;
 	CASoccerGimmick* mpSoccerGimmick;
+	CPlayer* mpPlayer;
 	CModel mModelCoin;
 	//Hamahモデル
 	CModel mModelHamah;

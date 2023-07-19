@@ -3,14 +3,22 @@
 #include "CColliderMesh.h"
 #include "CApplication.h"
 
-#define VELOCITY20 CVector(0.0f,0.0f,-0.5f)
+#include <stdlib.h>
+
+#include "time.h"
+
+#define VELOCITY20 CVector(0.0f,0.0f,-5.0f)
 #define VELOCITY21 CVector(-0.2f,0.0f,0.30f)
+
+int rand(void);
+void srand(unsigned int seed);
 
 int CASoccer::hdhd = 0;
 //コンストラクタ
 CASoccer::CASoccer(CModel* model, const CVector& position,
 	const CVector& rotation, const CVector& scale)
 	:mCollider(this, &Matrix(), CVector(0.0f, 2.0f, 0.0f), 1.50f)
+	,rarand(0)
 {
 	hdhd = 0;
 	//障害物用のタグ設定
@@ -23,12 +31,12 @@ CASoccer::CASoccer(CModel* model, const CVector& position,
 	Position(position); //位置の設定
 	Rotation(rotation); //回転の設定
 	Scale(scale); //拡縮の設定
-	mLastPos = position; //前回のポジションに設定する
+	//mLastPos = position; //前回のポジションに設定する
 }
 
 void CASoccer::Update() {
 	//移動前の座標を記憶しておく
-	mLastPos = Position();
+	//mLastPos = Position();
 	Position(Position() + VELOCITY20 * MatrixRotate());
 	//行列を更新
 	CTransform::Update();
@@ -47,9 +55,21 @@ void CASoccer::Collision(CCollider* m, CCollider* o) {
 	switch (o->Type()) {
 	case CCollider::EType::ELINE:
 		if (CCollider::Collision(m, o)) {
-			mEnabled = false;
-			hdhd = 2;
-			//Position(mLastPos);
+			//mEnabled = false;
+			//hdhd = 2;
+			rarand = 4 + rand() % 17;
+			if (CApplication::StageCheck == 0)
+			{
+				Position((CVector(rarand, 23.0f,210.0f)));
+			}
+			if (CApplication::StageCheck == 1)
+			{
+				Position((CVector(rarand, 23.0f, 210.0f)));
+			}
+			if (CApplication::StageCheck == 2)
+			{
+				Position((CVector(rarand, 23.0f, 210.0f)));
+			}
 		}
 		break;
 	}

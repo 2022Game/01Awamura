@@ -97,7 +97,7 @@ void CASoccerGimmick::Init()
 
 	if (CASoccer::hdhd == 2)
 	{
-		if (CPlayer::CountCraft == 0)
+		/*if (CPlayer::CountCraft == 0)
 		{
 			CreateSoccer(CVector(randnow, 23.0f, 70.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 			CreateSoccer(CVector(randnow2, 23.0f, 70.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
@@ -113,7 +113,7 @@ void CASoccerGimmick::Init()
 			CreateSoccer(CVector(randnow4, 23.0f, 140.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 			CreateSoccer(CVector(randnow5, 23.0f, 140.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 		}
-		CASoccer::hdhd = 0;
+		CASoccer::hdhd = 0;*/
 	}
 
 	if (CApplication::SelectStage == 5)

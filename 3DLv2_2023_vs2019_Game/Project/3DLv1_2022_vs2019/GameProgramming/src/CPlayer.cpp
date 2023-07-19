@@ -26,6 +26,7 @@ CPlayer::CPlayer(const CVector& pos, const CVector& rot, const CVector& scale)
 	:CPlayer()
 {
 	mLastPos = pos;
+	mStartPos = Position() + (CVector(10.0f, 100.0f, 0.0f));
 	CTransform::Update(pos, rot, scale);//行列の更新
 }
 
@@ -47,6 +48,8 @@ CPlayer::CPlayer()
 ,randddco(0)
 ,mTime(0)
 ,mRestart(0)
+,ddStage(0)
+,ccStage(0)
 {
 	srand((unsigned int)time(NULL));
 	//インスタンスの設定
@@ -136,6 +139,16 @@ void CPlayer::Update() {
 	{
 		CApplication::Ui()->Time(mTime++);
 	}
+	if (CApplication::StageCount == 4) //テスト用
+	{
+		mTime = 0;
+		mRestart = 0;
+	}
+	if (CApplication::Rcount == 1)
+	{
+		Position(mStartPos);
+		CApplication::Rcount = 0;
+	}
 	CApplication::Ui()->PosY(Position().Y());
 	CApplication::Ui()->RotX(Rotation().X());
 	CApplication::Ui()->RotY(Rotation().Y());
@@ -144,50 +157,57 @@ void CPlayer::Update() {
 //ステージクリア用のオブジェクトに接地時の処理
 void CPlayer::GroundedClearObj()
 {
-	//mLastPos = Position() + (CVector(0.0f, 20.0f, 0.0f));
+	mLastPos = Position() + (CVector(0.0f, 20.0f, 0.0f));
+	if (CApplication::StageCountGuard == 0)
+	{
+		CApplication::StageCountGuard = 1;
+	}
 	if (CApplication::StageSwitch == 0)
 	{
-		//randddco--; //テスト用
-		//CApplication::StageGuard = 0;
-		if (CApplication::StageCount == 0)
+		if (CApplication::StageReset != 1)
 		{
-			mLastPos = Position();
-			CApplication::SelectStage = 1;//1 + rand() % 5;
-			ddStage = CApplication::SelectStage; //一度ddStageに入れておく
-			CApplication::StageSwitch = 1;
-			//randddco = 380; //テスト用
-		}
-		if (CApplication::StageCount == 1)
-		{
-			CountLine = 1;
-			CountCraft = 1;
-			mLastPos = Position();
-			CApplication::SelectStage = 1 + rand() % 5;
-			while (CApplication::SelectStage == ddStage)
+			//randddco--; //テスト用
+			//CApplication::StageGuard = 0;
+			if (CApplication::StageCount == 0)
 			{
+				//mLastPos = Position();
 				CApplication::SelectStage = 1 + rand() % 5;
+				ddStage = CApplication::SelectStage; //一度ddStageに入れておく
+				CApplication::StageSwitch = 1;
+				//randddco = 380; //テスト用
 			}
-			ccStage = CApplication::SelectStage; //一度ccStageに入れておく
-			CApplication::StageSwitch = 1;
-			//randddco = 580; //テスト用
-		}
-		if (CApplication::StageCount == 2)
-		{
-			CountLine = 2;
-			CountCraft = 2;
-			mLastPos = Position();
-			CApplication::SelectStage = 5;//1 + rand() % 5;
-			while (CApplication::SelectStage == 5 || 
-				ddStage == CApplication::SelectStage || 
-				ccStage == CApplication::SelectStage)
+			if (CApplication::StageCount == 1)
 			{
+				CountLine = 1;
+				CountCraft = 1;
+				//mLastPos = Position();
 				CApplication::SelectStage = 1 + rand() % 5;
+				while (CApplication::SelectStage == ddStage)
+				{
+					CApplication::SelectStage = 1 + rand() % 5;
+				}
+				ccStage = CApplication::SelectStage; //一度ccStageに入れておく
+				CApplication::StageSwitch = 1;
+				//randddco = 580; //テスト用
 			}
-			CApplication::StageSwitch = 1;
-		}
-		if (CApplication::StageCount == 3)
-		{
-			CApplication::StageCount = 4;
+			if (CApplication::StageCount == 2)
+			{
+				CountLine = 2;
+				CountCraft = 2;
+				//mLastPos = Position();
+				CApplication::SelectStage = 5;//1 + rand() % 5;
+				while (CApplication::SelectStage == 5 ||
+					ddStage == CApplication::SelectStage ||
+					ccStage == CApplication::SelectStage)
+				{
+					CApplication::SelectStage = 1 + rand() % 5;
+				}
+				CApplication::StageSwitch = 1;
+			}
+			if (CApplication::StageCount == 3)
+			{
+				CApplication::StageCount = 4;
+			}
 		}
 	}
 }
@@ -197,9 +217,10 @@ void CPlayer::GroundedGuardObj()
 {
 	if (CApplication::StageSwitch == 1)
 	{
+		CApplication::StageGuard = 1;
 		CApplication::StageCount++;
-		CApplication::StageGuard++;
-		CApplication::StageSwitch = 0; //テスト用
+		CApplication::StageCountGuard = 0;
+		CApplication::StageSwitch = 0; //テスト
 	}
 }
 
@@ -217,7 +238,7 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 		//相手のコライダが三角コライダの時
 		if (o->Type() == CCollider::EType::ETRIANGLE) {
 			CVector adjust;//調整用ベクトル
-			mLastPos = Position() + (CVector(0.0f, 20.0f, 0.0f));
+			//mLastPos = Position() + (CVector(0.0f, 20.0f, 0.0f));
 			//三角形と線分の衝突判定
 				if (CCollider::CollisionTriangleLine(o, m, &adjust))
 				{
@@ -266,6 +287,12 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 					if (o->Layer()== CCollider::ELayer::EDEATH)
 					{
 						Position(mLastPos);
+						CApplication::StageReset = 1;
+						if (CApplication::StageCountGuard == 0)
+						{
+							CApplication::StageCount--;
+							CApplication::StageCountGuard = 1;
+						}
 						if (CApplication::StageCount != 4) { //テスト用
 							CApplication::Ui()->Restart(mRestart++);
 						}
@@ -306,9 +333,9 @@ void CPlayer::Collision()
 	mLine2.ChangePriority();
 	mLine3.ChangePriority();
 	//衝突処理を実行
-	CCollisionManager::Instance()->Collision(&mLine, COLLISIONRANGE);
-	CCollisionManager::Instance()->Collision(&mLine2, COLLISIONRANGE);
-	CCollisionManager::Instance()->Collision(&mLine3, COLLISIONRANGE);
+	CCollisionManager::Instance()->Collision(&mLine, COLLISIONRANGE * 10);
+	CCollisionManager::Instance()->Collision(&mLine2, COLLISIONRANGE * 10);
+	CCollisionManager::Instance()->Collision(&mLine3, COLLISIONRANGE * 10);
 
 	//接地している移動オブジェクトを親に設定
 	SetParent(mGroundedMoveObjTf);

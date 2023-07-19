@@ -24,10 +24,12 @@
 #include "CColliderMesh.h"
 #include "CUi.h"
 #include "CColliderLine.h"
+#include "CGameScene.h"
 
 class CApplication
 {
 private:
+	CGameScene* mpGameScene;
 	CColliderLine mColliderLine8;
 	static CUi* spUi; //UIクラスのポインタ
 	//モデルビューの逆行列
@@ -91,7 +93,11 @@ public:
 	static int StageSwitch;
 	static int StageGuard;
 	static int StageCount;
+	static int StageReset;
+	static int StageCountGuard;
+	static int StageCheck;
 	static int hcount;
+	static int Rcount;
 	static CUi* Ui();
 	//モデルビュー行列の取得
 	static const CMatrix& ModelViewInverse();

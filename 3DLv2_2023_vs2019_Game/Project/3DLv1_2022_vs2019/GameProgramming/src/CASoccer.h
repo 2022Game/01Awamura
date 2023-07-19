@@ -16,6 +16,7 @@ private:
 	//CColliderMesh mColliderMesh;
 	CCollider mCollider;
 	CVector mLastPos;
+	int rarand;
 public:
 	static int hdhd;
 	//Õ“Ëˆ—

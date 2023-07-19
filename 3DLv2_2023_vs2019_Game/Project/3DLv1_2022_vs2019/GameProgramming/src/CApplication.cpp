@@ -45,7 +45,15 @@ int CApplication::StageGuard = 0;
 
 int CApplication::StageCount = 0;
 
+int CApplication::StageReset = 0;
+
+int CApplication::StageCountGuard = 0;
+
+int CApplication::StageCheck = 0;
+
 int CApplication::hcount = 0;
+
+int CApplication::Rcount = 0;
 
 void CApplication::Start()
 {
@@ -55,15 +63,6 @@ void CApplication::Start()
 
 void CApplication::Update()
 {
-	if (CPlayer::CountLine == 1)
-	{
-		mColliderLine8.Set(nullptr, nullptr
-			, CVector(0.0f, 24.0f, 30.0f)
-			, CVector(24.0f, 24.0f, 30.0f));
-		mColliderLine8.Layer(CCollider::ELayer::ELINEWALL);
-		CPlayer::CountLine = 0;
-	}
-
 	if (CASoccer::hdhd == 2)
 	{
 		mpSoccerGimmick = new CASoccerGimmick();
@@ -84,16 +83,45 @@ void CApplication::Update()
 	
 	if (SelectStage != 0)
 	{
-		delete mpCoinGimmick;
-		mpCoinGimmick = nullptr;
-		delete mpHamahGimmick;
-		delete mpWoodGimmick;
-		delete mpWallGimmick;
-		delete mpSoccerGimmick;
-		mpSoccerGimmick = nullptr;
+		if (StageReset != 1)
+		{
+			if (mpCoinGimmick != nullptr)
+			{
+				delete mpCoinGimmick;
+				StageCheck++;
+			}
+			if (mpHamahGimmick != nullptr)
+			{
+				delete mpHamahGimmick;
+			}
+			if (mpWoodGimmick != nullptr)
+			{
+				delete mpWoodGimmick;
+			}
+			if (mpWallGimmick != nullptr)
+			{
+				delete mpWallGimmick;
+			}
+			if (mpSoccerGimmick != nullptr)
+			{
+				delete mpSoccerGimmick;
+			}
+			mpCoinGimmick = nullptr;
+			mpSoccerGimmick = nullptr;
+			mpWallGimmick = nullptr;
+			mpHamahGimmick = nullptr;
+			mpWoodGimmick = nullptr;
+		}
+	}
+	if (StageReset == 1)
+	{
+		if (mpWallGimmick != nullptr)
+		{
+			delete mpWallGimmick;
+		}
 		mpWallGimmick = nullptr;
-		mpHamahGimmick = nullptr;
-		mpWoodGimmick = nullptr;
+		StageSwitch = 1;
+		StageReset = 0;
 	}
 	if (StageGuard == 1)
 	{
@@ -164,6 +192,63 @@ void CApplication::Update()
 	//コリジョンマネジャー描画
 	CCollisionManager::Instance()->Render();
 	spUi->Render(); //UIの描画
+
+	if (StageCount == 4)
+	{
+		if (mInput.Key(VK_RETURN))
+		{
+			if (mpCoinGimmick != nullptr)
+			{
+				delete mpCoinGimmick;
+				StageCheck++;
+			}
+			if (mpHamahGimmick != nullptr)
+			{
+				delete mpHamahGimmick;
+			}
+			if (mpWoodGimmick != nullptr)
+			{
+				delete mpWoodGimmick;
+			}
+			if (mpWallGimmick != nullptr)
+			{
+				delete mpWallGimmick;
+			}
+			if (mpSoccerGimmick != nullptr)
+			{
+				delete mpSoccerGimmick;
+			}
+			/*if (mpClearStage != nullptr)
+			{
+				delete mpClearStage;
+			}*/
+			mpCoinGimmick = nullptr;
+			mpSoccerGimmick = nullptr;
+			mpWallGimmick = nullptr;
+			mpHamahGimmick = nullptr;
+			mpWoodGimmick = nullptr;
+			//mpClearStage = nullptr;
+			SelectStage = 0;
+
+			StageSwitch = 0;
+
+			StageGuard = 0;
+
+			StageCount = 0;
+
+			StageReset = 0;
+
+			StageCountGuard = 0;
+
+			StageCheck = 0;
+
+			hcount = 0;
+
+			Ui()->Time(mTime = 0);
+			Ui()->Restart(mRestart = 0);
+			Rcount = 1;
+		}
+	}
 }
 
 CUi* CApplication::spUi = nullptr;

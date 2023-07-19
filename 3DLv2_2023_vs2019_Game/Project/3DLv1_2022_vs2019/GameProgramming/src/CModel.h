@@ -18,6 +18,7 @@ public:
 	void Load(char* obj, char* mtl);
 	//•`‰æ
 	void Render();
+	CModel();
 	~CModel();
 	//•`‰æ
 	//Renderys—ñj

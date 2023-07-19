@@ -22,11 +22,11 @@
 //コンストラクタ
 CGameScene::CGameScene()
 	:CSceneBase(EScene::eTitle)
-	,mpWallGimmick(0)
-	,mpSoccerGimmick(0)
-	,mpCoinGimmick(0)
-	,mpClearStage(0)
-	,mpWoodGimmick(0)
+	,mpWallGimmick(nullptr)
+	,mpSoccerGimmick(nullptr)
+	,mpCoinGimmick(nullptr)
+	,mpClearStage(nullptr)
+	,mpWoodGimmick(nullptr)
 {
 
 }
@@ -155,5 +155,13 @@ void CGameScene::Update()
 	if (player->IsClear())
 	{
 		CSceneManager::Instance()->LoadScene(EScene::eClear);
+	}
+	if (CApplication::Rcount == 1)
+	{
+		if (player != nullptr)
+		{	//UIを削除し、初期化
+			delete player;
+			player = nullptr;
+		}
 	}
 }

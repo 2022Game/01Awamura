@@ -7,6 +7,7 @@
 //文字列s1とs2の比較
 // s1とs2が等しければ０を
 // 等しくなければ０を
+
 int strcmp(const char* s1, const char* s2)
 {
 	int i = 0;
@@ -22,7 +23,7 @@ int strcmp(const char* s1, const char* s2)
 
 //モデルファイルの入力
 //Load(モデルファイル名,マテリアルファイル名）
-void CModel::Load(char* obj, char* mtl) {
+void CModel::Load(char* obj, char* mtl){
 	//頂点データと法線データとテクスチャマッピングの保存（CVector型）
 	std::vector<CVector> vertex, normal,uv;
 	//ファイルポインタ変数の作成
@@ -185,6 +186,11 @@ void CModel::Render() {
 		//マテリアルを無効
 		mpMaterials[mTriangles[i].MaterialIdx()]->Disabled();
 	}
+}
+
+CModel::CModel()
+	:mpVertexes(nullptr)
+{
 }
 
 CModel::~CModel()

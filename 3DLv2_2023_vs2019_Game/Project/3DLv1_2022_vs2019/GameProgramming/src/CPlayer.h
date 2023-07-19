@@ -34,6 +34,7 @@ private:
 	//ステージの壁生成用のオブジェクトに接地時の処理
 	void GroundedGuardObj();
 	CVector mLastPos;
+	CVector mStartPos;
 public:
 	static int CountLine;
 	static int CountCraft;
