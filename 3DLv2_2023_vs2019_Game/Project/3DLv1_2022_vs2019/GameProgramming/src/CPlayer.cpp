@@ -195,9 +195,8 @@ void CPlayer::GroundedClearObj()
 				CountLine = 2;
 				CountCraft = 2;
 				//mLastPos = Position();
-				CApplication::SelectStage = 5;//1 + rand() % 5;
-				while (CApplication::SelectStage == 5 ||
-					ddStage == CApplication::SelectStage ||
+				CApplication::SelectStage = 1 + rand() % 5;
+				while (ddStage == CApplication::SelectStage ||
 					ccStage == CApplication::SelectStage)
 				{
 					CApplication::SelectStage = 1 + rand() % 5;
