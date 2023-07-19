@@ -31,6 +31,7 @@ public:
 		EDEATH, //死亡
 		ECOIN, //コインのコライダ
 		ELINEWALL, //線分の壁コライダ
+		ELINEWALL2,
 	};
 
 	EType Type() const;

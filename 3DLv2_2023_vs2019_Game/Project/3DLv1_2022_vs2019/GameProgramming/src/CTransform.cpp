@@ -1,8 +1,28 @@
 #include "CTransform.h"
+#include <corecrt_math.h>
+#include <stdio.h>
 
 CTransform::CTransform()
 	: mpParent(nullptr)
 {
+}
+
+CTransform::~CTransform()
+{
+	//親が存在する場合は、親の子供リストから自身を取り除く
+	if (mpParent != nullptr)
+	{
+		mpParent->RemoveChild(this);
+	}
+
+	//子供が存在する場合は、子供との親子関係を解除する
+	auto it = mChildren.begin();
+	while (it != mChildren.end())
+	{
+		CTransform* tf = *it;
+		it++;
+		tf->SetParent(nullptr);
+	}
 }
 
 CVector CTransform::Position() const
@@ -89,6 +109,9 @@ void CTransform::SetParent(CTransform* parent)
 		//ワールド空間での値に戻す
 		mPosition = mPosition * mpParent->Matrix();
 		mScale = mScale * mpParent->MatrixScale();
+
+		//前の親の子供リストから自身を取り除く
+		mpParent->RemoveChild(this);
 	}
 	//新しく設定する親が存在するならば
 	if (parent != nullptr)
@@ -97,8 +120,23 @@ void CTransform::SetParent(CTransform* parent)
 		//設定する親から見た相対的な値に変換する
 		mPosition = mPosition * parent->Matrix().Inverse();
 		mScale = mScale * parent->MatrixScale().Inverse();
+
+		//新しい親の子供リストに自身を追加
+		parent->AddChild(this);
 	}
 	mpParent = parent;
+}
+
+//子供のTransformをリストに追加
+void CTransform::AddChild(CTransform* child)
+{
+	mChildren.push_back(child);
+}
+
+//子供のTransformをリストから取り除く
+void CTransform::RemoveChild(CTransform* child)
+{
+	mChildren.remove(child);
 }
 
 //行列更新処理

@@ -41,6 +41,8 @@ int CApplication::SelectStage = 0;
 
 int CApplication::StageSwitch = 0;
 
+int CApplication::StartCount = 0;
+
 int CApplication::StageGuard = 0;
 
 int CApplication::StageCount = 0;
@@ -51,9 +53,24 @@ int CApplication::StageCountGuard = 0;
 
 int CApplication::StageCheck = 0;
 
+int CApplication::StageTime = 0;
+
+int CApplication::StageClearDelete = 0;
+
 int CApplication::hcount = 0;
 
 int CApplication::Rcount = 0;
+
+CApplication::CApplication()
+	:mpClearStage(nullptr)
+	,mpCoinGimmick(nullptr)
+	,mpWallGimmick(nullptr)
+	,mpWoodGimmick(nullptr)
+	,mpHamahGimmick(nullptr)
+	,mpSoccerGimmick(nullptr)
+{
+
+}
 
 void CApplication::Start()
 {
@@ -63,114 +80,225 @@ void CApplication::Start()
 
 void CApplication::Update()
 {
-	if (CASoccer::hdhd == 2)
+	if (StartCount == 1)
 	{
-		mpSoccerGimmick = new CASoccerGimmick();
-	}
-	/*switch (mState)
-	{
-	case EState::ECLEAR:
-	{
-		mpUi->Clear();
-	}
-	break;
-	case EState::EOVER:
-	{
-		mpUi->Over();
-	}
-	break;
-	}*/
-	
-	if (SelectStage != 0)
-	{
-		if (StageReset != 1)
+		if (CASoccer::hdhd == 2)
 		{
-			if (mpCoinGimmick != nullptr)
+			mpSoccerGimmick = new CASoccerGimmick();
+		}
+		/*switch (mState)
+		{
+		case EState::ECLEAR:
+		{
+			mpUi->Clear();
+		}
+		break;
+		case EState::EOVER:
+		{
+			mpUi->Over();
+		}
+		break;
+		}*/
+
+		if (SelectStage != 0)
+		{
+			if (StageReset != 1)
 			{
-				delete mpCoinGimmick;
-				StageCheck++;
+				if (mpCoinGimmick != nullptr)
+				{
+					delete mpCoinGimmick;
+					StageCheck++;
+				}
+				if (mpHamahGimmick != nullptr)
+				{
+					delete mpHamahGimmick;
+				}
+				if (mpWoodGimmick != nullptr)
+				{
+					delete mpWoodGimmick;
+				}
+				if (mpWallGimmick != nullptr)
+				{
+					delete mpWallGimmick;
+				}
+				if (mpSoccerGimmick != nullptr)
+				{
+					delete mpSoccerGimmick;
+				}
+				mpCoinGimmick = nullptr;
+				mpSoccerGimmick = nullptr;
+				mpWallGimmick = nullptr;
+				mpHamahGimmick = nullptr;
+				mpWoodGimmick = nullptr;
 			}
-			if (mpHamahGimmick != nullptr)
-			{
-				delete mpHamahGimmick;
-			}
-			if (mpWoodGimmick != nullptr)
-			{
-				delete mpWoodGimmick;
-			}
+		}
+		if (StageReset == 1)
+		{
 			if (mpWallGimmick != nullptr)
 			{
 				delete mpWallGimmick;
 			}
-			if (mpSoccerGimmick != nullptr)
-			{
-				delete mpSoccerGimmick;
-			}
-			mpCoinGimmick = nullptr;
-			mpSoccerGimmick = nullptr;
 			mpWallGimmick = nullptr;
-			mpHamahGimmick = nullptr;
-			mpWoodGimmick = nullptr;
+			StageSwitch = 1;
+			StageReset = 0;
 		}
-	}
-	if (StageReset == 1)
-	{
-		if (mpWallGimmick != nullptr)
+		if (StageGuard == 1)
 		{
-			delete mpWallGimmick;
+			mpWallGimmick = new CAWallGimmick();
+			StageGuard = 0;
 		}
-		mpWallGimmick = nullptr;
-		StageSwitch = 1;
-		StageReset = 0;
-	}
-	if (StageGuard == 1)
-	{
-		mpWallGimmick = new CAWallGimmick();
-		StageGuard = 0;
-	}
-	if (SelectStage == 1)
-	{
-		//ランダムで１ならハマーステージ予定
-		mpClearStage = new CAClearStage();
-		mpCoinGimmick = new CACoinGimmick();
-		mpHamahGimmick = new CAHamahGimmick();
-		SelectStage = 0; //テスト用
-	}
-	if (SelectStage == 2)
-	{
-		//ランダムで2ならウッドステージ予定
-		mpClearStage = new CAClearStage();
-		mpCoinGimmick = new CACoinGimmick();
-		mpWoodGimmick = new CAWoodGimmick();
-		hcount = 1;
-		SelectStage = 0; //テスト用
-	}
-	if (SelectStage == 3)
-	{
-		//ランダムで１ならハマーステージ予定
-		mpClearStage = new CAClearStage();
-		mpCoinGimmick = new CACoinGimmick();
-		mpWoodGimmick = new CAWoodGimmick();
-		hcount = 2;
-		SelectStage = 0; //テスト用
-	}
-	if (SelectStage == 4)
-	{
-		//ランダムで１ならハマーステージ予定
-		mpClearStage = new CAClearStage();
-		mpCoinGimmick = new CACoinGimmick();
-		mpHamahGimmick = new CAHamahGimmick();
-		SelectStage = 0; //テスト用
-	}
-	if (SelectStage == 5)
-	{
-		//ランダムで5ならステージ予定
-		mpClearStage = new CAClearStage();
-		mpCoinGimmick = new CACoinGimmick();
-		mpSoccerGimmick = new CASoccerGimmick();
-		SelectStage = 0; //テスト用
-	}
+		if (StageCount == 0)
+		{
+			if (mpClearStage == nullptr)
+			{
+				mpClearStage = new CAClearStage();
+			}
+		}
+		if (StageCount == 1)
+		{
+			if (mpClearStage2 == nullptr)
+			{
+				mpClearStage2 = new CAClearStage();
+			}
+		}
+		if (StageCount == 2)
+		{
+			if (mpClearStage3 == nullptr)
+			{
+				mpClearStage3 = new CAClearStage();
+			}
+		}
+		if (StageCount == 3)
+		{
+			if (mpClearStage4 == nullptr)
+			{
+				mpClearStage4 = new CAClearStage();
+			}
+		}
+		if (StageClearDelete == 2)
+		{
+			if (mpClearStage != nullptr)
+			{
+				delete mpClearStage;
+			}
+			mpClearStage = nullptr;
+		}
+		if (StageClearDelete == 3)
+		{
+			if (mpClearStage2 != nullptr)
+			{
+				delete mpClearStage2;
+			}
+			mpClearStage2 = nullptr;
+		}
+		if (StageClearDelete == 4)
+		{
+			if (mpClearStage3 != nullptr)
+			{
+				delete mpClearStage3;
+			}
+			mpClearStage3 = nullptr;
+		}
+		if (SelectStage == 1)
+		{
+			//ランダムで１ならハマーステージ予定
+			//mpClearStage = new CAClearStage();
+			mpCoinGimmick = new CACoinGimmick();
+			mpHamahGimmick = new CAHamahGimmick();
+			SelectStage = 0; //テスト用
+		}
+		if (SelectStage == 2)
+		{
+			//ランダムで2ならウッドステージ予定
+			//mpClearStage = new CAClearStage();
+			mpCoinGimmick = new CACoinGimmick();
+			mpWoodGimmick = new CAWoodGimmick();
+			hcount = 1;
+			SelectStage = 0; //テスト用
+		}
+		if (SelectStage == 3)
+		{
+			//ランダムで１ならハマーステージ予定
+			//mpClearStage = new CAClearStage();
+			mpCoinGimmick = new CACoinGimmick();
+			mpWoodGimmick = new CAWoodGimmick();
+			hcount = 2;
+			SelectStage = 0; //テスト用
+		}
+		if (SelectStage == 4)
+		{
+			//ランダムで１ならハマーステージ予定
+			//mpClearStage = new CAClearStage();
+			mpCoinGimmick = new CACoinGimmick();
+			mpHamahGimmick = new CAHamahGimmick();
+			SelectStage = 0; //テスト用
+		}
+		if (SelectStage == 5)
+		{
+			//ランダムで5ならステージ予定
+			//mpClearStage = new CAClearStage();
+			mpCoinGimmick = new CACoinGimmick();
+			mpSoccerGimmick = new CASoccerGimmick();
+			SelectStage = 0; //テスト用
+		}
+		if (StageCount == 4)
+		{
+			if (mInput.Key(VK_SPACE))
+			{
+				CSceneManager::Instance()->LoadScene(EScene::eTitle);
+				if (mpCoinGimmick != nullptr)
+				{
+					delete mpCoinGimmick;
+					StageCheck++;
+				}
+				if (mpHamahGimmick != nullptr)
+				{
+					delete mpHamahGimmick;
+				}
+				if (mpWoodGimmick != nullptr)
+				{
+					delete mpWoodGimmick;
+				}
+				if (mpWallGimmick != nullptr)
+				{
+					delete mpWallGimmick;
+				}
+				if (mpSoccerGimmick != nullptr)
+				{
+					delete mpSoccerGimmick;
+				}
+				if (mpClearStage != nullptr)
+				{
+					delete mpClearStage;
+				}
+				mpCoinGimmick = nullptr;
+				mpSoccerGimmick = nullptr;
+				mpWallGimmick = nullptr;
+				mpHamahGimmick = nullptr;
+				mpWoodGimmick = nullptr;
+				mpClearStage = nullptr;
+				SelectStage = 0;
 
+				StageSwitch = 0;
+
+				StageGuard = 0;
+
+				StageCount = 0;
+
+				StageReset = 0;
+
+				StageCountGuard = 0;
+
+				StageCheck = 0;
+
+				hcount = 0;
+
+				Ui()->Time(mTime = 0);
+				Ui()->Restart(mRestart = 0);
+				Rcount = 1;
+			}
+		}
+	}
 	//タスクマネージャの更新
 	CTaskManager::Instance()->Update();
 	CTaskManager::Instance()->Collision();
@@ -193,62 +321,15 @@ void CApplication::Update()
 	CCollisionManager::Instance()->Render();
 	spUi->Render(); //UIの描画
 
-	if (StageCount == 4)
+	/*if (mInput.PushKey('P'))
 	{
-		if (mInput.Key(VK_RETURN))
+		if (mpClearStage2 != nullptr)
 		{
-			if (mpCoinGimmick != nullptr)
-			{
-				delete mpCoinGimmick;
-				StageCheck++;
-			}
-			if (mpHamahGimmick != nullptr)
-			{
-				delete mpHamahGimmick;
-			}
-			if (mpWoodGimmick != nullptr)
-			{
-				delete mpWoodGimmick;
-			}
-			if (mpWallGimmick != nullptr)
-			{
-				delete mpWallGimmick;
-			}
-			if (mpSoccerGimmick != nullptr)
-			{
-				delete mpSoccerGimmick;
-			}
-			/*if (mpClearStage != nullptr)
-			{
-				delete mpClearStage;
-			}*/
-			mpCoinGimmick = nullptr;
-			mpSoccerGimmick = nullptr;
-			mpWallGimmick = nullptr;
-			mpHamahGimmick = nullptr;
-			mpWoodGimmick = nullptr;
-			//mpClearStage = nullptr;
-			SelectStage = 0;
-
-			StageSwitch = 0;
-
-			StageGuard = 0;
-
-			StageCount = 0;
-
-			StageReset = 0;
-
-			StageCountGuard = 0;
-
-			StageCheck = 0;
-
-			hcount = 0;
-
-			Ui()->Time(mTime = 0);
-			Ui()->Restart(mRestart = 0);
-			Rcount = 1;
+			delete mpClearStage2;
+			mpClearStage = nullptr;
 		}
-	}
+	}*/
+
 }
 
 CUi* CApplication::spUi = nullptr;

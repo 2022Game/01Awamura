@@ -43,4 +43,6 @@ void CAWall::Collision()
 {
 	//コライダの優先度変更
 	mColliderMesh.ChangePriority();
+	//衝突処理を実行
+	//CCollisionManager::Instance()->Collision(&mCollider, COLLISIONRANGE * 10);
 }

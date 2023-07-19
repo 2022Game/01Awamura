@@ -77,6 +77,9 @@ private:
 	CColliderMesh mColliderMesh;
 
 	CAClearStage* mpClearStage;
+	CAClearStage* mpClearStage2;
+	CAClearStage* mpClearStage3;
+	CAClearStage* mpClearStage4;
 	CACoinGimmick* mpCoinGimmick;
 	CAHamahGimmick* mpHamahGimmick;
 	CAWallGimmick* mpWallGimmick;
@@ -87,15 +90,19 @@ private:
 public:
 	int mTime;
 	int mRestart;
+	CApplication();
 	~CApplication();
 	int Init();
+	static int StageTime;
 	static int SelectStage;
+	static int StartCount;
 	static int StageSwitch;
 	static int StageGuard;
 	static int StageCount;
 	static int StageReset;
 	static int StageCountGuard;
 	static int StageCheck;
+	static int StageClearDelete;
 	static int hcount;
 	static int Rcount;
 	static CUi* Ui();

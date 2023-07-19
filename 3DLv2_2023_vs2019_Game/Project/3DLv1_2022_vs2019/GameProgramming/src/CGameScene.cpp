@@ -88,10 +88,10 @@ void CGameScene::Load()
 		, CVector(0.0f, 25.5f, 300.0f));
 	mColliderLine6.Layer(CCollider::ELayer::ELINEWALL);
 
-	mColliderLine7.Set(nullptr, nullptr
+	/*mColliderLine7.Set(nullptr, nullptr
 		, CVector(0.0f, 24.0f, -10.0f)
 		, CVector(24.0f, 24.0f, -10.0f));
-	mColliderLine7.Layer(CCollider::ELayer::ELINEWALL);
+	mColliderLine7.Layer(CCollider::ELayer::ELINEWALL2);*/
 
 	/*mColliderLine8.Set(nullptr, nullptr
 		, CVector(0.0f, 28.5f, -10.0f)
@@ -152,16 +152,10 @@ void CGameScene::Update()
 	//	CSceneManager::Instance()->LoadScene(EScene::eTitle);
 	//}
 
+	//mColliderLine9 = nullptr;
+
 	if (player->IsClear())
 	{
 		CSceneManager::Instance()->LoadScene(EScene::eClear);
-	}
-	if (CApplication::Rcount == 1)
-	{
-		if (player != nullptr)
-		{	//UI‚ğíœ‚µA‰Šú‰»
-			delete player;
-			player = nullptr;
-		}
 	}
 }

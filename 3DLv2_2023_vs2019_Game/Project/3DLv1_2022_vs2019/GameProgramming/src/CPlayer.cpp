@@ -26,7 +26,7 @@ CPlayer::CPlayer(const CVector& pos, const CVector& rot, const CVector& scale)
 	:CPlayer()
 {
 	mLastPos = pos;
-	mStartPos = Position() + (CVector(10.0f, 100.0f, 0.0f));
+	mStartPos = pos;
 	CTransform::Update(pos, rot, scale);//行列の更新
 }
 
@@ -47,7 +47,7 @@ CPlayer::CPlayer()
 ,randdd(0)
 ,randddco(0)
 ,mTime(0)
-,mRestart(0)
+,mRestart(1)
 ,ddStage(0)
 ,ccStage(0)
 {
@@ -137,10 +137,14 @@ void CPlayer::Update() {
 	//Ui設定
 	if (CApplication::StageCount != 4) //テスト用
 	{
-		CApplication::Ui()->Time(mTime++);
+		if (CApplication::StageTime == 1)
+		{
+			CApplication::Ui()->Time(mTime++);
+		}
 	}
 	if (CApplication::StageCount == 4) //テスト用
 	{
+		CApplication::StageTime = 0;
 		mTime = 0;
 		mRestart = 0;
 	}
@@ -195,7 +199,7 @@ void CPlayer::GroundedClearObj()
 				CountLine = 2;
 				CountCraft = 2;
 				//mLastPos = Position();
-				CApplication::SelectStage = 1 + rand() % 5;
+				CApplication::SelectStage = 5;// 1 + rand() % 5;
 				while (ddStage == CApplication::SelectStage ||
 					ccStage == CApplication::SelectStage)
 				{
@@ -218,6 +222,7 @@ void CPlayer::GroundedGuardObj()
 	{
 		CApplication::StageGuard = 1;
 		CApplication::StageCount++;
+		CApplication::StageClearDelete++;
 		CApplication::StageCountGuard = 0;
 		CApplication::StageSwitch = 0; //テスト
 	}

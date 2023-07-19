@@ -11,7 +11,7 @@
 */
 //コライダクラスの宣言
 class CCollider;
-class CCharacter3 : public CTransform,public CTask{
+class CCharacter3 : public CTransform, public CTask {
 public:
 	enum class ETag
 	{
@@ -41,7 +41,7 @@ public:
 	//タグの取得
 	ETag Tag();
 	//衝突処理
-	virtual void Collision(CCollider *m,CCollider *o){}
+	virtual void Collision(CCollider* m, CCollider* o) {}
 	//デストラクタ
 	~CCharacter3();
 	//コンストラクタ
@@ -53,6 +53,8 @@ public:
 	void Model(CModel* m);
 	//描画処理
 	void Render();
+	//キャラクター削除
+	void Kill();
 	//キャラクターが死んでるかどうか
 	bool IsDeath() const;
 	//キャラクターがクリアしたかどうか

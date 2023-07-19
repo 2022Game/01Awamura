@@ -20,15 +20,15 @@ CAClearStage::CAClearStage()
 CAClearStage::~CAClearStage()
 {
 	// コインのモデルデータを破棄
-	if (mpCoinModel != nullptr)
+	if (mpClearStageModel != nullptr)
 	{
-		delete mpCoinModel;
+		delete mpClearStageModel;
 	}
 
 	// コインを破棄
 	for (int i = 0; i < mClearStages.size(); i++)
 	{
-		delete mClearStages[i];
+		mClearStages[i]->Kill();
 	}
 	// 一応リストもクリアしておく
 	mClearStages.clear();
@@ -40,27 +40,29 @@ CAClearStage::~CAClearStage()
 void CAClearStage::Init()
 {
 	// コインのモデル読み込み
-	mpCoinModel = new CModel();
-	mpCoinModel->Load(MODEL_FCOIN);
+	mpClearStageModel = new CModel();
+	mpClearStageModel->Load(MODEL_FCOIN);
 
 	// コインを生成
 	//ステージ１スタート生成
 	if (CApplication::StageCount == 0)
 	{
 		ClearStage(CVector(10.0f, 0.1f, -2.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+		/*ClearStage(CVector(5.0f, 0.1f, -2.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+		ClearStage(CVector(0.0f, 0.1f, -2.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));*/
 	}
 	////ステージ２スタート生成
-	if (CApplication::StageCount == 0)
+	if (CApplication::StageCount == 1)
 	{
 		ClearStage(CVector(10.0f, 0.1f, 48.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 	}
 	////ステージ３スタート生成
-	if (CApplication::StageCount == 1)
+	if (CApplication::StageCount == 2)
 	{
 		ClearStage(CVector(10.0f, 0.1f, 98.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 	}
 	////ゲームクリア生成
-	if (CApplication::StageCount == 2)
+	if (CApplication::StageCount == 3)
 	{
 		ClearStage(CVector(10.0f, 0.1f, 148.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 	}
@@ -68,10 +70,10 @@ void CAClearStage::Init()
 
 void CAClearStage::ClearStage(CVector& pos, CVector& rot, CVector& scale)
 {
-	if (mpCoinModel == nullptr) return;
+	if (mpClearStageModel == nullptr) return;
 
 	// コインを生成してリストに追加
-	CACoinClearStage* coin = new CACoinClearStage(mpCoinModel, pos, rot, scale);
+	CACoinClearStage* coin = new CACoinClearStage(mpClearStageModel, pos, rot, scale);
 	mClearStages.push_back(coin);
 }
 

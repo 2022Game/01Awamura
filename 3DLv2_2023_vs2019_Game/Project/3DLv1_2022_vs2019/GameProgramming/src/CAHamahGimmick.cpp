@@ -23,6 +23,7 @@ CAHamahGimmick::CAHamahGimmick()
 	, randnow9(0)
 	, randnow10(0)
 {
+	srand((unsigned int)time(NULL));
 	// ‰Šúˆ—
 	Init();
 

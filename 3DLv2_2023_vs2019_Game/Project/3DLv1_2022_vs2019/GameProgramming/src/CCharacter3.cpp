@@ -45,6 +45,12 @@ void CCharacter3::Render()
 	mpModel->Render(Matrix());
 }
 
+//キャラクター削除
+void CCharacter3::Kill()
+{
+	mEnabled = false;
+}
+
 //キャラクターが死んでいるかどうか
 bool CCharacter3::IsDeath() const
 {

@@ -27,6 +27,7 @@ CAWoodGimmick::CAWoodGimmick()
 	, randnow14(0)
 	, randnow15(0)
 {
+	srand((unsigned int)time(NULL));
 	// ‰Šúˆ—
 	Init();
 

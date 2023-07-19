@@ -2,10 +2,14 @@
 #define CASOCCERGIMMICK_H
 #include "CTask.h"
 #include "CASoccer.h"
+#include "CColliderLine.h"
 
 class CASoccerGimmick : public CTask
 {
 private:
+	CColliderLine mColliderLine7;
+	CColliderLine mColliderLine8;
+	CColliderLine mColliderLine9;
 	std::vector<CASoccer*> mSoccers;	// Soccerのリスト
 	CModel* mpSoccerModel;			// Soccerのモデルデータ
 	int randnow;

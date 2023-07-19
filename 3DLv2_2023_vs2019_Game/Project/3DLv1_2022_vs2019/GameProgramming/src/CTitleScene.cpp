@@ -32,6 +32,8 @@ void CTitleScene::Update()
 {
 	if (mInput.PushKey(VK_RETURN))
 	{
+		CApplication::StartCount = 1;
+		CApplication::StageTime = 1;
 		CSceneManager::Instance()->LoadScene(EScene::eGame);
 	}
 	else

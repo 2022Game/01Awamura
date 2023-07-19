@@ -7,7 +7,7 @@
 
 #include "time.h"
 
-#define VELOCITY20 CVector(0.0f,0.0f,-5.0f)
+#define VELOCITY20 CVector(0.0f,0.0f,-0.75f)
 #define VELOCITY21 CVector(-0.2f,0.0f,0.30f)
 
 int rand(void);
@@ -20,6 +20,7 @@ CASoccer::CASoccer(CModel* model, const CVector& position,
 	:mCollider(this, &Matrix(), CVector(0.0f, 2.0f, 0.0f), 1.50f)
 	,rarand(0)
 {
+	srand((unsigned int)time(NULL));
 	hdhd = 0;
 	//障害物用のタグ設定
 	mTag = ETag::EOBSTACLE;
@@ -50,7 +51,7 @@ void CASoccer::Update() {
 //CCollision(コライダ１、コライダ２）
 void CASoccer::Collision(CCollider* m, CCollider* o) {
 	//相手が線分の壁コライダでなければ、衝突判定を行わない
-	if (o->Layer() != CCollider::ELayer::ELINEWALL)return;
+	if (o->Layer() != CCollider::ELayer::ELINEWALL2)return;
 
 	switch (o->Type()) {
 	case CCollider::EType::ELINE:
@@ -60,15 +61,19 @@ void CASoccer::Collision(CCollider* m, CCollider* o) {
 			rarand = 4 + rand() % 17;
 			if (CApplication::StageCheck == 0)
 			{
-				Position((CVector(rarand, 23.0f,210.0f)));
+				Position((CVector(rarand, 23.0f,70.0f)));
 			}
 			if (CApplication::StageCheck == 1)
 			{
-				Position((CVector(rarand, 23.0f, 210.0f)));
+				Position((CVector(rarand, 23.0f, 120.0f)));
 			}
 			if (CApplication::StageCheck == 2)
 			{
-				Position((CVector(rarand, 23.0f, 210.0f)));
+				Position((CVector(rarand, 23.0f, 170.0f)));
+			}
+			if (CApplication::StageCheck == 3)
+			{
+				Position((CVector(rarand, 23.0f, 170.0f)));
 			}
 		}
 		break;

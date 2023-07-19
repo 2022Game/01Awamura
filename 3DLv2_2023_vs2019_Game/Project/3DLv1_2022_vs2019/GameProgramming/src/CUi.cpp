@@ -81,6 +81,7 @@ void CUi::Render()
 		sprintf(buf, "RESTART:%03d", mRestart);
 		mFont.Draw(400, 200, 12, 24, buf);
 		mFont.Draw(200, 400, 18, 36, "GAME CLEAR!!");
+		mFont.Draw(150, 100, 18, 36, "PUSH SPACE KEY!");
 		
 	}
 

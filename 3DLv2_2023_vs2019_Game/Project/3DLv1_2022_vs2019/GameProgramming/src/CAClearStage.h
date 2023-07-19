@@ -11,7 +11,7 @@ class CAClearStage : public CTask
 {
 private:
 	std::vector<CACoinClearStage*> mClearStages;	// コインのリスト
-	CModel* mpCoinModel;			// コインのモデルデータ
+	CModel* mpClearStageModel;			// コインのモデルデータ
 
 	// 初期化処理
 	void Init();

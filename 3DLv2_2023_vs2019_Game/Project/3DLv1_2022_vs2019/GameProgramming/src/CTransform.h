@@ -2,6 +2,7 @@
 #define CTRANSFORM_H
 #include "CVector.h"
 #include "CMatrix.h"
+#include <list>
 /*
 トランスフォームクラス
 位置、回転、拡縮、変換行列の基本クラス
@@ -10,6 +11,8 @@ class CTransform {
 public:
 	//コンストラクタ
 	CTransform();
+	//デストラクタ
+	virtual ~CTransform();
 	//位置の取得
 	CVector Position() const;
 	//位置の設定
@@ -35,6 +38,10 @@ public:
 	const CMatrix& MatrixScale() const;
 	//親のTransformを設定
 	void SetParent(CTransform* parent);
+	//子供のTransformをリストに追加
+	void AddChild(CTransform* child);
+	//子供のTransformをリストから取り除く
+	void RemoveChild(CTransform* child);
 	//行列更新処理
 	void Update();
 	//Update(位置, 回転, スケール)
@@ -55,6 +62,7 @@ private:
 	CMatrix mLocalMatrix; //合成行列(ローカル)
 
 	CTransform* mpParent;	//親のTransform
+	std::list<CTransform*> mChildren;	//子供のTransformリスト
 };
 
 #endif

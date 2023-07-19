@@ -125,14 +125,34 @@ void CASoccerGimmick::Init()
 			CreateSoccer(CVector(randnow3, 23.0f, 70.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 			CreateSoccer(CVector(randnow4, 23.0f, 70.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 			CreateSoccer(CVector(randnow5, 23.0f, 70.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			mColliderLine7.Set(nullptr, nullptr
+				, CVector(0.0f, 24.0f, -10.0f)
+				, CVector(24.0f, 24.0f, -10.0f));
+			mColliderLine7.Layer(CCollider::ELayer::ELINEWALL2);
 		}
 		if (CApplication::StageCount == 1)
 		{
-			CreateSoccer(CVector(randnow, 23.0f, 140.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateSoccer(CVector(randnow2, 23.0f, 140.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateSoccer(CVector(randnow3, 23.0f, 140.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateSoccer(CVector(randnow4, 23.0f, 140.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateSoccer(CVector(randnow5, 23.0f, 140.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateSoccer(CVector(randnow, 23.0f, 120.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateSoccer(CVector(randnow2, 23.0f, 120.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateSoccer(CVector(randnow3, 23.0f, 120.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateSoccer(CVector(randnow4, 23.0f, 120.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateSoccer(CVector(randnow5, 23.0f, 120.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			mColliderLine8.Set(nullptr, nullptr
+				, CVector(0.0f, 24.0f, 40.0f)
+				, CVector(24.0f, 24.0f, 40.0f));
+			mColliderLine8.Layer(CCollider::ELayer::ELINEWALL2);
+		}
+		if (CApplication::StageCount == 2)
+		{
+			CreateSoccer(CVector(randnow, 23.0f, 170.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateSoccer(CVector(randnow2, 23.0f, 170.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateSoccer(CVector(randnow3, 23.0f, 170.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateSoccer(CVector(randnow4, 23.0f, 170.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateSoccer(CVector(randnow5, 23.0f, 170.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			mColliderLine9.Set(nullptr, nullptr
+				, CVector(0.0f, 24.0f, 90.0f)
+				, CVector(24.0f, 24.0f, 90.0f));
+			mColliderLine9.Layer(CCollider::ELayer::ELINEWALL2);
 		}
 	}
 	if (CApplication::SelectStage == 6)

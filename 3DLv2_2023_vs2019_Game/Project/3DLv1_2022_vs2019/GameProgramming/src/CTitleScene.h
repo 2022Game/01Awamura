@@ -3,6 +3,7 @@
 #include "CInput.h"
 #include "CImage.h"
 #include "CFont.h"
+#include "CApplication.h"
 
 //タイトルシーン
 class CTitleScene : public CSceneBase
