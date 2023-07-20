@@ -295,6 +295,7 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 						if (CApplication::StageCountGuard == 0)
 						{
 							CApplication::StageCount--;
+							CApplication::StageClearDelete--;
 							CApplication::StageCountGuard = 1;
 						}
 						if (CApplication::StageCount != 4) { //テスト用

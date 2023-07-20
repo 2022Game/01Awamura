@@ -105,6 +105,7 @@ public:
 	static int StageClearDelete;
 	static int hcount;
 	static int Rcount;
+	static int reset;
 	static CUi* Ui();
 	//モデルビュー行列の取得
 	static const CMatrix& ModelViewInverse();

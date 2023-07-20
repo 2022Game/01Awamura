@@ -19,6 +19,9 @@
 //神聖なる木
 #define MODEL_FWALL "res\\Wall2.obj","res\\Wall2.mtl"
 
+//伝説の木
+#define MODEL_FWOOD "res\\WWWW.obj","res\\WWWW.mtl"
+
 //コンストラクタ
 CGameScene::CGameScene()
 	:CSceneBase(EScene::eTitle)
@@ -27,6 +30,7 @@ CGameScene::CGameScene()
 	,mpCoinGimmick(nullptr)
 	,mpClearStage(nullptr)
 	,mpWoodGimmick(nullptr)
+	,player(nullptr)
 {
 
 }
@@ -44,13 +48,18 @@ void CGameScene::Load()
 
 	//背景生成
 	AddTask(new CField());
-
+	/*if (CApplication::reset == 1)
+	{
+		if (player == nullptr)
+		{
+			delete player;
+		}
+	}*/
 	//プレイヤー生成
-	CPlayer* player = new CPlayer();
+	player = new CPlayer();
 	player->Position(CVector(10.0f, 1.0f, 0.0f));
 	player->Scale(CVector(0.5f, 0.5f, 0.5f));
 	player->Rotation(CVector(0.0f, 0.0f, 0.0f));
-
 	//// コインギミックはCACoinGimmick内にまとめる
 	//mpCoinGimmick = new CACoinGimmick();
 
@@ -131,6 +140,14 @@ void CGameScene::Load()
 //シーンの更新処理
 void CGameScene::Update()
 {
+	if (CApplication::StageClearDelete == 2)
+	{
+		if (mpClearStage != nullptr)
+		{
+			delete mpClearStage;
+		}
+		mpClearStage = nullptr;
+	}
 	//プレイヤーが存在しなければ、処理しない
 	CPlayer* player = CPlayer::Instance();
 	if (player == nullptr)return;

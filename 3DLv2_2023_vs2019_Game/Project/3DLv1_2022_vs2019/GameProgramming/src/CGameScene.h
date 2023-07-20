@@ -33,7 +33,7 @@ private:
 	CColliderTriangle mColliderTriangle3;
 	CColliderTriangle mColliderTriangle4;
 	CColliderMesh mColliderMesh;
-
+	CPlayer* player;
 	CAClearStage* mpClearStage;
 	CACoinGimmick* mpCoinGimmick;
 	CAHamahGimmick* mpHamahGimmick;

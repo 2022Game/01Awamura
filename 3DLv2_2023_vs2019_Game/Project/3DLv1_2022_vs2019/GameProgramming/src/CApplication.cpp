@@ -61,6 +61,8 @@ int CApplication::hcount = 0;
 
 int CApplication::Rcount = 0;
 
+int CApplication::reset = 0;
+
 CApplication::CApplication()
 	:mpClearStage(nullptr)
 	,mpCoinGimmick(nullptr)
@@ -68,19 +70,31 @@ CApplication::CApplication()
 	,mpWoodGimmick(nullptr)
 	,mpHamahGimmick(nullptr)
 	,mpSoccerGimmick(nullptr)
+	,mpGameScene(nullptr)
 {
 
 }
 
 void CApplication::Start()
 {
+	/*if (mpClearStage == nullptr)
+	{
+		mpClearStage = new CAClearStage();
+	}*/
 	CSceneManager::Instance()->LoadScene(EScene::eTitle);
+	mpGameScene = new CGameScene();
 	spUi = new CUi(); //UIƒNƒ‰ƒX‚Ì¶¬
 }
 
 void CApplication::Update()
 {
+	if (mpClearStage != nullptr)
+	{
+		delete mpClearStage;
+		mpClearStage = nullptr;
+	}
 	if (StartCount == 1)
+
 	{
 		if (CASoccer::hdhd == 2)
 		{
@@ -125,6 +139,11 @@ void CApplication::Update()
 				{
 					delete mpSoccerGimmick;
 				}
+				if (mpClearStage != nullptr)
+				{
+					delete mpClearStage;
+				}
+				mpClearStage = nullptr;
 				mpCoinGimmick = nullptr;
 				mpSoccerGimmick = nullptr;
 				mpWallGimmick = nullptr;
@@ -147,13 +166,6 @@ void CApplication::Update()
 			mpWallGimmick = new CAWallGimmick();
 			StageGuard = 0;
 		}
-		if (StageCount == 0)
-		{
-			if (mpClearStage == nullptr)
-			{
-				mpClearStage = new CAClearStage();
-			}
-		}
 		if (StageCount == 1)
 		{
 			if (mpClearStage2 == nullptr)
@@ -174,14 +186,6 @@ void CApplication::Update()
 			{
 				mpClearStage4 = new CAClearStage();
 			}
-		}
-		if (StageClearDelete == 2)
-		{
-			if (mpClearStage != nullptr)
-			{
-				delete mpClearStage;
-			}
-			mpClearStage = nullptr;
 		}
 		if (StageClearDelete == 3)
 		{
@@ -267,16 +271,31 @@ void CApplication::Update()
 				{
 					delete mpSoccerGimmick;
 				}
-				if (mpClearStage != nullptr)
+				if (mpClearStage4 != nullptr)
 				{
-					delete mpClearStage;
+					delete mpClearStage4;
+				}
+				if (mpClearStage3 != nullptr)
+				{
+					delete mpClearStage3;
+				}
+				if (mpClearStage2 != nullptr)
+				{
+					delete mpClearStage2;
+				}
+				if (mpGameScene != nullptr)
+				{
+					delete mpGameScene;
 				}
 				mpCoinGimmick = nullptr;
 				mpSoccerGimmick = nullptr;
 				mpWallGimmick = nullptr;
 				mpHamahGimmick = nullptr;
 				mpWoodGimmick = nullptr;
-				mpClearStage = nullptr;
+				mpClearStage2 = nullptr;
+				mpClearStage3 = nullptr;
+				mpClearStage4 = nullptr;
+				mpGameScene = nullptr;
 				SelectStage = 0;
 
 				StageSwitch = 0;
@@ -291,11 +310,16 @@ void CApplication::Update()
 
 				StageCheck = 0;
 
+				StageClearDelete = 0;
+
+				//StageTime = 0;
+
 				hcount = 0;
 
 				Ui()->Time(mTime = 0);
 				Ui()->Restart(mRestart = 0);
 				Rcount = 1;
+				reset = 1;
 			}
 		}
 	}
