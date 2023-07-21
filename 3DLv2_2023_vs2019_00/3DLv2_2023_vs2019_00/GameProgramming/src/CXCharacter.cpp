@@ -99,9 +99,7 @@ void CXCharacter::Update(CMatrix& matrix) {
 描画する
 */
 void CXCharacter::Render() {
-	//頂点にアニメーションを適用する
-	mpModel->AnimateVertex(mpCombinedMatrix);
-	mpModel->Render();
+	mpModel->RenderShader(mpCombinedMatrix);
 }
 
 bool CXCharacter::IsAnimationFinished()

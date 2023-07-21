@@ -1,8 +1,8 @@
 #ifndef CMATRIX_H
 #define CMATRIX_H
+#include "CMyShader.h"
 
 class CVector;
-
 /*
 マトリクスクラス
 4行4列の行列データを扱います

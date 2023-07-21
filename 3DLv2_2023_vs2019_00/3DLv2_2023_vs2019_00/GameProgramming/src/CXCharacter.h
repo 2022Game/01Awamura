@@ -4,8 +4,10 @@
 #include "CModelX.h"
 #include "CMatrix.h"
 #include "CCharacter3.h"
+#include "CMyShader.h"
 
 class CXCharacter :public CCharacter3 {
+	friend CMyShader;
 public:
 	virtual ~CXCharacter() {
 		SAFE_DELETE_ARRAY(mpCombinedMatrix);
