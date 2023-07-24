@@ -28,10 +28,13 @@
 
 #include "CXEnemy.h"
 #include "CPaladin.h"
+#include "CActionCamera.h"
 
 class CApplication
 {
 private:
+	//CActionCamera
+	CActionCamera mActionCamera;
 	static CUi* spUi;	//UIクラスのポインタ
 	//モデルからコライダを生成
 	CColliderMesh mColliderMesh;
