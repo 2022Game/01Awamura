@@ -29,6 +29,7 @@
 class CApplication
 {
 private:
+	static CTexture mTexture;
 	CGameScene* mpGameScene;
 	CColliderLine mColliderLine8;
 	static CUi* spUi; //UIクラスのポインタ
@@ -48,7 +49,6 @@ private:
 	EState mState;
 	//	CCharacter mRectangle;
 	CPlayer* mpPlayer;
-	static CTexture mTexture;
 	//	CBullet* mpBullet;
 	CInput mInput;
 	CFont mFont;
@@ -88,6 +88,12 @@ private:
 //	CACClearStage* mpCoinClearStage;
 	CUi* mpUi;
 public:
+	static CModel mCoin;
+	static CModel mCleaCoin;
+	static CModel mHamah;
+	static CModel mWood;
+	static CModel mWall;
+	static CModel mSoccer;
 	int mTime;
 	int mRestart;
 	CApplication();
@@ -112,6 +118,12 @@ public:
 	//static CTaskManager* TaskManager();
 	static CCharacterManager* CharacterManager();
 	static CTexture* Texture();
+	static CModel* Coin();
+	static CModel* CleaCoin();
+	static CModel* Hamah();
+	static CModel* Wood();
+	static CModel* Wall();
+	static CModel* Soccer();
 	//最初に一度だけ実行するプログラム
 	void Start();
 	//繰り返し実行するプログラム

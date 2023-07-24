@@ -18,6 +18,8 @@ CACoinGimmick::CACoinGimmick()
 	, randnow3(0)
 	, randnow4(0)
 	, randnow5(0)
+	,randnow6(0)
+	,mmmmm(0)
 {
 	srand((unsigned int)time(NULL));
 	// ‰Šúˆ—

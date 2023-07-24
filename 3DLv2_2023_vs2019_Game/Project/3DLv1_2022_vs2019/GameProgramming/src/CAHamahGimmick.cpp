@@ -6,7 +6,7 @@
 #include "time.h"
 
 //ƒnƒ“ƒ}[ƒŠƒ“ƒS
-//#define MODEL_FHAMAH "res\\apple2.obj","res\\apple2.mtl"
+#define MODEL_FHAMAH "res\\apple2.obj","res\\apple2.mtl"
 
 int rand(void);
 void srand(unsigned int seed);

@@ -7,4 +7,5 @@ enum class EScene
 	eTitle, //タイトルシーン
 	eClear, //CLEAR画面
 	eGame, //ゲームシーン
+	scene, //削除
 };

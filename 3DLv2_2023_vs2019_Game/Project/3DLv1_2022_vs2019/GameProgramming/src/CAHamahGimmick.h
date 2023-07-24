@@ -2,9 +2,6 @@
 #define CAHAMAHGIMMICK_H
 #include "CTask.h"
 #include "CAHamah.h"
-
-#define MODEL_FHAMAH "res\\apple2.obj","res\\apple2.mtl"
-
 class CAHamahGimmick : public CTask
 {
 private:

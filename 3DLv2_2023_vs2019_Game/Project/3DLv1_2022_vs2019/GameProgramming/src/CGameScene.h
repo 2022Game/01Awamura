@@ -13,6 +13,7 @@
 #include "CCharacterManager.h"
 #include "CASoccerGimmick.h"
 #include "CPlayer.h"
+#include "CInput.h"
 
 //タイトルシーン
 class CGameScene : public CSceneBase
@@ -35,12 +36,16 @@ private:
 	CColliderMesh mColliderMesh;
 	CPlayer* player;
 	CAClearStage* mpClearStage;
+	CAClearStage* mpClearStage2;
+	CAClearStage* mpClearStage3;
+	CAClearStage* mpClearStage4;
 	CACoinGimmick* mpCoinGimmick;
 	CAHamahGimmick* mpHamahGimmick;
 	CAWallGimmick* mpWallGimmick;
 	CAWoodGimmick* mpWoodGimmick;
 	CASoccerGimmick* mpSoccerGimmick;
 	CPlayer* mpPlayer;
+	CInput mInput;
 	CModel mModelCoin;
 	//Hamahモデル
 	CModel mModelHamah;

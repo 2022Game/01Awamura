@@ -10,9 +10,17 @@
 #include "GamePause.h"
 #include "CSceneManager.h"
 
+
 //ÉNÉâÉXÇÃstaticïœêî
 CTexture CApplication::mTexture;
 CCharacterManager CApplication::mCharacterManager;
+
+CModel CApplication::mCoin;
+CModel CApplication::mCleaCoin;
+CModel CApplication::mWood;
+CModel CApplication::mWall;
+CModel CApplication::mHamah;
+CModel CApplication::mSoccer;
 
 //CTaskManager CApplication::mTaskManager;
 //CTaskManager* CApplication::TaskManager()
@@ -28,6 +36,35 @@ CCharacterManager* CApplication::CharacterManager()
 CTexture* CApplication::Texture()
 {
 	return &mTexture;
+}
+CModel* CApplication::Coin()
+{
+	return &mCoin;
+}
+
+CModel* CApplication::Hamah()
+{
+	return &mHamah;
+}
+
+CModel* CApplication::CleaCoin()
+{
+	return &mCleaCoin;
+}
+
+CModel* CApplication::Wood()
+{
+	return &mWood;
+}
+
+CModel* CApplication::Wall()
+{
+	return &mWall;
+}
+
+CModel* CApplication::Soccer()
+{
+	return &mSoccer;
 }
 
 CMatrix CApplication::mModelViewInverse;
