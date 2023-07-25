@@ -11,6 +11,7 @@
 
 #define ROTATION_YV CVector(0.0f,1.0f,0.0f) //回転速度
 #define VELOCITY CVector(0.0f,0.0f,0.1f) //移動速度
+#define VELOCITY11 CVector(0.1f,0.0f,0.0f) //移動速度
 #define VELOCITY1 CVector(0.0f,0.1f,0.0f) //移動速度
 #define VELOCITY2 CVector(0.0f,0.05f,0.0f) //移動速度
 #define VELOCITY3 CVector(0.0f,0.2f,0.0f) //移動速
@@ -115,13 +116,22 @@ void CPlayer::Update() {
 
 
 	//Dキー入力で回転
-	if (mInput.Key(VK_RIGHT) || mInput.Key('D')) {
+	if (mInput.Key(VK_RIGHT)) {
 		//Y軸の回転値を減少
 		Rotation(Rotation() - ROTATION_YV);
 	}
-	if (mInput.Key(VK_LEFT) || mInput.Key('A') ){
+	if (mInput.Key(VK_LEFT)){
 		//Y軸の回転値を増し増し
 		Rotation(Rotation() + ROTATION_YV);
+	}
+	//Dキー入力で回転
+	if (mInput.Key('D')) {
+		//Y軸の回転値を減少
+		Position(Position() - VELOCITY11 * MatrixRotate());
+	}
+	if (mInput.Key('A')) {
+		//Y軸の回転値を増し増し
+		Position(Position() + VELOCITY11 * MatrixRotate());
 	}
 	//上キー入力で前進
 	if (mInput.Key(VK_UP) || mInput.Key('W')) {

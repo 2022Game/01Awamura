@@ -15,6 +15,12 @@ private:
 	CColliderMesh mColliderMesh;
 	CCollider mCollider;
 	CVector mLastPos;
+	int rand11;
+	int rand12;
+	int rand13;
+	int rand14;
+	int rand15;
+	int rand16;
 public:
 	int ha;
 	int hb;

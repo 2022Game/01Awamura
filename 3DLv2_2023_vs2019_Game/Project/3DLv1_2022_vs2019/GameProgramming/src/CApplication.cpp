@@ -100,6 +100,24 @@ int CApplication::Rcount = 0;
 
 int CApplication::reset = 0;
 
+//背景モデルデータの指定
+#define MODEL_BACKGROUND "res\\sky.obj","res\\sky.mtl"
+
+//土台Coin
+#define MODEL_FCOIN "res\\Coin.obj","res\\Coin.mtl"
+
+//ハンマーリンゴ
+#define MODEL_FHAMAH "res\\apple2.obj","res\\apple2.mtl"
+
+//伝説のボール
+#define MODEL_FSOCCER "res\\soccer1.obj","res\\soccer1.mtl"
+
+//神聖なる木
+#define MODEL_FWALL "res\\Wall2.obj","res\\Wall2.mtl"
+
+//伝説の木
+#define MODEL_FWOOD "res\\WWWW.obj","res\\WWWW.mtl"
+
 CApplication::CApplication()
 	:mpClearStage(nullptr)
 	,mpCoinGimmick(nullptr)
@@ -118,6 +136,12 @@ void CApplication::Start()
 	{
 		mpClearStage = new CAClearStage();
 	}*/
+	CApplication::Coin()->Load(MODEL_FCOIN);
+	CApplication::CleaCoin()->Load(MODEL_FCOIN);
+	CApplication::Wood()->Load(MODEL_FWOOD);
+	CApplication::Wall()->Load(MODEL_FWALL);
+	CApplication::Hamah()->Load(MODEL_FHAMAH);
+	CApplication::Soccer()->Load(MODEL_FSOCCER);
 	CSceneManager::Instance()->LoadScene(EScene::eTitle);
 	mpGameScene = new CGameScene();
 	spUi = new CUi(); //UIクラスの生成

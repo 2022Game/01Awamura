@@ -1,6 +1,7 @@
 #include "CACoin.h"
 #include "CCollisionManager.h"
 #include "CColliderMesh.h"
+#include "CApplication.h"
 
 #include <stdlib.h>
 
@@ -18,6 +19,12 @@ void srand(unsigned int seed);
 CACoin::CACoin(CModel* model, const CVector& position,
 	const CVector& rotation, const CVector& scale)
 	:mCollider(this, &Matrix(), CVector(0.0f, 0.0f, 0.0f), 3.00f)
+	,rand11(0)
+	,rand12(0)
+	,rand13(0)
+	,rand14(0)
+	,rand15(0)
+	,rand16(0)
 {
 	//ステージの壁生成用タグを設定
 	mTag = ETag::ESTAGEGUARD;
@@ -31,7 +38,7 @@ CACoin::CACoin(CModel* model, const CVector& position,
 	Rotation(rotation); //回転の設定
 	Scale(scale); //拡縮の設定
 	mColliderMesh.Set(this, &Matrix(), mpModel);
-	SCount = 0;
+	SCount = 2;
 	UpCount = 180 / 6 * 10;
 	SideChengeCount = 0;
 	SideCount = 300 / 6;
@@ -47,16 +54,16 @@ void CACoin::Update() {
 	//移動前の座標を記憶しておく
 	mLastPos = Position();
 	//位置を移動
-	if (UpCount < 0)
+	/*if (UpCount < 0)
 	{
 		UpCount = 0;
 		SCount = 2;
-	}
-	if (SCount == 1)
+	}*/
+	/*if (SCount == 1)
 	{
 		UpCount--;
 		Position(Position() + VELOCITY * MatrixRotate());
-	}
+	}*/
 	if (SCount >= 2)
 	{
 		if (SideChengeCount % 2 == 0)

@@ -192,6 +192,9 @@
     <ClCompile Include="src\CClearScene.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="src\CAAcleateStage.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\CSound.h">
@@ -375,6 +378,9 @@
       <Filter>ソース ファイル\使わないやつ</Filter>
     </ClInclude>
     <ClInclude Include="src\CClearScene.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CAAcleateStage.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
   </ItemGroup>

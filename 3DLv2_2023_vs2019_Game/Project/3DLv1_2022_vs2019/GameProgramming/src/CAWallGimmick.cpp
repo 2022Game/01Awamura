@@ -17,10 +17,10 @@ CAWallGimmick::CAWallGimmick()
 CAWallGimmick::~CAWallGimmick()
 {
 	// ハマーのモデルデータを破棄
-	if (mpWallModel != nullptr)
+	/*if (mpWallModel != nullptr)
 	{
 		delete mpWallModel;
-	}
+	}*/
 
 	// ハマーを破棄
 	for (int i = 0; i < mWalls.size(); i++)
@@ -37,14 +37,15 @@ CAWallGimmick::~CAWallGimmick()
 void CAWallGimmick::Init()
 {
 	// Wallのモデル読み込み
-	mpWallModel = new CModel();
-	mpWallModel->Load(MODEL_FWALL);
+	/*mpWallModel = new CModel();
+	mpWallModel->Load(MODEL_FWALL);*/
+	mpWallModel = CApplication::Wall();
 
 	// Wallを生成
 	//ステージ１スタート生成
 	if (CApplication::StageCount == 1)
 	{
-		CreateWall(CVector(10.0f, 22.9f, 2.5f), CVector(), CVector(1.8f, 5.8f, 2.8f));
+		CreateWall(CVector(10.0f, 22.9f, 1.5f), CVector(), CVector(1.8f, 5.8f, 2.8f));
 	}
 	////ステージ２スタート生成
 	if (CApplication::StageCount == 2)

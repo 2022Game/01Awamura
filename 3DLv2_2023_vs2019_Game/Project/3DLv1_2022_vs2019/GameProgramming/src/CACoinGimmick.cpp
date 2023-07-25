@@ -33,10 +33,10 @@ CACoinGimmick::CACoinGimmick()
 CACoinGimmick::~CACoinGimmick()
 {
 	// コインのモデルデータを破棄
-	if (mpCoinModel != nullptr)
+	/*if (mpCoinModel != nullptr)
 	{
-		delete mpCoinModel;
-	}
+		mpCoinModel = nullptr;
+	}*/
 
 	// コインを破棄
 	for (int i = 0; i < mCoins.size(); i++)
@@ -53,8 +53,10 @@ CACoinGimmick::~CACoinGimmick()
 void CACoinGimmick::Init()
 {
 	// コインのモデル読み込み
-	mpCoinModel = new CModel();
-	mpCoinModel->Load(MODEL_FCOIN);
+	//mpCoinModel = new CModel();
+	//mpCoinModel->Load(MODEL_FCOIN);
+	mpCoinModel = CApplication::Coin();
+	/*mpCoinModel = new CModel();*/
 
 	if (CApplication::StageCount == 0)
 	{
@@ -88,32 +90,32 @@ void CACoinGimmick::Init()
 	//ステージ１
 	if (CApplication::StageCount == 0)
 	{
-		CreateCoin(CVector(randnow, 0.1f, 6.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-		CreateCoin(CVector(randnow2, 0.1f, 13.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-		CreateCoin(CVector(randnow3, 0.1f, 20.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-		CreateCoin(CVector(randnow4, 0.1f, 27.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-		CreateCoin(CVector(randnow5, 0.1f, 34.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-		CreateCoin(CVector(randnow6, 0.1f, 41.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+		CreateCoin(CVector(randnow, 22.9f, 6.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+		CreateCoin(CVector(randnow2, 22.9f, 13.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+		CreateCoin(CVector(randnow3, 22.9f, 20.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+		CreateCoin(CVector(randnow4, 22.9f, 27.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+		CreateCoin(CVector(randnow5, 22.9f, 34.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+		CreateCoin(CVector(randnow6, 22.9f, 41.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 	}
 	////ステージ２
 	if (CApplication::StageCount == 1)
 	{
-		CreateCoin(CVector(randnow, 0.1f, 56.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-		CreateCoin(CVector(randnow2, 0.1f, 63.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-		CreateCoin(CVector(randnow3, 0.1f, 70.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-		CreateCoin(CVector(randnow4, 0.1f, 77.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-		CreateCoin(CVector(randnow5, 0.1f, 84.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-		CreateCoin(CVector(randnow6, 0.1f, 91.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+		CreateCoin(CVector(randnow, 22.9f, 56.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+		CreateCoin(CVector(randnow2, 22.9f, 63.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+		CreateCoin(CVector(randnow3, 22.9f, 70.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+		CreateCoin(CVector(randnow4, 22.9f, 77.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+		CreateCoin(CVector(randnow5, 22.9f, 84.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+		CreateCoin(CVector(randnow6, 22.9f, 91.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 	}
 	////ステージ３
 	if (CApplication::StageCount == 2)
 	{
-		CreateCoin(CVector(randnow, 0.1f,106.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-		CreateCoin(CVector(randnow2, 0.1f, 113.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-		CreateCoin(CVector(randnow3, 0.1f, 120.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-		CreateCoin(CVector(randnow4, 0.1f, 127.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-		CreateCoin(CVector(randnow5, 0.1f, 134.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-		CreateCoin(CVector(randnow6, 0.1f, 141.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+		CreateCoin(CVector(randnow, 22.9f,106.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+		CreateCoin(CVector(randnow2, 22.9f, 113.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+		CreateCoin(CVector(randnow3, 22.9f, 120.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+		CreateCoin(CVector(randnow4, 22.9f, 127.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+		CreateCoin(CVector(randnow5, 22.9f, 134.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+		CreateCoin(CVector(randnow6, 22.9f, 141.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 	}
 }
 

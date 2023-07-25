@@ -25,6 +25,7 @@
 #include "CUi.h"
 #include "CColliderLine.h"
 #include "CGameScene.h"
+#include "CAAcleateStage.h"
 
 class CApplication
 {
@@ -112,6 +113,8 @@ public:
 	static int hcount;
 	static int Rcount;
 	static int reset;
+	//static int Cleate;
+	//static int Stage;
 	static CUi* Ui();
 	//モデルビュー行列の取得
 	static const CMatrix& ModelViewInverse();

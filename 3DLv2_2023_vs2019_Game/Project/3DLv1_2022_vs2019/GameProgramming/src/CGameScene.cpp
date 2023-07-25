@@ -4,23 +4,23 @@
 #include "CSceneManager.h"
 #include "CApplication.h"
 
-//背景モデルデータの指定
-#define MODEL_BACKGROUND "res\\sky.obj","res\\sky.mtl"
-
-//土台Coin
-#define MODEL_FCOIN "res\\Coin.obj","res\\Coin.mtl"
-
-//ハンマーリンゴ
-#define MODEL_FHAMAH "res\\apple2.obj","res\\apple2.mtl"
-
-//伝説のボール
-#define MODEL_FSOCCER "res\\soccer1.obj","res\\soccer1.mtl"
-
-//神聖なる木
-#define MODEL_FWALL "res\\Wall2.obj","res\\Wall2.mtl"
-
-//伝説の木
-#define MODEL_FWOOD "res\\WWWW.obj","res\\WWWW.mtl"
+////背景モデルデータの指定
+//#define MODEL_BACKGROUND "res\\sky.obj","res\\sky.mtl"
+//
+////土台Coin
+//#define MODEL_FCOIN "res\\Coin.obj","res\\Coin.mtl"
+//
+////ハンマーリンゴ
+//#define MODEL_FHAMAH "res\\apple2.obj","res\\apple2.mtl"
+//
+////伝説のボール
+//#define MODEL_FSOCCER "res\\soccer1.obj","res\\soccer1.mtl"
+//
+////神聖なる木
+//#define MODEL_FWALL "res\\Wall2.obj","res\\Wall2.mtl"
+//
+////伝説の木
+//#define MODEL_FWOOD "res\\WWWW.obj","res\\WWWW.mtl"
 
 //コンストラクタ
 CGameScene::CGameScene()
@@ -55,13 +55,13 @@ void CGameScene::Load()
 			delete player;
 		}
 	}*/
-	//プレイヤー生成
-	CApplication::Coin()->Load(MODEL_FCOIN);
-	CApplication::CleaCoin()->Load(MODEL_FCOIN);
-	CApplication::Wood()->Load(MODEL_FWOOD);
-	CApplication::Wall()->Load(MODEL_FWALL);
-	CApplication::Hamah()->Load(MODEL_FHAMAH);
-	CApplication::Soccer()->Load(MODEL_FSOCCER);
+	////プレイヤー生成
+	//CApplication::Coin()->Load(MODEL_FCOIN);
+	//CApplication::CleaCoin()->Load(MODEL_FCOIN);
+	//CApplication::Wood()->Load(MODEL_FWOOD);
+	//CApplication::Wall()->Load(MODEL_FWALL);
+	//CApplication::Hamah()->Load(MODEL_FHAMAH);
+	//CApplication::Soccer()->Load(MODEL_FSOCCER);
 	player = new CPlayer();
 	player->Position(CVector(10.0f, 1.0f, 0.0f));
 	player->Scale(CVector(0.5f, 0.5f, 0.5f));

@@ -33,10 +33,10 @@ CASoccerGimmick::CASoccerGimmick()
 CASoccerGimmick::~CASoccerGimmick()
 {
 	// Soccerのモデルデータを破棄
-	if (mpSoccerModel != nullptr)
+	/*if (mpSoccerModel != nullptr)
 	{
 		delete mpSoccerModel;
-	}
+	}*/
 
 	// Soccerを破棄
 	for (int i = 0; i < mSoccers.size(); i++)
@@ -53,8 +53,9 @@ CASoccerGimmick::~CASoccerGimmick()
 void CASoccerGimmick::Init()
 {
 	// 木のモデル読み込み
-	mpSoccerModel = new CModel();
-	mpSoccerModel->Load(MODEL_FSOCCER);
+	/*mpSoccerModel = new CModel();
+	mpSoccerModel->Load(MODEL_FSOCCER);*/
+	mpSoccerModel = CApplication::Soccer();
 	if (CApplication::StageCount == 0)
 	{
 		randnow = 4 + rand() % 17;

@@ -20,10 +20,10 @@ CAClearStage::CAClearStage()
 CAClearStage::~CAClearStage()
 {
 	// コインのモデルデータを破棄
-	if (mpClearStageModel != nullptr)
+	/*if (mpClearStageModel != nullptr)
 	{
 		delete mpClearStageModel;
-	}
+	}*/
 
 	// コインを破棄
 	for (int i = 0; i < mClearStages.size(); i++)
@@ -40,8 +40,9 @@ CAClearStage::~CAClearStage()
 void CAClearStage::Init()
 {
 	// コインのモデル読み込み
-	mpClearStageModel = new CModel();
-	mpClearStageModel->Load(MODEL_FCOIN);
+	/*mpClearStageModel = new CModel();
+	mpClearStageModel->Load(MODEL_FCOIN);*/
+	mpClearStageModel = CApplication::CleaCoin();
 
 	// コインを生成
 	//ステージ１スタート生成
