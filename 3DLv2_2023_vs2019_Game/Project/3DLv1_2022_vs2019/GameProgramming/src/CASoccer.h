@@ -18,7 +18,7 @@ private:
 	CVector mLastPos;
 	int rarand;
 public:
-	static int hdhd;
+	int hdhd;
 	//衝突処理
 	//Collision(コライダ１、コライダ２）
 	void Collision(CCollider* m, CCollider* o);

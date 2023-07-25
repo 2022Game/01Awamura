@@ -236,26 +236,69 @@ void CAWoodGimmick::Init()
 	{
 		if (CApplication::StageCount == 0)
 		{
-			CreateWood(CVector(randnow, 22.9f, 7.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateWood(CVector(randnow2, 22.9f, 15.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateWood(CVector(randnow3, 22.9f, 23.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateWood(CVector(randnow4, 22.9f, 31.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateWood(CVector(randnow5, 22.9f, 39.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateWood(CVector(randnow6, 22.9f, 47.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateWood(CVector(randnow7, 22.9f, 55.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateWood(CVector(randnow8, 22.9f, 63.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateWood(CVector(randnow8, 22.9f, 71.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			/*CreateWood(CVector(randnow9, 22.9f, 71.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateWood(CVector(randnow10, 22.9f, 79.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateWood(CVector(randnow11, 22.9f, 87.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateWood(CVector(randnow12, 22.9f, 95.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateWood(CVector(randnow13, 22.9f, 103.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateWood(CVector(randnow14, 22.9f, 111.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateWood(CVector(randnow15, 22.9f, 119.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));*/
+			CreateWood(CVector(randnow, 22.9f, -3.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow2, 22.9f, 5.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow3, 22.9f, 12.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow4, 22.9f, 19.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow5, 22.9f, 26.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow6, 22.9f, 33.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow7, 22.9f, 40.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow8, 22.9f, 47.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow9, 22.9f, 53.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow10, 22.9f, 60.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow11, 22.9f, 67.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow12, 22.9f, 74.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow13, 22.9f, 81.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow14, 22.9f, 88.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow15, 22.9f, 95.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 			mColliderLine11.Set(nullptr, nullptr
 				, CVector(0.0f, 24.0f, -10.0f)
 				, CVector(24.0f, 24.0f, -10.0f));
 			mColliderLine11.Layer(CCollider::ELayer::ELINEWALL2);
+		}
+		if (CApplication::StageCount == 1)
+		{
+			CreateWood(CVector(randnow, 22.9f, 47.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow2, 22.9f, 54.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow3, 22.9f, 61.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow4, 22.9f, 68.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow5, 22.9f, 75.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow6, 22.9f, 83.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow7, 22.9f, 90.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow8, 22.9f, 97.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow9, 22.9f, 105.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow10, 22.9f, 112.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow11, 22.9f, 119.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow12, 22.9f, 126.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow13, 22.9f, 133.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow14, 22.9f, 140.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow15, 22.9f, 147.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			mColliderLine12.Set(nullptr, nullptr
+				, CVector(0.0f, 24.0f, 40.0f)
+				, CVector(24.0f, 24.0f, 40.0f));
+			mColliderLine12.Layer(CCollider::ELayer::ELINEWALL2);
+		}
+		if (CApplication::StageCount == 2)
+		{
+			CreateWood(CVector(randnow, 22.9f, 97.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow2, 22.9f, 105.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow3, 22.9f, 112.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow4, 22.9f, 119.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow5, 22.9f, 126.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow6, 22.9f, 133.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow7, 22.9f, 140.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow8, 22.9f, 147.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow9, 22.9f, 154.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow10, 22.9f, 161.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow11, 22.9f, 168.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow12, 22.9f, 175.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow13, 22.9f, 182.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow14, 22.9f, 189.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow15, 22.9f, 196.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			mColliderLine13.Set(nullptr, nullptr
+				, CVector(0.0f, 24.0f, 90.0f)
+				, CVector(24.0f, 24.0f, 90.0f));
+			mColliderLine13.Layer(CCollider::ELayer::ELINEWALL2);
 		}
 	}
 }

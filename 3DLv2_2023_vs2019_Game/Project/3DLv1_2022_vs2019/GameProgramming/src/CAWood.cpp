@@ -101,19 +101,19 @@ void CAWood::Collision(CCollider* m, CCollider* o) {
 			rararan = 4 + rand() % 17;
 			if (CApplication::StageCheck == 0)
 			{
-				Position((CVector(rararan, 22.9f, 70.0f)));
+				Position((CVector(rararan, 22.9f, 102.0f)));
 			}
 			if (CApplication::StageCheck == 1)
 			{
-				Position((CVector(rararan, 22.9f, 120.0f)));
+				Position((CVector(rararan, 22.9f, 154.0f)));
 			}
 			if (CApplication::StageCheck == 2)
 			{
-				Position((CVector(rararan, 22.9f, 170.0f)));
+				Position((CVector(rararan, 22.9f, 203.0f)));
 			}
 			if (CApplication::StageCheck == 3)
 			{
-				Position((CVector(rararan, 22.9f, 170.0f)));
+				Position((CVector(rararan, 22.9f, 203.0f)));
 			}
 		}
 		break;

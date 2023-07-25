@@ -159,10 +159,10 @@ void CApplication::Update()
 	if (StartCount == 1)
 
 	{
-		if (CASoccer::hdhd == 2)
+		/*if (CASoccer::hdhd == 2)
 		{
 			mpSoccerGimmick = new CASoccerGimmick();
-		}
+		}*/
 		/*switch (mState)
 		{
 		case EState::ECLEAR:
@@ -285,11 +285,11 @@ void CApplication::Update()
 		}
 		if (SelectStage == 3)
 		{
-			//ランダムで１ならハマーステージ予定
+			//ランダムで5ならステージ予定
 			//mpClearStage = new CAClearStage();
 			mpCoinGimmick = new CACoinGimmick();
-			mpWoodGimmick = new CAWoodGimmick();
-			hcount = 2;
+			mpSoccerGimmick = new CASoccerGimmick();
+			hcount = 8;
 			SelectStage = 0; //テスト用
 		}
 		if (SelectStage == 4)
@@ -318,15 +318,15 @@ void CApplication::Update()
 			hcount = 3;
 			SelectStage = 0; //テスト用
 		}
-		if (SelectStage == 7)
-		{
-			//ランダムで5ならステージ予定
-			//mpClearStage = new CAClearStage();
-			mpCoinGimmick = new CACoinGimmick();
-			mpSoccerGimmick = new CASoccerGimmick();
-			hcount = 8;
-			SelectStage = 0; //テスト用
-		}
+		//if (SelectStage == 7)
+		//{
+		//	//ランダムで5ならステージ予定
+		//	//mpClearStage = new CAClearStage();
+		//	mpCoinGimmick = new CACoinGimmick();
+		//	mpSoccerGimmick = new CASoccerGimmick();
+		//	hcount = 8;
+		//	SelectStage = 0; //テスト用
+		//}
 		if (StageCount == 4)
 		{
 			if (mInput.Key(VK_SPACE))

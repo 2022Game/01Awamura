@@ -60,30 +60,30 @@ void CACoinGimmick::Init()
 
 	if (CApplication::StageCount == 0)
 	{
-		randnow = 3 + rand() % 17;
-		randnow2 = 3 + rand() % 17;
-		randnow3 = 3 + rand() % 17;
-		randnow4 = 3 + rand() % 17;
-		randnow5 = 3 + rand() % 17;
-		randnow6 = 3 + rand() % 17;
+		randnow = 4 + rand() % 17;
+		randnow2 = 4 + rand() % 17;
+		randnow3 = 4 + rand() % 17;
+		randnow4 = 4 + rand() % 17;
+		randnow5 = 4 + rand() % 17;
+		randnow6 = 4 + rand() % 17;
 	}
 	if (CApplication::StageCount == 1)
 	{
-		randnow = 3 + rand() % 17;
-		randnow2 = 3 + rand() % 17;
-		randnow3 = 3 + rand() % 17;
-		randnow4 = 3 + rand() % 17;
-		randnow5 = 3 + rand() % 17;
-		randnow6 = 3 + rand() % 17;
+		randnow = 4 + rand() % 17;
+		randnow2 = 4 + rand() % 17;
+		randnow3 = 4 + rand() % 17;
+		randnow4 = 4 + rand() % 17;
+		randnow5 = 4 + rand() % 17;
+		randnow6 = 4 + rand() % 17;
 	}
 	if (CApplication::StageCount == 2)
 	{
-		randnow = 3 + rand() % 17;
-		randnow2 = 3 + rand() % 17;
-		randnow3 = 3 + rand() % 17;
-		randnow4 = 3 + rand() % 17;
-		randnow5 = 3 + rand() % 17;
-		randnow6 = 3 + rand() % 17;
+		randnow = 4 + rand() % 17;
+		randnow2 = 4 + rand() % 17;
+		randnow3 = 4 + rand() % 17;
+		randnow4 = 4 + rand() % 17;
+		randnow5 = 4 + rand() % 17;
+		randnow6 = 4 + rand() % 17;
 	}
 
 	// ƒRƒCƒ“‚ğ¶¬

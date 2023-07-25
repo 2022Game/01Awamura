@@ -137,7 +137,7 @@ void CGameScene::Update()
 	//カメラのパラメータを作成する
 	CVector e, c, u;//視点、注視点、上方向
 	//視点を求める
-	e = player->Position() + (CVector(0.0f, 3.0f, -4.0f)) * player->MatrixRotate();
+	e = player->Position() + (CVector(0.0f, 3.0f, -5.0f)) * player->MatrixRotate();
 	//注視点を求める
 	c = player->Position();
 	//上方向を求める

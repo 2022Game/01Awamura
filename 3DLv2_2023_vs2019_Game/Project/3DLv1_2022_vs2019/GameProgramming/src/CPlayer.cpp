@@ -171,7 +171,7 @@ void CPlayer::Update() {
 //ステージクリア用のオブジェクトに接地時の処理
 void CPlayer::GroundedClearObj()
 {
-	mLastPos = Position() + (CVector(0.0f, 20.0f, 0.0f));
+	mLastPos = Position() + (CVector(0.0f, 10.0f, 0.0f));
 	if (CApplication::StageCountGuard == 0)
 	{
 		CApplication::StageCountGuard = 1;
@@ -185,7 +185,7 @@ void CPlayer::GroundedClearObj()
 			if (CApplication::StageCount == 0)
 			{
 				//mLastPos = Position();
-				CApplication::SelectStage = 7;//1 + rand() % 5;
+				CApplication::SelectStage = 1 + rand() % 6;
 				ddStage = CApplication::SelectStage; //一度ddStageに入れておく
 				CApplication::StageSwitch = 1;
 				//randddco = 380; //テスト用
@@ -195,10 +195,10 @@ void CPlayer::GroundedClearObj()
 				CountLine = 1;
 				CountCraft = 1;
 				//mLastPos = Position();
-				CApplication::SelectStage = 6;// 1 + rand() % 5;
+				CApplication::SelectStage = 1 + rand() % 6;
 				while (CApplication::SelectStage == ddStage)
 				{
-					CApplication::SelectStage = 1 + rand() % 5;
+					CApplication::SelectStage = 1 + rand() % 6;
 				}
 				ccStage = CApplication::SelectStage; //一度ccStageに入れておく
 				CApplication::StageSwitch = 1;
@@ -209,11 +209,11 @@ void CPlayer::GroundedClearObj()
 				CountLine = 2;
 				CountCraft = 2;
 				//mLastPos = Position();
-				CApplication::SelectStage = 5;// 1 + rand() % 5;
+				CApplication::SelectStage = 1 + rand() % 6;
 				while (ddStage == CApplication::SelectStage ||
 					ccStage == CApplication::SelectStage)
 				{
-					CApplication::SelectStage = 1 + rand() % 5;
+					CApplication::SelectStage = 1 + rand() % 6;
 				}
 				CApplication::StageSwitch = 1;
 			}

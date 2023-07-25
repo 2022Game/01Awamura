@@ -14,7 +14,6 @@
 int rand(void);
 void srand(unsigned int seed);
 
-int CASoccer::hdhd = 0;
 //コンストラクタ
 CASoccer::CASoccer(CModel* model, const CVector& position,
 	const CVector& rotation, const CVector& scale)
@@ -38,7 +37,7 @@ CASoccer::CASoccer(CModel* model, const CVector& position,
 
 void CASoccer::Update() {
 	//移動前の座標を記憶しておく
-	//mLastPos = Position();
+	mLastPos = Position();
 	if (CApplication::hcount == 7)
 	{
 		Position(Position() + VELOCITY20 * MatrixRotate());
@@ -69,10 +68,17 @@ void CASoccer::Collision(CCollider* m, CCollider* o) {
 	if (o->Layer() != CCollider::ELayer::ELINEWALL2 && o->Layer() != CCollider::ELayer::ELINEWALL)return;
 
 	switch (o->Layer()) {
+	case CCollider::ELayer::ELINEWALL:
+		if (CCollider::Collision(m, o)) {
+			//Position(mLastPos);
+			hdhd++;
+		}
+		break;
+	}
+
+	switch (o->Layer()) {
 	case CCollider::ELayer::ELINEWALL2:
 		if (CCollider::Collision(m, o)) {
-			//mEnabled = false;
-			//hdhd = 2;
 			rarand = 4 + rand() % 17;
 			if (CApplication::StageCheck == 0)
 			{
@@ -93,14 +99,6 @@ void CASoccer::Collision(CCollider* m, CCollider* o) {
 		}
 		break;
 	}
-		switch (o->Layer()) {
-		case CCollider::ELayer::ELINEWALL:
-			if (CCollider::Collision(m, o)) {
-				hdhd++;
-				Position(mLastPos);
-			}
-			break;
-		}
 }
 
 void CASoccer::Collision()

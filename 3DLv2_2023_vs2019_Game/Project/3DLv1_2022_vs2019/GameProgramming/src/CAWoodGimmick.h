@@ -8,6 +8,8 @@ class CAWoodGimmick : public CTask
 {
 private:
 	CColliderLine mColliderLine11;
+	CColliderLine mColliderLine12;
+	CColliderLine mColliderLine13;
 	std::vector<CAWood*> mWoods;	// 木のリスト
 	CModel* mpWoodModel;			// 木のモデルデータ
 	int randnow;
