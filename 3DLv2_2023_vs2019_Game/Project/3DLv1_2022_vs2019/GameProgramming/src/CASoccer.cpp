@@ -76,7 +76,7 @@ void CASoccer::Collision(CCollider* m, CCollider* o) {
 			rarand = 4 + rand() % 17;
 			if (CApplication::StageCheck == 0)
 			{
-				Position((CVector(rarand, 23.0f,70.0f)));
+				Position((CVector(rarand, 23.0f, 70.0f)));
 			}
 			if (CApplication::StageCheck == 1)
 			{
@@ -92,13 +92,15 @@ void CASoccer::Collision(CCollider* m, CCollider* o) {
 			}
 		}
 		break;
-	case CCollider::ELayer::ELINEWALL:
-		if (CCollider::Collision(m, o)) {
-			hdhd++;
-			Position(mLastPos);
-		}
-		break;
 	}
+		switch (o->Layer()) {
+		case CCollider::ELayer::ELINEWALL:
+			if (CCollider::Collision(m, o)) {
+				hdhd++;
+				Position(mLastPos);
+			}
+			break;
+		}
 }
 
 void CASoccer::Collision()

@@ -66,6 +66,7 @@ void CGameScene::Load()
 	player->Position(CVector(10.0f, 1.0f, 0.0f));
 	player->Scale(CVector(0.5f, 0.5f, 0.5f));
 	player->Rotation(CVector(0.0f, 0.0f, 0.0f));
+	AddTask(player);
 	//// コインギミックはCACoinGimmick内にまとめる
 	//mpCoinGimmick = new CACoinGimmick();
 
@@ -115,6 +116,7 @@ void CGameScene::Load()
 		, CVector(-300.0f, 0.0f, 300.0f));
 	mColliderTriangle3.Layer(CCollider::ELayer::EDEATH);
 	mpClearStage = new CAClearStage();
+	AddTask(mpClearStage);
 }
 
 //シーンの更新処理

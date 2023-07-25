@@ -185,7 +185,7 @@ void CPlayer::GroundedClearObj()
 			if (CApplication::StageCount == 0)
 			{
 				//mLastPos = Position();
-				CApplication::SelectStage = 6;//1 + rand() % 5;
+				CApplication::SelectStage = 7;//1 + rand() % 5;
 				ddStage = CApplication::SelectStage; //一度ddStageに入れておく
 				CApplication::StageSwitch = 1;
 				//randddco = 380; //テスト用
@@ -195,7 +195,7 @@ void CPlayer::GroundedClearObj()
 				CountLine = 1;
 				CountCraft = 1;
 				//mLastPos = Position();
-				CApplication::SelectStage = 7;// 1 + rand() % 5;
+				CApplication::SelectStage = 6;// 1 + rand() % 5;
 				while (CApplication::SelectStage == ddStage)
 				{
 					CApplication::SelectStage = 1 + rand() % 5;

@@ -160,15 +160,15 @@ void CASoccerGimmick::Init()
 	{
 		if (CApplication::StageCount == 0)
 		{
-			CreateSoccer(CVector(randnow, 23.0f, 120.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateSoccer(CVector(randnow2, 23.0f, 105.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateSoccer(CVector(randnow3, 23.0f, 90.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateSoccer(CVector(randnow4, 23.0f, 75.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			CreateSoccer(CVector(randnow5, 23.0f, 60.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-			mColliderLine7.Set(nullptr, nullptr
-				, CVector(0.0f, 24.0f, 45.0f)
-				, CVector(24.0f, 24.0f, 45.0f));
-			mColliderLine7.Layer(CCollider::ELayer::ELINEWALL2);
+			CreateSoccer(CVector(randnow, 23.0f, 70.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateSoccer(CVector(randnow2, 23.0f, 55.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateSoccer(CVector(randnow3, 23.0f, 40.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateSoccer(CVector(randnow4, 23.0f, 25.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateSoccer(CVector(randnow5, 23.0f, 10.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			mColliderLine19.Set(nullptr, nullptr
+				, CVector(0.0f, 24.0f, -5.0f)
+				, CVector(24.0f, 24.0f, -5.0f));
+			mColliderLine19.Layer(CCollider::ELayer::ELINEWALL);
 		}
 		if (CApplication::StageCount == 1)
 		{

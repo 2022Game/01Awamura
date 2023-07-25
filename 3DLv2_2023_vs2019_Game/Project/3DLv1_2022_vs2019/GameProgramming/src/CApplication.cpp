@@ -136,6 +136,8 @@ void CApplication::Start()
 	{
 		mpClearStage = new CAClearStage();
 	}*/
+	/*mCoin = new CModel();
+	mCoin->Load*/
 	CApplication::Coin()->Load(MODEL_FCOIN);
 	CApplication::CleaCoin()->Load(MODEL_FCOIN);
 	CApplication::Wood()->Load(MODEL_FWOOD);
@@ -446,4 +448,6 @@ CUi* CApplication::Ui()
 CApplication::~CApplication()
 {
 	delete spUi; //インスタンスUiの削除
+	/*delete mCoin;
+	mCoin = nullptr;*/
 }

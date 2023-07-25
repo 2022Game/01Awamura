@@ -9,6 +9,7 @@ class CASoccerGimmick : public CTask
 private:
 	CColliderLine mColliderLine7;
 	CColliderLine mColliderLine8;
+	CColliderLine mColliderLine19;
 	CColliderLine mColliderLine9;
 	std::vector<CASoccer*> mSoccers;	// Soccerのリスト
 	CModel* mpSoccerModel;			// Soccerのモデルデータ
