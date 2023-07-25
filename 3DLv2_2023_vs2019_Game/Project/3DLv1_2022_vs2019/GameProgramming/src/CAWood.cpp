@@ -2,15 +2,25 @@
 #include "CCollisionManager.h"
 #include "CApplication.h"
 
+#include <stdlib.h>
+
+#include "time.h"
+
 #define VELOCITY CVector(0.0f,0.0f,0.0f)
 #define VELOCITY10 CVector(0.25f,0.0f,0.0f)
 #define VELOCITY11 CVector(-0.25f,0.0f,0.30f)
+#define VELOCITY12 CVector(-0.25f,0.0f,-0.30f)
+#define VELOCITY13 CVector(0.25f,0.0f,-0.30f)
+
+int rand(void);
+void srand(unsigned int seed);
 
 //コンストラクタ
 //CAHamah(モデル、位置、回転、拡縮）
 CAWood::CAWood(CModel* model, const CVector& position,
 	const CVector& rotation, const CVector& scale)
-	:mCollider(this, &Matrix(), CVector(0.0f,1.0f,0.0f), 0.75f)
+	:mCollider(this, &Matrix(), CVector(0.0f, 1.0f, 0.0f), 0.75f)
+	, rararan(0)
 {
 	//障害物用のタグ設定
 	mTag = ETag::EOBSTACLE;
@@ -24,6 +34,7 @@ CAWood::CAWood(CModel* model, const CVector& position,
 	Scale(scale); //拡縮の設定
 	ha = 0;
 	mLastPos = position; //前回のポジションに設定する
+	mStartPos = position;
 }
 
 void CAWood::Update() {
@@ -51,6 +62,17 @@ void CAWood::Update() {
 			Position(Position() - VELOCITY11 * MatrixRotate());
 		}
 	}
+	if (CApplication::hcount == 3)
+	{
+		if (ha % 2 == 0)
+		{
+			Position(Position() + VELOCITY12 * MatrixRotate());
+		}
+		else
+		{
+			Position(Position() + VELOCITY13 * MatrixRotate());
+		}
+	}
 	//行列を更新
 	CTransform::Update();
 }
@@ -59,14 +81,40 @@ void CAWood::Update() {
 //CCollision(コライダ１、コライダ２）
 void CAWood::Collision(CCollider* m, CCollider* o) {
 	//相手が線分の壁コライダでなければ、衝突判定を行わない
-	if (o->Layer() != CCollider::ELayer::ELINEWALL)return;
+	if (o->Layer() != CCollider::ELayer::ELINEWALL && o->Layer() != CCollider::ELayer::ELINEWALL2)return;
 
-	switch (o->Type()) {
-	case CCollider::EType::ELINE:
+	switch (o->Layer()) {
+	case CCollider::ELayer::ELINEWALL:
 		if (CCollider::Collision(m, o)) {
 			//衝突しているときは無効にする
 				Position(mLastPos);
 				ha++;
+		}
+		break;
+	}
+	switch (o->Layer()) {
+	case CCollider::ELayer::ELINEWALL2:
+		if (CCollider::Collision(m, o)) {
+			//衝突しているときは無効にする
+			//Position(mStartPos);
+			ha++;
+			rararan = 4 + rand() % 17;
+			if (CApplication::StageCheck == 0)
+			{
+				Position((CVector(rararan, 22.9f, 70.0f)));
+			}
+			if (CApplication::StageCheck == 1)
+			{
+				Position((CVector(rararan, 22.9f, 120.0f)));
+			}
+			if (CApplication::StageCheck == 2)
+			{
+				Position((CVector(rararan, 22.9f, 170.0f)));
+			}
+			if (CApplication::StageCheck == 3)
+			{
+				Position((CVector(rararan, 22.9f, 170.0f)));
+			}
 		}
 		break;
 	}

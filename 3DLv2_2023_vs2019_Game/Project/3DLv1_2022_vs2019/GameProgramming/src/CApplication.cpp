@@ -304,6 +304,25 @@ void CApplication::Update()
 			//mpClearStage = new CAClearStage();
 			mpCoinGimmick = new CACoinGimmick();
 			mpSoccerGimmick = new CASoccerGimmick();
+			hcount = 7;
+			SelectStage = 0; //テスト用
+		}
+		if (SelectStage == 6)
+		{
+			//ランダムで5ならステージ予定
+			//mpClearStage = new CAClearStage();
+			mpCoinGimmick = new CACoinGimmick();
+			mpWoodGimmick = new CAWoodGimmick();
+			hcount = 3;
+			SelectStage = 0; //テスト用
+		}
+		if (SelectStage == 7)
+		{
+			//ランダムで5ならステージ予定
+			//mpClearStage = new CAClearStage();
+			mpCoinGimmick = new CACoinGimmick();
+			mpSoccerGimmick = new CASoccerGimmick();
+			hcount = 8;
 			SelectStage = 0; //テスト用
 		}
 		if (StageCount == 4)

@@ -2,10 +2,12 @@
 #define CAWOODGIMMICK_H
 #include "CTask.h"
 #include "CAWood.h"
+#include "CColliderLine.h"
 
 class CAWoodGimmick : public CTask
 {
 private:
+	CColliderLine mColliderLine11;
 	std::vector<CAWood*> mWoods;	// 木のリスト
 	CModel* mpWoodModel;			// 木のモデルデータ
 	int randnow;

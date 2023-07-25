@@ -8,7 +8,8 @@
 #include "time.h"
 
 #define VELOCITY20 CVector(0.0f,0.0f,-0.75f)
-#define VELOCITY21 CVector(-0.2f,0.0f,0.30f)
+#define VELOCITY21 CVector(-0.2f,0.0f,-0.30f)
+#define VELOCITY22 CVector(0.2f,0.0f,-0.30f)
 
 int rand(void);
 void srand(unsigned int seed);
@@ -32,13 +33,27 @@ CASoccer::CASoccer(CModel* model, const CVector& position,
 	Position(position); //位置の設定
 	Rotation(rotation); //回転の設定
 	Scale(scale); //拡縮の設定
-	//mLastPos = position; //前回のポジションに設定する
+	mLastPos = position; //前回のポジションに設定する
 }
 
 void CASoccer::Update() {
 	//移動前の座標を記憶しておく
 	//mLastPos = Position();
-	Position(Position() + VELOCITY20 * MatrixRotate());
+	if (CApplication::hcount == 7)
+	{
+		Position(Position() + VELOCITY20 * MatrixRotate());
+	}
+	if (CApplication::hcount == 8)
+	{
+		if (hdhd % 2 == 0)
+		{
+			Position(Position() + VELOCITY21 * MatrixRotate());
+		}
+		else
+		{
+			Position(Position() + VELOCITY22 * MatrixRotate());
+		}
+	}
 	//行列を更新
 	CTransform::Update();
 	/*if (hdhd == 2)
@@ -51,10 +66,10 @@ void CASoccer::Update() {
 //CCollision(コライダ１、コライダ２）
 void CASoccer::Collision(CCollider* m, CCollider* o) {
 	//相手が線分の壁コライダでなければ、衝突判定を行わない
-	if (o->Layer() != CCollider::ELayer::ELINEWALL2)return;
+	if (o->Layer() != CCollider::ELayer::ELINEWALL2 && o->Layer() != CCollider::ELayer::ELINEWALL)return;
 
-	switch (o->Type()) {
-	case CCollider::EType::ELINE:
+	switch (o->Layer()) {
+	case CCollider::ELayer::ELINEWALL2:
 		if (CCollider::Collision(m, o)) {
 			//mEnabled = false;
 			//hdhd = 2;
@@ -75,6 +90,12 @@ void CASoccer::Collision(CCollider* m, CCollider* o) {
 			{
 				Position((CVector(rarand, 23.0f, 170.0f)));
 			}
+		}
+		break;
+	case CCollider::ELayer::ELINEWALL:
+		if (CCollider::Collision(m, o)) {
+			hdhd++;
+			Position(mLastPos);
 		}
 		break;
 	}

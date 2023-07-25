@@ -177,7 +177,7 @@ void CAWoodGimmick::Init()
 	}
 	if (CApplication::SelectStage == 3)
 	{
-		if (CApplication::StageCount == 0)
+		/*if (CApplication::StageCount == 0)
 		{
 			CreateWood(CVector(randnow, 22.9f, 7.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 			CreateWood(CVector(randnow2, 22.9f, 15.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
@@ -230,6 +230,32 @@ void CAWoodGimmick::Init()
 			CreateWood(CVector(randnow13, 22.9f, 123.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 			CreateWood(CVector(randnow14, 22.9f, 131.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
 			CreateWood(CVector(randnow15, 22.9f, 139.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+		}*/
+	}
+	if (CApplication::SelectStage == 6)
+	{
+		if (CApplication::StageCount == 0)
+		{
+			CreateWood(CVector(randnow, 22.9f, 7.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow2, 22.9f, 15.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow3, 22.9f, 23.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow4, 22.9f, 31.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow5, 22.9f, 39.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow6, 22.9f, 47.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow7, 22.9f, 55.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow8, 22.9f, 63.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow8, 22.9f, 71.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			/*CreateWood(CVector(randnow9, 22.9f, 71.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow10, 22.9f, 79.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow11, 22.9f, 87.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow12, 22.9f, 95.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow13, 22.9f, 103.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow14, 22.9f, 111.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
+			CreateWood(CVector(randnow15, 22.9f, 119.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));*/
+			mColliderLine11.Set(nullptr, nullptr
+				, CVector(0.0f, 24.0f, -10.0f)
+				, CVector(24.0f, 24.0f, -10.0f));
+			mColliderLine11.Layer(CCollider::ELayer::ELINEWALL2);
 		}
 	}
 }

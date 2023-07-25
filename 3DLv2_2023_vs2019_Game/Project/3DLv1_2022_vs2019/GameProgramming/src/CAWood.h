@@ -14,8 +14,10 @@ private:
 	//コライダ
 	CCollider mCollider;
 	CVector mLastPos;
+	CVector mStartPos;
 public:
 	int ha;
+	int rararan;
 	//衝突処理
 	//Collision(コライダ１、コライダ２）
 	void Collision(CCollider* m, CCollider* o);
