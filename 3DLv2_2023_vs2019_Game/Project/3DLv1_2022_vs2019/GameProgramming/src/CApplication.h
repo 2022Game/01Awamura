@@ -18,14 +18,13 @@
 #include "CSound.h"
 #include "CVector.h"
 #include "CModel.h"
-#include "CMatrix.h"
+
 #include "CTaskManager.h"
-#include "CColliderTriangle.h"
-#include "CColliderMesh.h"
+
+
 #include "CUi.h"
 #include "CColliderLine.h"
 #include "CGameScene.h"
-#include "CAAcleateStage.h"
 
 class CApplication
 {

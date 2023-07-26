@@ -11,7 +11,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\CAAcleateStage.cpp" />
     <ClCompile Include="src\CAClearStage.cpp" />
     <ClCompile Include="src\CACoin.cpp" />
     <ClCompile Include="src\CACoinClearStage.cpp" />
@@ -65,7 +64,6 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\CAAcleateStage.h" />
     <ClInclude Include="src\CAClearStage.h" />
     <ClInclude Include="src\CACoin.h" />
     <ClInclude Include="src\CACoinClearStage.h" />

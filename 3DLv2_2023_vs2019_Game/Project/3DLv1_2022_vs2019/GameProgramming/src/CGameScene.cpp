@@ -4,24 +4,6 @@
 #include "CSceneManager.h"
 #include "CApplication.h"
 
-////背景モデルデータの指定
-//#define MODEL_BACKGROUND "res\\sky.obj","res\\sky.mtl"
-//
-////土台Coin
-//#define MODEL_FCOIN "res\\Coin.obj","res\\Coin.mtl"
-//
-////ハンマーリンゴ
-//#define MODEL_FHAMAH "res\\apple2.obj","res\\apple2.mtl"
-//
-////伝説のボール
-//#define MODEL_FSOCCER "res\\soccer1.obj","res\\soccer1.mtl"
-//
-////神聖なる木
-//#define MODEL_FWALL "res\\Wall2.obj","res\\Wall2.mtl"
-//
-////伝説の木
-//#define MODEL_FWOOD "res\\WWWW.obj","res\\WWWW.mtl"
-
 //コンストラクタ
 CGameScene::CGameScene()
 	:CSceneBase(EScene::eTitle)
@@ -48,32 +30,13 @@ void CGameScene::Load()
 
 	//背景生成
 	AddTask(new CField());
-	/*if (CApplication::reset == 1)
-	{
-		if (player == nullptr)
-		{
-			delete player;
-		}
-	}*/
-	////プレイヤー生成
-	//CApplication::Coin()->Load(MODEL_FCOIN);
-	//CApplication::CleaCoin()->Load(MODEL_FCOIN);
-	//CApplication::Wood()->Load(MODEL_FWOOD);
-	//CApplication::Wall()->Load(MODEL_FWALL);
-	//CApplication::Hamah()->Load(MODEL_FHAMAH);
-	//CApplication::Soccer()->Load(MODEL_FSOCCER);
+
 	player = new CPlayer();
 	player->Position(CVector(10.0f, 1.0f, 0.0f));
 	player->Scale(CVector(0.5f, 0.5f, 0.5f));
 	player->Rotation(CVector(0.0f, 0.0f, 0.0f));
 	AddTask(player);
-	//// コインギミックはCACoinGimmick内にまとめる
-	//mpCoinGimmick = new CACoinGimmick();
 
-	////ランダムでAならハマーを出す（予定）
-	//mpHamahGimmick = new CAHamahGimmick();
-
-	////三角コライダの確認
 	mColliderLine.Set(nullptr, nullptr
 		, CVector(24.0f, 24.0f, -50.0f)
 		, CVector(24.0f, 24.0f, 300.0f));
@@ -116,7 +79,9 @@ void CGameScene::Load()
 		, CVector(-300.0f, 0.0f, 300.0f));
 	mColliderTriangle3.Layer(CCollider::ELayer::EDEATH);
 	mpClearStage = new CAClearStage();
+	//mpWallGimmick= new CAWallGimmick();
 	AddTask(mpClearStage);
+	//AddTask(mpWallGimmick);
 }
 
 //シーンの更新処理
@@ -143,7 +108,6 @@ void CGameScene::Update()
 				mpClearStage = nullptr;
 			}
 		}
-		CApplication::StageGuard = 0;
 	}
 	if (CApplication::StageClearDelete == 2)
 	{
@@ -167,14 +131,6 @@ void CGameScene::Update()
 	u = (CVector(0.0f, 1.0f, 0.0f)) * player->MatrixRotate();
 	//カメラの設定
 	gluLookAt(e.X(), e.Y(), e.Z(), c.X(), c.Y(), c.Z(), u.X(), u.Y(), u.Z());
-
-	////ゲームオーバーシーン
-	//if (player->IsDeath())
-	//{
-	//	CSceneManager::Instance()->LoadScene(EScene::eTitle);
-	//}
-
-	//mColliderLine9 = nullptr;
 
 	if (player->IsClear())
 	{

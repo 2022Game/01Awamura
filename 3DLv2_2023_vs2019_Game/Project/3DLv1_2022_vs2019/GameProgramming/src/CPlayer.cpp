@@ -171,7 +171,22 @@ void CPlayer::Update() {
 //ステージクリア用のオブジェクトに接地時の処理
 void CPlayer::GroundedClearObj()
 {
-	mLastPos = Position() + (CVector(0.0f, 10.0f, 0.0f));
+	if (CApplication::StageCount == 0)
+	{
+		mLastPos = (CVector(10.0f, 30.0f, 0.0f));
+	}
+	if (CApplication::StageCount == 1)
+	{
+		mLastPos = (CVector(10.0f, 30.0f, 50.0f));
+	}
+	if (CApplication::StageCount == 2)
+	{
+		mLastPos = (CVector(10.0f, 30.0f, 100.0f));
+	}
+	if (CApplication::StageCount == 3)
+	{
+		mLastPos = (CVector(10.0f, 30.0f, 150.0f));
+	}
 	if (CApplication::StageCountGuard == 0)
 	{
 		CApplication::StageCountGuard = 1;

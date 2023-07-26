@@ -121,10 +121,10 @@ void CApplication::Update()
 				{
 					delete mpWoodGimmick;
 				}
-				if (mpWallGimmick != nullptr)
+				/*if (mpWallGimmick != nullptr)
 				{
 					delete mpWallGimmick;
-				}
+				}*/
 				if (mpSoccerGimmick != nullptr)
 				{
 					delete mpSoccerGimmick;
@@ -136,7 +136,7 @@ void CApplication::Update()
 				mpClearStage = nullptr;
 				mpCoinGimmick = nullptr;
 				mpSoccerGimmick = nullptr;
-				mpWallGimmick = nullptr;
+				//mpWallGimmick = nullptr;
 				mpHamahGimmick = nullptr;
 				mpWoodGimmick = nullptr;
 			}
@@ -209,6 +209,13 @@ void CApplication::Update()
 				}
 			}
 			StageGuard = 0;
+		}
+		if (StageCount == 0)
+		{
+			if (mpWallGimmick == nullptr)
+			{
+				mpWallGimmick = new CAWallGimmick();
+			}
 		}
 		if (StageCount == 1)
 		{
@@ -365,6 +372,8 @@ void CApplication::Update()
 
 				//StageTime = 0;
 
+				StartCount = 0;
+
 				hcount = 0;
 
 				Ui()->Time(mTime = 0);
@@ -393,7 +402,7 @@ void CApplication::Update()
 	CTaskManager::Instance()->Render();
 
 	//コリジョンマネジャー描画
-	CCollisionManager::Instance()->Render();
+	//CCollisionManager::Instance()->Render();
 	spUi->Render(); //UIの描画
 }
 
