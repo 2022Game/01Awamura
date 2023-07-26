@@ -88,13 +88,22 @@ private:
 	CASoccerGimmick* mpSoccerGimmick;
 //	CACClearStage* mpCoinClearStage;
 	CUi* mpUi;
+	//CScenemanagerのインスタンス
+	static CModel* mCoin;
+	static CModel* mCleaCoin;
+	static CModel* mHamah;
+	static CModel* mWood;
+	static CModel* mWall;
+	static CModel* mSoccer;
 public:
-	static CModel mCoin;
-	static CModel mCleaCoin;
-	static CModel mHamah;
-	static CModel mWood;
-	static CModel mWall;
-	static CModel mSoccer;
+	//static CModel mCoin;
+	//インスタンスを取得
+	static CModel* Coin();
+	static CModel* CleaCoin();
+	static CModel* Hamah();
+	static CModel* Wood();
+	static CModel* Wall();
+	static CModel* Soccer();
 	int mTime;
 	int mRestart;
 	CApplication();
@@ -121,12 +130,12 @@ public:
 	//static CTaskManager* TaskManager();
 	static CCharacterManager* CharacterManager();
 	static CTexture* Texture();
-	static CModel* Coin();
-	static CModel* CleaCoin();
-	static CModel* Hamah();
-	static CModel* Wood();
-	static CModel* Wall();
-	static CModel* Soccer();
+	//static CModel* Coin();
+	//static CModel* CleaCoin();
+	//static CModel* Hamah();
+	//static CModel* Wood();
+	//static CModel* Wall();
+	//static CModel* Soccer();
 	//最初に一度だけ実行するプログラム
 	void Start();
 	//繰り返し実行するプログラム

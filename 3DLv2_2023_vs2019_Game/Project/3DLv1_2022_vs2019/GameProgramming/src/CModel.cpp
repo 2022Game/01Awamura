@@ -23,7 +23,7 @@ int strcmp(const char* s1, const char* s2)
 
 //モデルファイルの入力
 //Load(モデルファイル名,マテリアルファイル名）
-void CModel::Load(char* obj, char* mtl){
+bool CModel::Load(const char* obj,const char* mtl) {
 	//頂点データと法線データとテクスチャマッピングの保存（CVector型）
 	std::vector<CVector> vertex, normal,uv;
 	//ファイルポインタ変数の作成
@@ -41,7 +41,7 @@ void CModel::Load(char* obj, char* mtl){
 	if (fp == NULL) {
 		//コンソールにエラー出力して戻る
 		printf("%s file open error\n", mtl);
-		return;
+		return false;
 	}
 
 	//マテリアルインデックス
@@ -90,7 +90,7 @@ void CModel::Load(char* obj, char* mtl){
 	if (fp == NULL) {
 		//コンソールにエラー出力して戻る
 		printf("%s file open error\n", obj);
-		return;
+		return false;
 	}
 
 	//ファイルから1行入力
@@ -173,6 +173,8 @@ void CModel::Load(char* obj, char* mtl){
 	//ファイルのクローズ
 	fclose(fp);
 	CreateVertexBuffer();
+
+	return true;
 }
 
 //描画

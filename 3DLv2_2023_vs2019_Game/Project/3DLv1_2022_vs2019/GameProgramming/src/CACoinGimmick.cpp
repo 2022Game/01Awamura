@@ -33,10 +33,10 @@ CACoinGimmick::CACoinGimmick()
 CACoinGimmick::~CACoinGimmick()
 {
 	// コインのモデルデータを破棄
-	/*if (mpCoinModel != nullptr)
+	if (mpCoinModel != nullptr)
 	{
 		mpCoinModel = nullptr;
-	}*/
+	}
 
 	// コインを破棄
 	for (int i = 0; i < mCoins.size(); i++)

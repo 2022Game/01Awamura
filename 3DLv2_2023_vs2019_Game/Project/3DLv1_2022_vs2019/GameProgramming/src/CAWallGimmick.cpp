@@ -17,10 +17,10 @@ CAWallGimmick::CAWallGimmick()
 CAWallGimmick::~CAWallGimmick()
 {
 	// ハマーのモデルデータを破棄
-	/*if (mpWallModel != nullptr)
+	if (mpWallModel != nullptr)
 	{
 		delete mpWallModel;
-	}*/
+	}
 
 	// ハマーを破棄
 	for (int i = 0; i < mWalls.size(); i++)

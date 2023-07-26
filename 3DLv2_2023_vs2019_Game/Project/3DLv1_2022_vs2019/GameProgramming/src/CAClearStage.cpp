@@ -20,10 +20,10 @@ CAClearStage::CAClearStage()
 CAClearStage::~CAClearStage()
 {
 	// コインのモデルデータを破棄
-	/*if (mpClearStageModel != nullptr)
+	if (mpClearStageModel != nullptr)
 	{
 		delete mpClearStageModel;
-	}*/
+	}
 
 	// コインを破棄
 	for (int i = 0; i < mClearStages.size(); i++)
@@ -49,8 +49,6 @@ void CAClearStage::Init()
 	if (CApplication::StageCount == 0)
 	{
 		ClearStage(CVector(10.0f, 0.1f, -2.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-		/*ClearStage(CVector(5.0f, 0.1f, -2.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));
-		ClearStage(CVector(0.0f, 0.1f, -2.0f), CVector(), CVector(0.8f, 0.8f, 0.8f));*/
 	}
 	////ステージ２スタート生成
 	if (CApplication::StageCount == 1)

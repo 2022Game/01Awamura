@@ -34,10 +34,10 @@ CASoccerGimmick::CASoccerGimmick()
 CASoccerGimmick::~CASoccerGimmick()
 {
 	// Soccerのモデルデータを破棄
-	/*if (mpSoccerModel != nullptr)
+	if (mpSoccerModel != nullptr)
 	{
 		delete mpSoccerModel;
-	}*/
+	}
 
 	// Soccerを破棄
 	for (int i = 0; i < mSoccers.size(); i++)

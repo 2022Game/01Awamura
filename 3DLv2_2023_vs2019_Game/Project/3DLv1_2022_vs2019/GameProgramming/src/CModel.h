@@ -15,7 +15,7 @@ class CModel {
 public:
 	//モデルファイルの入力
 	//Load（モデルファイル名,マテリアルファイル名）
-	void Load(char* obj, char* mtl);
+	bool Load(const char* obj,const char* mtl);
 	//描画
 	void Render();
 	CModel();

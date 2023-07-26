@@ -54,6 +54,7 @@
     <ClCompile Include="src\CPlayer2.cpp" />
     <ClCompile Include="src\CPoint.cpp" />
     <ClCompile Include="src\CRectangle.cpp" />
+    <ClCompile Include="src\CResourceManager.cpp" />
     <ClCompile Include="src\CSceneBase.cpp" />
     <ClCompile Include="src\CSceneManager.cpp" />
     <ClCompile Include="src\CSound.cpp" />
@@ -114,6 +115,7 @@
     <ClInclude Include="src\CPlayer2.h" />
     <ClInclude Include="src\CPoint.h" />
     <ClInclude Include="src\CRectangle.h" />
+    <ClInclude Include="src\CResourceManager.h" />
     <ClInclude Include="src\CSceneBase.h" />
     <ClInclude Include="src\CSceneManager.h" />
     <ClInclude Include="src\CSound.h" />

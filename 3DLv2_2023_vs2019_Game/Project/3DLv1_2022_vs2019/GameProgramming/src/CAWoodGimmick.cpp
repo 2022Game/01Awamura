@@ -38,10 +38,10 @@ CAWoodGimmick::CAWoodGimmick()
 CAWoodGimmick::~CAWoodGimmick()
 {
 	// 木のモデルデータを破棄
-	/*if (mpWoodModel != nullptr)
+	if (mpWoodModel != nullptr)
 	{
 		delete mpWoodModel;
-	}*/
+	}
 
 	// 木を破棄
 	for (int i = 0; i < mWoods.size(); i++)

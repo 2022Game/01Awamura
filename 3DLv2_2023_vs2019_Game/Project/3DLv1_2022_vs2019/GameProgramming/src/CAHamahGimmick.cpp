@@ -34,10 +34,10 @@ CAHamahGimmick::CAHamahGimmick()
 CAHamahGimmick::~CAHamahGimmick()
 {
 	// ハマーのモデルデータを破棄
-	//if (mpHamahModel != nullptr)
-	//{
-	//	delete mpHamahModel;
-	//}
+	if (mpHamahModel != nullptr)
+	{
+		delete mpHamahModel;
+	}
 
 	// ハマーを破棄
 	for (int i = 0; i < mHamahs.size(); i++)
