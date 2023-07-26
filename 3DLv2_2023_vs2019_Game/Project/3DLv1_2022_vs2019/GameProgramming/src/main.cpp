@@ -6,6 +6,7 @@
 #include "CApplication.h"
 #include "CInput.h"
 #include "CSceneManager.h"
+#include "CResourceManager.h"
 
 CApplication gApplication;
 
@@ -73,6 +74,8 @@ void release()
 {
 	//シーンマネージャー破棄
 	CSceneManager::ClearInstance();
+	//リソースマネージャー破棄
+	CResourceManager::ClearInstance();
 }
 
 int main(void)

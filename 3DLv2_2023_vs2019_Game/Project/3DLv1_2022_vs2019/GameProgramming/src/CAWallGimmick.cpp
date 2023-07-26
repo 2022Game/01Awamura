@@ -1,6 +1,7 @@
 #include "CAWallGimmick.h"
 #include "CTaskManager.h"
 #include "CApplication.h"
+#include "CResourceManager.h"
 
 //神聖なる木
 #define MODEL_FWALL "res\\Wall2.obj","res\\Wall2.mtl"
@@ -16,12 +17,6 @@ CAWallGimmick::CAWallGimmick()
 
 CAWallGimmick::~CAWallGimmick()
 {
-	// ハマーのモデルデータを破棄
-	if (mpWallModel != nullptr)
-	{
-		delete mpWallModel;
-	}
-
 	// ハマーを破棄
 	for (int i = 0; i < mWalls.size(); i++)
 	{
@@ -39,7 +34,7 @@ void CAWallGimmick::Init()
 	// Wallのモデル読み込み
 	/*mpWallModel = new CModel();
 	mpWallModel->Load(MODEL_FWALL);*/
-	mpWallModel = CApplication::Wall();
+	mpWallModel = GET_MODEL("Wall");
 
 	// Wallを生成
 	//ステージ１スタート生成

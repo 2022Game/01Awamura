@@ -30,7 +30,6 @@
 class CApplication
 {
 private:
-	static CTexture mTexture;
 	CGameScene* mpGameScene;
 	CColliderLine mColliderLine8;
 	static CUi* spUi; //UIクラスのポインタ
@@ -39,43 +38,8 @@ private:
 	//static CTaskManager mTaskManager;
 	CSound mSoundBgm;	//BGM
 	CSound mSoundOver;	//ゲームオーバー
-	static CCharacterManager mCharacterManager;
-	enum class EState
-	{
-		ESTART,	//ゲーム開始
-		EPLAY,	//ゲーム中
-		ECLEAR,	//ゲームクリア
-		EOVER,	//ゲームオーバー
-	};
-	EState mState;
-	//	CCharacter mRectangle;
-	CPlayer* mpPlayer;
-	//	CBullet* mpBullet;
+
 	CInput mInput;
-	CFont mFont;
-	/*CVector mEye;*/
-	CMatrix mMatrix;
-	CACoin* mpCoin;
-	//CAHamah* mpHamah;
-	//モデルインスタクラスの作成
-	CModel mModel;
-	//カメラのパラメータを作成する
-	CVector e, c, u;//視点、注視点、上方向
-	//CCharacterのポインタの可変長配列
-//	std::vector<CCharacter*> mCharacters;
-	CModel mBackGround; //背景モデル
-	////C5モデル
-	//CModel mModelC5;
-	//Coinモデル
-	CModel mModelCoin;
-	//Hamahモデル
-	CModel mModelHamah;
-	//Wallモデル
-	CModel mModelWall;
-	//Woodモデル
-	CModel mModelWood;
-	//モデルからコライダを生成
-	CColliderMesh mColliderMesh;
 
 	CAClearStage* mpClearStage;
 	CAClearStage* mpClearStage2;
@@ -88,27 +52,11 @@ private:
 	CASoccerGimmick* mpSoccerGimmick;
 //	CACClearStage* mpCoinClearStage;
 	CUi* mpUi;
-	//CScenemanagerのインスタンス
-	static CModel* mCoin;
-	static CModel* mCleaCoin;
-	static CModel* mHamah;
-	static CModel* mWood;
-	static CModel* mWall;
-	static CModel* mSoccer;
 public:
-	//static CModel mCoin;
-	//インスタンスを取得
-	static CModel* Coin();
-	static CModel* CleaCoin();
-	static CModel* Hamah();
-	static CModel* Wood();
-	static CModel* Wall();
-	static CModel* Soccer();
 	int mTime;
 	int mRestart;
 	CApplication();
 	~CApplication();
-	int Init();
 	static int StageTime;
 	static int SelectStage;
 	static int StartCount;
@@ -119,6 +67,7 @@ public:
 	static int StageCountGuard;
 	static int StageCheck;
 	static int StageClearDelete;
+	static int StageDelete;
 	static int hcount;
 	static int Rcount;
 	static int reset;
@@ -127,15 +76,6 @@ public:
 	static CUi* Ui();
 	//モデルビュー行列の取得
 	static const CMatrix& ModelViewInverse();
-	//static CTaskManager* TaskManager();
-	static CCharacterManager* CharacterManager();
-	static CTexture* Texture();
-	//static CModel* Coin();
-	//static CModel* CleaCoin();
-	//static CModel* Hamah();
-	//static CModel* Wood();
-	//static CModel* Wall();
-	//static CModel* Soccer();
 	//最初に一度だけ実行するプログラム
 	void Start();
 	//繰り返し実行するプログラム

@@ -60,12 +60,6 @@
     <ClCompile Include="src\CCharacterManager.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="src\CGame.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="src\CEnemy2.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="src\CUi.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -115,9 +109,6 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="src\CColliderMesh.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="src\CEnemy3.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="src\CACoin.cpp">
@@ -180,15 +171,6 @@
     <ClCompile Include="src\CField.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="src\CBlock.cpp">
-      <Filter>ソース ファイル\使わないやつ</Filter>
-    </ClCompile>
-    <ClCompile Include="src\CPlayer2.cpp">
-      <Filter>ソース ファイル\使わないやつ</Filter>
-    </ClCompile>
-    <ClCompile Include="src\CPoint.cpp">
-      <Filter>ソース ファイル\使わないやつ</Filter>
-    </ClCompile>
     <ClCompile Include="src\CClearScene.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -234,12 +216,6 @@
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="src\CCharacterManager.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="src\CGame.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="src\CEnemy2.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="src\CUi.h">
@@ -297,9 +273,6 @@
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="src\CColliderMesh.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="src\CEnemy3.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="src\CACoin.h">
@@ -367,18 +340,6 @@
     </ClInclude>
     <ClInclude Include="src\CField.h">
       <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="src\CBlock.h">
-      <Filter>ソース ファイル\使わないやつ</Filter>
-    </ClInclude>
-    <ClInclude Include="src\CMiss.h">
-      <Filter>ソース ファイル\使わないやつ</Filter>
-    </ClInclude>
-    <ClInclude Include="src\CPlayer2.h">
-      <Filter>ソース ファイル\使わないやつ</Filter>
-    </ClInclude>
-    <ClInclude Include="src\CPoint.h">
-      <Filter>ソース ファイル\使わないやつ</Filter>
     </ClInclude>
     <ClInclude Include="src\CClearScene.h">
       <Filter>ソース ファイル</Filter>

@@ -1,6 +1,7 @@
 #include "CACoinGimmick.h"
 #include "CApplication.h"
 #include "CTaskManager.h"
+#include "CResourceManager.h"
 
 #include <stdlib.h>
 
@@ -32,12 +33,6 @@ CACoinGimmick::CACoinGimmick()
 
 CACoinGimmick::~CACoinGimmick()
 {
-	// コインのモデルデータを破棄
-	if (mpCoinModel != nullptr)
-	{
-		mpCoinModel = nullptr;
-	}
-
 	// コインを破棄
 	for (int i = 0; i < mCoins.size(); i++)
 	{
@@ -55,7 +50,7 @@ void CACoinGimmick::Init()
 	// コインのモデル読み込み
 	//mpCoinModel = new CModel();
 	//mpCoinModel->Load(MODEL_FCOIN);
-	mpCoinModel = CApplication::Coin();
+	mpCoinModel = GET_MODEL("Coin");
 	/*mpCoinModel = new CModel();*/
 
 	if (CApplication::StageCount == 0)

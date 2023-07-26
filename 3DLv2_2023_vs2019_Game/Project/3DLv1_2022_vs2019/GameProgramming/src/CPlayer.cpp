@@ -4,6 +4,7 @@
 #include "CTaskManager.h"
 #include "CApplication.h"
 #include "CCollisionManager.h"
+#include "CResourceManager.h"
 
 #include <stdlib.h>
 
@@ -57,8 +58,7 @@ CPlayer::CPlayer()
 	spInstance = this;
 	randdd = 0;
 	randddco = 180;
-	mpModel = new CModel();
-	mpModel->Load("res\\Beard_man.obj", "res\\Beard_man.mtl");
+	mpModel = GET_MODEL("Player");
 }
 
 //çXêVèàóù
@@ -230,6 +230,7 @@ void CPlayer::GroundedGuardObj()
 {
 	if (CApplication::StageSwitch == 1)
 	{
+		CApplication::StageDelete = 2;
 		CApplication::StageGuard = 1;
 		CApplication::StageCount++;
 		CApplication::StageClearDelete++;

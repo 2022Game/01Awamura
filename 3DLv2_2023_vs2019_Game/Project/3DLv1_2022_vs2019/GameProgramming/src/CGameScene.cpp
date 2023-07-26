@@ -122,6 +122,29 @@ void CGameScene::Load()
 //シーンの更新処理
 void CGameScene::Update()
 {
+	if (CApplication::StageReset == 1)
+	{
+		if (CApplication::StageCount == 0)
+		{
+			if (mpClearStage == nullptr)
+			{
+				mpClearStage = new CAClearStage();
+				CApplication::StageDelete = 1;
+			}
+		}
+	}
+	if (CApplication::StageGuard == 1)
+	{
+		if (CApplication::StageDelete == 2)
+		{
+			if (mpClearStage != nullptr)
+			{
+				delete mpClearStage;
+				mpClearStage = nullptr;
+			}
+		}
+		CApplication::StageGuard = 0;
+	}
 	if (CApplication::StageClearDelete == 2)
 	{
 		if (mpClearStage != nullptr)

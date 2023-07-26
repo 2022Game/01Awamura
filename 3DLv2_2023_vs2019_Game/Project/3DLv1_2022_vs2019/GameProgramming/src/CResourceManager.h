@@ -9,6 +9,8 @@ class CResourceManager
 public:
 	//インスタンスを取得
 	static CResourceManager* Instance();
+	//インスタンスを破棄
+	static void ClearInstance();
 
 	//コンストラクタ
 	CResourceManager();

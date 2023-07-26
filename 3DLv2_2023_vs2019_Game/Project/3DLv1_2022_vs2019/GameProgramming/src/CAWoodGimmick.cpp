@@ -1,6 +1,7 @@
 #include "CAWoodGimmick.h"
 #include "CTaskManager.h"
 #include "CApplication.h"
+#include "CResourceManager.h"
 #include <stdlib.h>
 #include "time.h"
 
@@ -37,12 +38,6 @@ CAWoodGimmick::CAWoodGimmick()
 
 CAWoodGimmick::~CAWoodGimmick()
 {
-	// 木のモデルデータを破棄
-	if (mpWoodModel != nullptr)
-	{
-		delete mpWoodModel;
-	}
-
 	// 木を破棄
 	for (int i = 0; i < mWoods.size(); i++)
 	{
@@ -60,7 +55,7 @@ void CAWoodGimmick::Init()
 	// 木のモデル読み込み
 	/*mpWoodModel = new CModel();
 	mpWoodModel->Load(MODEL_FWOOD);*/
-	mpWoodModel = CApplication::Wood();
+	mpWoodModel = GET_MODEL("Wood");
 
 	if (CApplication::StageCount == 0)
 	{

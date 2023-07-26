@@ -1,6 +1,6 @@
 #include "CField.h"
 #include "CTaskManager.h"
-
+#include "CResourceManager.h"
 //コンストラクタ
 CField::CField()
 {
@@ -12,8 +12,7 @@ CField::CField()
 	CTaskManager::Instance()->Add(this);
 
 	//背景のモデルデータ読みこみ
-	mModel = new CModel();
-	mModel->Load("res\\sky.obj", "res\\sky.mtl");
+	mModel = GET_MODEL("Field");
 	//読み込んだ背景のモデルデータでコライダを作成
 	mColliderMesh.Set(nullptr, nullptr, mModel);
 }
@@ -23,10 +22,6 @@ CField::~CField()
 {
 	//タスクマネージャーから自信を取り除く
 	CTaskManager::Instance()->Remove(this);
-
-	//拝啓のモデルでーたを破棄
-	delete mModel;
-	mModel = nullptr;
 }
 
 //更新処理

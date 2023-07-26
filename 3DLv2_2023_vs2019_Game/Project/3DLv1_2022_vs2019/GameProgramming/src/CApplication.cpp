@@ -9,98 +9,7 @@
 #include "CCharacter.h"
 #include "GamePause.h"
 #include "CSceneManager.h"
-
-
-//クラスのstatic変数
-CTexture CApplication::mTexture;
-CCharacterManager CApplication::mCharacterManager;
-
-CModel* CApplication::mCoin = nullptr;
-//CModel CApplication::mCoin;
-CModel* CApplication::mCleaCoin = nullptr;
-CModel* CApplication::mWood = nullptr;
-CModel* CApplication::mWall = nullptr;
-CModel* CApplication::mHamah = nullptr;
-CModel* CApplication::mSoccer = nullptr;
-
-//CTaskManager CApplication::mTaskManager;
-//CTaskManager* CApplication::TaskManager()
-//{
-//	return &mTaskManager;
-//}
-
-CCharacterManager* CApplication::CharacterManager()
-{
-	return &mCharacterManager;
-}
-
-CTexture* CApplication::Texture()
-{
-	return &mTexture;
-}
-//CSceneManager* CSceneManager::Instance()
-//{
-//	//CSceneManager::Instance()->LoadScene(EScene::eGame); //使用例
-//	//インスタンスが存在しない場合は新しく生成する
-//	if (mpInstance == nullptr)
-//	{
-//		mpInstance = new CSceneManager();
-//	}
-//	return mpInstance;
-//}
-CModel* CApplication::Coin()
-{
-	if (mCoin == nullptr)
-	{
-		mCoin = new CModel();
-	}
-	return mCoin;
-}
-
-CModel* CApplication::Hamah()
-{
-	if (mHamah == nullptr)
-	{
-		mHamah = new CModel();
-	}
-	return mHamah;
-}
-
-CModel* CApplication::CleaCoin()
-{
-	if (mCleaCoin == nullptr)
-	{
-		mCleaCoin = new CModel();
-	}
-	return mCleaCoin;
-}
-
-CModel* CApplication::Wood()
-{
-	if (mWood == nullptr)
-	{
-		mWood = new CModel();
-	}
-	return mWood;
-}
-
-CModel* CApplication::Wall()
-{
-	if (mWall == nullptr)
-	{
-		mWall = new CModel();
-	}
-	return mWall;
-}
-
-CModel* CApplication::Soccer()
-{
-	if (mSoccer == nullptr)
-	{
-		mSoccer = new CModel();
-	}
-	return mSoccer;
-}
+#include "CResourceManager.h"
 
 CMatrix CApplication::mModelViewInverse;
 
@@ -128,6 +37,8 @@ int CApplication::StageCheck = 0;
 int CApplication::StageTime = 0;
 
 int CApplication::StageClearDelete = 0;
+
+int CApplication::StageDelete = 0;
 
 int CApplication::hcount = 0;
 
@@ -171,18 +82,14 @@ void CApplication::Start()
 	{
 		mpClearStage = new CAClearStage();
 	}*/
-	mCoin = new CModel();
-	mCoin->Load(MODEL_FCOIN);
-	mCleaCoin = new CModel();
-	mCleaCoin->Load(MODEL_FCOIN);
-	mWood = new CModel();
-	mWood->Load(MODEL_FWOOD);
-	mWall = new CModel();
-	mWall->Load(MODEL_FWALL);
-	mHamah = new CModel();
-	mHamah->Load(MODEL_FHAMAH);
-	mSoccer = new CModel();
-	mSoccer->Load(MODEL_FSOCCER);
+	//ゲーム中に使用するモデルデータを読み込み
+	CResourceManager::Instance()->LoadModel("Field", "res\\sky.obj", "res\\sky.mtl");
+	CResourceManager::Instance()->LoadModel("Player", "res\\Beard_man.obj", "res\\Beard_man.mtl");
+	CResourceManager::Instance()->LoadModel("Coin","res\\Coin.obj", "res\\Coin.mtl");
+	CResourceManager::Instance()->LoadModel("Hamah", "res\\apple2.obj", "res\\apple2.mtl");
+	CResourceManager::Instance()->LoadModel("Wood", "res\\WWWW.obj", "res\\WWWW.mtl");
+	CResourceManager::Instance()->LoadModel("Wall", "res\\Wall2.obj", "res\\Wall2.mtl");
+	CResourceManager::Instance()->LoadModel("Soccer", "res\\soccer1.obj", "res\\soccer1.mtl");
 	CSceneManager::Instance()->LoadScene(EScene::eTitle);
 	mpGameScene = new CGameScene();
 	spUi = new CUi(); //UIクラスの生成
@@ -196,26 +103,7 @@ void CApplication::Update()
 		mpClearStage = nullptr;
 	}
 	if (StartCount == 1)
-
 	{
-		/*if (CASoccer::hdhd == 2)
-		{
-			mpSoccerGimmick = new CASoccerGimmick();
-		}*/
-		/*switch (mState)
-		{
-		case EState::ECLEAR:
-		{
-			mpUi->Clear();
-		}
-		break;
-		case EState::EOVER:
-		{
-			mpUi->Over();
-		}
-		break;
-		}*/
-
 		if (SelectStage != 0)
 		{
 			if (StageReset != 1)
@@ -255,17 +143,71 @@ void CApplication::Update()
 		}
 		if (StageReset == 1)
 		{
-			if (mpWallGimmick != nullptr)
+			if (StageCount == 0)
 			{
-				delete mpWallGimmick;
+				if (mpClearStage2 != nullptr)
+				{
+					delete mpClearStage2;
+					mpClearStage2 = nullptr;
+				}
 			}
-			mpWallGimmick = nullptr;
+			if (StageCount == 1)
+			{
+				if (mpClearStage2 == nullptr)
+				{
+					if (mpClearStage3 != nullptr)
+					{
+						delete mpClearStage3;
+						mpClearStage3 = nullptr;
+					}
+					mpClearStage2 = new CAClearStage();
+					StageDelete = 1;
+				}
+			}
+			if (StageCount == 2)
+			{
+				if (mpClearStage3 == nullptr)
+				{
+					if (mpClearStage4 != nullptr)
+					{
+						delete mpClearStage4;
+						mpClearStage4 = nullptr;
+					}
+					mpClearStage3 = new CAClearStage();
+					StageDelete = 1;
+				}
+			}
+			if (StageCount == 3)
+			{
+				if (mpClearStage4 == nullptr)
+				{
+					mpClearStage4 = new CAClearStage();
+					StageDelete = 1;
+				}
+			}
 			StageSwitch = 1;
 			StageReset = 0;
 		}
 		if (StageGuard == 1)
 		{
-			mpWallGimmick = new CAWallGimmick();
+			if (StageDelete == 2)
+			{
+				if (mpClearStage2 != nullptr)
+				{
+					delete mpClearStage2;
+					mpClearStage2 = nullptr;
+				}
+				if (mpClearStage3 != nullptr)
+				{
+					delete mpClearStage3;
+					mpClearStage3 = nullptr;
+				}
+				if (mpClearStage4 != nullptr)
+				{
+					delete mpClearStage4;
+					mpClearStage4 = nullptr;
+				}
+			}
 			StageGuard = 0;
 		}
 		if (StageCount == 1)
@@ -273,6 +215,7 @@ void CApplication::Update()
 			if (mpClearStage2 == nullptr)
 			{
 				mpClearStage2 = new CAClearStage();
+				StageDelete = 1;
 			}
 		}
 		if (StageCount == 2)
@@ -280,6 +223,7 @@ void CApplication::Update()
 			if (mpClearStage3 == nullptr)
 			{
 				mpClearStage3 = new CAClearStage();
+				StageDelete = 1;
 			}
 		}
 		if (StageCount == 3)
@@ -287,6 +231,7 @@ void CApplication::Update()
 			if (mpClearStage4 == nullptr)
 			{
 				mpClearStage4 = new CAClearStage();
+				StageDelete = 1;
 			}
 		}
 		if (StageClearDelete == 3)
@@ -308,7 +253,6 @@ void CApplication::Update()
 		if (SelectStage == 1)
 		{
 			//ランダムで１ならハマーステージ予定
-			//mpClearStage = new CAClearStage();
 			mpCoinGimmick = new CACoinGimmick();
 			mpHamahGimmick = new CAHamahGimmick();
 			SelectStage = 0; //テスト用
@@ -316,7 +260,6 @@ void CApplication::Update()
 		if (SelectStage == 2)
 		{
 			//ランダムで2ならウッドステージ予定
-			//mpClearStage = new CAClearStage();
 			mpCoinGimmick = new CACoinGimmick();
 			mpWoodGimmick = new CAWoodGimmick();
 			hcount = 1;
@@ -324,8 +267,7 @@ void CApplication::Update()
 		}
 		if (SelectStage == 3)
 		{
-			//ランダムで5ならステージ予定
-			//mpClearStage = new CAClearStage();
+			//ランダムで3ならSoccerステージ予定
 			mpCoinGimmick = new CACoinGimmick();
 			mpSoccerGimmick = new CASoccerGimmick();
 			hcount = 8;
@@ -333,16 +275,14 @@ void CApplication::Update()
 		}
 		if (SelectStage == 4)
 		{
-			//ランダムで１ならハマーステージ予定
-			//mpClearStage = new CAClearStage();
+			//ランダムで４ならハマーステージ予定
 			mpCoinGimmick = new CACoinGimmick();
 			mpHamahGimmick = new CAHamahGimmick();
 			SelectStage = 0; //テスト用
 		}
 		if (SelectStage == 5)
 		{
-			//ランダムで5ならステージ予定
-			//mpClearStage = new CAClearStage();
+			//ランダムで5ならSoccerステージ予定
 			mpCoinGimmick = new CACoinGimmick();
 			mpSoccerGimmick = new CASoccerGimmick();
 			hcount = 7;
@@ -350,8 +290,7 @@ void CApplication::Update()
 		}
 		if (SelectStage == 6)
 		{
-			//ランダムで5ならステージ予定
-			//mpClearStage = new CAClearStage();
+			//ランダムで６ならウッドステージ予定
 			mpCoinGimmick = new CACoinGimmick();
 			mpWoodGimmick = new CAWoodGimmick();
 			hcount = 3;
@@ -456,16 +395,6 @@ void CApplication::Update()
 	//コリジョンマネジャー描画
 	CCollisionManager::Instance()->Render();
 	spUi->Render(); //UIの描画
-
-	/*if (mInput.PushKey('P'))
-	{
-		if (mpClearStage2 != nullptr)
-		{
-			delete mpClearStage2;
-			mpClearStage = nullptr;
-		}
-	}*/
-
 }
 
 CUi* CApplication::spUi = nullptr;
@@ -478,16 +407,4 @@ CUi* CApplication::Ui()
 CApplication::~CApplication()
 {
 	delete spUi; //インスタンスUiの削除
-	delete mCoin;
-	mCoin = nullptr;
-	delete mCleaCoin;
-	mCleaCoin = nullptr;
-	delete mHamah;
-	mHamah = nullptr;
-	delete mWood;
-	mWood = nullptr;
-	delete mSoccer;
-	mSoccer = nullptr;
-	delete mWall;
-	mWall = nullptr;
 }

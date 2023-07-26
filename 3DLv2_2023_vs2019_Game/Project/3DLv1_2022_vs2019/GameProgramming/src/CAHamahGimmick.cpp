@@ -1,6 +1,7 @@
 #include "CAHamahGimmick.h"
 #include "CTaskManager.h"
 #include "CApplication.h"
+#include "CResourceManager.h"
 #include <stdlib.h>
 
 #include "time.h"
@@ -33,12 +34,6 @@ CAHamahGimmick::CAHamahGimmick()
 
 CAHamahGimmick::~CAHamahGimmick()
 {
-	// ハマーのモデルデータを破棄
-	if (mpHamahModel != nullptr)
-	{
-		delete mpHamahModel;
-	}
-
 	// ハマーを破棄
 	for (int i = 0; i < mHamahs.size(); i++)
 	{
@@ -56,7 +51,7 @@ void CAHamahGimmick::Init()
 	// ハマーのモデル読み込み
 	/*mpHamahModel = new CModel();
 	mpHamahModel->Load(MODEL_FHAMAH);*/
-	mpHamahModel = CApplication::Hamah();
+	mpHamahModel = GET_MODEL("Hamah");
 	if (CApplication::StageCount == 0)
 	{
 		randnow = 4 + rand() % 17;

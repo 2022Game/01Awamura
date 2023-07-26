@@ -1,6 +1,7 @@
 #include "CASoccerGimmick.h"
 #include "CTaskManager.h"
 #include "CApplication.h"
+#include "CResourceManager.h"
 #include <stdlib.h>
 
 #include "time.h"
@@ -33,12 +34,6 @@ CASoccerGimmick::CASoccerGimmick()
 
 CASoccerGimmick::~CASoccerGimmick()
 {
-	// Soccerのモデルデータを破棄
-	if (mpSoccerModel != nullptr)
-	{
-		delete mpSoccerModel;
-	}
-
 	// Soccerを破棄
 	for (int i = 0; i < mSoccers.size(); i++)
 	{
@@ -56,7 +51,7 @@ void CASoccerGimmick::Init()
 	// 木のモデル読み込み
 	/*mpSoccerModel = new CModel();
 	mpSoccerModel->Load(MODEL_FSOCCER);*/
-	mpSoccerModel = CApplication::Soccer();
+	mpSoccerModel = GET_MODEL("Soccer");
 	if (CApplication::StageCount == 0)
 	{
 		randnow = 4 + rand() % 17;

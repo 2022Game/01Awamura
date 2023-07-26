@@ -13,6 +13,13 @@ CResourceManager* CResourceManager::Instance()
 	return mpInstance;
 }
 
+//インスタンスを破棄
+void CResourceManager::ClearInstance()
+{
+	delete mpInstance;
+	mpInstance = nullptr;
+}
+
 //コンストラクタ
 CResourceManager::CResourceManager()
 {
