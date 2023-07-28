@@ -35,9 +35,7 @@ CAClearStage::~CAClearStage()
 void CAClearStage::Init()
 {
 	// コインのモデル読み込み
-	/*mpClearStageModel = new CModel();
-	mpClearStageModel->Load(MODEL_FCOIN);*/
-	mpClearStageModel = GET_MODEL("Coin");
+	mpClearStageModel = GET_MODEL("ClearCoin");
 
 	// コインを生成
 	//ステージ１スタート生成

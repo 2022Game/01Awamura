@@ -7,9 +7,9 @@
 
 #include "time.h"
 
-#define VELOCITY20 CVector(0.0f,0.0f,-0.40f)
-#define VELOCITY21 CVector(-0.2f,0.0f,-0.30f)
-#define VELOCITY22 CVector(0.2f,0.0f,-0.30f)
+#define VELOCITY20 CVector(0.0f,0.0f,-0.25f)
+#define VELOCITY21 CVector(-0.2f,0.0f,-0.40f)
+#define VELOCITY22 CVector(0.2f,0.0f,-0.40f)
 
 int rand(void);
 void srand(unsigned int seed);

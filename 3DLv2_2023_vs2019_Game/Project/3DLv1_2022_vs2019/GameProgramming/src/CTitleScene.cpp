@@ -21,7 +21,7 @@ void CTitleScene::Load()
 	//ここでタイトル画面に必要な
 	//リソースの読み込みやクラスの生成を行u
 
-	mBgImage = new CImage("Start.png");
+	mBgImage = new CImage("Start1.png");
 	mBgImage->SetColor(1.0f, 1.0f, 0.0f, 1.0f);
 	mBgImage->SetPos(0.0f, 0.0f);
 	mBgImage->SetSize(WINDOW_WIDTH, WINDOW_HEIGHT);

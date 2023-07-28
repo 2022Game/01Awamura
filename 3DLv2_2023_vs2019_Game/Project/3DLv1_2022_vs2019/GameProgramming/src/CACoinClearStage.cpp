@@ -22,15 +22,10 @@ CACoinClearStage::CACoinClearStage(CModel* model, const CVector& position,
 	UpCount = 180 / 6 * 10;
 	SideChengeCount = 0;
 	SideCount = 300 / 6;
-	//mTag = CCharacter3::ETag::ECOIN;
 }
 
 //更新処理
 void CACoinClearStage::Update() {
-	/*if (mD == 150)
-	{
-		mEnabled = false;
-	}*/
 	//行列を更新
 	CTransform::Update();
 	//位置を移動
@@ -41,7 +36,6 @@ void CACoinClearStage::Update() {
 	}
 	if (UpCount < 0)
 	{
-		//		mPosition = mPosition + VELOCITY10 * mMatrixRotate;
 		UpCount = 0;
 		SCount = 2;
 	}

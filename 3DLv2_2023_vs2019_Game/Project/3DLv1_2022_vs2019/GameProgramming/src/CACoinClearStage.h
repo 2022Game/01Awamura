@@ -19,13 +19,11 @@ public:
 	int UpCount;
 	int SideChengeCount;
 	int SideCount;
-	//static int mD;
 	//衝突処理
 	//Collision(コライダ１、コライダ２）
 	void Collision(CCollider* m, CCollider* o);
 	void Collision();
 	//コンストラクタ
-	//CEnemy(モデル,位置,回転,拡縮）
 	CACoinClearStage(CModel* model, const CVector& position,
 		const CVector& rotation, const CVector& scale);
 	//更新処理

@@ -48,10 +48,7 @@ CACoinGimmick::~CACoinGimmick()
 void CACoinGimmick::Init()
 {
 	// ƒRƒCƒ“‚Ìƒ‚ƒfƒ‹“Ç‚Ýž‚Ý
-	//mpCoinModel = new CModel();
-	//mpCoinModel->Load(MODEL_FCOIN);
 	mpCoinModel = GET_MODEL("Coin");
-	/*mpCoinModel = new CModel();*/
 
 	if (CApplication::StageCount == 0)
 	{

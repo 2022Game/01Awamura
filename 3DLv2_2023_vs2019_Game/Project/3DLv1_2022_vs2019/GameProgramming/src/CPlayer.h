@@ -4,7 +4,6 @@
 #include "CCharacter3.h"
 #include "CCharacter.h"
 #include "CInput.h"
-#include "CBullet.h"
 #include "CColliderLine.h"
 
 /*
@@ -14,7 +13,6 @@
 class CPlayer : public CCharacter3 ,CCharacter
 {
 private:
-	//float mVy;	//Y軸速度
 	CInput mInput;
 	CColliderLine mLine; //線分コライダ
 	CColliderLine mLine2;
@@ -54,7 +52,6 @@ public:
 	//CPlayer(位置、回転、スケール）
 	CPlayer(const CVector& pos, const CVector& rot, const CVector& scale);
 	void Update();
-	//CBullet bullet;
 };
 
 #endif

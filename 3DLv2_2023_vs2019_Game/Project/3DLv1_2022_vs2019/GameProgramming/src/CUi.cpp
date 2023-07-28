@@ -57,7 +57,7 @@ void CUi::Render()
 {
 	CCamera::Start(0, 800, 0, 600); //2D描画開始
 	//描画職の設定(緑色の半透明)
-	glColor4f(0.0f, 0.0f, 0.0f, 0.5f);
+	glColor4f(1.0f, 1.0f, 1.0f, 10.5f);
 	//文字列編集エリアの作成
 	char buf[64];
 
@@ -67,7 +67,7 @@ void CUi::Render()
 	mFont.Draw(20, 580, 8, 16, buf);
 
 	//描画職の設定(緑色の半透明)
-	glColor4f(1.0f, 1.0f, 1.0f, 10.5f);
+	glColor4f(1.0f, 0.0f, 1.0f, 10.5f);
 	sprintf(buf, "RESTART:%03d", mRestart);
 	mFont.Draw(20, 20, 8, 16, buf);
 

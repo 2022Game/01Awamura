@@ -66,12 +66,18 @@ int CApplication::reset = 0;
 
 CApplication::CApplication()
 	:mpClearStage(nullptr)
+	,mpClearStage2(nullptr)
+	,mpClearStage3(nullptr)
+	,mpClearStage4(nullptr)
 	,mpCoinGimmick(nullptr)
 	,mpWallGimmick(nullptr)
 	,mpWoodGimmick(nullptr)
 	,mpHamahGimmick(nullptr)
 	,mpSoccerGimmick(nullptr)
 	,mpGameScene(nullptr)
+	,mpUi(nullptr)
+	,mRestart(0)
+	,mTime(0)
 {
 
 }
@@ -84,6 +90,7 @@ void CApplication::Start()
 	}*/
 	//ゲーム中に使用するモデルデータを読み込み
 	CResourceManager::Instance()->LoadModel("Field", "res\\sky.obj", "res\\sky.mtl");
+	CResourceManager::Instance()->LoadModel("ClearCoin", "res\\ClearCoin3.obj", "res\\ClearCoin3.mtl");
 	CResourceManager::Instance()->LoadModel("Player", "res\\Beard_man.obj", "res\\Beard_man.mtl");
 	CResourceManager::Instance()->LoadModel("Coin","res\\Coin.obj", "res\\Coin.mtl");
 	CResourceManager::Instance()->LoadModel("Hamah", "res\\apple2.obj", "res\\apple2.mtl");

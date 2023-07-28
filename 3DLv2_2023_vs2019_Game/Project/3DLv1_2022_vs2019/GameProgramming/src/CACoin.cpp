@@ -42,7 +42,6 @@ CACoin::CACoin(CModel* model, const CVector& position,
 	UpCount = 180 / 6 * 10;
 	SideChengeCount = 0;
 	SideCount = 300 / 6;
-	//mTag = CCharacter3::ETag::ECOIN;
 	ha = 0;
 	hb = 0;
 	mLastPos = position; //前回のポジションに設定する
@@ -54,16 +53,6 @@ void CACoin::Update() {
 	//移動前の座標を記憶しておく
 	mLastPos = Position();
 	//位置を移動
-	/*if (UpCount < 0)
-	{
-		UpCount = 0;
-		SCount = 2;
-	}*/
-	/*if (SCount == 1)
-	{
-		UpCount--;
-		Position(Position() + VELOCITY * MatrixRotate());
-	}*/
 	if (SCount >= 2)
 	{
 		if (SideChengeCount % 2 == 0)

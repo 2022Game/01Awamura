@@ -109,10 +109,10 @@ void CPlayer::Update() {
 		Position(Position() + VELOCITY2 * MatrixRotate());
 	}
 	
-	if (mInput.Key('O')) {
-		//Y軸の回転値を減少
-		jc = 60;
-	}
+	//if (mInput.Key('O')) {
+	//	//Y軸の回転値を減少
+	//	jc = 60;
+	//}
 
 
 	//Dキー入力で回転
@@ -195,21 +195,16 @@ void CPlayer::GroundedClearObj()
 	{
 		if (CApplication::StageReset != 1)
 		{
-			//randddco--; //テスト用
-			//CApplication::StageGuard = 0;
 			if (CApplication::StageCount == 0)
 			{
-				//mLastPos = Position();
 				CApplication::SelectStage = 1 + rand() % 6;
 				ddStage = CApplication::SelectStage; //一度ddStageに入れておく
 				CApplication::StageSwitch = 1;
-				//randddco = 380; //テスト用
 			}
 			if (CApplication::StageCount == 1)
 			{
 				CountLine = 1;
 				CountCraft = 1;
-				//mLastPos = Position();
 				CApplication::SelectStage = 1 + rand() % 6;
 				while (CApplication::SelectStage == ddStage)
 				{
@@ -217,13 +212,11 @@ void CPlayer::GroundedClearObj()
 				}
 				ccStage = CApplication::SelectStage; //一度ccStageに入れておく
 				CApplication::StageSwitch = 1;
-				//randddco = 580; //テスト用
 			}
 			if (CApplication::StageCount == 2)
 			{
 				CountLine = 2;
 				CountCraft = 2;
-				//mLastPos = Position();
 				CApplication::SelectStage = 1 + rand() % 6;
 				while (ddStage == CApplication::SelectStage ||
 					ccStage == CApplication::SelectStage)
@@ -250,25 +243,18 @@ void CPlayer::GroundedGuardObj()
 		CApplication::StageCount++;
 		CApplication::StageClearDelete++;
 		CApplication::StageCountGuard = 0;
-		CApplication::StageSwitch = 0; //テスト
+		CApplication::StageSwitch = 0; 
 	}
 }
 
 
 void CPlayer::Collision(CCollider* m, CCollider* o) {
-	/*CVector adjust;
-	if (CCollider::Collision(m,o,adjust))
-	{
-		mPosition = mPosition + adjust;
-		CTransform::Update();
-	}*/
 	//自身のコライダタイプの判定
 	switch (m->Type()) {
 	case CCollider::EType::ELINE://線分コライダ
 		//相手のコライダが三角コライダの時
 		if (o->Type() == CCollider::EType::ETRIANGLE) {
 			CVector adjust;//調整用ベクトル
-			//mLastPos = Position() + (CVector(0.0f, 20.0f, 0.0f));
 			//三角形と線分の衝突判定
 				if (CCollider::CollisionTriangleLine(o, m, &adjust))
 				{
@@ -297,10 +283,6 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 					//ステージの壁生成用のコライダにヒットした場合
 					if (o->Tag() == CCharacter3::ETag::ESTAGEGUARD)
 					{
-						/*if (mState == EState::EJUMP || mState == EState::EMOVE)
-						{
-							mState = EState::EJO;
-						}*/
 						GroundedGuardObj();
 					}
 
@@ -332,8 +314,6 @@ void CPlayer::Collision(CCollider* m, CCollider* o) {
 					{
 
 					}
-
-					//CCharacter3* parent = o->Parent();
 				}
 		}
 		//相手のコライダが球コライダの時
