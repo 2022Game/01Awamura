@@ -18,7 +18,7 @@ void srand(unsigned int seed);
 //CACoin(モデル、位置、回転、拡縮）
 CACoin::CACoin(CModel* model, const CVector& position,
 	const CVector& rotation, const CVector& scale)
-	:mCollider(this, &Matrix(), CVector(0.0f, 0.0f, 0.0f), 3.00f)
+	:mCollider(this, &Matrix(), CVector(0.0f, 0.0f, 0.0f), 3.0f)
 	,rand11(0)
 	,rand12(0)
 	,rand13(0)

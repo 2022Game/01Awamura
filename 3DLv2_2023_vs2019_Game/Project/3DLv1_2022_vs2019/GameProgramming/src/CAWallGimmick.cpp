@@ -41,20 +41,8 @@ void CAWallGimmick::Init()
 	if (CApplication::StageCount == 0)
 	{
 		CreateWall(CVector(26.0f, 24.0f, 0.0f), CVector(), CVector(0.0f, 5.0f, 1500.0f));
-		CreateWall(CVector(-0.7f, 24.0f, 0.0f), CVector(), CVector(0.0f, 5.0f, 1500.0f));
+		CreateWall(CVector(-1.3f, 24.0f, 0.0f), CVector(), CVector(0.0f, 5.0f, 1500.0f));
 	}
-	////ステージ２スタート生成
-	//if (CApplication::StageCount == 1)
-	//{
-	//	CreateWall(CVector(24.0f, 24.0f, 0.0f), CVector(), CVector(0.0f, 5.0f, 1500.0f));
-	//	CreateWall(CVector(0.0f, 24.0f, 0.0f), CVector(), CVector(0.0f, 5.0f,1500.0f));
-	//}
-	//////ステージ３スタート生成
-	//if (CApplication::StageCount == 2)
-	//{
-	//	CreateWall(CVector(24.0f, 24.0f, 0.0f), CVector(), CVector(0.0f, 5.0f, 1500.0f));
-	//	CreateWall(CVector(0.0f, 24.0f, 0.0f), CVector(), CVector(0.0f, 5.0f, 1500.0f));
-	//}
 }
 
 void CAWallGimmick::CreateWall(CVector& pos, CVector& rot, CVector& scale)
