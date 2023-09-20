@@ -1,0 +1,38 @@
+﻿  CAClearStage.cpp
+C:\Users\surok\Desktop\01Awamura\3DLv2_2023_vs2019_Game\Project\3DLv1_2022_vs2019\GameProgramming\src\CAClearStage.cpp(24,20): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+C:\Users\surok\Desktop\01Awamura\3DLv2_2023_vs2019_Game\Project\3DLv1_2022_vs2019\GameProgramming\src\CAClearStage.cpp(76,21): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+  CACoin.cpp
+C:\Users\surok\Desktop\01Awamura\3DLv2_2023_vs2019_Game\Project\3DLv1_2022_vs2019\GameProgramming\src\CACoin.cpp(11,1): warning C4005: 'VELOCITY': マクロが再定義されました。
+C:\Users\surok\Desktop\01Awamura\3DLv2_2023_vs2019_Game\Project\3DLv1_2022_vs2019\GameProgramming\src\CCharacter.h(6): message : 'VELOCITY' の以前の定義を確認してください
+  CACoinGimmick.cpp
+C:\Users\surok\Desktop\01Awamura\3DLv2_2023_vs2019_Game\Project\3DLv1_2022_vs2019\GameProgramming\src\CACoinGimmick.cpp(37,20): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+C:\Users\surok\Desktop\01Awamura\3DLv2_2023_vs2019_Game\Project\3DLv1_2022_vs2019\GameProgramming\src\CACoinGimmick.cpp(127,21): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+  CAHamahGimmick.cpp
+C:\Users\surok\Desktop\01Awamura\3DLv2_2023_vs2019_Game\Project\3DLv1_2022_vs2019\GameProgramming\src\CAHamahGimmick.cpp(38,20): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+  CASoccer.cpp
+  CASoccerGimmick.cpp
+C:\Users\surok\Desktop\01Awamura\3DLv2_2023_vs2019_Game\Project\3DLv1_2022_vs2019\GameProgramming\src\CASoccerGimmick.cpp(38,20): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+  CAWallGimmick.cpp
+C:\Users\surok\Desktop\01Awamura\3DLv2_2023_vs2019_Game\Project\3DLv1_2022_vs2019\GameProgramming\src\CAWallGimmick.cpp(21,20): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+  CAWood.cpp
+C:\Users\surok\Desktop\01Awamura\3DLv2_2023_vs2019_Game\Project\3DLv1_2022_vs2019\GameProgramming\src\CAWood.cpp(9,1): warning C4005: 'VELOCITY': マクロが再定義されました。
+C:\Users\surok\Desktop\01Awamura\3DLv2_2023_vs2019_Game\Project\3DLv1_2022_vs2019\GameProgramming\src\CCharacter.h(6): message : 'VELOCITY' の以前の定義を確認してください
+  CAWoodGimmick.cpp
+C:\Users\surok\Desktop\01Awamura\3DLv2_2023_vs2019_Game\Project\3DLv1_2022_vs2019\GameProgramming\src\CAWoodGimmick.cpp(42,20): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+  CApplication.cpp
+  CBillBoard.cpp
+  CCharacter3.cpp
+  CGameScene.cpp
+  CPlayer.cpp
+C:\Users\surok\Desktop\01Awamura\3DLv2_2023_vs2019_Game\Project\3DLv1_2022_vs2019\GameProgramming\src\CPlayer.cpp(14,1): warning C4005: 'VELOCITY': マクロが再定義されました。
+C:\Users\surok\Desktop\01Awamura\3DLv2_2023_vs2019_Game\Project\3DLv1_2022_vs2019\GameProgramming\src\CCharacter.h(6): message : 'VELOCITY' の以前の定義を確認してください
+  CSceneManager.cpp
+  CTitleScene.cpp
+  CUi.cpp
+  main.cpp
+  コード生成しています。
+  2 of 1121 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    11 functions had inline decision re-evaluated but remain unchanged
+  コード生成が終了しました。
+  GameProgramming.vcxproj -> C:\Users\surok\Desktop\01Awamura\3DLv2_2023_vs2019_Game\Project\3DLv1_2022_vs2019\Release\GameProgramming.exe
