@@ -88,6 +88,6 @@ void CACoin::Collision(CCollider* m, CCollider* o) {
 void CACoin::Collision()
 {
 	//コライダの優先度変更
-	mColliderMesh.ChangePriority();
+	//mColliderMesh.ChangePriority();
 	CCollisionManager::Instance()->Collision(&mCollider, COLLISIONRANGE * 10);
 }
