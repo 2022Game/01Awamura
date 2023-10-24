@@ -165,7 +165,7 @@ void CField::Update()
 		if (mStageCount == 2)
 		{
 			delete mpClearStageGimmick;
-			mpClearStageGimmick = nullptr;
+			//mpClearStageGimmick = nullptr;
 			mpClearStageGimmick = new CClearStageGimmick();
 			mClearCount = 0;
 			mClearCountSwitch = 0;

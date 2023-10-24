@@ -13,16 +13,19 @@ CPlayer* CPlayer::spInstance = nullptr;
 // プレイヤーのアニメーションデータのテーブル
 const CPlayer::AnimData CPlayer::ANIM_DATA[] =
 {
-	{ "Character\\Player\\jump.x",										true,	160.0f	},	// Tポーズ
-	//{ "Character\\Player\\anim\\idle.x",		true,	153.0f	},	// 待機
-	//{ "Character\\Player\\anim\\walk.x",		true,	66.0f	},	// 歩行
+	{ "Character\\Player\\Normalidol.x",true,	554.0f	},	// Tポーズ
+	{ "Character\\Player\\SuperJump.x",true,	160.0f	},	// Tポーズ
+	{ "Character\\Player\\run.x",		true,	40.0f	},	// 待機
+	{ "Character\\Player\\jumpUp.x",		true,	30.0f	},	// 待機
+	{ "Character\\Player\\jumpDown2.x",		true,	35.0f	},	// 歩行
+	{ "Character\\Player\\jumpDown3.x",		true,	38.0f	},	// 歩行
 	//{ "Character\\Player\\anim\\attack.x",		false,	91.0f	},	// 攻撃
-	//{ "Character\\Player\\anim\\jump_start.x",	false,	25.0f	},	// ジャンプ開始
+	//{ "Character\\Player\\anim\\SuperJump.x",	false,	25.0f	},	// ジャンプ開始
 	//{ "Character\\Player\\anim\\jump.x",		true,	1.0f	},	// ジャンプ中
 	//{ "Character\\Player\\anim\\jump_end.x",	false,	26.0f	},	// ジャンプ終了
 };
 
-#define PLAYER_HEIGHT 16.0f
+#define PLAYER_HEIGHT 1.0f
 #define MOVE_SPEED 0.375f
 #define JUMP_SPEED 1.5f
 #define GRAVITY 0.0625f
@@ -41,7 +44,7 @@ CPlayer::CPlayer()
 	CModelX* model = new CModelX();
 	model->Load(MODEL_PATH);
 
-	Scale(5.0f, 5.0f, 5.0f);
+	Scale(10.0f, 10.0f, 10.0f);
 
 
 	// テーブル内のアニメーションデータを読み込み
@@ -54,8 +57,6 @@ CPlayer::CPlayer()
 	}
 	// CXCharacterの初期化
 	Init(model);
-
-	CXCharacter::ChangeAnimation(0, true, 160.0f);
 
 	// 最初は待機アニメーションを再生
 	ChangeAnimation(EAnimType::eIdle);
@@ -80,19 +81,6 @@ CPlayer::CPlayer()
 		CVector(0.0f, PLAYER_HEIGHT / 2, PLAYER_HEIGHT / 4),
 		CVector(0.0f, PLAYER_HEIGHT / 2, 0.0f)
 	);
-	/*mpColliderLineBody = new CColliderLine
-	(
-		this, ELayer::eField,
-		CVector(-PLAYER_HEIGHT / 6, PLAYER_HEIGHT/2, PLAYER_HEIGHT / 4),
-		CVector(0.0f, PLAYER_HEIGHT/2, 0.0f)
-	);
-
-	mpColliderLineBody = new CColliderLine
-	(
-		this, ELayer::eField,
-		CVector(PLAYER_HEIGHT / 6, PLAYER_HEIGHT/2, PLAYER_HEIGHT / 4),
-		CVector(0.0f, PLAYER_HEIGHT/2, 0.0f)
-	);*/
 	mpColliderLineLeg = new CColliderLine
 	(
 		this, ELayer::eField,
@@ -107,19 +95,6 @@ CPlayer::CPlayer()
 		CVector(0.0f, 1.0f, 0.0f)
 	);
 
-	/*mpColliderLineLeg = new CColliderLine
-	(
-		this, ELayer::eField,
-		CVector(PLAYER_HEIGHT/6, 1.0f, PLAYER_HEIGHT / 6),
-		CVector(0.0f, 1.0f, 0.0f)
-	);
-
-	mpColliderLineLeg = new CColliderLine
-	(
-		this, ELayer::eField,
-		CVector(-PLAYER_HEIGHT/6, 1.0f, PLAYER_HEIGHT / 6),
-		CVector(0.0f, 1.0f, 0.0f)
-	);*/
 	mpColliderLineHead = new CColliderLine
 	(
 		this, ELayer::eField,
@@ -133,19 +108,6 @@ CPlayer::CPlayer()
 		CVector(0.0f, PLAYER_HEIGHT, PLAYER_HEIGHT / 4),
 		CVector(0.0f, PLAYER_HEIGHT, 0.0f)
 	);
-	/*mpColliderLineHead = new CColliderLine
-	(
-		this, ELayer::eField,
-		CVector(-PLAYER_HEIGHT / 6, PLAYER_HEIGHT, PLAYER_HEIGHT / 4),
-		CVector(0.0f, PLAYER_HEIGHT, 0.0f)
-	);
-
-	mpColliderLineHead = new CColliderLine
-	(
-		this, ELayer::eField,
-		CVector(PLAYER_HEIGHT/6, PLAYER_HEIGHT, PLAYER_HEIGHT / 4),
-		CVector(0.0f, PLAYER_HEIGHT, 0.0f)
-	);*/
 	mpColliderLine->SetCollisionLayers({ ELayer::eField });
 	mpColliderLineBody->SetCollisionLayers({ ELayer::eField });
 	mpColliderLineLeg->SetCollisionLayers({ ELayer::eField });
@@ -185,6 +147,7 @@ void CPlayer::UpdateIdle()
 {
 	mMoveSpeed.X(0.0f);
 	mMoveSpeed.Z(0.0f);
+	//CXCharacter::ChangeAnimation(0, true, 1.0f);
 	
 	if (mIsGrounded)
 	{
@@ -207,13 +170,13 @@ void CPlayer::UpdateIdle()
 			mMoveSpeed += move * MOVE_SPEED;
 
 			// 歩行アニメーションに切り替え
-			ChangeAnimation(EAnimType::eWalk);
+			CXCharacter::ChangeAnimation(2, true, 5.0f);
 		}
 		// 移動キーを入力していない
 		else
 		{
 			// 待機アニメーションに切り替え
-			ChangeAnimation(EAnimType::eIdle);
+			CXCharacter::ChangeAnimation(0, true, 544.0f);
 		}
 
 		// 左クリックで攻撃状態へ移行
@@ -232,7 +195,7 @@ void CPlayer::UpdateIdle()
 	else
 	{
 		// 待機アニメーションに切り替え
-		ChangeAnimation(EAnimType::eIdle);
+		CXCharacter::ChangeAnimation(0, true, 544.0f);
 	}
 }
 
@@ -260,20 +223,24 @@ void CPlayer::UpdateAttackWait()
 // ジャンプ開始
 void CPlayer::UpdateJumpStart()
 {
-	ChangeAnimation(EAnimType::eJumpStart);
-	mState = EState::eJump;
+	//ChangeAnimation(EAnimType::eJumpStart);
+	CXCharacter::ChangeAnimation(3, true, 10.0f);
+	if (IsAnimationFinished())
+	{
+		mState = EState::eJump;
 
-	mMoveSpeed += CVector(0.0f, JUMP_SPEED, 0.0f);
-	mIsGrounded = false;
+		mMoveSpeed += CVector(0.0f, JUMP_SPEED, 0.0f);
+		mIsGrounded = false;
+	}
 }
 
 // ジャンプ中
 void CPlayer::UpdateJump()
 {
+	CXCharacter::ChangeAnimation(4, true, 40.0f);
 	if (mMoveSpeed.Y() <= 0.0f)
 	{
-		ChangeAnimation(EAnimType::eJumpEnd);
-		mState = EState::eJumpEnd;
+		//ChangeAnimation(EAnimType::eJumpEnd);
 	}
 }
 
@@ -290,8 +257,9 @@ void CPlayer::UpdateJumpEnd()
 void CPlayer::UpdateClear()
 {
 	// クリアアニメーションを開始
-	ChangeAnimation(EAnimType::eAttack);
+	//ChangeAnimation(EAnimType::eAttack);
 	// クリア終了待ち状態へ移行
+	CXCharacter::ChangeAnimation(0, true, 544.0f);
 	mState = EState::eClearEnd;
 }
 
@@ -305,7 +273,7 @@ void CPlayer::UpdateClearEnd()
 		CField::mClearCountSwitch = 1;
 		CField::mStageCreateSwitch = 1;
 		CField::mClearCount = 1;
-		ChangeAnimation(EAnimType::eIdle);
+		//ChangeAnimation(EAnimType::eIdle);
 		mState = EState::eIdle;
 	}
 }
@@ -382,6 +350,14 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 			mState = EState::eClear;
 		}
 		//else if (CField::mClearCountSwitch = 0);
+		if (other->Layer() == ELayer::eClearObject || other->Layer() == ELayer::eField)
+		{
+			if (mState == EState::eJump)
+			{
+				CXCharacter::ChangeAnimation(5, true, 38.0f);
+				mState = EState::eJumpEnd;
+			}
+		}
 
 		if (other->Layer() == ELayer::eField || other->Layer() == ELayer::eObject || other->Layer() == ELayer::eClearObject)
 		{
@@ -391,6 +367,11 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 			if (other->Tag() == ETag::eRideableObject)
 			{
 				mpRideObject = other->Owner();
+				if (mState != EState::eIdle)
+				{
+					CXCharacter::ChangeAnimation(5, true, 38.0f);
+					mState = EState::eJumpEnd;
+				}
 			}
 		}
 	}
