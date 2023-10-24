@@ -1,0 +1,247 @@
+#pragma once
+#include "CTransform.h"
+#include "CollisionLayer.h"
+#include "ColliderType.h"
+#include "CVertex.h"
+#include "ObjectTag.h"
+
+class CObjectBase;
+class CCollisionManager;
+class CColliderLine;
+class CColliderSphere;
+class CColliderTriangle;
+
+class CHitInfo
+{
+public:
+	CVector adjust;
+	std::list<STVertex> tris;
+};
+
+/// <summary>
+/// コライダーのベースクラス
+/// </summary>
+class CCollider : public CTransform
+{
+	friend CCollisionManager;
+public:
+	/// <summary>
+	/// コンストラクタ
+	/// </summary>
+	/// <param name="owner">コライダーの持ち主</param>
+	/// <param name="layer">衝突判定用のレイヤー</param>
+	/// <param name="type">コライダーの種類</param>
+	CCollider(CObjectBase* owner, ELayer layer, EColliderType type);
+	// デストラクタ
+	virtual ~CCollider();
+
+	// 衝突判定レイヤーを取得
+	ELayer Layer() const;
+	// コライダーの種類を取得
+	EColliderType Type() const;
+	// コライダーの持ち主を取得
+	CObjectBase* Owner() const;
+	// コライダーの持ち主のタグを取得
+	ETag Tag() const;
+
+	/// <summary>
+	/// コライダーが有効かどうかを設定
+	/// </summary>
+	/// <param name="isEnable">有効かどうか</param>
+	void SetEnable(bool isEnable);
+	/// <summary>
+	/// コライダーが有効かどうかを取得
+	/// </summary>
+	/// <returns>trueならば有効</returns>
+	bool IsEnable() const;
+
+	/// <summary>
+	/// 指定したコライダーと衝突判定を行うかどうかを取得
+	/// </summary>
+	/// <param name="col">衝突判定を行うか確認するコライダー</param>
+	/// <returns>trueならば衝突判定を行う</returns>
+	bool IsCollision(CCollider* col) const;
+
+	/// <summary>
+	/// 衝突判定を行うレイヤーを設定
+	/// （設定前の状態はリセットする）
+	/// </summary>
+	/// <param name="layers">衝突判定を行うレイヤーのリスト</param>
+	void SetCollisionLayers(Layers layers);
+	/// <summary>
+	/// 指定したレイヤーとの衝突判定を行うかどうかを設定
+	/// </summary>
+	/// <param name="layer">設定するレイヤー</param>
+	/// <param name="isCollision">衝突判定を行うかどうか</param>
+	void SetCollisionLayer(ELayer layer, bool isCollision);
+	/// <summary>
+	/// 指定したレイヤーと衝突判定を行うかどうかを取得
+	/// </summary>
+	/// <param name="layer">判定するレイヤー</param>
+	/// <returns>trueならば衝突判定を行う</returns>
+	bool IsCollisionLayer(ELayer layer) const;
+
+	/// <summary>
+	/// 衝突判定を行うオブジェクトタグを設定
+	/// （設定前の状態はリセットする）
+	/// </summary>
+	/// <param name="tags">衝突判定を行うオブジェクトタグのリスト</param>
+	void SetCollisionTags(Tags tags);
+	/// <summary>
+	/// 指定したオブジェクトタグとの衝突判定を行うかどうかを設定
+	/// </summary>
+	/// <param name="tag">設定するオブジェクトタグ</param>
+	/// <param name="isCollision">衝突判定を行うかどうか</param>
+	void SetCollisionTag(ETag tag, bool isCollision);
+	/// <summary>
+	/// 指定したオブジェクトタグと衝突判定を行うかどうかを取得
+	/// </summary>
+	/// <param name="tag">判定するオブジェクトタグ</param>
+	/// <returns>trueならば衝突判定を行う</returns>
+	bool IsCollisionTag(ETag tag) const;
+
+	// 行列を取得
+	CMatrix Matrix() const;
+
+	// コライダー描画
+	virtual void Render() = 0;
+
+	/// <summary>
+	/// 三角形と三角形の衝突判定
+	/// </summary>
+	/// <param name="t00">三角形1の頂点1</param>
+	/// <param name="t01">三角形1の頂点2</param>
+	/// <param name="t02">三角形1の頂点3</param>
+	/// <param name="t10">三角形2の頂点1</param>
+	/// <param name="t11">三角形2の頂点2</param>
+	/// <param name="t12">三角形2の頂点3</param>
+	/// <param name="hit">衝突した時の情報</param>
+	/// <returns>trueならば、衝突している</returns>
+	static bool CollisionTriangle(	const CVector& t00, const CVector& t01, const CVector& t02,
+									const CVector& t10, const CVector& t11, const CVector& t12,
+									CHitInfo* hit);
+
+	/// <summary>
+	/// 三角形と線分の衝突判定
+	/// </summary>
+	/// <param name="t0">三角形の頂点1</param>
+	/// <param name="t1">三角形の頂点2</param>
+	/// <param name="t2">三角形の頂点3</param>
+	/// <param name="ls">線分の始点</param>
+	/// <param name="le">線分の終点</param>
+	/// <param name="info">衝突した時の情報</param>
+	/// <returns>trueならば、衝突している</returns>
+	static bool CollisionTriangleLine(	const CVector& t0, const CVector& t1, const CVector& t2,
+										const CVector& ls, const CVector& le, CHitInfo* info);
+
+	/// <summary>
+	/// 三角形と球の衝突判定
+	/// </summary>
+	/// <param name="t0">三角形の頂点1</param>
+	/// <param name="t1">三角形の頂点2</param>
+	/// <param name="t2">三角形の頂点3</param>
+	/// <param name="sp">球の座標</param>
+	/// <param name="sr">球の半径</param>
+	/// <param name="info">衝突した時の情報</param>
+	/// <returns>trueならば、衝突している</returns>
+	static bool CollisionTriangleSphere(const CVector& t0, const CVector& t1, const CVector& t2,
+										const CVector& sp, const float sr, CHitInfo* info);
+
+	/// <summary>
+	/// 球と球の衝突判定
+	/// </summary>
+	/// <param name="sp0">球1の座標</param>
+	/// <param name="sr0">球1の半径</param>
+	/// <param name="sp1">球2の座標</param>
+	/// <param name="sr1">球2の半径</param>
+	/// <param name="info">衝突した時の情報</param>
+	/// <returns>trueならば、衝突している</returns>
+	static bool CollisionSphere(const CVector& sp0, const float sr0,
+								const CVector& sp1, const float sr1, CHitInfo* info);
+
+	/// <summary>
+	/// 球と線分の衝突判定
+	/// </summary>
+	/// <param name="sp">球の座標</param>
+	/// <param name="sr">球の半径</param>
+	/// <param name="ls">線分の始点</param>
+	/// <param name="le">線分の終点</param>
+	/// <param name="info">衝突した時の情報</param>
+	/// <returns>trueならば、衝突している</returns>
+	static bool CollisionSphereLine(const CVector& sp, const float sr,
+									const CVector& ls, const CVector& le, CHitInfo* info);
+
+	/// <summary>
+	/// 線分と線分の衝突判定
+	/// </summary>
+	/// <param name="ls0">線分1の始点</param>
+	/// <param name="le0">線分1の終点</param>
+	/// <param name="ls1">線分2の始点</param>
+	/// <param name="le1">線分2の終点</param>
+	/// <param name="info">衝突した時の情報</param>
+	/// <returns>trueならば、衝突している</returns>
+	static bool CollisionLine(	const CVector& ls0, const CVector& le0,
+								const CVector& ls1, const CVector& le1, CHitInfo* info);
+
+	/// <summary>
+	/// メッシュと線分の衝突判定
+	/// </summary>
+	/// <param name="tris">メッシュを構成する三角形ポリゴンのリスト</param>
+	/// <param name="ls">線分の始点</param>
+	/// <param name="le">線分の終点</param>
+	/// <param name="info">衝突した時の情報</param>
+	/// <returns>trueならば、衝突している</returns>
+	static bool CollisionMeshLine(	const std::list<STVertex>& tris,
+									const CVector& ls, const CVector& le, CHitInfo* info);
+
+	/// <summary>
+	/// メッシュと球の衝突判定
+	/// </summary>
+	/// <param name="tris">メッシュを構成する三角形ポリゴンのリスト</param>
+	/// <param name="sp">球の座標</param>
+	/// <param name="sr">球の半径</param>
+	/// <param name="info">衝突した時の情報</param>
+	/// <returns>trueならば、衝突している</returns>
+	static bool CollisionMeshSpehre(const std::list<STVertex>& tris,
+									const CVector& sp, const float sr, CHitInfo* info);
+
+	/// <summary>
+	/// メッシュと三角形の衝突判定
+	/// </summary>
+	/// <param name="tris">メッシュを構成する三角形ポリゴンのリスト</param>
+	/// <param name="t0">三角形の頂点1</param>
+	/// <param name="t1">三角形の頂点2</param>
+	/// <param name="t2">三角形の頂点3</param>
+	/// <param name="hit">衝突した時の情報</param>
+	/// <returns>trueならば、衝突している</returns>
+	static bool CollisionMeshTriangle(	const std::list<STVertex>& tris,
+										const CVector& t0, const CVector& t1, const CVector& t2,
+										CHitInfo* hit);
+
+	static float CalcDistancePointToLine(const CVector& point, const CVector& lineS, const CVector& lineE, CVector* nearest = nullptr);
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="c0">コライダ1</param>
+	/// <param name="c1">コライダ2</param>
+	/// <param name="hit">ヒットした時の情報</param>
+	/// <returns>trueならば、衝突している</returns>
+	static bool Collision(CCollider* c0, CCollider* c1, CHitInfo* hit);
+
+protected:
+	/// <summary>
+	/// コライダーの設定
+	/// </summary>
+	/// <param name="owner">コライダーの持ち主</param>
+	/// <param name="layer">衝突判定用レイヤー</param>
+	void Set(CObjectBase* owner, ELayer layer);
+
+private:
+	ELayer mLayer;			// 衝突判定レイヤー
+	EColliderType mType;	// コライダーの種類
+	CObjectBase* mpOwner;	// コライダーの持ち主
+	bool mIsEnable;			// 有効かどうか
+	int mCollisionLayers;	// 衝突判定を行うレイヤーのビットフラグ
+	int mCollisionTags;		// 衝突判定を行うオブジェクトタグのビットフラグ
+};
