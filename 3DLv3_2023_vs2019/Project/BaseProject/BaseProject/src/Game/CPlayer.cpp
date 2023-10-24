@@ -13,7 +13,7 @@ CPlayer* CPlayer::spInstance = nullptr;
 // プレイヤーのアニメーションデータのテーブル
 const CPlayer::AnimData CPlayer::ANIM_DATA[] =
 {
-	{ "Character\\Player\\BardmanJump.x",										true,	160.0f	},	// Tポーズ
+	{ "Character\\Player\\jump.x",										true,	160.0f	},	// Tポーズ
 	//{ "Character\\Player\\anim\\idle.x",		true,	153.0f	},	// 待機
 	//{ "Character\\Player\\anim\\walk.x",		true,	66.0f	},	// 歩行
 	//{ "Character\\Player\\anim\\attack.x",		false,	91.0f	},	// 攻撃
@@ -54,6 +54,8 @@ CPlayer::CPlayer()
 	}
 	// CXCharacterの初期化
 	Init(model);
+
+	CXCharacter::ChangeAnimation(0, true, 160.0f);
 
 	// 最初は待機アニメーションを再生
 	ChangeAnimation(EAnimType::eIdle);
