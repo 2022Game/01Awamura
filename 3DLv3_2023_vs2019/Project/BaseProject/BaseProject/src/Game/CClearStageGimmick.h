@@ -4,7 +4,7 @@
 #include "CColliderMesh.h"
 #include "CCollider.h"
 
-class CClearStageGimmick : public CRideableObject
+class CClearStageGimmick : public CTask
 {
 private:
 	std::vector<CClearStage*> mClearStage;	// クリア土台のリスト
@@ -17,8 +17,6 @@ private:
 	
 
 	CModel* mpClearModel;
-
-	CColliderMesh* mpColliderMesh;
 
 
 public:
