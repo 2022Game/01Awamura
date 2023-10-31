@@ -37,6 +37,10 @@ public:
 	void UpdateClear();
 	//クリア終了
 	void UpdateClearEnd();
+	//倒れる
+	void UpdateDown();
+	//起き上がる
+	void UpdateUp();
 
 	// 更新
 	void Update();
@@ -97,6 +101,8 @@ private:
 		eJumpN, //空中
 		eClear, //クリア
 		eClearEnd, //クリア終了
+		eDown, //倒れる
+		eUp, //起き上がる
 	};
 	EState mState;	// プレイヤーの状態
 

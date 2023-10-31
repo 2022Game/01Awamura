@@ -217,6 +217,12 @@
     <ClCompile Include="src\Game\CClearStageGimmick.cpp">
       <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\CFloorGimmick.cpp">
+      <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CFloor.cpp">
+      <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BaseSystem\CCollider.h">
@@ -397,6 +403,12 @@
       <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CClearStageGimmick.h">
+      <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CFloorGimmick.h">
+      <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CFloor.h">
       <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
     </ClInclude>
   </ItemGroup>

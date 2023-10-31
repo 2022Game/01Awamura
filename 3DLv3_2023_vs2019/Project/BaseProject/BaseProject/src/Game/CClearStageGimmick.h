@@ -17,7 +17,7 @@ private:
 	
 
 	CModel* mpClearModel;
-
+	CColliderMesh* mpColliderMesh;
 
 public:
 	CClearStageGimmick();

@@ -3,6 +3,8 @@
 #include "CMoveFloor.h"
 #include "CRotateFloor.h"
 #include "CClearStage.h"
+#include "CFloor.h"
+#include "CFloorGimmick.h"
 #include "CClearStageGimmick.h"
 
 int CField::mClearCount = 0;
@@ -14,6 +16,7 @@ int CField::mStageReset = 0;
 CField::CField()
 	: CObjectBase(ETag::eField, ETaskPriority::eBackground)
 	, mpClearStageGimmick(nullptr)
+	,mpFloorGimmick(nullptr)
 {
 	mpModel = new CModel();
 	mpModel->Load("Field\\field.obj", "Field\\field.mtl");
@@ -111,6 +114,12 @@ void CField::CreateFieldObjects()
 		mpClearModel,
 		CVector(60.0f, 0.0f, -140.0f), CVector(5.5f, 5.0f, 5.25f)
 	);
+
+	new CFloor
+	(
+		mpClearModel,
+		CVector(100.0f, 0.0f, -140.0f), CVector(5.5f, 5.0f, 5.25f)
+	);
 	//// ìÆÇ≠è∞á@
 	//new CMoveFloor
 	//(
@@ -157,8 +166,10 @@ void CField::Update()
 		{
 			delete mpClearStageGimmick;
 			mpClearStageGimmick = nullptr;
-			mpClearStageGimmick = new CClearStageGimmick();
-			
+			delete mpFloorGimmick;
+			mpFloorGimmick = nullptr;
+			//mpClearStageGimmick = new CClearStageGimmick();
+			mpFloorGimmick = new CFloorGimmick();
 			mClearCount = 0;
 			mClearCountSwitch = 0;
 			mStageCreateSwitch = 0;
@@ -167,6 +178,9 @@ void CField::Update()
 		{
 			delete mpClearStageGimmick;
 			mpClearStageGimmick = nullptr;
+			delete mpFloorGimmick;
+			mpFloorGimmick = nullptr;
+			//mpFloorGimmick = new CFloorGimmick();
 			mpClearStageGimmick = new CClearStageGimmick();
 			mClearCount = 0;
 			mClearCountSwitch = 0;
@@ -176,6 +190,8 @@ void CField::Update()
 		{
 			delete mpClearStageGimmick;
 			mpClearStageGimmick = nullptr;
+			delete mpFloorGimmick;
+			mpFloorGimmick = nullptr;
 			mpClearStageGimmick = new CClearStageGimmick();
 			mClearCount = 0;
 			mClearCountSwitch = 0;
@@ -185,6 +201,8 @@ void CField::Update()
 		{
 			delete mpClearStageGimmick;
 			mpClearStageGimmick = nullptr;
+			delete mpFloorGimmick;
+			mpFloorGimmick = nullptr;
 			mpClearStageGimmick = new CClearStageGimmick();
 			mClearCount = 0;
 			mClearCountSwitch = 0;

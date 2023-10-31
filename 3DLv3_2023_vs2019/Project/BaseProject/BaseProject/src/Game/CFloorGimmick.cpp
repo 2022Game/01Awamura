@@ -1,0 +1,90 @@
+#include "CFloorGimmick.h"
+#include "CApplication.h"
+#include "CTaskManager.h"
+#include "CField.h"
+
+#include <stdlib.h>
+
+#include "time.h"
+
+//床
+#define MODEL_FCOIN "res\\Coin.obj","res\\Coin.mtl"
+
+//int rand(void);
+//void srand(unsigned int seed);
+
+CFloorGimmick::CFloorGimmick()
+{
+	//srand((unsigned int)time(NULL));
+	// 初期処理
+	Init();
+
+	// タスクマネージャーに自身を追加
+	CTaskManager::Instance()->Add(this);
+
+	//mpColliderMesh = new CColliderMesh(this, ELayer::eClearObject, mpClearModel);
+}
+
+CFloorGimmick::~CFloorGimmick()
+{
+	//// クリア土台を破棄
+	for (int i = 0; i < mFloor.size(); i++)
+	{
+		delete mFloor[i];
+	}
+	// 一応リストもクリアしておく
+	mFloor.clear();
+
+	// タスクマネージャーから自身を取り除く
+	//CTaskManager::Instance()->Remove(this);
+}
+
+void CFloorGimmick::Init()
+{
+	// クリア土台のモデル読み込み
+	mpFloorModel = new CModel();
+	mpFloorModel->Load("Field\\Object\\Coin2.obj", "Field\\Object\\Coin2.mtl");
+
+	// クリア判定用の土台を生成
+	//ステージ１
+	if (CField::mStageCount == 1 && CField::mStageCreateSwitch == 1)
+	{
+		CreateFloor(mpFloorModel,
+			CVector(120.0f, 0.0f, -440.0f), CVector(5.5f, 5.0f, 5.25f));
+	}
+	//ステージ２
+	if (CField::mStageCount == 2 && CField::mStageCreateSwitch == 1)
+	{
+		
+	}
+	//ステージ3
+	if (CField::mStageCount == 3 && CField::mStageCreateSwitch == 1)
+	{
+		
+	}
+	//ステージ4
+	if (CField::mStageCount == 4 && CField::mStageCreateSwitch == 1)
+	{
+		
+	}
+	//ステージ5
+	if (CField::mStageCount == 5 && CField::mStageCreateSwitch == 1)
+	{
+		CreateFloor(mpFloorModel,
+			CVector(20.0f, 0.0f, -440.0f), CVector(5.5f, 5.0f, 5.25f));
+	}
+}
+
+void CFloorGimmick::CreateFloor(CModel* model, const CVector& pos, const CVector& scale)
+{
+	if (mpFloorModel == nullptr) return;
+
+	// クリア土台を生成してリストに追加
+	CFloor* coin = new CFloor(mpFloorModel, pos, scale);
+	mFloor.push_back(coin);
+}
+
+void CFloorGimmick::Update()
+{
+
+}

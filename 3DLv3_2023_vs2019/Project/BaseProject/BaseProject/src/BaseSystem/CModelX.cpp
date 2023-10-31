@@ -57,7 +57,7 @@ std::vector<CAnimationSet*>& CModelX::AnimationSet()
 FinedFrame(フレーム名)
 フレーム名に該当するフレームのアドレスを返す
 */
-CModelXFrame* CModelX::FinedFrame(char* name)
+CModelXFrame* CModelX::FinedFrame(const char* name)
 {
 	//イテレータの作成
 	//std::vector<CModelXFrame*>::iterator itr;
@@ -574,10 +574,10 @@ CModelXFrame::CModelXFrame(CModelX* model)
 	{
 		//次の単語取得
 		model->GetToken(); //Frame
-	    //}の場合は終了
+		//}の場合は終了
 		if (strchr(model->mToken, '}'))break;
 		//新たなフレームの場合は、子フレームに追加
-		if (strcmp(model->mToken,"Frame") == 0)
+		if (strcmp(model->mToken, "Frame") == 0)
 		{
 			//フレーム名取得
 			model->GetToken();
@@ -609,13 +609,13 @@ CModelXFrame::CModelXFrame(CModelX* model)
 		}
 		else if (strcmp(model->mToken, "Mesh") == 0)
 		{
-		mpMesh = new CMesh;
-		mpMesh->Init(model);
+			mpMesh = new CMesh;
+			mpMesh->Init(model);
 		}
 		else
 		{
-		//上記以外の要素は読み飛ばす
-		model->SkipNode();
+			//上記以外の要素は読み飛ばす
+			model->SkipNode();
 		}
 	}
 	//デバッグバージョンのみ有効
@@ -1300,7 +1300,7 @@ CAnimation::CAnimation(CModelX* model)
 	model->GetToken(); //FrameName
 	mpFrameName = new char[strlen(model->Token()) + 1];
 	strcpy(mpFrameName, model->Token());
-	mFrameIndex = 
+	mFrameIndex =
 		model->FinedFrame(model->Token())->Index();
 	model->GetToken();	// }
 	//キーの配列を保存しておく配列
@@ -1327,7 +1327,7 @@ CAnimation::CAnimation(CModelX* model)
 				//時間の配列を時間数分確保
 				time[type] = new float[mKeyNum];
 				//時間数分繰り返す
-				for(int i = 0; i < mKeyNum; i++)
+				for (int i = 0; i < mKeyNum; i++)
 				{
 					//時間取得
 					time[type][i] = atof(model->GetToken());
@@ -1401,7 +1401,7 @@ CAnimation::CAnimation(CModelX* model)
 		}
 	}
 	//確保したエリア解放
-	for (int i = 0; i < ARRAY_SIZE(key);i++)
+	for (int i = 0; i < ARRAY_SIZE(key); i++)
 	{
 		SAFE_DELETE_ARRAY(time[i]);
 		SAFE_DELETE_ARRAY(key[i]);

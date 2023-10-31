@@ -21,10 +21,8 @@ const CPlayer::AnimData CPlayer::ANIM_DATA[] =
 	{ "Character\\Player\\jumpDown3.x",		true,	38.0f	},	// ジャンプ着地
 	{ "Character\\Player\\run.x",		true,	40.0f	},	// 走る
 	{ "Character\\Player\\jumpN.x",		true,	1.0f	},	// 落下中
-	//{ "Character\\Player\\anim\\attack.x",		false,	91.0f	},	// 攻撃
-	//{ "Character\\Player\\anim\\SuperJump.x",	false,	25.0f	},	// ジャンプ開始
-	//{ "Character\\Player\\anim\\jump.x",		true,	1.0f	},	// ジャンプ中
-	//{ "Character\\Player\\anim\\jump_end.x",	false,	26.0f	},	// ジャンプ終了
+	{ "Character\\Player\\Down.x",		true,	150.0f	},	// 落下中
+	{ "Character\\Player\\Up.x",		true,	110.0f	},	// 落下中
 };
 
 #define PLAYER_HEIGHT 1.5f
@@ -188,7 +186,7 @@ void CPlayer::UpdateIdle()
 		{
 			mMoveSpeed.X(0.0f);
 			mMoveSpeed.Z(0.0f);
-			mState = EState::eAttack;
+			mState = EState::eDown;
 		}
 		// SPACEキーでジャンプ開始へ移行
 		else if (CInput::PushKey(VK_SPACE))
@@ -270,6 +268,26 @@ void CPlayer::UpdateJumpN()
 	}
 }
 
+//倒れる
+void CPlayer::UpdateDown()
+{
+	CXCharacter::ChangeAnimation(8, false, 60.0f);
+	if (IsAnimationFinished())
+	{
+		mState = EState::eUp;
+	}
+}
+
+//起き上がる
+void CPlayer::UpdateUp()
+{
+	CXCharacter::ChangeAnimation(9, false, 40.0f);
+	if (IsAnimationFinished())
+	{
+		mState = EState::eIdle;
+	}
+}
+
 //クリア
 void CPlayer::UpdateClear()
 {
@@ -278,13 +296,17 @@ void CPlayer::UpdateClear()
 	// クリア終了待ち状態へ移行
 	mMoveSpeed.X(0.0f);
 	mMoveSpeed.Z(0.0f);
-	CXCharacter::ChangeAnimation(6, true, 150.0f);
-	mState = EState::eClearEnd;
+	CXCharacter::ChangeAnimation(8, true, 60.0f);
+	if (IsAnimationFinished())
+	{
+		mState = EState::eClearEnd;
+	}
 }
 
 //クリア終了
 void CPlayer::UpdateClearEnd()
 {
+	CXCharacter::ChangeAnimation(9, true, 40.0f);
 	// クリアアニメーションが終了したら、
 	if (IsAnimationFinished())
 	{
@@ -342,6 +364,14 @@ void CPlayer::Update()
 		// クリア終了
 		case EState::eClearEnd:
 			UpdateClearEnd();
+			break;
+		//倒れる
+		case EState::eDown:
+			UpdateDown();
+			break;
+		//起き上がる
+		case EState::eUp:
+			UpdateUp();
 			break;
 	}
 
@@ -434,6 +464,21 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 				mpRideObject = other->Owner();
 			}
 		}
+		if (other->Layer() == ELayer::eBadObject)
+		{
+			Position(Position() + hit.adjust);
+			mIsGrounded = true;
+			if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump)
+			{
+				mState = EState::eDown;
+			}
+		}
+		if (other->Layer() == ELayer::eBegBadObject)
+		{
+			Position(Position() + hit.adjust);
+			mIsGrounded = true;
+			mState = EState::eDown;
+		}
 	}
 
 	if (self == mpColliderLineLeg)
@@ -448,6 +493,21 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 				mpRideObject = other->Owner();
 			}
 		}
+		if (other->Layer() == ELayer::eBadObject)
+		{
+			Position(Position() + hit.adjust);
+			mIsGrounded = true;
+			if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump)
+			{
+				mState = EState::eDown;
+			}
+		}
+		if (other->Layer() == ELayer::eBegBadObject)
+		{
+			Position(Position() + hit.adjust);
+			mIsGrounded = true;
+			mState = EState::eDown;
+		}
 	}
 	
 	if (self == mpColliderLineHead)
@@ -461,6 +521,21 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 			{
 				mpRideObject = other->Owner();
 			}
+		}
+		if (other->Layer() == ELayer::eBadObject)
+		{
+			Position(Position() + hit.adjust);
+			mIsGrounded = true;
+			if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump)
+			{
+				mState = EState::eDown;
+			}
+		}
+		if (other->Layer() == ELayer::eBegBadObject)
+		{
+			Position(Position() + hit.adjust);
+			mIsGrounded = true;
+			mState = EState::eDown;
 		}
 	}
 }
