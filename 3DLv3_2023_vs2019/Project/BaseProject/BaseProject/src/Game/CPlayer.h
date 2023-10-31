@@ -31,6 +31,8 @@ public:
 	void UpdateJump();
 	// ジャンプ終了
 	void UpdateJumpEnd();
+	//空中
+	void UpdateJumpN();
 	//クリア
 	void UpdateClear();
 	//クリア終了
@@ -92,6 +94,7 @@ private:
 		eJumpStart,	// ジャンプ開始
 		eJump,		// ジャンプ中
 		eJumpEnd,	// ジャンプ終了
+		eJumpN, //空中
 		eClear, //クリア
 		eClearEnd, //クリア終了
 	};
@@ -105,4 +108,5 @@ private:
 	CColliderLine* mpColliderLineHead;
 	CColliderLine* mpColliderLineLeg;
 	CTransform* mpRideObject;
+	CVector mStartPos;
 };

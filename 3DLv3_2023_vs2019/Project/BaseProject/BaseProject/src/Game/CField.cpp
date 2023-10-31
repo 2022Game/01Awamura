@@ -150,13 +150,13 @@ void CField::CreateFieldObjects()
 
 void CField::Update()
 {
-	printf("%d,", mStageCount);
-	printf("%d,", mClearCountSwitch);
 	if (mClearCount == 1 && mClearCountSwitch == 1)
 	{
 		mStageCount++;
 		if (mStageCount == 1)
 		{
+			delete mpClearStageGimmick;
+			mpClearStageGimmick = nullptr;
 			mpClearStageGimmick = new CClearStageGimmick();
 			mClearCount = 0;
 			mClearCountSwitch = 0;
@@ -165,7 +165,7 @@ void CField::Update()
 		if (mStageCount == 2)
 		{
 			delete mpClearStageGimmick;
-			//mpClearStageGimmick = nullptr;
+			mpClearStageGimmick = nullptr;
 			mpClearStageGimmick = new CClearStageGimmick();
 			mClearCount = 0;
 			mClearCountSwitch = 0;

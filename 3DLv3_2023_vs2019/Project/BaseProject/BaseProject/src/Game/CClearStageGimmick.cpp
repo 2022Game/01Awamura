@@ -10,18 +10,19 @@
 //クリア土台
 #define MODEL_FCOIN "res\\Coin.obj","res\\Coin.mtl"
 
-int rand(void);
-void srand(unsigned int seed);
+//int rand(void);
+//void srand(unsigned int seed);
 
 CClearStageGimmick::CClearStageGimmick()
 {
-	srand((unsigned int)time(NULL));
+	//srand((unsigned int)time(NULL));
 	// 初期処理
 	Init();
 
 	// タスクマネージャーに自身を追加
 	CTaskManager::Instance()->Add(this);
 
+	mpColliderMesh = new CColliderMesh(this, ELayer::eClearObject, mpClearModel);
 }
 
 CClearStageGimmick::~CClearStageGimmick()
@@ -49,13 +50,13 @@ void CClearStageGimmick::Init()
 	if (CField::mStageCount == 1 && CField::mStageCreateSwitch == 1)
 	{
 		CreateClearStage(mpClearStageModel,
-		CVector(20.0f, 0.0f, -240.0f),  CVector(5.5f, 5.0f, 5.25f));
+		CVector(40.0f, 0.0f, -240.0f),  CVector(5.5f, 5.0f, 5.25f));
 	}
 	//ステージ２
 	if (CField::mStageCount == 2 && CField::mStageCreateSwitch == 1)
 	{
 		CreateClearStage(mpClearStageModel,
-		CVector(20.0f, 0.0f, -290.0f), CVector(5.5f, 5.0f, 5.25f));
+		CVector(0.0f, 0.0f, -290.0f), CVector(5.5f, 5.0f, 5.25f));
 	}
 	//ステージ3
 	if (CField::mStageCount == 3 && CField::mStageCreateSwitch == 1)
