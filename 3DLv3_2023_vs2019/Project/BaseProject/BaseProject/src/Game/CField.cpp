@@ -164,22 +164,34 @@ void CField::Update()
 		mStageCount++;
 		if (mStageCount == 1)
 		{
-			delete mpClearStageGimmick;
-			mpClearStageGimmick = nullptr;
-			delete mpFloorGimmick;
-			mpFloorGimmick = nullptr;
-			//mpClearStageGimmick = new CClearStageGimmick();
-			mpFloorGimmick = new CFloorGimmick();
+			if (mpClearStageGimmick != nullptr)
+			{
+				mpClearStageGimmick->Kill();
+				mpClearStageGimmick = nullptr;
+			}
+			/*if (mpFloorGimmick != nullptr)
+			{
+				mpFloorGimmick->Kill();
+				mpFloorGimmick = nullptr;
+			}*/
+			mpClearStageGimmick = new CClearStageGimmick();
+			//mpFloorGimmick = new CFloorGimmick();
 			mClearCount = 0;
 			mClearCountSwitch = 0;
 			mStageCreateSwitch = 0;
 		}
 		if (mStageCount == 2)
 		{
-			delete mpClearStageGimmick;
-			mpClearStageGimmick = nullptr;
-			delete mpFloorGimmick;
-			mpFloorGimmick = nullptr;
+			if (mpClearStageGimmick != nullptr)
+			{
+				mpClearStageGimmick->Kill();
+				mpClearStageGimmick = nullptr;
+			}
+			/*if (mpFloorGimmick != nullptr)
+			{
+				mpFloorGimmick->Kill();
+				mpFloorGimmick = nullptr;
+			}*/
 			//mpFloorGimmick = new CFloorGimmick();
 			mpClearStageGimmick = new CClearStageGimmick();
 			mClearCount = 0;
@@ -188,10 +200,16 @@ void CField::Update()
 		}
 		if (mStageCount == 3)
 		{
-			delete mpClearStageGimmick;
-			mpClearStageGimmick = nullptr;
-			delete mpFloorGimmick;
-			mpFloorGimmick = nullptr;
+			if (mpClearStageGimmick != nullptr)
+			{
+				mpClearStageGimmick->Kill();
+				mpClearStageGimmick = nullptr;
+			}
+			/*if (mpFloorGimmick != nullptr)
+			{
+				mpFloorGimmick->Kill();
+				mpFloorGimmick = nullptr;
+			}*/
 			mpClearStageGimmick = new CClearStageGimmick();
 			mClearCount = 0;
 			mClearCountSwitch = 0;
@@ -199,10 +217,16 @@ void CField::Update()
 		}
 		if (mStageCount == 4)
 		{
-			delete mpClearStageGimmick;
-			mpClearStageGimmick = nullptr;
-			delete mpFloorGimmick;
-			mpFloorGimmick = nullptr;
+			if (mpClearStageGimmick != nullptr)
+			{
+				mpClearStageGimmick->Kill();
+				mpClearStageGimmick = nullptr;
+			}
+			/*if (mpFloorGimmick != nullptr)
+			{
+				mpFloorGimmick->Kill();
+				mpFloorGimmick = nullptr;
+			}*/
 			mpClearStageGimmick = new CClearStageGimmick();
 			mClearCount = 0;
 			mClearCountSwitch = 0;
@@ -210,8 +234,11 @@ void CField::Update()
 		}
 		if (mStageCount == 5)
 		{
-			delete mpClearStageGimmick;
-			mpClearStageGimmick = nullptr;
+			if (mpClearStageGimmick != nullptr)
+			{
+				mpClearStageGimmick->Kill();
+				mpClearStageGimmick = nullptr;
+			}
 			mpClearStageGimmick = new CClearStageGimmick();
 			mClearCount = 0;
 			mClearCountSwitch = 0;

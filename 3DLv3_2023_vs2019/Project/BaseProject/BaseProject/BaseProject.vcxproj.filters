@@ -41,19 +41,19 @@
     <Filter Include="ソース ファイル\BaseSystem\Debug">
       <UniqueIdentifier>{03c92fc0-53b3-405c-a2df-311b825d8127}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\BaseSystem\Model\Game">
+    <Filter Include="ソース ファイル\BaseSystem\Game">
       <UniqueIdentifier>{05e59e8f-acd7-4d0a-bd9a-a5c6bd690bd4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\BaseSystem\Model\Game\Character">
+    <Filter Include="ソース ファイル\BaseSystem\Game\Character">
       <UniqueIdentifier>{72debf50-9646-4186-80a0-951072c29999}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\BaseSystem\Model\Game\Scene">
+    <Filter Include="ソース ファイル\BaseSystem\Game\Scene">
       <UniqueIdentifier>{7ddeeb75-320d-4391-819c-2a0c8f8f0538}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\BaseSystem\Model\Game\Field">
+    <Filter Include="ソース ファイル\BaseSystem\Game\Field">
       <UniqueIdentifier>{acbeca61-006d-429d-8391-45dc7983885d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\BaseSystem\Model\Game\Field\Object">
+    <Filter Include="ソース ファイル\BaseSystem\Game\Field\Object">
       <UniqueIdentifier>{944b0643-4c32-4f86-9d33-49cba7329b64}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -122,13 +122,13 @@
       <Filter>ソース ファイル\BaseSystem\UI</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\CApplication.cpp">
-      <Filter>ソース ファイル\BaseSystem\Model\Game</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\CPlayer.cpp">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Character</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Character</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\CEnemy.cpp">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Character</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Character</Filter>
     </ClCompile>
     <ClCompile Include="src\BaseSystem\CEffect.cpp">
       <Filter>ソース ファイル\BaseSystem\Effect</Filter>
@@ -176,52 +176,52 @@
       <Filter>ソース ファイル\BaseSystem\Debug</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\CField.cpp">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Field</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Field</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\CXCharacter.cpp">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Character</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Character</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\CTitleScene.cpp">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Scene</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\CGameScene.cpp">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Scene</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\CImage.cpp">
       <Filter>ソース ファイル\BaseSystem\UI</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\CMoveFloor.cpp">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Field\Object</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\CRideabeObject.cpp">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Field\Object</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\CRotateFloor.cpp">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Field\Object</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\CStageManager.cpp">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Field\Object</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\CObstaclesManager.cpp">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Field\Object</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\CGameruleManager.cpp">
-      <Filter>ソース ファイル\BaseSystem\Model\Game</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game</Filter>
     </ClCompile>
     <ClCompile Include="src\BaseSystem\CObstaclesObject.cpp">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Field\Object</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\CClearStage.cpp">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Field\Object</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\CClearStageGimmick.cpp">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Field\Object</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\CFloorGimmick.cpp">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Field\Object</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\CFloor.cpp">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Field\Object</Filter>
     </ClCompile>
     <ClCompile Include="src\BaseSystem\CDebugProfiler.cpp">
       <Filter>ソース ファイル\BaseSystem\Debug</Filter>
@@ -298,13 +298,13 @@
       <Filter>ソース ファイル\BaseSystem\UI</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CApplication.h">
-      <Filter>ソース ファイル\BaseSystem\Model\Game</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CPlayer.h">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Character</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Character</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CEnemy.h">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Character</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Character</Filter>
     </ClInclude>
     <ClInclude Include="src\BaseSystem\CEffect.h">
       <Filter>ソース ファイル\BaseSystem\Effect</Filter>
@@ -370,52 +370,52 @@
       <Filter>ソース ファイル\BaseSystem\Debug</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CField.h">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Field</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Field</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CXCharacter.h">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Character</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Character</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CTitleScene.h">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Scene</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Scene</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CGameScene.h">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Scene</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Scene</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CImage.h">
       <Filter>ソース ファイル\BaseSystem\UI</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CMoveFloor.h">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Field\Object</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CRideableObject.h">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Field\Object</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CRotateFloor.h">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Field\Object</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CStageManager.h">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Field\Object</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CObstaclesManager.h">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Field\Object</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CGameruleManager.h">
-      <Filter>ソース ファイル\BaseSystem\Model\Game</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game</Filter>
     </ClInclude>
     <ClInclude Include="src\BaseSystem\CObstaclesObject.h">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Field\Object</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CClearStage.h">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Field\Object</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CClearStageGimmick.h">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Field\Object</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CFloorGimmick.h">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Field\Object</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CFloor.h">
-      <Filter>ソース ファイル\BaseSystem\Model\Game\Field\Object</Filter>
+      <Filter>ソース ファイル\BaseSystem\Game\Field\Object</Filter>
     </ClInclude>
     <ClInclude Include="src\BaseSystem\CDebugProfiler.h">
       <Filter>ソース ファイル\BaseSystem\Debug</Filter>

@@ -110,7 +110,7 @@ CPlayer::CPlayer()
 		CVector(0.0f, PLAYER_HEIGHT, PLAYER_HEIGHT / 4),
 		CVector(0.0f, PLAYER_HEIGHT, 0.0f)
 	);
-	mpColliderLine->SetCollisionLayers({ ELayer::eField });
+	mpColliderLine->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject});
 	mpColliderLineBody->SetCollisionLayers({ ELayer::eField });
 	mpColliderLineLeg->SetCollisionLayers({ ELayer::eField });
 	mpColliderLineHead->SetCollisionLayers({ ELayer::eField });

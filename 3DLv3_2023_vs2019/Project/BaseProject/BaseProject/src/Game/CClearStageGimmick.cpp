@@ -30,7 +30,8 @@ CClearStageGimmick::~CClearStageGimmick()
 	//// クリア土台を破棄
 	for (int i = 0; i < mClearStage.size(); i++)
 	{
-		delete mClearStage[i];
+		mClearStage[i]->Kill();
+		//delete mClearStage[i];
 	}
 	// 一応リストもクリアしておく
 	mClearStage.clear();

@@ -30,7 +30,7 @@ CFloorGimmick::~CFloorGimmick()
 	//// クリア土台を破棄
 	for (int i = 0; i < mFloor.size(); i++)
 	{
-		delete mFloor[i];
+		mFloor[i]->Kill();
 	}
 	// 一応リストもクリアしておく
 	mFloor.clear();
