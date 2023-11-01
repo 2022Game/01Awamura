@@ -25,7 +25,7 @@ const CPlayer::AnimData CPlayer::ANIM_DATA[] =
 	{ "Character\\Player\\Up.x",		true,	110.0f	},	// —Ž‰º’†
 };
 
-#define PLAYER_HEIGHT 1.5f
+#define PLAYER_HEIGHT 1.6f
 #define MOVE_SPEED 0.375f
 #define JUMP_SPEED 1.5f
 #define GRAVITY 0.0625f
@@ -81,7 +81,7 @@ CPlayer::CPlayer()
 	(
 		this, ELayer::eField,
 		CVector(0.0f, PLAYER_HEIGHT / 2, PLAYER_HEIGHT / 4),
-		CVector(0.0f, PLAYER_HEIGHT / 2, 0.0f)
+		CVector(0.0f, PLAYER_HEIGHT / 2, -0.4f)
 	);
 	mpColliderLineLeg = new CColliderLine
 	(
@@ -94,7 +94,7 @@ CPlayer::CPlayer()
 	(
 		this, ELayer::eField,
 		CVector(0.0f, 0.1f, PLAYER_HEIGHT / 4),
-		CVector(0.0f, 0.1f, 0.0f)
+		CVector(0.0f, 0.1f, -0.4f)
 	);
 
 	mpColliderLineHead = new CColliderLine
@@ -108,12 +108,12 @@ CPlayer::CPlayer()
 	(
 		this, ELayer::eField,
 		CVector(0.0f, PLAYER_HEIGHT, PLAYER_HEIGHT / 4),
-		CVector(0.0f, PLAYER_HEIGHT, 0.0f)
+		CVector(0.0f, PLAYER_HEIGHT, -0.4f)
 	);
 	mpColliderLine->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject});
-	mpColliderLineBody->SetCollisionLayers({ ELayer::eField });
-	mpColliderLineLeg->SetCollisionLayers({ ELayer::eField });
-	mpColliderLineHead->SetCollisionLayers({ ELayer::eField });
+	mpColliderLineBody->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject});
+	mpColliderLineLeg->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject });
+	mpColliderLineHead->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject });
 }
 
 CPlayer::~CPlayer()
@@ -473,7 +473,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 				mState = EState::eDown;
 			}
 		}
-		if (other->Layer() == ELayer::eBegBadObject)
+		if (other->Layer() == ELayer::eBigBadObject)
 		{
 			Position(Position() + hit.adjust);
 			mIsGrounded = true;
@@ -502,7 +502,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 				mState = EState::eDown;
 			}
 		}
-		if (other->Layer() == ELayer::eBegBadObject)
+		if (other->Layer() == ELayer::eBigBadObject)
 		{
 			Position(Position() + hit.adjust);
 			mIsGrounded = true;
@@ -531,7 +531,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 				mState = EState::eDown;
 			}
 		}
-		if (other->Layer() == ELayer::eBegBadObject)
+		if (other->Layer() == ELayer::eBigBadObject)
 		{
 			Position(Position() + hit.adjust);
 			mIsGrounded = true;

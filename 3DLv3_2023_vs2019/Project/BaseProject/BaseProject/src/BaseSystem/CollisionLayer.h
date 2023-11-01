@@ -8,7 +8,7 @@ enum class ELayer
 	eField,
 	eObject,
 	eBadObject,
-	eBegBadObject,
+	eBigBadObject,
 	eClearObject,
 	ePlayer,
 };

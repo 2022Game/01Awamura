@@ -115,6 +115,7 @@ void CField::CreateFieldObjects()
 		CVector(60.0f, 0.0f, -140.0f), CVector(5.5f, 5.0f, 5.25f)
 	);
 
+	//テスト用にクリアモデルを使用
 	new CFloor
 	(
 		mpClearModel,
