@@ -5,6 +5,11 @@
 #include "CApplication.h"
 #include "CInput.h"
 
+// 1秒間に実行するフレーム数
+int gFPS = 60;
+// 前回のフレームの経過時間
+float gDeltaTime = 0.0f;
+
 CApplication gApplication;
 
 /* display関数
@@ -54,16 +59,19 @@ void idle() {
 	if (last_time.QuadPart == 0) {
 		QueryPerformanceCounter(&last_time);
 	}
-	do{
+	do {
 		//現在のシステムのカウント数を取得
 		QueryPerformanceCounter(&time);
 
-		//今のカウント-前回のカウント < 1秒当たりのカウント数を60で割る(1/60秒当たりのカウント数)
-	} while (time.QuadPart - last_time.QuadPart < freq.QuadPart / 60);
+		//今のカウント-前回のカウント < 1秒当たりのカウント数で割る(1/gFPS秒当たりのカウント数)
+	} while (time.QuadPart - last_time.QuadPart < freq.QuadPart / gFPS);
+	gDeltaTime = (float)(time.QuadPart - last_time.QuadPart) / freq.QuadPart;
 	last_time = time;
 
 	//描画する関数を呼ぶ
 	display();
+	// 処理時間の計測結果を描画
+	CDebugProfiler::Print();
 }
 
 int main(void)
@@ -116,7 +124,7 @@ int main(void)
 	//固定シェーダー用
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
-	float lightPosition[] = {0.0f, 100.0f, 100.0f, 1.0f};
+	float lightPosition[] = { 0.0f, 100.0f, 100.0f, 1.0f };
 	glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
 	glEnable(GL_NORMALIZE);
 #endif
@@ -145,4 +153,20 @@ int main(void)
 
 	glfwTerminate();
 	return 0;
+}
+
+int Time::TargetFPS()
+{
+	return gFPS;
+}
+
+float Time::FPS()
+{
+	if (gDeltaTime == 0.0f) return 0.0f;
+	return 1.0f / gDeltaTime;
+}
+
+float Time::DeltaTime()
+{
+	return gDeltaTime;
 }

@@ -1,12 +1,15 @@
-#include "CText.h"
+﻿#include "CText.h"
 #include <glut.h>
 #include <locale.h>
 
 CText::CText(CFont* font, int fontSize, const CVector2& pos,
-	const CVector2& size, const CColor& color)
-	: mpFont(font)
+	const CVector2& size, const CColor& color, bool dontDelete)
+	: CUIBase(ETaskPriority::eUI, dontDelete)
+	, mpFont(font)
 	, mText(L"")
 	, mFontSize(fontSize)
+	, mTextAlignH(ETextAlignH::eLeft)
+	, mTextAlignV(ETextAlignV::eTop)
 {
 	mPosition = pos;
 	mSize = size;
@@ -77,15 +80,16 @@ void CText::SetTextAlignV(ETextAlignV align)
 
 void CText::SetText(const char* format, ...)
 {
-	char buf[256];
+	static const int size = 1024;
+	char buf[size];
 	va_list ap;
 	va_start(ap, format);
 	vsprintf_s(buf, format, ap);
 	va_end(ap);
 
-	wchar_t wbuf[256];
+	wchar_t wbuf[size];
 	setlocale(LC_CTYPE, "jpn");
-	size_t len = mbstowcs(wbuf, buf, 256);
+	size_t len = mbstowcs(wbuf, buf, size);
 	if (len >= 0)
 	{
 		mText = wbuf;
@@ -123,7 +127,7 @@ void CText::Render()
 	//glVertex2f(ex, sy);
 	//glEnd();
 
-	//�F�̐ݒ�
+	//F‚ÌÝ’è
 	glColor4f(mColor.R(), mColor.G(), mColor.B(), mColor.A());
 
 	glRasterPos2f(mPosition.X(), mPosition.Y() + mFontSize);
