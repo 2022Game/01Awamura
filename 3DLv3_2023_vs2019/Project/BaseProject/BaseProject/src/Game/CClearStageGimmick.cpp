@@ -44,14 +44,14 @@ void CClearStageGimmick::Init()
 {
 	// クリア土台のモデル読み込み
 	mpClearStageModel = new CModel();
-	mpClearStageModel->Load("Field\\Object\\Coin2.obj", "Field\\Object\\Coin2.mtl");
+	mpClearStageModel->Load("Field\\ono.obj", "Field\\Object\\Coin2.mtl");
 
 	// クリア判定用の土台を生成
 	//ステージ１
 	if (CField::mStageCount == 1 && CField::mStageCreateSwitch == 1)
 	{
 		CreateClearStage(mpClearStageModel,
-		CVector(40.0f, 0.0f, -240.0f),  CVector(5.5f, 5.0f, 5.25f));
+		CVector(40.0f, 20.0f, -240.0f),  CVector(5.5f, 5.0f, 5.25f));
 	}
 	//ステージ２
 	if (CField::mStageCount == 2 && CField::mStageCreateSwitch == 1)
