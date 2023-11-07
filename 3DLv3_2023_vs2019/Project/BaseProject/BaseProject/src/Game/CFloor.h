@@ -3,6 +3,8 @@
 #include "CModel.h"
 #include "CColliderMesh.h"
 #include "CCollider.h"
+#include "CColliderSphere.h"
+#include "CColliderLine.h"
 
 class CFloor : public CRideableObject
 {
@@ -16,6 +18,9 @@ public:
 private:
 	CModel* mpModel;
 	CColliderMesh* mpColliderMesh;
+	CColliderSphere* mpColliderSphere;
+
+	CColliderLine* mpColliderLine2;
 
 	CVector mDefaultPos;
 	CVector mMoveVec;

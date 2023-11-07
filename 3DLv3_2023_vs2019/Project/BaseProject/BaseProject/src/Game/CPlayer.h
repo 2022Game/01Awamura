@@ -2,6 +2,7 @@
 //キャラクタクラスのインクルード
 #include "CXCharacter.h"
 #include "CColliderLine.h"
+#include "CColliderSphere.h"
 #include "CRideableObject.h"
 
 /*
@@ -110,9 +111,11 @@ private:
 	bool mIsGrounded;	// 接地しているかどうか
 
 	CColliderLine* mpColliderLine;
+	CColliderSphere* mpColliderSphere;
 	CColliderLine* mpColliderLineBody;
 	CColliderLine* mpColliderLineHead;
 	CColliderLine* mpColliderLineLeg;
 	CTransform* mpRideObject;
 	CVector mStartPos;
+	int Downcount;
 };

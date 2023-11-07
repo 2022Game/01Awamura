@@ -229,6 +229,9 @@
     <ClCompile Include="src\BaseSystem\CDebugTimer.cpp">
       <Filter>ソース ファイル\BaseSystem\Debug</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\CAxe.cpp">
+      <Filter>ソース ファイル\BaseSystem\Game\Field\Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BaseSystem\CCollider.h">
@@ -425,6 +428,9 @@
     </ClInclude>
     <ClInclude Include="src\BaseSystem\Time.h">
       <Filter>ソース ファイル\BaseSystem\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CAxe.h">
+      <Filter>ソース ファイル\BaseSystem\Game\Field\Object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

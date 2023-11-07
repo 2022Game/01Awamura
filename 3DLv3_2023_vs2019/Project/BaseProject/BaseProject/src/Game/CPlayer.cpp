@@ -36,10 +36,11 @@ CPlayer::CPlayer()
 	: CXCharacter(ETag::ePlayer, ETaskPriority::ePlayer)
 	, mState(EState::eIdle)
 	, mpRideObject(nullptr)
+	, Downcount(180)
 {
 	//インスタンスの設定
 	spInstance = this;
-
+	Position(0.0f,30.0f,0.0f);
 	mStartPos = Position();
 
 	// モデルデータ読み込み
@@ -110,6 +111,12 @@ CPlayer::CPlayer()
 		CVector(0.0f, PLAYER_HEIGHT, PLAYER_HEIGHT / 4),
 		CVector(0.0f, PLAYER_HEIGHT, -0.4f)
 	);
+	/*mpColliderSphere = new CColliderSphere
+	(
+		this, ELayer::ePlayerSpher,1.0f,CVector(0.0f, PLAYER_HEIGHT, PLAYER_HEIGHT / 4),
+		CVector(0.0f, PLAYER_HEIGHT, -0.4f)
+	);*/
+	/*mpColliderSphere->SetCollisionLayers({});*/
 	mpColliderLine->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject});
 	mpColliderLineBody->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject});
 	mpColliderLineLeg->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject });
@@ -243,6 +250,12 @@ void CPlayer::UpdateJumpStart()
 void CPlayer::UpdateJump()
 {
 	CXCharacter::ChangeAnimation(4, false, 40.0f);
+	//Downcount--;
+	/*if (Downcount < 0)
+	{
+		Position(mStartPos);
+		Downcount = 180;
+	}*/
 	if (mMoveSpeed.Y() <= 0.0f)
 	{
 		//CXCharacter::ChangeAnimation(5, true, 38.0f);
@@ -262,6 +275,12 @@ void CPlayer::UpdateJumpEnd()
 void CPlayer::UpdateJumpN()
 {
 	CXCharacter::ChangeAnimation(7, false, 1.0f);
+	/*Downcount--;
+	if (Downcount < 0)
+	{
+		Position(mStartPos);
+		Downcount = 180;
+	}*/
 	if (IsAnimationFinished())
 	{
 
@@ -281,6 +300,8 @@ void CPlayer::UpdateDown()
 //起き上がる
 void CPlayer::UpdateUp()
 {
+	mMoveSpeed.X(0.0f);
+	mMoveSpeed.Z(0.0f);
 	CXCharacter::ChangeAnimation(9, false, 40.0f);
 	if (IsAnimationFinished())
 	{
@@ -326,6 +347,22 @@ void CPlayer::Update()
 	SetParent(mpRideObject);
 	mpRideObject = nullptr;
 
+	if (mMoveSpeed.Y() <= 0.0f )
+	{
+		Downcount--;
+		if (Downcount < 0)
+		{
+			Position(mStartPos);
+			Downcount = 180;
+			mMoveSpeed.X(0.0f);
+			mMoveSpeed.Z(0.0f);
+			mState = EState::eDown;
+		}
+	}
+	if (mMoveSpeed.Y() >= 0.0f && Downcount != 180)
+		{
+			Downcount = 180;
+		}
 	// 状態に合わせて、更新処理を切り替える
 	switch (mState)
 	{
@@ -405,6 +442,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 			{
 				if (mState == EState::eJump || mState == EState::eJumpN)
 				{
+					//Downcount = 180;
 					mMoveSpeed.X(0.0f);
 					mMoveSpeed.Z(0.0f);
 					CXCharacter::ChangeAnimation(5, true, 38.0f);
@@ -424,6 +462,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		{
 			if (mState == EState::eJump || mState == EState::eJumpN)
 			{
+				//Downcount = 180;
 				mMoveSpeed.X(0.0f);
 				mMoveSpeed.Z(0.0f);
 				CXCharacter::ChangeAnimation(5, true, 38.0f);
@@ -443,12 +482,37 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 				{
 					if(mState == EState::eJump || mState == EState::eJumpN)
 					{
+						//Downcount = 180;
 						mMoveSpeed.X(0.0f);
 						mMoveSpeed.Z(0.0f);
 						CXCharacter::ChangeAnimation(5, true, 38.0f);
 						mState = EState::eJumpEnd;
 					}
 				}
+			}
+		}
+	}
+
+	if (self == mpColliderLine)
+	{
+		if (other->Layer() == ELayer::eBadObject)
+		{
+			Position(Position() + hit.adjust);
+			mIsGrounded = true;
+			if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump || mState != EState::eDown)
+			{
+				mState = EState::eDown;
+			}
+		}
+		if (other->Layer() == ELayer::eBigBadObject)
+		{
+			mMoveSpeed.X(mMoveSpeed.X() * -1.0f);
+			mMoveSpeed.Z(mMoveSpeed.Z() * -1.0f);
+			Position(Position() + hit.adjust);
+			mIsGrounded = true;
+			if (mState != EState::eDown)
+			{
+				mState = EState::eDown;
 			}
 		}
 	}
@@ -468,7 +532,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		{
 			Position(Position() + hit.adjust);
 			mIsGrounded = true;
-			if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump)
+			if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump || mState != EState::eDown)
 			{
 				mState = EState::eDown;
 			}
@@ -476,8 +540,13 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		if (other->Layer() == ELayer::eBigBadObject)
 		{
 			Position(Position() + hit.adjust);
+			mMoveSpeed.X(mMoveSpeed.X() * -1.0f);
+			mMoveSpeed.Z(mMoveSpeed.Z() * -1.0f);
 			mIsGrounded = true;
-			mState = EState::eDown;
+			if (mState != EState::eDown)
+			{
+				mState = EState::eDown;
+			}
 		}
 	}
 
@@ -497,7 +566,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		{
 			Position(Position() + hit.adjust);
 			mIsGrounded = true;
-			if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump)
+			if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump || mState != EState::eDown)
 			{
 				mState = EState::eDown;
 			}
@@ -505,8 +574,13 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		if (other->Layer() == ELayer::eBigBadObject)
 		{
 			Position(Position() + hit.adjust);
+			mMoveSpeed.X(mMoveSpeed.X() * -1.0f);
+			mMoveSpeed.Z(mMoveSpeed.Z() * -1.0f);
 			mIsGrounded = true;
-			mState = EState::eDown;
+			if (mState != EState::eDown)
+			{
+				mState = EState::eDown;
+			}
 		}
 	}
 	
@@ -526,7 +600,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		{
 			Position(Position() + hit.adjust);
 			mIsGrounded = true;
-			if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump)
+			if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump || mState != EState::eDown)
 			{
 				mState = EState::eDown;
 			}
@@ -534,8 +608,13 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		if (other->Layer() == ELayer::eBigBadObject)
 		{
 			Position(Position() + hit.adjust);
+			mMoveSpeed.X(mMoveSpeed.X() * -1.0f);
+			mMoveSpeed.Z(mMoveSpeed.Z() * -1.0f);
 			mIsGrounded = true;
-			mState = EState::eDown;
+			if (mState != EState::eDown)
+			{
+				mState = EState::eDown;
+			}
 		}
 	}
 }

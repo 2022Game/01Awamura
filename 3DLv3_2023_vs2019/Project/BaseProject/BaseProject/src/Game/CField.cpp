@@ -18,10 +18,10 @@ CField::CField()
 	, mpClearStageGimmick(nullptr)
 	,mpFloorGimmick(nullptr)
 {
-	mpModel = new CModel();
+	/*mpModel = new CModel();
 	mpModel->Load("Field\\field.obj", "Field\\field.mtl");
 
-	mpColliderMesh = new CColliderMesh(this, ELayer::eField, mpModel);
+	mpColliderMesh = new CColliderMesh(this, ELayer::eField, mpModel)*/;
 
 	/*mpStageManager = new CStageManager();*/
 
@@ -53,6 +53,12 @@ CField::~CField()
 		delete mpCubeModel;
 		mpCubeModel = nullptr;
 	}
+
+	if (mpAxeModel != nullptr)
+	{
+		delete mpAxeModel;
+		mpAxeModel = nullptr;
+	}
 }
 
 void CField::CreateFieldObjects()
@@ -62,6 +68,9 @@ void CField::CreateFieldObjects()
 
 	mpCylinderModel = new CModel();
 	mpCylinderModel->Load("Field\\Object\\cylinder.obj", "Field\\Object\\cylinder.mtl");
+
+	mpAxeModel = new CModel();
+	mpAxeModel->Load("Field\\ono7.obj", "Field\\ono7.mtl");
 
 	mpClearModel = new CModel();
 	mpClearModel->Load("Field\\Object\\Coin2.obj", "Field\\Object\\Coin2.mtl");
@@ -80,26 +89,26 @@ void CField::CreateFieldObjects()
 	);*/
 
 	// “®‚©‚È‚¢°‡@
-	new CMoveFloor
-	(
-		mpCubeModel,
-		CVector(20.0f, 2.0f, 0.0f), CVector(0.5f, 4.0f, 1.25f),
-		CVector(0.0f, 0.0f, 0.0f), 5.0f
-	);
+	//new CMoveFloor
+	//(
+	//	mpCubeModel,
+	//	CVector(20.0f, 2.0f, 0.0f), CVector(0.5f, 4.0f, 1.25f),
+	//	CVector(0.0f, 0.0f, 0.0f), 5.0f
+	//);
+
+	//// “®‚©‚È‚¢°‡@
+	//new CMoveFloor
+	//(
+	//	mpCubeModel,
+	//	CVector(20.0f, 2.0f, -20.0f), CVector(0.5f, 4.0f, 1.25f),
+	//	CVector(0.0f, 0.0f, 0.0f), 5.0f
+	//);
 
 	// “®‚©‚È‚¢°‡@
 	new CMoveFloor
 	(
 		mpCubeModel,
-		CVector(20.0f, 2.0f, -20.0f), CVector(0.5f, 4.0f, 1.25f),
-		CVector(0.0f, 0.0f, 0.0f), 5.0f
-	);
-
-	// “®‚©‚È‚¢°‡@
-	new CMoveFloor
-	(
-		mpCubeModel,
-		CVector(20.0f, 2.0f, -40.0f), CVector(0.5f, 4.0f, 1.25f),
+		CVector(0.0f, 2.0f, -60.0f), CVector(0.5f, 4.0f, 5.0f),
 		CVector(0.0f, 0.0f, 0.0f), 5.0f
 	);
 
@@ -107,19 +116,24 @@ void CField::CreateFieldObjects()
 	new CClearStage
 	(
 		mpClearModel,
-		CVector(20.0f,0.0f, -140.0f),CVector(5.5f, 5.0f, 5.25f)
+		CVector(-20.0f,0.0f, -140.0f),CVector(5.5f, 5.0f, 5.25f)
 	);
 	new CClearStage
 	(
 		mpClearModel,
-		CVector(60.0f, 0.0f, -140.0f), CVector(5.5f, 5.0f, 5.25f)
+		CVector(20.0f, 0.0f, -140.0f), CVector(5.5f, 5.0f, 5.25f)
 	);
 
 	//ƒeƒXƒg—p‚ÉƒNƒŠƒAƒ‚ƒfƒ‹‚ğg—p
-	new CFloor
+	/*new CFloor
 	(
 		mpClearModel,
-		CVector(100.0f, 0.0f, -140.0f), CVector(5.5f, 5.0f, 5.25f)
+		CVector(0.0f, 220.0f, -140.0f), CVector(5.5f, 5.0f, 5.25f)
+	);*/
+	new CAxe
+	(
+		mpAxeModel,
+		CVector(0.0f, 200.0f, -140.0f), CVector(5.5f, 5.0f, 5.25f)
 	);
 	//// “®‚­°‡@
 	//new CMoveFloor
@@ -170,12 +184,20 @@ void CField::Update()
 				mpClearStageGimmick->Kill();
 				mpClearStageGimmick = nullptr;
 			}
+			delete mpAxeModel;
+			mpAxeModel = nullptr;
 			/*if (mpFloorGimmick != nullptr)
 			{
 				mpFloorGimmick->Kill();
 				mpFloorGimmick = nullptr;
 			}*/
 			mpClearStageGimmick = new CClearStageGimmick();
+			/*new CFloor
+			(
+				mpClearModel,
+				CVector(160.0f, 0.0f, -140.0f), CVector(5.5f, 5.0f, 5.25f)
+			);*/
+			//mpClearStageGimmick = new CClearStageGimmick();
 			//mpFloorGimmick = new CFloorGimmick();
 			mClearCount = 0;
 			mClearCountSwitch = 0;
@@ -250,5 +272,5 @@ void CField::Update()
 
 void CField::Render()
 {
-	mpModel->Render(Matrix());
+	//mpModel->Render(Matrix());
 }
