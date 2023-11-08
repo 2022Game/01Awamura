@@ -14,6 +14,11 @@ CAxe::CAxe(CModel* model, const CVector& pos, const CVector& scale)
 		CVector(-10.0f, -35.0f, 0.0f),
 		CVector(10.0f, -35.0f, 0.0f)
 	);
+	mpColliderLine2 = new CColliderLine(
+		this, ELayer::eBigBadObject,
+		CVector(-10.0f, -40.0f, 0.0f),
+		CVector(10.0f, -40.0f, 0.0f)
+	);
 	Position(mDefaultPos);
 	Scale(scale);
 }

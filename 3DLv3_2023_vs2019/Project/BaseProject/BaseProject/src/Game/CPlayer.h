@@ -63,14 +63,16 @@ private:
 	{
 		None = -1,
 
-		eTPose,		// Tポーズ
 		eIdle,		// 待機
-		eWalk,		// 歩行
-		eAttack,	// 攻撃
-		eJumpStart,	// ジャンプ開始
-		eJump,		// ジャンプ中
-		eJumpEnd,	// ジャンプ終了
-		eClear, //クリア
+		eSuperJump,
+		eSlowRun,
+		eJumpUp,
+		eJumpDown2,
+		eJumpDown3,
+		eRun,
+		eJumpN,
+		eDown,
+		eUp,
 
 		Num
 	};

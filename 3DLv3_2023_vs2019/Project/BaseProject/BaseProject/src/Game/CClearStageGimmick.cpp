@@ -20,7 +20,7 @@ CClearStageGimmick::CClearStageGimmick()
 	Init();
 
 	// タスクマネージャーに自身を追加
-	CTaskManager::Instance()->Add(this);
+	//CTaskManager::Instance()->Add(this);
 
 	//mpColliderMesh = new CColliderMesh(this, ELayer::eClearObject, mpClearModel);
 }

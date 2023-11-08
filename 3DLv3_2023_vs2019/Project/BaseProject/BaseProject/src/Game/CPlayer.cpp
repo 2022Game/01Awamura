@@ -20,7 +20,7 @@ const CPlayer::AnimData CPlayer::ANIM_DATA[] =
 	{ "Character\\Player\\jumpDown2.x",		true,	35.0f	},	// ジャンプ落下中
 	{ "Character\\Player\\jumpDown3.x",		true,	38.0f	},	// ジャンプ着地
 	{ "Character\\Player\\run.x",		true,	40.0f	},	// 走る
-	{ "Character\\Player\\jumpN.x",		true,	1.0f	},	// 落下中
+	{ "Character\\Player\\jumpN.x",		false,	1.0f	},	// 落下中
 	{ "Character\\Player\\Down.x",		true,	150.0f	},	// 落下中
 	{ "Character\\Player\\Up.x",		true,	110.0f	},	// 落下中
 };
@@ -146,9 +146,9 @@ CPlayer* CPlayer::Instance()
 // アニメーション切り替え
 void CPlayer::ChangeAnimation(EAnimType type)
 {
-	/*if (!(EAnimType::None < type && type < EAnimType::Num)) return;
+	if (!(EAnimType::None < type && type < EAnimType::Num)) return;
 	AnimData data = ANIM_DATA[(int)type];
-	CXCharacter::ChangeAnimation((int)type, data.loop, data.frameLength);*/
+	CXCharacter::ChangeAnimation((int)type, data.loop, data.frameLength);
 }
 
 // 待機
@@ -179,13 +179,13 @@ void CPlayer::UpdateIdle()
 			mMoveSpeed += move * MOVE_SPEED;
 
 			// 歩行アニメーションに切り替え
-			CXCharacter::ChangeAnimation(2, true, 44.0f);
+			ChangeAnimation(EAnimType::eSlowRun);
 		}
 		// 移動キーを入力していない
 		else
 		{
 			// 待機アニメーションに切り替え
-			CXCharacter::ChangeAnimation(0, true, 544.0f);
+			ChangeAnimation(EAnimType::eIdle);
 		}
 
 		// 左クリックで攻撃状態へ移行
@@ -204,7 +204,7 @@ void CPlayer::UpdateIdle()
 	else
 	{
 		// 待機アニメーションに切り替え
-		CXCharacter::ChangeAnimation(0, true, 544.0f);
+		ChangeAnimation(EAnimType::eIdle);
 		if (mMoveSpeed.Y() <= 0.0f)
 		{
 			mState = EState::eJumpN;
@@ -216,7 +216,7 @@ void CPlayer::UpdateIdle()
 void CPlayer::UpdateAttack()
 {
 	// 攻撃アニメーションを開始
-	ChangeAnimation(EAnimType::eAttack);
+	//ChangeAnimation(EAnimType::eDown);
 	// 攻撃終了待ち状態へ移行
 	mState = EState::eAttackWait;
 }
@@ -237,7 +237,7 @@ void CPlayer::UpdateAttackWait()
 void CPlayer::UpdateJumpStart()
 {
 	//ChangeAnimation(EAnimType::eJumpStart);
-	CXCharacter::ChangeAnimation(3, true, 10.0f);
+	ChangeAnimation(EAnimType::eJumpUp);
 	if (IsAnimationFinished())
 	{
 		mMoveSpeed += CVector(0.0f, JUMP_SPEED, 0.0f);
@@ -249,7 +249,7 @@ void CPlayer::UpdateJumpStart()
 // ジャンプ中
 void CPlayer::UpdateJump()
 {
-	CXCharacter::ChangeAnimation(4, false, 40.0f);
+	ChangeAnimation(EAnimType::eJumpDown2);
 	//Downcount--;
 	/*if (Downcount < 0)
 	{
@@ -274,7 +274,7 @@ void CPlayer::UpdateJumpEnd()
 //空中
 void CPlayer::UpdateJumpN()
 {
-	CXCharacter::ChangeAnimation(7, false, 1.0f);
+	ChangeAnimation(EAnimType::eJumpN);
 	/*Downcount--;
 	if (Downcount < 0)
 	{
@@ -290,7 +290,7 @@ void CPlayer::UpdateJumpN()
 //倒れる
 void CPlayer::UpdateDown()
 {
-	CXCharacter::ChangeAnimation(8, false, 60.0f);
+	ChangeAnimation(EAnimType::eDown);
 	if (IsAnimationFinished())
 	{
 		mState = EState::eUp;
@@ -302,7 +302,7 @@ void CPlayer::UpdateUp()
 {
 	mMoveSpeed.X(0.0f);
 	mMoveSpeed.Z(0.0f);
-	CXCharacter::ChangeAnimation(9, false, 40.0f);
+	ChangeAnimation(EAnimType::eUp);
 	if (IsAnimationFinished())
 	{
 		mState = EState::eIdle;
@@ -317,7 +317,7 @@ void CPlayer::UpdateClear()
 	// クリア終了待ち状態へ移行
 	mMoveSpeed.X(0.0f);
 	mMoveSpeed.Z(0.0f);
-	CXCharacter::ChangeAnimation(8, true, 60.0f);
+	ChangeAnimation(EAnimType::eDown);
 	if (IsAnimationFinished())
 	{
 		mState = EState::eClearEnd;
@@ -327,7 +327,7 @@ void CPlayer::UpdateClear()
 //クリア終了
 void CPlayer::UpdateClearEnd()
 {
-	CXCharacter::ChangeAnimation(9, true, 40.0f);
+	ChangeAnimation(EAnimType::eUp);
 	// クリアアニメーションが終了したら、
 	if (IsAnimationFinished())
 	{
@@ -445,7 +445,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 					//Downcount = 180;
 					mMoveSpeed.X(0.0f);
 					mMoveSpeed.Z(0.0f);
-					CXCharacter::ChangeAnimation(5, true, 38.0f);
+					ChangeAnimation(EAnimType::eJumpDown3);
 				}
 				if (mState != EState::eClear && mState != EState::eClearEnd && IsAnimationFinished())
 				{
@@ -465,7 +465,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 				//Downcount = 180;
 				mMoveSpeed.X(0.0f);
 				mMoveSpeed.Z(0.0f);
-				CXCharacter::ChangeAnimation(5, true, 38.0f);
+				ChangeAnimation(EAnimType::eJumpDown3);
 				mState = EState::eJumpEnd;
 			}
 		}
@@ -485,7 +485,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 						//Downcount = 180;
 						mMoveSpeed.X(0.0f);
 						mMoveSpeed.Z(0.0f);
-						CXCharacter::ChangeAnimation(5, true, 38.0f);
+						ChangeAnimation(EAnimType::eJumpDown3);
 						mState = EState::eJumpEnd;
 					}
 				}
