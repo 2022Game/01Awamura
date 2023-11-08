@@ -21,8 +21,8 @@ const CPlayer::AnimData CPlayer::ANIM_DATA[] =
 	{ "Character\\Player\\jumpDown3.x",		true,	38.0f	},	// ƒWƒƒƒ“ƒv’…’n
 	{ "Character\\Player\\run.x",		true,	40.0f	},	// ‘–‚é
 	{ "Character\\Player\\jumpN.x",		false,	1.0f	},	// —Ž‰º’†
-	{ "Character\\Player\\Down.x",		true,	150.0f	},	// —Ž‰º’†
-	{ "Character\\Player\\Up.x",		true,	110.0f	},	// —Ž‰º’†
+	{ "Character\\Player\\Down.x",		true,	60.0f	},	// —Ž‰º’†
+	{ "Character\\Player\\Up.x",		true,	60.0f	},	// —Ž‰º’†
 };
 
 #define PLAYER_HEIGHT 1.6f

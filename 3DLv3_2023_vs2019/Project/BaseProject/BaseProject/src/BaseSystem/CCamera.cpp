@@ -42,7 +42,7 @@ void CCamera::Set(const CVector& eye, const CVector& center)
 	Position(eye);
 	CVector forward = (center - eye).Normalized();
 	CVector side = CVector::Cross(CVector::up, forward).Normalized();
-	CVector up =  CVector::Cross(forward, side).Normalized();
+	CVector up = CVector::Cross(forward, side).Normalized();
 	Rotation(CQuaternion::LookRotation(forward));
 
 	if (mFollowTargetTf != nullptr)
@@ -58,6 +58,15 @@ void CCamera::SetFollowTargetTf(CTransform* target)
 	if (mFollowTargetTf != nullptr)
 	{
 		mFollowOffsetPos = Position() - mFollowTargetTf->Position();
+	}
+}
+
+// 追従時のオフセット座標を設定
+void CCamera::SetFollowTargetOffset(const CVector& offset)
+{
+	if (mFollowTargetTf != nullptr)
+	{
+		mFollowOffsetPos = offset;
 	}
 }
 

@@ -28,7 +28,7 @@ CTransform::~CTransform()
 	// q‚ª‘¶İ‚·‚ê‚ÎAq‚Æ‚ÌŒq‚ª‚è‚ğ‰ğœ
 	auto itr = mChildren.begin();
 	auto end = mChildren.end();
-	while(itr != end)
+	while (itr != end)
 	{
 		CTransform* child = *itr;
 		itr++;

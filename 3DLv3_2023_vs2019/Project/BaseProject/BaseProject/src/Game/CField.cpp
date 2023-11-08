@@ -186,11 +186,11 @@ void CField::Update()
 			}
 			delete mpAxeModel;
 			mpAxeModel = nullptr;
-			/*if (mpFloorGimmick != nullptr)
+			if (mpFloorGimmick != nullptr)
 			{
 				mpFloorGimmick->Kill();
 				mpFloorGimmick = nullptr;
-			}*/
+			}
 			mpClearStageGimmick = new CClearStageGimmick();
 			/*new CFloor
 			(
@@ -198,7 +198,7 @@ void CField::Update()
 				CVector(160.0f, 0.0f, -140.0f), CVector(5.5f, 5.0f, 5.25f)
 			);*/
 			//mpClearStageGimmick = new CClearStageGimmick();
-			//mpFloorGimmick = new CFloorGimmick();
+			mpFloorGimmick = new CFloorGimmick();
 			mClearCount = 0;
 			mClearCountSwitch = 0;
 			mStageCreateSwitch = 0;
