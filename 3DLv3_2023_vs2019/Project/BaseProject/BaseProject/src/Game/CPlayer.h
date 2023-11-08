@@ -40,6 +40,8 @@ public:
 	void UpdateClearEnd();
 	//倒れる
 	void UpdateDown();
+	//吹っ飛び倒れる
+	void UpdateBadDown();
 	//起き上がる
 	void UpdateUp();
 
@@ -105,6 +107,7 @@ private:
 		eClear, //クリア
 		eClearEnd, //クリア終了
 		eDown, //倒れる
+		eBadDown, 
 		eUp, //起き上がる
 	};
 	EState mState;	// プレイヤーの状態
