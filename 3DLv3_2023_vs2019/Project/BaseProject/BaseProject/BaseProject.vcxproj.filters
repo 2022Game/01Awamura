@@ -232,6 +232,9 @@
     <ClCompile Include="src\Game\CAxe.cpp">
       <Filter>ソース ファイル\BaseSystem\Game\Field\Object</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\CAxeGimmick.cpp">
+      <Filter>ソース ファイル\BaseSystem\Game\Field\Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BaseSystem\CCollider.h">
@@ -430,6 +433,9 @@
       <Filter>ソース ファイル\BaseSystem\Debug</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CAxe.h">
+      <Filter>ソース ファイル\BaseSystem\Game\Field\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CAxeGimmick.h">
       <Filter>ソース ファイル\BaseSystem\Game\Field\Object</Filter>
     </ClInclude>
   </ItemGroup>

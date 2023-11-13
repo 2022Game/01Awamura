@@ -14,15 +14,16 @@ CPlayer* CPlayer::spInstance = nullptr;
 const CPlayer::AnimData CPlayer::ANIM_DATA[] =
 {
 	{ "Character\\Player\\Normalidol.x",true,	554.0f	},	// Tポーズ
-	{ "Character\\Player\\SuperJump.x",true,	160.0f	},	// Tポーズ
+	//{ "Character\\Player\\SuperJump.x",true,	160.0f	},	// 謎
 	{ "Character\\Player\\slowrun.x",		true,	44.0f	},	// 待機
 	{ "Character\\Player\\jumpUp.x",		false,	10.0f	},	// ジャンプ開始
 	{ "Character\\Player\\jumpDown2.x",		false,	35.0f	},	// ジャンプ落下中
 	{ "Character\\Player\\jumpDown3.x",		false,	38.0f	},	// ジャンプ着地
-	{ "Character\\Player\\run.x",		true,	40.0f	},	// 走る
-	{ "Character\\Player\\jumpN.x",		false,	1.0f	},	// 落下中
-	{ "Character\\Player\\Down.x",		false,	60.0f	},	// 落下中
-	{ "Character\\Player\\Up.x",		false,	60.0f	},	// 落下中
+	//{ "Character\\Player\\run.x",		true,	40.0f	},	// 走る
+	{ "Character\\Player\\jumpN.x",		false,	1.0f	},	// 空中
+	{ "Character\\Player\\Down.x",		false,	60.0f	},	// 倒れる
+	{ "Character\\Player\\Up.x",		false,	60.0f	},	// 起き上がる
+	{ "Character\\Player\\Clear.x",		false,	175.0f	}, //クリア
 };
 
 #define PLAYER_HEIGHT 1.6f
@@ -327,7 +328,7 @@ void CPlayer::UpdateClear()
 	// クリア終了待ち状態へ移行
 	mMoveSpeed.X(0.0f);
 	mMoveSpeed.Z(0.0f);
-	ChangeAnimation(EAnimType::eDown);
+	ChangeAnimation(EAnimType::eClear);
 	if (IsAnimationFinished())
 	{
 		mState = EState::eClearEnd;
@@ -337,10 +338,10 @@ void CPlayer::UpdateClear()
 //クリア終了
 void CPlayer::UpdateClearEnd()
 {
-	ChangeAnimation(EAnimType::eUp);
+	//ChangeAnimation(EAnimType::eUp);
 	// クリアアニメーションが終了したら、
-	if (IsAnimationFinished())
-	{
+	//if (IsAnimationFinished())
+	//{
 		// 待機状態へ移行
 		CField::mClearCountSwitch = 1;
 		CField::mStageCreateSwitch = 1;
@@ -348,7 +349,7 @@ void CPlayer::UpdateClearEnd()
 		//ChangeAnimation(EAnimType::eIdle);
 		Position(mStartPos);
 		mState = EState::eIdle;
-	}
+//	}
 }
 
 // 更新
@@ -522,12 +523,23 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		{
 			Position(Position() + hit.adjust);
 			mIsGrounded = true;
-			if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump || mState != EState::eBadDown || mState != EState::eDown)
+			if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump /*|| mState != EState::eBadDown || mState != EState::eDown*/)
 			{
 				mState = EState::eBadDown;
 			}
 		}
-		if (other->Layer() == ELayer::eBigBadObject)
+		/*if (other->Layer() == ELayer::eBigBadObject)
+		{
+			mMoveSpeed.X(mMoveSpeed.X() * -1.0f);
+			mMoveSpeed.Z(mMoveSpeed.Z() * -1.0f);
+			Position(Position() + hit.adjust);
+			mIsGrounded = true;
+			if (mState != EState::eBadDown || mState != EState::eDown || mState != EState::eUp)
+			{
+				mState = EState::eBadDown;
+			}
+		}*/
+		/*if (other->Layer() == ELayer::eBigBadObject)
 		{
 			mMoveSpeed.X(mMoveSpeed.X() * -1.0f);
 			mMoveSpeed.Z(mMoveSpeed.Z() * -1.0f);
@@ -537,7 +549,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 			{
 				mState = EState::eBadDown;
 			}
-		}
+		}*/
 	}
 
 	/*if (self == mpColliderLine)
@@ -568,6 +580,8 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		if (other->Layer() == ELayer::eObject)
 		{
 			Position(Position() + hit.adjust);
+			mMoveSpeed.X(mMoveSpeed.X() * -1.0f);
+			mMoveSpeed.Z(mMoveSpeed.Z() * -1.0f);
 			mIsGrounded = true;
 
 			if (other->Tag() == ETag::eRideableObject)
@@ -579,22 +593,22 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		{
 			Position(Position() + hit.adjust);
 			mIsGrounded = true;
-			if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump || mState != EState::eBadDown || mState != EState::eDown)
+			if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump /*|| mState != EState::eBadDown || mState != EState::eDown*/)
 			{
 				mState = EState::eBadDown;
 			}
 		}
-		if (other->Layer() == ELayer::eBigBadObject)
+		/*if (other->Layer() == ELayer::eBigBadObject)
 		{
 			Position(Position() + hit.adjust);
 			mMoveSpeed.X(mMoveSpeed.X() * -1.0f);
 			mMoveSpeed.Z(mMoveSpeed.Z() * -1.0f);
 			mIsGrounded = true;
-			if (mState != EState::eBadDown)
+			if (mState != EState::eBadDown || mState != EState::eUp || mState != EState::eDown)
 			{
 				mState = EState::eBadDown;
 			}
-		}
+		}*/
 	}
 
 	if (self == mpColliderLineLeg)
@@ -612,23 +626,25 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		if (other->Layer() == ELayer::eBadObject)
 		{
 			Position(Position() + hit.adjust);
+			mMoveSpeed.X(mMoveSpeed.X() * -1.0f);
+			mMoveSpeed.Z(mMoveSpeed.Z() * -1.0f);
 			mIsGrounded = true;
-			if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump || mState != EState::eDown)
+			if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump /*|| mState != EState::eDown*/)
 			{
 				mState = EState::eBadDown;
 			}
 		}
-		if (other->Layer() == ELayer::eBigBadObject)
+		/*if (other->Layer() == ELayer::eBigBadObject)
 		{
 			Position(Position() + hit.adjust);
 			mMoveSpeed.X(mMoveSpeed.X() * -1.0f);
 			mMoveSpeed.Z(mMoveSpeed.Z() * -1.0f);
 			mIsGrounded = true;
-			if (mState != EState::eDown || mState != EState::eBadDown)
+			if (mState != EState::eDown || mState != EState::eBadDown || mState != EState::eUp)
 			{
 				mState = EState::eBadDown;
 			}
-		}
+		}*/
 	}
 	
 	if (self == mpColliderLineHead)
@@ -646,23 +662,25 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		if (other->Layer() == ELayer::eBadObject)
 		{
 			Position(Position() + hit.adjust);
+			mMoveSpeed.X(mMoveSpeed.X() * -1.0f);
+			mMoveSpeed.Z(mMoveSpeed.Z() * -1.0f);
 			mIsGrounded = true;
-			if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump || mState != EState::eBadDown || mState != EState::eDown)
+			if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump /*|| mState != EState::eBadDown || mState != EState::eDown*/)
 			{
 				mState = EState::eBadDown;
 			}
 		}
-		if (other->Layer() == ELayer::eBigBadObject)
+		/*if (other->Layer() == ELayer::eBigBadObject)
 		{
 			Position(Position() + hit.adjust);
 			mMoveSpeed.X(mMoveSpeed.X() * -1.0f);
 			mMoveSpeed.Z(mMoveSpeed.Z() * -1.0f);
 			mIsGrounded = true;
-			if (mState != EState::eDown || mState != EState::eBadDown)
+			if (mState != EState::eDown || mState != EState::eBadDown || mState != EState::eUp)
 			{
 				mState = EState::eBadDown;
 			}
-		}
+		}*/
 	}
 }
 

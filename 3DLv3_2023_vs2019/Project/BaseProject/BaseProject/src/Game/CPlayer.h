@@ -66,15 +66,16 @@ private:
 		None = -1,
 
 		eIdle,		// ‘Ò‹@
-		eSuperJump,
+	//	eSuperJump,
 		eSlowRun,
 		eJumpUp,
 		eJumpDown2,
 		eJumpDown3,
-		eRun,
+	//	eRun,
 		eJumpN,
 		eDown,
 		eUp,
+		eClear,
 
 		Num
 	};

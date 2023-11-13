@@ -5,6 +5,7 @@
 #include "CStageManager.h"
 #include "CFloorGimmick.h"
 #include "CAxe.h"
+#include "CAxeGimmick.h"
 
 class CField : public CObjectBase 
 {
@@ -27,10 +28,12 @@ private:
 
 	CModel* mpModel;
 	CColliderMesh* mpColliderMesh;
+	CColliderSphere* mpColliderSphere;
 
 	CClearStageGimmick* mpClearStageGimmick;
 	CFloorGimmick* mpFloorGimmick;
 	CClearStageGimmick* mpClearStageGimmick2;
+	CAxeGimmick* mpAxeGimmick;
 	CModel* mpCubeModel;
 	CModel* mpCylinderModel;
 	CModel* mpClearModel;

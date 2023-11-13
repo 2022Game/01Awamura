@@ -19,7 +19,7 @@ CAxe::CAxe(CModel* model, const CVector& pos, const CVector& scale)
 	//mpColliderSphere->Position(1.0f, 1.0f, 0.25f);
 	mpColliderSphere->SetCollisionTags({ ETag::eEnemy });
 	mpColliderLine2 = new CColliderLine(
-		this, ELayer::eBigBadObject,
+		this, ELayer::eBadObject,
 		CVector(-10.0f, -36.0f, 5.0f),
 		CVector(10.0f, -36.0f, 5.0f)
 	);
@@ -28,16 +28,31 @@ CAxe::CAxe(CModel* model, const CVector& pos, const CVector& scale)
 		CVector(-10.0f, -40.0f, 0.0f),
 		CVector(10.0f, -40.0f, 0.0f)
 	);
+	mpColliderLine2 = new CColliderLine(
+		this, ELayer::eBadObject,
+		CVector(0.0f, -36.0f, 5.0f),
+		CVector(0.0f, 36.0f, 5.0f)
+	);
 	Position(mDefaultPos);
 	Scale(scale);
 }
 
 CAxe::~CAxe()
 {
-	if (mpColliderMesh != nullptr)
+	/*if (mpColliderMesh != nullptr)
 	{
 		delete mpColliderMesh;
 		mpColliderMesh = nullptr;
+	}*/
+	if (mpColliderLine2 != nullptr)
+	{
+		delete mpColliderLine2;
+		mpColliderLine2 = nullptr;
+	}
+	if (mpColliderSphere != nullptr)
+	{
+		delete mpColliderSphere;
+		mpColliderSphere = nullptr;
 	}
 }
 

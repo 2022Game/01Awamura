@@ -51,6 +51,7 @@
     <ClCompile Include="src\BaseSystem\Maths.cpp" />
     <ClCompile Include="src\Game\CApplication.cpp" />
     <ClCompile Include="src\Game\CAxe.cpp" />
+    <ClCompile Include="src\Game\CAxeGimmick.cpp" />
     <ClCompile Include="src\Game\CClearStage.cpp" />
     <ClCompile Include="src\Game\CClearStageGimmick.cpp" />
     <ClCompile Include="src\Game\CEnemy.cpp" />
@@ -120,6 +121,7 @@
     <ClInclude Include="src\Define.h" />
     <ClInclude Include="src\Game\CApplication.h" />
     <ClInclude Include="src\Game\CAxe.h" />
+    <ClInclude Include="src\Game\CAxeGimmick.h" />
     <ClInclude Include="src\Game\CClearStage.h" />
     <ClInclude Include="src\Game\CClearStageGimmick.h" />
     <ClInclude Include="src\Game\CEnemy.h" />
