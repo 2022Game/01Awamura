@@ -8,7 +8,7 @@ CFloor::CFloor(CModel* model, const CVector& pos, const CVector& scale)
 	, mElapsedTime(0.0f)
 {
 	//mpColliderMesh = new CColliderMesh(this, ELayer::eClearObject, mpModel);
-	mpColliderSphere = new CColliderSphere(this, ELayer::eBigBadObject, 1.0f);
+	mpColliderSphere = new CColliderSphere(this, ELayer::eBigBadObject, 1.0f,true);
 	Position(mDefaultPos);
 	Scale(scale);
 }

@@ -164,8 +164,8 @@ void CPlayer::UpdateIdle()
 		// 移動処理
 		// キーの入力ベクトルを取得
 		CVector input;
-		if (CInput::Key('W'))		input.Z(2.0f);
-		else if (CInput::Key('S'))	input.Z(-2.0f);
+		if (CInput::Key('W'))		input.Z(-2.0f);
+		else if (CInput::Key('S'))	input.Z(2.0f);
 		if (CInput::Key('A'))		input.X(-2.0f);
 		else if (CInput::Key('D'))	input.X(2.0f);
 

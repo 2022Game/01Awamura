@@ -7,7 +7,7 @@ CClearStage::CClearStage(CModel* model, const CVector& pos, const CVector& scale
 	, mDefaultPos(pos)
 	, mElapsedTime(0.0f)
 {
-	mpColliderMesh = new CColliderMesh(this, ELayer::eClearObject, mpModel);
+	mpColliderMesh = new CColliderMesh(this, ELayer::eClearObject, mpModel,true);
 
 	Position(mDefaultPos);
 	Scale(scale);
