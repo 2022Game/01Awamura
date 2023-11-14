@@ -50,7 +50,7 @@ void CFloorGimmick::Init()
 	if (CField::mStageCount == 1 && CField::mStageCreateSwitch == 1)
 	{
 		CreateFloor(mpFloorModel,
-			CVector(120.0f, 0.0f, -440.0f), CVector(5.5f, 5.0f, 5.25f));
+			CVector(0.0f, 0.0f, -40.0f), CVector(5.5f, 5.0f, 5.25f));
 	}
 	//ステージ２
 	if (CField::mStageCount == 2 && CField::mStageCreateSwitch == 1)

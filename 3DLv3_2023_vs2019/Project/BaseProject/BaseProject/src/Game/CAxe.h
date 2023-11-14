@@ -9,7 +9,8 @@
 class CAxe : public CRideableObject
 {
 public:
-	CAxe(CModel* model, const CVector& pos, const CVector& scale);
+	CAxe(CModel* model, const CVector& pos, const CVector& scale
+	,float rotateTime,float rotateAngle);
 	~CAxe();
 
 	void Update();
@@ -30,6 +31,9 @@ private:
 
 	CVector mDefaultPos;
 	CVector mMoveVec;
-	float mMoveTime;
+	//•€‚Ì‰ñ“]‚Ì‚Pƒ‹[ƒv‚ÉŠ|‚©‚éŠÔ
+	float mRotateTime;
+	//•€‚Ì‰ñ“]Šp“x(-mRotateAngle`mRotateAngle‚Ü‚Å‰ñ“]j
+	float mRotateAngle;
 	float mElapsedTime;
 };

@@ -120,12 +120,12 @@ void CField::CreateFieldObjects()
 	new CClearStage
 	(
 		mpClearModel,
-		CVector(-20.0f,0.0f, -140.0f),CVector(5.5f, 5.0f, 5.25f)
+		CVector(-20.0f,0.0f, -60.0f),CVector(5.5f, 5.0f, 5.25f)
 	);
 	new CClearStage
 	(
 		mpClearModel,
-		CVector(20.0f, 0.0f, -140.0f), CVector(5.5f, 5.0f, 5.25f)
+		CVector(20.0f, 0.0f, -60.0f), CVector(5.5f, 5.0f, 5.25f)
 	);
 
 	//テスト用にクリアモデルを使用
@@ -195,7 +195,7 @@ void CField::Update()
 			}
 			mpClearStageGimmick = new CClearStageGimmick();
 			mpAxeGimmick = new CAxeGimmick();
-			mpFloorGimmick = new CFloorGimmick();
+			//mpFloorGimmick = new CFloorGimmick();
 			mClearCount = 0;
 			mClearCountSwitch = 0;
 			mStageCreateSwitch = 0;

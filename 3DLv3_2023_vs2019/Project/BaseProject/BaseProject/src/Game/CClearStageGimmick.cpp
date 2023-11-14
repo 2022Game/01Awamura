@@ -7,8 +7,8 @@
 
 #include "time.h"
 
-//クリア土台
-#define MODEL_FCOIN "res\\Coin.obj","res\\Coin.mtl"
+////クリア土台
+//#define MODEL_FCOIN "res\\Coin.obj","res\\Coin.mtl"
 
 //int rand(void);
 //void srand(unsigned int seed);
@@ -44,7 +44,6 @@ void CClearStageGimmick::Init()
 {
 	// クリア土台のモデル読み込み
 	mpClearStageModel = new CModel();
-	//mpClearStageModel->Load("Field\\ono7.obj", "Field\\ono7.mtl");
 	mpClearStageModel->Load("Field\\Object\\Coin2.obj", "Field\\Object\\Coin2.mtl");
 
 	// クリア判定用の土台を生成
@@ -52,19 +51,19 @@ void CClearStageGimmick::Init()
 	if (CField::mStageCount == 1 && CField::mStageCreateSwitch == 1)
 	{
 		CreateClearStage(mpClearStageModel,
-		CVector(0.0f, 0.0f, -40.0f),  CVector(5.5f, 5.0f, 5.25f));
+		CVector(0.0f, 5.0f, -20.0f),  CVector(5.5f, 5.0f, 5.25f));
 	}
 	//ステージ２
 	if (CField::mStageCount == 2 && CField::mStageCreateSwitch == 1)
 	{
 		CreateClearStage(mpClearStageModel,
-		CVector(0.0f, 0.0f, -60.0f), CVector(5.5f, 5.0f, 5.25f));
+		CVector(0.0f, 0.0f, -20.0f), CVector(5.5f, 5.0f, 5.25f));
 	}
 	//ステージ3
 	if (CField::mStageCount == 3 && CField::mStageCreateSwitch == 1)
 	{
 		CreateClearStage(mpClearStageModel,
-			CVector(20.0f, 0.0f, -340.0f), CVector(5.5f, 5.0f, 5.25f));
+			CVector(0.0f, 0.0f, -20.0f), CVector(5.5f, 5.0f, 5.25f));
 	}
 	//ステージ4
 	if (CField::mStageCount == 4 && CField::mStageCreateSwitch == 1)
