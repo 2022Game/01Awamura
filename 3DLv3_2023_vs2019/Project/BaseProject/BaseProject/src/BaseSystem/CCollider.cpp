@@ -297,13 +297,15 @@ bool CCollider::CollisionSphere(const CVector& sp0, const float sr0,
 
 // ãÖÇ∆ê¸ï™ÇÃè’ìÀîªíË
 bool CCollider::CollisionSphereLine(const CVector& sp, const float sr,
-									const CVector& ls, const CVector& le, CHitInfo* hit)
+									const CVector& ls, const CVector& le,
+									CHitInfo* hit, bool isLeftSphere)
 {
 	CVector nearest;
 	float length = CalcDistancePointToLine(sp, ls, le, &nearest);
 	if (length < sr)
 	{
-		hit->adjust = (sp - nearest).Normalized() * (sr - length);
+		CVector n = (sp - nearest).Normalized() * (isLeftSphere ? 1.0f : -1.0f);
+		hit->adjust = n * (sr - length);
 		return true;
 	}
 
@@ -445,7 +447,7 @@ bool CCollider::Collision(CCollider* c0, CCollider* c1, CHitInfo* hit)
 					CVector sp;
 					float sr;
 					sphere->Get(&sp, &sr);
-					return CollisionSphereLine(sp, sr, ls0, le0, hit);
+					return CollisionSphereLine(sp, sr, ls0, le0, hit, false);
 				}
 				case EColliderType::eTriangle:
 				{
@@ -478,7 +480,7 @@ bool CCollider::Collision(CCollider* c0, CCollider* c1, CHitInfo* hit)
 					CColliderLine* line = dynamic_cast<CColliderLine*>(c1);
 					CVector ls, le;
 					line->Get(&ls, &le);
-					return CollisionSphereLine(sp0, sr0, ls, le, hit);
+					return CollisionSphereLine(sp0, sr0, ls, le, hit, true);
 				}
 				case EColliderType::eSphere:
 				{

@@ -192,7 +192,7 @@ public:
 	/// <param name="info">Õ“Ë‚µ‚½‚Ìî•ñ</param>
 	/// <returns>true‚È‚ç‚ÎAÕ“Ë‚µ‚Ä‚¢‚é</returns>
 	static bool CollisionSphereLine(const CVector& sp, const float sr,
-									const CVector& ls, const CVector& le, CHitInfo* info);
+									const CVector& ls, const CVector& le, CHitInfo* info, bool isLeftSphere);
 
 	/// <summary>
 	/// ü•ª‚Æü•ª‚ÌÕ“Ë”»’è
