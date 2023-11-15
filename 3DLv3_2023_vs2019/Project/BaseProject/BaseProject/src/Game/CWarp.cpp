@@ -1,23 +1,23 @@
-#include "CFloor.h"
+#include "CWarp.h"
 #include "Maths.h"
 #include "CCollider.h"
 
-CFloor::CFloor(CModel* model, const CVector& pos, const CVector& scale)
+CWarp::CWarp(CModel* model, const CVector& pos, const CVector& scale)
 	: mpModel(model)
 	, mDefaultPos(pos)
 	, mElapsedTime(0.0f)
 {
-	mpColliderMesh = new CColliderMesh(this, ELayer::eField, mpModel, true);
+	mpColliderMesh = new CColliderMesh(this, ELayer::eWarpObject, mpModel, true);
 	Position(mDefaultPos);
 	Scale(scale);
 }
 
-CFloor::~CFloor()
+CWarp::~CWarp()
 {
 	SAFE_DELETE(mpColliderMesh);
 }
 
-void CFloor::Update()
+void CWarp::Update()
 {
 	float per = mElapsedTime / mMoveTime;
 	Position(mDefaultPos + mMoveVec * sinf(M_PI * 2.0f * per));
@@ -29,7 +29,7 @@ void CFloor::Update()
 	}
 }
 
-void CFloor::Render()
+void CWarp::Render()
 {
 	mpModel->Render(Matrix());
 }

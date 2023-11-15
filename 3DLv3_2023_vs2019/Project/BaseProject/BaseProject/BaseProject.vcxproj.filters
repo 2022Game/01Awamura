@@ -208,9 +208,6 @@
     <ClCompile Include="src\Game\CRotateFloor.cpp">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\CStageManager.cpp">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
-    </ClCompile>
     <ClCompile Include="src\Game\CObstaclesManager.cpp">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClCompile>
@@ -279,6 +276,12 @@
     </ClCompile>
     <ClCompile Include="src\BaseSystem\System.cpp">
       <Filter>ソース ファイル\BaseSystem\System</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CWarp.cpp">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CWarpGimmick.cpp">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -444,9 +447,6 @@
     <ClInclude Include="src\Game\CRotateFloor.h">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\CStageManager.h">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
-    </ClInclude>
     <ClInclude Include="src\Game\CObstaclesManager.h">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClInclude>
@@ -518,6 +518,12 @@
     </ClInclude>
     <ClInclude Include="src\BaseSystem\System.h">
       <Filter>ソース ファイル\BaseSystem\System</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CWarp.h">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CWarpGimmick.h">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

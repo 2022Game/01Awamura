@@ -2,8 +2,8 @@
 #include "CObjectBase.h"
 #include "CColliderMesh.h"
 #include "CClearStageGimmick.h"
-#include "CStageManager.h"
 #include "CFloorGimmick.h"
+#include "CWarpGimmick.h"
 #include "CAxe.h"
 #include "CAxeGimmick.h"
 
@@ -22,6 +22,7 @@ public:
 	static int mClearCountSwitch;
 	static int mStageReset;
 	static int mStageCreateSwitch;
+	static int mStartSwitch;
 
 private:
 	void CreateFieldObjects();
@@ -33,6 +34,7 @@ private:
 	CClearStageGimmick* mpClearStageGimmick;
 	CFloorGimmick* mpFloorGimmick;
 	CClearStageGimmick* mpClearStageGimmick2;
+	CWarpGimmick* mpWarpGimmick;
 	CAxeGimmick* mpAxeGimmick;
 	CModel* mpCubeModel;
 	CModel* mpCylinderModel;

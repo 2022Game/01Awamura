@@ -43,20 +43,7 @@ CAxe::CAxe(CModel* model, const CVector& pos, const CVector& scale
 
 CAxe::~CAxe()
 {
-	/*if (mpColliderMesh != nullptr)
-	{
-		delete mpColliderMesh;
-		mpColliderMesh = nullptr;
-	}*/
-	/*SAFE_DELETE(mpColliderLine2);
-	SAFE_DELETE(mpColliderLine3);
-	SAFE_DELETE(mpColliderLine4);*/
 	SAFE_DELETE(mpColliderSphere);
-	/*if (mpColliderSphere != nullptr)
-	{
-		delete mpColliderSphere;
-		mpColliderSphere = nullptr;
-	}*/
 }
 
 void CAxe::Update()

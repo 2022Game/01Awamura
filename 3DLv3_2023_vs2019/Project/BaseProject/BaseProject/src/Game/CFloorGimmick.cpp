@@ -43,35 +43,34 @@ void CFloorGimmick::Init()
 {
 	// クリア土台のモデル読み込み
 	mpFloorModel = new CModel();
-	mpFloorModel->Load("Field\\Object\\Coin2.obj", "Field\\Object\\Coin2.mtl");
+	mpFloorModel->Load("Field\\Object\\cube.obj", "Field\\Object\\cube.mtl");
 
-	// クリア判定用の土台を生成
-	//ステージ１
-	if (CField::mStageCount == 1 && CField::mStageCreateSwitch == 1)
+	// ワープの土台を生成
+	//ステージ0
+	if (CField::mStageCount == 0)
 	{
 		CreateFloor(mpFloorModel,
-			CVector(0.0f, 0.0f, -40.0f), CVector(5.5f, 5.0f, 5.25f));
+			CVector(0.0f, 2.0f, -20.0f), CVector(0.5f, 4.0f, 5.0f));
 	}
-	//ステージ２
-	if (CField::mStageCount == 2 && CField::mStageCreateSwitch == 1)
-	{
-		
-	}
-	//ステージ3
-	if (CField::mStageCount == 3 && CField::mStageCreateSwitch == 1)
-	{
-		
-	}
-	//ステージ4
-	if (CField::mStageCount == 4 && CField::mStageCreateSwitch == 1)
-	{
-		
-	}
-	//ステージ5
-	if (CField::mStageCount == 5 && CField::mStageCreateSwitch == 1)
+	if (CField::mStageCount == 1)
 	{
 		CreateFloor(mpFloorModel,
-			CVector(20.0f, 0.0f, -440.0f), CVector(5.5f, 5.0f, 5.25f));
+			CVector(0.0f, 2.0f, -20.0f), CVector(0.5f, 4.0f, 5.0f));
+	}
+	if (CField::mStageCount == 2)
+	{
+		CreateFloor(mpFloorModel,
+			CVector(0.0f, 2.0f, -20.0f), CVector(0.5f, 4.0f, 5.0f));
+	}
+	if (CField::mStageCount == 3)
+	{
+		CreateFloor(mpFloorModel,
+			CVector(0.0f, 2.0f, -20.0f), CVector(0.5f, 4.0f, 5.0f));
+	}
+	if (CField::mStageCount == 4)
+	{
+		CreateFloor(mpFloorModel,
+			CVector(0.0f, 2.0f, -20.0f), CVector(0.5f, 4.0f, 5.0f));
 	}
 }
 
@@ -80,8 +79,8 @@ void CFloorGimmick::CreateFloor(CModel* model, const CVector& pos, const CVector
 	if (mpFloorModel == nullptr) return;
 
 	// クリア土台を生成してリストに追加
-	CFloor* coin = new CFloor(mpFloorModel, pos, scale);
-	mFloor.push_back(coin);
+	CFloor* warp = new CFloor(mpFloorModel, pos, scale);
+	mFloor.push_back(warp);
 }
 
 void CFloorGimmick::Update()

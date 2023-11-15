@@ -118,7 +118,7 @@ CPlayer::CPlayer()
 		CVector(0.0f, PLAYER_HEIGHT, -0.4f)
 	);*/
 	/*mpColliderSphere->SetCollisionLayers({});*/
-	mpColliderLine->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject});
+	mpColliderLine->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject,ELayer::eWarpObject});
 	mpColliderLineBody->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject});
 	mpColliderLineLeg->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject });
 	mpColliderLineHead->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject });
@@ -454,8 +454,10 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		//クリア判定コイン着地判定
 		if (other->Layer() == ELayer::eClearObject)
 		{
+			//待機状態以外
 			if (mState != EState::eIdle)
 			{
+				//空中から着地した時
 				if (mState == EState::eJump || mState == EState::eJumpN)
 				{
 					//着地時に移動しないようにする
@@ -476,12 +478,13 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 				mState = EState::eClear;
 			}
 		}
-		//else if (CField::mClearCountSwitch = 0);
+		
+		//待機状態を含む着地判定
 		if (other->Layer() == ELayer::eClearObject || other->Layer() == ELayer::eField)
 		{
 			if (mState == EState::eJump || mState == EState::eJumpN)
 			{
-				//Downcount = 180;
+				//着地時に滑らない
 				mMoveSpeed.X(0.0f);
 				mMoveSpeed.Z(0.0f);
 				ChangeAnimation(EAnimType::eJumpDown3);
@@ -489,11 +492,14 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 			}
 		}
 
+		//フィールドと障害物とクリア土台の上に乗っかる
 		if (other->Layer() == ELayer::eField || other->Layer() == ELayer::eObject || other->Layer() == ELayer::eClearObject)
 		{
+			//落ちないようにする
 			mMoveSpeed.Y(0.0f);
 			Position(Position() + hit.adjust);
 			mIsGrounded = true;
+			//乗れる土台
 			if (other->Tag() == ETag::eRideableObject)
 			{
 				mpRideObject = other->Owner();
@@ -501,12 +507,13 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 				{
 					if(mState == EState::eJump || mState == EState::eJumpN)
 					{
-						//Downcount = 180;
+						//滑らないようにする
 						mMoveSpeed.X(0.0f);
 						mMoveSpeed.Z(0.0f);
 						ChangeAnimation(EAnimType::eJumpDown3);
 						mState = EState::eJumpEnd;
 					}
+					//ダウンした時に地面を滑らないようにする
 					if (mState == EState::eDown || mState == EState::eBadDown)
 					{
 						mMoveSpeed.X(0.0f);
@@ -515,69 +522,53 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 				}
 			}
 		}
+		//悪い障害物
 		if (other->Layer() == ELayer::eBadObject)
 		{
+			//押し戻される
 			Position(Position() + hit.adjust);
 			mIsGrounded = true;
+			//空中でぶつかったときにダウンする
 			if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump /*|| mState != EState::eBadDown || mState != EState::eDown*/)
 			{
 				mState = EState::eBadDown;
 			}
 		}
+		//とても悪い障害物
 		if (other->Layer() == ELayer::eBigBadObject)
 		{
-			/*mMoveSpeed.X(mMoveSpeed.X() * -1.0f);
-			mMoveSpeed.Z(mMoveSpeed.Z() * -1.0f);*/
 			Position(Position() + hit.adjust);
 			mIsGrounded = true;
+			//当たったらDOWNする
 			if (mState != EState::eBadDown || mState != EState::eDown || mState != EState::eUp)
 			{
 				mState = EState::eBadDown;
 			}
 		}
-		if (other->Layer() == ELayer::eBigBadObject)
+		//ワープ障害物
+		if (other->Layer() == ELayer::eWarpObject)
 		{
-			/*mMoveSpeed.X(mMoveSpeed.X() * -1.0f);
-			mMoveSpeed.Z(mMoveSpeed.Z() * -1.0f);*/
 			Position(Position() + hit.adjust);
 			mIsGrounded = true;
-			if (mState != EState::eBadDown || mState != EState::eDown)
+			//条件によりワープ位置を変える
+			//ゲームステージ１スタート
+			if (CField::mStageCount == 0)
 			{
-				mState = EState::eBadDown;
+				CField::mClearCount = 1;
+				CField::mClearCountSwitch = 1;
+				CField::mStageCreateSwitch = 1;
+				//ステージ１開始位置へワープ
+				Position(mStartPos);
 			}
 		}
 	}
 
-	if (self == mpColliderLine)
-	{
-		if (other->Layer() == ELayer::eBadObject)
-		{
-			Position(Position() + hit.adjust);
-			mIsGrounded = true;
-			if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump || mState != EState::eBadDown || mState != EState::eDown)
-			{
-				mState = EState::eBadDown;
-			}
-		}
-		if (other->Layer() == ELayer::eBigBadObject)
-		{
-			/*mMoveSpeed.X(mMoveSpeed.X() * -1.0f);
-			mMoveSpeed.Z(mMoveSpeed.Z() * -1.0f);*/
-			Position(Position() + hit.adjust);
-			mIsGrounded = true;
-			if (mState != EState::eBadDown || mState != EState::eDown)
-			{
-				mState = EState::eBadDown;
-			}
-		}
-	}
+	//胴の判定
 	if (self == mpColliderLineBody)
 	{
 		if (other->Layer() == ELayer::eObject)
 		{
 			Position(Position() + hit.adjust);
-			/*mMoveSpeed.X(mMoveSpeed.X() * -1.0f);
-			mMoveSpeed.Z(mMoveSpeed.Z() * -1.0f);*/
 			mIsGrounded = true;
 
 			if (other->Tag() == ETag::eRideableObject)
@@ -597,8 +588,6 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		if (other->Layer() == ELayer::eBigBadObject)
 		{
 			Position(Position() + hit.adjust * hit.weight);
-			/*mMoveSpeed.X(mMoveSpeed.X() * -1.0f);
-			mMoveSpeed.Z(mMoveSpeed.Z() * -1.0f);*/
 			mIsGrounded = true;
 			if (mState != EState::eBadDown || mState != EState::eUp || mState != EState::eDown)
 			{
@@ -607,6 +596,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		}
 	}
 
+	//足の判定
 	if (self == mpColliderLineLeg)
 	{
 		if (other->Layer() == ELayer::eObject)
@@ -622,8 +612,6 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		if (other->Layer() == ELayer::eBadObject)
 		{
 			Position(Position() + hit.adjust);
-			/*mMoveSpeed.X(mMoveSpeed.X() * -1.0f);
-			mMoveSpeed.Z(mMoveSpeed.Z() * -1.0f);*/
 			mIsGrounded = true;
 			if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump /*|| mState != EState::eDown*/)
 			{
@@ -633,8 +621,6 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		if (other->Layer() == ELayer::eBigBadObject)
 		{
 			Position(Position() + hit.adjust);
-			/*mMoveSpeed.X(mMoveSpeed.X() * -1.0f);
-			mMoveSpeed.Z(mMoveSpeed.Z() * -1.0f);*/
 			mIsGrounded = true;
 			if (mState != EState::eDown || mState != EState::eBadDown || mState != EState::eUp)
 			{
@@ -643,6 +629,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		}
 	}
 	
+	//頭の判定
 	if (self == mpColliderLineHead)
 	{
 		if (other->Layer() == ELayer::eObject)
@@ -658,8 +645,6 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		if (other->Layer() == ELayer::eBadObject)
 		{
 			Position(Position() + hit.adjust);
-			/*mMoveSpeed.X(mMoveSpeed.X() * -1.0f);
-			mMoveSpeed.Z(mMoveSpeed.Z() * -1.0f);*/
 			mIsGrounded = true;
 			if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump /*|| mState != EState::eBadDown || mState != EState::eDown*/)
 			{
@@ -669,8 +654,6 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		if (other->Layer() == ELayer::eBigBadObject)
 		{
 			Position(Position() + hit.adjust);
-			/*mMoveSpeed.X(mMoveSpeed.X() * -1.0f);
-			mMoveSpeed.Z(mMoveSpeed.Z() * -1.0f);*/
 			mIsGrounded = true;
 			if (mState != EState::eDown || mState != EState::eBadDown || mState != EState::eUp)
 			{

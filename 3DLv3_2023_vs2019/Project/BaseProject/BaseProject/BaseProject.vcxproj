@@ -70,8 +70,9 @@
     <ClCompile Include="src\Game\CPlayer.cpp" />
     <ClCompile Include="src\Game\CRideabeObject.cpp" />
     <ClCompile Include="src\Game\CRotateFloor.cpp" />
-    <ClCompile Include="src\Game\CStageManager.cpp" />
     <ClCompile Include="src\Game\CTitleScene.cpp" />
+    <ClCompile Include="src\Game\CWarp.cpp" />
+    <ClCompile Include="src\Game\CWarpGimmick.cpp" />
     <ClCompile Include="src\Game\CXCharacter.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Test\CBootMenuScene.cpp" />
@@ -152,8 +153,9 @@
     <ClInclude Include="src\Game\CPlayer.h" />
     <ClInclude Include="src\Game\CRideableObject.h" />
     <ClInclude Include="src\Game\CRotateFloor.h" />
-    <ClInclude Include="src\Game\CStageManager.h" />
     <ClInclude Include="src\Game\CTitleScene.h" />
+    <ClInclude Include="src\Game\CWarp.h" />
+    <ClInclude Include="src\Game\CWarpGimmick.h" />
     <ClInclude Include="src\Game\CXCharacter.h" />
     <ClInclude Include="src\Test\CBootMenuScene.h" />
     <ClInclude Include="src\Test\CColBase.h" />

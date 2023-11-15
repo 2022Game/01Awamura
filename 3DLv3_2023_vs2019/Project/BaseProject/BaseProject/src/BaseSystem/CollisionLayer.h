@@ -12,6 +12,7 @@ enum class ELayer
 	eBigBadObject,
 	eObject,
 	eClearObject,
+	eWarpObject,
 
 };
 // 衝突判定レイヤーの初期化リスト

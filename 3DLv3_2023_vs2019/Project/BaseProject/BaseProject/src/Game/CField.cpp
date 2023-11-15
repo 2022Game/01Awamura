@@ -12,6 +12,7 @@ int CField::mStageCount = 0;
 int CField::mClearCountSwitch = 0;
 int CField::mStageCreateSwitch = 0;
 int CField::mStageReset = 0;
+int CField::mStartSwitch = 0;
 
 CField::CField()
 	: CObjectBase(ETag::eField, ETaskPriority::eBackground)
@@ -79,114 +80,46 @@ void CField::CreateFieldObjects()
 	mpClearModel = new CModel();
 	mpClearModel->Load("Field\\Object\\Coin2.obj", "Field\\Object\\Coin2.mtl");
 
-	/*new CMoveFloor
-	(
-		mpCubeModel,
-		CVector(0.0f, 2.0f, -50.0f), CVector(1.0f, 4.0f, 1.0f),
-		CVector(50.0f, 0.0f, 0.0f), 5.0f
-	);
-	new CRotateFloor
-	(
-		mpCylinderModel,
-		CVector(-40.0f, 15.0f, 20.0f), CVector(1.0f, 4.0f, 1.0f),
-		1.0f
-	);*/
-
-	// 動かない床①
-	//new CMoveFloor
-	//(
-	//	mpCubeModel,
-	//	CVector(20.0f, 2.0f, 0.0f), CVector(0.5f, 4.0f, 1.25f),
-	//	CVector(0.0f, 0.0f, 0.0f), 5.0f
-	//);
-
 	//// 動かない床①
 	//new CMoveFloor
 	//(
 	//	mpCubeModel,
-	//	CVector(20.0f, 2.0f, -20.0f), CVector(0.5f, 4.0f, 1.25f),
+	//	CVector(0.0f, 2.0f, -20.0f), CVector(0.5f, 4.0f, 5.0f),
 	//	CVector(0.0f, 0.0f, 0.0f), 5.0f
 	//);
 
-	// 動かない床①
-	new CMoveFloor
-	(
-		mpCubeModel,
-		CVector(0.0f, 2.0f, -60.0f), CVector(0.5f, 4.0f, 5.0f),
-		CVector(0.0f, 0.0f, 0.0f), 5.0f
-	);
-
-	//クリア床
-	new CClearStage
-	(
-		mpClearModel,
-		CVector(-20.0f,0.0f, -60.0f),CVector(5.5f, 5.0f, 5.25f)
-	);
-	new CClearStage
-	(
-		mpClearModel,
-		CVector(20.0f, 0.0f, -60.0f), CVector(5.5f, 5.0f, 5.25f)
-	);
-
-	//テスト用にクリアモデルを使用
-	/*new CFloor
-	(
-		mpClearModel,
-		CVector(0.0f, 220.0f, -140.0f), CVector(5.5f, 5.0f, 5.25f)
-	);*/
-	/*new CAxe
-	(
-		mpAxeModel,
-		CVector(0.0f, 200.0f, -140.0f), CVector(5.5f, 5.0f, 5.25f)
-	);*/
-	//// 動く床①
-	//new CMoveFloor
+	////クリア床
+	//new CFloor
 	//(
 	//	mpCubeModel,
-	//	CVector(60.0f, 2.0f, 0.0f), CVector(0.25f, 4.0f, 0.25f),
-	//	CVector(20.0f, 0.0f, 0.0f), 5.0f
+	//	CVector(0.0f,10.0f, -100.0f),CVector(0.5f, 5.0f, -0.5f)
 	//);
-	//// 動かない床②
-	//new CMoveFloor
+	//new CClearStage
 	//(
-	//	mpCubeModel,
-	//	CVector(100.0f, 20.0f, 0.0f), CVector(0.25f, 4.0f, 0.25f),
-	//	CVector(0.0f, 0.0f, 0.0f), 5.0f
-	//);
-	//// 回転する床①
-	//new CRotateFloor
-	//(
-	//	mpCubeModel,
-	//	CVector(135.0f, 10.0f, 0.0f), CVector(1.0f, 4.0f, 0.25f),
-	//	0.5f
-	//);
-	//// 動かない床②
-	//new CMoveFloor
-	//(
-	//	mpCubeModel,
-	//	CVector(135.0f, 20.0f, -35.0f), CVector(0.25f, 4.0f, 0.25f),
-	//	CVector(0.0f, 0.0f, 0.0f), 5.0f
-	//);
-	//// 動かない床②
-	//new CMoveFloor
-	//(
-	//	mpCubeModel,
-	//	CVector(135.0f, 70.0f, -52.5f), CVector(0.25f, 4.0f, 0.25f),
-	//	CVector(0.0f, 50.0f, 0.0f), 5.0f
+	//	mpClearModel,
+	//	CVector(20.0f, 0.0f, -60.0f), CVector(5.5f, 5.0f, 5.25f)
 	//);
 }
 
 void CField::Update()
 {
+	//初期ステージ
+	if (mStageCount == 0 && mStartSwitch == 0)
+	{
+		mpFloorGimmick = new CFloorGimmick();
+		mpWarpGimmick = new CWarpGimmick();
+		mStartSwitch = 1;
+	}
+	//ステージ１
 	if (mClearCount == 1 && mClearCountSwitch == 1)
 	{
 		mStageCount++;
 		if (mStageCount == 1)
 		{
-			if (mpClearStageGimmick != nullptr)
+			if (mpWarpGimmick != nullptr)
 			{
-				mpClearStageGimmick->Kill();
-				mpClearStageGimmick = nullptr;
+				mpWarpGimmick->Kill();
+				mpWarpGimmick = nullptr;
 			}
 			if (mpFloorGimmick != nullptr)
 			{
@@ -195,11 +128,12 @@ void CField::Update()
 			}
 			mpClearStageGimmick = new CClearStageGimmick();
 			mpAxeGimmick = new CAxeGimmick();
-			//mpFloorGimmick = new CFloorGimmick();
+			mpFloorGimmick = new CFloorGimmick();
 			mClearCount = 0;
 			mClearCountSwitch = 0;
 			mStageCreateSwitch = 0;
 		}
+		//ステージ２
 		if (mStageCount == 2)
 		{
 			if (mpClearStageGimmick != nullptr)
@@ -212,12 +146,12 @@ void CField::Update()
 				mpAxeGimmick->Kill();
 				mpAxeGimmick = nullptr;
 			}
-			/*if (mpFloorGimmick != nullptr)
+			if (mpFloorGimmick != nullptr)
 			{
 				mpFloorGimmick->Kill();
 				mpFloorGimmick = nullptr;
-			}*/
-			//mpFloorGimmick = new CFloorGimmick();
+			}
+			mpFloorGimmick = new CFloorGimmick();
 			mpClearStageGimmick = new CClearStageGimmick();
 			mClearCount = 0;
 			mClearCountSwitch = 0;

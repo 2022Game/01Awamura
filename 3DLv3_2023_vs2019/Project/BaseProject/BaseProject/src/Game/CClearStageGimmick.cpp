@@ -51,7 +51,7 @@ void CClearStageGimmick::Init()
 	if (CField::mStageCount == 1 && CField::mStageCreateSwitch == 1)
 	{
 		CreateClearStage(mpClearStageModel,
-		CVector(0.0f, 5.0f, -20.0f),  CVector(5.5f, 5.0f, 5.25f));
+		CVector(0.0f, -5.0f, -20.0f),  CVector(5.5f, 5.0f, 5.25f));
 	}
 	//ステージ２
 	if (CField::mStageCount == 2 && CField::mStageCreateSwitch == 1)
