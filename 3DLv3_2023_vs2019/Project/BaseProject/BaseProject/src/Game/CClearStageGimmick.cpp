@@ -44,7 +44,8 @@ void CClearStageGimmick::Init()
 {
 	// クリア土台のモデル読み込み
 	mpClearStageModel = new CModel();
-	mpClearStageModel->Load("Field\\Object\\Coin2.obj", "Field\\Object\\Coin2.mtl");
+	mpClearStageModel->Load("Field\\WarpDoor2.obj", "Field\\WarpDoor2.mtl");
+	/*"Field\\Object\\Coin2.obj", "Field\\Object\\Coin2.mtl"*/
 
 	// クリア判定用の土台を生成
 	//ステージ１
@@ -57,7 +58,7 @@ void CClearStageGimmick::Init()
 	if (CField::mStageCount == 2 && CField::mStageCreateSwitch == 1)
 	{
 		CreateClearStage(mpClearStageModel,
-		CVector(0.0f, 0.0f, -20.0f), CVector(5.5f, 5.0f, 5.25f));
+		CVector(0.0f, 0.0f, -170.0f), CVector(5.5f, 5.0f, 5.25f));
 	}
 	//ステージ3
 	if (CField::mStageCount == 3 && CField::mStageCreateSwitch == 1)
@@ -69,7 +70,7 @@ void CClearStageGimmick::Init()
 	if (CField::mStageCount == 4 && CField::mStageCreateSwitch == 1)
 	{
 		CreateClearStage(mpClearStageModel,
-			CVector(20.0f, 0.0f, -390.0f), CVector(5.5f, 5.0f, 5.25f));
+			CVector(0.0f, 0.0f, -190.0f), CVector(5.5f, 5.0f, 5.25f));
 	}
 	//ステージ5
 	if (CField::mStageCount == 5 && CField::mStageCreateSwitch == 1)

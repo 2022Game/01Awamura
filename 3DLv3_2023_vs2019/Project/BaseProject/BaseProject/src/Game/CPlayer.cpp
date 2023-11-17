@@ -16,7 +16,7 @@ const CPlayer::AnimData CPlayer::ANIM_DATA[] =
 	{ "Character\\Player\\Normalidol.x",true,	554.0f	},	// Tポーズ
 	//{ "Character\\Player\\SuperJump.x",true,	160.0f	},	// 謎
 	{ "Character\\Player\\slowrun.x",		true,	44.0f	},	// 待機
-	{ "Character\\Player\\jumpUp.x",		false,	10.0f	},	// ジャンプ開始
+	{ "Character\\Player\\jumpUp.x",		false,	8.0f	},	// ジャンプ開始
 	{ "Character\\Player\\jumpDown2.x",		false,	35.0f	},	// ジャンプ落下中
 	{ "Character\\Player\\jumpDown3.x",		false,	38.0f	},	// ジャンプ着地
 	//{ "Character\\Player\\run.x",		true,	40.0f	},	// 走る
@@ -548,8 +548,9 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		//ワープ障害物
 		if (other->Layer() == ELayer::eWarpObject)
 		{
+			mMoveSpeed.Y(0.0f);
 			Position(Position() + hit.adjust);
-			mIsGrounded = true;
+			//mIsGrounded = true;
 			//条件によりワープ位置を変える
 			//ゲームステージ１スタート
 			if (CField::mStageCount == 0)

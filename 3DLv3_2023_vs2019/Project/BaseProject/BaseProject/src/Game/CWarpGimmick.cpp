@@ -45,7 +45,7 @@ void CWarpGimmick::Init()
 	if (CField::mStageCount == 0)
 	{
 		CreateWarp(mpWarpModel,
-			CVector(0.0f, 10.0f, -100.0f), CVector(0.5f, 5.0f, -0.5f));
+			CVector(0.0f, 20.0f, -100.0f), CVector(0.5f, 8.0f, -0.5f));
 	}
 }
 
