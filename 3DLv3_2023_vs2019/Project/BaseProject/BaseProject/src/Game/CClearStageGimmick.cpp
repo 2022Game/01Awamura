@@ -44,8 +44,7 @@ void CClearStageGimmick::Init()
 {
 	// クリア土台のモデル読み込み
 	mpClearStageModel = new CModel();
-	mpClearStageModel->Load("Field\\WarpDoor2.obj", "Field\\WarpDoor2.mtl");
-	/*"Field\\Object\\Coin2.obj", "Field\\Object\\Coin2.mtl"*/
+	mpClearStageModel->Load("Field\\Object\\Coin2.obj", "Field\\Object\\Coin2.mtl");
 
 	// クリア判定用の土台を生成
 	//ステージ１

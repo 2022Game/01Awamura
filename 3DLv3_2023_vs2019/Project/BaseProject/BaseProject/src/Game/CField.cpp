@@ -20,10 +20,11 @@ CField::CField()
 	,mpFloorGimmick(nullptr)
 	,mpAxeGimmick(nullptr)
 {
-	/*mpModel = new CModel();
-	mpModel->Load("Field\\field.obj", "Field\\field.mtl");
+	mpModel = new CModel();
+	//仮のフィールドデータ　ピンクな背景モデルが有れば入れる
+	mpModel->Load("Field\\Dublesky.obj", "Field\\Dublesky.mtl");
 
-	mpColliderMesh = new CColliderMesh(this, ELayer::eField, mpModel, true);*/;
+	//mpColliderMesh = new CColliderMesh(this, ELayer::eField, mpModel, true);;
 
 	/*mpStageManager = new CStageManager();*/
 
@@ -129,6 +130,7 @@ void CField::Update()
 			mpClearStageGimmick = new CClearStageGimmick();
 			mpAxeGimmick = new CAxeGimmick();
 			mpFloorGimmick = new CFloorGimmick();
+			mpWarpGimmick = new CWarpGimmick();
 			mClearCount = 0;
 			mClearCountSwitch = 0;
 			mStageCreateSwitch = 0;
@@ -208,5 +210,5 @@ void CField::Update()
 
 void CField::Render()
 {
-	//mpModel->Render(Matrix());
+	mpModel->Render(Matrix());
 }

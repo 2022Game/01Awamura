@@ -12,6 +12,7 @@ CApplication::~CApplication()
 void CApplication::Start()
 {
 	CSceneManager::Instance()->LoadScene(EScene::eBootMenu);
+	//mBackGround.Load(MODEL_BACKGROUND);
 }
 
 void CApplication::Update()
@@ -28,4 +29,6 @@ void CApplication::Update()
 	CTaskManager::Instance()->Render();
 	// コライダの描画
 	CCollisionManager::Instance()->Render();
+
+	//mBackGround.Render();
 }

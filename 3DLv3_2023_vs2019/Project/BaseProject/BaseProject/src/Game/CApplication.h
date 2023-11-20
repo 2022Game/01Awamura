@@ -1,8 +1,10 @@
 #pragma once
+#include "CModel.h"
 
 class CApplication
 {
 private:
+	CModel mBackGround;
 public:
 	~CApplication();
 

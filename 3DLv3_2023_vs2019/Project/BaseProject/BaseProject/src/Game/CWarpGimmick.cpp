@@ -8,7 +8,7 @@
 #include "time.h"
 
 //床
-#define MODEL_FCOIN "res\\Coin.obj","res\\Coin.mtl"
+//#define MODEL_FCOIN "res\\Coin.obj","res\\Coin.mtl"
 
 //int rand(void);
 //void srand(unsigned int seed);
@@ -38,14 +38,19 @@ void CWarpGimmick::Init()
 {
 	// クリア土台のモデル読み込み
 	mpWarpModel = new CModel();
-	mpWarpModel->Load("Field\\Object\\cube.obj", "Field\\Object\\cube.mtl");
+	mpWarpModel->Load("Field\\WarpDoor2.obj", "Field\\WarpDoor2.mtl");
 
 	// ワープの土台を生成
 	//ステージ0
 	if (CField::mStageCount == 0)
 	{
 		CreateWarp(mpWarpModel,
-			CVector(0.0f, 20.0f, -100.0f), CVector(0.5f, 8.0f, -0.5f));
+			CVector(0.0f, 10.0f, -100.0f), CVector(6.0f, 3.0f, 3.0f));
+	}
+	if (CField::mStageCount == 1)
+	{
+		CreateWarp(mpWarpModel,
+			CVector(0.0f, 10.0f, -100.0f), CVector(6.0f, 3.0f, 3.0f));
 	}
 }
 
