@@ -65,6 +65,9 @@
     <Filter Include="ソース ファイル\Test\CollisionTest">
       <UniqueIdentifier>{4c06fdbb-4053-4332-ad62-51342a69e2ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Game\Field\ObjectGimmick">
+      <UniqueIdentifier>{6363e921-d5f7-4b72-b108-f9f93aae77d2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -281,6 +284,24 @@
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\CWarpGimmick.cpp">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CSlope.cpp">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CSlopeGimmick.cpp">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CClearCubeGimmick.cpp">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CClearCube.cpp">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CStorn.cpp">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CStornGimmick.cpp">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClCompile>
   </ItemGroup>
@@ -523,6 +544,24 @@
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CWarpGimmick.h">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CSlope.h">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CSlopeGimmick.h">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CClearCubeGimmick.h">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CClearCube.h">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CStorn.h">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CStornGimmick.h">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClInclude>
   </ItemGroup>

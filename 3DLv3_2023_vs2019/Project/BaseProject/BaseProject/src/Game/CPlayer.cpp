@@ -118,9 +118,9 @@ CPlayer::CPlayer()
 		CVector(0.0f, PLAYER_HEIGHT, -0.4f)
 	);*/
 	/*mpColliderSphere->SetCollisionLayers({});*/
-	mpColliderLine->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject,ELayer::eWarpObject});
+	mpColliderLine->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject,ELayer::eWarpObject,ELayer::eSlopeField});
 	mpColliderLineBody->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject});
-	mpColliderLineLeg->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject });
+	mpColliderLineLeg->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject,ELayer::eSlopeField });
 	mpColliderLineHead->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject });
 }
 
@@ -204,14 +204,22 @@ void CPlayer::UpdateIdle()
 	}
 	else
 	{
-		// 待機アニメーションに切り替え
-		ChangeAnimation(EAnimType::eIdle);
-		if (mMoveSpeed.Y() <= 0.0f)
+		//if (mMoveSpeed.Y() <= -0.5f && mMoveSpeed.Y() >-1.0f)
+		//{
+		//	// 待機アニメーションに切り替え
+		//	ChangeAnimation(EAnimType::eIdle);
+		//}
+		
+		if (mMoveSpeed.Y() <= -0.2f)
 		{
 			mState = EState::eJumpN;
 		}
 	}
 }
+
+//コライダーを行列にアタッチする用
+//const CAmatrix* bodyMtx = GetFrameMtx("Armature_Body");
+//mpAttackCol->SetAttachMtx(bodyMtx);
 
 // 攻撃
 void CPlayer::UpdateAttack()
@@ -346,6 +354,7 @@ void CPlayer::UpdateClearEnd()
 		CField::mClearCountSwitch = 1;
 		CField::mStageCreateSwitch = 1;
 		CField::mClearCount = 1;
+		//CField::mDeleteSwitch = 1;
 		//ChangeAnimation(EAnimType::eIdle);
 		Position(mStartPos);
 		mState = EState::eIdle;
@@ -522,6 +531,37 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 				}
 			}
 		}
+
+		if (other->Layer() == ELayer::eSlopeField)
+		{
+			//落ちないようにする
+			mMoveSpeed.Y(0.0f);
+			Position(Position() + hit.adjust);
+			mIsGrounded = true;
+			//乗れる土台
+			if (other->Tag() == ETag::eRideableObject)
+			{
+				mpRideObject = other->Owner();
+				if (mState != EState::eIdle)
+				{
+					if (mState == EState::eJump || mState == EState::eJumpN)
+					{
+						//滑らないようにする
+						mMoveSpeed.X(0.0f);
+						mMoveSpeed.Z(0.0f);
+						ChangeAnimation(EAnimType::eJumpDown3);
+						mState = EState::eJumpEnd;
+					}
+					//ダウンした時に地面を滑らないようにする
+					if (mState == EState::eDown || mState == EState::eBadDown)
+					{
+						mMoveSpeed.X(0.0f);
+						mMoveSpeed.Z(0.0f);
+					}
+				}
+			}
+		}
+
 		//悪い障害物
 		if (other->Layer() == ELayer::eBadObject)
 		{

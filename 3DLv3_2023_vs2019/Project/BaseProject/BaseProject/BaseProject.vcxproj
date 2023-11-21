@@ -56,6 +56,8 @@
     <ClCompile Include="src\Game\CApplication.cpp" />
     <ClCompile Include="src\Game\CAxe.cpp" />
     <ClCompile Include="src\Game\CAxeGimmick.cpp" />
+    <ClCompile Include="src\Game\CClearCube.cpp" />
+    <ClCompile Include="src\Game\CClearCubeGimmick.cpp" />
     <ClCompile Include="src\Game\CClearStage.cpp" />
     <ClCompile Include="src\Game\CClearStageGimmick.cpp" />
     <ClCompile Include="src\Game\CEnemy.cpp" />
@@ -70,6 +72,10 @@
     <ClCompile Include="src\Game\CPlayer.cpp" />
     <ClCompile Include="src\Game\CRideabeObject.cpp" />
     <ClCompile Include="src\Game\CRotateFloor.cpp" />
+    <ClCompile Include="src\Game\CSlope.cpp" />
+    <ClCompile Include="src\Game\CSlopeGimmick.cpp" />
+    <ClCompile Include="src\Game\CStorn.cpp" />
+    <ClCompile Include="src\Game\CStornGimmick.cpp" />
     <ClCompile Include="src\Game\CTitleScene.cpp" />
     <ClCompile Include="src\Game\CWarp.cpp" />
     <ClCompile Include="src\Game\CWarpGimmick.cpp" />
@@ -139,6 +145,8 @@
     <ClInclude Include="src\Game\CApplication.h" />
     <ClInclude Include="src\Game\CAxe.h" />
     <ClInclude Include="src\Game\CAxeGimmick.h" />
+    <ClInclude Include="src\Game\CClearCube.h" />
+    <ClInclude Include="src\Game\CClearCubeGimmick.h" />
     <ClInclude Include="src\Game\CClearStage.h" />
     <ClInclude Include="src\Game\CClearStageGimmick.h" />
     <ClInclude Include="src\Game\CEnemy.h" />
@@ -153,6 +161,10 @@
     <ClInclude Include="src\Game\CPlayer.h" />
     <ClInclude Include="src\Game\CRideableObject.h" />
     <ClInclude Include="src\Game\CRotateFloor.h" />
+    <ClInclude Include="src\Game\CSlope.h" />
+    <ClInclude Include="src\Game\CSlopeGimmick.h" />
+    <ClInclude Include="src\Game\CStorn.h" />
+    <ClInclude Include="src\Game\CStornGimmick.h" />
     <ClInclude Include="src\Game\CTitleScene.h" />
     <ClInclude Include="src\Game\CWarp.h" />
     <ClInclude Include="src\Game\CWarpGimmick.h" />

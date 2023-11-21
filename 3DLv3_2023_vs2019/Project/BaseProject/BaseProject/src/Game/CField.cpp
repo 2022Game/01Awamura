@@ -13,16 +13,21 @@ int CField::mClearCountSwitch = 0;
 int CField::mStageCreateSwitch = 0;
 int CField::mStageReset = 0;
 int CField::mStartSwitch = 0;
+int CField::mDeleteSwitch = 0;
 
 CField::CField()
 	: CObjectBase(ETag::eField, ETaskPriority::eBackground)
 	, mpClearStageGimmick(nullptr)
 	,mpFloorGimmick(nullptr)
 	,mpAxeGimmick(nullptr)
+	,mpSlopeGimmick(nullptr)
+	,mpWarpGimmick(nullptr)
+	,mpClearCubeGimmick(nullptr)
+	,mpStornGimmick(nullptr)
 {
 	mpModel = new CModel();
 	//仮のフィールドデータ　ピンクな背景モデルが有れば入れる
-	mpModel->Load("Field\\Dublesky.obj", "Field\\Dublesky.mtl");
+	mpModel->Load("Field\\Dublesky4.obj", "Field\\Dublesky4.mtl");
 
 	//mpColliderMesh = new CColliderMesh(this, ELayer::eField, mpModel, true);;
 
@@ -62,12 +67,6 @@ CField::~CField()
 		delete mpCubeModel;
 		mpCubeModel = nullptr;
 	}
-
-	if (mpAxeModel != nullptr)
-	{
-		delete mpAxeModel;
-		mpAxeModel = nullptr;
-	}
 }
 
 void CField::CreateFieldObjects()
@@ -80,26 +79,6 @@ void CField::CreateFieldObjects()
 
 	mpClearModel = new CModel();
 	mpClearModel->Load("Field\\Object\\Coin2.obj", "Field\\Object\\Coin2.mtl");
-
-	//// 動かない床①
-	//new CMoveFloor
-	//(
-	//	mpCubeModel,
-	//	CVector(0.0f, 2.0f, -20.0f), CVector(0.5f, 4.0f, 5.0f),
-	//	CVector(0.0f, 0.0f, 0.0f), 5.0f
-	//);
-
-	////クリア床
-	//new CFloor
-	//(
-	//	mpCubeModel,
-	//	CVector(0.0f,10.0f, -100.0f),CVector(0.5f, 5.0f, -0.5f)
-	//);
-	//new CClearStage
-	//(
-	//	mpClearModel,
-	//	CVector(20.0f, 0.0f, -60.0f), CVector(5.5f, 5.0f, 5.25f)
-	//);
 }
 
 void CField::Update()
@@ -111,33 +90,19 @@ void CField::Update()
 		mpWarpGimmick = new CWarpGimmick();
 		mStartSwitch = 1;
 	}
-	//ステージ１
+	//ステージ生成
 	if (mClearCount == 1 && mClearCountSwitch == 1)
 	{
+		//ステージ番号
 		mStageCount++;
-		if (mStageCount == 1)
+		//ステージが切り替わった時に元のステージを削除
+		if (mStageCount != mDeleteSwitch)
 		{
 			if (mpWarpGimmick != nullptr)
 			{
 				mpWarpGimmick->Kill();
 				mpWarpGimmick = nullptr;
 			}
-			if (mpFloorGimmick != nullptr)
-			{
-				mpFloorGimmick->Kill();
-				mpFloorGimmick = nullptr;
-			}
-			mpClearStageGimmick = new CClearStageGimmick();
-			mpAxeGimmick = new CAxeGimmick();
-			mpFloorGimmick = new CFloorGimmick();
-			mpWarpGimmick = new CWarpGimmick();
-			mClearCount = 0;
-			mClearCountSwitch = 0;
-			mStageCreateSwitch = 0;
-		}
-		//ステージ２
-		if (mStageCount == 2)
-		{
 			if (mpClearStageGimmick != nullptr)
 			{
 				mpClearStageGimmick->Kill();
@@ -153,58 +118,56 @@ void CField::Update()
 				mpFloorGimmick->Kill();
 				mpFloorGimmick = nullptr;
 			}
+			if (mpClearCubeGimmick != nullptr)
+			{
+				mpClearCubeGimmick->Kill();
+				mpClearCubeGimmick = nullptr;
+			}
+			if (mpSlopeGimmick != nullptr)
+			{
+				mpSlopeGimmick->Kill();
+				mpSlopeGimmick = nullptr;
+			}
+			mDeleteSwitch = mStageCount;
+		}
+		//ステージ１
+		if (mStageCount == 1)
+		{
+			mpClearStageGimmick = new CClearStageGimmick();
+			mpAxeGimmick = new CAxeGimmick();
+			mpFloorGimmick = new CFloorGimmick();
+			mpWarpGimmick = new CWarpGimmick();
+			mpStornGimmick = new CStornGimmick();
+		}
+		//ステージ２
+		if (mStageCount == 2)
+		{
+			mpClearCubeGimmick = new CClearCubeGimmick();
+			mpSlopeGimmick = new CSlopeGimmick();
 			mpFloorGimmick = new CFloorGimmick();
 			mpClearStageGimmick = new CClearStageGimmick();
-			mClearCount = 0;
-			mClearCountSwitch = 0;
-			mStageCreateSwitch = 0;
+			mpStornGimmick = new CStornGimmick();
 		}
+		//ステージ３
 		if (mStageCount == 3)
 		{
-			if (mpClearStageGimmick != nullptr)
-			{
-				mpClearStageGimmick->Kill();
-				mpClearStageGimmick = nullptr;
-			}
-			/*if (mpFloorGimmick != nullptr)
-			{
-				mpFloorGimmick->Kill();
-				mpFloorGimmick = nullptr;
-			}*/
 			mpClearStageGimmick = new CClearStageGimmick();
-			mClearCount = 0;
-			mClearCountSwitch = 0;
-			mStageCreateSwitch = 0;
 		}
+		//ステージ４
 		if (mStageCount == 4)
 		{
-			if (mpClearStageGimmick != nullptr)
-			{
-				mpClearStageGimmick->Kill();
-				mpClearStageGimmick = nullptr;
-			}
-			/*if (mpFloorGimmick != nullptr)
-			{
-				mpFloorGimmick->Kill();
-				mpFloorGimmick = nullptr;
-			}*/
 			mpClearStageGimmick = new CClearStageGimmick();
-			mClearCount = 0;
-			mClearCountSwitch = 0;
-			mStageCreateSwitch = 0;
 		}
+		//ステージ５
 		if (mStageCount == 5)
 		{
-			if (mpClearStageGimmick != nullptr)
-			{
-				mpClearStageGimmick->Kill();
-				mpClearStageGimmick = nullptr;
-			}
 			mpClearStageGimmick = new CClearStageGimmick();
-			mClearCount = 0;
-			mClearCountSwitch = 0;
-			mStageCreateSwitch = 0;
 		}
+
+		//ステージ管理用
+		mClearCount = 0;
+		mClearCountSwitch = 0;
+		mStageCreateSwitch = 0;
 	}
 }
 

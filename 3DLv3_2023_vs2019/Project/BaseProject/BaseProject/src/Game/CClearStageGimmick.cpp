@@ -44,20 +44,20 @@ void CClearStageGimmick::Init()
 {
 	// クリア土台のモデル読み込み
 	mpClearStageModel = new CModel();
-	mpClearStageModel->Load("Field\\Object\\Coin2.obj", "Field\\Object\\Coin2.mtl");
+	mpClearStageModel->Load("Field\\Object\\cylinder.obj", "Field\\Object\\cylinder.mtl");
 
 	// クリア判定用の土台を生成
 	//ステージ１
 	if (CField::mStageCount == 1 && CField::mStageCreateSwitch == 1)
 	{
 		CreateClearStage(mpClearStageModel,
-		CVector(0.0f, -5.0f, -20.0f),  CVector(5.5f, 5.0f, 5.25f));
+		CVector(0.0f, -5.0f, -20.0f),  CVector(1.0f, 1.0f, 1.0f));
 	}
 	//ステージ２
 	if (CField::mStageCount == 2 && CField::mStageCreateSwitch == 1)
 	{
 		CreateClearStage(mpClearStageModel,
-		CVector(0.0f, 0.0f, -170.0f), CVector(5.5f, 5.0f, 5.25f));
+		CVector(0.0f, 0.0f, -170.0f), CVector(1.0f, 1.0f, 1.0f));
 	}
 	//ステージ3
 	if (CField::mStageCount == 3 && CField::mStageCreateSwitch == 1)

@@ -6,6 +6,9 @@
 #include "CWarpGimmick.h"
 #include "CAxe.h"
 #include "CAxeGimmick.h"
+#include "CSlopeGimmick.h"
+#include "CClearCubeGimmick.h"
+#include "CStornGimmick.h"
 
 class CField : public CObjectBase 
 {
@@ -23,6 +26,7 @@ public:
 	static int mStageReset;
 	static int mStageCreateSwitch;
 	static int mStartSwitch;
+	static int mDeleteSwitch;
 
 private:
 	void CreateFieldObjects();
@@ -31,15 +35,24 @@ private:
 	CColliderMesh* mpColliderMesh;
 	CColliderSphere* mpColliderSphere;
 
+	//通常クリアステージ
 	CClearStageGimmick* mpClearStageGimmick;
+	//四角クリアステージ
+	CClearCubeGimmick* mpClearCubeGimmick;
+	//通常土台
 	CFloorGimmick* mpFloorGimmick;
-	CClearStageGimmick* mpClearStageGimmick2;
+	//ワープ障害物
 	CWarpGimmick* mpWarpGimmick;
+	//斧
 	CAxeGimmick* mpAxeGimmick;
+	//坂道
+	CSlopeGimmick* mpSlopeGimmick;
+	//岩
+	CStornGimmick* mpStornGimmick;
+
 	CModel* mpCubeModel;
 	CModel* mpCylinderModel;
 	CModel* mpClearModel;
-	CModel* mpAxeModel;
 	//CModel* mpFloorModel;
 	//CStageManager* mpStageManager;
 };

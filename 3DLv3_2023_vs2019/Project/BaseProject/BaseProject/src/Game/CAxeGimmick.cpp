@@ -62,8 +62,8 @@ void CAxeGimmick::CreateAxe(CModel* model, const CVector& pos, const CVector& sc
 	CVector offset = CVector(0.0f, 0.0f, 5.0f);
 	axe = new CAxe(mpAxeModel, CVector(0.0f, 200.0f, -80.0f), CVector(5.5f, 5.0f, 5.25f), 5.0f, -45.0f);
 	mAxe.push_back(axe);
-	axe = new CAxe(mpAxeModel, CVector(0.0f, 200.0f, -120.0f), CVector(5.5f, 5.0f, 5.25f), 5.0f, -45.0f);
-	mAxe.push_back(axe);
+	/*axe = new CAxe(mpAxeModel, CVector(0.0f, 200.0f, -120.0f), CVector(5.5f, 5.0f, 5.25f), 5.0f, -45.0f);
+	mAxe.push_back(axe);*/
 }
 
 void CAxeGimmick::Update()
