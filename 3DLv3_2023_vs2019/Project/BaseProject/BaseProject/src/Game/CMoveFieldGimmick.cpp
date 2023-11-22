@@ -39,25 +39,25 @@ CMoveFieldGimmick::~CMoveFieldGimmick()
 void CMoveFieldGimmick::Init()
 {
 	// クリア土台のモデル読み込み
-	mpMoveFieldModel = new CModel();
-	mpMoveFieldModel->Load("Field\\Object\\10field.obj", "Field\\Object\\10field.mtl");
+	mpMoveTenModel = new CModel();
+	mpMoveTenModel->Load("Field\\Object\\10field.obj", "Field\\Object\\10field.mtl");
 
 	// ワープの土台を生成
 	//ステージ0
-	if (CField::mStageCount == 1)
+	if (CField::mStageCount == 3)
 	{
-		CreateMoveField(mpMoveFieldModel,
-			CVector(0.0f, 2.0f, -20.0f), CVector(0.5f, 4.0f, 5.0f));
+		CreateMoveField(mpMoveTenModel,
+			CVector(0.0f, 0.0f, 0.0f), CVector(10.0f, 10.0f, 10.0f));
 	}
 }
 
 void CMoveFieldGimmick::CreateMoveField(CModel* model, const CVector& pos, const CVector& scale)
 {
-	if (mpMoveFieldModel == nullptr) return;
+	if (mpMoveTenModel == nullptr) return;
 
-	// クリア土台を生成してリストに追加
-	CMoveField* warp = new CMoveField(mpMoveFieldModel, pos, scale);
-	mMoveField.push_back(warp);
+	// 土台を生成してリストに追加
+	CMoveField* tenfield = new CMoveField(mpMoveTenModel, pos, scale);
+	mMoveField.push_back(tenfield);
 }
 
 void CMoveFieldGimmick::Update()

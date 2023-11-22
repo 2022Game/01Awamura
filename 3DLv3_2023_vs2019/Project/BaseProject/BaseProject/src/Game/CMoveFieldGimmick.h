@@ -8,7 +8,7 @@ class CMoveFieldGimmick : public CTask
 {
 private:
 	std::vector<CMoveField*> mMoveField;	// クリア土台のリスト
-	CModel* mpMoveFieldModel;			// クリア土台のモデルデータ
+	CModel* mpMoveTenModel;			// 十字のモデルデータ
 
 	// 初期化処理
 	void Init();

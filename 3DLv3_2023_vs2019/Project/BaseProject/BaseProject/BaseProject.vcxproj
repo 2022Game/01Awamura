@@ -68,6 +68,10 @@
     <ClCompile Include="src\Game\CGameruleManager.cpp" />
     <ClCompile Include="src\Game\CGameScene.cpp" />
     <ClCompile Include="src\Game\CImage.cpp" />
+    <ClCompile Include="src\Game\CIMoveField.cpp" />
+    <ClCompile Include="src\Game\CIMoveFieldGimmick.cpp" />
+    <ClCompile Include="src\Game\CMoveField.cpp" />
+    <ClCompile Include="src\Game\CMoveFieldGimmick.cpp" />
     <ClCompile Include="src\Game\CMoveFloor.cpp" />
     <ClCompile Include="src\Game\CObstaclesManager.cpp" />
     <ClCompile Include="src\Game\CPlayer.cpp" />
@@ -78,6 +82,8 @@
     <ClCompile Include="src\Game\CStorn.cpp" />
     <ClCompile Include="src\Game\CStornGimmick.cpp" />
     <ClCompile Include="src\Game\CTitleScene.cpp" />
+    <ClCompile Include="src\Game\CTMoveField.cpp" />
+    <ClCompile Include="src\Game\CTMoveFieldGimmick.cpp" />
     <ClCompile Include="src\Game\CWarp.cpp" />
     <ClCompile Include="src\Game\CWarpGimmick.cpp" />
     <ClCompile Include="src\Game\CXCharacter.cpp" />
@@ -158,6 +164,10 @@
     <ClInclude Include="src\Game\CGameScene.h" />
     <ClInclude Include="src\Game\CGameruleManager.h" />
     <ClInclude Include="src\Game\CImage.h" />
+    <ClInclude Include="src\Game\CIMoveField.h" />
+    <ClInclude Include="src\Game\CIMoveFieldGimmick.h" />
+    <ClInclude Include="src\Game\CMoveField.h" />
+    <ClInclude Include="src\Game\CMoveFieldGimmick.h" />
     <ClInclude Include="src\Game\CMoveFloor.h" />
     <ClInclude Include="src\Game\CObstaclesManager.h" />
     <ClInclude Include="src\Game\CPlayer.h" />
@@ -168,6 +178,8 @@
     <ClInclude Include="src\Game\CStorn.h" />
     <ClInclude Include="src\Game\CStornGimmick.h" />
     <ClInclude Include="src\Game\CTitleScene.h" />
+    <ClInclude Include="src\Game\CTMoveField.h" />
+    <ClInclude Include="src\Game\CTMoveFieldGimmick.h" />
     <ClInclude Include="src\Game\CWarp.h" />
     <ClInclude Include="src\Game\CWarpGimmick.h" />
     <ClInclude Include="src\Game\CXCharacter.h" />

@@ -10,6 +10,7 @@
 #include "CClearCubeGimmick.h"
 #include "CStornGimmick.h"
 #include "CMoveFieldGimmick.h"
+#include "CTMoveFieldGimmick.h"
 
 class CField : public CObjectBase 
 {
@@ -50,8 +51,10 @@ private:
 	CSlopeGimmick* mpSlopeGimmick;
 	//Šâ
 	CStornGimmick* mpStornGimmick;
-	//‰ñ“]‚·‚é“y‘ä
+	//‰ñ“]‚·‚é\š“y‘ä
 	CMoveFieldGimmick* mpMoveFieldGimmick;
+	//‰ñ“]‚·‚éTš“y‘ä
+	CTMoveFieldGimmick* mpTMoveFieldGimmick;
 
 	CModel* mpCubeModel;
 	CModel* mpCylinderModel;

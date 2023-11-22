@@ -9,7 +9,7 @@ CStorn::CStorn(CModel* model, const CVector& pos, const CVector& scale,const CVe
 	, mMoveTime(moveTime)
 	, mElapsedTime(0.0f)
 {
-	mpColliderMesh = new CColliderMesh(this, ELayer::eStorn, mpModel, true);
+	mpColliderMesh = new CColliderMesh(this, ELayer::eStorn, mpModel, false,0.0f);
 	Position(mDefaultPos);
 	Scale(scale);
 }
@@ -29,6 +29,18 @@ void CStorn::Update()
 	{
 		mElapsedTime -= mMoveTime;
 	}*/
+}
+
+void CStorn::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
+{
+	if (self == mpColliderMesh)
+	{
+		if (other->Layer() == ELayer::eSlopeField || other->Layer() == ELayer::eField)
+		{
+			Position(Position() + hit.adjust);
+			
+		}
+	}
 }
 
 void CStorn::Render()

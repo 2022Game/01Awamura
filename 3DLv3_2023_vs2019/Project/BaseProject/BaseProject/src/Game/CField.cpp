@@ -25,6 +25,7 @@ CField::CField()
 	,mpClearCubeGimmick(nullptr)
 	,mpStornGimmick(nullptr)
 	,mpMoveFieldGimmick(nullptr)
+	,mpTMoveFieldGimmick(nullptr)
 {
 	mpModel = new CModel();
 	//仮のフィールドデータ　ピンクな背景モデルが有れば入れる
@@ -134,6 +135,11 @@ void CField::Update()
 				mpMoveFieldGimmick->Kill();
 				mpMoveFieldGimmick = nullptr;
 			}
+			if (mpTMoveFieldGimmick != nullptr)
+			{
+				mpTMoveFieldGimmick->Kill();
+				mpTMoveFieldGimmick = nullptr;
+			}
 			mDeleteSwitch = mStageCount;
 		}
 		//ステージ１
@@ -158,6 +164,8 @@ void CField::Update()
 		if (mStageCount == 3)
 		{
 			mpClearStageGimmick = new CClearStageGimmick();
+			mpMoveFieldGimmick = new CMoveFieldGimmick();
+			mpTMoveFieldGimmick = new CTMoveFieldGimmick();
 		}
 		//ステージ４
 		if (mStageCount == 4)

@@ -68,6 +68,9 @@
     <Filter Include="ソース ファイル\Game\Field\ObjectGimmick">
       <UniqueIdentifier>{6363e921-d5f7-4b72-b108-f9f93aae77d2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Game\Field\Object\MoveObject">
+      <UniqueIdentifier>{8aec8090-371c-48d3-af64-208883831955}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -306,6 +309,24 @@
     </ClCompile>
     <ClCompile Include="src\BaseSystem\CGamePause.cpp">
       <Filter>ソース ファイル\BaseSystem\System</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CMoveField.cpp">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CMoveFieldGimmick.cpp">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CTMoveField.cpp">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CTMoveFieldGimmick.cpp">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CIMoveField.cpp">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CIMoveFieldGimmick.cpp">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -569,6 +590,24 @@
     </ClInclude>
     <ClInclude Include="src\BaseSystem\CGamePause.h">
       <Filter>ソース ファイル\BaseSystem\System</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CMoveField.h">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CMoveFieldGimmick.h">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CTMoveField.h">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CTMoveFieldGimmick.h">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CIMoveField.h">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CIMoveFieldGimmick.h">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

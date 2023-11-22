@@ -118,7 +118,7 @@ CPlayer::CPlayer()
 		CVector(0.0f, PLAYER_HEIGHT, -0.4f)
 	);*/
 	/*mpColliderSphere->SetCollisionLayers({});*/
-	mpColliderLine->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject,ELayer::eWarpObject,ELayer::eSlopeField});
+	mpColliderLine->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject,ELayer::eWarpObject,ELayer::eSlopeField,ELayer::eStorn });
 	mpColliderLineBody->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject});
 	mpColliderLineLeg->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject,ELayer::eSlopeField });
 	mpColliderLineHead->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject });
@@ -601,6 +601,13 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 				//ステージ１開始位置へワープ
 				Position(mStartPos);
 			}
+		}
+		//岩
+		if (other->Layer() == ELayer::eStorn)
+		{
+			mMoveSpeed.Y(0.0f);
+			Position(Position() + hit.adjust);
+			mIsGrounded = true;
 		}
 	}
 
