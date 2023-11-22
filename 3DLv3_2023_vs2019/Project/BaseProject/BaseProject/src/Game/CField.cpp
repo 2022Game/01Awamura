@@ -24,6 +24,7 @@ CField::CField()
 	,mpWarpGimmick(nullptr)
 	,mpClearCubeGimmick(nullptr)
 	,mpStornGimmick(nullptr)
+	,mpMoveFieldGimmick(nullptr)
 {
 	mpModel = new CModel();
 	//仮のフィールドデータ　ピンクな背景モデルが有れば入れる
@@ -127,6 +128,11 @@ void CField::Update()
 			{
 				mpSlopeGimmick->Kill();
 				mpSlopeGimmick = nullptr;
+			}
+			if (mpMoveFieldGimmick != nullptr)
+			{
+				mpMoveFieldGimmick->Kill();
+				mpMoveFieldGimmick = nullptr;
 			}
 			mDeleteSwitch = mStageCount;
 		}

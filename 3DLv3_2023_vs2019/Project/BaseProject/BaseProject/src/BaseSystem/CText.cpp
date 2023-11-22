@@ -1,10 +1,12 @@
-﻿#include "CText.h"
+#include "CText.h"
 #include <glut.h>
 #include <locale.h>
 
 CText::CText(CFont* font, int fontSize, const CVector2& pos,
-	const CVector2& size, const CColor& color, bool dontDelete)
-	: CUIBase(ETaskPriority::eUI, dontDelete)
+	const CVector2& size, const CColor& color,
+	ETaskPriority prio, int sortOrder, ETaskPauseType pause,
+	bool dontDelete, bool addTaskList)
+	: CUIBase(prio, sortOrder, pause, dontDelete, addTaskList)
 	, mpFont(font)
 	, mText(L"")
 	, mFontSize(fontSize)
@@ -127,7 +129,7 @@ void CText::Render()
 	//glVertex2f(ex, sy);
 	//glEnd();
 
-	//F‚ÌÝ’è
+	//�F�̐ݒ�
 	glColor4f(mColor.R(), mColor.G(), mColor.B(), mColor.A());
 
 	glRasterPos2f(mPosition.X(), mPosition.Y() + mFontSize);

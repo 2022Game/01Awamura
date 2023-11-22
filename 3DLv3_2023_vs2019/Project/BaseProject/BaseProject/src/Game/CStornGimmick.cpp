@@ -45,7 +45,7 @@ void CStornGimmick::Init()
 	mpStornModel->Load("Field\\Storn.obj", "Field\\Storn.mtl");
 
 	// ç‚ìπÇÃìyë‰Çê∂ê¨
-	if (CField::mStageCount == 1)
+	if (CField::mStageCount == 2)
 	{
 		CreateStorn(mpStornModel,
 			CVector(0.0f, 70.0f, -300.0f), CVector(10.0f, 10.0f, 10.0f),CVector(0.0f,-50.0f,0.0f),45.0f);

@@ -7,6 +7,7 @@
 class CCharaBase : public CObjectBase
 {
 public:
-	CCharaBase(ETag tag, ETaskPriority prio);
+	CCharaBase(ETag tag, ETaskPriority prio, int sortOrder = 0,
+		ETaskPauseType pause = ETaskPauseType::eGame);
 	virtual ~CCharaBase();
 };

@@ -7,9 +7,6 @@
 
 #include "time.h"
 
-//è∞
-#define MODEL_FCOIN "res\\Coin.obj","res\\Coin.mtl"
-
 //int rand(void);
 //void srand(unsigned int seed);
 

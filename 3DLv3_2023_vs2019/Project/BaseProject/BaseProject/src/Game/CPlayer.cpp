@@ -23,7 +23,7 @@ const CPlayer::AnimData CPlayer::ANIM_DATA[] =
 	{ "Character\\Player\\jumpN.x",		false,	1.0f	},	// 空中
 	{ "Character\\Player\\Down.x",		false,	60.0f	},	// 倒れる
 	{ "Character\\Player\\Up.x",		false,	60.0f	},	// 起き上がる
-	{ "Character\\Player\\Clear.x",		false,	175.0f	}, //クリア
+	{ "Character\\Player\\Clear.x",		false,	90.0f	}, //クリア
 };
 
 #define PLAYER_HEIGHT 1.6f

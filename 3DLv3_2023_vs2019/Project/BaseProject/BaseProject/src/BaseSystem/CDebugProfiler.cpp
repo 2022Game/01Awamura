@@ -7,7 +7,7 @@ CDebugProfiler* CDebugProfiler::mpInstance = nullptr;
 
 // コンストラクタ
 CDebugProfiler::CDebugProfiler()
-	: CTask(ETaskPriority::eDebug, true)
+	: CTask(ETaskPriority::eDebug, 0, ETaskPauseType::eDefault, true)
 {
 }
 
@@ -37,7 +37,7 @@ void CDebugProfiler::StartTimer(std::string name)
 	{
 		timer = new CDebugTimer();
 		timers[name] = timer;
-	}
+ 	}
 
 	timer->Start();
 }

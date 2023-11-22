@@ -4,6 +4,7 @@
 #include "CTaskManager.h"
 #include "CCollisionManager.h"
 #include "CSceneManager.h"
+#include "CGamePause.h"
 
 CApplication::~CApplication()
 {
@@ -11,8 +12,8 @@ CApplication::~CApplication()
 
 void CApplication::Start()
 {
+	new CGamePause();
 	CSceneManager::Instance()->LoadScene(EScene::eBootMenu);
-	//mBackGround.Load(MODEL_BACKGROUND);
 }
 
 void CApplication::Update()
@@ -29,6 +30,4 @@ void CApplication::Update()
 	CTaskManager::Instance()->Render();
 	// コライダの描画
 	CCollisionManager::Instance()->Render();
-
-	//mBackGround.Render();
 }
