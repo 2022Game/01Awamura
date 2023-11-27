@@ -6,11 +6,11 @@
 #include "CColliderSphere.h"
 #include "CColliderLine.h"
 
-class CIMoveField : public CRideableObject
+class CJMoveField : public CRideableObject
 {
 public:
-	CIMoveField(CModel* model, const CVector& pos, const CVector& scale);
-	~CIMoveField();
+	CJMoveField(CModel* model, const CVector& pos, const CVector& scale);
+	~CJMoveField();
 
 	void Update();
 	void Render();

@@ -59,6 +59,8 @@ public:
 	// 描画
 	void Render();
 
+	/*static bool mSwitchObject;*/
+
 private:
 	// アニメーションの種類
 	enum class EAnimType

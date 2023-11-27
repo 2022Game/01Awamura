@@ -26,6 +26,9 @@ CField::CField()
 	,mpStornGimmick(nullptr)
 	,mpMoveFieldGimmick(nullptr)
 	,mpTMoveFieldGimmick(nullptr)
+	, mpIMoveFieldGimmick(nullptr)
+	, mpLMoveFieldGimmick(nullptr)
+	, mpJMoveFieldGimmick(nullptr)
 {
 	mpModel = new CModel();
 	//仮のフィールドデータ　ピンクな背景モデルが有れば入れる
@@ -96,7 +99,9 @@ void CField::Update()
 	if (mClearCount == 1 && mClearCountSwitch == 1)
 	{
 		//ステージ番号
-		mStageCount++;
+		//mStageCount++;
+		// テスト用
+		mStageCount = 2;
 		//ステージが切り替わった時に元のステージを削除
 		if (mStageCount != mDeleteSwitch)
 		{
@@ -140,6 +145,21 @@ void CField::Update()
 				mpTMoveFieldGimmick->Kill();
 				mpTMoveFieldGimmick = nullptr;
 			}
+			if (mpIMoveFieldGimmick != nullptr)
+			{
+				mpIMoveFieldGimmick->Kill();
+				mpIMoveFieldGimmick = nullptr;
+			}
+			if (mpLMoveFieldGimmick != nullptr)
+			{
+				mpLMoveFieldGimmick->Kill();
+				mpLMoveFieldGimmick = nullptr;
+			}
+			if (mpJMoveFieldGimmick != nullptr)
+			{
+				mpJMoveFieldGimmick->Kill();
+				mpJMoveFieldGimmick = nullptr;
+			}
 			mDeleteSwitch = mStageCount;
 		}
 		//ステージ１
@@ -163,9 +183,14 @@ void CField::Update()
 		//ステージ３
 		if (mStageCount == 3)
 		{
+			mpStornGimmick = new CStornGimmick();
 			mpClearStageGimmick = new CClearStageGimmick();
-			mpMoveFieldGimmick = new CMoveFieldGimmick();
+			//mpMoveFieldGimmick = new CMoveFieldGimmick();
 			mpTMoveFieldGimmick = new CTMoveFieldGimmick();
+			mpSwitchGimmick = new CSwitchGimmick();
+			mpIMoveFieldGimmick = new CIMoveFieldGimmick();
+			mpLMoveFieldGimmick = new CLMoveFieldGimmick();
+			mpJMoveFieldGimmick = new CJMoveFieldGimmick();
 		}
 		//ステージ４
 		if (mStageCount == 4)

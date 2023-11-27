@@ -70,6 +70,10 @@
     <ClCompile Include="src\Game\CImage.cpp" />
     <ClCompile Include="src\Game\CIMoveField.cpp" />
     <ClCompile Include="src\Game\CIMoveFieldGimmick.cpp" />
+    <ClCompile Include="src\Game\CJMoveField.cpp" />
+    <ClCompile Include="src\Game\CJMoveFieldGimmick.cpp" />
+    <ClCompile Include="src\Game\CLMoveField.cpp" />
+    <ClCompile Include="src\Game\CLMoveFieldGimmick.cpp" />
     <ClCompile Include="src\Game\CMoveField.cpp" />
     <ClCompile Include="src\Game\CMoveFieldGimmick.cpp" />
     <ClCompile Include="src\Game\CMoveFloor.cpp" />
@@ -81,6 +85,8 @@
     <ClCompile Include="src\Game\CSlopeGimmick.cpp" />
     <ClCompile Include="src\Game\CStorn.cpp" />
     <ClCompile Include="src\Game\CStornGimmick.cpp" />
+    <ClCompile Include="src\Game\CSwitchGimmick.cpp" />
+    <ClCompile Include="src\Game\CSwitchObject.cpp" />
     <ClCompile Include="src\Game\CTitleScene.cpp" />
     <ClCompile Include="src\Game\CTMoveField.cpp" />
     <ClCompile Include="src\Game\CTMoveFieldGimmick.cpp" />
@@ -166,6 +172,10 @@
     <ClInclude Include="src\Game\CImage.h" />
     <ClInclude Include="src\Game\CIMoveField.h" />
     <ClInclude Include="src\Game\CIMoveFieldGimmick.h" />
+    <ClInclude Include="src\Game\CJMoveField.h" />
+    <ClInclude Include="src\Game\CJMoveFieldGimmick.h" />
+    <ClInclude Include="src\Game\CLMoveField.h" />
+    <ClInclude Include="src\Game\CLMoveFieldGimmick.h" />
     <ClInclude Include="src\Game\CMoveField.h" />
     <ClInclude Include="src\Game\CMoveFieldGimmick.h" />
     <ClInclude Include="src\Game\CMoveFloor.h" />
@@ -177,6 +187,8 @@
     <ClInclude Include="src\Game\CSlopeGimmick.h" />
     <ClInclude Include="src\Game\CStorn.h" />
     <ClInclude Include="src\Game\CStornGimmick.h" />
+    <ClInclude Include="src\Game\CSwitchGimmick.h" />
+    <ClInclude Include="src\Game\CSwitchObject.h" />
     <ClInclude Include="src\Game\CTitleScene.h" />
     <ClInclude Include="src\Game\CTMoveField.h" />
     <ClInclude Include="src\Game\CTMoveFieldGimmick.h" />

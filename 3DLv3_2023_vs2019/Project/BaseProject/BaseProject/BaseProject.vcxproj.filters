@@ -68,7 +68,10 @@
     <Filter Include="ソース ファイル\Game\Field\ObjectGimmick">
       <UniqueIdentifier>{6363e921-d5f7-4b72-b108-f9f93aae77d2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Game\Field\Object\MoveObject">
+    <Filter Include="ソース ファイル\Game\Field\ObjectGimmick\FieldMoveGimmick">
+      <UniqueIdentifier>{ec84ed7b-4b26-46d0-a0ab-8c6ad1edc5d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Game\Field\Object\FieldMoveObject">
       <UniqueIdentifier>{8aec8090-371c-48d3-af64-208883831955}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -226,12 +229,6 @@
     <ClCompile Include="src\Game\CClearStage.cpp">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\CClearStageGimmick.cpp">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\CFloorGimmick.cpp">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
-    </ClCompile>
     <ClCompile Include="src\Game\CFloor.cpp">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClCompile>
@@ -242,9 +239,6 @@
       <Filter>ソース ファイル\BaseSystem\Debug</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\CAxe.cpp">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\CAxeGimmick.cpp">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClCompile>
     <ClCompile Include="src\BaseSystem\CDebugCamera.cpp">
@@ -286,16 +280,7 @@
     <ClCompile Include="src\Game\CWarp.cpp">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\CWarpGimmick.cpp">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
-    </ClCompile>
     <ClCompile Include="src\Game\CSlope.cpp">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\CSlopeGimmick.cpp">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\CClearCubeGimmick.cpp">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\CClearCube.cpp">
@@ -304,29 +289,65 @@
     <ClCompile Include="src\Game\CStorn.cpp">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\CStornGimmick.cpp">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
-    </ClCompile>
     <ClCompile Include="src\BaseSystem\CGamePause.cpp">
       <Filter>ソース ファイル\BaseSystem\System</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\CMoveField.cpp">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    <ClCompile Include="src\Game\CWarpGimmick.cpp">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\CMoveFieldGimmick.cpp">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    <ClCompile Include="src\Game\CStornGimmick.cpp">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\CTMoveField.cpp">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    <ClCompile Include="src\Game\CSlopeGimmick.cpp">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CFloorGimmick.cpp">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CClearStageGimmick.cpp">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CClearCubeGimmick.cpp">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CAxeGimmick.cpp">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\CTMoveFieldGimmick.cpp">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\CIMoveField.cpp">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick\FieldMoveGimmick</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\CIMoveFieldGimmick.cpp">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick\FieldMoveGimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CMoveFieldGimmick.cpp">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick\FieldMoveGimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CTMoveField.cpp">
+      <Filter>ソース ファイル\Game\Field\Object\FieldMoveObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CIMoveField.cpp">
+      <Filter>ソース ファイル\Game\Field\Object\FieldMoveObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CMoveField.cpp">
+      <Filter>ソース ファイル\Game\Field\Object\FieldMoveObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CLMoveField.cpp">
+      <Filter>ソース ファイル\Game\Field\Object\FieldMoveObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CJMoveField.cpp">
+      <Filter>ソース ファイル\Game\Field\Object\FieldMoveObject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CJMoveFieldGimmick.cpp">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick\FieldMoveGimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CLMoveFieldGimmick.cpp">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick\FieldMoveGimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CSwitchObject.cpp">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CSwitchGimmick.cpp">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -504,12 +525,6 @@
     <ClInclude Include="src\Game\CClearStage.h">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\CClearStageGimmick.h">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\CFloorGimmick.h">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
-    </ClInclude>
     <ClInclude Include="src\Game\CFloor.h">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClInclude>
@@ -523,9 +538,6 @@
       <Filter>ソース ファイル\BaseSystem\Debug</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CAxe.h">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\CAxeGimmick.h">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClInclude>
     <ClInclude Include="src\BaseSystem\CDebugCamera.h">
@@ -567,16 +579,7 @@
     <ClInclude Include="src\Game\CWarp.h">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\CWarpGimmick.h">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
-    </ClInclude>
     <ClInclude Include="src\Game\CSlope.h">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\CSlopeGimmick.h">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\CClearCubeGimmick.h">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CClearCube.h">
@@ -585,29 +588,65 @@
     <ClInclude Include="src\Game\CStorn.h">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\CStornGimmick.h">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
-    </ClInclude>
     <ClInclude Include="src\BaseSystem\CGamePause.h">
       <Filter>ソース ファイル\BaseSystem\System</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\CMoveField.h">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    <ClInclude Include="src\Game\CWarpGimmick.h">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\CMoveFieldGimmick.h">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    <ClInclude Include="src\Game\CStornGimmick.h">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\CTMoveField.h">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    <ClInclude Include="src\Game\CSlopeGimmick.h">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CFloorGimmick.h">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CClearStageGimmick.h">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CClearCubeGimmick.h">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CAxeGimmick.h">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CTMoveFieldGimmick.h">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\CIMoveField.h">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick\FieldMoveGimmick</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CIMoveFieldGimmick.h">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick\FieldMoveGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CMoveFieldGimmick.h">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick\FieldMoveGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CTMoveField.h">
+      <Filter>ソース ファイル\Game\Field\Object\FieldMoveObject</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CIMoveField.h">
+      <Filter>ソース ファイル\Game\Field\Object\FieldMoveObject</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CMoveField.h">
+      <Filter>ソース ファイル\Game\Field\Object\FieldMoveObject</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CLMoveField.h">
+      <Filter>ソース ファイル\Game\Field\Object\FieldMoveObject</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CJMoveField.h">
+      <Filter>ソース ファイル\Game\Field\Object\FieldMoveObject</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CJMoveFieldGimmick.h">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick\FieldMoveGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CLMoveFieldGimmick.h">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick\FieldMoveGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CSwitchObject.h">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CSwitchGimmick.h">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

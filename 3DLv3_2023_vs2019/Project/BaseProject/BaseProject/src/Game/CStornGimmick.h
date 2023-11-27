@@ -13,7 +13,7 @@ private:
 	// 初期化処理
 	void Init();
 	// クリア土台を生成してリストに追加
-	void CreateStorn(CModel* model, const CVector& pos, const CVector& scale,const CVector& move,float moveTime);
+	void CreateStorn(CModel* model, const CVector& pos, const CVector& scale);
 
 
 	CModel* mpStorn;

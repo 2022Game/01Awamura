@@ -1,23 +1,23 @@
-#include "CSlope.h"
+#include "CJMoveField.h"
 #include "Maths.h"
 #include "CCollider.h"
 
-CSlope::CSlope(CModel* model, const CVector& pos, const CVector& scale)
+CJMoveField::CJMoveField(CModel* model, const CVector& pos, const CVector& scale)
 	: mpModel(model)
 	, mDefaultPos(pos)
 	, mElapsedTime(0.0f)
 {
-	mpColliderMesh = new CColliderMesh(this, ELayer::eSlopeField, mpModel, false);
+	mpColliderMesh = new CColliderMesh(this, ELayer::eField, mpModel, true);
 	Position(mDefaultPos);
 	Scale(scale);
 }
 
-CSlope::~CSlope()
+CJMoveField::~CJMoveField()
 {
 	SAFE_DELETE(mpColliderMesh);
 }
 
-void CSlope::Update()
+void CJMoveField::Update()
 {
 	float per = mElapsedTime / mMoveTime;
 	Position(mDefaultPos + mMoveVec * sinf(M_PI * 2.0f * per));
@@ -29,7 +29,7 @@ void CSlope::Update()
 	}
 }
 
-void CSlope::Render()
+void CJMoveField::Render()
 {
 	mpModel->Render(Matrix());
 }

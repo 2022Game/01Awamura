@@ -118,7 +118,8 @@ CPlayer::CPlayer()
 		CVector(0.0f, PLAYER_HEIGHT, -0.4f)
 	);*/
 	/*mpColliderSphere->SetCollisionLayers({});*/
-	mpColliderLine->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject,ELayer::eWarpObject,ELayer::eSlopeField,ELayer::eStorn });
+	mpColliderLine->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject,ELayer::eWarpObject,
+		ELayer::eSlopeField,ELayer::eStorn,ELayer::eMoveSwitch });
 	mpColliderLineBody->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject});
 	mpColliderLineLeg->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject,ELayer::eSlopeField });
 	mpColliderLineHead->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject });
@@ -451,7 +452,7 @@ void CPlayer::Update()
 
 	// キャラクターの更新
 	CXCharacter::Update();
-
+	//mSwitchObject = false;
 	mIsGrounded = false;
 }
 
@@ -609,6 +610,10 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 			Position(Position() + hit.adjust);
 			mIsGrounded = true;
 		}
+		/*if (other->Layer() == ELayer::eMoveSwitch)
+		{
+			mSwitchObject = true;
+		}*/
 	}
 
 	//胴の判定

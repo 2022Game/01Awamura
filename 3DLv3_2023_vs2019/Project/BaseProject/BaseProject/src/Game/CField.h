@@ -11,6 +11,10 @@
 #include "CStornGimmick.h"
 #include "CMoveFieldGimmick.h"
 #include "CTMoveFieldGimmick.h"
+#include "CIMoveFieldGimmick.h"
+#include "CLMoveFieldGimmick.h"
+#include "CJMoveFieldGimmick.h"
+#include "CSwitchGimmick.h"
 
 class CField : public CObjectBase 
 {
@@ -55,6 +59,14 @@ private:
 	CMoveFieldGimmick* mpMoveFieldGimmick;
 	//‰ñ“]‚·‚éTŽš“y‘ä
 	CTMoveFieldGimmick* mpTMoveFieldGimmick;
+	//‰ñ“]‚·‚éIŽš“y‘ä
+	CIMoveFieldGimmick* mpIMoveFieldGimmick;
+	//‰ñ“]‚·‚éJŽš“y‘ä
+	CJMoveFieldGimmick* mpJMoveFieldGimmick;
+	//‰ñ“]‚·‚éLŽš“y‘ä
+	CLMoveFieldGimmick* mpLMoveFieldGimmick;
+	//ƒXƒCƒbƒ`
+	CSwitchGimmick* mpSwitchGimmick;
 
 	CModel* mpCubeModel;
 	CModel* mpCylinderModel;

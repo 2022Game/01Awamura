@@ -2,16 +2,19 @@
 #include "Maths.h"
 #include "CCollider.h"
 
-CStorn::CStorn(CModel* model, const CVector& pos, const CVector& scale,const CVector& move, float moveTime)
+#define ROTATE_Y -0.1f
+
+CStorn::CStorn(CModel* model, const CVector& pos, const CVector& scale, float rotateSpeedY)
 	: mpModel(model)
 	, mDefaultPos(pos)
-	, mMoveVec(move)
-	, mMoveTime(moveTime)
 	, mElapsedTime(0.0f)
+	, mRotateSpeedY(rotateSpeedY)
 {
-	mpColliderMesh = new CColliderMesh(this, ELayer::eStorn, mpModel, false,0.0f);
+	mpColliderMesh = new CColliderMesh(this, ELayer::eStorn, mpModel, true);
 	Position(mDefaultPos);
 	Scale(scale);
+
+	mpColliderMesh->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject,ELayer::eWarpObject,ELayer::eSlopeField,ELayer::ePlayer});
 }
 
 CStorn::~CStorn()
@@ -22,7 +25,12 @@ CStorn::~CStorn()
 void CStorn::Update()
 {
 	/*float per = mElapsedTime / mMoveTime;*/
-	Position(mDefaultPos + mMoveVec);
+	//ˆÚ“®
+	mMoveSpeed = CVector(0.0f, -0.2f, 0.0f);
+
+	Position(Position() + mMoveSpeed);
+
+	//Rotate(0.0f, mRotateSpeedY, 0.0f);
 
 	/*mElapsedTime += 1.0f / 60.0f;
 	if (mElapsedTime >= mMoveTime)
@@ -35,10 +43,9 @@ void CStorn::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 {
 	if (self == mpColliderMesh)
 	{
-		if (other->Layer() == ELayer::eSlopeField || other->Layer() == ELayer::eField)
+		if (other->Layer() == ELayer::eSlopeField || other->Layer() == ELayer::ePlayer)
 		{
 			Position(Position() + hit.adjust);
-			
 		}
 	}
 }

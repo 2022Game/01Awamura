@@ -55,9 +55,15 @@ void CMoveFieldGimmick::CreateMoveField(CModel* model, const CVector& pos, const
 {
 	if (mpMoveTenModel == nullptr) return;
 
-	// 土台を生成してリストに追加
-	CMoveField* tenfield = new CMoveField(mpMoveTenModel, pos, scale);
+	//// 土台を生成してリストに追加
+	//CMoveField* tenfield = new CMoveField(mpMoveTenModel, pos, scale);
+	//mMoveField.push_back(tenfield);
+
+	CMoveField* tenfield = new CMoveField(mpMoveTenModel, pos, scale,1.0f);
 	mMoveField.push_back(tenfield);
+	//CVector offset = CVector(0.0f, 0.0f, 5.0f);
+	//tenfield = new CMoveField(mpMoveTenModel, CVector(0.0f, 200.0f, -80.0f), CVector(5.5f, 5.0f, 5.25f), 5.0f, -45.0f);
+	//mMoveField.push_back(tenfield);
 }
 
 void CMoveFieldGimmick::Update()
