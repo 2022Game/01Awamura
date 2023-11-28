@@ -56,7 +56,7 @@ void CJMoveFieldGimmick::CreateJMoveField(CModel* model, const CVector& pos, con
 	if (mpMoveJModel == nullptr) return;
 
 	// ìyë‰Çê∂ê¨ÇµÇƒÉäÉXÉgÇ…í«â¡
-	CJMoveField* jfield = new CJMoveField(mpMoveJModel, pos, scale);
+	CJMoveField* jfield = new CJMoveField(mpMoveJModel, pos, scale,1.0f);
 	mJMoveField.push_back(jfield);
 }
 

@@ -59,7 +59,8 @@ public:
 	// 描画
 	void Render();
 
-	/*static bool mSwitchObject;*/
+	static bool mSwitchRObject;
+	static bool mSwitchLObject;
 
 private:
 	// アニメーションの種類

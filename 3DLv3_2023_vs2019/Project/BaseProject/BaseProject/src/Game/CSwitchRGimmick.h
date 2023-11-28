@@ -2,13 +2,13 @@
 #include "CTask.h"
 #include "CColliderMesh.h"
 #include "CCollider.h"
-#include "CSwitchObject.h"
+#include "CSwitchRObject.h"
 
-class CSwitchGimmick : public CTask
+class CSwitchRGimmick : public CTask
 {
 private:
-	std::vector<CSwitchObject*> mSwitch;	// クリア土台のリスト
-	CModel* mpMoveSwitchModel;			// スイッチのモデルデータ
+	std::vector<CSwitchRObject*> mRSwitch;	// クリア土台のリスト
+	CModel* mpMoveSwitchRModel;			// スイッチのモデルデータ
 
 	// 初期化処理
 	void Init();
@@ -20,8 +20,8 @@ private:
 
 
 public:
-	CSwitchGimmick();
-	~CSwitchGimmick();
+	CSwitchRGimmick();
+	~CSwitchRGimmick();
 
 	// 更新処理
 	void Update();

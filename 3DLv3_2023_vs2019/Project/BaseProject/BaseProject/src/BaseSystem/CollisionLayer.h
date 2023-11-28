@@ -15,7 +15,8 @@ enum class ELayer
 	eWarpObject,
 	eSlopeField,
 	eStorn,
-	eMoveSwitch,
+	eMoveRSwitch,
+	eMoveLSwitch,
 };
 // 衝突判定レイヤーの初期化リスト
 using Layers = std::initializer_list<ELayer>;

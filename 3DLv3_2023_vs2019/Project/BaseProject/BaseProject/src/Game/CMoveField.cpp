@@ -1,13 +1,13 @@
 #include "CMoveField.h"
 #include "Maths.h"
 #include "CCollider.h"
+#include "CPlayer.h"
 
 #define ROTATE_Y 0.1f
 
 CMoveField::CMoveField(CModel* model, const CVector& pos, const CVector& scale, float rotateSpeedY)
 	: mpModel(model)
 	, mDefaultPos(pos)
-	, mElapsedTime(0.0f)
 	, mRotateSpeedY(rotateSpeedY)
 {
 	mpColliderMesh = new CColliderMesh(this, ELayer::eField, mpModel, true);
@@ -22,32 +22,23 @@ CMoveField::~CMoveField()
 
 void CMoveField::Update()
 {
-	/*float per = mElapsedTime / mMoveTime;
-	Position(mDefaultPos + mMoveVec * sinf(M_PI * 2.0f * per));
-
-	mElapsedTime += 1.0f / 60.0f;
-	if (mElapsedTime >= mMoveTime)
-	{
-		mElapsedTime -= mMoveTime;
-	}*/
-
 	//ˆÚ“®
-	mMoveSpeed = CVector(0.0f, 0.01f, 0.0f);
+	mMoveSpeed = CVector(0.0f, 0.0f, 0.0f);
 
 	Position(Position() + mMoveSpeed);
 
-	Rotate(0.0f, mRotateSpeedY, 0.0f);
-
-	////U‚èŽqA‰ñ“]‚ÌˆÚ“®
-	//float per = mElapsedTime / mRotateTime;
-	//float angle = mRotateAngle * sinf(M_PI * 2.0f * per);
-	//Rotation(CQuaternion(0.0f, 10.0f, 0));
-
-	//mElapsedTime += Time::DeltaTime();
-	//if (mElapsedTime >= mRotateTime)
-	//{
-	//	mElapsedTime -= mRotateTime;
-	//}
+	if (CPlayer::mSwitchRObject == true)
+	{
+		Rotate(0.0f, mRotateSpeedY, 0.0f);
+	}
+	if (CPlayer::mSwitchLObject == true)
+	{
+		Rotate(0.0f, -mRotateSpeedY, 0.0f);
+	}
+	else
+	{
+		Rotate(0.0f, 0.0f, 0.0f);
+	}
 }
 
 void CMoveField::Render()

@@ -85,8 +85,10 @@
     <ClCompile Include="src\Game\CSlopeGimmick.cpp" />
     <ClCompile Include="src\Game\CStorn.cpp" />
     <ClCompile Include="src\Game\CStornGimmick.cpp" />
-    <ClCompile Include="src\Game\CSwitchGimmick.cpp" />
-    <ClCompile Include="src\Game\CSwitchObject.cpp" />
+    <ClCompile Include="src\Game\CSwitchLGimmick.cpp" />
+    <ClCompile Include="src\Game\CSwitchLObject.cpp" />
+    <ClCompile Include="src\Game\CSwitchRGimmick.cpp" />
+    <ClCompile Include="src\Game\CSwitchRObject.cpp" />
     <ClCompile Include="src\Game\CTitleScene.cpp" />
     <ClCompile Include="src\Game\CTMoveField.cpp" />
     <ClCompile Include="src\Game\CTMoveFieldGimmick.cpp" />
@@ -187,8 +189,10 @@
     <ClInclude Include="src\Game\CSlopeGimmick.h" />
     <ClInclude Include="src\Game\CStorn.h" />
     <ClInclude Include="src\Game\CStornGimmick.h" />
-    <ClInclude Include="src\Game\CSwitchGimmick.h" />
-    <ClInclude Include="src\Game\CSwitchObject.h" />
+    <ClInclude Include="src\Game\CSwitchLGimmick.h" />
+    <ClInclude Include="src\Game\CSwitchLObject.h" />
+    <ClInclude Include="src\Game\CSwitchRGimmick.h" />
+    <ClInclude Include="src\Game\CSwitchRObject.h" />
     <ClInclude Include="src\Game\CTitleScene.h" />
     <ClInclude Include="src\Game\CTMoveField.h" />
     <ClInclude Include="src\Game\CTMoveFieldGimmick.h" />

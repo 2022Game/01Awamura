@@ -6,11 +6,11 @@
 #include "CColliderSphere.h"
 #include "CColliderLine.h"
 
-class CTMoveField : public CRideableObject
+class CSwitchLObject : public CRideableObject
 {
 public:
-	CTMoveField(CModel* model, const CVector& pos, const CVector& scale, float rotateSpeedY);
-	~CTMoveField();
+	CSwitchLObject(CModel* model, const CVector& pos, const CVector& scale);
+	~CSwitchLObject();
 
 	void Update();
 	void Render();
@@ -20,11 +20,6 @@ private:
 	CColliderMesh* mpColliderMesh;
 	CColliderSphere* mpColliderSphere;
 
-	CColliderLine* mpColliderLine2;
-
 	CVector mDefaultPos;
 	CVector mMoveVec;
-	float mMoveTime;
-	float mElapsedTime;
-	float mRotateSpeedY;
 };

@@ -10,6 +10,9 @@ CPlayer* CPlayer::spInstance = nullptr;
 // プレイヤーのモデルデータのパス
 #define MODEL_PATH "Character\\Player\\Beardman.x"
 
+bool CPlayer::mSwitchRObject = false;
+bool CPlayer::mSwitchLObject = false;
+
 // プレイヤーのアニメーションデータのテーブル
 const CPlayer::AnimData CPlayer::ANIM_DATA[] =
 {
@@ -119,7 +122,7 @@ CPlayer::CPlayer()
 	);*/
 	/*mpColliderSphere->SetCollisionLayers({});*/
 	mpColliderLine->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject,ELayer::eWarpObject,
-		ELayer::eSlopeField,ELayer::eStorn,ELayer::eMoveSwitch });
+		ELayer::eSlopeField,ELayer::eStorn,ELayer::eMoveRSwitch,ELayer::eMoveLSwitch});
 	mpColliderLineBody->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject});
 	mpColliderLineLeg->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject,ELayer::eSlopeField });
 	mpColliderLineHead->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject });
@@ -452,7 +455,8 @@ void CPlayer::Update()
 
 	// キャラクターの更新
 	CXCharacter::Update();
-	//mSwitchObject = false;
+	mSwitchRObject = false;
+	mSwitchLObject = false;
 	mIsGrounded = false;
 }
 
@@ -610,10 +614,15 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 			Position(Position() + hit.adjust);
 			mIsGrounded = true;
 		}
-		/*if (other->Layer() == ELayer::eMoveSwitch)
+		
+		if (other->Layer() == ELayer::eMoveRSwitch)
 		{
-			mSwitchObject = true;
-		}*/
+			mSwitchRObject = true;
+		}
+		if (other->Layer() == ELayer::eMoveLSwitch)
+		{
+			mSwitchLObject = true;
+		}
 	}
 
 	//胴の判定

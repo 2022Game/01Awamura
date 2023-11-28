@@ -10,16 +10,16 @@ CStorn::CStorn(CModel* model, const CVector& pos, const CVector& scale, float ro
 	, mElapsedTime(0.0f)
 	, mRotateSpeedY(rotateSpeedY)
 {
-	mpColliderMesh = new CColliderMesh(this, ELayer::eStorn, mpModel, true);
+	mpColliderSphere = new CColliderSphere(this, ELayer::eStorn, 1.0f, false,1.0f);
 	Position(mDefaultPos);
 	Scale(scale);
 
-	mpColliderMesh->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject,ELayer::eWarpObject,ELayer::eSlopeField,ELayer::ePlayer});
+	mpColliderSphere->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject,ELayer::eWarpObject,ELayer::eSlopeField,ELayer::ePlayer});
 }
 
 CStorn::~CStorn()
 {
-	SAFE_DELETE(mpColliderMesh);
+	SAFE_DELETE(mpColliderSphere);
 }
 
 void CStorn::Update()
@@ -41,9 +41,9 @@ void CStorn::Update()
 
 void CStorn::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 {
-	if (self == mpColliderMesh)
+	if (self == mpColliderSphere)
 	{
-		if (other->Layer() == ELayer::eSlopeField || other->Layer() == ELayer::ePlayer)
+		if (other->Layer() == ELayer::eSlopeField || other->Layer() == ELayer::ePlayer || other->Layer() == ELayer::eField)
 		{
 			Position(Position() + hit.adjust);
 		}

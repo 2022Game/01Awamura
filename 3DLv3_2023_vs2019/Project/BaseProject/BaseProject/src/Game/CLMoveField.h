@@ -9,7 +9,7 @@
 class CLMoveField : public CRideableObject
 {
 public:
-	CLMoveField(CModel* model, const CVector& pos, const CVector& scale);
+	CLMoveField(CModel* model, const CVector& pos, const CVector& scale, float rotateSpeedY);
 	~CLMoveField();
 
 	void Update();
@@ -26,4 +26,6 @@ private:
 	CVector mMoveVec;
 	float mMoveTime;
 	float mElapsedTime;
+
+	float mRotateSpeedY;
 };

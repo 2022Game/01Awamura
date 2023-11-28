@@ -62,7 +62,7 @@ void CFloorGimmick::Init()
 	if (CField::mStageCount == 3)
 	{
 		CreateFloor(mpFloorModel,
-			CVector(0.0f, 2.0f, -20.0f), CVector(0.5f, 4.0f, 5.0f));
+			CVector(0.0f, -10.0f, 0.0f), CVector(5.0f, 4.0f, 0.5f));
 	}
 	if (CField::mStageCount == 4)
 	{

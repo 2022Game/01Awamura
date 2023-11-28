@@ -1,11 +1,13 @@
 #include "CTMoveField.h"
 #include "Maths.h"
 #include "CCollider.h"
+#include "CPlayer.h"
 
-CTMoveField::CTMoveField(CModel* model, const CVector& pos, const CVector& scale)
+CTMoveField::CTMoveField(CModel* model, const CVector& pos, const CVector& scale ,float rotateSpeedY)
 	: mpModel(model)
 	, mDefaultPos(pos)
 	, mElapsedTime(0.0f)
+	, mRotateSpeedY(rotateSpeedY)
 {
 	mpColliderMesh = new CColliderMesh(this, ELayer::eField, mpModel, true);
 	Position(mDefaultPos);
@@ -19,13 +21,17 @@ CTMoveField::~CTMoveField()
 
 void CTMoveField::Update()
 {
-	float per = mElapsedTime / mMoveTime;
-	Position(mDefaultPos + mMoveVec * sinf(M_PI * 2.0f * per));
-
-	mElapsedTime += 1.0f / 60.0f;
-	if (mElapsedTime >= mMoveTime)
+	if (CPlayer::mSwitchRObject == true)
 	{
-		mElapsedTime -= mMoveTime;
+		Rotate(0.0f, mRotateSpeedY, 0.0f);
+	}
+	if (CPlayer::mSwitchLObject == true)
+	{
+		Rotate(0.0f, -mRotateSpeedY, 0.0f);
+	}
+	else
+	{
+		Rotate(0.0f, 0.0f, 0.0f);
 	}
 }
 

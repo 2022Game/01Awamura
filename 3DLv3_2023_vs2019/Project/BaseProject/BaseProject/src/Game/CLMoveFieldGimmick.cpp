@@ -56,7 +56,7 @@ void CLMoveFieldGimmick::CreateLMoveField(CModel* model, const CVector& pos, con
 	if (mpMoveLModel == nullptr) return;
 
 	// ìyë‰Çê∂ê¨ÇµÇƒÉäÉXÉgÇ…í«â¡
-	CLMoveField* Lfield = new CLMoveField(mpMoveLModel, pos, scale);
+	CLMoveField* Lfield = new CLMoveField(mpMoveLModel, pos, scale,1.0f);
 	mLMoveField.push_back(Lfield);
 }
 

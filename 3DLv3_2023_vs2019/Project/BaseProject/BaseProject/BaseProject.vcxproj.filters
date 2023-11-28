@@ -343,10 +343,16 @@
     <ClCompile Include="src\Game\CLMoveFieldGimmick.cpp">
       <Filter>ソース ファイル\Game\Field\ObjectGimmick\FieldMoveGimmick</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\CSwitchObject.cpp">
+    <ClCompile Include="src\Game\CSwitchRObject.cpp">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\CSwitchGimmick.cpp">
+    <ClCompile Include="src\Game\CSwitchRGimmick.cpp">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CSwitchLObject.cpp">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CSwitchLGimmick.cpp">
       <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
     </ClCompile>
   </ItemGroup>
@@ -642,10 +648,16 @@
     <ClInclude Include="src\Game\CLMoveFieldGimmick.h">
       <Filter>ソース ファイル\Game\Field\ObjectGimmick\FieldMoveGimmick</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\CSwitchObject.h">
+    <ClInclude Include="src\Game\CSwitchRObject.h">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\CSwitchGimmick.h">
+    <ClInclude Include="src\Game\CSwitchRGimmick.h">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CSwitchLObject.h">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CSwitchLGimmick.h">
       <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
     </ClInclude>
   </ItemGroup>
