@@ -2,6 +2,7 @@
 #include "CApplication.h"
 #include "CTaskManager.h"
 #include "CField.h"
+#include "Maths.h"
 
 #include <stdlib.h>
 
@@ -13,6 +14,7 @@
 //void srand(unsigned int seed);
 
 CStornGimmick::CStornGimmick()
+	:randpos(0)
 {
 	//srand((unsigned int)time(NULL));
 	// èâä˙èàóù
@@ -48,10 +50,35 @@ void CStornGimmick::Init()
 	if (CField::mStageCount == 2)
 	{
 		CreateStorn(mpStornModel,
-			CVector(0.0f, 120.0f, -250.0f), CVector(10.0f, 10.0f, 10.0f));
-
+			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
 		CreateStorn(mpStornModel,
-			CVector(0.0f,80.0f, 0.0f), CVector(10.0f, 10.0f, 10.0f));
+			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
+		CreateStorn(mpStornModel,
+			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
+		CreateStorn(mpStornModel,
+			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
+		CreateStorn(mpStornModel,
+			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
+		CreateStorn(mpStornModel,
+			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
+		CreateStorn(mpStornModel,
+			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
+		CreateStorn(mpStornModel,
+			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
+		CreateStorn(mpStornModel,
+			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
+		CreateStorn(mpStornModel,
+			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
+		CreateStorn(mpStornModel,
+			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
+		CreateStorn(mpStornModel,
+			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
+		CreateStorn(mpStornModel,
+			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
+		CreateStorn(mpStornModel,
+			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
+		CreateStorn(mpStornModel,
+			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
 	}
 }
 
@@ -66,4 +93,5 @@ void CStornGimmick::CreateStorn(CModel* model, const CVector& pos, const CVector
 
 void CStornGimmick::Update()
 {
+	
 }

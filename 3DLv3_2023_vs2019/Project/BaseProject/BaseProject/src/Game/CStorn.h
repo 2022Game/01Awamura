@@ -23,6 +23,10 @@ public:
 	void Collision(CCollider* self, CCollider* other, const CHitInfo& hit) override;
 
 private:
+	bool mIsGrounded;
+	int randpos;
+	int randx;
+	int mKillCount;
 	CModel* mpModel;
 	CColliderMesh* mpColliderMesh;
 	CColliderSphere* mpColliderSphere;
@@ -41,4 +45,5 @@ private:
 	//float mRotateAngle;
 	//float mElapsedTime;
 	CVector mMoveSpeed;	// ˆÚ“®‘¬“x
+	CVector mMoveDir; // ˆÚ“®•ûŒü
 };

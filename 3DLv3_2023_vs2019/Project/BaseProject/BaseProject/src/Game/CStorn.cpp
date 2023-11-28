@@ -4,13 +4,24 @@
 
 #define ROTATE_Y -0.1f
 
+#include <stdlib.h>
+
+#include "time.h"
+
 CStorn::CStorn(CModel* model, const CVector& pos, const CVector& scale, float rotateSpeedY)
 	: mpModel(model)
 	, mDefaultPos(pos)
 	, mElapsedTime(0.0f)
 	, mRotateSpeedY(rotateSpeedY)
+	, mMoveDir(0.0f, 0.0f, 0.0f)
+	,mMoveSpeed(0.0f,0.0f,0.0f)
+	,mKillCount(0)
+	,randpos(0)
+	,randx(0)
 {
-	mpColliderSphere = new CColliderSphere(this, ELayer::eStorn, 1.0f, false,1.0f);
+	mKillCount = 600;
+	//Math::Rand(0, 5);
+	mpColliderSphere = new CColliderSphere(this, ELayer::eStorn, 1.0f, false,100.0f);
 	Position(mDefaultPos);
 	Scale(scale);
 
@@ -26,9 +37,32 @@ void CStorn::Update()
 {
 	/*float per = mElapsedTime / mMoveTime;*/
 	//移動
-	mMoveSpeed = CVector(0.0f, -0.2f, 0.0f);
 
-	Position(Position() + mMoveSpeed);
+	//移動方向に加速
+	CVector moveSpeedXZ = mMoveSpeed;
+	moveSpeedXZ.Y(0.0f);
+	moveSpeedXZ += mMoveDir * 60.0f * Time::DeltaTime();
+	//移動速度を最大値にクランプ
+	static const float maxSpeed = 60.0f;
+	if (moveSpeedXZ.Length() >= maxSpeed)
+	{
+		moveSpeedXZ = moveSpeedXZ.Normalized() * maxSpeed;
+	}
+	mMoveSpeed.X(randx);
+	mMoveSpeed.Z(moveSpeedXZ.Z());
+
+	//移動速度に合わせて岩を回転させる
+	Rotate(-0.1f * moveSpeedXZ.Length(), 0.0f, 0.0f);
+
+	//重力加算
+	mMoveSpeed.Y(mMoveSpeed.Y() - 480.0f * Time::DeltaTime());
+
+	Position(Position() + mMoveSpeed * Time::DeltaTime());
+
+	if (mIsGrounded == false)
+	{
+		mKillCount--;
+	}
 
 	//Rotate(0.0f, mRotateSpeedY, 0.0f);
 
@@ -37,15 +71,40 @@ void CStorn::Update()
 	{
 		mElapsedTime -= mMoveTime;
 	}*/
+
+	if (mKillCount <= 0) {
+		randpos = Math::Rand(-100,100);
+		randx = Math::Rand(-100, 100);
+		Position(CVector(randpos, 120.0f, -260.0f));
+		moveSpeedXZ.Y(0.0f);
+		mMoveSpeed.Y(0.0f);
+		mMoveSpeed.X(10.0f);
+		mMoveSpeed.Z(0.0f);
+		mKillCount = 30;
+	}
+
+	mIsGrounded = false;
 }
 
 void CStorn::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 {
 	if (self == mpColliderSphere)
 	{
-		if (other->Layer() == ELayer::eSlopeField || other->Layer() == ELayer::ePlayer || other->Layer() == ELayer::eField)
+		if (other->Layer() == ELayer::eStorn)
 		{
-			Position(Position() + hit.adjust);
+		
+		}
+		if (other->Layer() == ELayer::eSlopeField|| other->Layer() == ELayer::eField)
+		{
+			Position(Position() + hit.adjust * hit.weight);
+			mIsGrounded = true;
+			mKillCount = 30;
+			mMoveSpeed.Y(0.0f);
+
+			//押し出される方向から、岩の移動方向を求める
+			mMoveDir = hit.adjust;
+			mMoveDir.Y(0.0f);
+			mMoveDir.Normalize();
 		}
 	}
 }
@@ -54,3 +113,9 @@ void CStorn::Render()
 {
 	mpModel->Render(Matrix());
 }
+
+
+
+/*CVector normal = hit.adjust.Normalized();
+		CVector gurabiteli = CVector::down;
+		float dot = CVector::Dot(gurabiteli, normal);*/

@@ -18,6 +18,8 @@ private:
 
 	CModel* mpStorn;
 
+	int randpos;
+
 
 public:
 	CStornGimmick();

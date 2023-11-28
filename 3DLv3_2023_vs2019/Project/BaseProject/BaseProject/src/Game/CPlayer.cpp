@@ -511,7 +511,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		{
 			//落ちないようにする
 			mMoveSpeed.Y(0.0f);
-			Position(Position() + hit.adjust);
+			Position(Position() + hit.adjust * hit.weight);
 			mIsGrounded = true;
 			//乗れる土台
 			if (other->Tag() == ETag::eRideableObject)
@@ -541,7 +541,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		{
 			//落ちないようにする
 			mMoveSpeed.Y(0.0f);
-			Position(Position() + hit.adjust);
+			Position(Position() + hit.adjust * hit.weight);
 			mIsGrounded = true;
 			//乗れる土台
 			if (other->Tag() == ETag::eRideableObject)
@@ -571,7 +571,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		if (other->Layer() == ELayer::eBadObject)
 		{
 			//押し戻される
-			Position(Position() + hit.adjust);
+			Position(Position() + hit.adjust * hit.weight);
 			mIsGrounded = true;
 			//空中でぶつかったときにダウンする
 			if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump /*|| mState != EState::eBadDown || mState != EState::eDown*/)
@@ -582,7 +582,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		//とても悪い障害物
 		if (other->Layer() == ELayer::eBigBadObject)
 		{
-			Position(Position() + hit.adjust);
+			Position(Position() + hit.adjust * hit.weight);
 			mIsGrounded = true;
 			//当たったらDOWNする
 			if (mState != EState::eBadDown || mState != EState::eDown || mState != EState::eUp)
@@ -594,7 +594,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		if (other->Layer() == ELayer::eWarpObject)
 		{
 			mMoveSpeed.Y(0.0f);
-			Position(Position() + hit.adjust);
+			Position(Position() + hit.adjust * hit.weight);
 			//mIsGrounded = true;
 			//条件によりワープ位置を変える
 			//ゲームステージ１スタート
@@ -611,8 +611,12 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		if (other->Layer() == ELayer::eStorn)
 		{
 			mMoveSpeed.Y(0.0f);
-			Position(Position() + hit.adjust);
+			Position(Position() + hit.adjust * hit.weight);
 			mIsGrounded = true;
+			if (mState != EState::eBadDown || mState != EState::eDown || mState != EState::eUp)
+			{
+				mState = EState::eBadDown;
+			}
 		}
 		
 		if (other->Layer() == ELayer::eMoveRSwitch)
@@ -630,7 +634,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 	{
 		if (other->Layer() == ELayer::eObject)
 		{
-			Position(Position() + hit.adjust);
+			Position(Position() + hit.adjust * hit.weight);
 			mIsGrounded = true;
 
 			if (other->Tag() == ETag::eRideableObject)
@@ -640,7 +644,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		}
 		if (other->Layer() == ELayer::eBadObject)
 		{
-			Position(Position() + hit.adjust);
+			Position(Position() + hit.adjust * hit.weight);
 			mIsGrounded = true;
 			if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump /*|| mState != EState::eBadDown || mState != EState::eDown*/)
 			{
@@ -663,7 +667,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 	{
 		if (other->Layer() == ELayer::eObject)
 		{
-			Position(Position() + hit.adjust);
+			Position(Position() + hit.adjust * hit.weight);
 			mIsGrounded = true;
 
 			if (other->Tag() == ETag::eRideableObject)
@@ -673,7 +677,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		}
 		if (other->Layer() == ELayer::eBadObject)
 		{
-			Position(Position() + hit.adjust);
+			Position(Position() + hit.adjust * hit.weight);
 			mIsGrounded = true;
 			if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump /*|| mState != EState::eDown*/)
 			{
@@ -682,7 +686,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		}
 		if (other->Layer() == ELayer::eBigBadObject)
 		{
-			Position(Position() + hit.adjust);
+			Position(Position() + hit.adjust * hit.weight);
 			mIsGrounded = true;
 			if (mState != EState::eDown || mState != EState::eBadDown || mState != EState::eUp)
 			{
@@ -696,7 +700,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 	{
 		if (other->Layer() == ELayer::eObject)
 		{
-			Position(Position() + hit.adjust);
+			Position(Position() + hit.adjust * hit.weight);
 			mIsGrounded = true;
 
 			if (other->Tag() == ETag::eRideableObject)
@@ -706,7 +710,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		}
 		if (other->Layer() == ELayer::eBadObject)
 		{
-			Position(Position() + hit.adjust);
+			Position(Position() + hit.adjust * hit.weight);
 			mIsGrounded = true;
 			if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump /*|| mState != EState::eBadDown || mState != EState::eDown*/)
 			{
@@ -715,7 +719,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		}
 		if (other->Layer() == ELayer::eBigBadObject)
 		{
-			Position(Position() + hit.adjust);
+			Position(Position() + hit.adjust * hit.weight);
 			mIsGrounded = true;
 			if (mState != EState::eDown || mState != EState::eBadDown || mState != EState::eUp)
 			{
