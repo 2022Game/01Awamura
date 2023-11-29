@@ -63,6 +63,7 @@ public:
 	static bool mSwitchLObject;
 
 private:
+	CPlayer* player;
 	// アニメーションの種類
 	enum class EAnimType
 	{

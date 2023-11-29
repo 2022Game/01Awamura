@@ -31,6 +31,7 @@ CField::CField()
 	, mpJMoveFieldGimmick(nullptr)
 	,mpSwitchRGimmick(nullptr)
 	,mpSwitchLGimmick(nullptr)
+	,mDeleteCount(0)
 {
 	mpModel = new CModel();
 	//仮のフィールドデータ　ピンクな背景モデルが有れば入れる
@@ -101,11 +102,12 @@ void CField::Update()
 	if (mClearCount == 1 && mClearCountSwitch == 1)
 	{
 		//ステージ番号
-		//mStageCount++;
+		mStageCount++;
+		mDeleteCount++;
 		// テスト用
-		mStageCount = 2;
+		//mStageCount = 3;
 		//ステージが切り替わった時に元のステージを削除
-		if (mStageCount != mDeleteSwitch)
+		if (mDeleteCount != mDeleteSwitch)
 		{
 			if (mpWarpGimmick != nullptr)
 			{
@@ -172,9 +174,15 @@ void CField::Update()
 				mpSwitchLGimmick->Kill();
 				mpSwitchLGimmick = nullptr;
 			}
-			mDeleteSwitch = mStageCount;
+			if (mpStornGimmick != nullptr)
+			{
+				mpStornGimmick->Kill();
+				mpStornGimmick = nullptr;
+			}
+			mDeleteSwitch = mDeleteCount;
 		}
 		//ステージ１
+		//斧振り子ステージ
 		if (mStageCount == 1)
 		{
 			mpClearStageGimmick = new CClearStageGimmick();
@@ -184,6 +192,7 @@ void CField::Update()
 			mpStornGimmick = new CStornGimmick();
 		}
 		//ステージ２
+		//岩石坂道ステージ
 		if (mStageCount == 2)
 		{
 			mpClearCubeGimmick = new CClearCubeGimmick();
@@ -193,17 +202,18 @@ void CField::Update()
 			mpStornGimmick = new CStornGimmick();
 		}
 		//ステージ３
+		//ぐるぐるパズルゲーム
 		if (mStageCount == 3)
 		{
 			mpClearStageGimmick = new CClearStageGimmick();
-			//mpMoveFieldGimmick = new CMoveFieldGimmick();
-			//mpTMoveFieldGimmick = new CTMoveFieldGimmick();
+			mpMoveFieldGimmick = new CMoveFieldGimmick();
+			mpTMoveFieldGimmick = new CTMoveFieldGimmick();
 			mpFloorGimmick = new CFloorGimmick();
 			mpSwitchRGimmick = new CSwitchRGimmick();
 			mpSwitchLGimmick = new CSwitchLGimmick();
-			//mpIMoveFieldGimmick = new CIMoveFieldGimmick();
-			//mpLMoveFieldGimmick = new CLMoveFieldGimmick();
-			//mpJMoveFieldGimmick = new CJMoveFieldGimmick();
+			mpIMoveFieldGimmick = new CIMoveFieldGimmick();
+			mpLMoveFieldGimmick = new CLMoveFieldGimmick();
+			mpJMoveFieldGimmick = new CJMoveFieldGimmick();
 		}
 		//ステージ４
 		if (mStageCount == 4)

@@ -25,7 +25,7 @@ CStorn::CStorn(CModel* model, const CVector& pos, const CVector& scale, float ro
 	Position(mDefaultPos);
 	Scale(scale);
 
-	mpColliderSphere->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject,ELayer::eWarpObject,ELayer::eSlopeField,ELayer::ePlayer});
+	mpColliderSphere->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject,ELayer::eWarpObject,ELayer::eSlopeField,ELayer::ePlayer,ELayer::eStorn});
 }
 
 CStorn::~CStorn()
@@ -74,8 +74,8 @@ void CStorn::Update()
 
 	if (mKillCount <= 0) {
 		randpos = Math::Rand(-100,100);
-		randx = Math::Rand(-100, 100);
-		Position(CVector(randpos, 120.0f, -260.0f));
+		randx = Math::Rand(-50, 50);
+		Position(CVector(randpos, 120.0f, -250.0f));
 		moveSpeedXZ.Y(0.0f);
 		mMoveSpeed.Y(0.0f);
 		mMoveSpeed.X(10.0f);
@@ -92,7 +92,7 @@ void CStorn::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 	{
 		if (other->Layer() == ELayer::eStorn)
 		{
-		
+			Position(Position() + hit.adjust * hit.weight);
 		}
 		if (other->Layer() == ELayer::eSlopeField|| other->Layer() == ELayer::eField)
 		{

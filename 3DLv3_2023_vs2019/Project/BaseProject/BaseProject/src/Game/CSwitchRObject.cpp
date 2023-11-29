@@ -6,14 +6,15 @@ CSwitchRObject::CSwitchRObject(CModel* model, const CVector& pos, const CVector&
 	: mpModel(model)
 	, mDefaultPos(pos)
 {
-	mpColliderMesh = new CColliderMesh(this, ELayer::eMoveRSwitch, mpModel, true);
+	/*this, ELayer::eMoveRSwitch, mpModel, true*/
+	mpColliderSphere = new CColliderSphere(/*this, ELayer::eMoveRSwitch, mpModel, true*/this, ELayer::eMoveRSwitch, 1.0f, true, 100.0f);
 	Position(mDefaultPos);
 	Scale(scale);
 }
 
 CSwitchRObject::~CSwitchRObject()
 {
-	SAFE_DELETE(mpColliderMesh);
+	SAFE_DELETE(mpColliderSphere);
 }
 
 void CSwitchRObject::Update()

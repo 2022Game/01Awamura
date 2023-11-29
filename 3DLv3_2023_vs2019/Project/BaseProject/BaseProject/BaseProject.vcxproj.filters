@@ -355,6 +355,12 @@
     <ClCompile Include="src\Game\CSwitchLGimmick.cpp">
       <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
     </ClCompile>
+    <ClCompile Include="src\BaseSystem\CBillBoardImage.cpp">
+      <Filter>ソース ファイル\BaseSystem\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BaseSystem\CRect.cpp">
+      <Filter>ソース ファイル\BaseSystem\Effect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BaseSystem\CCollider.h">
@@ -659,6 +665,12 @@
     </ClInclude>
     <ClInclude Include="src\Game\CSwitchLGimmick.h">
       <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BaseSystem\CBillBoardImage.h">
+      <Filter>ソース ファイル\BaseSystem\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BaseSystem\CRect.h">
+      <Filter>ソース ファイル\BaseSystem\Effect</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

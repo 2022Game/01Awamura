@@ -38,6 +38,7 @@ public:
 private:
 	void CreateFieldObjects();
 
+	int mDeleteCount;
 	CModel* mpModel;
 	CColliderMesh* mpColliderMesh;
 	CColliderSphere* mpColliderSphere;

@@ -199,6 +199,8 @@ void CPlayer::UpdateIdle()
 			mMoveSpeed.X(0.0f);
 			mMoveSpeed.Z(0.0f);
 			mState = EState::eDown;
+
+			CCamera::MainCamera()->Position();
 		}
 		// SPACEキーでジャンプ開始へ移行
 		else if (CInput::PushKey(VK_SPACE))
@@ -360,7 +362,14 @@ void CPlayer::UpdateClearEnd()
 		CField::mClearCount = 1;
 		//CField::mDeleteSwitch = 1;
 		//ChangeAnimation(EAnimType::eIdle);
-		Position(mStartPos);
+		if (CField::mStageCount == 2)
+		{
+			Position(0.0f, 30.0f, 240.0f);
+		}
+		if(CField::mStageCount != 2)
+		{
+			Position(mStartPos);
+		}
 		mState = EState::eIdle;
 //	}
 }
@@ -376,7 +385,14 @@ void CPlayer::Update()
 		Downcount--;
 		if (Downcount < 0)
 		{
-			Position(mStartPos);
+			if (CField::mStageCount == 3)
+			{
+				Position(0.0f, 30.0f, 240.0f);
+			}
+			else if(CField::mStageCount != 3)
+			{
+				Position(mStartPos);
+			}
 			Downcount = 180;
 			mMoveSpeed.X(0.0f);
 			mMoveSpeed.Z(0.0f);

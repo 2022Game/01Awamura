@@ -47,7 +47,7 @@ void CMoveFieldGimmick::Init()
 	if (CField::mStageCount == 3)
 	{
 		CreateMoveField(mpMoveTenModel,
-			CVector(0.0f, 0.0f, 0.0f), CVector(10.0f, 10.0f, 10.0f));
+			CVector(0.0f, -5.0f, 10.0f), CVector(12.5f, 12.5f, 12.5f));
 	}
 }
 

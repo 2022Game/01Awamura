@@ -47,7 +47,9 @@ void CIMoveFieldGimmick::Init()
 	if (CField::mStageCount == 3)
 	{
 		CreateIMoveField(mpMoveIModel,
-			CVector(0.0f, 10.0f, -80.0f), CVector(10.0f, 10.0f, 10.0f));
+			CVector(80.0f, -5.0f, 180.0f), CVector(12.5f, 12.5f, 12.5f));
+		/*CreateIMoveField(mpMoveIModel,
+			CVector(-80.0f, -5.0f, 100.0f), CVector(12.5f, 12.5f, 12.5f));*/
 	}
 }
 
@@ -56,7 +58,7 @@ void CIMoveFieldGimmick::CreateIMoveField(CModel* model, const CVector& pos, con
 	if (mpMoveIModel == nullptr) return;
 
 	// ìyë‰Çê∂ê¨ÇµÇƒÉäÉXÉgÇ…í«â¡
-	CIMoveField* ifield = new CIMoveField(mpMoveIModel, pos, scale,1.0f);
+	CIMoveField* ifield = new CIMoveField(mpMoveIModel, pos, scale,2.5f);
 	mIMoveField.push_back(ifield);
 }
 

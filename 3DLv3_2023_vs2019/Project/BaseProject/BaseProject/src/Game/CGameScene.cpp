@@ -3,6 +3,8 @@
 #include "CField.h"
 #include "CPlayer.h"
 #include "CCamera.h"
+#include "CField.h"
+#include "Cinput.h"
 
 //コンストラクタ
 CGameScene::CGameScene()
