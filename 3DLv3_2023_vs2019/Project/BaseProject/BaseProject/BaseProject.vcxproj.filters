@@ -361,6 +361,24 @@
     <ClCompile Include="src\BaseSystem\CRect.cpp">
       <Filter>ソース ファイル\BaseSystem\Effect</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\CKillwood.cpp">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CKillwoodGimmick.cpp">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CSidewood.cpp">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CSidewoodGimmick.cpp">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CBollField.cpp">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CBollFieldGimmick.cpp">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BaseSystem\CCollider.h">
@@ -671,6 +689,24 @@
     </ClInclude>
     <ClInclude Include="src\BaseSystem\CRect.h">
       <Filter>ソース ファイル\BaseSystem\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CKillwood.h">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CKillwoodGimmick.h">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CSidewood.h">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CSidewoodGImmick.h">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CBollField.h">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CBollFieldGimmick.h">
+      <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

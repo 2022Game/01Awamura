@@ -16,6 +16,9 @@
 #include "CJMoveFieldGimmick.h"
 #include "CSwitchRGimmick.h"
 #include "CSwitchLGimmick.h"
+#include "CKillwoodGimmick.h"
+#include "CSidewoodGimmick.h"
+#include "CBollFieldGimmick.h"
 
 class CField : public CObjectBase 
 {
@@ -71,6 +74,12 @@ private:
 	CSwitchRGimmick* mpSwitchRGimmick;
 	//ç∂switch
 	CSwitchLGimmick* mpSwitchLGimmick;
+	//éEùCÇÃëÂñÿ
+	CKillwoodGimmick* mpKillwoodGimmick;
+	//éEùCÇÃì|ñÿ
+	CSidewoodGimmick* mpSidewoodGimmick;
+	//â~å`ìyë‰
+	CBollFieldGimmick* mpBollFieldGimmick;
 
 	CModel* mpCubeModel;
 	CModel* mpCylinderModel;

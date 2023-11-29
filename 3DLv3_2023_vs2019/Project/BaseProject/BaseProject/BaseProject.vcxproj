@@ -59,6 +59,8 @@
     <ClCompile Include="src\Game\CApplication.cpp" />
     <ClCompile Include="src\Game\CAxe.cpp" />
     <ClCompile Include="src\Game\CAxeGimmick.cpp" />
+    <ClCompile Include="src\Game\CBollField.cpp" />
+    <ClCompile Include="src\Game\CBollFieldGimmick.cpp" />
     <ClCompile Include="src\Game\CClearCube.cpp" />
     <ClCompile Include="src\Game\CClearCubeGimmick.cpp" />
     <ClCompile Include="src\Game\CClearStage.cpp" />
@@ -74,6 +76,8 @@
     <ClCompile Include="src\Game\CIMoveFieldGimmick.cpp" />
     <ClCompile Include="src\Game\CJMoveField.cpp" />
     <ClCompile Include="src\Game\CJMoveFieldGimmick.cpp" />
+    <ClCompile Include="src\Game\CKillwood.cpp" />
+    <ClCompile Include="src\Game\CKillwoodGimmick.cpp" />
     <ClCompile Include="src\Game\CLMoveField.cpp" />
     <ClCompile Include="src\Game\CLMoveFieldGimmick.cpp" />
     <ClCompile Include="src\Game\CMoveField.cpp" />
@@ -83,6 +87,8 @@
     <ClCompile Include="src\Game\CPlayer.cpp" />
     <ClCompile Include="src\Game\CRideabeObject.cpp" />
     <ClCompile Include="src\Game\CRotateFloor.cpp" />
+    <ClCompile Include="src\Game\CSidewood.cpp" />
+    <ClCompile Include="src\Game\CSidewoodGimmick.cpp" />
     <ClCompile Include="src\Game\CSlope.cpp" />
     <ClCompile Include="src\Game\CSlopeGimmick.cpp" />
     <ClCompile Include="src\Game\CStorn.cpp" />
@@ -165,6 +171,8 @@
     <ClInclude Include="src\Game\CApplication.h" />
     <ClInclude Include="src\Game\CAxe.h" />
     <ClInclude Include="src\Game\CAxeGimmick.h" />
+    <ClInclude Include="src\Game\CBollField.h" />
+    <ClInclude Include="src\Game\CBollFieldGimmick.h" />
     <ClInclude Include="src\Game\CClearCube.h" />
     <ClInclude Include="src\Game\CClearCubeGimmick.h" />
     <ClInclude Include="src\Game\CClearStage.h" />
@@ -180,6 +188,8 @@
     <ClInclude Include="src\Game\CIMoveFieldGimmick.h" />
     <ClInclude Include="src\Game\CJMoveField.h" />
     <ClInclude Include="src\Game\CJMoveFieldGimmick.h" />
+    <ClInclude Include="src\Game\CKillwood.h" />
+    <ClInclude Include="src\Game\CKillwoodGimmick.h" />
     <ClInclude Include="src\Game\CLMoveField.h" />
     <ClInclude Include="src\Game\CLMoveFieldGimmick.h" />
     <ClInclude Include="src\Game\CMoveField.h" />
@@ -189,6 +199,8 @@
     <ClInclude Include="src\Game\CPlayer.h" />
     <ClInclude Include="src\Game\CRideableObject.h" />
     <ClInclude Include="src\Game\CRotateFloor.h" />
+    <ClInclude Include="src\Game\CSidewood.h" />
+    <ClInclude Include="src\Game\CSidewoodGImmick.h" />
     <ClInclude Include="src\Game\CSlope.h" />
     <ClInclude Include="src\Game\CSlopeGimmick.h" />
     <ClInclude Include="src\Game\CStorn.h" />

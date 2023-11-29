@@ -12,6 +12,7 @@ CPlayer* CPlayer::spInstance = nullptr;
 
 bool CPlayer::mSwitchRObject = false;
 bool CPlayer::mSwitchLObject = false;
+bool CPlayer::mResetCount = false;
 
 // プレイヤーのアニメーションデータのテーブル
 const CPlayer::AnimData CPlayer::ANIM_DATA[] =
@@ -40,7 +41,7 @@ CPlayer::CPlayer()
 	: CXCharacter(ETag::ePlayer, ETaskPriority::ePlayer)
 	, mState(EState::eIdle)
 	, mpRideObject(nullptr)
-	, Downcount(180)
+	, mDowncount(180)
 {
 	//インスタンスの設定
 	spInstance = this;
@@ -360,13 +361,14 @@ void CPlayer::UpdateClearEnd()
 		CField::mClearCountSwitch = 1;
 		CField::mStageCreateSwitch = 1;
 		CField::mClearCount = 1;
+		CField::mStageCount++;
 		//CField::mDeleteSwitch = 1;
 		//ChangeAnimation(EAnimType::eIdle);
-		if (CField::mStageCount == 2)
+		if (CField::mStageCount == 3)
 		{
 			Position(0.0f, 30.0f, 240.0f);
 		}
-		if(CField::mStageCount != 2)
+		if(CField::mStageCount != 3)
 		{
 			Position(mStartPos);
 		}
@@ -377,13 +379,18 @@ void CPlayer::UpdateClearEnd()
 // 更新
 void CPlayer::Update()
 {
+	if (mResetCount == true)
+	{
+		mResetCount = false;
+	}
+
 	SetParent(mpRideObject);
 	mpRideObject = nullptr;
 
 	if (mMoveSpeed.Y() <= 0.0f )
 	{
-		Downcount--;
-		if (Downcount < 0)
+		mDowncount--;
+		if (mDowncount < 0)
 		{
 			if (CField::mStageCount == 3)
 			{
@@ -393,16 +400,22 @@ void CPlayer::Update()
 			{
 				Position(mStartPos);
 			}
-			Downcount = 180;
+			mDowncount = 180;
+			mMoveSpeed.Y(-0.1f);
 			mMoveSpeed.X(0.0f);
 			mMoveSpeed.Z(0.0f);
+			mResetCount = true;
 			mState = EState::eDown;
 		}
 	}
-	if (mMoveSpeed.Y() >= 0.0f && Downcount != 180)
+	if (mMoveSpeed.Y() >= 0.0f && mDowncount != 180)
 		{
-			Downcount = 180;
+			mDowncount = 180;
 		}
+	/*if (mResetCount != 0)
+	{
+		mResetCount = 0;
+	}*/
 	// 状態に合わせて、更新処理を切り替える
 	switch (mState)
 	{
@@ -619,6 +632,10 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 				CField::mClearCount = 1;
 				CField::mClearCountSwitch = 1;
 				CField::mStageCreateSwitch = 1;
+				//正規
+				//CField::mStageCount = 1;
+				//テスト用
+				CField::mStageCount = 4;
 				//ステージ１開始位置へワープ
 				Position(mStartPos);
 			}

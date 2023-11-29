@@ -62,6 +62,8 @@ public:
 	static bool mSwitchRObject;
 	static bool mSwitchLObject;
 
+	static bool mResetCount;
+
 private:
 	CPlayer* player;
 	// アニメーションの種類
@@ -127,5 +129,5 @@ private:
 	CColliderLine* mpColliderLineLeg;
 	CTransform* mpRideObject;
 	CVector mStartPos;
-	int Downcount;
+	int mDowncount;
 };
