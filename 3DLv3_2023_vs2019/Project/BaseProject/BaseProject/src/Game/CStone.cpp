@@ -1,4 +1,4 @@
-#include "CStorn.h"
+#include "CStone.h"
 #include "Maths.h"
 #include "CCollider.h"
 
@@ -8,7 +8,7 @@
 
 #include "time.h"
 
-CStorn::CStorn(CModel* model, const CVector& pos, const CVector& scale, float rotateSpeedY)
+CStone::CStone(CModel* model, const CVector& pos, const CVector& scale, float rotateSpeedY)
 	: mpModel(model)
 	, mDefaultPos(pos)
 	, mElapsedTime(0.0f)
@@ -21,19 +21,19 @@ CStorn::CStorn(CModel* model, const CVector& pos, const CVector& scale, float ro
 {
 	mKillCount = 600;
 	//Math::Rand(0, 5);
-	mpColliderSphere = new CColliderSphere(this, ELayer::eStorn, 1.0f, false,100.0f);
+	mpColliderSphere = new CColliderSphere(this, ELayer::eStone, 1.0f, false,100.0f);
 	Position(mDefaultPos);
 	Scale(scale);
 
-	mpColliderSphere->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject,ELayer::eWarpObject,ELayer::eSlopeField,ELayer::ePlayer,ELayer::eStorn});
+	mpColliderSphere->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject,ELayer::eWarpObject,ELayer::eSlopeField,ELayer::ePlayer,ELayer::eStone});
 }
 
-CStorn::~CStorn()
+CStone::~CStone()
 {
 	SAFE_DELETE(mpColliderSphere);
 }
 
-void CStorn::Update()
+void CStone::Update()
 {
 	/*float per = mElapsedTime / mMoveTime;*/
 	//ˆÚ“®
@@ -86,11 +86,11 @@ void CStorn::Update()
 	mIsGrounded = false;
 }
 
-void CStorn::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
+void CStone::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 {
 	if (self == mpColliderSphere)
 	{
-		if (other->Layer() == ELayer::eStorn)
+		if (other->Layer() == ELayer::eStone)
 		{
 			Position(Position() + hit.adjust * hit.weight);
 		}
@@ -109,7 +109,7 @@ void CStorn::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 	}
 }
 
-void CStorn::Render()
+void CStone::Render()
 {
 	mpModel->Render(Matrix());
 }

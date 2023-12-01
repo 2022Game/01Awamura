@@ -8,7 +8,7 @@
 #include "CAxeGimmick.h"
 #include "CSlopeGimmick.h"
 #include "CClearCubeGimmick.h"
-#include "CStornGimmick.h"
+#include "CStoneGimmick.h"
 #include "CMoveFieldGimmick.h"
 #include "CTMoveFieldGimmick.h"
 #include "CIMoveFieldGimmick.h"
@@ -59,7 +59,7 @@ private:
 	//ç‚ìπ
 	CSlopeGimmick* mpSlopeGimmick;
 	//ä‚
-	CStornGimmick* mpStornGimmick;
+	CStoneGimmick* mpStoneGimmick;
 	//âÒì]Ç∑ÇÈè\éöìyë‰
 	CMoveFieldGimmick* mpMoveFieldGimmick;
 	//âÒì]Ç∑ÇÈTéöìyë‰

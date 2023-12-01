@@ -286,7 +286,7 @@
     <ClCompile Include="src\Game\CClearCube.cpp">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\CStorn.cpp">
+    <ClCompile Include="src\Game\CStone.cpp">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClCompile>
     <ClCompile Include="src\BaseSystem\CGamePause.cpp">
@@ -295,7 +295,7 @@
     <ClCompile Include="src\Game\CWarpGimmick.cpp">
       <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\CStornGimmick.cpp">
+    <ClCompile Include="src\Game\CStoneGimmick.cpp">
       <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\CSlopeGimmick.cpp">
@@ -615,7 +615,7 @@
     <ClInclude Include="src\Game\CClearCube.h">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\CStorn.h">
+    <ClInclude Include="src\Game\CStone.h">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClInclude>
     <ClInclude Include="src\BaseSystem\CGamePause.h">
@@ -624,7 +624,7 @@
     <ClInclude Include="src\Game\CWarpGimmick.h">
       <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\CStornGimmick.h">
+    <ClInclude Include="src\Game\CStoneGimmick.h">
       <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\CSlopeGimmick.h">

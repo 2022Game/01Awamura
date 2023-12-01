@@ -5,7 +5,7 @@
 #include "CCollider.h"
 #include "CColliderSphere.h"
 
-class CKillwood : public CRideableObject
+class CKillwood : public CObjectBase
 {
 public:
 	CKillwood(CModel* model, const CVector& pos, const CVector& scale, float rotateSpeedY);

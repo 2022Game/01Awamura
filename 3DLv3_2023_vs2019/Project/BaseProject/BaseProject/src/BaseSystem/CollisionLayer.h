@@ -14,7 +14,7 @@ enum class ELayer
 	eClearObject,
 	eWarpObject,
 	eSlopeField,
-	eStorn,
+	eStone,
 	eMoveRSwitch,
 	eMoveLSwitch,
 };

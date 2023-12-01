@@ -5,11 +5,11 @@
 #include "CCollider.h"
 #include "CColliderSphere.h"
 
-class CStorn : public CRideableObject
+class CStone : public CRideableObject
 {
 public:
-	CStorn(CModel* model, const CVector& pos, const CVector& scale, float rotateSpeedY);
-	~CStorn();
+	CStone(CModel* model, const CVector& pos, const CVector& scale, float rotateSpeedY);
+	~CStone();
 
 	void Update();
 	void Render();

@@ -23,7 +23,7 @@ CField::CField()
 	,mpSlopeGimmick(nullptr)
 	,mpWarpGimmick(nullptr)
 	,mpClearCubeGimmick(nullptr)
-	,mpStornGimmick(nullptr)
+	,mpStoneGimmick(nullptr)
 	,mpMoveFieldGimmick(nullptr)
 	,mpTMoveFieldGimmick(nullptr)
 	, mpIMoveFieldGimmick(nullptr)
@@ -177,10 +177,10 @@ void CField::Update()
 				mpSwitchLGimmick->Kill();
 				mpSwitchLGimmick = nullptr;
 			}
-			if (mpStornGimmick != nullptr)
+			if (mpStoneGimmick != nullptr)
 			{
-				mpStornGimmick->Kill();
-				mpStornGimmick = nullptr;
+				mpStoneGimmick->Kill();
+				mpStoneGimmick = nullptr;
 			}
 			if (mpKillwoodGimmick != nullptr)
 			{
@@ -207,7 +207,7 @@ void CField::Update()
 			mpAxeGimmick = new CAxeGimmick();
 			mpFloorGimmick = new CFloorGimmick();
 			mpWarpGimmick = new CWarpGimmick();
-			mpStornGimmick = new CStornGimmick();
+			mpStoneGimmick = new CStoneGimmick();
 		}
 		//ステージ２
 		//岩石坂道ステージ
@@ -217,7 +217,7 @@ void CField::Update()
 			mpSlopeGimmick = new CSlopeGimmick();
 			mpFloorGimmick = new CFloorGimmick();
 			mpClearStageGimmick = new CClearStageGimmick();
-			mpStornGimmick = new CStornGimmick();
+			mpStoneGimmick = new CStoneGimmick();
 		}
 		//ステージ３
 		//ぐるぐるパズルゲーム

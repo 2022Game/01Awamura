@@ -44,6 +44,10 @@ public:
 	void UpdateBadDown();
 	//起き上がる
 	void UpdateUp();
+	//しゃがみ
+	void UpdateSquat();
+	//しゃがみ解除
+	void UpdateSquatUp();
 
 	// 更新
 	void Update();
@@ -82,6 +86,8 @@ private:
 		eDown,
 		eUp,
 		eClear,
+		eSquat,
+		eSquatUp,
 
 		Num
 	};
@@ -116,8 +122,12 @@ private:
 		eDown, //倒れる
 		eBadDown, 
 		eUp, //起き上がる
+		eSquat, //しゃがみ
+		eSquatUp, //しゃがみ
 	};
 	EState mState;	// プレイヤーの状態
+
+	CVector mColliderSpeed;
 
 	CVector mMoveSpeed;	// 移動速度
 	bool mIsGrounded;	// 接地しているかどうか
@@ -125,9 +135,20 @@ private:
 	CColliderLine* mpColliderLine;
 	CColliderSphere* mpColliderSphere;
 	CColliderLine* mpColliderLineBody;
+	CColliderLine* mpColliderLineBody2;
+	CColliderLine* mpColliderLineBodyHalf;
+	CColliderLine* mpColliderLineBodyHalf2;
 	CColliderLine* mpColliderLineHead;
+	CColliderLine* mpColliderLineHead2;
 	CColliderLine* mpColliderLineLeg;
+	CColliderLine* mpColliderLineLeg2;
+	CColliderLine* mpColliderLineLegHalf;
+	CColliderLine* mpColliderLineLegHalf2;
 	CTransform* mpRideObject;
 	CVector mStartPos;
 	int mDowncount;
+	CVector mColliderPos;
+	CVector mColliderPos2;
+	CVector mColliderPos3;
+	CVector mColliderPos4;
 };

@@ -91,8 +91,8 @@
     <ClCompile Include="src\Game\CSidewoodGimmick.cpp" />
     <ClCompile Include="src\Game\CSlope.cpp" />
     <ClCompile Include="src\Game\CSlopeGimmick.cpp" />
-    <ClCompile Include="src\Game\CStorn.cpp" />
-    <ClCompile Include="src\Game\CStornGimmick.cpp" />
+    <ClCompile Include="src\Game\CStone.cpp" />
+    <ClCompile Include="src\Game\CStoneGimmick.cpp" />
     <ClCompile Include="src\Game\CSwitchLGimmick.cpp" />
     <ClCompile Include="src\Game\CSwitchLObject.cpp" />
     <ClCompile Include="src\Game\CSwitchRGimmick.cpp" />
@@ -203,8 +203,8 @@
     <ClInclude Include="src\Game\CSidewoodGImmick.h" />
     <ClInclude Include="src\Game\CSlope.h" />
     <ClInclude Include="src\Game\CSlopeGimmick.h" />
-    <ClInclude Include="src\Game\CStorn.h" />
-    <ClInclude Include="src\Game\CStornGimmick.h" />
+    <ClInclude Include="src\Game\CStone.h" />
+    <ClInclude Include="src\Game\CStoneGimmick.h" />
     <ClInclude Include="src\Game\CSwitchLGimmick.h" />
     <ClInclude Include="src\Game\CSwitchLObject.h" />
     <ClInclude Include="src\Game\CSwitchRGimmick.h" />

@@ -50,7 +50,7 @@ void CSidewoodGimmick::Init()
 	if (CField::mStageCount == 4)
 	{
 		CreateSidewood(mpSidewoodModel,
-			CVector(0.0f, 0.0f, -30.0f), CVector(5.0f, 5.0f, 5.0f));
+			CVector(0.0f, 15.0f, -30.0f), CVector(5.0f, 5.0f, 5.0f));
 	}
 }
 
