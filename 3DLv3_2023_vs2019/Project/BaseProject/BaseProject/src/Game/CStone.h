@@ -4,6 +4,8 @@
 #include "CColliderMesh.h"
 #include "CCollider.h"
 #include "CColliderSphere.h"
+#include "System.h"
+#include "CMaterial.h"
 
 class CStone : public CRideableObject
 {
@@ -23,6 +25,12 @@ public:
 	void Collision(CCollider* self, CCollider* other, const CHitInfo& hit) override;
 
 private:
+	void SetClearColor(float r, float g, float b, float a);
+	/// <summary>
+	/// 画面のクリアカラーを設定（CColor）
+	/// </summary>
+	/// <param name="color">設定する色</param>
+	//void SetClearColor(const CColor& color);
 	bool mIsGrounded;
 	int randpos;
 	int randx;
@@ -46,4 +54,9 @@ private:
 	//float mElapsedTime;
 	CVector mMoveSpeed;	// 移動速度
 	CVector mMoveDir; // 移動方向
+
+	//拡散光の色RGBA
+	float mDiffuse[4];
+	//mDiffuse配列の取得
+	float* Diffuse();
 };

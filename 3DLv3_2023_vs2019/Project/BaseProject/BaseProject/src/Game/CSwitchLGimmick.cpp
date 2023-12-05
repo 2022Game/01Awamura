@@ -40,8 +40,7 @@ void CSwitchLGimmick::Init()
 	//ステージ0
 	if (CField::mStageCount == 3)
 	{
-		CreateSwitch(mpMoveSwitchLModel,
-			CVector(-15.0f, -5.0f, 240.0f), CVector(10.0f, 10.0f, 10.0f));
+
 	}
 }
 

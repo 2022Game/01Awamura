@@ -44,8 +44,7 @@ void CBollFieldGimmick::Init()
 
 	if (CField::mStageCount == 4)
 	{
-		CreateBollField(mpBollFieldModel,
-			CVector(0.0f, -20.0f, -30.0f), CVector(5.0f, 5.0f, 5.0f));
+		
 	}
 }
 

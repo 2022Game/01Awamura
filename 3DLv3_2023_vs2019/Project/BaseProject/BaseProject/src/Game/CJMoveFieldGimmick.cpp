@@ -46,10 +46,7 @@ void CJMoveFieldGimmick::Init()
 	//ステージ0
 	if (CField::mStageCount == 3)
 	{
-		CreateJMoveField(mpMoveJModel,
-			CVector(-80.0f, -5.0f, 180.0f), CVector(12.5f, 12.5f, 12.5f));
-		CreateJMoveField(mpMoveJModel,
-			CVector(-80.0f, -5.0f, 20.0f), CVector(12.5f, 12.5f, 12.5f));
+		
 	}
 }
 

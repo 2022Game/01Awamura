@@ -49,8 +49,7 @@ void CSidewoodGimmick::Init()
 	// 坂道の土台を生成
 	if (CField::mStageCount == 4)
 	{
-		CreateSidewood(mpSidewoodModel,
-			CVector(0.0f, 15.0f, -30.0f), CVector(5.0f, 5.0f, 5.0f));
+		
 	}
 }
 
@@ -60,6 +59,10 @@ void CSidewoodGimmick::CreateSidewood(CModel* model, const CVector& pos, const C
 
 	// クリア土台を生成してリストに追加
 	CSidewood* sidewood = new CSidewood(mpSidewoodModel, pos, scale, 1.0f);
+	mSidewood.push_back(sidewood);
+
+	CVector offset = CVector(0.0f, 0.0f, 5.0f);
+	sidewood = new CSidewood(mpSidewoodModel, CVector(0.0f, 6.0f, -30.0f), CVector(5.5f, 5.0f, 5.25f), 1.0f);
 	mSidewood.push_back(sidewood);
 }
 

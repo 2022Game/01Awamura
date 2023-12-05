@@ -5,6 +5,7 @@
 #include "CCollider.h"
 #include "CColliderSphere.h"
 #include "CColliderLine.h"
+#include "System.h"
 
 class CAxe : public CRideableObject
 {
@@ -17,6 +18,12 @@ public:
 	void Render();
 
 private:
+	void SetClearColor(float r, float g, float b, float a);
+	/// <summary>
+	/// 画面のクリアカラーを設定（CColor）
+	/// </summary>
+	/// <param name="color">設定する色</param>
+	//void SetClearColor(const CColor& color);
 	CModel* mpModel;
 	CColliderMesh* mpColliderMesh;
 	CColliderSphere* mpColliderSphere;

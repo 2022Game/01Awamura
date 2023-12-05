@@ -47,8 +47,7 @@ void CSlopeGimmick::Init()
 	// ç‚ìπÇÃìyë‰Çê∂ê¨
 	if (CField::mStageCount == 2)
 	{
-		CreateSlope(mpSlopeModel,
-			CVector(0.0f, -10.0f, -150.0f), CVector(5.0f, 4.0f, 5.0f));
+		
 	}
 }
 

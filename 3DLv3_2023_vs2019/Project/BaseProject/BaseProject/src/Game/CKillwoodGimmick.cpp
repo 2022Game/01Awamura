@@ -49,8 +49,7 @@ void CKillwoodGimmick::Init()
 	// ç‚ìπÇÃìyë‰Çê∂ê¨
 	if (CField::mStageCount == 4)
 	{
-		CreateKillwood(mpKillwoodModel,
-			CVector(0.0f,0.0f,-30.0f), CVector(5.0f, 5.0f, 5.0f));
+
 	}
 }
 

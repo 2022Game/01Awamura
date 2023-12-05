@@ -203,49 +203,28 @@ void CField::Update()
 		//斧振り子ステージ
 		if (mStageCount == 1)
 		{
-			mpClearStageGimmick = new CClearStageGimmick();
-			mpAxeGimmick = new CAxeGimmick();
-			mpFloorGimmick = new CFloorGimmick();
-			mpWarpGimmick = new CWarpGimmick();
-			mpStoneGimmick = new CStoneGimmick();
 		}
 		//ステージ２
 		//岩石坂道ステージ
 		if (mStageCount == 2)
 		{
-			mpClearCubeGimmick = new CClearCubeGimmick();
-			mpSlopeGimmick = new CSlopeGimmick();
-			mpFloorGimmick = new CFloorGimmick();
-			mpClearStageGimmick = new CClearStageGimmick();
-			mpStoneGimmick = new CStoneGimmick();
+		
 		}
 		//ステージ３
 		//ぐるぐるパズルゲーム
 		if (mStageCount == 3)
 		{
-			mpClearStageGimmick = new CClearStageGimmick();
-			mpMoveFieldGimmick = new CMoveFieldGimmick();
-			mpTMoveFieldGimmick = new CTMoveFieldGimmick();
-			mpFloorGimmick = new CFloorGimmick();
-			mpSwitchRGimmick = new CSwitchRGimmick();
-			mpSwitchLGimmick = new CSwitchLGimmick();
-			mpIMoveFieldGimmick = new CIMoveFieldGimmick();
-			mpLMoveFieldGimmick = new CLMoveFieldGimmick();
-			mpJMoveFieldGimmick = new CJMoveFieldGimmick();
+			
 		}
 		//ステージ４
 		//gurugurunawatobi
 		if (mStageCount == 4)
 		{
-			mpKillwoodGimmick = new CKillwoodGimmick();
-			mpSidewoodGimmick = new CSidewoodGimmick();
-			mpBollFieldGimmick = new CBollFieldGimmick();
-			mpClearStageGimmick = new CClearStageGimmick();
+			
 		}
 		//ステージ５
 		if (mStageCount == 5)
 		{
-			mpClearStageGimmick = new CClearStageGimmick();
 		}
 
 		//ステージ管理用

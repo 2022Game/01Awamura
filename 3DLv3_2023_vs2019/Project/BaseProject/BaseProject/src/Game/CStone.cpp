@@ -1,6 +1,8 @@
 #include "CStone.h"
 #include "Maths.h"
 #include "CCollider.h"
+#include "CColor.h"
+#include <glut.h>
 
 #define ROTATE_Y -0.1f
 
@@ -19,6 +21,11 @@ CStone::CStone(CModel* model, const CVector& pos, const CVector& scale, float ro
 	,randpos(0)
 	,randx(0)
 {
+	int size = ARRAY_SIZE(mDiffuse);
+	for (int i = 0; i < size; i++)
+	{
+		mDiffuse[i] = 1.0f;
+	}
 	mKillCount = 600;
 	//Math::Rand(0, 5);
 	mpColliderSphere = new CColliderSphere(this, ELayer::eStone, 1.0f, false,100.0f);
@@ -33,8 +40,25 @@ CStone::~CStone()
 	SAFE_DELETE(mpColliderSphere);
 }
 
+void CStone::SetClearColor(float r, float g, float b, float a)
+{
+	/*r = 1.0f;
+	g = 0.5f;
+	b = 0.5f;
+	a = 0.1f;*/
+}
+
+//mDiffuse”z—ñ‚ÌŽæ“¾
+float* CStone::Diffuse()
+{
+	return mDiffuse;
+}
+
 void CStone::Update()
 {
+	mDiffuse[3] = 0.1f;
+	//glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+	//SetClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	/*float per = mElapsedTime / mMoveTime;*/
 	//ˆÚ“®
 
@@ -73,7 +97,7 @@ void CStone::Update()
 	}*/
 
 	if (mKillCount <= 0) {
-		randpos = Math::Rand(-100,100);
+		randpos = Math::Rand(-80,80);
 		randx = Math::Rand(-50, 50);
 		Position(CVector(randpos, 120.0f, -250.0f));
 		moveSpeedXZ.Y(0.0f);

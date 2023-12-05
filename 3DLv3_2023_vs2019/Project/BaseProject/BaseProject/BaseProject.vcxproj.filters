@@ -74,6 +74,9 @@
     <Filter Include="ソース ファイル\Game\Field\Object\FieldMoveObject">
       <UniqueIdentifier>{8aec8090-371c-48d3-af64-208883831955}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Game\Stage">
+      <UniqueIdentifier>{564f0424-41a1-4026-8a13-9ea18db4c970}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -378,6 +381,30 @@
     </ClCompile>
     <ClCompile Include="src\Game\CBollFieldGimmick.cpp">
       <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CStageBase.cpp">
+      <Filter>ソース ファイル\Game\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CStageManager.cpp">
+      <Filter>ソース ファイル\Game\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CStage1.cpp">
+      <Filter>ソース ファイル\Game\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CStage2.cpp">
+      <Filter>ソース ファイル\Game\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CStage3.cpp">
+      <Filter>ソース ファイル\Game\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CStage4.cpp">
+      <Filter>ソース ファイル\Game\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CStageEntrance.cpp">
+      <Filter>ソース ファイル\Game\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CStage5.cpp">
+      <Filter>ソース ファイル\Game\Stage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -707,6 +734,30 @@
     </ClInclude>
     <ClInclude Include="src\Game\CBollFieldGimmick.h">
       <Filter>ソース ファイル\Game\Field\ObjectGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CStageBase.h">
+      <Filter>ソース ファイル\Game\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CStageManager.h">
+      <Filter>ソース ファイル\Game\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CStage1.h">
+      <Filter>ソース ファイル\Game\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CStage2.h">
+      <Filter>ソース ファイル\Game\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CStage3.h">
+      <Filter>ソース ファイル\Game\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CStage4.h">
+      <Filter>ソース ファイル\Game\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CStageEntrance.h">
+      <Filter>ソース ファイル\Game\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CStage5.h">
+      <Filter>ソース ファイル\Game\Stage</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

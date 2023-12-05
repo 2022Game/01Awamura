@@ -50,8 +50,7 @@ void CClearCubeGimmick::Init()
 	//ステージ１
 	if (CField::mStageCount == 2 && CField::mStageCreateSwitch == 1)
 	{
-		CreateClearCubeStage(mpClearCubeStageModel,
-			CVector(0.0f, 70.0f, -300.0f), CVector(5.0f, 1.0f, 1.0f));
+	
 	}
 }
 

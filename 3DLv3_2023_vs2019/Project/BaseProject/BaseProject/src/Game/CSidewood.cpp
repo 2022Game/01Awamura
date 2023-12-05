@@ -24,7 +24,11 @@ CSidewood::CSidewood(CModel* model, const CVector& pos, const CVector& scale, fl
 	mpColliderMesh = new CColliderMesh(this, ELayer::eBadObject, mpModel, true);
 	Position(mDefaultPos);
 	Scale(scale);
-
+	randpos = Math::Rand(-2.0f, 2.0f);
+	while (randpos == 0.5f < 0.0f && randpos == -0.5f > 0.0f)
+	{
+		randpos = Math::Rand(-2.0f, 2.0f);
+	}
 	//mpColliderSphere->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject,ELayer::eWarpObject,ELayer::eSlopeField,ELayer::ePlayer,ELayer::eSidewood });
 }
 
@@ -52,7 +56,7 @@ void CSidewood::Update()
 	//mMoveSpeed.Z(moveSpeedXZ.Z());
 
 	////ˆÚ“®‘¬“x‚É‡‚í‚¹‚ÄŠâ‚ğ‰ñ“]‚³‚¹‚é
-	Rotate(0.0f, 1.0f, 0.0f);
+	Rotate(0.0f,randpos, 0.0f);
 
 	////d—Í‰ÁZ
 	//mMoveSpeed.Y(mMoveSpeed.Y() - 480.0f * Time::DeltaTime());

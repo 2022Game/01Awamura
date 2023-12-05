@@ -118,6 +118,9 @@ CMaterial::~CMaterial()
 void CMaterial::Enabled() {
 	//拡散光の設定
 	glMaterialfv(GL_FRONT, GL_DIFFUSE, mDiffuse);
+
+	// アルファブレンドを有効にする
+	glEnable(GL_BLEND);
 	//テクスチャ有り
 	if (mTexture.Id())
 	{
@@ -126,7 +129,7 @@ void CMaterial::Enabled() {
 		//テクスチャをバインドする
 		glBindTexture(GL_TEXTURE_2D, mTexture.Id());
 		//アルファブレンドを有効にする
-		glEnable(GL_BLEND);
+		//glEnable(GL_BLEND);
 		//ブレンド方法を指定
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	}

@@ -42,13 +42,13 @@ void CAxeGimmick::Init()
 	// クリア土台のモデル読み込み
 	mpAxeModel = new CModel();
 	//mpClearStageModel->Load("Field\\ono7.obj", "Field\\ono7.mtl");
-	mpAxeModel->Load("Field\\ono7.obj", "Field\\ono7.mtl");
-
+	mpAxeModel->Load
+("Field\\ono7.obj", "Field\\ono7.mtl");
 	// クリア判定用の土台を生成
 	//ステージ１
 	if (CField::mStageCount == 1 && CField::mStageCreateSwitch == 1)
 	{
-		CreateAxe(mpAxeModel,CVector(0.0f, 200.0f, -140.0f), CVector(5.5f, 5.0f, 5.25f));
+		
 	}
 }
 

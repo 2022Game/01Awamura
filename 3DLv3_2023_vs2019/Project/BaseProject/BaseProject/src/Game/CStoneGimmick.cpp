@@ -49,36 +49,7 @@ void CStoneGimmick::Init()
 	// ç‚ìπÇÃìyë‰Çê∂ê¨
 	if (CField::mStageCount == 2)
 	{
-		CreateStone(mpStoneModel,
-			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
-		CreateStone(mpStoneModel,
-			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
-		CreateStone(mpStoneModel,
-			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
-		CreateStone(mpStoneModel,
-			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
-		CreateStone(mpStoneModel,
-			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
-		CreateStone(mpStoneModel,
-			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
-		CreateStone(mpStoneModel,
-			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
-		CreateStone(mpStoneModel,
-			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
-		CreateStone(mpStoneModel,
-			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
-		CreateStone(mpStoneModel,
-			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
-		CreateStone(mpStoneModel,
-			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
-		CreateStone(mpStoneModel,
-			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
-		CreateStone(mpStoneModel,
-			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
-		CreateStone(mpStoneModel,
-			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
-		CreateStone(mpStoneModel,
-			CVector(Math::Rand(-100, 100), 240.0f, -260.0f), CVector(10.0f, 10.0f, 10.0f));
+		
 	}
 }
 
