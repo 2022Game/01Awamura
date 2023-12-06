@@ -1,6 +1,6 @@
 # Blender 3.5.1
 # www.blender.org
-mtllib SwitchBlue.mtl
+mtllib switchBlue.mtl
 o 球
 v 0.000000 0.210726 -0.352006
 v 0.000000 0.140802 -0.526814

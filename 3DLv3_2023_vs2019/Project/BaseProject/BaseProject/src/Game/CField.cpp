@@ -57,7 +57,7 @@ CField::~CField()
 		mpModel = nullptr;
 	}*/
 
-	if (mpColliderMesh != nullptr)
+	/*if (mpColliderMesh != nullptr)
 	{
 		delete mpColliderMesh;
 		mpColliderMesh = nullptr;
@@ -67,7 +67,7 @@ CField::~CField()
 	{
 		delete mpColliderSphere;
 		mpColliderSphere = nullptr;
-	}
+	}*/
 
 	/*if (mpCubeModel != nullptr)
 	{
