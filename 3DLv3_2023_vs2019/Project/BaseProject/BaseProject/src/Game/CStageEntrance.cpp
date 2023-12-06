@@ -18,7 +18,7 @@ CStageEntrance::~CStageEntrance()
 void CStageEntrance::Load()
 {
 	// •’Ê‚Ì“y‘ä‚Ìƒ‚ƒfƒ‹“Ç‚İ‚İ
-	CModel* floorModel = CResourceManager::Get<CModel>("Floor");
+	CModel* floorModel = CResourceManager::Get<CModel>("FieldCube");
 
 	//ƒ[ƒv”à‚Ì“Ç‚İ‚İ
 	CModel* warpModel = CResourceManager::Get<CModel>("Warp");

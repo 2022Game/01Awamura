@@ -5,7 +5,8 @@
 #include "CCamera.h"
 #include "CField.h"
 #include "Cinput.h"
-//#include "CLineEffect.h"
+#include "CStageManager.h"
+#include "CGameManager.h"
 
 //コンストラクタ
 CGameScene::CGameScene()
@@ -68,11 +69,8 @@ void CGameScene::Load()
 	);
 	mainCamera->SetFollowTargetTf(player);
 
-	//CLineEffect* le = new CLineEffect(ETag::eNone);
-	//le->AddPoint(CVector(0.0f, 10.0f, 10.0f), 1.0f);
-	//le->AddPoint(CVector(10.0f, 10.0f, 10.0f), 1.0f);
-	//le->AddPoint(CVector(10.0f, 20.0f, 50.0f), 1.0f);
-	//le->AddPoint(CVector(50.0f, 10.0f, 50.0f), 1.0f);
+	//ゲーム開始処理
+	CGameManager::GameState();
 }
 
 //シーンの更新処理

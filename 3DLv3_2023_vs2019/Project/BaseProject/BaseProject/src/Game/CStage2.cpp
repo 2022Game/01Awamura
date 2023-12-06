@@ -21,7 +21,7 @@ CStage2::~CStage2()
 void CStage2::Load()
 {
 	//•’Ê‚Ì‘«ê“Ç‚İ‚İ
-	CModel* floorModel = CResourceManager::Get<CModel>("Floor");
+	CModel* floorModel = CResourceManager::Get<CModel>("FieldCube");
 
 	// ƒNƒŠƒA“y‘ä‚Ìƒ‚ƒfƒ‹“Ç‚İ‚İ
 	CModel* clearCubeStageModel = CResourceManager::Get<CModel>("Clearcube");

@@ -223,7 +223,7 @@
     <ClCompile Include="src\Game\CObstaclesManager.cpp">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\CGameruleManager.cpp">
+    <ClCompile Include="src\Game\CGameManager.cpp">
       <Filter>ソース ファイル\Game</Filter>
     </ClCompile>
     <ClCompile Include="src\BaseSystem\CObstaclesObject.cpp">
@@ -579,7 +579,7 @@
     <ClInclude Include="src\Game\CObstaclesManager.h">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\CGameruleManager.h">
+    <ClInclude Include="src\Game\CGameManager.h">
       <Filter>ソース ファイル\Game</Filter>
     </ClInclude>
     <ClInclude Include="src\BaseSystem\CObstaclesObject.h">

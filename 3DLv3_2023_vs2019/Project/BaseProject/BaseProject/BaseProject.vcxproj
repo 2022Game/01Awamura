@@ -71,7 +71,7 @@
     <ClCompile Include="src\Game\CField.cpp" />
     <ClCompile Include="src\Game\CFloor.cpp" />
     <ClCompile Include="src\Game\CFloorGimmick.cpp" />
-    <ClCompile Include="src\Game\CGameruleManager.cpp" />
+    <ClCompile Include="src\Game\CGameManager.cpp" />
     <ClCompile Include="src\Game\CGameScene.cpp" />
     <ClCompile Include="src\Game\CImage.cpp" />
     <ClCompile Include="src\Game\CIMoveField.cpp" />
@@ -194,7 +194,7 @@
     <ClInclude Include="src\Game\CFloor.h" />
     <ClInclude Include="src\Game\CFloorGimmick.h" />
     <ClInclude Include="src\Game\CGameScene.h" />
-    <ClInclude Include="src\Game\CGameruleManager.h" />
+    <ClInclude Include="src\Game\CGameManager.h" />
     <ClInclude Include="src\Game\CImage.h" />
     <ClInclude Include="src\Game\CIMoveField.h" />
     <ClInclude Include="src\Game\CIMoveFieldGimmick.h" />

@@ -3,6 +3,7 @@
 #include "CInput.h"
 #include "CCamera.h"
 #include "CField.h"
+#include "CGameManager.h"
 
 // プレイヤーのインスタンス
 CPlayer* CPlayer::spInstance = nullptr;
@@ -393,21 +394,25 @@ void CPlayer::UpdateClearEnd()
 	//if (IsAnimationFinished())
 	//{
 		// 待機状態へ移行
-		CField::mClearCountSwitch = 1;
-		CField::mStageCreateSwitch = 1;
-		CField::mClearCount = 1;
-		CField::mStageCount++;
-		//CField::mDeleteSwitch = 1;
-		//ChangeAnimation(EAnimType::eIdle);
-		if (CField::mStageCount == 3)
-		{
-			Position(0.0f, 30.0f, 240.0f);
-		}
-		if(CField::mStageCount != 3)
-		{
-			Position(mStartPos);
-		}
-		mState = EState::eIdle;
+		//CField::mClearCountSwitch = 1;
+		//CField::mStageCreateSwitch = 1;
+		//CField::mClearCount = 1;
+		//CField::mStageCount++;
+		////CField::mDeleteSwitch = 1;
+		////ChangeAnimation(EAnimType::eIdle);
+		//if (CField::mStageCount == 3)
+		//{
+		//	Position(0.0f, 30.0f, 240.0f);
+		//}
+		//if(CField::mStageCount != 3)
+		//{
+		//	Position(mStartPos);
+		//}
+	
+	//ステージをクリア
+	CGameManager::StageClear();
+
+	mState = EState::eIdle;
 //	}
 }
 
@@ -709,7 +714,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 			//mIsGrounded = true;
 			//条件によりワープ位置を変える
 			//ゲームステージ１スタート
-			if (CField::mStageCount == 0)
+			if (CGameManager::StageNo() == 0)
 			{
 				CField::mClearCount = 1;
 				CField::mClearCountSwitch = 1;
@@ -717,7 +722,9 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 				//正規
 				//CField::mStageCount = 1;
 				//テスト用
-				CField::mStageCount = 4;
+				//CField::mStageCount = 4;
+				//入口ステージクリアで次のステージへ
+				CGameManager::StageClear();
 				//ステージ１開始位置へワープ
 				Position(mStartPos);
 			}

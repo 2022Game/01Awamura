@@ -21,7 +21,7 @@ void CStage5::Load()
 	CModel* clearStageModel = CResourceManager::Get<CModel>("Clearstage");
 
 	//•’Ê‚Ì‘«ê“Ç‚İ‚İ
-	CModel* floorModel = CResourceManager::Get<CModel>("Floor");
+	CModel* floorModel = CResourceManager::Get<CModel>("FieldCube");
 
 	//ƒNƒŠƒA“y‘ä‚ğì¬
 	CClearStage* coin = new CClearStage(clearStageModel,

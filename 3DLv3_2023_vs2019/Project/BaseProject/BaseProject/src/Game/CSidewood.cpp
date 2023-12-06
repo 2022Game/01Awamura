@@ -16,7 +16,7 @@ CSidewood::CSidewood(CModel* model, const CVector& pos, const CVector& scale, fl
 	, mMoveDir(0.0f, 0.0f, 0.0f)
 	, mMoveSpeed(0.0f, 0.0f, 0.0f)
 	, mKillCount(0)
-	, randpos(0)
+	, randmodelspeedY(0.0f)
 	, randx(0)
 {
 	mKillCount = 600;
@@ -24,10 +24,10 @@ CSidewood::CSidewood(CModel* model, const CVector& pos, const CVector& scale, fl
 	mpColliderMesh = new CColliderMesh(this, ELayer::eBadObject, mpModel, true);
 	Position(mDefaultPos);
 	Scale(scale);
-	randpos = Math::Rand(-2.0f, 2.0f);
-	while (randpos == 0.5f < 0.0f && randpos == -0.5f > 0.0f)
+	randmodelspeedY = Math::Rand(-2.0f, 2.0f);
+	while (randmodelspeedY == 0.5f < 0.0f && randmodelspeedY == -0.5f > 0.0f)
 	{
-		randpos = Math::Rand(-2.0f, 2.0f);
+		randmodelspeedY = Math::Rand(-2.0f, 2.0f);
 	}
 	//mpColliderSphere->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject,ELayer::eWarpObject,ELayer::eSlopeField,ELayer::ePlayer,ELayer::eSidewood });
 }
@@ -55,8 +55,8 @@ void CSidewood::Update()
 	//mMoveSpeed.X(randx);
 	//mMoveSpeed.Z(moveSpeedXZ.Z());
 
-	////ˆÚ“®‘¬“x‚É‡‚í‚¹‚ÄŠâ‚ğ‰ñ“]‚³‚¹‚é
-	Rotate(0.0f,randpos, 0.0f);
+	//‰ñ“]ü‰ñ‘¬“x
+	Rotate(0.0f,randmodelspeedY, 0.0f);
 
 	////d—Í‰ÁZ
 	//mMoveSpeed.Y(mMoveSpeed.Y() - 480.0f * Time::DeltaTime());

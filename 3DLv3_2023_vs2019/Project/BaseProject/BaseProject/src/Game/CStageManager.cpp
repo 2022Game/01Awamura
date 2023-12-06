@@ -40,6 +40,9 @@ void CStageManager::LoadStage(int no)
 	case 3:spCurrentStage = new CStage3(); break;
 	case 4:spCurrentStage = new CStage4(); break;
 	case 5:spCurrentStage = new CStage5(); break;
+
+	//指定されていないステージになった時
+	default:spCurrentStage = new CStage5(); break;
 	}
 
 	//ステージが作成できたらステージを読み込み

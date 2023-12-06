@@ -20,7 +20,7 @@ CStage1::~CStage1()
 void CStage1::Load()
 {
 	//•’Ê‚Ì‘«ê“Ç‚İ‚İ
-	CModel* floorModel = CResourceManager::Get<CModel>("Floor");
+	CModel* floorModel = CResourceManager::Get<CModel>("FieldCube");
 
 	//ƒ[ƒv”à“Ç‚İ‚İ
 	CModel* warpModel = CResourceManager::Get<CModel>("Warp");

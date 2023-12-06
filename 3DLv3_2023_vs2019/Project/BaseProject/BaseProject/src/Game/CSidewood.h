@@ -24,7 +24,7 @@ public:
 
 private:
 	bool mIsGrounded;
-	int randpos;
+	float randmodelspeedY;
 	int randx;
 	int mKillCount;
 	CModel* mpModel;
