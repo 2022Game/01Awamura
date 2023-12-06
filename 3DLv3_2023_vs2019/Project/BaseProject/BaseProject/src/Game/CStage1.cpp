@@ -20,24 +20,16 @@ CStage1::~CStage1()
 void CStage1::Load()
 {
 	//普通の足場読み込み
-	CModel* floorModel = new CModel();
-	floorModel->Load("Field\\Object\\cube.obj", "Field\\Object\\cube.mtl");
-	mCreateModels.push_back(floorModel);
+	CModel* floorModel = CResourceManager::Get<CModel>("Floor");
 
 	//ワープ扉読み込み
-	CModel* warpModel = new CModel();
-	warpModel->Load("Field\\WarpDoor2.obj", "Field\\WarpDoor2.mtl");
-	mCreateModels.push_back(warpModel);
+	CModel* warpModel = CResourceManager::Get<CModel>("Warp");
 
 	// クリア土台のモデル読み込み
-	CModel* clearStageModel = new CModel();
-	clearStageModel->Load("Field\\Object\\cylinder.obj", "Field\\Object\\cylinder.mtl");
-	mCreateModels.push_back(clearStageModel);
+	CModel* clearStageModel = CResourceManager::Get<CModel>("Clearstage");
 
 	// 斧のモデル読み込み
-	CModel* axeModel = new CModel();
-	axeModel->Load("Field\\ono7.obj", "Field\\ono7.mtl");
-	mCreateModels.push_back(axeModel);
+	CModel* axeModel = CResourceManager::Get<CModel>("Axe");
 
 	//普通の足場
 	CFloor* floor = new CFloor(floorModel,

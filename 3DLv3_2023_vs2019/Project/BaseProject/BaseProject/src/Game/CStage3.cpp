@@ -26,49 +26,31 @@ CStage3::~CStage3()
 void CStage3::Load()
 {
 	//普通の足場読み込み
-	CModel* floorModel = new CModel();
-	floorModel->Load("Field\\Object\\cube.obj", "Field\\Object\\cube.mtl");
-	mCreateModels.push_back(floorModel);
+	CModel* floorModel = CResourceManager::Get<CModel>("Floor");
 
 	// クリア土台のモデル読み込み
-	CModel* clearStageModel = new CModel();
-	clearStageModel->Load("Field\\Object\\cylinder.obj", "Field\\Object\\cylinder.mtl");
-	mCreateModels.push_back(clearStageModel);
+	CModel* clearStageModel = CResourceManager::Get<CModel>("Clearstage");
 
 	// 左スイッチのモデル読み込み
-	CModel* switchLModel = new CModel();
-	switchLModel->Load("Field\\Object\\switchBlue.obj", "Field\\Object\\switchBlue.mtl");
-	mCreateModels.push_back(switchLModel);
+	CModel* switchLModel = CResourceManager::Get<CModel>("Lswitch");
 
 	// 右スイッチのモデル読み込み
-	CModel* switchRModel = new CModel();
-	switchRModel->Load("Field\\Object\\switchRed.obj", "Field\\Object\\switchRed.mtl");
-	mCreateModels.push_back(switchRModel);
+	CModel* switchRModel = CResourceManager::Get<CModel>("Rswitch");
 
 	//十字土台読み込み
-	CModel* moveTenModel = new CModel();
-	moveTenModel->Load("Field\\Object\\10field.obj", "Field\\Object\\10field.mtl");
-	mCreateModels.push_back(moveTenModel);
+	CModel* moveTenModel = CResourceManager::Get<CModel>("Tenfield");
 
 	// I字土台読み込み
-	CModel* moveIModel = new CModel();
-	moveIModel->Load("Field\\Object\\Ifield.obj", "Field\\Object\\Ifield.mtl");
-	mCreateModels.push_back(moveIModel);
+	CModel* moveIModel = CResourceManager::Get<CModel>("Ifield");
 
 	// T字土台のモデル読み込み
-	CModel* moveTModel = new CModel();
-	moveTModel->Load("Field\\Object\\Tfield.obj", "Field\\Object\\Tfield.mtl");
-	mCreateModels.push_back(moveTModel);
+	CModel* moveTModel = CResourceManager::Get<CModel>("Tfield");
 
 	//J字土台のモデル読み込み
-	CModel* moveJModel = new CModel();
-	moveJModel->Load("Field\\Object\\Jfield.obj", "Field\\Object\\Jfield.mtl");
-	mCreateModels.push_back(moveJModel);
+	CModel* moveJModel = CResourceManager::Get<CModel>("Jfield");
 
 	//L字土台のモデル読み込み
-	CModel* moveLModel = new CModel();
-	moveLModel->Load("Field\\Object\\Lfield.obj", "Field\\Object\\Lfield.mtl");
-	mCreateModels.push_back(moveLModel);
+	CModel* moveLModel = CResourceManager::Get<CModel>("Lfield");
 
 	//普通の足場
 	CFloor* floor = new CFloor(floorModel,

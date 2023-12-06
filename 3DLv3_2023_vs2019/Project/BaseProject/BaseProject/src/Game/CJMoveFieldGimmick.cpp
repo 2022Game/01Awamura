@@ -39,9 +39,7 @@ CJMoveFieldGimmick::~CJMoveFieldGimmick()
 void CJMoveFieldGimmick::Init()
 {
 	// クリア土台のモデル読み込み
-	mpMoveJModel = new CModel();
-	mpMoveJModel->Load("Field\\Object\\Jfield.obj", "Field\\Object\\Jfield.mtl");
-
+	mpMoveJModel = CResourceManager::Get<CModel>("Jfield");
 	// ワープの土台を生成
 	//ステージ0
 	if (CField::mStageCount == 3)

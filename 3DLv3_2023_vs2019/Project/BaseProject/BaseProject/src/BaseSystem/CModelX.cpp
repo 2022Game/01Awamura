@@ -198,8 +198,19 @@ void CModelX::RenderShader(CMatrix* pCombinedMatrix)
 	mShader.Render(this, pCombinedMatrix);
 }
 
+bool CModelX::IsAddAnimationSet(std::string path) const
+{
+	for (CAnimationSet* anim : mAnimationSet)
+	{
+		if (path == anim->mPath) return true;
+	}
+	return false;
+}
+
 void CModelX::AddAnimationSet(const char* file)
 {
+	if (IsAddAnimationSet(file)) return;
+
 	//ファイルパスにリソースデータのディレクトリパスを追加
 	std::string filePath = RES_DIR;
 	filePath += file;
@@ -242,7 +253,8 @@ void CModelX::AddAnimationSet(const char* file)
 		//単語がAnimationSetの場合
 		else if (strcmp(mToken, "AnimationSet") == 0)
 		{
-			new CAnimationSet(this);
+			CAnimationSet* anim = new CAnimationSet(this);
+			anim->mPath = file;
 		}
 	}
 	SAFE_DELETE_ARRAY(buf);	//確保した領域を解放する
@@ -411,28 +423,27 @@ void CModelX::SkipNode()
 	}
 }
 
-void CModelX::Load(char* file)
+bool CModelX::Load(std::string path, bool dontDelete)
 {
 	//ファイルサイズを取得する
 	FILE* fp;
 
 	//ファイルパスにリソースデータのディレクトリパスを追加
-	std::string filePath = RES_DIR;
-	filePath += file;
+	std::string filePath = RES_DIR + path;
 
 	fp = fopen(filePath.c_str(), "rb"); //ファイルをオープンする
 	//エラーチェック
 	if (fp == NULL)
 	{
 		printf("fopen error:%s\n", filePath.c_str());
-		return;
+		return false;
 	}
 	printf("%s\n", filePath.c_str());
 
 	//ファイルパスを記憶
 	mFilePath = filePath;
 	//ファイルパスからディレクトリパスを取得
-	mDirPath = file;
+	mDirPath = path;
 	size_t index = mDirPath.find_last_of('\\');
 	if (index >= 0)
 	{
@@ -473,7 +484,7 @@ void CModelX::Load(char* file)
 		//Materialの時
 		else if (strcmp(mToken, "Material") == 0)
 		{
-			new CMaterial(this);
+			new CMaterial(this, dontDelete);
 		}
 		//単語がFrameの場合
 		else if (strcmp(mToken, "Frame") == 0)
@@ -492,7 +503,7 @@ void CModelX::Load(char* file)
 				if (FinedFrame(mToken) == 0)
 				{
 					//フレームを作成する
-					p->mChild.push_back(new CModelXFrame(this));
+					p->mChild.push_back(new CModelXFrame(this, dontDelete));
 				}
 			}
 		}
@@ -522,6 +533,7 @@ void CModelX::Load(char* file)
 	//シェーダー読み込み
 	mShader.Load("Shader\\skinmesh.vert", "Shader\\skinmesh.flag");
 
+	return true;
 }
 
 /*
@@ -552,7 +564,7 @@ model:CModelXインスタンスへのポインタ
 読み込み中にFrameが見つかれば、フレームを作成し、
 子フレームに追加する
 */
-CModelXFrame::CModelXFrame(CModelX* model)
+CModelXFrame::CModelXFrame(CModelX* model, bool dontDelete)
 	: mpMesh(nullptr)
 	, mpName(nullptr)
 	, mIndex(0)
@@ -574,10 +586,10 @@ CModelXFrame::CModelXFrame(CModelX* model)
 	{
 		//次の単語取得
 		model->GetToken(); //Frame
-		//}の場合は終了
+	    //}の場合は終了
 		if (strchr(model->mToken, '}'))break;
 		//新たなフレームの場合は、子フレームに追加
-		if (strcmp(model->mToken, "Frame") == 0)
+		if (strcmp(model->mToken,"Frame") == 0)
 		{
 			//フレーム名取得
 			model->GetToken();
@@ -593,7 +605,7 @@ CModelXFrame::CModelXFrame(CModelX* model)
 				if (model->FinedFrame(model->mToken) == 0)
 				{
 					//フレームを作成し、子フレームの配列に追加
-					mChild.push_back(new CModelXFrame(model));
+					mChild.push_back(new CModelXFrame(model, dontDelete));
 				}
 			}
 		}
@@ -609,13 +621,13 @@ CModelXFrame::CModelXFrame(CModelX* model)
 		}
 		else if (strcmp(model->mToken, "Mesh") == 0)
 		{
-			mpMesh = new CMesh;
-			mpMesh->Init(model);
+		mpMesh = new CMesh;
+		mpMesh->Init(model, dontDelete);
 		}
 		else
 		{
-			//上記以外の要素は読み飛ばす
-			model->SkipNode();
+		//上記以外の要素は読み飛ばす
+		model->SkipNode();
 		}
 	}
 	//デバッグバージョンのみ有効
@@ -890,7 +902,7 @@ void CMesh::SetSkinWeightFrameIndex(CModelX* model)
 Init
 Meshのデータを読み込む
 */
-void CMesh::Init(CModelX* model)
+void CMesh::Init(CModelX* model, bool dontDelete)
 {
 	model->GetToken();	//{ or 名前
 	if (!strchr(model->mToken, '{'))
@@ -985,7 +997,7 @@ void CMesh::Init(CModelX* model)
 				model->GetToken();  //Material
 				if (strcmp(model->Token(), "Material") == 0)
 				{
-					mMaterial.push_back(new CMaterial(model));
+					mMaterial.push_back(new CMaterial(model, dontDelete));
 				}
 				else
 				{//既出
@@ -1300,7 +1312,7 @@ CAnimation::CAnimation(CModelX* model)
 	model->GetToken(); //FrameName
 	mpFrameName = new char[strlen(model->Token()) + 1];
 	strcpy(mpFrameName, model->Token());
-	mFrameIndex =
+	mFrameIndex = 
 		model->FinedFrame(model->Token())->Index();
 	model->GetToken();	// }
 	//キーの配列を保存しておく配列
@@ -1327,7 +1339,7 @@ CAnimation::CAnimation(CModelX* model)
 				//時間の配列を時間数分確保
 				time[type] = new float[mKeyNum];
 				//時間数分繰り返す
-				for (int i = 0; i < mKeyNum; i++)
+				for(int i = 0; i < mKeyNum; i++)
 				{
 					//時間取得
 					time[type][i] = atof(model->GetToken());
@@ -1401,7 +1413,7 @@ CAnimation::CAnimation(CModelX* model)
 		}
 	}
 	//確保したエリア解放
-	for (int i = 0; i < ARRAY_SIZE(key); i++)
+	for (int i = 0; i < ARRAY_SIZE(key);i++)
 	{
 		SAFE_DELETE_ARRAY(time[i]);
 		SAFE_DELETE_ARRAY(key[i]);

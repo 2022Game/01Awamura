@@ -41,9 +41,7 @@ CSlopeGimmick::~CSlopeGimmick()
 void CSlopeGimmick::Init()
 {
 	// â“¹“y‘ä‚Ìƒ‚ƒfƒ‹“Ç‚İ‚İ
-	mpSlopeModel = new CModel();
-	mpSlopeModel->Load("Field\\Object\\slopecube.obj", "Field\\Object\\slopecube.mtl");
-
+	mpSlopeModel = CResourceManager::Get<CModel>("Slope");
 	// â“¹‚Ì“y‘ä‚ğ¶¬
 	if (CField::mStageCount == 2)
 	{

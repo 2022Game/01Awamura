@@ -7,8 +7,6 @@
 // プレイヤーのインスタンス
 CPlayer* CPlayer::spInstance = nullptr;
 
-// プレイヤーのモデルデータのパス
-#define MODEL_PATH "Character\\Player\\Beardman.x"
 
 bool CPlayer::mSwitchRObject = false;
 bool CPlayer::mSwitchLObject = false;
@@ -51,8 +49,7 @@ CPlayer::CPlayer()
 	mStartPos = Position();
 
 	// モデルデータ読み込み
-	CModelX* model = new CModelX();
-	model->Load(MODEL_PATH);
+	CModelX* model = CResourceManager::Get<CModelX>("Player");
 
 	Scale(10.0f, 10.0f, 10.0f);
 
@@ -179,12 +176,6 @@ CPlayer::~CPlayer()
 	{
 		delete mpColliderLine;
 		mpColliderLine = nullptr;
-	}
-
-	if (mpModel != nullptr)
-	{
-		delete mpModel;
-		mpModel = nullptr;
 	}
 }
 

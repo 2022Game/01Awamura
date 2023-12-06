@@ -406,6 +406,12 @@
     <ClCompile Include="src\Game\CStage5.cpp">
       <Filter>ソース ファイル\Game\Stage</Filter>
     </ClCompile>
+    <ClCompile Include="src\BaseSystem\CResource.cpp">
+      <Filter>ソース ファイル\BaseSystem\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BaseSystem\CResourceManager.cpp">
+      <Filter>ソース ファイル\BaseSystem\Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BaseSystem\CCollider.h">
@@ -758,6 +764,12 @@
     </ClInclude>
     <ClInclude Include="src\Game\CStage5.h">
       <Filter>ソース ファイル\Game\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BaseSystem\CResource.h">
+      <Filter>ソース ファイル\BaseSystem\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BaseSystem\CResourceManager.h">
+      <Filter>ソース ファイル\BaseSystem\Model</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -43,9 +43,7 @@ CStoneGimmick::~CStoneGimmick()
 void CStoneGimmick::Init()
 {
 	// â“¹“y‘ä‚Ìƒ‚ƒfƒ‹“Ç‚İ‚İ
-	mpStoneModel = new CModel();
-	mpStoneModel->Load("Field\\Stone.obj", "Field\\Stone.mtl");
-
+	mpStoneModel = CResourceManager::Get<CModel>("Stone");
 	// â“¹‚Ì“y‘ä‚ğ¶¬
 	if (CField::mStageCount == 2)
 	{

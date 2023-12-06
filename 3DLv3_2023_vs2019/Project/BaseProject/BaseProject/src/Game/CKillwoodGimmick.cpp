@@ -43,9 +43,7 @@ CKillwoodGimmick::~CKillwoodGimmick()
 void CKillwoodGimmick::Init()
 {
 	// â“¹“y‘ä‚Ìƒ‚ƒfƒ‹“Ç‚İ‚İ
-	mpKillwoodModel = new CModel();
-	mpKillwoodModel->Load("Field\\Killwood.obj", "Field\\Killwood.mtl");
-
+	mpKillwoodModel = CResourceManager::Get<CModel>("Killwood");
 	// â“¹‚Ì“y‘ä‚ğ¶¬
 	if (CField::mStageCount == 4)
 	{

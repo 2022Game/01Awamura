@@ -17,14 +17,11 @@ CStageEntrance::~CStageEntrance()
 //ステージ読み込み
 void CStageEntrance::Load()
 {
-	// クリア土台のモデル読み込み
-	CModel* floorModel = new CModel();
-	floorModel->Load("Field\\Object\\cube.obj", "Field\\Object\\cube.mtl");
-	mCreateModels.push_back(floorModel);
+	// 普通の土台のモデル読み込み
+	CModel* floorModel = CResourceManager::Get<CModel>("Floor");
 
-	CModel* warpModel = new CModel();
-	warpModel->Load("Field\\WarpDoor2.obj", "Field\\WarpDoor2.mtl");
-	mCreateModels.push_back(warpModel);
+	//ワープ扉の読み込み
+	CModel* warpModel = CResourceManager::Get<CModel>("Warp");
 
 	//普通の足場
 	CFloor* floor = new CFloor(floorModel,

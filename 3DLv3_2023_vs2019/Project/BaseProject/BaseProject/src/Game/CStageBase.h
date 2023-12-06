@@ -28,8 +28,6 @@ public:
 protected:
 	int mStageNo; //ステージ番号
 
-	//子のステージで作成したタスクのリスト
+	//このステージで作成したタスクのリスト
 	std::list<CTask*>mCreateTasks;
-	//子のステージで作成したモデルのリスト
-	std::list<CModel*> mCreateModels;
 };

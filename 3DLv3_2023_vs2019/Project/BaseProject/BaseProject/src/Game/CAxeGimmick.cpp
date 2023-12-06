@@ -40,10 +40,7 @@ CAxeGimmick::~CAxeGimmick()
 void CAxeGimmick::Init()
 {
 	// クリア土台のモデル読み込み
-	mpAxeModel = new CModel();
-	//mpClearStageModel->Load("Field\\ono7.obj", "Field\\ono7.mtl");
-	mpAxeModel->Load
-("Field\\ono7.obj", "Field\\ono7.mtl");
+	mpAxeModel = CResourceManager::Get<CModel>("Axe");
 	// クリア判定用の土台を生成
 	//ステージ１
 	if (CField::mStageCount == 1 && CField::mStageCreateSwitch == 1)

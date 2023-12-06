@@ -39,8 +39,7 @@ CBollFieldGimmick::~CBollFieldGimmick()
 void CBollFieldGimmick::Init()
 {
 	// ƒNƒŠƒA“y‘ä‚Ìƒ‚ƒfƒ‹“Ç‚Ýž‚Ý
-	mpBollFieldModel = new CModel();
-	mpBollFieldModel->Load("Field\\bollfield.obj", "Field\\bollfield.mtl");
+	mpBollFieldModel = CResourceManager::Get<CModel>("Bollfield");
 
 	if (CField::mStageCount == 4)
 	{

@@ -37,9 +37,7 @@ CWarpGimmick::~CWarpGimmick()
 void CWarpGimmick::Init()
 {
 	// クリア土台のモデル読み込み
-	mpWarpModel = new CModel();
-	mpWarpModel->Load("Field\\WarpDoor2.obj", "Field\\WarpDoor2.mtl");
-
+	mpWarpModel = CResourceManager::Get<CModel>("Warp");
 	// ワープの土台を生成
 	//ステージ0
 	if (CField::mStageCount == 0)

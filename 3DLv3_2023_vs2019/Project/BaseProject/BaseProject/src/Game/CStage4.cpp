@@ -20,24 +20,16 @@ CStage4::~CStage4()
 void CStage4::Load()
 {
 	// クリア土台のモデル読み込み
-	CModel* clearStageModel = new CModel();
-	clearStageModel->Load("Field\\Object\\cylinder.obj", "Field\\Object\\cylinder.mtl");
-	mCreateModels.push_back(clearStageModel);
+	CModel* clearStageModel = CResourceManager::Get<CModel>("Clearstage");
 
 	//大木のモデル読み込み
-	CModel* killwoodModel = new CModel();
-	killwoodModel->Load("Field\\Killwood.obj", "Field\\Killwood.mtl");
-	mCreateModels.push_back(killwoodModel);
+	CModel* killwoodModel = CResourceManager::Get<CModel>("Killwood");
 
 	//倒木のモデル読み込み
-	CModel* sidewoodModel = new CModel();
-	sidewoodModel->Load("Field\\Killbranc.obj", "Field\\Killbranc.mtl");
-	mCreateModels.push_back(sidewoodModel);
+	CModel* sidewoodModel = CResourceManager::Get<CModel>("Sidewood");
 
 	//円形土台のモデル読み込み
-	CModel* bollFieldModel = new CModel();
-	bollFieldModel->Load("Field\\bollfield.obj", "Field\\bollfield.mtl");
-	mCreateModels.push_back(bollFieldModel);
+	CModel* bollFieldModel = CResourceManager::Get<CModel>("Bollfield");
 
 	//クリア土台を作成
 	CClearStage* coin = new CClearStage(clearStageModel,

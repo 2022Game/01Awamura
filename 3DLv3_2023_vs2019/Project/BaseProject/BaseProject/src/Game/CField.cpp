@@ -36,9 +36,11 @@ CField::CField()
 	,mpSidewoodGimmick(nullptr)
 	,mpBollFieldGimmick(nullptr)
 {
-	mpModel = new CModel();
-	//仮のフィールドデータ　ピンクな背景モデルが有れば入れる
-	mpModel->Load("Field\\Dublesky4.obj", "Field\\Dublesky4.mtl");
+	mpModel = CResourceManager::Get<CModel>("Field");
+
+	//mpModel = new CModel();
+	////仮のフィールドデータ　ピンクな背景モデルが有れば入れる
+	//mpModel->Load("Field\\Dublesky4.obj", "Field\\Dublesky4.mtl");
 
 	//mpColliderMesh = new CColliderMesh(this, ELayer::eField, mpModel, true);;
 
@@ -49,11 +51,11 @@ CField::CField()
 
 CField::~CField()
 {
-	if (mpModel != nullptr)
+	/*if (mpModel != nullptr)
 	{
 		delete mpModel;
 		mpModel = nullptr;
-	}
+	}*/
 
 	if (mpColliderMesh != nullptr)
 	{
@@ -67,7 +69,7 @@ CField::~CField()
 		mpColliderSphere = nullptr;
 	}
 
-	if (mpCubeModel != nullptr)
+	/*if (mpCubeModel != nullptr)
 	{
 		delete mpCubeModel;
 		mpCubeModel = nullptr;
@@ -77,19 +79,24 @@ CField::~CField()
 	{
 		delete mpCubeModel;
 		mpCubeModel = nullptr;
-	}
+	}*/
 }
 
 void CField::CreateFieldObjects()
 {
-	mpCubeModel = new CModel();
+	mpCubeModel = CResourceManager::Get<CModel>("FieldCube");
+	mpCylinderModel = CResourceManager::Get<CModel>("FieldCylinder");
+	mpClearModel = CResourceManager::Get<CModel>("Clearstage");
+
+	/*mpCubeModel = new CModel();
 	mpCubeModel->Load("Field\\Object\\cube.obj", "Field\\Object\\cube.mtl");
 
 	mpCylinderModel = new CModel();
 	mpCylinderModel->Load("Field\\Object\\cylinder.obj", "Field\\Object\\cylinder.mtl");
 
 	mpClearModel = new CModel();
-	mpClearModel->Load("Field\\Object\\Coin2.obj", "Field\\Object\\Coin2.mtl");
+	mpClearModel->Load("Field\\Object\\Coin2.obj", "Field\\Object\\Coin2.mtl");*/
+
 }
 
 void CField::Update()
@@ -97,8 +104,8 @@ void CField::Update()
 	//初期ステージ
 	if (mStageCount == 0 && mStartSwitch == 0)
 	{
-		mpFloorGimmick = new CFloorGimmick();
-		mpWarpGimmick = new CWarpGimmick();
+		/*mpFloorGimmick = new CFloorGimmick();
+		mpWarpGimmick = new CWarpGimmick();*/
 		mStartSwitch = 1;
 	}
 	//ステージ生成

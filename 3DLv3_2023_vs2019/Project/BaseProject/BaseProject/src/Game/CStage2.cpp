@@ -21,24 +21,16 @@ CStage2::~CStage2()
 void CStage2::Load()
 {
 	//普通の足場読み込み
-	CModel* floorModel = new CModel();
-	floorModel->Load("Field\\Object\\cube.obj", "Field\\Object\\cube.mtl");
-	mCreateModels.push_back(floorModel);
+	CModel* floorModel = CResourceManager::Get<CModel>("Floor");
 
 	// クリア土台のモデル読み込み
-	CModel* clearCubeStageModel = new CModel();
-	clearCubeStageModel->Load("Field\\Object\\Clearcube.obj", "Field\\Object\\Clearcube.mtl");
-	mCreateModels.push_back(clearCubeStageModel);
+	CModel* clearCubeStageModel = CResourceManager::Get<CModel>("Clearcube");
 
 	// 坂道土台のモデル読み込み
-	CModel* slopeModel = new CModel();
-	slopeModel->Load("Field\\Object\\slopecube.obj", "Field\\Object\\slopecube.mtl");
-	mCreateModels.push_back(slopeModel);
+	CModel* slopeModel = CResourceManager::Get<CModel>("Slope");
 
 	// 岩石のモデル読み込み
-	CModel* stoneModel = new CModel();
-	stoneModel->Load("Field\\Stone.obj", "Field\\Stone.mtl");
-	mCreateModels.push_back(stoneModel);
+	CModel* stoneModel = CResourceManager::Get<CModel>("Stone");
 
 
 	//普通の足場

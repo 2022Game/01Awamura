@@ -33,9 +33,7 @@ CSwitchRGimmick::~CSwitchRGimmick()
 void CSwitchRGimmick::Init()
 {
 	// クリア土台のモデル読み込み
-	mpMoveSwitchRModel = new CModel();
-	mpMoveSwitchRModel->Load("Field\\Object\\switchRed.obj", "Field\\Object\\switchRed.mtl");
-
+	mpMoveSwitchRModel = CResourceManager::Get<CModel>("Rswitch");
 	// ワープの土台を生成
 	//ステージ0
 	if (CField::mStageCount == 3)

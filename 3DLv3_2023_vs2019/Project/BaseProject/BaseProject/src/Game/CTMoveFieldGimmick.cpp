@@ -39,9 +39,7 @@ CTMoveFieldGimmick::~CTMoveFieldGimmick()
 void CTMoveFieldGimmick::Init()
 {
 	// クリア土台のモデル読み込み
-	mpMoveTModel = new CModel();
-	mpMoveTModel->Load("Field\\Object\\Tfield.obj", "Field\\Object\\Tfield.mtl");
-
+	mpMoveTModel = CResourceManager::Get<CModel>("Tfield");
 	// ワープの土台を生成
 	//ステージ0
 	if (CField::mStageCount == 3)

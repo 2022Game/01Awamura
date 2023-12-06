@@ -39,9 +39,7 @@ CFloorGimmick::~CFloorGimmick()
 void CFloorGimmick::Init()
 {
 	// クリア土台のモデル読み込み
-	mpFloorModel = new CModel();
-	mpFloorModel->Load("Field\\Object\\cube.obj", "Field\\Object\\cube.mtl");
-
+	mpFloorModel = CResourceManager::Get<CModel>("Floor");
 	// ワープの土台を生成
 	//ステージ0
 	if (CField::mStageCount == 0)

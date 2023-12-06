@@ -43,9 +43,7 @@ CClearStageGimmick::~CClearStageGimmick()
 void CClearStageGimmick::Init()
 {
 	// クリア土台のモデル読み込み
-	mpClearStageModel = new CModel();
-	mpClearStageModel->Load("Field\\Object\\cylinder.obj", "Field\\Object\\cylinder.mtl");
-
+	mpClearStageModel = CResourceManager::Get<CModel>("Clearstage");
 	// クリア判定用の土台を生成
 	//ステージ１
 	if (CField::mStageCount == 1 && CField::mStageCreateSwitch == 1)

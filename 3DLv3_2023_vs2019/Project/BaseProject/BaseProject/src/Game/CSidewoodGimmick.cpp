@@ -43,9 +43,7 @@ CSidewoodGimmick::~CSidewoodGimmick()
 void CSidewoodGimmick::Init()
 {
 	// â“¹“y‘ä‚Ìƒ‚ƒfƒ‹“Ç‚İ‚İ
-	mpSidewoodModel = new CModel();
-	mpSidewoodModel->Load("Field\\Killbranc.obj", "Field\\Killbranc.mtl");
-
+	mpSidewoodModel = CResourceManager::Get<CModel>("Sidewood");
 	// â“¹‚Ì“y‘ä‚ğ¶¬
 	if (CField::mStageCount == 4)
 	{

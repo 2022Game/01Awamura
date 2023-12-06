@@ -43,9 +43,7 @@ CClearCubeGimmick::~CClearCubeGimmick()
 void CClearCubeGimmick::Init()
 {
 	// クリア土台のモデル読み込み
-	mpClearCubeStageModel = new CModel();
-	mpClearCubeStageModel->Load("Field\\Object\\Clearcube.obj", "Field\\Object\\Clearcube.mtl");
-
+	mpClearCubeStageModel = CResourceManager::Get<CModel>("Clearcube");
 	// クリア判定用の土台を生成
 	//ステージ１
 	if (CField::mStageCount == 2 && CField::mStageCreateSwitch == 1)
