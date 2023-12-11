@@ -33,7 +33,8 @@ private:
 	//void SetClearColor(const CColor& color);
 	bool mIsGrounded;
 	int randpos;
-	int randx;
+	float randx;
+	bool mhit;
 	int mKillCount;
 	CModel* mpModel;
 	CColliderMesh* mpColliderMesh;

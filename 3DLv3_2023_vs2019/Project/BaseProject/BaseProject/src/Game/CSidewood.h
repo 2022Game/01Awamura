@@ -23,6 +23,8 @@ public:
 	void Collision(CCollider* self, CCollider* other, const CHitInfo& hit) override;
 
 private:
+	int mTime;
+	int Time;
 	bool mIsGrounded;
 	float randmodelspeedY;
 	int randx;
@@ -46,4 +48,6 @@ private:
 	//float mElapsedTime;
 	CVector mMoveSpeed;	// 移動速度
 	CVector mMoveDir; // 移動方向
+	//作成したタスクを追加
+	void AddTask(CTask* task);
 };

@@ -18,6 +18,8 @@ CSidewood::CSidewood(CModel* model, const CVector& pos, const CVector& scale, fl
 	, mKillCount(0)
 	, randmodelspeedY(0.0f)
 	, randx(0)
+	,Time(0)
+	,mTime(0)
 {
 	mKillCount = 600;
 	//Math::Rand(0, 5);
@@ -39,6 +41,16 @@ CSidewood::~CSidewood()
 
 void CSidewood::Update()
 {
+	////èdóÕâ¡éZ
+	//mMoveSpeed.Y(-10.0f);
+
+	//Position(Position() + mMoveSpeed * Time::DeltaTime());
+	/*Time++;
+	if (Time == 1200)
+	{
+		mTime++;
+		Time = 0;
+	}*/
 	///*float per = mElapsedTime / mMoveTime;*/
 	////à⁄ìÆ
 
@@ -57,6 +69,22 @@ void CSidewood::Update()
 
 	//âÒì]é¸âÒë¨ìx
 	Rotate(0.0f,randmodelspeedY, 0.0f);
+
+	//ì|ñÿÇÃÉÇÉfÉãì«Ç›çûÇ›
+	
+	//if (mTime == 1 && Time == 0)
+	//{
+	//	/*CModel* sidewoodModel = CResourceManager::Get<CModel>("Sidewood");
+	//	CSidewood* sidewood = new CSidewood(sidewoodModel,
+	//		CVector(0.0f, 15.0f, -30.0f), CVector(5.0f, 5.0f, 5.0f)
+	//		, 0.0f);*/
+	//	//AddTask(sidewood);
+	//	mTime = 0;
+	//	CModel* sidewoodModel = CResourceManager::Get<CModel>("Sidewood");
+	//	CSidewood* sidewood = new CSidewood(sidewoodModel,
+	//		CVector(0.0f, 15.0f, -30.0f), CVector(5.0f, 5.0f, 5.0f)
+	//		, 0.0f);
+	//}
 
 	////èdóÕâ¡éZ
 	//mMoveSpeed.Y(mMoveSpeed.Y() - 480.0f * Time::DeltaTime());

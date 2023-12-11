@@ -31,6 +31,8 @@ CStone::CStone(CModel* model, const CVector& pos, const CVector& scale, float ro
 	mpColliderSphere = new CColliderSphere(this, ELayer::eStone, 1.0f, false,100.0f);
 	Position(mDefaultPos);
 	Scale(scale);
+	mhit = false;
+	mMoveSpeed.X(randx);
 
 	mpColliderSphere->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject,ELayer::eWarpObject,ELayer::eSlopeField,ELayer::ePlayer,ELayer::eStone});
 }
@@ -56,6 +58,7 @@ float* CStone::Diffuse()
 
 void CStone::Update()
 {
+	mhit = false;
 	mDiffuse[3] = 0.1f;
 	//glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	//SetClearColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -98,7 +101,7 @@ void CStone::Update()
 
 	if (mKillCount <= 0) {
 		randpos = Math::Rand(-80,80);
-		randx = Math::Rand(-50, 50);
+		randx = Math::Rand(-50.0f, 50.0f);
 		Position(CVector(randpos, 120.0f, -250.0f));
 		moveSpeedXZ.Y(0.0f);
 		mMoveSpeed.Y(0.0f);

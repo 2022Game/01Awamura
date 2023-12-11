@@ -81,13 +81,13 @@ void CStage3::Load()
 
 	//Iéöìyë‰ÇçÏê¨
 	CIMoveField* ifield = new CIMoveField(moveIModel,
-		CVector(80.0f, -5.0f, 180.0f), CVector(12.5f, 12.5f, 12.5f)
+		CVector(80.0f, -5.0f, 182.5f), CVector(12.5f, 12.5f, 12.5f)
 		,0.0f);
 	AddTask(ifield);
 
 	//Téöìyë‰ÇçÏê¨
 	CTMoveField* tfield = new CTMoveField(moveTModel,
-		CVector(0.0f, -5.0f, 180.0f), CVector(12.5f, 12.5f, 12.5f)
+		CVector(0.0f, -5.0f, 182.5f), CVector(12.5f, 12.5f, 12.5f)
 		,0.0f);
 	AddTask(tfield);
 	tfield = new CTMoveField(moveTModel,
@@ -99,11 +99,11 @@ void CStage3::Load()
 		, 0.0f);
 	AddTask(tfield);
 	tfield = new CTMoveField(moveTModel,
-		CVector(80.0f, -5.0f, -50.0f), CVector(12.5f, 12.5f, 12.5f)
+		CVector(70.0f, -5.0f, -50.0f), CVector(12.5f, 12.5f, 12.5f)
 		, 0.0f);
 	AddTask(tfield);
 	tfield = new CTMoveField(moveTModel,
-		CVector(-80.0f, -5.0f, -50.0f), CVector(12.5f, 12.5f, 12.5f)
+		CVector(-70.0f, -5.0f, -50.0f), CVector(12.5f, 12.5f, 12.5f)
 		, 0.0f);
 	AddTask(tfield);
 
@@ -123,7 +123,7 @@ void CStage3::Load()
 		, 0.0f);
 	AddTask(lfield);
 	lfield = new CLMoveField(moveLModel,
-		CVector(-80.0f, -5.0f, 180.0f), CVector(12.5f, 12.5f, 12.5f)
+		CVector(-80.0f, -5.0f, 182.5f), CVector(12.5f, 12.5f, 12.5f)
 		, 0.0f);
 	AddTask(lfield);
 
