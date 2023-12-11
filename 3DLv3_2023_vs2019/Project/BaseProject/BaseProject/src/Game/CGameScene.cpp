@@ -30,6 +30,7 @@ void CGameScene::Load()
 
 	//背景
 	CResourceManager::Load<CModel>("Field", "Field\\Dublesky4.obj");
+	//CResourceManager::Load<CModel>("Field", "Field\\Object\\Clearrainbow.obj");
 
 	//プレイヤー
 	CResourceManager::Load<CModelX>("Player", "Character\\Player\\Beardman.x");
@@ -70,7 +71,7 @@ void CGameScene::Load()
 	mainCamera->SetFollowTargetTf(player);
 
 	//ゲーム開始処理
-	CGameManager::GameState();
+	CGameManager::GameStart();
 }
 
 //シーンの更新処理

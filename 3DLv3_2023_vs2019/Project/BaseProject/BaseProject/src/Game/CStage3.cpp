@@ -8,7 +8,8 @@
 #include "CTMoveField.h"
 #include "CJMoveField.h"
 #include "CLMoveField.h"
-
+#include "CPlayer.h"
+#include "CCamera.h"
 
 //コンストラクタ
 CStage3::CStage3()
@@ -108,7 +109,7 @@ void CStage3::Load()
 
 	//J字土台を作成
 	CJMoveField* jfield = new CJMoveField(moveJModel,
-		CVector(0.0f, 0.0f, -70.0f), CVector(1.0f, 1.0f, 1.0f)
+		CVector(0.0f, -5.0f, 110.0f), CVector(12.5f, 12.5f, 12.5f)
 		, 0.0f);
 	AddTask(jfield);
 	jfield = new CJMoveField(moveJModel,
@@ -118,13 +119,34 @@ void CStage3::Load()
 
 	//L字土台を作成
 	CLMoveField* lfield = new CLMoveField(moveLModel,
-		CVector(0.0f, 0.0f, -70.0f), CVector(1.0f, 1.0f, 1.0f)
-		, 0.0f);
-	AddTask(lfield);
-	lfield = new CLMoveField(moveLModel,
 		CVector(80.0f, -5.0f, 20.0f), CVector(12.5f, 12.5f, 12.5f)
 		, 0.0f);
 	AddTask(lfield);
+	lfield = new CLMoveField(moveLModel,
+		CVector(-80.0f, -5.0f, 180.0f), CVector(12.5f, 12.5f, 12.5f)
+		, 0.0f);
+	AddTask(lfield);
+
+	//プレイヤーの開始位置を設定
+	CPlayer* player = CPlayer::Instance();
+	CVector playerPos = CVector(0.0f, 30.0f, 240.0f);
+	if (player != nullptr)
+	{
+		player->SetStartPosition(playerPos);
+	}
+
+	//カメラの位置と向きを設定
+	CCamera* mainCamera = CCamera::MainCamera();
+	if (mainCamera != nullptr)
+	{
+		CVector eye = playerPos + CVector(0.0f, 150.0f, 200.0f);
+		CVector at = playerPos;
+		CVector forward = (at - eye).Normalized();
+		CVector side = CVector::Cross(forward, CVector::up);
+		CVector up = CVector::Cross(side, forward);
+		mainCamera->LookAt(eye, at, up);
+		mainCamera->SetFollowTargetTf(player);
+	}
 }
 
 //ステージ破棄

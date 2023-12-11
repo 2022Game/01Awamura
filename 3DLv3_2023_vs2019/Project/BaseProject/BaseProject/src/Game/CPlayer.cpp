@@ -42,6 +42,7 @@ CPlayer::CPlayer()
 	: CXCharacter(ETag::ePlayer, ETaskPriority::ePlayer)
 	, mState(EState::eIdle)
 	, mpRideObject(nullptr)
+	,mStateStep(0)
 	, mDowncount(180)
 {
 	//インスタンスの設定
@@ -193,6 +194,59 @@ void CPlayer::ChangeAnimation(EAnimType type)
 	CXCharacter::ChangeAnimation((int)type, data.loop, data.frameLength);
 }
 
+//乗ることができるオブジェクトが削除された時の処理
+void CPlayer::DeleteRideableObject(CTransform* rideObj)
+{
+	//削除されるのが現在乗っているオブジェクトであれば
+	//乗っているオブジェクトを解除
+	if (mpRideObject == rideObj)
+	{
+		mpRideObject = nullptr;
+	}
+}
+
+//ステージ開始時の位置を設定
+void CPlayer::SetStartPosition(const CVector& pos)
+{
+	mStartPos = pos;
+	Position(mStartPos);
+}
+
+//現在の状態を切り替え
+void CPlayer::ChangeState(EState state)
+{
+	mState = state;
+	mStateStep = 0;
+}
+
+//準備中の状態
+void CPlayer::UpdateReady()
+{
+	//ステップごとに処理を切り替える
+	switch (mStateStep)
+	{
+		//ステップ０　初期化処理
+	case 0:
+		//プレイヤー全ての衝突判定をOFFにする
+		SetEnableCol(false);
+		//プレイヤーの移動速度を０にする
+		mMoveSpeed = CVector::zero;
+		//次のステップへ
+		mStateStep++;
+		break;
+	case 1:
+		//ゲームが開始したら
+		if (CGameManager::GameState() == EGameState::eGame)
+		{
+			//プレイヤーの衝突判定をオンにする
+			SetEnableCol(true);
+			//現在の状態を待機に切り替え
+			ChangeState(EState::eIdle);
+		}
+		break;
+	}
+}
+
 // 待機
 void CPlayer::UpdateIdle()
 {
@@ -235,14 +289,14 @@ void CPlayer::UpdateIdle()
 		{
 			mMoveSpeed.X(0.0f);
 			mMoveSpeed.Z(0.0f);
-			mState = EState::eSquat;
+			ChangeState(EState::eSquat);
 
 			CCamera::MainCamera()->Position();
 		}
 		// SPACEキーでジャンプ開始へ移行
 		else if (CInput::PushKey(VK_SPACE))
 		{
-			mState = EState::eJumpStart;
+			ChangeState(EState::eJumpStart);
 		}
 	}
 	else
@@ -255,7 +309,7 @@ void CPlayer::UpdateIdle()
 		
 		if (mMoveSpeed.Y() <= -0.2f)
 		{
-			mState = EState::eJumpN;
+			ChangeState(EState::eJumpN);
 		}
 	}
 }
@@ -270,7 +324,7 @@ void CPlayer::UpdateAttack()
 	// 攻撃アニメーションを開始
 	//ChangeAnimation(EAnimType::eDown);
 	// 攻撃終了待ち状態へ移行
-	mState = EState::eAttackWait;
+	ChangeState(EState::eAttackWait);
 }
 
 // 攻撃終了待ち
@@ -280,7 +334,7 @@ void CPlayer::UpdateAttackWait()
 	if (IsAnimationFinished())
 	{
 		// 待機状態へ移行
-		mState = EState::eIdle;
+		ChangeState(EState::eIdle);
 		ChangeAnimation(EAnimType::eIdle);
 	}
 }
@@ -294,7 +348,7 @@ void CPlayer::UpdateJumpStart()
 	{
 		mMoveSpeed += CVector(0.0f, JUMP_SPEED, 0.0f);
 		mIsGrounded = false;
-		mState = EState::eJump;
+		ChangeState(EState::eJump);
 	}
 }
 
@@ -319,7 +373,7 @@ void CPlayer::UpdateJumpEnd()
 {
 	if (IsAnimationFinished())
 	{
-		mState = EState::eIdle;
+		ChangeState(EState::eIdle);
 	}
 }
 
@@ -345,7 +399,7 @@ void CPlayer::UpdateDown()
 	ChangeAnimation(EAnimType::eDown);
 	if (IsAnimationFinished() && mMoveSpeed.Y() >= 0.0f)
 	{
-		mState = EState::eUp;
+		ChangeState(EState::eUp);
 	}
 }
 
@@ -355,7 +409,7 @@ void CPlayer::UpdateBadDown()
 	ChangeAnimation(EAnimType::eDown);
 	if (IsAnimationFinished() && mMoveSpeed.Y() >= 0.0f && mIsGrounded == true)
 	{
-		mState = EState::eUp;
+		ChangeState(EState::eUp);
 	}
 }
 
@@ -367,7 +421,7 @@ void CPlayer::UpdateUp()
 	ChangeAnimation(EAnimType::eUp);
 	if (IsAnimationFinished())
 	{
-		mState = EState::eIdle;
+		ChangeState(EState::eIdle);
 	}
 }
 
@@ -382,7 +436,7 @@ void CPlayer::UpdateClear()
 	ChangeAnimation(EAnimType::eClear);
 	if (IsAnimationFinished())
 	{
-		mState = EState::eClearEnd;
+		ChangeState(EState::eClearEnd);
 	}
 }
 
@@ -412,7 +466,8 @@ void CPlayer::UpdateClearEnd()
 	//ステージをクリア
 	CGameManager::StageClear();
 
-	mState = EState::eIdle;
+	//ステージをクリアしたら、次のステージ開始まで準備中の状態に変更
+	ChangeState(EState::eReady);
 //	}
 }
 
@@ -423,7 +478,7 @@ void CPlayer::UpdateSquat()
 	//しゃがみボタン解除でもしゃがみ戻りに移行する
 	if (IsAnimationFinished() && CInput::Key(VK_LBUTTON) == false)
 	{
-		mState = EState::eSquatUp;
+		ChangeState(EState::eSquatUp);
 	}
 }
 
@@ -433,7 +488,7 @@ void CPlayer::UpdateSquatUp()
 	ChangeAnimation(EAnimType::eSquatUp);
 	if (IsAnimationFinished())
 	{
-		mState = EState::eIdle;
+		ChangeState(EState::eIdle);
 	}
 }
 
@@ -453,20 +508,13 @@ void CPlayer::Update()
 		mDowncount--;
 		if (mDowncount < 0)
 		{
-			if (CField::mStageCount == 3)
-			{
-				Position(0.0f, 30.0f, 240.0f);
-			}
-			else if(CField::mStageCount != 3)
-			{
-				Position(mStartPos);
-			}
+			Position(mStartPos);
 			mDowncount = 180;
 			mMoveSpeed.Y(-0.1f);
 			mMoveSpeed.X(0.0f);
 			mMoveSpeed.Z(0.0f);
 			mResetCount = true;
-			mState = EState::eDown;
+			ChangeState(EState::eDown);
 		}
 	}
 	if (mMoveSpeed.Y() >= 0.0f && mDowncount != 180)
@@ -480,6 +528,10 @@ void CPlayer::Update()
 	// 状態に合わせて、更新処理を切り替える
 	switch (mState)
 	{
+		//準備中の状態
+	    case EState::eReady:
+		UpdateReady();
+		break;
 		// 待機状態
 		case EState::eIdle:
 			UpdateIdle();
@@ -538,20 +590,26 @@ void CPlayer::Update()
 			break;
 	}
 
-	//mColliderSpeed = CVector(0.0f, -10.0f, 0.0f);
+	//準備中でなければ移動処理などを行う
+	if (mState != EState::eReady)
+	{
+		//mColliderSpeed = CVector(0.0f, -10.0f, 0.0f);
 
-	mMoveSpeed -= CVector(0.0f, GRAVITY, 0.0f);
+		if (!CInput::Key(VK_SPACE))
+		{
+			mMoveSpeed -= CVector(0.0f, GRAVITY, 0.0f);
+		}
+		// 移動
+		Position(Position() + mMoveSpeed);
 
-	// 移動
-	Position(Position() + mMoveSpeed);
-
-	// プレイヤーを移動方向へ向ける
-	CVector current = VectorZ();
-	CVector target = mMoveSpeed;
-	target.Y(0.0f);
-	target.Normalize();
-	CVector forward = CVector::Slerp(current, target, 0.125f);
-	Rotation(CQuaternion::LookRotation(forward));
+		// プレイヤーを移動方向へ向ける
+		CVector current = VectorZ();
+		CVector target = mMoveSpeed;
+		target.Y(0.0f);
+		target.Normalize();
+		CVector forward = CVector::Slerp(current, target, 0.125f);
+		Rotation(CQuaternion::LookRotation(forward));
+	}
 
 	// キャラクターの更新
 	CXCharacter::Update();
@@ -593,13 +651,13 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 				//クリア状態以外でアニメーションが終わった時にクリア状態にする
 				if (mState != EState::eClear && mState != EState::eClearEnd && IsAnimationFinished())
 				{
-					mState = EState::eClear;
+					ChangeState(EState::eClear);
 				}
 			}
 			//通常時にクリア土台に着いたらクリアにする
 			if (mState == EState::eIdle)
 			{
-				mState = EState::eClear;
+				ChangeState(EState::eClear);
 			}
 		}
 		
@@ -612,7 +670,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 				mMoveSpeed.X(0.0f);
 				mMoveSpeed.Z(0.0f);
 				ChangeAnimation(EAnimType::eJumpDown3);
-				mState = EState::eJumpEnd;
+				ChangeState(EState::eJumpEnd);
 			}
 		}
 
@@ -635,7 +693,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 						mMoveSpeed.X(0.0f);
 						mMoveSpeed.Z(0.0f);
 						ChangeAnimation(EAnimType::eJumpDown3);
-						mState = EState::eJumpEnd;
+						ChangeState(EState::eJumpEnd);
 					}
 					//ダウンした時に地面を滑らないようにする
 					if (mState == EState::eDown || mState == EState::eBadDown)
@@ -665,7 +723,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 						mMoveSpeed.X(0.0f);
 						mMoveSpeed.Z(0.0f);
 						ChangeAnimation(EAnimType::eJumpDown3);
-						mState = EState::eJumpEnd;
+						ChangeState(EState::eJumpEnd);
 					}
 					//ダウンした時に地面を滑らないようにする
 					if (mState == EState::eDown || mState == EState::eBadDown)
@@ -688,7 +746,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 				//空中でぶつかったときにダウンする
 				if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump)
 				{
-					mState = EState::eBadDown;
+					ChangeState(EState::eBadDown);
 				}
 			}
 		}
@@ -702,7 +760,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 				//当たったらDOWNする
 				/*if (mState != EState::eBadDown && mState != EState::eDown && mState != EState::eUp)
 				{*/
-					mState = EState::eBadDown;
+					ChangeState(EState::eBadDown);
 				//}
 			}
 		}
@@ -716,13 +774,6 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 			//ゲームステージ１スタート
 			if (CGameManager::StageNo() == 0)
 			{
-				CField::mClearCount = 1;
-				CField::mClearCountSwitch = 1;
-				CField::mStageCreateSwitch = 1;
-				//正規
-				//CField::mStageCount = 1;
-				//テスト用
-				//CField::mStageCount = 4;
 				//入口ステージクリアで次のステージへ
 				CGameManager::StageClear();
 				//ステージ１開始位置へワープ
@@ -739,7 +790,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 				//mIsGrounded = true;
 				/*if (mState != EState::eBadDown && mState != EState::eDown && mState != EState::eUp)
 				{*/
-					mState = EState::eBadDown;
+					ChangeState(EState::eBadDown);
 				//}
 			}
 		}
@@ -777,7 +828,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 					//mIsGrounded = true;
 					if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump)
 					{
-						mState = EState::eBadDown;
+						ChangeState(EState::eBadDown);
 					}
 				}
 				if (other->Layer() == ELayer::eBigBadObject)
@@ -786,7 +837,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 					//mIsGrounded = true;
 					/*if (mState != EState::eBadDown && mState != EState::eUp && mState != EState::eDown)
 					{*/
-					mState = EState::eBadDown;
+					ChangeState(EState::eBadDown);
 					//}
 				}
 				//岩
@@ -797,7 +848,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 					//mIsGrounded = true;
 					/*if (mState != EState::eBadDown && mState != EState::eDown && mState != EState::eUp)
 					{*/
-					mState = EState::eBadDown;
+					ChangeState(EState::eBadDown);
 					//}
 				}
 			}
@@ -829,7 +880,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 					//mIsGrounded = true;
 					if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump)
 					{
-						mState = EState::eBadDown;
+						ChangeState(EState::eBadDown);
 					}
 				}
 				if (other->Layer() == ELayer::eBigBadObject)
@@ -838,7 +889,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 					//mIsGrounded = true;
 					/*if (mState != EState::eBadDown && mState != EState::eUp && mState != EState::eDown)
 					{*/
-					mState = EState::eBadDown;
+					ChangeState(EState::eBadDown);
 					//}
 				}
 				//岩
@@ -849,7 +900,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 					//mIsGrounded = true;
 					/*if (mState != EState::eBadDown && mState != EState::eDown && mState != EState::eUp)
 					{*/
-					mState = EState::eBadDown;
+					ChangeState(EState::eBadDown);
 					//}
 				}
 			}
@@ -878,7 +929,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 				//mIsGrounded = true;
 				if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump)
 				{
-					mState = EState::eBadDown;
+					ChangeState(EState::eBadDown);
 				}
 			}
 			if (other->Layer() == ELayer::eBigBadObject)
@@ -887,7 +938,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 				//mIsGrounded = true;
 				/*if (mState != EState::eDown && mState != EState::eBadDown && mState != EState::eUp)
 				{*/
-				mState = EState::eBadDown;
+				ChangeState(EState::eBadDown);
 				//}
 			}
 			//岩
@@ -898,7 +949,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 				//mIsGrounded = true;
 			/*	if (mState != EState::eBadDown && mState != EState::eDown && mState != EState::eUp)
 				{*/
-				mState = EState::eBadDown;
+				ChangeState(EState::eBadDown);
 				//}
 			}
 		}
@@ -927,7 +978,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 					//mIsGrounded = true;
 					if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump)
 					{
-						mState = EState::eBadDown;
+						ChangeState(EState::eBadDown);
 					}
 				}
 				if (other->Layer() == ELayer::eBigBadObject)
@@ -936,7 +987,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 					//mIsGrounded = true;
 					/*if (mState != EState::eDown && mState != EState::eBadDown && mState != EState::eUp)
 					{*/
-					mState = EState::eBadDown;
+					ChangeState(EState::eBadDown);
 					//}
 				}
 				//岩
@@ -947,7 +998,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 					//mIsGrounded = true;
 					/*	if (mState != EState::eBadDown && mState != EState::eDown && mState != EState::eUp)
 						{*/
-					mState = EState::eBadDown;
+					ChangeState(EState::eBadDown);
 					//}
 				}
 			}
@@ -976,14 +1027,14 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 					//mIsGrounded = true;
 					if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump)
 					{
-						mState = EState::eBadDown;
+						ChangeState(EState::eBadDown);
 					}
 				}
 				if (other->Layer() == ELayer::eBigBadObject)
 				{
 					Position(Position() + hit.adjust * hit.weight);
 					//mIsGrounded = true;
-					mState = EState::eBadDown;
+					ChangeState(EState::eBadDown);
 				}
 				//岩
 				if (other->Layer() == ELayer::eStone)
@@ -991,7 +1042,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 					mMoveSpeed.Y(-0.2f);
 					Position(Position() + hit.adjust * hit.weight);
 					//mIsGrounded = true;
-					mState = EState::eBadDown;
+					ChangeState(EState::eBadDown);
 				}
 			}
 		}
