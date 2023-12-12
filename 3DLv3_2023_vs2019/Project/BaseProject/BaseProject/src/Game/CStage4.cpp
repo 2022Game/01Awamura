@@ -2,7 +2,9 @@
 #include "CClearStage.h"
 #include "CKillwood.h"
 #include "CSidewood.h"
+#include "CSideDownwood.h"
 #include "CBollField.h"
+#include "CCleardelta.h"
 #include "CPlayer.h"
 #include "CCamera.h"
 
@@ -30,8 +32,14 @@ void CStage4::Load()
 	//倒木のモデル読み込み
 	CModel* sidewoodModel = CResourceManager::Get<CModel>("Sidewood");
 
+	////倒木のモデル読み込み
+	CModel* sidedownwoodModel = CResourceManager::Get<CModel>("SideDownwood");
+
 	//円形土台のモデル読み込み
 	CModel* bollFieldModel = CResourceManager::Get<CModel>("Bollfield");
+
+	//とんがりコーン土台のモデル読み込み
+	CModel* deltaModel = CResourceManager::Get<CModel>("Cleardelta");
 
 	//クリア土台を作成
 	CClearStage* coin = new CClearStage(clearStageModel,
@@ -46,18 +54,34 @@ void CStage4::Load()
 
 	//倒木を作成
 	CSidewood* sidewood = new CSidewood(sidewoodModel,
-		CVector(0.0f, 15.0f, -30.0f), CVector(5.0f, 5.0f, 5.0f)
+		CVector(0.0f, 5.0f, -30.0f), CVector(5.0f, 5.0f, 5.0f)
 		,0.0f);
 	AddTask(sidewood);
-	sidewood = new CSidewood(sidewoodModel,
-		CVector(0.0f, 6.0f, -30.0f), CVector(5.5f, 5.0f, 5.25f)
+	/*sidewood = new CSidewood(sidewoodModel,
+		CVector(0.0f, 5.0f, -30.0f), CVector(5.5f, 5.0f, 5.0f)
 		, 0.0f);
-	AddTask(sidewood);
+	AddTask(sidewood);*/
+
+	//落下する倒木を作成
+	CSideDownwood* sidedownwood = new CSideDownwood(sidewoodModel,
+		CVector(0.0f, 120.0f, -30.0f), CVector(5.0f, 5.0f, 5.0f)
+		, 0.0f);
+	AddTask(sidedownwood);
+	sidedownwood = new CSideDownwood(sidewoodModel,
+		CVector(0.0f, 150.0f, -30.0f), CVector(5.0f, 5.0f, 5.0f)
+		, 0.0f);
+	AddTask(sidedownwood);
+
 
 	//円形土台を作成
 	CBollField* bollField = new CBollField(bollFieldModel,
 		CVector(0.0f, -20.0f, -30.0f), CVector(5.0f, 5.0f, 5.0f));
 	AddTask(bollField);
+
+	//とんがり土台を作成
+	CCleardelta* cleardelta = new CCleardelta (deltaModel,
+		CVector(0.0f,500.0f, -30.0f), CVector(5.0f, 5.0f, 5.0f));
+	AddTask(cleardelta);
 
 	//プレイヤーの開始位置を設定
 	CPlayer* player = CPlayer::Instance();

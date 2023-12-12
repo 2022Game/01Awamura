@@ -2,6 +2,7 @@
 #include "Maths.h"
 #include "CCollider.h"
 #include "CPlayer.h"
+#include "CCleardelta.h"
 
 #define ROTATE_Y -0.1f
 
@@ -58,15 +59,17 @@ void CKillwood::Update()
 	Rotate(0.0f, 1.0f, 0.0f);
 	Rotate(0.0f, 1.0f, 0.0f);
 
-	//èdóÕâ¡éZ
-	mMoveSpeed.Y(-10.0f);
+	if (CCleardelta::mMoveswitch == false)
+	{
+		//èdóÕâ¡éZ
+		mMoveSpeed.Y(-10.0f);
 
-	Position(Position() + mMoveSpeed * Time::DeltaTime());
+		Position(Position() + mMoveSpeed * Time::DeltaTime());
+	}
 
 	if (CPlayer::mResetCount == true)
 	{
-		Position(0.0f,0.0f,-30.0f);
-		//mResetKillwood = true;
+		Position(mDefaultPos);
 	}
 
 	//if (mIsGrounded == false)

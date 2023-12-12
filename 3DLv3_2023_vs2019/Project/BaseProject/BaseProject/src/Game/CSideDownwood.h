@@ -5,11 +5,11 @@
 #include "CCollider.h"
 #include "CColliderSphere.h"
 
-class CSidewood : public CRideableObject
+class CSideDownwood : public CRideableObject
 {
 public:
-	CSidewood(CModel* model, const CVector& pos, const CVector& scale, float rotateSpeedY);
-	~CSidewood();
+	CSideDownwood(CModel* model, const CVector& pos, const CVector& scale, float rotateSpeedY);
+	~CSideDownwood();
 
 	void Update();
 	void Render();
@@ -23,12 +23,13 @@ public:
 	void Collision(CCollider* self, CCollider* other, const CHitInfo& hit) override;
 
 private:
+	int mRotateCount;
 	int mTime;
 	int Time;
-	bool mIsMove;
+	bool mIsGrounded;
 	float randmodelspeedY;
-	int RotateCount;
 	float mspeedYBOX;
+	float randspeedY;
 	int randx;
 	int mKillCount;
 	CModel* mpModel;
@@ -39,6 +40,7 @@ private:
 	CVector mMoveVec;
 	float mElapsedTime;
 	float mRotateSpeedY;
+	float mRotateSpeedX;
 	CVector mMove;
 	float mMoveTime;
 	//CVector mDefaultPos;

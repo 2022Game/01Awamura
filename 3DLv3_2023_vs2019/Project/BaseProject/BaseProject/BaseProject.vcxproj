@@ -62,6 +62,7 @@
     <ClCompile Include="src\Game\CAxe.cpp" />
     <ClCompile Include="src\Game\CBollField.cpp" />
     <ClCompile Include="src\Game\CClearCube.cpp" />
+    <ClCompile Include="src\Game\CCleardelta.cpp" />
     <ClCompile Include="src\Game\CClearStage.cpp" />
     <ClCompile Include="src\Game\CEnemy.cpp" />
     <ClCompile Include="src\Game\CField.cpp" />
@@ -79,6 +80,7 @@
     <ClCompile Include="src\Game\CPlayer.cpp" />
     <ClCompile Include="src\Game\CRideabeObject.cpp" />
     <ClCompile Include="src\Game\CRotateFloor.cpp" />
+    <ClCompile Include="src\Game\CSideDownwood.cpp" />
     <ClCompile Include="src\Game\CSidewood.cpp" />
     <ClCompile Include="src\Game\CSlope.cpp" />
     <ClCompile Include="src\Game\CStage1.cpp" />
@@ -167,6 +169,7 @@
     <ClInclude Include="src\Game\CAxe.h" />
     <ClInclude Include="src\Game\CBollField.h" />
     <ClInclude Include="src\Game\CClearCube.h" />
+    <ClInclude Include="src\Game\CCleardelta.h" />
     <ClInclude Include="src\Game\CClearStage.h" />
     <ClInclude Include="src\Game\CEnemy.h" />
     <ClInclude Include="src\Game\CField.h" />
@@ -184,6 +187,7 @@
     <ClInclude Include="src\Game\CPlayer.h" />
     <ClInclude Include="src\Game\CRideableObject.h" />
     <ClInclude Include="src\Game\CRotateFloor.h" />
+    <ClInclude Include="src\Game\CSideDownwood.h" />
     <ClInclude Include="src\Game\CSidewood.h" />
     <ClInclude Include="src\Game\CSlope.h" />
     <ClInclude Include="src\Game\CStage1.h" />

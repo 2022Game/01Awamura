@@ -355,6 +355,12 @@
     <ClCompile Include="src\BaseSystem\CResourceManager.cpp">
       <Filter>ソース ファイル\BaseSystem\Model</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\CSideDownwood.cpp">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CCleardelta.cpp">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BaseSystem\CCollider.h">
@@ -662,6 +668,12 @@
     </ClInclude>
     <ClInclude Include="src\BaseSystem\CResourceManager.h">
       <Filter>ソース ファイル\BaseSystem\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CSideDownwood.h">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CCleardelta.h">
+      <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -29,7 +29,8 @@ void CGameScene::Load()
 	//リソースの読み込みやクラスの生成を行う
 
 	//背景
-	CResourceManager::Load<CModel>("Field", "Field\\Dublesky4.obj");
+	//CResourceManager::Load<CModel>("Field", "Field\\Dublesky3.obj");
+	CResourceManager::Load<CModel>("Field", "Field\\Rainbowsky.obj");
 	//CResourceManager::Load<CModel>("Field", "Field\\Object\\Clearrainbow.obj");
 
 	//プレイヤー
@@ -49,10 +50,12 @@ void CGameScene::Load()
 	CResourceManager::Load<CModel>("Cube", "Field\\Object\\cube.obj");
 	CResourceManager::Load<CModel>("Killwood", "Field\\Killwood.obj");
 	CResourceManager::Load<CModel>("Sidewood", "Field\\Killbranc.obj");
+	CResourceManager::Load<CModel>("SideDownwood", "Field\\Killbranc2.obj");
 	CResourceManager::Load<CModel>("Slope", "Field\\Object\\slopecube.obj");
 	CResourceManager::Load<CModel>("Lswitch", "Field\\Object\\switchBlue.obj");
 	CResourceManager::Load<CModel>("Rswitch", "Field\\Object\\switchRed.obj");
 	CResourceManager::Load<CModel>("Warp", "Field\\WarpDoor2.obj");
+	CResourceManager::Load<CModel>("Cleardelta", "Field\\Cleardelta.obj");
 
 	CResourceManager::Load<CModel>("FieldCube", "Field\\Object\\cube.obj");
 	CResourceManager::Load<CModel>("FieldCylinder", "Field\\Object\\cylinder.obj");
