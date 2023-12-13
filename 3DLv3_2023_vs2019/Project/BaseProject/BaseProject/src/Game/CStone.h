@@ -25,6 +25,7 @@ public:
 	void Collision(CCollider* self, CCollider* other, const CHitInfo& hit) override;
 
 private:
+	bool mIsStone;
 	void SetClearColor(float r, float g, float b, float a);
 	/// <summary>
 	/// 画面のクリアカラーを設定（CColor）

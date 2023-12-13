@@ -44,7 +44,7 @@ void CGameScene::Load()
 	CResourceManager::Load<CModel>("Tenfield", "Field\\Object\\10field.obj");
 	CResourceManager::Load<CModel>("Tfield", "Field\\Object\\Tfield.obj");
 	CResourceManager::Load<CModel>("Axe", "Field\\ono7.obj");
-	CResourceManager::Load<CModel>("Bollfield", "Field\\bollfield.obj");
+	CResourceManager::Load<CModel>("Bollfield", "Field\\bollfield2.obj");
 	CResourceManager::Load<CModel>("Clearcube", "Field\\Object\\Clearcube.obj");
 	CResourceManager::Load<CModel>("Clearstage", "Field\\Object\\cylinder.obj");
 	CResourceManager::Load<CModel>("Cube", "Field\\Object\\cube.obj");

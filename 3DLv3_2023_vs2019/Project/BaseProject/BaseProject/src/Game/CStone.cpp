@@ -75,7 +75,6 @@ void CStone::Update()
 	{
 		moveSpeedXZ = moveSpeedXZ.Normalized() * maxSpeed;
 	}
-	mMoveSpeed.X(randx);
 	mMoveSpeed.Z(moveSpeedXZ.Z());
 
 	//移動速度に合わせて岩を回転させる
@@ -105,12 +104,13 @@ void CStone::Update()
 		Position(CVector(randpos, 120.0f, -250.0f));
 		moveSpeedXZ.Y(0.0f);
 		mMoveSpeed.Y(0.0f);
-		mMoveSpeed.X(10.0f);
+		mMoveSpeed.X(randx);
 		mMoveSpeed.Z(0.0f);
 		mKillCount = 30;
 	}
 
 	mIsGrounded = false;
+	mIsStone = false;
 }
 
 void CStone::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
@@ -123,10 +123,21 @@ void CStone::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		}
 		if (other->Layer() == ELayer::eSlopeField|| other->Layer() == ELayer::eField)
 		{
-			Position(Position() + hit.adjust * hit.weight);
-			mIsGrounded = true;
-			mKillCount = 30;
-			mMoveSpeed.Y(0.0f);
+			CVector normal = hit.adjust.Normalized();
+			CVector gv = CVector::down;
+			float dot = CVector::Dot(gv, normal);
+			if (dot <= -0.5f)
+			{
+				Position(Position() + hit.adjust * hit.weight);
+				mIsGrounded = true;
+				mKillCount = 30;
+				mMoveSpeed.Y(0.0f);
+			}
+			//法線テスト
+			/*if (dot >= -0.2f)
+			{
+				Position(Position() + hit.adjust * hit.weight);
+			}*/
 
 			//押し出される方向から、岩の移動方向を求める
 			mMoveDir = hit.adjust;

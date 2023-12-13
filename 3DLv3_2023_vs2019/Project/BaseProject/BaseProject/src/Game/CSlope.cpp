@@ -10,6 +10,8 @@ CSlope::CSlope(CModel* model, const CVector& pos, const CVector& scale)
 	mpColliderMesh = new CColliderMesh(this, ELayer::eSlopeField, mpModel, false);
 	Position(mDefaultPos);
 	Scale(scale);
+	SetColor(CColor(1.0f, 0.0f, 1.0f, 1.0f));
+	SetAlpha(0.1f);
 }
 
 CSlope::~CSlope()

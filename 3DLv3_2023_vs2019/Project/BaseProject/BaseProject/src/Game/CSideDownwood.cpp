@@ -25,11 +25,12 @@ CSideDownwood::CSideDownwood(CModel* model, const CVector& pos, const CVector& s
 	, mTime(0)
 	, mRotateCount(0)
 {
-	mKillCount = 30;
+	mKillCount = 10;
 	//Math::Rand(0, 5);
 	mpColliderMesh = new CColliderMesh(this, ELayer::eBadObject, mpModel, true);
 	mpColliderSphere = new CColliderSphere(this, ELayer::eMove, 0.5f, false, 1.0f);
 	Position(mDefaultPos);
+	mpColliderSphere->Position(0.0f, 5.0f, 0.0f);
 	Scale(scale);
 	randmodelspeedY = Math::Rand(-2.0f, 2.0f);
 	while (randmodelspeedY < 0.5f && randmodelspeedY > -0.5f)
@@ -129,7 +130,7 @@ void CSideDownwood::Update()
 	//	mElapsedTime -= mMoveTime;
 	//}*/
 
-	if (mRotateCount < 4)
+	if (mRotateCount < 3)
 	{
 		if (mKillCount <= 0) {
 			randmodelspeedY = Math::Rand(-2.0f, 2.0f);
@@ -141,7 +142,7 @@ void CSideDownwood::Update()
 			/*mMoveSpeed.Y(0.0f);
 			mMoveSpeed.X(10.0f);
 			mMoveSpeed.Z(0.0f);*/
-			mKillCount = 30;
+			mKillCount = 10;
 			mRotateCount++;
 		}
 	}
@@ -150,7 +151,7 @@ void CSideDownwood::Update()
 	{
 		Position(mDefaultPos);
 		mRotateCount = 0;
-		mKillCount = 30;
+		mKillCount = 10;
 	}
 
 	//mIsGrounded = false;
