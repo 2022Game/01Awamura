@@ -76,6 +76,7 @@
     <ClCompile Include="src\Game\CLMoveField.cpp" />
     <ClCompile Include="src\Game\CMoveField.cpp" />
     <ClCompile Include="src\Game\CMoveFloor.cpp" />
+    <ClCompile Include="src\Game\CNeedle.cpp" />
     <ClCompile Include="src\Game\CObstaclesManager.cpp" />
     <ClCompile Include="src\Game\CPlayer.cpp" />
     <ClCompile Include="src\Game\CRideabeObject.cpp" />
@@ -96,6 +97,7 @@
     <ClCompile Include="src\Game\CSwitchRObject.cpp" />
     <ClCompile Include="src\Game\CTitleScene.cpp" />
     <ClCompile Include="src\Game\CTMoveField.cpp" />
+    <ClCompile Include="src\Game\CTransparentField.cpp" />
     <ClCompile Include="src\Game\CWarp.cpp" />
     <ClCompile Include="src\Game\CXCharacter.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -183,6 +185,7 @@
     <ClInclude Include="src\Game\CLMoveField.h" />
     <ClInclude Include="src\Game\CMoveField.h" />
     <ClInclude Include="src\Game\CMoveFloor.h" />
+    <ClInclude Include="src\Game\CNeedle.h" />
     <ClInclude Include="src\Game\CObstaclesManager.h" />
     <ClInclude Include="src\Game\CPlayer.h" />
     <ClInclude Include="src\Game\CRideableObject.h" />
@@ -203,6 +206,7 @@
     <ClInclude Include="src\Game\CSwitchRObject.h" />
     <ClInclude Include="src\Game\CTitleScene.h" />
     <ClInclude Include="src\Game\CTMoveField.h" />
+    <ClInclude Include="src\Game\CTransparentField.h" />
     <ClInclude Include="src\Game\CWarp.h" />
     <ClInclude Include="src\Game\CXCharacter.h" />
     <ClInclude Include="src\Test\CBootMenuScene.h" />

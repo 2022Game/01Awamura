@@ -37,25 +37,28 @@ void CGameScene::Load()
 	CResourceManager::Load<CModelX>("Player", "Character\\Player\\Beardman.x");
 	
 	//ìyë‰ÅAè·äQï®
-	CResourceManager::Load<CModel>("Stone", "Field\\Stone.obj");
-	CResourceManager::Load<CModel>("Ifield", "Field\\Object\\Ifield.obj");
-	CResourceManager::Load<CModel>("Jfield", "Field\\Object\\Jfield.obj");
-	CResourceManager::Load<CModel>("Lfield", "Field\\Object\\Lfield.obj");
-	CResourceManager::Load<CModel>("Tenfield", "Field\\Object\\10field.obj");
-	CResourceManager::Load<CModel>("Tfield", "Field\\Object\\Tfield.obj");
-	CResourceManager::Load<CModel>("Axe", "Field\\ono7.obj");
-	CResourceManager::Load<CModel>("Bollfield", "Field\\bollfield2.obj");
-	CResourceManager::Load<CModel>("Clearcube", "Field\\Object\\Clearcube.obj");
-	CResourceManager::Load<CModel>("Clearstage", "Field\\Object\\cylinder.obj");
-	CResourceManager::Load<CModel>("Cube", "Field\\Object\\cube.obj");
-	CResourceManager::Load<CModel>("Killwood", "Field\\Killwood.obj");
-	CResourceManager::Load<CModel>("Sidewood", "Field\\Killbranc.obj");
-	CResourceManager::Load<CModel>("SideDownwood", "Field\\Killbranc2.obj");
-	CResourceManager::Load<CModel>("Slope", "Field\\Object\\slopecube.obj");
-	CResourceManager::Load<CModel>("Lswitch", "Field\\Object\\switchBlue.obj");
-	CResourceManager::Load<CModel>("Rswitch", "Field\\Object\\switchRed.obj");
-	CResourceManager::Load<CModel>("Warp", "Field\\WarpDoor2.obj");
-	CResourceManager::Load<CModel>("Cleardelta", "Field\\Cleardelta.obj");
+	CResourceManager::Load<CModel>("Stone", "Field\\Stone.obj");  //ä‚
+	CResourceManager::Load<CModel>("Ifield", "Field\\Object\\Ifield.obj"); //Iéöìyë‰
+	CResourceManager::Load<CModel>("Jfield", "Field\\Object\\Jfield.obj"); //Jéöìyë‰
+	CResourceManager::Load<CModel>("Lfield", "Field\\Object\\Lfield.obj"); //Léöìyë‰
+	CResourceManager::Load<CModel>("Tenfield", "Field\\Object\\10field.obj"); //è\éöìyë‰
+	CResourceManager::Load<CModel>("Tfield", "Field\\Object\\Tfield.obj"); //Téöìyë‰
+	CResourceManager::Load<CModel>("Axe", "Field\\ono7.obj"); //ïÄ
+	CResourceManager::Load<CModel>("Bollfield", "Field\\bollfield2.obj"); //â~å`ìyë‰
+	CResourceManager::Load<CModel>("Clearcube", "Field\\Object\\Clearcube.obj"); //ÉNÉäÉAéläpìyë‰
+	CResourceManager::Load<CModel>("Clearstage", "Field\\Object\\cylinder.obj"); //ÉNÉäÉAâ~å`ìyë‰
+	CResourceManager::Load<CModel>("Cube", "Field\\Object\\cube.obj"); //éläpìyë‰
+	CResourceManager::Load<CModel>("Killwood", "Field\\Killwood.obj"); //ëÂñÿ
+	CResourceManager::Load<CModel>("Sidewood", "Field\\Killbranc.obj"); //ì|ñÿ
+	CResourceManager::Load<CModel>("SideDownwood", "Field\\Killbranc2.obj"); //è„â∫Ç…ìÆÇ≠ì|ñÿ
+	CResourceManager::Load<CModel>("Slope", "Field\\Object\\slopecube.obj"); //ç‚ìπ
+	CResourceManager::Load<CModel>("Lswitch", "Field\\Object\\switchBlue.obj"); //ç∂ÉXÉCÉbÉ`
+	CResourceManager::Load<CModel>("Rswitch", "Field\\Object\\switchRed.obj"); //âEÉXÉCÉbÉ`
+	CResourceManager::Load<CModel>("Warp", "Field\\WarpDoor2.obj"); //ÉèÅ[ÉvÉhÉA
+	CResourceManager::Load<CModel>("Cleardelta", "Field\\Cleardelta.obj"); //éOäpÉNÉäÉAè·äQï®
+	CResourceManager::Load<CModel>("Needle", "Field\\Object\\needle.obj"); //êj
+	CResourceManager::Load<CModel>("Transparent", "Field\\Object\\transparent.obj"); //ìßñæópìyë‰
+	
 
 	CResourceManager::Load<CModel>("FieldCube", "Field\\Object\\cube.obj");
 	CResourceManager::Load<CModel>("FieldCylinder", "Field\\Object\\cylinder.obj");
