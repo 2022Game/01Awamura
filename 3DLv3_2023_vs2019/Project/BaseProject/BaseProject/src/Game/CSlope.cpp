@@ -7,7 +7,7 @@ CSlope::CSlope(CModel* model, const CVector& pos, const CVector& scale)
 	, mDefaultPos(pos)
 	, mElapsedTime(0.0f)
 {
-	mpColliderMesh = new CColliderMesh(this, ELayer::eSlopeField, mpModel, false);
+	mpColliderMesh = new CColliderMesh(this, ELayer::eSlopeField, mpModel, true);
 	Position(mDefaultPos);
 	Scale(scale);
 	SetColor(CColor(1.0f, 0.0f, 1.0f, 1.0f));

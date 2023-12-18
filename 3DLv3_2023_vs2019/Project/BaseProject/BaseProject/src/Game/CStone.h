@@ -7,7 +7,7 @@
 #include "System.h"
 #include "CMaterial.h"
 
-class CStone : public CRideableObject
+class CStone : public CObjectBase
 {
 public:
 	CStone(CModel* model, const CVector& pos, const CVector& scale, float rotateSpeedY);

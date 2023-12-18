@@ -31,5 +31,6 @@ void CFloor::Update()
 
 void CFloor::Render()
 {
+	mpModel->SetColor(mColor);
 	mpModel->Render(Matrix());
 }

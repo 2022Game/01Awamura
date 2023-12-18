@@ -4,6 +4,6 @@
 class CRideableObject : public CObjectBase
 {
 public:
-	CRideableObject();
+	CRideableObject(ETaskPriority prio = ETaskPriority::eBackground);
 	virtual ~CRideableObject();
 };

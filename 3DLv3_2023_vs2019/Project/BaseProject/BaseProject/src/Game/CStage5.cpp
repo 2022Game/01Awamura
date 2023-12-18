@@ -3,6 +3,7 @@
 #include "CFloor.h"
 #include "CPlayer.h"
 #include "CCamera.h"
+#include "CDisappearFloor.h"
 
 //コンストラクタ
 CStage5::CStage5()
@@ -34,6 +35,13 @@ void CStage5::Load()
 	CFloor* floor = new CFloor(floorModel,
 		CVector(0.0f, 2.0f, -20.0f), CVector(0.5f, 4.0f, 5.0f));
 	AddTask(floor);
+
+	CDisappearFloor* dfloor = new CDisappearFloor
+	(
+		CVector(0.0f, 20.0f, -20.0f), CVector(0.5f, 2.0f, 0.5f),
+		ETag::ePlayer, ELayer::ePlayer
+	);
+	AddTask(dfloor);
 
 	//プレイヤーの開始位置を設定
 	CPlayer* player = CPlayer::Instance();

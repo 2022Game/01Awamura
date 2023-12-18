@@ -48,7 +48,7 @@ void CStage4::Load()
 
 	//‘å–Ø‚ğì¬
 	CKillwood* killwood = new CKillwood(killwoodModel,
-		CVector(0.0f, 0.0f, -30.0f), CVector(5.0f, 5.0f, 5.0f)
+		CVector(0.0f, 0.0f, -30.0f), CVector(4.5f, 5.0f, 4.5f)
 		,0.0f);
 	AddTask(killwood);
 

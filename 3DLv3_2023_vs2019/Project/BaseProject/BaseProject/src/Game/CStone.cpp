@@ -11,7 +11,8 @@
 #include "time.h"
 
 CStone::CStone(CModel* model, const CVector& pos, const CVector& scale, float rotateSpeedY)
-	: mpModel(model)
+	: CObjectBase(ETag::eStone,ETaskPriority::eDefault,0,ETaskPauseType::eGame)
+	,mpModel(model)
 	, mDefaultPos(pos)
 	, mElapsedTime(0.0f)
 	, mRotateSpeedY(rotateSpeedY)
@@ -21,6 +22,7 @@ CStone::CStone(CModel* model, const CVector& pos, const CVector& scale, float ro
 	,randpos(0)
 	,randx(0)
 {
+	SetAlpha(0.1f);
 	int size = ARRAY_SIZE(mDiffuse);
 	for (int i = 0; i < size; i++)
 	{
@@ -32,9 +34,17 @@ CStone::CStone(CModel* model, const CVector& pos, const CVector& scale, float ro
 	Position(mDefaultPos);
 	Scale(scale);
 	mhit = false;
+	randx = Math::Rand(-50.0f, 50.0f);
 	mMoveSpeed.X(randx);
 
-	mpColliderSphere->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject,ELayer::eWarpObject,ELayer::eSlopeField,ELayer::ePlayer,ELayer::eStone});
+	mpColliderSphere->SetCollisionLayers
+	({  ELayer::eField,
+		ELayer::eClearObject,
+		ELayer::eObject,
+		ELayer::eWarpObject,
+		ELayer::eSlopeField,
+		ELayer::ePlayer,
+		ELayer::eStone});
 }
 
 CStone::~CStone()
@@ -76,9 +86,11 @@ void CStone::Update()
 		moveSpeedXZ = moveSpeedXZ.Normalized() * maxSpeed;
 	}
 	mMoveSpeed.Z(moveSpeedXZ.Z());
+	//mMoveSpeed.X(moveSpeedXZ.X());
 
 	//ˆÚ“®‘¬“x‚É‡‚í‚¹‚ÄŠâ‚ð‰ñ“]‚³‚¹‚é
-	Rotate(-0.1f * moveSpeedXZ.Length(), 0.0f, 0.0f);
+	CVector side = CVector::Cross(moveSpeedXZ.Normalized(), CVector::up);
+	RotateAxis(side, 0.1f * moveSpeedXZ.Length());
 
 	//d—Í‰ÁŽZ
 	mMoveSpeed.Y(mMoveSpeed.Y() - 480.0f * Time::DeltaTime());
@@ -119,7 +131,12 @@ void CStone::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 	{
 		if (other->Layer() == ELayer::eStone)
 		{
+			CVector adjust = hit.adjust;
+			adjust.Y(0.0f);
 			Position(Position() + hit.adjust * hit.weight);
+
+			//ˆÚ“®•ûŒü‚É‰Ÿ‚µ–ß‚·•ûŒü‚ð‰ÁŽZ‚µ‚ÄAˆÚ“®•ûŒü‚ð•ÏX‚·‚é
+			mMoveSpeed += adjust;
 		}
 		if (other->Layer() == ELayer::eSlopeField|| other->Layer() == ELayer::eField)
 		{
@@ -130,6 +147,7 @@ void CStone::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 			{
 				Position(Position() + hit.adjust * hit.weight);
 				mIsGrounded = true;
+				mIsStone = true;
 				mKillCount = 30;
 				mMoveSpeed.Y(0.0f);
 			}

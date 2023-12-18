@@ -45,8 +45,8 @@ CPlayer::CPlayer()
 	,mStateStep(0)
 	, mDowncount(180)
 {
-	SetColor(CColor(1.0f, 0.0f, 1.0f, 1.0f));
-	SetAlpha(0.1f);
+	/*SetColor(CColor(1.0f, 0.0f, 1.0f, 1.0f));
+	SetAlpha(0.1f);*/
 	//インスタンスの設定
 	spInstance = this;
 	Position(0.0f,30.0f,0.0f);

@@ -10,6 +10,7 @@ enum class ETag
 	eRideableObject,	// 乗ることができるオブジェクト
 	eItem,	// アイテムのオブジェクト
 	eObstacles, //障害物のオブジェクト
+	eStone, //岩
 
 	ePlayer,// プレイヤー
 	eEnemy,	// エネミー

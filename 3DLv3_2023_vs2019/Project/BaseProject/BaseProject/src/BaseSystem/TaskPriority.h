@@ -11,6 +11,7 @@ enum class ETaskPriority
 	ePlayer,	// プレイヤー
 
 	eEffect,	// エフェクト
+	eTransparent, //透明オブジェクト
 
 	eCamera,	// カメラ
 
