@@ -12,6 +12,7 @@ enum class ETaskPriority
 
 	eEffect,	// エフェクト
 	eTransparent, //透明オブジェクト
+	eCover, //kakusimono
 
 	eCamera,	// カメラ
 

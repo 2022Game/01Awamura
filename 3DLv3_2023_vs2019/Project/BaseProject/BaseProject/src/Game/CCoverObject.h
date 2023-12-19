@@ -4,7 +4,7 @@
 #include "CColliderMesh.h"
 
 //消える床
-class CDisappearFloor2 :public CRideableObject
+class CCoverObject :public CRideableObject
 {
 public:
 	/// <summary>
@@ -14,11 +14,11 @@ public:
 	/// <param name="scale">床のスケール値</param>
 	/// <param name="reactionTag">触れると反応するオブジェクトのタグ</param>
 	/// <param name="reactionLayer">触れると反応するコライダーのレイヤー</param>
-	CDisappearFloor2(const CVector& pos, const CVector& scale,
+	CCoverObject(const CVector& pos, const CVector& scale,
 		ETag reactionTag, ELayer reactionLayer);
 
 	//デストラクタ
-	~CDisappearFloor2();
+	~CCoverObject();
 
 	void Collision(CCollider* self, CCollider* other, const CHitInfo& hit)override;
 

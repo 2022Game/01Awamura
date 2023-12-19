@@ -71,6 +71,9 @@
     <Filter Include="ソース ファイル\Game\Stage">
       <UniqueIdentifier>{564f0424-41a1-4026-8a13-9ea18db4c970}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Game\Field\Object\CDisappearFloor">
+      <UniqueIdentifier>{801def5c-ebd0-4a2b-bd13-dfa1a598baa5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -367,13 +370,13 @@
     <ClCompile Include="src\Game\CNeedle.cpp">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\CDisappearFloor.cpp">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
-    </ClCompile>
     <ClCompile Include="src\Game\CAppearFloor.cpp">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\CDisappearFloor2.cpp">
+    <ClCompile Include="src\Game\CDisappearFloor.cpp">
+      <Filter>ソース ファイル\Game\Field\Object\CDisappearFloor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CCoverObject.cpp">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClCompile>
   </ItemGroup>
@@ -696,13 +699,13 @@
     <ClInclude Include="src\Game\CNeedle.h">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\CDisappearFloor.h">
-      <Filter>ソース ファイル\Game\Field\Object</Filter>
-    </ClInclude>
     <ClInclude Include="src\Game\CAppearFloor.h">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\CDisappearFloor2.h">
+    <ClInclude Include="src\Game\CDisappearFloor.h">
+      <Filter>ソース ファイル\Game\Field\Object\CDisappearFloor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CCoverObject.h">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClInclude>
   </ItemGroup>

@@ -16,4 +16,9 @@ public:
 	void Unload() override;
 
 private:
+	int RandPos;
+	float RandPosX;
+	float RandPosZ;
+	float PosY;
+	float PosY2;
 };
