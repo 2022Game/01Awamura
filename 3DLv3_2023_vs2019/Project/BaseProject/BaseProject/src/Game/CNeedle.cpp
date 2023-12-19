@@ -18,7 +18,7 @@ CNeedle::CNeedle(CModel* model, const CVector& pos, const CVector& scale)
 
 CNeedle::~CNeedle()
 {
-	SAFE_DELETE(mpColliderSphere);
+	SAFE_DELETE(mpColliderMesh);
 }
 
 void CNeedle::Update()

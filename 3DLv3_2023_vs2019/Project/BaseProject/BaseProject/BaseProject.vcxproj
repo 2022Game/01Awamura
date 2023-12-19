@@ -66,6 +66,7 @@
     <ClCompile Include="src\Game\CCleardelta.cpp" />
     <ClCompile Include="src\Game\CClearStage.cpp" />
     <ClCompile Include="src\Game\CDisappearFloor.cpp" />
+    <ClCompile Include="src\Game\CDisappearFloor2.cpp" />
     <ClCompile Include="src\Game\CEnemy.cpp" />
     <ClCompile Include="src\Game\CField.cpp" />
     <ClCompile Include="src\Game\CFloor.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="src\Game\CCleardelta.h" />
     <ClInclude Include="src\Game\CClearStage.h" />
     <ClInclude Include="src\Game\CDisappearFloor.h" />
+    <ClInclude Include="src\Game\CDisappearFloor2.h" />
     <ClInclude Include="src\Game\CEnemy.h" />
     <ClInclude Include="src\Game\CField.h" />
     <ClInclude Include="src\Game\CFloor.h" />

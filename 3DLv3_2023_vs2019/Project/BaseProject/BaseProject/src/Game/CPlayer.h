@@ -56,6 +56,8 @@ public:
 	void UpdateSquat();
 	//‚µ‚á‚ª‚İ‰ğœ
 	void UpdateSquatUp();
+	//€–S
+	void UpdateDead();
 
 	// XV
 	void Update();
@@ -133,6 +135,7 @@ private:
 		eUp, //‹N‚«ã‚ª‚é
 		eSquat, //‚µ‚á‚ª‚İ
 		eSquatUp, //‚µ‚á‚ª‚İ
+		eDead, //€–S
 	};
 	//Œ»İ‚Ìó‘Ô‚ğØ‚è‘Ö‚¦
 	void ChangeState(EState state);

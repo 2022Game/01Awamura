@@ -161,7 +161,7 @@ CPlayer::CPlayer()
 	);*/
 	/*mpColliderSphere->SetCollisionLayers({});*/
 	mpColliderLine->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject,ELayer::eWarpObject,
-		ELayer::eSlopeField,ELayer::eStone,ELayer::eMoveRSwitch,ELayer::eMoveLSwitch});
+		ELayer::eSlopeField,ELayer::eStone,ELayer::eMoveRSwitch,ELayer::eMoveLSwitch,ELayer::eDead});
 	mpColliderLineBody->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject,ELayer::eStone });
 	mpColliderLineLeg->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,ELayer::eBigBadObject,ELayer::eSlopeField });
 	mpColliderLineHead->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,ELayer::eBigBadObject });
@@ -494,6 +494,13 @@ void CPlayer::UpdateSquatUp()
 	}
 }
 
+//éÄñS
+void CPlayer::UpdateDead()
+{
+	Position(mStartPos);
+	ChangeState(EState::eDown);
+}
+
 // çXêV
 void CPlayer::Update()
 {
@@ -505,7 +512,7 @@ void CPlayer::Update()
 	SetParent(mpRideObject);
 	mpRideObject = nullptr;
 
-	if (mMoveSpeed.Y() < 0.0f )
+	if (mMoveSpeed.Y() < 0.0f)
 	{
 		mDowncount--;
 		if (mDowncount < 0)
@@ -589,6 +596,10 @@ void CPlayer::Update()
 			//ÇµÇ·Ç™Çﬁâèú
 		case EState::eSquatUp:
 			UpdateSquatUp();
+			break;
+			//éÄñS
+		case EState::eDead:
+			UpdateDead();
 			break;
 	}
 
@@ -787,7 +798,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		{
 			if (mState != EState::eSquat && mState != EState::eClear)
 			{
-				mMoveSpeed.Y(-0.2f);
+				//mMoveSpeed.Y(-0.2f);
 				Position(Position() + hit.adjust * hit.weight);
 				//mIsGrounded = true;
 				/*if (mState != EState::eBadDown && mState != EState::eDown && mState != EState::eUp)
@@ -795,6 +806,13 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 					ChangeState(EState::eBadDown);
 				//}
 			}
+		}
+
+		//ìñÇΩÇÈÇ∆éÄñS
+		if (other->Layer() == ELayer::eDead)
+		{
+			/*Position(Position() + hit.adjust * hit.weight);*/
+			ChangeState(EState::eDead);
 		}
 		
 		if (other->Layer() == ELayer::eMoveRSwitch)
@@ -924,6 +942,12 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 				{
 					mpRideObject = other->Owner();
 				}
+			}
+			//ìñÇΩÇÈÇ∆éÄñS
+			if (other->Layer() == ELayer::eDead)
+			{
+				/*Position(Position() + hit.adjust * hit.weight);*/
+				//ChangeState(EState::eDead);
 			}
 			if (other->Layer() == ELayer::eBadObject)
 			{

@@ -1,4 +1,4 @@
-#include "CDisappearFloor.h"
+#include "CDisappearFloor2.h"
 #include "Maths.h"
 
 //消えるのにかかる時間
@@ -7,7 +7,7 @@
 #define WAIT_TIME 2.0f
 
 //コンストラクタ
-CDisappearFloor::CDisappearFloor(const CVector& pos, const CVector& scale,
+CDisappearFloor2::CDisappearFloor2(const CVector& pos, const CVector& scale,
 	ETag reactionTag, ELayer reactionLayer)
 	:CRideableObject(ETaskPriority::eTransparent)
 	, mState(EState::Idle)
@@ -37,13 +37,13 @@ CDisappearFloor::CDisappearFloor(const CVector& pos, const CVector& scale,
 }
 
 //デストラクタ
-CDisappearFloor::~CDisappearFloor()
+CDisappearFloor2::~CDisappearFloor2()
 {
 	SAFE_DELETE(mpColliderMesh);
 }
 
 //衝突処理
-void CDisappearFloor::Collision(CCollider* self,CCollider* other,const CHitInfo& hit)
+void CDisappearFloor2::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 {
 	CObjectBase* owner = other->Owner();
 	if (owner == nullptr)return;
@@ -60,20 +60,20 @@ void CDisappearFloor::Collision(CCollider* self,CCollider* other,const CHitInfo&
 }
 
 //状態を切り替える
-void CDisappearFloor::ChangeState(EState state)
+void CDisappearFloor2::ChangeState(EState state)
 {
 	mState = state;
 	mStateStep = 0;
 }
 
 //待機状態の更新処理
-void CDisappearFloor::UpdateIdle()
+void CDisappearFloor2::UpdateIdle()
 {
 
 }
 
 //フェード中の更新処理
-void CDisappearFloor::UpdateFade()
+void CDisappearFloor2::UpdateFade()
 {
 	//フェード時間が経っていない
 	if (mFadeTime < FADE_TIME)
@@ -96,7 +96,7 @@ void CDisappearFloor::UpdateFade()
 }
 
 //フェード後の待機処理
-void CDisappearFloor::UpdateWait()
+void CDisappearFloor2::UpdateWait()
 {
 	//ステップごとに処理を切り替え
 	switch (mStateStep)
@@ -135,7 +135,7 @@ void CDisappearFloor::UpdateWait()
 }
 
 //更新
-void CDisappearFloor::Update()
+void CDisappearFloor2::Update()
 {
 	//現在の状態に合わせて処理を切り替え
 	switch (mState)
@@ -159,7 +159,7 @@ void CDisappearFloor::Update()
 }
 
 //描画
-void CDisappearFloor::Render()
+void CDisappearFloor2::Render()
 {
 	mpModel->SetColor(mColor);
 	mpModel->Render(Matrix());
