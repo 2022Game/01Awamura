@@ -12,8 +12,11 @@
 //コンストラクタ
 CStage5::CStage5()
 	:RandPos(0)
-	,RandPosX(0)
+	, RandPos2(0)
+	, RandPosX(0)
+	, RandPosX2(0)
 	,RandPosZ(0)
+	,RandPosZ2(0)
 	,PosY(0)
 	,PosY2(0)
 {
@@ -42,7 +45,7 @@ void CStage5::Load()
 
 	//クリア土台を作成
 	CClearStage* coin = new CClearStage(clearStageModel,
-		CVector(0.0f, -225.0f, 0.0f), CVector(1.0f, 5.0f, 1.0f));
+		CVector(0.0f, -300.0f, 0.0f), CVector(1.0f, 5.0f, 1.0f));
 	AddTask(coin);
 
 	//普通の足場
@@ -67,7 +70,7 @@ void CStage5::Load()
 		ETag::ePlayer, ELayer::ePlayer
 	);
 	
-	for (int a = 0; a < 8; a++)
+	for (int a = 0; a < 7; a++)
 	{
 		CCoverObject* coverfloor = new CCoverObject
 		(
@@ -102,10 +105,16 @@ void CStage5::Load()
 		PosY2 = PosY2 - 100.0f;
 	}
 
-	for (int i = 0; i < 10; i++)
+
+	for (int i = 0; i < 7; i++)
 	{
 		//棘を作成
 		RandPos = Math::Rand(0, 3);
+		RandPos2 = Math::Rand(0, 3);
+		while (RandPos == RandPos2)
+		{
+			RandPos2 = Math::Rand(0, 3);
+		}
 		switch (RandPos)
 		{
 		case 0:
@@ -125,6 +134,25 @@ void CStage5::Load()
 			RandPosZ = -12.5f;
 			break;
 		};
+		switch (RandPos2)
+		{
+		case 0:
+			RandPosX2 = 12.5f;
+			RandPosZ2 = 12.5f;
+			break;
+		case 1:
+			RandPosX2 = -12.5f;
+			RandPosZ2 = 12.5f;
+			break;
+		case 2:
+			RandPosX2 = 12.5f;
+			RandPosZ2 = -12.5f;
+			break;
+		case 3:
+			RandPosX2 = -12.5f;
+			RandPosZ2 = -12.5f;
+			break;
+		};
 		//針
 		CNeedle* needle = new CNeedle(needleModel,
 			CVector(RandPosX, PosY, RandPosZ), CVector(3.0f, 2.0f, 3.0f));
@@ -135,6 +163,19 @@ void CStage5::Load()
 			floorModel, CVector(RandPosX, PosY, RandPosZ), CVector(0.45f, 1.0f, 0.45f)
 		);
 		AddTask(transfloor);
+		if (i > 3)
+		{
+			//針
+			CNeedle* needle = new CNeedle(needleModel,
+				CVector(RandPosX2, PosY, RandPosZ2), CVector(3.0f, 2.0f, 3.0f));
+			AddTask(needle);
+			//針用の当たり判定
+			CTransparentField* transfloor = new CTransparentField
+			(
+				floorModel, CVector(RandPosX, PosY, RandPosZ), CVector(0.45f, 1.0f, 0.45f)
+			);
+			AddTask(transfloor);
+		}
 		PosY = PosY - 100.0f;
 	}
 	//透明な土台

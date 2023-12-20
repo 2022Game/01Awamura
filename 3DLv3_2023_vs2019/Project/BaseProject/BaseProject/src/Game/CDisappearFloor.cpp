@@ -2,7 +2,7 @@
 #include "Maths.h"
 
 //Á‚¦‚é‚Ì‚É‚©‚©‚éŠÔ
-#define FADE_TIME 5.0f
+#define FADE_TIME 2.0f
 //Á‚¦‚½Œã‚Ì‘Ò‹@ŠÔ
 #define WAIT_TIME 2.0f
 

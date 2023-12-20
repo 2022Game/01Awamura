@@ -59,7 +59,7 @@ void CStage2::Load()
 		AddTask(stone);
 	}
 
-	/*CAppearFloor* afloor = new CAppearFloor
+	CAppearFloor* afloor = new CAppearFloor
 	(
 		CVector(0.0f, -10.0f, 37.5f), CVector(0.5f, 4.0f, 0.5f),
 		ETag::eStone, ELayer::eStone
@@ -71,7 +71,7 @@ void CStage2::Load()
 		CVector(0.0f, -10.0f, 37.5f + 25.0f), CVector(0.5f, 4.0f, 0.5f),
 		ETag::eStone, ELayer::eStone
 	);
-	AddTask(afloor);*/
+	AddTask(afloor);
 
 	//プレイヤーの開始位置を設定
 	CPlayer* player = CPlayer::Instance();

@@ -4,7 +4,7 @@
 //消えるのにかかる時間
 #define FADE_TIME 0.1f
 //消えた後の待機時間
-#define WAIT_TIME 2.0f
+#define WAIT_TIME 10.0f
 
 //コンストラクタ
 CCoverObject::CCoverObject(const CVector& pos, const CVector& scale,

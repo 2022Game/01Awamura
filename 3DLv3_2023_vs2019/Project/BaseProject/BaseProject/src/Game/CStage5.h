@@ -17,8 +17,11 @@ public:
 
 private:
 	int RandPos;
+	int RandPos2;
 	float RandPosX;
+	float RandPosX2;
 	float RandPosZ;
+	float RandPosZ2;
 	float PosY;
 	float PosY2;
 };
