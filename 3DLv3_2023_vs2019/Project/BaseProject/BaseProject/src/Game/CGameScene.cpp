@@ -58,7 +58,7 @@ void CGameScene::Load()
 	CResourceManager::Load<CModel>("Cleardelta", "Field\\Cleardelta.obj"); //OŠpƒNƒŠƒAáŠQ•¨
 	CResourceManager::Load<CModel>("Needle", "Field\\Object\\needle.obj"); //j
 	CResourceManager::Load<CModel>("Transparent", "Field\\Object\\transparent.obj"); //“§–¾—p“y‘ä
-	
+	CResourceManager::Load<CModel>("Cubecol", "Field\\Object\\cubecol.obj");
 
 	CResourceManager::Load<CModel>("FieldCube", "Field\\Object\\cube.obj");
 	CResourceManager::Load<CModel>("FieldCylinder", "Field\\Object\\cylinder.obj");

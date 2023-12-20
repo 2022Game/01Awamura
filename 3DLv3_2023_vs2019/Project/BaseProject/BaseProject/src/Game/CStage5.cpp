@@ -22,7 +22,7 @@ CStage5::CStage5()
 {
 	mStageNo = 5;
 	PosY = 380.0f;
-	PosY2 = 400.0f;
+	PosY2 = -200.0f;
 }
 
 //デストラクタ
@@ -39,6 +39,9 @@ void CStage5::Load()
 
 	//普通の足場読み込み
 	CModel* floorModel = CResourceManager::Get<CModel>("FieldCube");
+
+	//普通の足場読み込み
+	CModel* cubecolModel = CResourceManager::Get<CModel>("Cubecol");
 
 	//棘の読み込み
 	CModel* needleModel = CResourceManager::Get<CModel>("Needle");
@@ -64,21 +67,21 @@ void CStage5::Load()
 		CVector(0.0f, 300.0f, 0.0f), CVector(0.5f, 2.0f, 0.5f));
 	AddTask(floor);*/
 
-	CDisappearFloor* dfloor = new CDisappearFloor
+	/*CDisappearFloor* dfloor = new CDisappearFloor
 	(
 		CVector(0.0f, 500.0f, 0.0f), CVector(1.0f, 2.0f, 1.0f),
 		ETag::ePlayer, ELayer::ePlayer
-	);
+	);*/
 	
 	for (int a = 0; a < 7; a++)
 	{
-		CCoverObject* coverfloor = new CCoverObject
+		/*CCoverObject* coverfloor = new CCoverObject
 		(
 			CVector(0.0f, PosY2, 0.0f), CVector(1.0f, 2.0f, 1.0f),
 			ETag::ePlayer, ELayer::ePlayer);
-		AddTask(coverfloor);
+		AddTask(coverfloor);*/
 
-		dfloor = new CDisappearFloor
+		CDisappearFloor* dfloor = new CDisappearFloor
 		(
 			CVector(-12.5f, PosY2, 12.5f), CVector(0.5f, 2.0f, 0.5f),
 			ETag::ePlayer, ELayer::ePlayer
@@ -102,7 +105,7 @@ void CStage5::Load()
 			ETag::ePlayer, ELayer::ePlayer
 		);
 		AddTask(dfloor);
-		PosY2 = PosY2 - 100.0f;
+		PosY2 = PosY2 + 100.0f;
 	}
 
 
@@ -160,7 +163,7 @@ void CStage5::Load()
 		//針用の当たり判定
 		CTransparentField* transfloor = new CTransparentField
 		(
-			floorModel, CVector(RandPosX, PosY, RandPosZ), CVector(0.45f, 1.0f, 0.45f)
+			cubecolModel, CVector(RandPosX, PosY, RandPosZ), CVector(0.45f, 1.0f, 0.45f)
 		);
 		AddTask(transfloor);
 		if (i > 3)
@@ -172,12 +175,18 @@ void CStage5::Load()
 			//針用の当たり判定
 			CTransparentField* transfloor = new CTransparentField
 			(
-				floorModel, CVector(RandPosX, PosY, RandPosZ), CVector(0.45f, 1.0f, 0.45f)
+				cubecolModel, CVector(RandPosX2, PosY, RandPosZ2), CVector(0.45f, 1.0f, 0.45f)
 			);
 			AddTask(transfloor);
 		}
 		PosY = PosY - 100.0f;
 	}
+
+	CDisappearFloor* dfloor = new CDisappearFloor
+	(
+		CVector(0.0f, 500.0f, 0.0f), CVector(1.0f, 2.0f, 1.0f),
+		ETag::ePlayer, ELayer::ePlayer
+	);
 	//透明な土台
 	/*CTransparentField* transfloor = new CTransparentField
 	(
@@ -197,10 +206,10 @@ void CStage5::Load()
 	CCamera* mainCamera = CCamera::MainCamera();
 	if (mainCamera != nullptr)
 	{
-		CVector eye = playerPos + CVector(0.0f, 75.0f, 1.0f);
+		CVector eye = playerPos + CVector(0.0f, 75.0f, 0.0f);
 		CVector at = playerPos;
 		CVector forward = (at - eye).Normalized();
-		CVector side = CVector::Cross(forward, CVector::up);
+		CVector side = CVector::Cross(forward, CVector::back);
 		CVector up = CVector::Cross(side, forward);
 		mainCamera->LookAt(eye, at, up);
 		mainCamera->SetFollowTargetTf(player);
