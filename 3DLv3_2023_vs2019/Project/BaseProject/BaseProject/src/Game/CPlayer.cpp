@@ -12,6 +12,7 @@ CPlayer* CPlayer::spInstance = nullptr;
 bool CPlayer::mSwitchRObject = false;
 bool CPlayer::mSwitchLObject = false;
 bool CPlayer::mResetCount = false;
+bool CPlayer::mDownSwitch = false;
 
 // プレイヤーのアニメーションデータのテーブル
 const CPlayer::AnimData CPlayer::ANIM_DATA[] =
@@ -162,16 +163,26 @@ CPlayer::CPlayer()
 	/*mpColliderSphere->SetCollisionLayers({});*/
 	mpColliderLine->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject,ELayer::eWarpObject,
 		ELayer::eSlopeField,ELayer::eStone,ELayer::eMoveRSwitch,ELayer::eMoveLSwitch,ELayer::eDead});
-	mpColliderLineBody->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject,ELayer::eStone });
-	mpColliderLineLeg->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,ELayer::eBigBadObject,ELayer::eSlopeField });
-	mpColliderLineHead->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,ELayer::eBigBadObject });
-	mpColliderLineBody2->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,ELayer::eBigBadObject });
-	mpColliderLineLeg2->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,ELayer::eBigBadObject,ELayer::eSlopeField });
-	mpColliderLineHead2->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,ELayer::eBigBadObject });
-	mpColliderLineBodyHalf->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject,ELayer::eStone });
-	mpColliderLineLegHalf->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,ELayer::eBigBadObject,ELayer::eSlopeField });
-	mpColliderLineBodyHalf2->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,ELayer::eBigBadObject });
-	mpColliderLineLegHalf2->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,ELayer::eBigBadObject,ELayer::eSlopeField });
+	mpColliderLineBody->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject,
+		ELayer::eStone });
+	mpColliderLineLeg->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
+		ELayer::eBigBadObject,ELayer::eSlopeField });
+	mpColliderLineHead->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
+		ELayer::eBigBadObject });
+	mpColliderLineBody2->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
+		ELayer::eBigBadObject });
+	mpColliderLineLeg2->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
+		ELayer::eBigBadObject,ELayer::eSlopeField });
+	mpColliderLineHead2->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
+		ELayer::eBigBadObject });
+	mpColliderLineBodyHalf->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject,
+		ELayer::eStone });
+	mpColliderLineLegHalf->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
+		ELayer::eBigBadObject,ELayer::eSlopeField });
+	mpColliderLineBodyHalf2->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
+		ELayer::eBigBadObject });
+	mpColliderLineLegHalf2->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
+		ELayer::eBigBadObject,ELayer::eSlopeField });
 }
 
 CPlayer::~CPlayer()
@@ -399,6 +410,7 @@ void CPlayer::UpdateJumpN()
 //倒れる
 void CPlayer::UpdateDown()
 {
+	mDownSwitch = true;
 	ChangeAnimation(EAnimType::eDown);
 	if (IsAnimationFinished() && mMoveSpeed.Y() >= 0.0f)
 	{
@@ -424,6 +436,7 @@ void CPlayer::UpdateUp()
 	ChangeAnimation(EAnimType::eUp);
 	if (IsAnimationFinished())
 	{
+		mDownSwitch = false;
 		ChangeState(EState::eIdle);
 	}
 }

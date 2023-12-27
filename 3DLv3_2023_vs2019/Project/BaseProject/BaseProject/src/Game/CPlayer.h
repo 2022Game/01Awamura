@@ -77,6 +77,7 @@ public:
 	static bool mSwitchLObject;
 
 	static bool mResetCount;
+	static bool mDownSwitch;
 
 private:
 	CPlayer* player;

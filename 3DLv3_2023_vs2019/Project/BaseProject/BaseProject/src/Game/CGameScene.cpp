@@ -60,6 +60,8 @@ void CGameScene::Load()
 	CResourceManager::Load<CModel>("Transparent", "Field\\Object\\transparent.obj"); //透明用土台
 	CResourceManager::Load<CModel>("Cubecol", "Field\\Object\\cubecol.obj");
 
+	CResourceManager::Load<CModel>("Rainbow12345", "Field\\Rainbow12345.obj");//テスト用
+
 	CResourceManager::Load<CModel>("FieldCube", "Field\\Object\\cube.obj");
 	CResourceManager::Load<CModel>("FieldCylinder", "Field\\Object\\cylinder.obj");
 

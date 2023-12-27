@@ -13,12 +13,15 @@
 CStage5::CStage5()
 	:RandPos(0)
 	, RandPos2(0)
+	,RandPos3(0)
 	, RandPosX(0)
 	, RandPosX2(0)
 	,RandPosZ(0)
 	,RandPosZ2(0)
 	,PosY(0)
 	,PosY2(0)
+	,RandPosDate(0)
+	,RandPosDate2(0)
 {
 	mStageNo = 5;
 	PosY = 380.0f;
@@ -40,7 +43,7 @@ void CStage5::Load()
 	//•’Ê‚Ì‘«ê“Ç‚İ‚İ
 	CModel* floorModel = CResourceManager::Get<CModel>("FieldCube");
 
-	//•’Ê‚Ì‘«ê“Ç‚İ‚İ
+	//“§–¾‚Ì‘«ê“Ç‚İ‚İ
 	CModel* cubecolModel = CResourceManager::Get<CModel>("Cubecol");
 
 	//™‚Ì“Ç‚İ‚İ
@@ -113,11 +116,7 @@ void CStage5::Load()
 	{
 		//™‚ğì¬
 		RandPos = Math::Rand(0, 3);
-		RandPos2 = Math::Rand(0, 3);
-		while (RandPos == RandPos2)
-		{
-			RandPos2 = Math::Rand(0, 3);
-		}
+		RandPosDate = RandPos;
 		switch (RandPos)
 		{
 		case 0:
@@ -137,25 +136,6 @@ void CStage5::Load()
 			RandPosZ = -12.5f;
 			break;
 		};
-		switch (RandPos2)
-		{
-		case 0:
-			RandPosX2 = 12.5f;
-			RandPosZ2 = 12.5f;
-			break;
-		case 1:
-			RandPosX2 = -12.5f;
-			RandPosZ2 = 12.5f;
-			break;
-		case 2:
-			RandPosX2 = 12.5f;
-			RandPosZ2 = -12.5f;
-			break;
-		case 3:
-			RandPosX2 = -12.5f;
-			RandPosZ2 = -12.5f;
-			break;
-		};
 		//j
 		CNeedle* needle = new CNeedle(needleModel,
 			CVector(RandPosX, PosY, RandPosZ), CVector(3.0f, 2.0f, 3.0f));
@@ -163,19 +143,83 @@ void CStage5::Load()
 		//j—p‚Ì“–‚½‚è”»’è
 		CTransparentField* transfloor = new CTransparentField
 		(
-			cubecolModel, CVector(RandPosX, PosY, RandPosZ), CVector(0.45f, 1.0f, 0.45f)
+			cubecolModel, CVector(RandPosX, PosY, RandPosZ), CVector(0.50f, 1.0f, 0.50f)
 		);
 		AddTask(transfloor);
 		if (i > 3)
 		{
+			RandPos2 = Math::Rand(0, 3);
+			while (RandPos == RandPos2)
+			{
+				RandPos2 = Math::Rand(0, 3);
+			}
+			RandPosDate2 = RandPos2;
+			RandPos = RandPos2;
+			switch (RandPos)
+			{
+			case 0:
+				RandPosX = 12.5f;
+				RandPosZ = 12.5f;
+				break;
+			case 1:
+				RandPosX = -12.5f;
+				RandPosZ = 12.5f;
+				break;
+			case 2:
+				RandPosX = 12.5f;
+				RandPosZ = -12.5f;
+				break;
+			case 3:
+				RandPosX = -12.5f;
+				RandPosZ = -12.5f;
+				break;
+			};
 			//j
 			CNeedle* needle = new CNeedle(needleModel,
-				CVector(RandPosX2, PosY, RandPosZ2), CVector(3.0f, 2.0f, 3.0f));
+				CVector(RandPosX, PosY, RandPosZ), CVector(3.0f, 2.0f, 3.0f));
 			AddTask(needle);
 			//j—p‚Ì“–‚½‚è”»’è
 			CTransparentField* transfloor = new CTransparentField
 			(
-				cubecolModel, CVector(RandPosX2, PosY, RandPosZ2), CVector(0.45f, 1.0f, 0.45f)
+				cubecolModel, CVector(RandPosX, PosY, RandPosZ), CVector(0.50f, 1.0f, 0.50f)
+			);
+			AddTask(transfloor);
+		}
+		if (i > 4)
+		{
+			RandPos3 = Math::Rand(0, 3);
+			while (RandPos3 == RandPosDate2 || RandPos3 == RandPosDate)
+			{
+				RandPos3 = Math::Rand(0, 3);
+			}
+			RandPos = RandPos3;
+			switch (RandPos)
+			{
+			case 0:
+				RandPosX = 12.5f;
+				RandPosZ = 12.5f;
+				break;
+			case 1:
+				RandPosX = -12.5f;
+				RandPosZ = 12.5f;
+				break;
+			case 2:
+				RandPosX = 12.5f;
+				RandPosZ = -12.5f;
+				break;
+			case 3:
+				RandPosX = -12.5f;
+				RandPosZ = -12.5f;
+				break;
+			};
+			//j
+			CNeedle* needle = new CNeedle(needleModel,
+				CVector(RandPosX, PosY, RandPosZ), CVector(3.0f, 2.0f, 3.0f));
+			AddTask(needle);
+			//j—p‚Ì“–‚½‚è”»’è
+			CTransparentField* transfloor = new CTransparentField
+			(
+				cubecolModel, CVector(RandPosX, PosY, RandPosZ), CVector(0.50f, 1.0f, 0.50f)
 			);
 			AddTask(transfloor);
 		}

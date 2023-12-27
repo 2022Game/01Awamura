@@ -1,8 +1,9 @@
 #include "CDisappearFloor.h"
 #include "Maths.h"
+#include "CPlayer.h"
 
 //消えるのにかかる時間
-#define FADE_TIME 2.0f
+#define FADE_TIME 1.5f
 //消えた後の待機時間
 #define WAIT_TIME 2.0f
 
@@ -18,7 +19,7 @@ CDisappearFloor::CDisappearFloor(const CVector& pos, const CVector& scale,
 	, mWaitTime(0.0f)
 {
 	//床のモデルを取得
-	mpModel = CResourceManager::Get<CModel>("FieldCube");
+	mpModel = CResourceManager::Get<CModel>("Cubecol");
 
 	//消える床のコライダー作成
 	mpColliderMesh = new CColliderMesh(this, ELayer::eObject, mpModel, true);
@@ -51,10 +52,13 @@ void CDisappearFloor::Collision(CCollider* self,CCollider* other,const CHitInfo&
 	//衝突しているのが、反応するオブジェクトであれば
 	if (owner->Tag() == mReactionTag && other->Layer() == mReactionLayer)
 	{
-		//現在が待機状態であれば、フェード状態へ切り替える
-		if (mState == EState::Idle)
+		if (CPlayer::mDownSwitch == false)
 		{
-			ChangeState(EState::Fade);
+			//現在が待機状態であれば、フェード状態へ切り替える
+			if (mState == EState::Idle)
+			{
+				ChangeState(EState::Fade);
+			}
 		}
 	}
 }

@@ -18,6 +18,9 @@ public:
 private:
 	int RandPos;
 	int RandPos2;
+	int RandPos3;
+	int RandPosDate;
+	int RandPosDate2;
 	float RandPosX;
 	float RandPosX2;
 	float RandPosZ;

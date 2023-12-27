@@ -36,7 +36,8 @@ void CStage4::Load()
 	CModel* sidedownwoodModel = CResourceManager::Get<CModel>("SideDownwood");
 
 	//円形土台のモデル読み込み
-	CModel* bollFieldModel = CResourceManager::Get<CModel>("Bollfield");
+	CModel* bollFieldModel = CResourceManager::Get<CModel>("Rainbow12345");
+	//テスト中！！！！！！！！！！！！！！！！！！！！！！！！！！！！
 
 	//とんがりコーン土台のモデル読み込み
 	CModel* deltaModel = CResourceManager::Get<CModel>("Cleardelta");
