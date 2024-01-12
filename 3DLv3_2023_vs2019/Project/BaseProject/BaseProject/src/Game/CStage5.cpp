@@ -51,7 +51,7 @@ void CStage5::Load()
 
 	//ƒNƒŠƒA“y‘ä‚ğì¬
 	CClearStage* coin = new CClearStage(clearStageModel,
-		CVector(0.0f, -300.0f, 0.0f), CVector(1.0f, 5.0f, 1.0f));
+		CVector(0.0f, -300.0f, 0.0f), CVector(0.8f, 5.0f, 0.8f));
 	AddTask(coin);
 
 	//•’Ê‚Ì‘«ê

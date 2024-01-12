@@ -121,7 +121,6 @@ CPlayer::CPlayer()
 		CVector(0.0f, PLAYER_HEIGHT / 2, PLAYER_HEIGHT / 4),
 		CVector(0.0f, PLAYER_HEIGHT / 2, -0.4f)
 	);
-
 	mpColliderLineLegHalf = new CColliderLine
 	(
 		this, ELayer::ePlayer,
@@ -163,26 +162,27 @@ CPlayer::CPlayer()
 	/*mpColliderSphere->SetCollisionLayers({});*/
 	mpColliderLine->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject,ELayer::eWarpObject,
 		ELayer::eSlopeField,ELayer::eStone,ELayer::eMoveRSwitch,ELayer::eMoveLSwitch,ELayer::eDead});
-	mpColliderLineBody->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject,
-		ELayer::eStone });
+		mpColliderLineBody->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject,
+			ELayer::eStone });
+		mpColliderLineBody2->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
+			ELayer::eBigBadObject });
 	mpColliderLineLeg->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
 		ELayer::eBigBadObject,ELayer::eSlopeField });
-	mpColliderLineHead->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
-		ELayer::eBigBadObject });
-	mpColliderLineBody2->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
-		ELayer::eBigBadObject });
 	mpColliderLineLeg2->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
 		ELayer::eBigBadObject,ELayer::eSlopeField });
-	mpColliderLineHead2->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
-		ELayer::eBigBadObject });
-	mpColliderLineBodyHalf->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject,
-		ELayer::eStone });
-	mpColliderLineLegHalf->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
-		ELayer::eBigBadObject,ELayer::eSlopeField });
-	mpColliderLineBodyHalf2->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
-		ELayer::eBigBadObject });
-	mpColliderLineLegHalf2->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
-		ELayer::eBigBadObject,ELayer::eSlopeField });
+
+		mpColliderLineHead->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
+			ELayer::eBigBadObject });
+		mpColliderLineHead2->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
+			ELayer::eBigBadObject });
+		mpColliderLineBodyHalf->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject,
+			ELayer::eStone });
+		mpColliderLineLegHalf->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
+			ELayer::eBigBadObject,ELayer::eSlopeField });
+		mpColliderLineBodyHalf2->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
+			ELayer::eBigBadObject });
+		mpColliderLineLegHalf2->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
+			ELayer::eBigBadObject,ELayer::eSlopeField });
 }
 
 CPlayer::~CPlayer()
@@ -842,48 +842,51 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 	//“·‚Ì”»’è
 	if (self == mpColliderLineBody || self == mpColliderLineBody2)
 	{
-		if (mState != EState::eClear)
+		if (CGameManager::StageNo() != 6)
 		{
-			if (mState != EState::eDown && mState != EState::eBadDown || mIsGrounded != true)
+			if (mState != EState::eClear)
 			{
-				if (other->Layer() == ELayer::eObject)
+				if (mState != EState::eDown && mState != EState::eBadDown || mIsGrounded != true)
 				{
-					Position(Position() + hit.adjust * hit.weight);
-					//mIsGrounded = true;
+					if (other->Layer() == ELayer::eObject)
+					{
+						Position(Position() + hit.adjust * hit.weight);
+						//mIsGrounded = true;
 
-					if (other->Tag() == ETag::eRideableObject)
-					{
-						mpRideObject = other->Owner();
+						if (other->Tag() == ETag::eRideableObject)
+						{
+							mpRideObject = other->Owner();
+						}
 					}
-				}
-				if (other->Layer() == ELayer::eBadObject)
-				{
-					Position(Position() + hit.adjust * hit.weight);
-					//mIsGrounded = true;
-					if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump)
+					if (other->Layer() == ELayer::eBadObject)
 					{
+						Position(Position() + hit.adjust * hit.weight);
+						//mIsGrounded = true;
+						if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump)
+						{
+							ChangeState(EState::eBadDown);
+						}
+					}
+					if (other->Layer() == ELayer::eBigBadObject)
+					{
+						Position(Position() + hit.adjust * hit.weight);
+						//mIsGrounded = true;
+						/*if (mState != EState::eBadDown && mState != EState::eUp && mState != EState::eDown)
+						{*/
 						ChangeState(EState::eBadDown);
+						//}
 					}
-				}
-				if (other->Layer() == ELayer::eBigBadObject)
-				{
-					Position(Position() + hit.adjust * hit.weight);
-					//mIsGrounded = true;
-					/*if (mState != EState::eBadDown && mState != EState::eUp && mState != EState::eDown)
-					{*/
-					ChangeState(EState::eBadDown);
-					//}
-				}
-				//Šâ
-				if (other->Layer() == ELayer::eStone)
-				{
-					mMoveSpeed.Y(-0.2f);
-					Position(Position() + hit.adjust * hit.weight);
-					//mIsGrounded = true;
-					/*if (mState != EState::eBadDown && mState != EState::eDown && mState != EState::eUp)
-					{*/
-					ChangeState(EState::eBadDown);
-					//}
+					//Šâ
+					if (other->Layer() == ELayer::eStone)
+					{
+						mMoveSpeed.Y(-0.2f);
+						Position(Position() + hit.adjust * hit.weight);
+						//mIsGrounded = true;
+						/*if (mState != EState::eBadDown && mState != EState::eDown && mState != EState::eUp)
+						{*/
+						ChangeState(EState::eBadDown);
+						//}
+					}
 				}
 			}
 		}
@@ -892,53 +895,56 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 	//‹¹‚Ì”»’è
 	if (self == mpColliderLineBodyHalf || self == mpColliderLineBodyHalf2)
 	{
-		if (mState != EState::eClear)
+		if (CGameManager::StageNo() != 6)
 		{
-			/*if (mState == EState::eSquat)
-			{*/
-			if (mState != EState::eDown && mState != EState::eBadDown || mIsGrounded != true)
+			if (mState != EState::eClear)
 			{
-				if (other->Layer() == ELayer::eObject)
+				/*if (mState == EState::eSquat)
+				{*/
+				if (mState != EState::eDown && mState != EState::eBadDown || mIsGrounded != true)
 				{
-					Position(Position() + hit.adjust * hit.weight);
-					//mIsGrounded = true;
+					if (other->Layer() == ELayer::eObject)
+					{
+						Position(Position() + hit.adjust * hit.weight);
+						//mIsGrounded = true;
 
-					if (other->Tag() == ETag::eRideableObject)
-					{
-						mpRideObject = other->Owner();
+						if (other->Tag() == ETag::eRideableObject)
+						{
+							mpRideObject = other->Owner();
+						}
 					}
-				}
-				if (other->Layer() == ELayer::eBadObject)
-				{
-					Position(Position() + hit.adjust * hit.weight);
-					//mIsGrounded = true;
-					if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump)
+					if (other->Layer() == ELayer::eBadObject)
 					{
+						Position(Position() + hit.adjust * hit.weight);
+						//mIsGrounded = true;
+						if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump)
+						{
+							ChangeState(EState::eBadDown);
+						}
+					}
+					if (other->Layer() == ELayer::eBigBadObject)
+					{
+						Position(Position() + hit.adjust * hit.weight);
+						//mIsGrounded = true;
+						/*if (mState != EState::eBadDown && mState != EState::eUp && mState != EState::eDown)
+						{*/
 						ChangeState(EState::eBadDown);
+						//}
+					}
+					//Šâ
+					if (other->Layer() == ELayer::eStone)
+					{
+						mMoveSpeed.Y(-0.2f);
+						Position(Position() + hit.adjust * hit.weight);
+						//mIsGrounded = true;
+						/*if (mState != EState::eBadDown && mState != EState::eDown && mState != EState::eUp)
+						{*/
+						ChangeState(EState::eBadDown);
+						//}
 					}
 				}
-				if (other->Layer() == ELayer::eBigBadObject)
-				{
-					Position(Position() + hit.adjust * hit.weight);
-					//mIsGrounded = true;
-					/*if (mState != EState::eBadDown && mState != EState::eUp && mState != EState::eDown)
-					{*/
-					ChangeState(EState::eBadDown);
-					//}
-				}
-				//Šâ
-				if (other->Layer() == ELayer::eStone)
-				{
-					mMoveSpeed.Y(-0.2f);
-					Position(Position() + hit.adjust * hit.weight);
-					//mIsGrounded = true;
-					/*if (mState != EState::eBadDown && mState != EState::eDown && mState != EState::eUp)
-					{*/
-					ChangeState(EState::eBadDown);
-					//}
-				}
+				//}
 			}
-			//}
 		}
 	}
 
@@ -998,6 +1004,8 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 	//•G‚Ì”»’è
 	if (self == mpColliderLineLegHalf || self == mpColliderLineLegHalf2)
 	{
+		if (CGameManager::StageNo() != 6)
+		{
 		if (mState != EState::eClear)
 		{
 			if (mState == EState::eBadDown || mState == EState::eDown)
@@ -1042,47 +1050,51 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 					//}
 				}
 			}
+			}
 		}
 	}
 	
 	//“ª‚Ì”»’è
 	if (self == mpColliderLineHead || self == mpColliderLineHead2)
 	{
-		if (mState != EState::eClear)
+		if(CGameManager::StageNo() != 6)
 		{
-			if (mState != EState::eSquat && mState != EState::eDown && mState != EState::eBadDown && mState != EState::eUp || mIsGrounded != true)
+			if (mState != EState::eClear)
 			{
-				if (other->Layer() == ELayer::eObject)
+				if (mState != EState::eSquat && mState != EState::eDown && mState != EState::eBadDown && mState != EState::eUp || mIsGrounded != true)
 				{
-					Position(Position() + hit.adjust * hit.weight);
-					//mIsGrounded = true;
-					if (other->Tag() == ETag::eRideableObject)
+					if (other->Layer() == ELayer::eObject)
 					{
-						mpRideObject = other->Owner();
+						Position(Position() + hit.adjust * hit.weight);
+						//mIsGrounded = true;
+						if (other->Tag() == ETag::eRideableObject)
+						{
+							mpRideObject = other->Owner();
+						}
 					}
-				}
-				if (other->Layer() == ELayer::eBadObject)
-				{
-					Position(Position() + hit.adjust * hit.weight);
-					//mIsGrounded = true;
-					if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump)
+					if (other->Layer() == ELayer::eBadObject)
 					{
+						Position(Position() + hit.adjust * hit.weight);
+						//mIsGrounded = true;
+						if (mState == EState::eJumpN || mState == EState::eJumpStart || mState == EState::eJump)
+						{
+							ChangeState(EState::eBadDown);
+						}
+					}
+					if (other->Layer() == ELayer::eBigBadObject)
+					{
+						Position(Position() + hit.adjust * hit.weight);
+						//mIsGrounded = true;
 						ChangeState(EState::eBadDown);
 					}
-				}
-				if (other->Layer() == ELayer::eBigBadObject)
-				{
-					Position(Position() + hit.adjust * hit.weight);
-					//mIsGrounded = true;
-					ChangeState(EState::eBadDown);
-				}
-				//Šâ
-				if (other->Layer() == ELayer::eStone)
-				{
-					mMoveSpeed.Y(-0.2f);
-					Position(Position() + hit.adjust * hit.weight);
-					//mIsGrounded = true;
-					ChangeState(EState::eBadDown);
+					//Šâ
+					if (other->Layer() == ELayer::eStone)
+					{
+						mMoveSpeed.Y(-0.2f);
+						Position(Position() + hit.adjust * hit.weight);
+						//mIsGrounded = true;
+						ChangeState(EState::eBadDown);
+					}
 				}
 			}
 		}

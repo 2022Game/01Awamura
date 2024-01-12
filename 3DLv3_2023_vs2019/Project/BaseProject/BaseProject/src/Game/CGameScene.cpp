@@ -30,7 +30,7 @@ void CGameScene::Load()
 
 	//背景
 	//CResourceManager::Load<CModel>("Field", "Field\\Dublesky3.obj");
-	CResourceManager::Load<CModel>("Field", "Field\\Rainbowsky.obj");
+	CResourceManager::Load<CModel>("Field", "Field\\RainbowSphere.obj");
 	//CResourceManager::Load<CModel>("Field", "Field\\Object\\Clearrainbow.obj");
 
 	//プレイヤー
@@ -60,7 +60,7 @@ void CGameScene::Load()
 	CResourceManager::Load<CModel>("Transparent", "Field\\Object\\transparent.obj"); //透明用土台
 	CResourceManager::Load<CModel>("Cubecol", "Field\\Object\\cubecol.obj");
 
-	CResourceManager::Load<CModel>("Rainbow12345", "Field\\Rainbow12345.obj");//テスト用
+	//CResourceManager::Load<CModel>("Rainbow12345", "Field\\Rainbow12345.obj");//テスト用
 
 	CResourceManager::Load<CModel>("FieldCube", "Field\\Object\\cube.obj");
 	CResourceManager::Load<CModel>("FieldCylinder", "Field\\Object\\cylinder.obj");

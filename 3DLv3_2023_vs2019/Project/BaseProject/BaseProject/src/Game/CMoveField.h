@@ -16,8 +16,10 @@ public:
 	void Render();
 
 private:
+	int mStageNo;
 	float randmodelspeedY;
 	float randmodelspeedY2;
+	float randmodelspeedYNo6;
 	CModel* mpModel;
 	CColliderMesh* mpColliderMesh;
 	CColliderSphere* mpColliderSphere;

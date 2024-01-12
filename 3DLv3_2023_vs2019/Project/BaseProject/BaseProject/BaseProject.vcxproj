@@ -58,6 +58,7 @@
     <ClCompile Include="src\BaseSystem\Maths.cpp" />
     <ClCompile Include="src\BaseSystem\Primitive.cpp" />
     <ClCompile Include="src\BaseSystem\System.cpp" />
+    <ClCompile Include="src\CStage6.cpp" />
     <ClCompile Include="src\Game\CAppearFloor.cpp" />
     <ClCompile Include="src\Game\CApplication.cpp" />
     <ClCompile Include="src\Game\CAxe.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="src\BaseSystem\TaskPriority.h" />
     <ClInclude Include="src\BaseSystem\ObjectTag.h" />
     <ClInclude Include="src\BaseSystem\Time.h" />
+    <ClInclude Include="src\CStage6.h" />
     <ClInclude Include="src\Define.h" />
     <ClInclude Include="src\Game\CAppearFloor.h" />
     <ClInclude Include="src\Game\CApplication.h" />

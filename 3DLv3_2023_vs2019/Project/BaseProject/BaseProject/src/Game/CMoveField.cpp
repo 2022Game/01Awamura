@@ -2,6 +2,7 @@
 #include "CCollider.h"
 #include "CPlayer.h"
 #include "Maths.h"
+#include "CGameManager.h"
 
 #define ROTATE_Y 0.1f
 
@@ -11,6 +12,7 @@ CMoveField::CMoveField(CModel* model, const CVector& pos, const CVector& scale, 
 	, mRotateSpeedY(rotateSpeedY)
 	, randmodelspeedY(0.0f)
 	, randmodelspeedY2(0.0f)
+	, randmodelspeedYNo6(0.0f)
 {
 	mpColliderMesh = new CColliderMesh(this, ELayer::eField, mpModel, true);
 	Position(mDefaultPos);
@@ -18,6 +20,8 @@ CMoveField::CMoveField(CModel* model, const CVector& pos, const CVector& scale, 
 	randmodelspeedY = Math::Rand(0.5f, 3.0f);
 
 	randmodelspeedY2 = Math::Rand(0.5f, 3.0f);
+
+	randmodelspeedYNo6 = Math::Rand(0.5f, 2.0f);
 }
 
 CMoveField::~CMoveField()
@@ -43,6 +47,11 @@ void CMoveField::Update()
 	else
 	{
 		Rotate(0.0f, 0.0f, 0.0f);
+	}
+
+	if (CGameManager::StageNo() == 6)
+	{
+		Rotate(0.0f, randmodelspeedYNo6, 0.0f);
 	}
 }
 
