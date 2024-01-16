@@ -27,6 +27,15 @@ void CStage6::Load()
 	//十字土台読み込み
 	CModel* moveTenModel = CResourceManager::Get<CModel>("Tenfield");
 
+	//十字土台読み込み
+	CModel* moveTenPurpleModel = CResourceManager::Get<CModel>("TenfieldPurple");
+
+	//十字土台読み込み
+	CModel* moveTenSkyblueModel = CResourceManager::Get<CModel>("TenfieldSkyblue");
+
+	//十字土台読み込み
+	CModel* moveTenYellowModel = CResourceManager::Get<CModel>("TenfieldYellow");
+
 	// クリア土台のモデル読み込み
 	CModel* clearCubeStageModel = CResourceManager::Get<CModel>("Clearcube");
 
@@ -41,24 +50,24 @@ void CStage6::Load()
 		, 0.0f);
 	AddTask(tenfield);
 
-	tenfield = new CMoveField(moveTenModel,
+	tenfield = new CMoveField(moveTenPurpleModel,
 		CVector(0.0f, -6.0f, 122.5f), CVector(12.5f, 12.5f, 12.5f)
 		, 0.0f);
 	AddTask(tenfield);
 
-	tenfield = new CMoveField(moveTenModel,
+	tenfield = new CMoveField(moveTenSkyblueModel,
 		CVector(0.0f, -7.0f, 62.5f), CVector(12.5f, 12.5f, 12.5f)
 		, 0.0f);
 	AddTask(tenfield);
 
-	tenfield = new CMoveField(moveTenModel,
+	tenfield = new CMoveField(moveTenYellowModel,
 		CVector(0.0f, -8.0f, 2.5f), CVector(12.5f, 12.5f, 12.5f)
 		, 0.0f);
 	AddTask(tenfield);
 
 	//クリア土台を作成
 	CClearCube* coin = new CClearCube(clearCubeStageModel,
-		CVector(0.0f, -7.0f, -62.0f), CVector(5.0f, 1.0f, 1.0f));
+		CVector(0.0f, -7.0f, -62.0f), CVector(5.0f, 5.0f, 1.0f));
 	AddTask(coin);
 
 	//プレイヤーの開始位置を設定

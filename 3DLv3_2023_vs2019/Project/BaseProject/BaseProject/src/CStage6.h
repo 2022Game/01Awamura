@@ -1,7 +1,7 @@
 #pragma once
 #include "CStageBase.h"
 
-//ステージ6「ぐるぐる縄跳びステージ」
+//ステージ6「ぐるぐる土台」
 class CStage6 : public CStageBase
 {
 public:

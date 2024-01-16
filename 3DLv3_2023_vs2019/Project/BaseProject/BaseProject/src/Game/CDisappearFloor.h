@@ -27,6 +27,8 @@ public:
 	//描画
 	void Render() override;
 
+	static int mFadeCount; //全消去用のカウント
+
 private:
 	enum class EState
 	{
@@ -52,5 +54,5 @@ private:
 	ELayer mReactionLayer; //触れたときに反応するコライダーのレイヤ-
 
 	float mFadeTime; //フェード時間
-	float mWaitTime; //フェード後の待機時間￥
+	float mWaitTime; //フェード後の待機時間
 };

@@ -93,6 +93,7 @@
     <ClCompile Include="src\Game\CStage3.cpp" />
     <ClCompile Include="src\Game\CStage4.cpp" />
     <ClCompile Include="src\Game\CStage5.cpp" />
+    <ClCompile Include="src\Game\CStage7.cpp" />
     <ClCompile Include="src\Game\CStageBase.cpp" />
     <ClCompile Include="src\Game\CStageEntrance.cpp" />
     <ClCompile Include="src\Game\CStageManager.cpp" />
@@ -206,6 +207,7 @@
     <ClInclude Include="src\Game\CStage3.h" />
     <ClInclude Include="src\Game\CStage4.h" />
     <ClInclude Include="src\Game\CStage5.h" />
+    <ClInclude Include="src\Game\CStage7.h" />
     <ClInclude Include="src\Game\CStageBase.h" />
     <ClInclude Include="src\Game\CStageEntrance.h" />
     <ClInclude Include="src\Game\CStageManager.h" />

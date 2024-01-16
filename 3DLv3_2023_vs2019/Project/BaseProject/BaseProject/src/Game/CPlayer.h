@@ -148,6 +148,8 @@ private:
 
 	CVector mMoveSpeed;	// 移動速度
 	bool mIsGrounded;	// 接地しているかどうか
+	bool mCollisionSwitch; //当たり判定作動用
+	int mStageNoBox; //ステージナンバー保管用
 
 	CColliderLine* mpColliderLine;
 	CColliderSphere* mpColliderSphere;

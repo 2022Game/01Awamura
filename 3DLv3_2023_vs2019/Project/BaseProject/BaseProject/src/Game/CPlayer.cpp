@@ -4,6 +4,7 @@
 #include "CCamera.h"
 #include "CField.h"
 #include "CGameManager.h"
+#include "CDisappearFloor.h"
 
 // プレイヤーのインスタンス
 CPlayer* CPlayer::spInstance = nullptr;
@@ -518,6 +519,17 @@ void CPlayer::UpdateDead()
 // 更新
 void CPlayer::Update()
 {
+	if (CDisappearFloor::mFadeCount <= 0)
+	{
+		Position(mStartPos);
+		mMoveSpeed.Y(-0.1f);
+		mMoveSpeed.X(0.0f);
+		mMoveSpeed.Z(0.0f);
+		CDisappearFloor::mFadeCount = 100;
+		ChangeState(EState::eClear);
+	}
+
+
 	if (mResetCount == true)
 	{
 		mResetCount = false;
@@ -842,8 +854,6 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 	//胴の判定
 	if (self == mpColliderLineBody || self == mpColliderLineBody2)
 	{
-		if (CGameManager::StageNo() != 6)
-		{
 			if (mState != EState::eClear)
 			{
 				if (mState != EState::eDown && mState != EState::eBadDown || mIsGrounded != true)
@@ -889,14 +899,11 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 					}
 				}
 			}
-		}
 	}
 
 	//胸の判定
 	if (self == mpColliderLineBodyHalf || self == mpColliderLineBodyHalf2)
 	{
-		if (CGameManager::StageNo() != 6)
-		{
 			if (mState != EState::eClear)
 			{
 				/*if (mState == EState::eSquat)
@@ -945,7 +952,6 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 				}
 				//}
 			}
-		}
 	}
 
 	//足の判定
@@ -1004,8 +1010,6 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 	//膝の判定
 	if (self == mpColliderLineLegHalf || self == mpColliderLineLegHalf2)
 	{
-		if (CGameManager::StageNo() != 6)
-		{
 		if (mState != EState::eClear)
 		{
 			if (mState == EState::eBadDown || mState == EState::eDown)
@@ -1050,15 +1054,12 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 					//}
 				}
 			}
-			}
 		}
 	}
 	
 	//頭の判定
 	if (self == mpColliderLineHead || self == mpColliderLineHead2)
 	{
-		if(CGameManager::StageNo() != 6)
-		{
 			if (mState != EState::eClear)
 			{
 				if (mState != EState::eSquat && mState != EState::eDown && mState != EState::eBadDown && mState != EState::eUp || mIsGrounded != true)
@@ -1097,7 +1098,6 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 					}
 				}
 			}
-		}
 	}
 }
 
