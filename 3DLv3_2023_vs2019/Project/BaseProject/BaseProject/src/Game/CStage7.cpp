@@ -5,6 +5,7 @@
 #include "CCamera.h"
 #include "CDisappearFloor.h"
 #include "Maths.h"
+#include "CCleardelta.h"
 
 //コンストラクタ
 CStage7::CStage7()
@@ -49,10 +50,18 @@ void CStage7::Load()
 	//透明の足場読み込み
 	CModel* cubecolModel = CResourceManager::Get<CModel>("Cubecol");
 
+	//とんがりコーン土台のモデル読み込み
+	CModel* deltaModel = CResourceManager::Get<CModel>("Cleardelta");
+
 	//クリア土台を作成
 	CClearStage* coin = new CClearStage(clearStageModel,
-		CVector(0.0f, -300.0f, 0.0f), CVector(0.8f, 5.0f, 0.8f));
+		CVector(0.0f, -300.0f, -100.0f), CVector(0.8f, 5.0f, 0.8f));
 	AddTask(coin);
+
+	//とんがり土台を作成
+	CCleardelta* cleardelta = new CCleardelta(deltaModel,
+		CVector(0.0f, -300.0f, -100.0f), CVector(5.0f, 5.0f, 5.0f));
+	AddTask(cleardelta);
 
 	//普通の足場
 	CFloor* floor = new CFloor(floorModel,
@@ -121,9 +130,11 @@ void CStage7::Load()
 				CVector(RandPosX, -10.0f, PosZ), CVector(0.5f, 4.0f, 0.5f),
 				ETag::ePlayer, ELayer::ePlayer
 			);
+			CDisappearFloor::mFadeCount++;
 		}
 		PosZ = PosZ - 24.5f;
 	}
+	CDisappearFloor::mFadeCountBox = CDisappearFloor::mFadeCount;
 
 	//プレイヤーの開始位置を設定
 	CPlayer* player = CPlayer::Instance();

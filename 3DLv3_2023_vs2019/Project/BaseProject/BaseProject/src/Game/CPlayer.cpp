@@ -519,14 +519,13 @@ void CPlayer::UpdateDead()
 // XV
 void CPlayer::Update()
 {
-	if (CDisappearFloor::mFadeCount <= 0)
+	if (CGameManager::StageNo() == 7 && CDisappearFloor::mFadeCount <= 0)
 	{
-		Position(mStartPos);
+		Position(0.0f, -270.0f, -90.0f);
 		mMoveSpeed.Y(-0.1f);
 		mMoveSpeed.X(0.0f);
 		mMoveSpeed.Z(0.0f);
-		CDisappearFloor::mFadeCount = 100;
-		ChangeState(EState::eClear);
+		CDisappearFloor::mFadeCount = CDisappearFloor::mFadeCountBox;
 	}
 
 

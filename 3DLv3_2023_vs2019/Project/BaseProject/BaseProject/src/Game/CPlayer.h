@@ -165,6 +165,7 @@ private:
 	CColliderLine* mpColliderLineLegHalf2;
 	CTransform* mpRideObject;
 	CVector mStartPos;
+	CVector mClearPos;
 	int mDowncount;
 	CVector mColliderPos;
 	CVector mColliderPos2;

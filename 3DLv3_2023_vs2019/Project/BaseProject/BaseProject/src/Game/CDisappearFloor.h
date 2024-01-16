@@ -28,6 +28,7 @@ public:
 	void Render() override;
 
 	static int mFadeCount; //全消去用のカウント
+	static int mFadeCountBox;
 
 private:
 	enum class EState

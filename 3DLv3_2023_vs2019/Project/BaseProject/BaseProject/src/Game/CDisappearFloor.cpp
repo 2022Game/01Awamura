@@ -9,7 +9,8 @@
 //消えた後の待機時間
 #define WAIT_TIME 2.0f
 
-int CDisappearFloor::mFadeCount = 49;
+int CDisappearFloor::mFadeCount = 0;
+int CDisappearFloor::mFadeCountBox = 0;
 
 //コンストラクタ
 CDisappearFloor::CDisappearFloor(const CVector& pos, const CVector& scale,
@@ -168,44 +169,6 @@ void CDisappearFloor::UpdateWait()
 			break;
 		}
 	}
-
-	if (CGameManager::StageNo() == 7 && CPlayer::mResetCount == true)
-	{
-		//ステップごとに処理を切り替え
-		switch (mStateStep)
-		{
-			//ステップ０ フェードの後の待機時間
-		case 0:
-			//待ち時間が経過していなければ、経過時間分減らす
-			if (mWaitTime > 0.0f)
-			{
-				mWaitTime -= Time::DeltaTime();
-			}
-			else
-			{
-				mStateStep++;
-			}
-			break;
-			//ステップ１で消えた床を元に戻す
-		case 1:
-			if (mFadeTime > 0.0f)
-			{
-				mFadeTime -= 10 * Time::DeltaTime();
-			}
-			else
-			{
-				//待機状態へ戻す
-				ChangeState(EState::Idle);
-				mFadeTime = 0.0f;
-				mWaitTime = 0.0f;
-
-				//元の状態に戻ったタイミングで
-				//コライダーをオンにして乗れるようにする
-				mpColliderMesh->SetEnable(true);
-			}
-			break;
-		}
-	}
 }
 
 //更新
@@ -227,6 +190,7 @@ void CDisappearFloor::Update()
 		UpdateWait();
 		break;
 	}
+
 	//フェード時間に合わせて床のアルファ値を求めてアルファ値を設定
 	if (CGameManager::StageNo() == 5)
 	{
@@ -237,6 +201,18 @@ void CDisappearFloor::Update()
 	{
 		float alpha = 1.0f - Math::Clamp01(mFadeTime / FADE_TIMESTAGE7);
 		SetAlpha(alpha);
+	}
+	if (CGameManager::StageNo() == 7 && CPlayer::mResetCount == true)
+	{
+		//待機状態へ戻す
+		ChangeState(EState::Idle);
+		mFadeTime = 0.0f;
+		mWaitTime = 0.0f;
+
+		//元の状態に戻ったタイミングで
+		//コライダーをオンにして乗れるようにする
+		mpColliderMesh->SetEnable(true);
+		mFadeCount = mFadeCountBox;
 	}
 }
 
