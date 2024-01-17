@@ -67,7 +67,7 @@ void CStage6::Load()
 
 	//クリア土台を作成
 	CClearCube* coin = new CClearCube(clearCubeStageModel,
-		CVector(0.0f, -7.0f, -62.0f), CVector(5.0f, 5.0f, 1.0f));
+		CVector(0.0f, -7.0f, -62.0f), CVector(5.0f, 1.0f, 1.0f));
 	AddTask(coin);
 
 	//プレイヤーの開始位置を設定
