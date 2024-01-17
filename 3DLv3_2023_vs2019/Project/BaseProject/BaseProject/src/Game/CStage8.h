@@ -16,4 +16,5 @@ public:
 	void Unload() override;
 
 private:
+	float PosZ;
 };

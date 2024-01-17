@@ -755,7 +755,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		}
 
 		//syougaibutu
-		if (other->Layer() == ELayer::eObject)
+		if (CGameManager::StageNo() == 8 && other->Layer() == ELayer::eObject)
 		{
 			//mIceGrounded = true;
 			mMoveSpeed.X(0.0f);
