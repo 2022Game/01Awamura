@@ -7,10 +7,12 @@
 #include "Cinput.h"
 #include "CStageManager.h"
 #include "CGameManager.h"
+#include "CGameMenu.h"
 
 //コンストラクタ
 CGameScene::CGameScene()
 	: CSceneBase(EScene::eGame)
+	, mpGameMenu(nullptr)
 {
 }
 
@@ -68,6 +70,15 @@ void CGameScene::Load()
 
 	CResourceManager::Load<CModel>("FieldCube", "Field\\Object\\cube.obj");
 	CResourceManager::Load<CModel>("FieldCylinder", "Field\\Object\\cylinder.obj");
+	
+	CResourceManager::Load<CSound>("SlashSound", "Sound\\SE\\slash.wav");
+
+	// ゲームBGMを読み込み
+	//mpGameBGM = CResourceManager::Load<CSound>("GameBGM", "Sound\\BGM\\game.wav");
+	// ゲームBGMのループ範囲を設定
+	//mpGameBGM->SetLoopRange(0, 2801203);
+	// ゲームBGMをループ再生開始
+	//mpGameBGM->PlayLoop();
 
 	new CField();
 
@@ -84,9 +95,26 @@ void CGameScene::Load()
 
 	//ゲーム開始処理
 	CGameManager::GameStart();
+
+	// ゲームメニューを作成
+	mpGameMenu = new CGameMenu();
 }
 
 //シーンの更新処理
 void CGameScene::Update()
 {
+	// BGM再生中でなければ、BGMを再生
+	//if (!mpGameBGM->IsPlaying())
+	//{
+	//	mpGameBGM->PlayLoop(-1, 1.0f, false, 1.0f);
+	//}
+
+	// ゲームメニューを開いてなければ、[Ｍ]キーでメニューを開く
+	if (!mpGameMenu->IsOpened())
+	{
+		if (CInput::PushKey('M'))
+		{
+			mpGameMenu->Open();
+		}
+	}
 }

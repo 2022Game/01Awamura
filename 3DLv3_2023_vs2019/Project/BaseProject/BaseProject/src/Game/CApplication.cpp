@@ -3,6 +3,7 @@
 #include "glut.h"
 #include "CTaskManager.h"
 #include "CCollisionManager.h"
+#include "CSoundManager.h"
 #include "CSceneManager.h"
 #include "CGamePause.h"
 
@@ -13,6 +14,7 @@ CApplication::~CApplication()
 void CApplication::Start()
 {
 	new CGamePause();
+	CSoundManager::Instance();
 	CSceneManager::Instance()->LoadScene(EScene::eBootMenu);
 }
 
@@ -22,6 +24,7 @@ void CApplication::End()
 	CTaskManager::ClearInstance();
 	CCollisionManager::ClearInstance();
 	CResourceManager::ClearInstance();
+	CSoundManager::ClearInstance();
 }
 
 void CApplication::Update()
@@ -32,6 +35,10 @@ void CApplication::Update()
 	// 衝突処理
 	CCollisionManager::Instance()->CollisionAll();
 
+	// サウンドの更新
+	CSoundManager::Instance()->Update();
+
+	// シーンの更新
 	CSceneManager::Instance()->Update();
 
 	// タスクの描画処理

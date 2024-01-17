@@ -46,6 +46,7 @@ CPlayer::CPlayer()
 	, mpRideObject(nullptr)
 	,mStateStep(0)
 	, mDowncount(180)
+	, mIsPlayedSlashSE(false)
 {
 	/*SetColor(CColor(1.0f, 0.0f, 1.0f, 1.0f));
 	SetAlpha(0.1f);*/
@@ -73,6 +74,8 @@ CPlayer::CPlayer()
 
 	// 最初は待機アニメーションを再生
 	ChangeAnimation(EAnimType::eIdle);
+
+	mpSlashSE = CResourceManager::Get<CSound>("SlashSound");
 
 	mpColliderLine = new CColliderLine
 	(

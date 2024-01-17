@@ -394,6 +394,12 @@
     <ClCompile Include="src\Game\CCube.cpp">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClCompile>
+    <ClCompile Include="src\BaseSystem\CSoundManager.cpp">
+      <Filter>ソース ファイル\BaseSystem\System</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CGameMenu.cpp">
+      <Filter>ソース ファイル\Game\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BaseSystem\CCollider.h">
@@ -737,6 +743,12 @@
     </ClInclude>
     <ClInclude Include="src\Game\CCube.h">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BaseSystem\CSoundManager.h">
+      <Filter>ソース ファイル\BaseSystem\System</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CGameMenu.h">
+      <Filter>ソース ファイル\Game\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

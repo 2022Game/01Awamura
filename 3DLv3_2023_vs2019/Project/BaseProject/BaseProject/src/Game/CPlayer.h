@@ -4,6 +4,7 @@
 #include "CColliderLine.h"
 #include "CColliderSphere.h"
 #include "CRideableObject.h"
+#include "CSound.h"
 
 /*
 プレイヤークラス
@@ -176,4 +177,7 @@ private:
 	CVector mColliderPos2;
 	CVector mColliderPos3;
 	CVector mColliderPos4;
+
+	CSound* mpSlashSE;
+	bool mIsPlayedSlashSE;
 };

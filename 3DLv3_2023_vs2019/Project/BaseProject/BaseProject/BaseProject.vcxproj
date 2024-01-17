@@ -45,6 +45,7 @@
     <ClCompile Include="src\BaseSystem\CSceneManager.cpp" />
     <ClCompile Include="src\BaseSystem\CShader.cpp" />
     <ClCompile Include="src\BaseSystem\CSound.cpp" />
+    <ClCompile Include="src\BaseSystem\CSoundManager.cpp" />
     <ClCompile Include="src\BaseSystem\CTask.cpp" />
     <ClCompile Include="src\BaseSystem\CTaskManager.cpp" />
     <ClCompile Include="src\BaseSystem\CText.cpp" />
@@ -73,6 +74,7 @@
     <ClCompile Include="src\Game\CField.cpp" />
     <ClCompile Include="src\Game\CFloor.cpp" />
     <ClCompile Include="src\Game\CGameManager.cpp" />
+    <ClCompile Include="src\Game\CGameMenu.cpp" />
     <ClCompile Include="src\Game\CGameScene.cpp" />
     <ClCompile Include="src\Game\CIceField.cpp" />
     <ClCompile Include="src\Game\CImage.cpp" />
@@ -155,6 +157,7 @@
     <ClInclude Include="src\BaseSystem\CSceneManager.h" />
     <ClInclude Include="src\BaseSystem\CShader.h" />
     <ClInclude Include="src\BaseSystem\CSound.h" />
+    <ClInclude Include="src\BaseSystem\CSoundManager.h" />
     <ClInclude Include="src\BaseSystem\CTask.h" />
     <ClInclude Include="src\BaseSystem\CTaskManager.h" />
     <ClInclude Include="src\BaseSystem\CText.h" />
@@ -189,6 +192,7 @@
     <ClInclude Include="src\Game\CEnemy.h" />
     <ClInclude Include="src\Game\CField.h" />
     <ClInclude Include="src\Game\CFloor.h" />
+    <ClInclude Include="src\Game\CGameMenu.h" />
     <ClInclude Include="src\Game\CGameScene.h" />
     <ClInclude Include="src\Game\CGameManager.h" />
     <ClInclude Include="src\Game\CIceField.h" />

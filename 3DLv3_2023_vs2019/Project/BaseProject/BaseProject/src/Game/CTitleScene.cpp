@@ -2,6 +2,7 @@
 #include "CSceneManager.h"
 #include "CGameScene.h"
 #include "CCamera.h"
+#include "CSound.h"
 
 //コンストラクタ
 CTitleScene::CTitleScene()
@@ -23,6 +24,12 @@ void CTitleScene::Load()
 
 	//ここでタイトル画面に必要な
 	//リソースの読み込みやクラスの生成を行う
+
+	// タイトルBGMを読み込み
+	mpTitleBGM = CResourceManager::Load<CSound>("TitleBGM", "Sound\\BGM\\title.wav");
+	// タイトルBGMをループ再生開始
+	mpTitleBGM->PlayLoop();
+
 	//mBgImage = new CImage("white.png");
 	//mBgImage->SetColor(0.0f, 0.0f, 0.0f, 1.0f);
 	//mBgImage->SetPos(0.0f, 0.0f);
