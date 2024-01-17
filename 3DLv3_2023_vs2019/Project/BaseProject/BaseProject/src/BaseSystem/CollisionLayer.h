@@ -19,6 +19,7 @@ enum class ELayer
 	eMoveLSwitch,
 	eMove,
 	eDead,
+	eIceField,
 };
 // 衝突判定レイヤーの初期化リスト
 using Layers = std::initializer_list<ELayer>;

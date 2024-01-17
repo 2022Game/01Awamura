@@ -162,15 +162,15 @@ CPlayer::CPlayer()
 	);*/
 	/*mpColliderSphere->SetCollisionLayers({});*/
 	mpColliderLine->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject,ELayer::eWarpObject,
-		ELayer::eSlopeField,ELayer::eStone,ELayer::eMoveRSwitch,ELayer::eMoveLSwitch,ELayer::eDead});
+		ELayer::eSlopeField,ELayer::eStone,ELayer::eMoveRSwitch,ELayer::eMoveLSwitch,ELayer::eDead,ELayer::eIceField });
 		mpColliderLineBody->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject,
 			ELayer::eStone });
 		mpColliderLineBody2->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
 			ELayer::eBigBadObject });
 	mpColliderLineLeg->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
-		ELayer::eBigBadObject,ELayer::eSlopeField });
+		ELayer::eBigBadObject,ELayer::eSlopeField,ELayer::eIceField });
 	mpColliderLineLeg2->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
-		ELayer::eBigBadObject,ELayer::eSlopeField });
+		ELayer::eBigBadObject,ELayer::eSlopeField,ELayer::eIceField });
 
 		mpColliderLineHead->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
 			ELayer::eBigBadObject });
@@ -299,7 +299,7 @@ void CPlayer::UpdateIdle()
 			ChangeAnimation(EAnimType::eIdle);
 		}
 
-		// 左クリックで攻撃状態へ移行
+		// 左クリックでしゃがみ状態へ移行
 		if (CInput::PushKey(VK_LBUTTON))
 		{
 			mMoveSpeed.X(0.0f);
@@ -516,6 +516,12 @@ void CPlayer::UpdateDead()
 	ChangeState(EState::eDown);
 }
 
+//滑る
+void CPlayer::UpdateIce()
+{
+	ChangeAnimation(EAnimType::eJumpN);
+}
+
 // 更新
 void CPlayer::Update()
 {
@@ -626,6 +632,10 @@ void CPlayer::Update()
 		case EState::eDead:
 			UpdateDead();
 			break;
+			//滑る床
+		case EState::eIce:
+			UpdateIce();
+			break;
 	}
 
 	//準備中でなければ移動処理などを行う
@@ -647,6 +657,7 @@ void CPlayer::Update()
 		target.Normalize();
 		CVector forward = CVector::Slerp(current, target, 0.125f);
 		Rotation(CQuaternion::LookRotation(forward));
+		mIceGrounded = false;
 	}
 
 	// キャラクターの更新
@@ -743,6 +754,27 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 			}
 		}
 
+		//syougaibutu
+		if (other->Layer() == ELayer::eObject)
+		{
+			//mIceGrounded = true;
+			mMoveSpeed.X(0.0f);
+			mMoveSpeed.Z(0.0f);
+			ChangeState(EState::eJumpEnd);
+		}
+
+		//滑る床
+		if (other->Layer() == ELayer::eIceField)
+		{
+			//落ちないようにする
+			mMoveSpeed.Y(0.0f);
+			Position(Position() + hit.adjust * hit.weight);
+			mIsGrounded = true;
+			ChangeState(EState::eIce);
+			// = true;
+		}
+
+		//坂
 		if (other->Layer() == ELayer::eSlopeField)
 		{
 			//落ちないようにする

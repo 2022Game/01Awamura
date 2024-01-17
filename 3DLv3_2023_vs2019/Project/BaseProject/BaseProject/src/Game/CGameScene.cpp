@@ -62,7 +62,8 @@ void CGameScene::Load()
 	CResourceManager::Load<CModel>("Needle", "Field\\Object\\needle.obj"); //針
 	CResourceManager::Load<CModel>("Transparent", "Field\\Object\\transparent.obj"); //透明用土台
 	CResourceManager::Load<CModel>("Cubecol", "Field\\Object\\cubecol.obj");
-
+	CResourceManager::Load<CModel>("IceField", "Field\\IceField.obj");
+	CResourceManager::Load<CModel>("Cube2", "Field\\Object\\Cube2.obj"); //四角壁
 	//CResourceManager::Load<CModel>("Rainbow12345", "Field\\Rainbow12345.obj");//テスト用
 
 	CResourceManager::Load<CModel>("FieldCube", "Field\\Object\\cube.obj");

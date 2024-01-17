@@ -58,6 +58,8 @@ public:
 	void UpdateSquatUp();
 	//死亡
 	void UpdateDead();
+	//滑る
+	void UpdateIce();
 
 	// 更新
 	void Update();
@@ -99,6 +101,7 @@ private:
 		eClear,
 		eSquat,
 		eSquatUp,
+		eIce,
 
 		Num
 	};
@@ -137,6 +140,7 @@ private:
 		eSquat, //しゃがみ
 		eSquatUp, //しゃがみ
 		eDead, //死亡
+		eIce, //滑る
 	};
 	//現在の状態を切り替え
 	void ChangeState(EState state);
@@ -149,6 +153,7 @@ private:
 	CVector mMoveSpeed;	// 移動速度
 	bool mIsGrounded;	// 接地しているかどうか
 	bool mCollisionSwitch; //当たり判定作動用
+	bool mIceGrounded; //滑る床の上にいるか
 	int mStageNoBox; //ステージナンバー保管用
 
 	CColliderLine* mpColliderLine;

@@ -4,11 +4,13 @@
 #include "Maths.h"
 #include "CPlayer.h"
 #include "CCamera.h"
+#include "CIceField.h"
+#include "CCube.h"
 
 //コンストラクタ
 CStage8::CStage8()
 {
-	mStageNo = 2;
+	mStageNo = 8;
 }
 
 //デストラクタ
@@ -23,6 +25,12 @@ void CStage8::Load()
 	//普通の足場読み込み
 	CModel* floorModel = CResourceManager::Get<CModel>("FieldCube");
 
+	//壁読み込み
+	CModel* cubeModel = CResourceManager::Get<CModel>("Cube");
+
+	//滑る足場読み込み
+	CModel* icefieldModel = CResourceManager::Get<CModel>("IceField");
+
 	// クリア土台のモデル読み込み
 	CModel* clearCubeStageModel = CResourceManager::Get<CModel>("Clearcube");
 
@@ -32,9 +40,19 @@ void CStage8::Load()
 		CVector(0.0f, -10.0f, 0.0f), CVector(5.0f, 4.0f, 1.0f));
 	AddTask(floor);
 
+	//壁
+	CCube* cube = new CCube(cubeModel,
+		CVector(0.0f, 10.0f, -100.0f), CVector(0.5f, 5.0f, 0.5f));
+	AddTask(cube);
+
+	//滑る足場
+	CIceField* icefield = new CIceField(icefieldModel,
+		CVector(0.0f, -10.0f, -150.0f), CVector(5.0f, 4.0f, 5.0f));
+	AddTask(icefield);
+
 	//クリア土台を作成
 	CClearCube* coin = new CClearCube(clearCubeStageModel,
-		CVector(0.0f, 70.0f, -300.0f), CVector(5.0f, 1.0f, 1.0f));
+		CVector(0.0f, -10.0f, -300.0f), CVector(5.0f, 4.0f, 1.0f));
 	AddTask(coin);
 
 	//プレイヤーの開始位置を設定
