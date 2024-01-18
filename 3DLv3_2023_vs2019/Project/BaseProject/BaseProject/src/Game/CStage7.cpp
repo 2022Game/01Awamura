@@ -130,6 +130,7 @@ void CStage7::Load()
 				CVector(RandPosX, -10.0f, PosZ), CVector(0.5f, 4.0f, 0.5f),
 				ETag::ePlayer, ELayer::ePlayer
 			);
+			AddTask(dfloor);
 			CDisappearFloor::mFadeCount++;
 		}
 		PosZ = PosZ - 24.5f;

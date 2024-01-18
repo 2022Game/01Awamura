@@ -58,7 +58,7 @@ void CStage8::Load()
 		n[7] = 7;
 		n[8] = 8;
 		z = 8;
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < 2; i++)
 		{
 			//d•¡‚µ‚È‚¢ƒ‰ƒ“ƒ_ƒ€‚Ì¶¬
 			int x;

@@ -155,6 +155,7 @@ private:
 	bool mIsGrounded;	// 接地しているかどうか
 	bool mCollisionSwitch; //当たり判定作動用
 	bool mIceGrounded; //滑る床の上にいるか
+	bool mCollisioncheck;
 	int mStageNoBox; //ステージナンバー保管用
 
 	CColliderLine* mpColliderLine;
@@ -180,4 +181,11 @@ private:
 
 	CSound* mpSlashSE;
 	bool mIsPlayedSlashSE;
+
+	bool mIceUp;
+	bool mIceLeft;
+	bool mIceRight;
+	bool mIceDown;
+	int Box;
+	int Box2;
 };

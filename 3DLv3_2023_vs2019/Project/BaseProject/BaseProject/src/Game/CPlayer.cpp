@@ -44,9 +44,17 @@ CPlayer::CPlayer()
 	: CXCharacter(ETag::ePlayer, ETaskPriority::ePlayer)
 	, mState(EState::eIdle)
 	, mpRideObject(nullptr)
-	,mStateStep(0)
+	, mStateStep(0)
 	, mDowncount(180)
 	, mIsPlayedSlashSE(false)
+	, mCollisioncheck(false)
+	, mIceGrounded(false)
+	, mIceDown(false)
+	, mIceLeft(false)
+	, mIceRight(false)
+	, mIceUp(false)
+	, Box(0)
+	, Box2(0)
 {
 	/*SetColor(CColor(1.0f, 0.0f, 1.0f, 1.0f));
 	SetAlpha(0.1f);*/
@@ -54,6 +62,8 @@ CPlayer::CPlayer()
 	spInstance = this;
 	Position(0.0f,30.0f,0.0f);
 	mStartPos = Position();
+
+
 
 	// モデルデータ読み込み
 	CModelX* model = CResourceManager::Get<CModelX>("Player");
@@ -277,10 +287,63 @@ void CPlayer::UpdateIdle()
 		// 移動処理
 		// キーの入力ベクトルを取得
 		CVector input;
-		if (CInput::Key('W'))		input.Z(-2.0f);
-		else if (CInput::Key('S'))	input.Z(2.0f);
-		if (CInput::Key('A'))		input.X(-2.0f);
-		else if (CInput::Key('D'))	input.X(2.0f);
+		if (CGameManager::StageNo() != 8)
+		{
+			if (CInput::Key('W'))	     input.Z(-2.0f);
+			else if (CInput::Key('S'))   input.Z(2.0f);
+			if (CInput::Key('A'))		 input.X(-2.0f);
+			else if (CInput::Key('D'))	 input.X(2.0f);
+		}
+
+		//ステージ8の状態
+		if (CGameManager::StageNo() == 8)
+		{
+			//壁にゴリゴリしないようにする
+			if (mIceGrounded != false && mCollisioncheck == true)
+			{
+				if (CInput::Key('W') && mIceUp != true)	    mIceGrounded = false, mIceUp = true,Box = 1, input.Z(-2.0f);
+				else if (CInput::Key('S') && mIceDown != true)  mIceGrounded = false, mIceDown = true,Box = 2, input.Z(2.0f);
+				else if (CInput::Key('A') && mIceLeft != true)		mIceGrounded = false, mIceLeft = true,Box = 3, input.X(-2.0f);
+				else if (CInput::Key('D') && mIceRight != true)	mIceGrounded = false, mIceRight = true,Box = 4, input.X(2.0f);
+			}
+
+			//平常時
+			if (mIceGrounded != false && mCollisioncheck == false)
+			{
+				if (CInput::Key('W'))	    mIceGrounded = false, input.Z(-2.0f);
+				else if (CInput::Key('S')) mIceGrounded = false, input.Z(2.0f);
+				else if (CInput::Key('A'))		 mIceGrounded = false, input.X(-2.0f);
+				else if (CInput::Key('D')) mIceGrounded = false, input.X(2.0f);
+			}
+		}
+		//壁にゴリゴリしないようにする
+		if (CGameManager::StageNo() == 8)
+		{
+			if (Box2 != Box)
+			{
+				if (Box2 == 1)
+				{
+					mIceUp = false;
+					Box2 = 0;
+				}
+				if (Box2 == 2)
+				{
+					mIceDown = false;
+					Box2 = 0;
+				}
+				if (Box2 == 3)
+				{
+					mIceLeft = false;
+					Box2 = 0;
+				}
+				if (Box2 == 4)
+				{
+					mIceRight = false;
+					Box2 = 0;
+				}
+			}
+		}
+		Box2 = Box;
 
 		// 入力ベクトルの長さで入力されているか判定
 		if (input.LengthSqr() > 0.0f)
@@ -523,6 +586,11 @@ void CPlayer::UpdateDead()
 void CPlayer::UpdateIce()
 {
 	ChangeAnimation(EAnimType::eJumpN);
+	if (mIceGrounded == true)
+	{
+		//mCollisioncheck = false;
+		ChangeState(EState::eJumpEnd);
+	}
 }
 
 // 更新
@@ -642,7 +710,7 @@ void CPlayer::Update()
 	}
 
 	//準備中でなければ移動処理などを行う
-	if (mState != EState::eReady)
+	if (mState != EState::eReady && mState != EState::eClear && mState != EState::eClearEnd )
 	{
 		//mColliderSpeed = CVector(0.0f, -10.0f, 0.0f);
 
@@ -660,7 +728,6 @@ void CPlayer::Update()
 		target.Normalize();
 		CVector forward = CVector::Slerp(current, target, 0.125f);
 		Rotation(CQuaternion::LookRotation(forward));
-		mIceGrounded = false;
 	}
 
 	// キャラクターの更新
@@ -668,6 +735,8 @@ void CPlayer::Update()
 	mSwitchRObject = false;
 	mSwitchLObject = false;
 	mIsGrounded = false;
+	//mIceGrounded = false;
+	//mCollisioncheck = false;
 	if (mState == EState::eSquat)
 	{
 		mpColliderLineHead->Position(mColliderPos3); 
@@ -733,6 +802,10 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 			mMoveSpeed.Y(0.0f);
 			Position(Position() + hit.adjust * hit.weight);
 			mIsGrounded = true;
+			if (CGameManager::StageNo() == 8)
+			{
+				mIceGrounded = true;
+			}
 			//乗れる土台
 			if (other->Tag() == ETag::eRideableObject)
 			{
@@ -757,13 +830,9 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 			}
 		}
 
-		//syougaibutu
-		if (CGameManager::StageNo() == 8 && other->Layer() == ELayer::eObject)
+		if (other->Layer() == ELayer::eField && CGameManager::StageNo() == 8)
 		{
-			//mIceGrounded = true;
-			mMoveSpeed.X(0.0f);
-			mMoveSpeed.Z(0.0f);
-			ChangeState(EState::eJumpEnd);
+			mCollisioncheck = false;
 		}
 
 		//滑る床
@@ -773,8 +842,10 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 			mMoveSpeed.Y(0.0f);
 			Position(Position() + hit.adjust * hit.weight);
 			mIsGrounded = true;
-			ChangeState(EState::eIce);
-			// = true;
+			if (mIceGrounded == false)
+			{
+				ChangeState(EState::eIce);
+			}
 		}
 
 		//坂
@@ -888,6 +959,14 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 	//胴の判定
 	if (self == mpColliderLineBody || self == mpColliderLineBody2)
 	{
+		//syougaibutu
+		if (CGameManager::StageNo() == 8 && other->Layer() == ELayer::eObject)
+		{
+			mIceGrounded = true;
+			mMoveSpeed.X(0.0f);
+			mMoveSpeed.Z(0.0f);
+			//ChangeState(EState::eJumpEnd);
+		}
 			if (mState != EState::eClear)
 			{
 				if (mState != EState::eDown && mState != EState::eBadDown || mIsGrounded != true)
@@ -938,6 +1017,15 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 	//胸の判定
 	if (self == mpColliderLineBodyHalf || self == mpColliderLineBodyHalf2)
 	{
+		//syougaibutu
+		if (CGameManager::StageNo() == 8 && other->Layer() == ELayer::eObject)
+		{
+			mIceGrounded = true;
+			mCollisioncheck = true;
+			mMoveSpeed.X(0.0f);
+			mMoveSpeed.Z(0.0f);
+			//ChangeState(EState::eJumpEnd);
+		}
 			if (mState != EState::eClear)
 			{
 				/*if (mState == EState::eSquat)
@@ -991,6 +1079,14 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 	//足の判定
 	if (self == mpColliderLineLeg || self == mpColliderLineLeg2)
 	{
+		//syougaibutu
+		if (CGameManager::StageNo() == 8 && other->Layer() == ELayer::eObject)
+		{
+			mIceGrounded = true;
+			mMoveSpeed.X(0.0f);
+			mMoveSpeed.Z(0.0f);
+			//ChangeState(EState::eJumpEnd);
+		}
 		if (mState != EState::eClear)
 		{
 			if (other->Layer() == ELayer::eObject)
@@ -1044,6 +1140,14 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 	//膝の判定
 	if (self == mpColliderLineLegHalf || self == mpColliderLineLegHalf2)
 	{
+		//syougaibutu
+		if (CGameManager::StageNo() == 8 && other->Layer() == ELayer::eObject)
+		{
+			mIceGrounded = true;
+			mMoveSpeed.X(0.0f);
+			mMoveSpeed.Z(0.0f);
+			//ChangeState(EState::eJumpEnd);
+		}
 		if (mState != EState::eClear)
 		{
 			if (mState == EState::eBadDown || mState == EState::eDown)
@@ -1094,6 +1198,15 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 	//頭の判定
 	if (self == mpColliderLineHead || self == mpColliderLineHead2)
 	{
+		//syougaibutu
+		if (CGameManager::StageNo() == 8 && other->Layer() == ELayer::eObject)
+		{
+			mMoveSpeed.X(0.0f);
+			mMoveSpeed.Z(0.0f);
+			mIceGrounded = true;
+			mCollisioncheck = true;
+			//ChangeState(EState::eJumpEnd);
+		}
 			if (mState != EState::eClear)
 			{
 				if (mState != EState::eSquat && mState != EState::eDown && mState != EState::eBadDown && mState != EState::eUp || mIsGrounded != true)
