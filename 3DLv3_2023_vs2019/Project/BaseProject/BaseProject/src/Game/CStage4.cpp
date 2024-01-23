@@ -7,6 +7,7 @@
 #include "CCleardelta.h"
 #include "CPlayer.h"
 #include "CCamera.h"
+#include "CGameManager.h"
 
 //コンストラクタ
 CStage4::CStage4()

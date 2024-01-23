@@ -5,6 +5,7 @@
 #include "CWarp.h"
 #include "CPlayer.h"
 #include "CCamera.h"
+#include "CGameManager.h"
 
 //コンストラクタ
 CStage1::CStage1()

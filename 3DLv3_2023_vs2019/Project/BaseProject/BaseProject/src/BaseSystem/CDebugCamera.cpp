@@ -1,4 +1,5 @@
 #include "CDebugCamera.h"
+#if _DEBUG
 #include "CDebugInput.h"
 #include "glut.h"
 #include "Maths.h"
@@ -21,7 +22,7 @@
 #define TRANSLATE_SPEED 0.125f
 
 // デバッグカメラのインスタンス
-CDebugCamera* CDebugCamera::spDebugCamera = new CDebugCamera();
+CDebugCamera* CDebugCamera::spDebugCamera = nullptr;
 // デバッグカメラがオンになっているかどうか
 bool CDebugCamera::msIsOn = false;
 
@@ -42,6 +43,10 @@ CDebugCamera::~CDebugCamera()
 // デバッグカメラを取得
 CDebugCamera* CDebugCamera::DebugCamera()
 {
+	if (spDebugCamera == nullptr)
+	{
+		spDebugCamera = new CDebugCamera();
+	}
 	return spDebugCamera;
 }
 
@@ -173,3 +178,5 @@ void CDebugCamera::Update()
 	// カメラのベース更新
 	CCamera::Update();
 }
+
+#endif

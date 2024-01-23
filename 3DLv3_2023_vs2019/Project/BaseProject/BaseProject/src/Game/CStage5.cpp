@@ -8,6 +8,7 @@
 #include "CNeedle.h"
 #include "CTransparentField.h"
 #include "Maths.h"
+#include "CGameManager.h"
 
 //コンストラクタ
 CStage5::CStage5()

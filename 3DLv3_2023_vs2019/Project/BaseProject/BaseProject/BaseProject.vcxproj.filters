@@ -379,9 +379,6 @@
     <ClCompile Include="src\Game\CCoverObject.cpp">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClCompile>
-    <ClCompile Include="src\CStage6.cpp">
-      <Filter>ソース ファイル\Game\Stage</Filter>
-    </ClCompile>
     <ClCompile Include="src\Game\CStage7.cpp">
       <Filter>ソース ファイル\Game\Stage</Filter>
     </ClCompile>
@@ -399,6 +396,24 @@
     </ClCompile>
     <ClCompile Include="src\Game\CGameMenu.cpp">
       <Filter>ソース ファイル\Game\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CGameCamera.cpp">
+      <Filter>ソース ファイル\Game\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CGameCamera2.cpp">
+      <Filter>ソース ファイル\Game\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\CStage6.cpp">
+      <Filter>ソース ファイル\Game\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BaseSystem\BGMData.cpp">
+      <Filter>ソース ファイル\BaseSystem\System</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BaseSystem\CBGMManager.cpp">
+      <Filter>ソース ファイル\BaseSystem\System</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BaseSystem\CFade.cpp">
+      <Filter>ソース ファイル\BaseSystem\System</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -729,9 +744,6 @@
     <ClInclude Include="src\Game\CCoverObject.h">
       <Filter>ソース ファイル\Game\Field\Object</Filter>
     </ClInclude>
-    <ClInclude Include="src\CStage6.h">
-      <Filter>ソース ファイル\Game\Stage</Filter>
-    </ClInclude>
     <ClInclude Include="src\Game\CStage7.h">
       <Filter>ソース ファイル\Game\Stage</Filter>
     </ClInclude>
@@ -749,6 +761,24 @@
     </ClInclude>
     <ClInclude Include="src\Game\CGameMenu.h">
       <Filter>ソース ファイル\Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CGameCamera.h">
+      <Filter>ソース ファイル\Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CGameCamera2.h">
+      <Filter>ソース ファイル\Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\CStage6.h">
+      <Filter>ソース ファイル\Game\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BaseSystem\BGMData.h">
+      <Filter>ソース ファイル\BaseSystem\System</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BaseSystem\CBGMManager.h">
+      <Filter>ソース ファイル\BaseSystem\System</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BaseSystem\CFade.h">
+      <Filter>ソース ファイル\BaseSystem\System</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

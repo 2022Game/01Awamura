@@ -18,12 +18,12 @@ bool CPlayer::mDownSwitch = false;
 // プレイヤーのアニメーションデータのテーブル
 const CPlayer::AnimData CPlayer::ANIM_DATA[] =
 {
-	{ "Character\\Player\\Normalidol.x",true,	554.0f	},	// Tポーズ
+	{ "Character\\Player\\Normalidol.x",true,	277.0f	},	// Tポーズ
 	//{ "Character\\Player\\SuperJump.x",true,	160.0f	},	// 謎
-	{ "Character\\Player\\slowrun.x",		true,	44.0f	},	//走る
+	{ "Character\\Player\\slowrun.x",		true,	35.0f	},	//走る
 	{ "Character\\Player\\jumpUp.x",		false,	8.0f	},	// ジャンプ開始
-	{ "Character\\Player\\jumpDown2.x",		false,	35.0f	},	// ジャンプ落下中
-	{ "Character\\Player\\jumpDown3.x",		false,	38.0f	},	// ジャンプ着地
+	{ "Character\\Player\\jumpDown2.x",		false,	25.0f	},	// ジャンプ落下中
+	{ "Character\\Player\\jumpDown3.x",		false,	26.0f	},	// ジャンプ着地
 	//{ "Character\\Player\\run.x",		true,	40.0f	},	// 走る
 	{ "Character\\Player\\jumpN.x",		false,	1.0f	},	// 空中
 	{ "Character\\Player\\Down.x",		false,	60.0f	},	// 倒れる
@@ -349,7 +349,10 @@ void CPlayer::UpdateIdle()
 		if (input.LengthSqr() > 0.0f)
 		{
 			// カメラの向きに合わせた移動ベクトルに変換
-			CVector move = CCamera::MainCamera()->Rotation() * input;
+			CCamera* mainCamera = CCamera::MainCamera();
+			CVector camForward = mainCamera->VectorZ();
+			CVector camSide = CVector::Cross(CVector::up, camForward);
+			CVector move = camForward * input.Z() + camSide * input.X();
 			move.Y(0.0f);
 			move.Normalize();
 
@@ -551,7 +554,6 @@ void CPlayer::UpdateClearEnd()
 
 	//ステージをクリアしたら、次のステージ開始まで準備中の状態に変更
 	ChangeState(EState::eReady);
-//	}
 }
 
 //しゃがみ
@@ -770,7 +772,7 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 					ChangeAnimation(EAnimType::eJumpDown3);
 				}
 				//クリア状態以外でアニメーションが終わった時にクリア状態にする
-				if (mState != EState::eClear && mState != EState::eClearEnd && IsAnimationFinished())
+				if (mState != EState::eReady && mState != EState::eClear && mState != EState::eClearEnd && IsAnimationFinished())
 				{
 					ChangeState(EState::eClear);
 				}

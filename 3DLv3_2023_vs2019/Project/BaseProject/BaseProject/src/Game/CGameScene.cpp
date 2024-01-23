@@ -8,6 +8,9 @@
 #include "CStageManager.h"
 #include "CGameManager.h"
 #include "CGameMenu.h"
+#include "CGameCamera.h"
+#include "CGameCamera2.h"
+#include "CBGMManager.h"
 
 //コンストラクタ
 CGameScene::CGameScene()
@@ -73,6 +76,9 @@ void CGameScene::Load()
 	
 	CResourceManager::Load<CSound>("SlashSound", "Sound\\SE\\slash.wav");
 
+
+	// ゲームBGMを読み込み
+	CBGMManager::Instance()->Play(EBGMType::eGame);
 	// ゲームBGMを読み込み
 	//mpGameBGM = CResourceManager::Load<CSound>("GameBGM", "Sound\\BGM\\game.wav");
 	// ゲームBGMのループ範囲を設定
@@ -85,11 +91,26 @@ void CGameScene::Load()
 	CPlayer* player = new CPlayer();
 	//player->Scale(1.0f, 1.0f, 1.0f);
 
-	CCamera* mainCamera = new CCamera
+	//CGameCamera* mainCamera = new CGameCamera
+	//CCamera* mainCamera = new CCamera
+	//CGameCamera* mainCamera = new CGameCamera
+	// CGameCameraのテスト
+	//CGameCamera* mainCamera = new CGameCamera
+	//(
+	//	//CVector(5.0f, -15.0f, 180.0f),
+	//	CVector(0.0f, 50.0f, 75.0f),
+	//	player->Position()
+	//);
+
+	// CGameCamera2のテスト
+	CVector atPos = player->Position() + CVector(0.0f, 10.0f, 0.0f);
+	CGameCamera2* mainCamera = new CGameCamera2
 	(
-		//CVector(5.0f, -15.0f, 180.0f),
-		CVector(0.0f, 50.0f, 75.0f),
-		player->Position()
+		atPos + CVector(0.0f, 0.0f, 40.0f),
+		atPos
+		////CVector(5.0f, -15.0f, 180.0f),
+		//CVector(0.0f, 50.0f, 75.0f),
+		//player->Position()
 	);
 	mainCamera->SetFollowTargetTf(player);
 

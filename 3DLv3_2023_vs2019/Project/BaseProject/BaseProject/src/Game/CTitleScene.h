@@ -19,5 +19,5 @@ public:
 
 private:
 	CImage* mBgImage;   //背景画像
-	CSound* mpTitleBGM;	//タイトル画面のBGM
+	//CSound* mpTitleBGM;	//タイトル画面のBGM
 };

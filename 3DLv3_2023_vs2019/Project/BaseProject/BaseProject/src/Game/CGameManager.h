@@ -27,6 +27,8 @@ public:
 	static int StageNo();
 	//更新
 	void Update() override;
+	//現在のステージ進行を取得
+	static int StageClearCount();
 private:
 	//コンストラクタ
 	CGameManager();
@@ -50,7 +52,11 @@ private:
 	void UpdateGameOver();
 
 	static CGameManager* spInstance;
+	int RandCount; //ランダム調整用
+	int n[8]; //ランダム用の配列
 	int mStageNo; //現在のステージ番号
+	int mStageNoswitch; //ステージ管理用
+	int mStageClearCount; //CLEARしたカウント
 	EGameState mState; //現在のゲームの状態
 	int mStateStep; //状態内でのステップ
 	float mElapsedTime; //経過時間計測用

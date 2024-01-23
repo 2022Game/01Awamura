@@ -7,6 +7,7 @@
 #include "CPlayer.h"
 #include "CCamera.h"
 #include "CAppearFloor.h"
+#include "CGameManager.h"
 
 //コンストラクタ
 CStage2::CStage2()

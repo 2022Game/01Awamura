@@ -6,6 +6,7 @@
 #include "CCamera.h"
 #include "CIceField.h"
 #include "CCube.h"
+#include "CGameManager.h"
 
 //コンストラクタ
 CStage8::CStage8()

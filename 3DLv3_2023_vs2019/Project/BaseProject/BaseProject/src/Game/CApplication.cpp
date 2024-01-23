@@ -6,6 +6,8 @@
 #include "CSoundManager.h"
 #include "CSceneManager.h"
 #include "CGamePause.h"
+#include "CBGMManager.h"
+#include "CFade.h"
 
 CApplication::~CApplication()
 {
@@ -13,9 +15,30 @@ CApplication::~CApplication()
 
 void CApplication::Start()
 {
+#if _DEBUG
+	// デバッグカメラを作成
+	CDebugCamera::DebugCamera();
+#endif
+
+	// フェードクラスを作成
+	CFade::Instance();
+	// ゲームポーズクラスを作成
 	new CGamePause();
+	// サウンド管理クラスを作成
 	CSoundManager::Instance();
+	// BGM管理クラスを作成
+	CBGMManager::Instance();
+	// 最初のシーンを読み込み
 	CSceneManager::Instance()->LoadScene(EScene::eBootMenu);
+
+
+#if _DEBUG
+	// デバッグモードでは、ブートメニューを最初に開く
+	CSceneManager::Instance()->LoadScene(EScene::eBootMenu);
+#else
+	// リリースモードでは、タイトル画面を最初に開く
+	CSceneManager::Instance()->LoadScene(EScene::eTitle);
+#endif
 }
 
 void CApplication::End()
@@ -24,6 +47,7 @@ void CApplication::End()
 	CTaskManager::ClearInstance();
 	CCollisionManager::ClearInstance();
 	CResourceManager::ClearInstance();
+	CBGMManager::ClearInstance();
 	CSoundManager::ClearInstance();
 }
 

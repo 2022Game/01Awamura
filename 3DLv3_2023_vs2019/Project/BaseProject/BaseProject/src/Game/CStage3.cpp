@@ -10,6 +10,7 @@
 #include "CLMoveField.h"
 #include "CPlayer.h"
 #include "CCamera.h"
+#include "CGameManager.h"
 
 //コンストラクタ
 CStage3::CStage3()

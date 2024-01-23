@@ -6,6 +6,7 @@
 #include "CDisappearFloor.h"
 #include "Maths.h"
 #include "CCleardelta.h"
+#include "CGameManager.h"
 
 //コンストラクタ
 CStage7::CStage7()

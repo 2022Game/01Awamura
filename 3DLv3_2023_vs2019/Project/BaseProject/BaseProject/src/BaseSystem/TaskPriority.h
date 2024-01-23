@@ -11,18 +11,19 @@ enum class ETaskPriority
 	ePlayer,	// プレイヤー
 
 	eEffect,	// エフェクト
-	eCover, //隠しもの
-	eTransparent, //透明オブジェクト
-	//eCover, //隠しもの
 
 	eCamera,	// カメラ
 
 	// 2D関連
 	eUI,		// UI関連のデフォルト
+	eFade,		// 画面フェード
 	eSystem,	// システム関連
 	eDebug,		// デバッグ関連
 
 	Num,
+	eCover,
+	eTransparent,
+
 
 	// 2D関連のタスクの開始位置
 	Start2d = eUI,
