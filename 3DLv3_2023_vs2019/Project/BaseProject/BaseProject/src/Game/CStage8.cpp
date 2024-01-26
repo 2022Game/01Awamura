@@ -55,7 +55,7 @@ void CStage8::CreateBlockData()
 
 	//スタート位置から前方3列目にランダムで壁を配置する。
 	x = Math::Rand(0, BLOCK_COUNT_X - 1);
-	mBlockData[x][2] = 1;
+	mBlockData[x][1] = 1;
 
 	int moveX = 0; //左右の移動量
 	int moveY = 1; //前後の移動量
@@ -120,6 +120,37 @@ void CStage8::CreateBlockData()
 				moved = PaveTheRoute(x, y, moveX, moveY);
 				break;
 			}
+		}
+	}
+
+	//作成したブロックの配置データから情報を取得
+	std::vector<int>emptyList; //何もないマスのリスト
+	int blockCount = 0; //配置されている壁の数
+	int routeCount = 0; //移動ルートが設定されているマスの数
+	for (int i = 0; i < BLOCK_COUNT_X; i++)
+	{
+		for (int j = 0; j < BLOCK_COUNT_Y; j++)
+		{
+			if (mBlockData[i][j] == 0) emptyList.push_back(i * BLOCK_COUNT_Y + j);
+			else if (mBlockData[i][j] == 1) blockCount++;
+			//else if (mBlockData[i][j] == 2) routeCount++;
+		}
+	}
+
+	//既に配置しているブロック数が最大値より小さいならば、
+	//空いている場所にランダムでブロックを配置する
+	if (blockCount < MAX_BLOCK_COUNT)
+	{
+		//新しく配置するブロックの数を求める
+		int count = min(MAX_BLOCK_COUNT - blockCount, emptyList.size());
+		for (int i = 0; i < count; i++)
+		{
+			int index = Math::Rand(0, emptyList.size() - 1);
+			auto itr = emptyList.begin() + index;
+			int ix = *itr / BLOCK_COUNT_Y;
+			int iy = *itr % BLOCK_COUNT_Y;
+			mBlockData[ix][iy] = 1;
+			emptyList.erase(itr);
 		}
 	}
 

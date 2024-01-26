@@ -175,28 +175,28 @@ CPlayer::CPlayer()
 	);*/
 	/*mpColliderSphere->SetCollisionLayers({});*/
 	mpColliderLine->SetCollisionLayers({ ELayer::eField,ELayer::eClearObject,ELayer::eObject,ELayer::eWarpObject,
-		ELayer::eSlopeField,ELayer::eStone,ELayer::eMoveRSwitch,ELayer::eMoveLSwitch,ELayer::eDead,ELayer::eIceField });
+		ELayer::eSlopeField,ELayer::eStone,ELayer::eMoveRSwitch,ELayer::eMoveLSwitch,ELayer::eDead,ELayer::eIceField,ELayer::eMoveObject });
 		mpColliderLineBody->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject,
-			ELayer::eStone });
+			ELayer::eStone,ELayer::eMoveObject });
 		mpColliderLineBody2->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
-			ELayer::eBigBadObject });
+			ELayer::eBigBadObject,ELayer::eMoveObject });
 	mpColliderLineLeg->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
-		ELayer::eBigBadObject,ELayer::eSlopeField,ELayer::eIceField });
+		ELayer::eBigBadObject,ELayer::eSlopeField,ELayer::eIceField,ELayer::eMoveObject });
 	mpColliderLineLeg2->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
-		ELayer::eBigBadObject,ELayer::eSlopeField,ELayer::eIceField });
+		ELayer::eBigBadObject,ELayer::eSlopeField,ELayer::eIceField,ELayer::eMoveObject });
 
 		mpColliderLineHead->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
-			ELayer::eBigBadObject });
+			ELayer::eBigBadObject,ELayer::eMoveObject });
 		mpColliderLineHead2->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
-			ELayer::eBigBadObject });
+			ELayer::eBigBadObject,ELayer::eMoveObject });
 		mpColliderLineBodyHalf->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eBigBadObject,
-			ELayer::eStone });
+			ELayer::eStone,ELayer::eMoveObject });
 		mpColliderLineLegHalf->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
-			ELayer::eBigBadObject,ELayer::eSlopeField });
+			ELayer::eBigBadObject,ELayer::eSlopeField,ELayer::eMoveObject });
 		mpColliderLineBodyHalf2->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
-			ELayer::eBigBadObject });
+			ELayer::eBigBadObject,ELayer::eMoveObject });
 		mpColliderLineLegHalf2->SetCollisionLayers({ ELayer::eField,ELayer::eObject,ELayer::eBadObject,ELayer::eStone,
-			ELayer::eBigBadObject,ELayer::eSlopeField });
+			ELayer::eBigBadObject,ELayer::eSlopeField,ELayer::eMoveObject });
 }
 
 CPlayer::~CPlayer()
@@ -426,6 +426,29 @@ void CPlayer::UpdateAttackWait()
 // ジャンプ開始
 void CPlayer::UpdateJumpStart()
 {
+	//mMoveSpeed.X(0.0f);
+	//mMoveSpeed.Z(0.0f);
+	//if (!mIsGrounded)
+	//{
+	//	CVector input;
+	//	if (CInput::Key('W'))	     input.Z(-2.0f);
+	//	else if (CInput::Key('S'))   input.Z(2.0f);
+	//	if (CInput::Key('A'))		 input.X(-2.0f);
+	//	else if (CInput::Key('D'))	 input.X(2.0f);
+	//	// 入力ベクトルの長さで入力されているか判定
+	//	if (input.LengthSqr() > 0.0f)
+	//	{
+	//		// カメラの向きに合わせた移動ベクトルに変換
+	//		CCamera* mainCamera = CCamera::MainCamera();
+	//		CVector camForward = mainCamera->VectorZ();
+	//		CVector camSide = CVector::Cross(CVector::up, camForward);
+	//		CVector move = camForward * input.Z() + camSide * input.X();
+	//		move.Y(0.0f);
+	//		move.Normalize();
+
+	//		mMoveSpeed += move * MOVE_SPEED;
+	//	}
+	//}
 	//ChangeAnimation(EAnimType::eJumpStart);
 	ChangeAnimation(EAnimType::eJumpUp);
 	if (IsAnimationFinished())
@@ -439,7 +462,30 @@ void CPlayer::UpdateJumpStart()
 // ジャンプ中
 void CPlayer::UpdateJump()
 {
-	ChangeAnimation(EAnimType::eJumpDown2);
+	if (!mIsGrounded)
+	{
+		mMoveSpeed.X(0.0f);
+		mMoveSpeed.Z(0.0f);
+		CVector input;
+		ChangeAnimation(EAnimType::eJumpDown2);
+		if (CInput::Key('W'))	     input.Z(-2.0f);
+		else if (CInput::Key('S'))   input.Z(2.0f);
+		if (CInput::Key('A'))		 input.X(-2.0f);
+		else if (CInput::Key('D'))	 input.X(2.0f);
+		// 入力ベクトルの長さで入力されているか判定
+		if (input.LengthSqr() > 0.0f)
+		{
+			// カメラの向きに合わせた移動ベクトルに変換
+			CCamera* mainCamera = CCamera::MainCamera();
+			CVector camForward = mainCamera->VectorZ();
+			CVector camSide = CVector::Cross(CVector::up, camForward);
+			CVector move = camForward * input.Z() + camSide * input.X();
+			move.Y(0.0f);
+			move.Normalize();
+
+			mMoveSpeed += move * MOVE_SPEED;
+		}
+	}
 	//Downcount--;
 	/*if (Downcount < 0)
 	{
@@ -464,6 +510,30 @@ void CPlayer::UpdateJumpEnd()
 //空中
 void CPlayer::UpdateJumpN()
 {
+	if (!mIsGrounded)
+	{
+		mMoveSpeed.X(0.0f);
+		mMoveSpeed.Z(0.0f);
+		CVector input;
+		//ChangeAnimation(EAnimType::eJumpDown2);
+		if (CInput::Key('W'))	     input.Z(-2.0f);
+		else if (CInput::Key('S'))   input.Z(2.0f);
+		if (CInput::Key('A'))		 input.X(-2.0f);
+		else if (CInput::Key('D'))	 input.X(2.0f);
+		// 入力ベクトルの長さで入力されているか判定
+		if (input.LengthSqr() > 0.0f)
+		{
+			// カメラの向きに合わせた移動ベクトルに変換
+			CCamera* mainCamera = CCamera::MainCamera();
+			CVector camForward = mainCamera->VectorZ();
+			CVector camSide = CVector::Cross(CVector::up, camForward);
+			CVector move = camForward * input.Z() + camSide * input.X();
+			move.Y(0.0f);
+			move.Normalize();
+
+			mMoveSpeed += move * MOVE_SPEED;
+		}
+	}
 	ChangeAnimation(EAnimType::eJumpN);
 	/*Downcount--;
 	if (Downcount < 0)
@@ -983,6 +1053,10 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 							mpRideObject = other->Owner();
 						}
 					}
+					if (other->Layer() == ELayer::eMoveObject)
+					{
+						Position(Position() + hit.adjust * hit.weight);
+					}
 					if (other->Layer() == ELayer::eBadObject)
 					{
 						Position(Position() + hit.adjust * hit.weight);
@@ -1044,6 +1118,10 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 							mpRideObject = other->Owner();
 						}
 					}
+					if (other->Layer() == ELayer::eMoveObject)
+					{
+						Position(Position() + hit.adjust * hit.weight);
+					}
 					if (other->Layer() == ELayer::eBadObject)
 					{
 						Position(Position() + hit.adjust * hit.weight);
@@ -1100,6 +1178,10 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 				{
 					mpRideObject = other->Owner();
 				}
+			}
+			if (other->Layer() == ELayer::eMoveObject)
+			{
+				Position(Position() + hit.adjust * hit.weight);
 			}
 			//当たると死亡
 			if (other->Layer() == ELayer::eDead)
@@ -1164,6 +1246,10 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 						mpRideObject = other->Owner();
 					}
 				}
+				if (other->Layer() == ELayer::eMoveObject)
+				{
+					Position(Position() + hit.adjust * hit.weight);
+				}
 				if (other->Layer() == ELayer::eBadObject)
 				{
 					Position(Position() + hit.adjust * hit.weight);
@@ -1221,6 +1307,10 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 						{
 							mpRideObject = other->Owner();
 						}
+					}
+					if (other->Layer() == ELayer::eMoveObject)
+					{
+						Position(Position() + hit.adjust * hit.weight);
 					}
 					if (other->Layer() == ELayer::eBadObject)
 					{

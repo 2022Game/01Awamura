@@ -5,7 +5,8 @@
 #define BLOCK_COUNT_X 9
 //縦方向の配置数
 #define BLOCK_COUNT_Y 10
-
+//ブロックを配置する最大数
+#define MAX_BLOCK_COUNT 20
 //ステージ2「岩石坂道ステージ」
 class CStage8 : public CStageBase
 {

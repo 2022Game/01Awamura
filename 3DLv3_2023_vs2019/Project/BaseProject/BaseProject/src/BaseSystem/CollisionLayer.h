@@ -11,6 +11,7 @@ enum class ELayer
 	eBadObject,
 	eBigBadObject,
 	eObject,
+	eMoveObject,
 	eClearObject,
 	eWarpObject,
 	eSlopeField,

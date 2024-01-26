@@ -6,7 +6,7 @@ CGameManager* CGameManager::spInstance = nullptr;
 
 //コンストラクタ
 CGameManager::CGameManager()
-	:mStageNo(8)
+	:mStageNo(0)
 	,mStageNoswitch(0)
 	,mStageClearCount(0)
 	,mState(EGameState::eReady)

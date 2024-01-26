@@ -27,7 +27,7 @@ CSidewood::CSidewood(CModel* model, const CVector& pos, const CVector& scale, fl
 	mKillCount = 600;
 	//Math::Rand(0, 5);
 	mpColliderSphere = new CColliderSphere(this, ELayer::eMove, 2.0f, false, 1.0f);
-	mpColliderMesh = new CColliderMesh(this, ELayer::eBadObject, mpModel, true);
+	mpColliderMesh = new CColliderMesh(this, ELayer::eMoveObject, mpModel, true);
 	Position(mDefaultPos);
 	Scale(scale);
 	randmodelspeedY = Math::Rand(-1.0f, 1.0f);

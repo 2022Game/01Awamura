@@ -27,7 +27,7 @@ CSideDownwood::CSideDownwood(CModel* model, const CVector& pos, const CVector& s
 {
 	mKillCount = 10;
 	//Math::Rand(0, 5);
-	mpColliderMesh = new CColliderMesh(this, ELayer::eBadObject, mpModel, true);
+	mpColliderMesh = new CColliderMesh(this, ELayer::eMoveObject, mpModel, true);
 	mpColliderSphere = new CColliderSphere(this, ELayer::eMove, 0.5f, false, 1.0f);
 	Position(mDefaultPos);
 	mpColliderSphere->Position(0.0f, 5.0f, 0.0f);
