@@ -23,5 +23,7 @@ private:
 	std::vector<CImage*> mMenuItems;
 	CImage* mpSelectFrame;
 	int mSelectIndex;
+	CText* mpText;	// •¶Žš—ñ•`‰æ—p
 	bool mIsOpened;
+	CVector mRotateAngle;
 };

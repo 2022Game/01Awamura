@@ -12,16 +12,16 @@ CGameManager::CGameManager()
 	,mState(EGameState::eReady)
 	,mStateStep(0)
 	,mElapsedTime(0.0f)
-	,RandCount(7)
+	,RandCount(6)
 {
-	n[0] = 1;
-	n[1] = 2;
-	n[2] = 3;
-	n[3] = 4;
-	n[4] = 5;
-	n[5] = 6;
-	n[6] = 7;
-	n[7] = 8;
+	n[0] = 2;
+	n[1] = 3;
+	n[2] = 4;
+	n[3] = 5;
+	n[4] = 6;
+	n[5] = 7;
+	n[6] = 8;
+	//n[7] = 8;
 }
 
 //デストラクタ

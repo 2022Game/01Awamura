@@ -378,7 +378,7 @@ void CPlayer::UpdateIdle()
 			CCamera::MainCamera()->Position();
 		}
 		// SPACEキーでジャンプ開始へ移行
-		else if (CInput::PushKey(VK_SPACE))
+			else if (CInput::PushKey(VK_SPACE))
 		{
 			ChangeState(EState::eJumpStart);
 		}
@@ -786,10 +786,10 @@ void CPlayer::Update()
 	{
 		//mColliderSpeed = CVector(0.0f, -10.0f, 0.0f);
 
-		if (!CInput::Key(VK_SPACE))
-		{
+		/*if (!CInput::Key(VK_SPACE))
+		{*/
 			mMoveSpeed -= CVector(0.0f, GRAVITY, 0.0f);
-		}
+		//}
 		// 移動
 		Position(Position() + mMoveSpeed);
 
@@ -829,9 +829,6 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 		//クリア判定コイン着地判定
 		if (other->Layer() == ELayer::eClearObject)
 		{
-			//待機状態以外
-			if (mState != EState::eIdle)
-			{
 				//空中から着地した時
 				if (mState == EState::eJump || mState == EState::eJumpN)
 				{
@@ -846,12 +843,6 @@ void CPlayer::Collision(CCollider* self, CCollider* other, const CHitInfo& hit)
 				{
 					ChangeState(EState::eClear);
 				}
-			}
-			//通常時にクリア土台に着いたらクリアにする
-			if (mState == EState::eIdle)
-			{
-				ChangeState(EState::eClear);
-			}
 		}
 		
 		//待機状態を含む着地判定

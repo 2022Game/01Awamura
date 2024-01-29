@@ -44,8 +44,9 @@ void CTitleScene::Load()
 //シーンの更新処理
 void CTitleScene::Update()
 {
-	if (CInput::PushKey(VK_SPACE))
+	CSceneManager::Instance()->LoadScene(EScene::eGame);
+	/*if (CInput::PushKey(VK_SPACE))
 	{
 		CSceneManager::Instance()->LoadScene(EScene::eGame);
-	}
+	}*/
 }

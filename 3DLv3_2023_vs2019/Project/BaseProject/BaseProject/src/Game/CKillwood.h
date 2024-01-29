@@ -37,7 +37,7 @@ private:
 	float mElapsedTime;
 	float mRotateSpeedY;
 	CVector mMove;
-	float mMoveTime;
+	//float mMoveTime;
 	//CVector mDefaultPos;
 	//CVector mMoveVec;
 	////•€‚Ì‰ñ“]‚Ì‚Pƒ‹[ƒv‚ÉŠ|‚©‚éŠÔ

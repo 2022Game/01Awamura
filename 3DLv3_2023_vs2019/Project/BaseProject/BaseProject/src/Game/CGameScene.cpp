@@ -133,10 +133,10 @@ void CGameScene::Update()
 	// ゲームメニューを開いてなければ、[Ｍ]キーでメニューを開く
 	if (!mpGameMenu->IsOpened())
 	{
-		if (CInput::PushKey('M'))
+		/*if (CInput::PushKey('M'))
 		{
 			mpGameMenu->Open();
-		}
+		}*/
 		if (CGameManager::StageClearCount() >= 5)
 		{
 			mpGameMenu->Open();

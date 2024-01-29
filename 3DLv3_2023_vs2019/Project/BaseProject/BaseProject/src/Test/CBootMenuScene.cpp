@@ -12,7 +12,7 @@ CBootMenuScene::CBootMenuScene()
 	mMenuInfoList =
 	{
 		{ "■メイン", EScene::eNone },
-		{ "タイトル画面", EScene::eTitle },
+		//{ "タイトル画面", EScene::eTitle },
 		{ "ゲーム画面", EScene::eGame },
 		{ "", EScene::eNone },
 		{ "■デバッグ", EScene::eNone },

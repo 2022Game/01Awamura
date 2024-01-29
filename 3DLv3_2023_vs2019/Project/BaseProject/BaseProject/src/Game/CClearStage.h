@@ -16,9 +16,4 @@ public:
 private:
 	CModel* mpModel;
 	CColliderMesh* mpColliderMesh;
-
-	CVector mDefaultPos;
-	CVector mMoveVec;
-	float mMoveTime;
-	float mElapsedTime;
 };

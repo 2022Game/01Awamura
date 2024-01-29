@@ -168,7 +168,7 @@ void CStage8::CreateBlockData()
 		
 			//‰½‚à‚È‚¢êŠ‚Å‚ ‚ê‚ÎAŸ‚Ìƒ}ƒX‚Ö
 			if (mBlockData[i][j] == 0)continue;
-			//if (mBlockData[i][j] == 2)continue;
+			if (mBlockData[i][j] == 2)continue;
 
 			bool isRoute = mBlockData[i][j] == 2;
 			float posY = isRoute ? -9.9f : 10.0f;

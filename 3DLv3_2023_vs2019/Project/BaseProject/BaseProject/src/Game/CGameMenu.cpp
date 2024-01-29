@@ -2,6 +2,7 @@
 #include "CInput.h"
 #include "CTaskManager.h"
 #include "CBGMManager.h"
+#include "CText.h"
 
 #define MENU_ALPHA 0.75f
 
@@ -115,6 +116,7 @@ void CGameMenu::Update()
 
 void CGameMenu::Render()
 {
+	CDebugPrint::Print("GAMECLEAR:PUSH ESCAPE");
 	mpBackground->Render();
 	for (int i = 0; i < mMenuItems.size(); i++)
 	{

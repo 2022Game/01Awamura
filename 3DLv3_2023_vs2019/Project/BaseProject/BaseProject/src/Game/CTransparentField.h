@@ -21,9 +21,4 @@ private:
 	CColliderSphere* mpColliderSphere;
 
 	CColliderLine* mpColliderLine2;
-
-	CVector mDefaultPos;
-	CVector mMoveVec;
-	float mMoveTime;
-	float mElapsedTime;
 };

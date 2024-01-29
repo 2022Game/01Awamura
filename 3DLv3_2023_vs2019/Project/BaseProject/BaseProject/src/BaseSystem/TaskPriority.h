@@ -11,7 +11,8 @@ enum class ETaskPriority
 	ePlayer,	// プレイヤー
 
 	eEffect,	// エフェクト
-
+	eCover, //カバー
+	eTransparent, //
 	eCamera,	// カメラ
 
 	// 2D関連
@@ -21,8 +22,6 @@ enum class ETaskPriority
 	eDebug,		// デバッグ関連
 
 	Num,
-	eCover,
-	eTransparent,
 
 
 	// 2D関連のタスクの開始位置
