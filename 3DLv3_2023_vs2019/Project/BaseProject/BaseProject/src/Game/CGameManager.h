@@ -60,4 +60,5 @@ private:
 	EGameState mState; //現在のゲームの状態
 	int mStateStep; //状態内でのステップ
 	float mElapsedTime; //経過時間計測用
+
 };

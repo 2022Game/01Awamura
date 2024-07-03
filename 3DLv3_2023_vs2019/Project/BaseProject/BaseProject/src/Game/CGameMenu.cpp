@@ -116,7 +116,6 @@ void CGameMenu::Update()
 
 void CGameMenu::Render()
 {
-	CDebugPrint::Print("GAMECLEAR:PUSH ESCAPE");
 	mpBackground->Render();
 	for (int i = 0; i < mMenuItems.size(); i++)
 	{

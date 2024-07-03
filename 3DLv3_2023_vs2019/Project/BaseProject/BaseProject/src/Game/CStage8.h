@@ -32,4 +32,6 @@ private:
 	//(0:なにもなし、１：ブロック配置、２：移動ルート）
 	int mBlockData[BLOCK_COUNT_X][BLOCK_COUNT_Y];
 	//int mBlockData[9][10];
+	int mBlockCheck;
+	//int mBlockZeroCount;
 };

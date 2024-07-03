@@ -136,11 +136,39 @@ void CStage8::CreateBlockData()
 			//else if (mBlockData[i][j] == 2) routeCount++;
 		}
 	}
+	
+	for (int i = 0; i < BLOCK_COUNT_X; i++)
+	{
+		for (int j = 0; j < BLOCK_COUNT_Y; j++)
+		{
+			if (mBlockData[i][j] == 0) mBlockCheck++;
+			if (mBlockCheck == BLOCK_COUNT_Y);
+		}
+	}
 
 	//既に配置しているブロック数が最大値より小さいならば、
 	//空いている場所にランダムでブロックを配置する
 	if (blockCount < MAX_BLOCK_COUNT)
 	{
+		for (int i = 0; i < BLOCK_COUNT_X; i++)
+		{
+			int mBlockZeroCount = 0;
+			for (int j = 0; j < BLOCK_COUNT_Y; j++)
+			{
+				if (mBlockData[i][j] == 0)
+				{
+					mBlockZeroCount++;
+				}
+			}
+			if (BLOCK_COUNT_Y == mBlockZeroCount)
+			{
+				if (mBlockData[x][y] == 0)
+				{
+					//mBlockData[x][y] = 1;
+				}
+			}
+			mBlockZeroCount = 0;
+		}
 		//新しく配置するブロックの数を求める
 		int count = min(MAX_BLOCK_COUNT - blockCount, emptyList.size());
 		for (int i = 0; i < count; i++)
@@ -213,72 +241,6 @@ void CStage8::Load()
 
 	//ブロックの配置データを作成
 	CreateBlockData();
-
-	//PosZ = -35.0f;
-
-	//for (int a = 0; a < 10; a++)
-	//{
-	//	//重複しないランダムの生成用の配列
-	//	int z;
-	//	int n[9];
-	//	n[0] = 0;
-	//	n[1] = 1;
-	//	n[2] = 2;
-	//	n[3] = 3;
-	//	n[4] = 4;
-	//	n[5] = 5;
-	//	n[6] = 6;
-	//	n[7] = 7;
-	//	n[8] = 8;
-	//	z = 8;
-	//	for (int i = 0; i < 2; i++)
-	//	{
-	//		//重複しないランダムの生成
-	//		int x;
-	//		int RandPos;
-	//		int RandPosX;
-	//		x = Math::Rand(0, z);
-	//		RandPos = n[x];
-	//		n[x] = n[z];
-	//		z = z - 1;
-	//		//透明化土台を作成
-	//		switch (RandPos)
-	//		{
-	//		case 0:
-	//			RandPosX = 0.0f;
-	//			break;
-	//		case 1:
-	//			RandPosX = 25.0f;
-	//			break;
-	//		case 2:
-	//			RandPosX = 50.0f;
-	//			break;
-	//		case 3:
-	//			RandPosX = 75.0f;
-	//			break;
-	//		case 4:
-	//			RandPosX = 100.0f;
-	//			break;
-	//		case 5:
-	//			RandPosX = -25.0f;
-	//			break;
-	//		case 6:
-	//			RandPosX = -50.0f;
-	//			break;
-	//		case 7:
-	//			RandPosX = -75.0f;
-	//			break;
-	//		case 8:
-	//			RandPosX = -100.0f;
-	//			break;
-	//		};
-	//		//透過土台
-	//		CCube* cube = new CCube(cubeModel,
-	//			CVector(RandPosX, 10.0f, PosZ), CVector(0.5f, 4.0f, 0.5f));
-	//		AddTask(cube);
-	//	}
-	//	PosZ = PosZ - 25.25f;
-	//}
 
 	//滑る足場
 	CIceField* icefield = new CIceField(icefieldModel,

@@ -1,5 +1,8 @@
 #pragma once
 #include "CStageBase.h"
+#include "CTask.h"
+#include "CImage.h"
+#include <vector>
 
 //ステージ「入口」
 class CStageEntrance : public CStageBase
@@ -14,6 +17,7 @@ public:
 	void Load() override;
 	//ステージ破棄
 	void Unload() override;
+
 
 private:
 };

@@ -26,11 +26,7 @@ CJMoveField::~CJMoveField()
 
 void CJMoveField::Update()
 {
-	////ˆÚ“®
-	//mMoveSpeed = CVector(0.0f, 0.0f, 0.0f);
-
-	//Position(Position() + mMoveSpeed);
-
+	//ˆÚ“®
 	if (CPlayer::mSwitchRObject == true)
 	{
 		Rotate(0.0f, randmodelspeedY, 0.0f);

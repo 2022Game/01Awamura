@@ -3,6 +3,8 @@
 #include "CFont.h"
 #include "CVector.h"
 #include "CColor.h"
+#include "CStageManager.h"
+#include "CGameManager.h"
 
 enum class ETextAlignH
 {

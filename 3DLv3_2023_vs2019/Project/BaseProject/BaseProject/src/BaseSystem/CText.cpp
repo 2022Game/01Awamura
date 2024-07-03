@@ -115,7 +115,44 @@ void CText::SetText(const wchar_t* format, ...)
 
 void CText::Render()
 {
+	if (CGameManager::StageNo() == 0)
+	{
+		CDebugPrint::Print("■■■■■■ デバッaaaaグカメラ：オン ■■■■■■\n");
+	}
+
 	glPushMatrix();
+
+	/*if (CGameManager::StageNo() == 2)
+	{
+		CDebugPrint::Print("■■■■■■ デバッグaaaaaaaaaaaaaaaカメラ：オン ■■■■■■\n");
+	}
+	if (CGameManager::StageNo() == 3)
+	{
+		CDebugPrint::Print("■■■■■■ デバッグaカメラ：オン ■■■■■■\n");
+	}
+	if (CGameManager::StageNo() == 4)
+	{
+		CDebugPrint::Print("■■■■■■ デバッグaaaaaaaaaaaaaaaaaaaaaaaaaaaカメラ：オン ■■■■■■\n");
+	}
+	if (CGameManager::StageNo() == 5)
+	{
+		CDebugPrint::Print("■■■■■■ デバッグfgredbfsカメラ：オン ■■■■■■\n");
+	}
+
+	if (CGameManager::StageNo() == 6)
+	{
+		CDebugPrint::Print("■■■■■■ デバッグrsjkyudtカメラ：オン ■■■■■■\n");
+	}
+
+	if (CGameManager::StageNo() == 7)
+	{
+		CDebugPrint::Print("■■■■■■ デバッグi;;glujtrfdesカメラ：オン ■■■■■■\n");
+	}
+
+	if (CGameManager::StageNo() == 8)
+	{
+		CDebugPrint::Print("■■■■■■ デバッグsaawesカメラ：オン ■■■■■■\n");
+	}*/
 
 	float sx = mPosition.X();
 	float ex = mPosition.X() + mSize.X();

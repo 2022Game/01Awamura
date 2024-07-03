@@ -113,7 +113,7 @@ void CGameManager::UpdateStageClear()
 	//ステージをクリアしたら次のステージを読み込む
 	//重複しないランダムの生成用の配列
 	//ステージは４つまで
-	if (mStageClearCount < 5)
+	if (mStageClearCount < 8)
 	{
 		int x;
 		x = 0;
@@ -126,7 +126,7 @@ void CGameManager::UpdateStageClear()
 	}
 
 	//ステージを４つCLEARしたら終了
-	if (mStageClearCount >= 5)
+	if (mStageClearCount >= 8)
 	{
 		mStageNo = 0;
 		CStageManager::LoadStage(mStageNo);

@@ -19,6 +19,7 @@ CStageEntrance::~CStageEntrance()
 //ステージ読み込み
 void CStageEntrance::Load()
 {
+	CDebugPrint::Print("GAMECLEAR:PUSH ESCAPE");
 	// 普通の土台のモデル読み込み
 	CModel* floorModel = CResourceManager::Get<CModel>("FieldCube");
 

@@ -90,12 +90,10 @@ private:
 		None = -1,
 
 		eIdle,		// ‘Ò‹@
-	//	eSuperJump,
 		eSlowRun,
 		eJumpUp,
 		eJumpDown2,
 		eJumpDown3,
-	//	eRun,
 		eJumpN,
 		eDown,
 		eUp,

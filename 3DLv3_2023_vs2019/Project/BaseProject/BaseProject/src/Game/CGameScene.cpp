@@ -137,7 +137,7 @@ void CGameScene::Update()
 		{
 			mpGameMenu->Open();
 		}*/
-		if (CGameManager::StageClearCount() >= 5)
+		if (CGameManager::StageClearCount() >= 8)
 		{
 			mpGameMenu->Open();
 		}
