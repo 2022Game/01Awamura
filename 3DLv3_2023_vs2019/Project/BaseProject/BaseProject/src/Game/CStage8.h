@@ -1,5 +1,6 @@
 #pragma once
 #include "CStageBase.h"
+#include "CText.h"
 
 //横方向の配置数
 #define BLOCK_COUNT_X 9
@@ -22,6 +23,8 @@ public:
 	void Unload() override;
 
 private:
+	CText* mpText;
+	CText* mpTextShadow;
 	//壁にぶつかるまで移動して、通ったマスを移動ルートにする。
 	int PaveTheRoute(int x, int y, int moveX, int moveY);
 

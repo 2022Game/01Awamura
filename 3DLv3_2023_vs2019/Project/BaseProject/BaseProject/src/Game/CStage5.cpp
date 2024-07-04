@@ -27,6 +27,37 @@ CStage5::CStage5()
 	mStageNo = 5;
 	PosY = 380.0f;
 	PosY2 = -200.0f;
+
+	CVector2 pos = CVector2(0.0f, 0.0f);
+	CVector2 size = CVector2(WINDOW_WIDTH, WINDOW_HEIGHT);
+	ETextAlignH textAlignH = ETextAlignH::eCenter;
+	std::string text = "針山ステージ\n針山を回避しろ";
+
+	//テキストの影
+	mpTextShadow = new CText
+	(
+		nullptr, 24,
+		pos + CVector2(2.0f, 2.0f),
+		size,
+		CColor(0.0f, 0.0f, 0.0f),
+		ETaskPriority::eTextShadow
+	);
+
+	mpTextShadow->SetTextAlignH(textAlignH);
+	mpTextShadow->SetText(text.c_str());
+	AddTask(mpTextShadow);
+
+	//テキスト本体
+	mpText = new CText
+	(
+		nullptr, 24,
+		pos, size,
+		CColor(1.0f, 1.0f, 1.0f),
+		ETaskPriority::eText
+	);
+	mpText->SetTextAlignH(textAlignH);
+	mpText->SetText(text.c_str());
+	AddTask(mpText);
 }
 
 //デストラクタ

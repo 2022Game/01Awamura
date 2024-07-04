@@ -1,5 +1,6 @@
 #pragma once
 #include "CStageBase.h"
+#include "CText.h"
 
 //ステージ5「透明化ステージ」
 class CStage5 : public CStageBase
@@ -16,6 +17,8 @@ public:
 	void Unload() override;
 
 private:
+	CText* mpText;
+	CText* mpTextShadow;
 	int RandPos;
 	int RandPos2;
 	int RandPos3;

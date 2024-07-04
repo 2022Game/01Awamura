@@ -115,10 +115,7 @@ void CText::SetText(const wchar_t* format, ...)
 
 void CText::Render()
 {
-	if (CGameManager::StageNo() == 0)
-	{
-		CDebugPrint::Print("■■■■■■ デバッaaaaグカメラ：オン ■■■■■■\n");
-	}
+	
 
 	glPushMatrix();
 

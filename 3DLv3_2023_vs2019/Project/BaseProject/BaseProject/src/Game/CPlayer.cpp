@@ -378,7 +378,10 @@ void CPlayer::UpdateIdle()
 		// SPACEキーでジャンプ開始へ移行
 			else if (CInput::PushKey(VK_SPACE))
 		{
-			ChangeState(EState::eJumpStart);
+			if (CGameManager::StageNo() != 8)
+			{
+				ChangeState(EState::eJumpStart);
+			}
 		}
 	}
 	else

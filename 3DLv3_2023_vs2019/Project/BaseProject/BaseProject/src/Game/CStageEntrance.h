@@ -3,6 +3,7 @@
 #include "CTask.h"
 #include "CImage.h"
 #include <vector>
+#include "CText.h"
 
 //ステージ「入口」
 class CStageEntrance : public CStageBase
@@ -20,4 +21,6 @@ public:
 
 
 private:
+	CText* mpText;
+	CText* mpTextShadow;
 };

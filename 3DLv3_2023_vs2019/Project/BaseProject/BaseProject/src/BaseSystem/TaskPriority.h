@@ -17,6 +17,8 @@ enum class ETaskPriority
 
 	// 2D関連
 	eUI,		// UI関連のデフォルト
+	eTextShadow,//テキストの影
+	eText, //テキストの本体
 	eFade,		// 画面フェード
 	eSystem,	// システム関連
 	eDebug,		// デバッグ関連

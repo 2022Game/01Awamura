@@ -1,5 +1,6 @@
 #pragma once
 #include "CStageBase.h"
+#include "CText.h"
 
 //ステージ2「岩石坂道ステージ」
 class CStage2 : public CStageBase
@@ -16,4 +17,6 @@ public:
 	void Unload() override;
 
 private:
+	CText* mpText;
+	CText* mpTextShadow;
 };

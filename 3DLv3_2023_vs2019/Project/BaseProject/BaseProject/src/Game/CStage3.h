@@ -1,5 +1,6 @@
 #pragma once
 #include "CStageBase.h"
+#include "CText.h"
 
 //ステージ3「ぐるぐるパズルゲーム」
 class CStage3 : public CStageBase
@@ -16,4 +17,6 @@ public:
 	void Unload() override;
 
 private:
+	CText* mpText;
+	CText* mpTextShadow;
 };
